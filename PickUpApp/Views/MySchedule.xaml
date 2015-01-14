@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="Schedule" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MySchedule">
+	<ContentPage.Content>
+	<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+		<ListView x:Name="lstSched" ItemsSource="{Binding RecurringSchedule}">
+		<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<StackLayout Orientation="Vertical">
+							<StackLayout Orientation="Horizontal">
+							<Label Text="{Binding Activity}" HorizontalOptions="StartAndExpand"  /><Label Text="["></Label><Label Text="{Binding Frequency}"  HorizontalOptions="End"  /><Label Text="]"></Label></StackLayout>
+								<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+									<Label Font="Small" Text="{Binding Address}" HorizontalOptions="Start" />
+								</StackLayout>
+							</StackLayout>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	<Button x:Name="btnAdd" Text="Add New" HorizontalOptions="StartAndExpand"></Button>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

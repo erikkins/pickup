@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="Schedule" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs" x:Class="PickUpApp.AddEditSchedule">
+
+	<ContentPage.Content>
+	<StackLayout VerticalOptions="FillAndExpand"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<Label Text="Modify Schedule"></Label>
+	<Entry Placeholder="Activity Name" Text="{Binding CurrentSchedule.Activity}"></Entry>
+	<Label MinimumHeightRequest="30" x:Name="lblAddress" Font="Large" Text="{Binding CurrentSchedule.Address}"></Label>
+	<StackLayout Orientation="Horizontal" MinimumHeightRequest="40"><Label HorizontalOptions="StartAndExpand" Text="Recurring?"></Label><Switch HorizontalOptions="End" x:Name="chkRecurring" IsToggled="{Binding CurrentSchedule.Recurring}"></Switch></StackLayout>
+	<StackLayout x:Name="dateLayout" Orientation="Horizontal"><Label HorizontalOptions="StartAndExpand" Text="Activity Date"></Label><DatePicker HorizontalOptions="End" Date="{Binding CurrentSchedule.AtWhen}"></DatePicker></StackLayout>
+	<StackLayout Orientation="Horizontal"><Label HorizontalOptions="StartAndExpand" Text="Start Time"></Label><TimePicker HorizontalOptions="End" Time="{Binding StartTime}"></TimePicker></StackLayout>
+	<StackLayout Orientation="Horizontal" MinimumHeightRequest="40"><Label HorizontalOptions="StartAndExpand" Text="Pickup/End Time"></Label><TimePicker HorizontalOptions="End" VerticalOptions="EndAndExpand" Time="{Binding EndTime}"></TimePicker></StackLayout>
+	<StackLayout x:Name="recurringLayout" IsVisible="false">
+	<StackLayout Orientation="Horizontal"><Label Text="End Date" HorizontalOptions="StartAndExpand"></Label><DatePicker HorizontalOptions="End" Date="{Binding CurrentSchedule.AtWhenEnd}"></DatePicker></StackLayout>
+	<TableView HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+	<TableRoot>
+	<TableSection>
+		<SwitchCell On="{Binding Monday}" Text="Monday"></SwitchCell>
+		<SwitchCell On="{Binding Tuesday}" Text="Tuesday"></SwitchCell>
+		<SwitchCell On="{Binding Wednesday}"  Text="Wednesday"></SwitchCell>
+		<SwitchCell On="{Binding Thursday}"  Text="Thursday"></SwitchCell>
+		<SwitchCell On="{Binding Friday}" Text="Friday"></SwitchCell>
+		<SwitchCell On="{Binding Saturday}"  Text="Saturday"></SwitchCell>
+		<SwitchCell On="{Binding Sunday}"  Text="Sunday"></SwitchCell>
+	</TableSection>
+	</TableRoot>
+	</TableView>
+	</StackLayout>
+	<StackLayout VerticalOptions="End" Orientation="Horizontal">
+	<Button HorizontalOptions="StartAndExpand" x:Name="btnSave" Text="Save"></Button>
+	<Button HorizontalOptions="End" x:Name="btnCancel" Text="Cancel"></Button></StackLayout>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

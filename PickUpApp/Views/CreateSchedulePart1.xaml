@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="Schedule" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs" x:Class="PickUpApp.CreateSchedulePart1">
+
+	<ContentPage.Content>
+	<StackLayout VerticalOptions="FillAndExpand"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<Label Text="Schedule: Step 1"></Label>
+	<Entry Placeholder="Activity Name" Text="{Binding CurrentSchedule.Activity}"></Entry>
+	<Label x:Name="lblAddress" MinimumHeightRequest="30" Font="Large" Text="{Binding CurrentSchedule.Address}"></Label>
+	<ListView ItemsSource="{Binding Kids}">
+		<ListView.ItemTemplate>
+				<DataTemplate>
+					<SwitchCell Text="{Binding Fullname}" On="{Binding Selected}"></SwitchCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+	</ListView>
+	<StackLayout VerticalOptions="End" Orientation="Horizontal">
+	<Button HorizontalOptions="StartAndExpand" x:Name="btnCancel" Text="Cancel"></Button>
+	<Button HorizontalOptions="End" x:Name="btnNext" Text="Next"></Button></StackLayout>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

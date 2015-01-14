@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="My Kids" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MyKids">
+	  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness">
+      <OnPlatform.iOS>0, 20, 0, 0</OnPlatform.iOS>
+    </OnPlatform>
+  </ContentPage.Padding>
+	<ContentPage.Content>
+<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<ListView x:Name="lstKids" ItemsSource="{Binding Kids}">
+	<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+								<Label Text="{Binding Firstname}" HorizontalOptions="Start"  />
+								<Label Text="{Binding Lastname}" HorizontalOptions="Fill" />
+							</StackLayout>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+	</ListView>
+	<Button x:Name="btnAdd" Text="Add Kid"></Button>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
