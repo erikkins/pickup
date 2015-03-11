@@ -15,14 +15,14 @@
 //
 
 using System;
-using MonoTouch.CoreLocation;
+using CoreLocation;
 using System.Threading.Tasks;
 using System.Threading;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Labs.Services.Geolocation;
-using MonoTouch.ObjCRuntime;
+using ObjCRuntime;
 
 [assembly: Dependency(typeof(Xamarin.Forms.Labs.iOS.Services.Geolocation.Geolocator))]
 namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
@@ -244,7 +244,9 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 			if (location.Speed > -1)
 				p.Speed = location.Speed;
 
-			p.Timestamp = new DateTimeOffset (location.Timestamp);
+
+
+			p.Timestamp = new DateTimeOffset (NSDateToDateTime(location.Timestamp));
 
 			this.position = p;
 
@@ -252,11 +254,17 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 
 			location.Dispose();
 		}
-
-		private void OnFailed (object sender, MonoTouch.Foundation.NSErrorEventArgs e)
+		public static DateTime NSDateToDateTime(NSDate date)
 		{
+			return (new DateTime(2001,1,1,0,0,0)).AddSeconds(date.SecondsSinceReferenceDate);
+		}
+
+		private void OnFailed (object sender, Foundation.NSErrorEventArgs e)
+		{
+			/*gotta revamp this whole section anyway
 			if ((CLError)e.Error.Code == CLError.Network)
 				OnPositionError (new PositionErrorEventArgs (GeolocationError.PositionUnavailable));
+			*/
 		}
 
 		private void OnAuthorizationChanged (object sender, CLAuthorizationChangedEventArgs e)

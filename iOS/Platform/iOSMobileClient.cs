@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using PickUpApp.ViewModels;
 using Microsoft.WindowsAzure.MobileServices;
-using MonoTouch.Foundation;
-//using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using PickUpApp.iOS;
 using Xamarin.Auth;
+using WindowsAzure.Messaging;
 
 [assembly: Xamarin.Forms.Dependency(typeof(iOSMobileClient))]
 
@@ -19,6 +20,8 @@ namespace PickUpApp.iOS
 	{
 		public async Task<MobileServiceUser> Authorize(Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider provider)
 		{
+
+
 
 			var accountStore = AccountStore.Create ();
 
@@ -30,18 +33,21 @@ namespace PickUpApp.iOS
 				MobileServiceUser msu = new MobileServiceUser (realUsername);
 				msu.MobileServiceAuthenticationToken = accounts [0].Properties ["token"];
 				App.client.CurrentUser = msu;
+
 				return msu;
 
 			} else {
 				//normal login
-				MobileServiceUser tmsu = await App.client.LoginAsync (AppDelegate.MainView, provider);
+
+				MobileServiceUser tmsu = await App.client.LoginAsync (UIApplication.SharedApplication.KeyWindow.RootViewController, provider);
+
 
 				var account = new Xamarin.Auth.Account (tmsu.UserId, new Dictionary<string,string> { {
 						"token",
 						tmsu.MobileServiceAuthenticationToken
 					}
 				});
-				accountStore.Save (account, "Facebook");
+				accountStore.Save (account, "Facebook");			
 
 				return tmsu;
 			}

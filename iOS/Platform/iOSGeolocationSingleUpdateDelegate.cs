@@ -15,7 +15,7 @@
 //
 
 using System;
-using MonoTouch.CoreLocation;
+using CoreLocation;
 using System.Threading.Tasks;
 using System.Threading;
 using Xamarin.Forms.Labs.Services.Geolocation;
@@ -70,15 +70,17 @@ namespace Xamarin.Forms.Labs.iOS
 			}
 		}
 
-		public override void Failed (CLLocationManager manager, MonoTouch.Foundation.NSError error)
+		public override void Failed (CLLocationManager manager, Foundation.NSError error)
 		{
-			switch ((CLError)error.Code)
+			/*this shit wasn't working anyway
+			switch ((CLError)error)
 			{
 			case CLError.Network:
 				StopListening();	
 				this.tcs.SetException (new GeolocationException (GeolocationError.PositionUnavailable));
 				break;
 			}
+			*/
 		}
 
 		public override bool ShouldDisplayHeadingCalibration (CLLocationManager manager)
@@ -100,7 +102,7 @@ namespace Xamarin.Forms.Labs.iOS
 			this.position.Latitude = newLocation.Coordinate.Latitude;
 			this.position.Longitude = newLocation.Coordinate.Longitude;
 			this.position.Speed = newLocation.Speed;
-			this.position.Timestamp = new DateTimeOffset (newLocation.Timestamp);
+			this.position.Timestamp = new DateTimeOffset (NSDateToDateTime(newLocation.Timestamp));
 
 			this.haveLocation = true;
 
@@ -109,6 +111,10 @@ namespace Xamarin.Forms.Labs.iOS
 				this.tcs.TrySetResult (new Position (this.position));
 				StopListening();
 			}
+		}
+		public static DateTime NSDateToDateTime(Foundation.NSDate date)
+		{
+			return (new DateTime(2001,1,1,0,0,0)).AddSeconds(date.SecondsSinceReferenceDate);
 		}
 
 		public override void UpdatedHeading (CLLocationManager manager, CLHeading newHeading)

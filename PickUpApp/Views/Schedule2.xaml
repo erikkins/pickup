@@ -5,7 +5,7 @@
 	<Label Text="{Binding Activity}"></Label>
 	<StackLayout Orientation="Horizontal" MinimumHeightRequest="40"><Label HorizontalOptions="StartAndExpand" Text="Recurring?"></Label><Switch HorizontalOptions="End" x:Name="chkRecurring" IsToggled="{Binding CurrentSchedule.Recurring}"></Switch></StackLayout>
 	<StackLayout x:Name="dateLayout" Orientation="Horizontal"><Label HorizontalOptions="StartAndExpand" Text="Activity Date"></Label><DatePicker HorizontalOptions="End" DateSelected="OnAtWhenChanged"  Date="{Binding CurrentSchedule.AtWhen}"></DatePicker></StackLayout>
-	<StackLayout Orientation="Horizontal"><Label HorizontalOptions="StartAndExpand" Text="Start Time"></Label><TimePicker HorizontalOptions="End" Time="{Binding CurrentSchedule.StartTime}"></TimePicker></StackLayout>
+	<StackLayout Orientation="Horizontal"><Label HorizontalOptions="StartAndExpand" Text="Start Time"></Label><TimePicker HorizontalOptions="End"  Time="{Binding CurrentSchedule.StartTime}"></TimePicker></StackLayout>
 	<StackLayout Orientation="Horizontal" MinimumHeightRequest="40"><Label HorizontalOptions="StartAndExpand" Text="Pickup/End Time"></Label><TimePicker HorizontalOptions="End" VerticalOptions="EndAndExpand" Time="{Binding CurrentSchedule.EndTime}"></TimePicker></StackLayout>
 
 	<StackLayout x:Name="recurringLayout" IsVisible="false">

@@ -24,10 +24,10 @@ using Xamarin.Forms.Labs.Services.Geolocation;
 
 namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 {
-	internal class GeolocationSingleListener
+	internal class GeolocationSingleListenerERIK
 		: Java.Lang.Object, ILocationListener
 	{
-		public GeolocationSingleListener (float desiredAccuracy, int timeout, IEnumerable<string> activeProviders, Action finishedCallback)
+		public GeolocationSingleListenerERIK (float desiredAccuracy, int timeout, IEnumerable<string> activeProviders, Action finishedCallback)
 		{
 			this.desiredAccuracy = desiredAccuracy;
 			this.finishedCallback = finishedCallback;

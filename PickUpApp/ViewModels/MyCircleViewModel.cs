@@ -11,11 +11,17 @@ namespace PickUpApp
 {
 	public class MyCircleViewModel:BaseViewModel
 	{
-		public ObservableCollection<Account> Circle { get; set; }
+		public ObservableCollection<Account> Circle 
+		{ get{ return App.myCircle; } 
+			set{ if (value == App.myCircle) {
+					App.myCircle = value;
+					}
+				} 
+		}
 	
 		public MyCircleViewModel ()
 		{
-			Circle = new ObservableCollection<Account> ();
+			App.myCircle = new ObservableCollection<Account> ();
 		}
 
 		public MyCircleViewModel(MobileServiceClient client) : this()
@@ -30,10 +36,10 @@ namespace PickUpApp
 			try
 			{
 				var circle = await client.InvokeApiAsync<List<Account>>("getmycircle");
-				Circle.Clear();
+				App.myCircle.Clear();
 				foreach (var acct in circle)
 				{
-					Circle.Add(acct);
+					App.myCircle.Add(acct);
 				}
 
 			}

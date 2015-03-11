@@ -25,7 +25,7 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-			<Button Text="Cancel" x:Name="btnCancel" Clicked="OnButtonClicked"></Button>
+			<Button Text="Cancel"  Clicked="OnButtonClicked"></Button>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

@@ -7,7 +7,7 @@ namespace PickUpApp
 	{
 		public CarouselMaster ()
 		{
-			this.Children.Add (new Today ());
+			this.Children.Add (new TodayView ());
 			this.Children.Add (new MyCircle ());
 			this.Children.Add (new MyKids ());
 			//InitializeComponent ();

@@ -65,6 +65,17 @@ namespace PickUpApp
 		public string Timezone { get{return _Timezone; } set{if (value != _Timezone) {
 					_Timezone = value; NotifyPropertyChanged ();
 				} } }
+
+		public string Fullname
+		{
+			get { return _Firstname + " " + _Lastname; }
+		}
+		private bool _selected;
+		public bool Selected
+		{
+			get { return _selected; }
+			set { _selected = value; }
+		}
 	}
 }
 

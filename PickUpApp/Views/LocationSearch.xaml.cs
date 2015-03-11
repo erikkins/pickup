@@ -38,7 +38,7 @@ namespace PickUpApp
 				//Xamarin.Forms.Labs.Services.Geolocation.IGeolocator igeo = DependencyService.Get<Xamarin.Forms.Labs.Services.Geolocation.IGeolocator>();
 				//System.Runtime.CompilerServices.ConfiguredTaskAwaitable<Xamarin.Forms.Labs.Services.Geolocation.Position> here = igeo.GetPositionAsync (6).ConfigureAwait (false);
 				//Xamarin.Forms.Labs.Services.Geolocation.Position p2 = here.GetAwaiter ().GetResult ();
-
+				GetPosition ().ConfigureAwait (false);
 				//Position p = new Position (p2.Latitude, p2.Longitude);
 				/*
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (p,

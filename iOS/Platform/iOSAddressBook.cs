@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using PickUpApp.iOS;
-using MonoTouch.AddressBook;
+using AddressBook;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Linq;
-using MonoTouch.Foundation;
+using Foundation;
 using System.Collections.Generic;
 using System.Collections;
 

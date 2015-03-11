@@ -9,11 +9,21 @@ namespace PickUpApp
 {
 	public class KidsViewModel: BaseViewModel
 	{
-		public ObservableCollection<Kid> Kids { get; set; }
+		public ObservableCollection<Kid> Kids 
+		{ get{ return App.myKids; } 
+			set{
+				if (value != App.myKids) {
+					App.myKids = value;
+				}
+			} 
+		}
 		public KidsViewModel ()
 		{
-			Kids = new ObservableCollection<Kid> ();
+			App.myKids = new ObservableCollection<Kid> ();
+			//Kids = new ObservableCollection<Kid> ();
 		}
+
+
 
 		public KidsViewModel(MobileServiceClient client) : this()
 		{
@@ -28,10 +38,10 @@ namespace PickUpApp
 			{
 				var kids = await client.GetTable<Kid>().ToListAsync();
 
-				Kids.Clear();
+				App.myKids.Clear();
 				foreach (var kid in kids)
 				{
-					Kids.Add(kid);
+					App.myKids.Add(kid);
 				}
 
 			}

@@ -31,7 +31,7 @@ namespace PickUpApp
 			} else {
 				//load the existing account
 				System.Diagnostics.Debug.WriteLine (account);
-				IsAuthenticated = true;
+			//	IsAuthenticated = true;
 
 			}
 		}
@@ -47,6 +47,10 @@ namespace PickUpApp
 				{
 					//we have our account
 					App.myAccount = account[0];
+					App.myDevice.accountid = App.myAccount.id;
+					App.myDevice.userId = App.myAccount.UserId;
+
+					MessagingCenter.Send<Account>(App.myAccount, "loaded");
 				}
 				else{
 					//hoping the only other alternative would be 0, not more than 1
@@ -60,7 +64,12 @@ namespace PickUpApp
 			{
 				if (ex.Message == "Error: NameResolutionFailure") {
 					//why are we getting this?
-				} else {
+				} else if (ex.Message == "Error: The authentication token has expired.") {
+					//force them to login!
+					IsAuthenticated = false;
+					Logout ();
+				}
+				else {
 					var page = new ContentPage ();
 					var result = page.DisplayAlert ("Error", "Error loading data Splash. Please check connectivity and try again.", "OK", "Cancel");
 					System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());

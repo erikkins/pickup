@@ -17,6 +17,7 @@ namespace PickUpApp
 		IMobileServiceTable<Kid> kidTable;
 		IMobileServiceTable<Account> accountTable;
 		IMobileServiceTable<Schedule> scheduleTable;
+		IMobileServiceTable<AccountDevice> accountDeviceTable;
 		int busyCount = 0;
 
 		public event Action<bool> BusyUpdate;
@@ -34,6 +35,7 @@ namespace PickUpApp
 			accountTable = client.GetTable <Account> ();
 			kidTable = client.GetTable<Kid> ();
 			scheduleTable = client.GetTable<Schedule> ();
+			accountDeviceTable = client.GetTable<AccountDevice>();
 			}
 			catch(Exception ex) {
 				System.Diagnostics.Debug.WriteLine (ex.Message);
@@ -103,6 +105,7 @@ namespace PickUpApp
 			}
 			catch (Exception ex)
 			{
+				System.Diagnostics.Debug.WriteLine (ex.Message);
 				//Console.Error.WriteLine (@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
 			}
 		}
@@ -115,7 +118,24 @@ namespace PickUpApp
 			try{
 				await kidTable.InsertAsync(kidItem);
 			} catch (MobileServiceInvalidOperationException e) {
-				//Console.Error.WriteLine (@"Error {0}", e.Message);
+				System.Diagnostics.Debug.WriteLine (@"Error {0}", e.Message);
+			}
+		}
+
+		public async Task InsertAccountDeviceAsync(AccountDevice accountDeviceItem)
+		{
+			try{
+				if (accountDeviceItem.id == null)
+				{
+					await accountDeviceTable.InsertAsync(accountDeviceItem);
+				}
+				else
+				{
+					await accountDeviceTable.UpdateAsync(accountDeviceItem);
+				}
+			}
+			catch(MobileServiceInvalidOperationException e) {
+				System.Diagnostics.Debug.WriteLine (e.Message);
 			}
 		}
 

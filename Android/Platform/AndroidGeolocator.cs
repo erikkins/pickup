@@ -40,11 +40,12 @@ namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 		private readonly string[] providers;
 		private string headingProvider;
 		private Position lastPosition;
-		private GeolocationContinuousListener listener;
+		private GeolocationContinuousListenerERIK listener;
 
 		public Geolocator()
 		{
-			manager = (LocationManager) Application.Context.GetSystemService(Context.LocationService);
+
+			manager = (LocationManager) Android.App.Application.Context.GetSystemService(Context.LocationService);
 			providers = manager.GetProviders(false).Where(s => s != LocationManager.PassiveProvider).ToArray();
 		}
 
@@ -130,8 +131,8 @@ namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 
 			if (!IsListening)
 			{
-				GeolocationSingleListener singleListener = null;
-				singleListener = new GeolocationSingleListener((float) DesiredAccuracy, timeout,
+				GeolocationSingleListenerERIK singleListener = null;
+				singleListener = new GeolocationSingleListenerERIK((float) DesiredAccuracy, timeout,
 					providers.Where(manager.IsProviderEnabled), () =>
 					{
 						for (int i = 0; i < providers.Length; ++i)
@@ -222,7 +223,7 @@ namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 			if (IsListening)
 				throw new InvalidOperationException("This Geolocator is already listening");
 
-			listener = new GeolocationContinuousListener(manager, TimeSpan.FromMilliseconds(minTime), providers);
+			listener = new GeolocationContinuousListenerERIK(manager, TimeSpan.FromMilliseconds(minTime), providers);
 			listener.PositionChanged += OnListenerPositionChanged;
 			listener.PositionError += OnListenerPositionError;
 

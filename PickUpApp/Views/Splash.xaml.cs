@@ -18,27 +18,74 @@ namespace PickUpApp
 			btnFacebook.Command = ViewModel.LoginCommand;
 			btnLogout.Clicked += btnLogout_Clicked;
 
+
 			MessagingCenter.Subscribe<MobileServiceClient>(this, "LoggedIn", (s) =>
 				{
-					ViewModel.IsAuthenticated = true;
 					ViewModel.Refresh();
-
+					ViewModel.IsAuthenticated = true;
 					//ok, so we logged in through the service...let's check and see if this account already exists
 					ViewModel.ExecuteLoadItemsCommand(s.CurrentUser.UserId).ConfigureAwait(false);
 					//Navigation.PushAsync(new TabbedMaster());
-					Navigation.PushModalAsync(new TabbedMaster());
+					MessagingCenter.Send<Splash>(this, "auth");
+					Navigation.PushModalAsync(new TabbedMaster()); 
 				});
+				
+			MessagingCenter.Subscribe<Invite> (this, "invite", (i) => {
+
+				if (App.client.CurrentUser == null)
+				{
+					//we've encountered a race condition where we got a notification,
+					//we want to launch the invite, but we're not yet logged in...
+					MessagingCenter.Subscribe<Splash>(this, "auth", (s) =>
+						{
+							var v  = DependencyService.Get<Refractored.Xam.Vibrate.Abstractions.IVibrate>();
+							v.Vibration (500);
+							Navigation.PushModalAsync(new InviteView(i));
+							MessagingCenter.Unsubscribe<Splash>(this, "auth");
+						});
+				}
+				else{
+					var v  = DependencyService.Get<Refractored.Xam.Vibrate.Abstractions.IVibrate>();
+					v.Vibration (500);
+					App.Current.MainPage.Navigation.PushModalAsync(new InviteView(i));
+					//Navigation.PushModalAsync(new InviteView(i));
+				}
+			});
+
+			MessagingCenter.Subscribe<Invite> (this, "pickup", (i) => {
+				if (App.client.CurrentUser == null)
+				{
+					//we've encountered a race condition where we got a notification,
+					//we want to launch the invite, but we're not yet logged in...
+					//though this doesn't seem to be working very well
+					MessagingCenter.Subscribe<Splash>(this, "auth", (s) =>
+						{
+							Navigation.PushModalAsync(new Confirmation(i));
+							MessagingCenter.Unsubscribe<Splash>(this, "auth");
+						});
+				}
+				else{
+					Navigation.PushModalAsync(new Confirmation(i));
+				}
+			});
+
+			MessagingCenter.Subscribe<AccountDevice>(this, "changed", (s) =>
+			{
+
+				PickupService.DefaultService.InsertAccountDeviceAsync(s).Wait(10000);
+			});
 		}
 
 		protected override void OnAppearing ()
 		{
 			base.OnAppearing ();
+
 			if (ViewModel.IsAuthenticated) {
 				Navigation.PushModalAsync (new TabbedMaster ());
-			}
-			else{
+			} else {
 				this.ViewModel.ExecuteLoginCommand ("Facebook").ConfigureAwait (false);
 			}
+		
 		}
 		void btnLogout_Clicked(object sender, EventArgs e)
 		{

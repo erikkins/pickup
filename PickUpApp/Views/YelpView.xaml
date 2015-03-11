@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.YelpView">
+	<ContentPage.Content>
+	<StackLayout Orientation="Vertical" >
+	<ListView x:Name="lstYelp" ItemsSource="{Binding YelpBusinesses}" RowHeight="100" >
+	<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<StackLayout Orientation="Vertical">
+							<StackLayout Orientation="Horizontal">
+							<Label Text="{Binding Name}" FontSize="18" HorizontalOptions="StartAndExpand"  /><Label  Text="{Binding Distance,StringFormat='{0:N1} miles'}" HorizontalOptions="End"  /></StackLayout>
+								<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+									<Label Font="Small" Text="{Binding Phone}" HorizontalOptions="Start" />
+									<Image Source="{Binding StarsURL}"></Image>
+								</StackLayout>
+								<ScrollView IsEnabled="false">
+								<Label Text="{Binding Snippet}" FontSize="12" HorizontalOptions="Start"></Label>
+								</ScrollView>
+							</StackLayout>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+	</ListView>
+	<Button Text="Close" BackgroundColor="Green" TextColor="Black" Clicked="OnCloseClicked"></Button>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

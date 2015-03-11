@@ -12,7 +12,7 @@ using Android.Widget;
 using Android.Webkit;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
-using Xamarin.Forms;
+//using Xamarin.Forms;
 using PickUpApp.Android;
 using Xamarin.Auth;
 using Newtonsoft.Json.Linq;
@@ -30,7 +30,8 @@ namespace PickUpApp.Android
 		public async Task<MobileServiceUser> Authorize(MobileServiceAuthenticationProvider provider)
 		{
 
-			var accountStore = AccountStore.Create (Application.Context);
+			//var accountStore = AccountStore.Create (Application.Context);
+			var accountStore = AccountStore.Create(Application.Context);
 
 			var accounts = accountStore.FindAccountsForService ("Facebook").ToArray ();
 

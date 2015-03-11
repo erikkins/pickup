@@ -26,10 +26,10 @@ using Xamarin.Forms.Labs.Droid.Services.Geolocation;
 
 namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 {
-	internal class GeolocationContinuousListener
+	internal class GeolocationContinuousListenerERIK
 		: Java.Lang.Object, ILocationListener
 	{
-		public GeolocationContinuousListener (LocationManager manager, TimeSpan timePeriod, IList<string> providers)
+		public GeolocationContinuousListenerERIK (LocationManager manager, TimeSpan timePeriod, IList<string> providers)
 		{
 			this.manager = manager;
 			this.timePeriod = timePeriod;

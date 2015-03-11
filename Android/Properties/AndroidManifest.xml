@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="PickUpApp.Android">
-	<uses-sdk />
-	<application android:label="PickUpApp.Android">
-		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCT6y62KfKGTbA4uwOnq8kux673EL6aUCA" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="pickUpApp.Android">
+	<uses-sdk android:minSdkVersion="19" />
+	<application android:label="pickUpApp.Android">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC5Pz9ySb_bI83GqUu9j00E8GZms8z6-rQ" />
 	</application>
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

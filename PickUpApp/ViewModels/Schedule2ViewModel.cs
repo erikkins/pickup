@@ -65,6 +65,9 @@ namespace PickUpApp
 					CurrentSchedule.Address = "";
 				}
 
+				//I think we should be converting the Local datetime to UTC prior to saving
+				//CurrentSchedule.AtWhen = TimeZoneInfo.ConvertTime(CurrentSchedule.AtWhen, TimeZoneInfo.Utc);
+
 				if (string.IsNullOrEmpty(CurrentSchedule.id))
 					await sched.InsertAsync(CurrentSchedule);
 				else

@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="Schedule" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs" x:Class="PickUpApp.Schedule1">
+<ContentPage Title="Schedule" 
+xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs" 
+x:Class="PickUpApp.Schedule1">
 
 	<ContentPage.Content>
 	<StackLayout VerticalOptions="FillAndExpand"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
