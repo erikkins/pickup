@@ -23,6 +23,11 @@ namespace PickUpApp
 		[JsonProperty(PropertyName = "requestor")]
 		public string Requestor { get{ return _Requestor; } set{if (value != _Requestor) {
 					_Requestor = value; NotifyPropertyChanged ();} } }
+
+		private string _RequestorPhone;
+		[JsonProperty(PropertyName = "requestorphone")]
+		public string RequestorPhone { get{ return _RequestorPhone; } set{if (value != _RequestorPhone) {
+					_RequestorPhone = value; NotifyPropertyChanged ();} } }
 					
 		private string _Kids;
 		[JsonProperty(PropertyName = "kids")]
@@ -129,6 +134,18 @@ namespace PickUpApp
 		[JsonProperty(PropertyName = "solvedby")]
 		public string SolvedBy { get{return  _SolvedBy; } set{if (value != _SolvedBy) {
 					_SolvedBy = value; NotifyPropertyChanged ();
+				} } }
+
+		private bool _Complete;
+		[JsonProperty(PropertyName = "complete")]
+		public bool Complete { get{return _Complete; } set{if (value != _Complete) {
+					_Complete = value; NotifyPropertyChanged ();
+				} } }
+
+		private DateTime _CompleteAtWhen;
+		[JsonProperty(PropertyName = "completeatwhen")]
+		public DateTime CompleteAtWhen { get{return  _CompleteAtWhen; } set{if (value != _CompleteAtWhen) {
+					_CompleteAtWhen = value; NotifyPropertyChanged ();
 				} } }
 
 	}

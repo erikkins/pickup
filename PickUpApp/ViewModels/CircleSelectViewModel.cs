@@ -67,7 +67,7 @@ namespace PickUpApp
 					circle = _myselectedcircle
 				};
 				var invitedata = await client.InvokeApiAsync<InviteRequest, List<Account>>("createinvite",req);
-				System.Diagnostics.Debug.WriteLine("");
+				//System.Diagnostics.Debug.WriteLine("");
 
 				/*
 				var kids = client.GetTable<Kid>();
@@ -85,8 +85,11 @@ namespace PickUpApp
 				var page = new ContentPage();
 				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
 			}
+			finally{
+				IsLoading = false;
+			}
 
-			IsLoading = false;
+			IsLoading = false; //redundant
 		}
 	}
 }

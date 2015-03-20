@@ -17,18 +17,22 @@ namespace PickUpApp
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			btnFacebook.Command = ViewModel.LoginCommand;
 			btnLogout.Clicked += btnLogout_Clicked;
+		
 
-
-			MessagingCenter.Subscribe<MobileServiceClient>(this, "LoggedIn", (s) =>
-				{
+			MessagingCenter.Subscribe<MobileServiceClient>(this, "LoggedIn", (s) =>{
 					ViewModel.Refresh();
 					ViewModel.IsAuthenticated = true;
 					//ok, so we logged in through the service...let's check and see if this account already exists
 					ViewModel.ExecuteLoadItemsCommand(s.CurrentUser.UserId).ConfigureAwait(false);
 					//Navigation.PushAsync(new TabbedMaster());
 					MessagingCenter.Send<Splash>(this, "auth");
-					Navigation.PushModalAsync(new TabbedMaster()); 
+					
 				});
+
+			MessagingCenter.Subscribe<Account> (this, "loaded", (s) => {
+				Navigation.PushModalAsync (new TabbedMaster ()); 
+			});
+
 				
 			MessagingCenter.Subscribe<Invite> (this, "invite", (i) => {
 
@@ -83,7 +87,8 @@ namespace PickUpApp
 			if (ViewModel.IsAuthenticated) {
 				Navigation.PushModalAsync (new TabbedMaster ());
 			} else {
-				this.ViewModel.ExecuteLoginCommand ("Facebook").ConfigureAwait (false);
+				//this.ViewModel.ExecuteLoginCommand ("Facebook").ConfigureAwait (false);
+				this.ViewModel.LoginCommand.Execute("Facebook");
 			}
 		
 		}

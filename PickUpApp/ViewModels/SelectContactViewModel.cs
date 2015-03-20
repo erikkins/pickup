@@ -47,12 +47,14 @@ namespace PickUpApp
 				tempAccount.Phone = CurrentContact.Phone;
 
 				var contact = await client.InvokeApiAsync<Account, Account>("checkandregisteraccount", tempAccount);
-				System.Diagnostics.Debug.WriteLine(contact.ToString());
+				//System.Diagnostics.Debug.WriteLine(contact.ToString());
 			}
 			catch(Exception ex) {
-				System.Diagnostics.Debug.WriteLine (ex.Message);
+				System.Diagnostics.Debug.WriteLine ("checkregex " + ex.Message);
 			}
-
+			finally{
+				IsLoading = false;
+			}
 
 
 			MessagingCenter.Send<LocalContact> (CurrentContact, "ContactAdded");
@@ -84,7 +86,10 @@ namespace PickUpApp
 				var result = page.DisplayAlert("Error", "Error loading data Contact. Please check connectivity and try again.", "OK", "Cancel");
 				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
 			}
-			IsLoading = false;
+			finally{
+				IsLoading = false;
+			}
+			IsLoading = false; //redundant
 		}
 	}
 }

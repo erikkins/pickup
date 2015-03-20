@@ -38,7 +38,7 @@ namespace PickUpApp
 			accountDeviceTable = client.GetTable<AccountDevice>();
 			}
 			catch(Exception ex) {
-				System.Diagnostics.Debug.WriteLine (ex.Message);
+				System.Diagnostics.Debug.WriteLine ("MobServEx " + ex.Message);
 			}
 		}
 
@@ -73,7 +73,7 @@ namespace PickUpApp
 				ocAccount.Add(acct[0]);
 			}
 			catch(Exception ex) {
-				System.Diagnostics.Debug.WriteLine (ex.Message);
+				System.Diagnostics.Debug.WriteLine ("AccountEx " + ex.Message);
 			}
 			//CurrentAccount = ocAccount;
 			return ocAccount;
@@ -92,7 +92,7 @@ namespace PickUpApp
 			return acct.Result [0];
 			}
 			catch(Exception ex) {
-				System.Diagnostics.Debug.WriteLine (ex.Message);
+				System.Diagnostics.Debug.WriteLine ("GetAccountEx " + ex.Message);
 			}
 			return null;
 		}
@@ -105,7 +105,7 @@ namespace PickUpApp
 			}
 			catch (Exception ex)
 			{
-				System.Diagnostics.Debug.WriteLine (ex.Message);
+				System.Diagnostics.Debug.WriteLine ("AuthEx " + ex.Message);
 				//Console.Error.WriteLine (@"ERROR - AUTHENTICATION FAILED {0}", ex.Message);
 			}
 		}
@@ -135,7 +135,7 @@ namespace PickUpApp
 				}
 			}
 			catch(MobileServiceInvalidOperationException e) {
-				System.Diagnostics.Debug.WriteLine (e.Message);
+				System.Diagnostics.Debug.WriteLine ("InsertDeviceEx " + e.Message);
 			}
 		}
 

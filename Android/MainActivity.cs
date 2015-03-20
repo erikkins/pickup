@@ -13,7 +13,7 @@ using Xamarin.Forms.Labs.Droid;
 using ByteSmith.WindowsAzure.Messaging;
 using Gcm.Client;
 
-namespace PickUpApp.Android
+namespace PickUpApp.droid
 {
 	[Activity (Label = "PickUpApp", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity //XFormsApplicationDroid //AndroidActivity

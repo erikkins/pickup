@@ -192,14 +192,14 @@ namespace PickUpApp
 		public bool Tuesday
 		{
 			get{
-				if (Frequency.Contains ("T")) {
+				if (Frequency.Contains ("Tu")) {
 					return true;
 				} else {
 					return false;
 				}
 			}
 			set{
-				setFrequency ("T", value);
+				setFrequency ("Tu", value);
 				NotifyPropertyChanged ();
 			}
 		}
@@ -307,7 +307,7 @@ namespace PickUpApp
 				tempFreq = "M";
 			}
 			if (Tuesday) {
-				tempFreq += "T";
+				tempFreq += "Tu";
 			}
 			if (Wednesday) {
 				tempFreq += "W";

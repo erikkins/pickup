@@ -47,9 +47,9 @@ namespace PickUpApp
 				{
 					var request = new RestRequest("search", System.Net.Http.HttpMethod.Get);	
 					client.Authenticator = OAuth1Authenticator.ForProtectedResource ("ntqQRQUmuzfyWIVma9vvSA", "Fdmh-EDE78avQAhUsbX8phjOYJE", "pBOuhp9FO6UFuQ_Pr4w9vfzx_M9kc_cS", "HGyA9x5e-CO1RjCcPjlMJW0oWiA");				
-					request.AddQueryParameter ("term", "kids");
-					request.AddQueryParameter("limit", "20");
-					request.AddQueryParameter("category_filter", "parks,icecream,restaurants,kids_activities,zoos");
+					//request.AddQueryParameter ("term", "children");
+					//request.AddQueryParameter("limit", "100");
+					request.AddQueryParameter("category_filter", "parks,icecream,breakfast_brunch,hotdog,falafel,sandwiches,kids_activities,zoos");
 					//request.AddQueryParameter("location", ThisInvite.Address);
 					request.AddQueryParameter("ll", _latitude + "," + _longitude);
 
@@ -64,7 +64,10 @@ namespace PickUpApp
 			} 
 			catch (Exception ex) 
 			{
-				System.Diagnostics.Debug.WriteLine (ex.Message);	
+				System.Diagnostics.Debug.WriteLine ("YelpAdd Error " + ex.Message);	
+			}
+			finally{
+				IsLoading = false;
 			}
 		
 		}

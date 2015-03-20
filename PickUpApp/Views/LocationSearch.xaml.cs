@@ -6,12 +6,20 @@ using System.Linq;
 using Xamarin.Forms.Labs.Services;
 using System.Threading.Tasks;
 using Xamarin.Forms.Labs.Services.Geolocation;
+using RestSharp.Portable;
+using System.Collections.ObjectModel;
 
 namespace PickUpApp
 {
 	public partial class LocationSearch : ContentPage
 	{
 		private Location tempLocation;
+		private ObservableCollection<GoogleResult> _places;
+		public ObservableCollection<GoogleResult> Places 
+		{
+			get{ return _places; }
+			set{ _places = value;  }
+		}
 
 		public LocationSearch (Schedule currentSchedule)
 		{
@@ -65,7 +73,34 @@ namespace PickUpApp
 
 			}
 
+
 			searchBar.SearchButtonPressed += async (e, a) => {
+				//we're actually going to do a location search and fill the listview
+				lstSearch.IsVisible = true;
+				LayoutRel.IsVisible = true;
+				//need to feed it to some webservice (Google places or Yelp?)
+				using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
+				{
+					var request = new RestRequest("textsearch/json", System.Net.Http.HttpMethod.Get);	
+		
+					request.AddQueryParameter ("query", searchBar.Text);
+					request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
+
+					var result = await client.Execute(request);
+					GoogleResponse yr = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleResponse>(System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
+
+					Places = yr.Results;
+					lstSearch.ItemsSource = Places;
+
+					//var yelpresponse = Newtonsoft.Json.Linq.JObject.Parse (System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
+					//System.Diagnostics.Debug.WriteLine(result);
+				}
+			};
+
+			lstSearch.ItemSelected += async delegate(object sender, SelectedItemChangedEventArgs e) {
+				lstSearch.IsVisible = false;
+				LayoutRel.IsVisible = false;
+
 				map.Pins.Clear ();
 				var addressQuery = searchBar.Text;
 				searchBar.Text = "";
@@ -73,30 +108,65 @@ namespace PickUpApp
 				//await GetPosition ();
 				//TODO: use Google's geocoder for all searches
 
-				var positions = (await (new Geocoder ()).GetPositionsForAddressAsync (addressQuery)).ToList ();
-				if (!positions.Any ()) {
-					await DisplayAlert ("Could not find address", "Please be more specific with your search (add city, state, etc.)", "OK");
-					searchBar.Text = addressQuery;
-					return;
-				}
-					
-				var position = positions.First ();
+				GoogleResult result = (GoogleResult)e.SelectedItem;
 
-				var addresses = (await (new Geocoder ()).GetAddressesForPositionAsync (position)).ToList ();
+//				var positions = (await (new Geocoder ()).GetPositionsForAddressAsync (addressQuery)).ToList ();
+//				if (!positions.Any ()) {
+//					await DisplayAlert ("Could not find address", "Please be more specific with your search (add city, state, etc.)", "OK");
+//					searchBar.Text = addressQuery;
+//					return;
+//				}
+					
+				//var position = positions.First ();
+				Xamarin.Forms.Maps.Position position = new Xamarin.Forms.Maps.Position(result.Geometry.Location.Latitude, result.Geometry.Location.Longitude);
+
+				//var addresses = (await (new Geocoder ()).GetAddressesForPositionAsync (position)).ToList ();
 
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (position,
 					Distance.FromMiles (0.1)));
 				map.Pins.Add (new Pin {
-					Label = addressQuery,
+					Label = result.Name,
 					Position = position,
-					Address = addresses [0]
+					Address = result.Address
 				});
 
-				tempLocation.FullAddress = addresses[0];
+				tempLocation.FullAddress = result.Address;
 				tempLocation.Latitude = position.Latitude.ToString();
 				tempLocation.Longitude = position.Longitude.ToString();
-
 			};
+
+//			searchBar.SearchButtonPressed += async (e, a) => {
+//				map.Pins.Clear ();
+//				var addressQuery = searchBar.Text;
+//				searchBar.Text = "";
+//				searchBar.Unfocus ();
+//				//await GetPosition ();
+//				//TODO: use Google's geocoder for all searches
+//
+//				var positions = (await (new Geocoder ()).GetPositionsForAddressAsync (addressQuery)).ToList ();
+//				if (!positions.Any ()) {
+//					await DisplayAlert ("Could not find address", "Please be more specific with your search (add city, state, etc.)", "OK");
+//					searchBar.Text = addressQuery;
+//					return;
+//				}
+//					
+//				var position = positions.First ();
+//
+//				var addresses = (await (new Geocoder ()).GetAddressesForPositionAsync (position)).ToList ();
+//
+//				map.MoveToRegion (MapSpan.FromCenterAndRadius (position,
+//					Distance.FromMiles (0.1)));
+//				map.Pins.Add (new Pin {
+//					Label = addressQuery,
+//					Position = position,
+//					Address = addresses [0]
+//				});
+//
+//				tempLocation.FullAddress = addresses[0];
+//				tempLocation.Latitude = position.Latitude.ToString();
+//				tempLocation.Longitude = position.Longitude.ToString();
+//
+//			};
 		}
 
 		void CancelClicked (object sender, EventArgs e)
@@ -158,7 +228,7 @@ namespace PickUpApp
 		}
 		private void OnListeningError(object sender, PositionErrorEventArgs e)
 		{
-			System.Diagnostics.Debug.WriteLine (e.Error.ToString ());
+			System.Diagnostics.Debug.WriteLine ("Listening Error" + e.Error.ToString ());
 //						BeginInvokeOnMainThread (() => {
 //							//ListenStatus.Text = e.Error.ToString();
 //						});

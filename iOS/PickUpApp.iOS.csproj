@@ -131,12 +131,6 @@
     <Reference Include="Microsoft.WindowsAzure.Messaging.iOS">
       <HintPath>..\Components\azure-messaging-1.1.5.3\lib\ios-unified\Microsoft.WindowsAzure.Messaging.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Maps.iOS">
-      <HintPath>..\packages\Xamarin.Forms.Maps.1.3.4.6332\lib\Xamarin.iOS10\Xamarin.Forms.Maps.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Maps">
-      <HintPath>..\packages\Xamarin.Forms.Maps.1.3.4.6332\lib\Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
-    </Reference>
     <Reference Include="Media.Plugin">
       <HintPath>..\packages\Xam.Plugin.Media.1.0.0\lib\Xamarin.iOS10\Media.Plugin.dll</HintPath>
     </Reference>
@@ -190,6 +184,12 @@
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.0.10\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.Maps.iOS">
+      <HintPath>..\packages\Xamarin.Forms.Maps.1.4.0.6341\lib\Xamarin.iOS10\Xamarin.Forms.Maps.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps">
+      <HintPath>..\packages\Xamarin.Forms.Maps.1.4.0.6341\lib\Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PickUpApp\PickUpApp.csproj">
@@ -200,7 +200,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\car_icon.png" />
     <BundleResource Include="Resources\messageicongraysmall.jpg" />
-    <BundleResource Include="Resources\icon-phone.png" />
+    <BundleResource Include="Resources\iconphone.png" />
+    <BundleResource Include="Resources\appbarmessage.png" />
+    <BundleResource Include="Resources\appbarsocialyelp.png" />
+    <BundleResource Include="Resources\appbarphone.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -216,6 +219,8 @@
     <Compile Include="Platform\iOSGeolocationSingleUpdateDelegate.cs" />
     <Compile Include="Platform\PullToRefreshListViewRenderer.cs" />
     <Compile Include="Platform\FormsUIRefreshControl.cs" />
+    <Compile Include="Platform\iOSPhoneDialer.cs" />
+    <Compile Include="Platform\iOSImageResizer.cs" />
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

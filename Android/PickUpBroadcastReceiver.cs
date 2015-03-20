@@ -18,7 +18,7 @@ using Xamarin.Forms;
 [assembly: UsesPermission(Name = "android.permission.INTERNET")]
 [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 
-namespace PickUpApp.Android
+namespace PickUpApp.droid
 {
 	[BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
 	[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "pickUpApp.Android" })]
@@ -65,7 +65,7 @@ namespace PickUpApp.Android
 					//was awaited
 					Hub.UnregisterAllAsync (registrationId);
 				} catch (Exception ex) {
-					System.Diagnostics.Debug.WriteLine (ex.Message);
+					System.Diagnostics.Debug.WriteLine ("Loaded " + ex.Message);
 					//Debugger.Break();
 				}
 
@@ -76,7 +76,7 @@ namespace PickUpApp.Android
 					var hubRegistration = Hub.RegisterNativeAsync (registrationId, tags).ConfigureAwait(false);
 
 				} catch (Exception ex) {
-					System.Diagnostics.Debug.WriteLine (ex.Message); 
+					System.Diagnostics.Debug.WriteLine ("HubReg " + ex.Message); 
 					//Debugger.Break();
 				}
 			});
@@ -123,7 +123,7 @@ namespace PickUpApp.Android
 			var uiIntent = new Intent(this, typeof(MainActivity));
 
 			//Create the notification
-			var notification = new Notification(Android.Resource.Drawable.car_icon, title);
+			var notification = new Notification(droid.Resource.Drawable.car_icon, title);
 
 			//Auto cancel will remove the notification once the user touches it
 			notification.Flags = NotificationFlags.AutoCancel;

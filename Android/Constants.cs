@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PickUpApp.Android
+namespace PickUpApp.droid
 {
 	public class Constants
 	{

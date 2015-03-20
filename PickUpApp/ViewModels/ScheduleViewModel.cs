@@ -40,7 +40,10 @@ namespace PickUpApp
 				var result = page.DisplayAlert("Error", "Error loading data Circle. Please check connectivity and try again.", "OK", "Cancel");
 				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
 			}
-			IsLoading = false;
+			finally{
+				IsLoading = false;
+			}
+			IsLoading = false;  //redundant
 		}
 	}
 }

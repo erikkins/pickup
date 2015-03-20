@@ -5,7 +5,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using System.Collections.Generic;
 
 
 
@@ -60,37 +60,47 @@ namespace PickUpApp
 		public async Task UpdateTraffic()
 		{
 			
-			//await GetPosition();
+			await App.GetPosition();
 			IsLoading = true;
 			try{
 			PortableRest.RestRequest req = new PortableRest.RestRequest ("Routes", System.Net.Http.HttpMethod.Get);
-				req.AddQueryString ("wp.0", App.PositionLatitude + "," + App.PositionLongitude);
+			req.AddQueryString ("wp.0", App.PositionLatitude + "," + App.PositionLongitude);
 			req.AddQueryString ("wp.1", _thisInvite.Latitude + "," + _thisInvite.Longitude);
 			req.AddQueryString ("du", "mi");
 			req.AddQueryString ("avoid", "minimizeTolls");
 			req.AddQueryString ("key", "AqXf-x5KdOluBQB35EjKT3owEzBLbfUqetvc0rPZ7xAbW_EKMsZ0RB0IYWkypdwH");
 
-			PortableRest.RestClient rc = new PortableRest.RestClient ();
+
+			PortableRest.RestClient rc = new PortableRest.RestClient ();			
 			rc.UserAgent = "PickUp";
 			rc.BaseUrl = "http://dev.virtualearth.net/REST/V1/";
-			//PortableRest.RestResponse<string> resp = rc.SendAsync<string>(req, default(System.Threading.CancellationToken)).Result;
-
 			PortableRest.RestResponse<string> resp = await rc.SendAsync<string>(req, default(System.Threading.CancellationToken));
+			//var bingresponse = Newtonsoft.Json.Linq.JObject.Parse (resp.Content);
+
+			BingResponse br = Newtonsoft.Json.JsonConvert.DeserializeObject<BingResponse>(resp.Content);
+			decimal min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
+
+			resp.Dispose();
+			resp = null;
+			req = null;
 
 
-			var bingresponse = Newtonsoft.Json.Linq.JObject.Parse (resp.Content);
-			//System.Diagnostics.Debug.WriteLine ();
 
 			//ok, we get total seconds, so we need to divide by 60 to get minutes
-			decimal min = decimal.Parse(bingresponse ["resourceSets"] [0] ["resources"] [0] ["travelDurationTraffic"].ToString())/60;
+			//decimal min = decimal.Parse(bingresponse ["resourceSets"] [0] ["resources"] [0] ["travelDurationTraffic"].ToString())/60;
+			//bingresponse.RemoveAll();
+			//bingresponse = null;
+			
+
 			TrafficTime = string.Format("{0:N1}", min);
 			}
 			catch(Exception ex)
 			{
-				System.Diagnostics.Debug.WriteLine (ex.Message);
+				System.Diagnostics.Debug.WriteLine ("BingError " + ex.Message);
 			}
 			finally
 			{
+			
 			IsLoading = false;
 			}
 		}
@@ -146,11 +156,37 @@ namespace PickUpApp
 			{
 				var page = new ContentPage();
 				var result = page.DisplayAlert("Error", "Error loading data Kids. Please check connectivity and try again.", "OK", "Cancel");
-				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
+				System.Diagnostics.Debug.WriteLine ("WEIRD" + ex.Message + result.Status.ToString ());
 			}
 		}
 
+		public override async Task ExecuteAddEditCommand ()
+		{
+			if (IsLoading) return;
+			IsLoading = true;
 
+			try
+			{
+				Invite i = new Invite()
+				{
+					Id = _thisInvite.Id
+				};
+				var completedata = await client.InvokeApiAsync<Invite, EmptyClass>("completepickup",i);
+				//System.Diagnostics.Debug.WriteLine("");
+				MessagingCenter.Send<Invite>(i, "Completed");
+
+			}
+			catch (Exception ex)
+			{
+				var page = new ContentPage();
+				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
+			}
+			finally{
+				IsLoading = false;
+			}
+
+			IsLoading = false;  //redundant
+		}
 
 	}
 }

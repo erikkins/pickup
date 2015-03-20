@@ -38,6 +38,9 @@ namespace PickUpApp.ViewModels
 					Todays.Add(sched);
 				}
 				//sweet, we now have our today list!
+				IsLoading = false;
+
+				MessagingCenter.Send<TodayViewModel>(this, "TodayLoaded");
 
 				/*
 				var accounts = await client.GetTable<Account>().ToListAsync();
@@ -53,7 +56,7 @@ namespace PickUpApp.ViewModels
 			{
 	 		var page = new ContentPage();
 				var result = page.DisplayAlert("Error", "Error loading data Today. Please check connectivity and try again.", "OK", "Cancel");
-				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
+				System.Diagnostics.Debug.WriteLine ("TodayEx " + ex.Message + result.Status.ToString ());
 			}
 			finally {
 				IsLoading = false;

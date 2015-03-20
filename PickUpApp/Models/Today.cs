@@ -180,6 +180,32 @@ namespace PickUpApp
 				} } }
 
 
+		public string ActualAtWhen
+		{
+			get{
+				
+				//calculate it from the AtWhen + StartTimeTicks
+				DateTime starttime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+				DateTime now = DateTime.Now;
+				TimeSpan tsEnd = TimeSpan.FromTicks(StartTimeTicks);
+				starttime += tsEnd;
+
+				return string.Format ("{0:hh:mm tt}", starttime);
+			}
+		}
+		public string ActualAtWhenEnd
+		{
+			get{
+
+				//calculate it from the AtWhen + StartTimeTicks
+				DateTime endtime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+				DateTime now = DateTime.Now;
+				TimeSpan tsEnd = TimeSpan.FromTicks(EndTimeTicks);
+				endtime += tsEnd;
+
+				return string.Format ("{0:hh:mm tt}", endtime);
+				}
+		}
 	}
 }
 

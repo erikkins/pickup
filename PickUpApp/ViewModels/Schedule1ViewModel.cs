@@ -79,9 +79,12 @@ namespace PickUpApp
 				var page = new ContentPage();
 				var result = page.DisplayAlert("Error", "Error loading data kids async. Please check connectivity and try again.", "OK", "Cancel");
 				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
+
+			}
+			finally{
 				IsLoading = false;
 			}
-			IsLoading = false;
+			IsLoading = false;  //redundant
 		}
 		#endregion
 

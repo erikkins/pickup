@@ -54,8 +54,10 @@ namespace PickUpApp
 				var page = new ContentPage();
 				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
 			}
-
-			IsLoading = false;
+			finally{
+				IsLoading = false;
+			}
+			IsLoading = false; //redundant
 		}
 	}
 }

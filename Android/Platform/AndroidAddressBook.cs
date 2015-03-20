@@ -1,5 +1,5 @@
 ﻿using System;
-using PickUpApp.Android;
+using PickUpApp.droid;
 using System.Diagnostics;
 using Xamarin.Contacts;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidAddressBook))]
 
-namespace PickUpApp.Android
+namespace PickUpApp.droid
 {
 	public class AndroidAddressBook:iAddressBook
 	{

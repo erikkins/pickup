@@ -134,13 +134,11 @@ namespace PickUpApp
 			PositionStatus = string.Empty;
 			PositionLatitude = string.Empty;
 			PositionLongitude = string.Empty;
-			IsLoading = true;
 			//IsBusy = true;
 			await
 			Geolocator.GetPositionAsync(10000, _cancelSource.Token, true)
 				.ContinueWith(t =>
 					{
-						IsLoading = false;
 						//IsBusy = false;
 						if (t.IsFaulted)
 						{

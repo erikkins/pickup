@@ -29,6 +29,10 @@ namespace PickUpApp
 				kidImage = new ImageCircle.Forms.Plugin.Abstractions.CircleImage ();
 			}
 			else{
+				UriImageSource uis = new UriImageSource ();
+				uis.Uri = new Uri (ViewModel.CurrentKid.PhotoURL);
+				uis.CachingEnabled = false;
+
 				kidImage = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 					BorderColor = Color.Black,
 					BorderThickness = 1,
@@ -36,7 +40,7 @@ namespace PickUpApp
 					WidthRequest = 200,
 					HeightRequest = 200,
 					HorizontalOptions = LayoutOptions.Center,
-					Source = UriImageSource.FromUri (new Uri (ViewModel.CurrentKid.PhotoURL))
+					Source = uis //UriImageSource.FromUri (new Uri (ViewModel.CurrentKid.PhotoURL))
 				};
 			}
 			stacker.Children.Add (kidImage);
@@ -49,7 +53,8 @@ namespace PickUpApp
 					var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
 						{ 
 							Directory = "MyKidPics",
-							Name = ViewModel.CurrentKid.Firstname + ".jpg"
+							Name = ViewModel.CurrentKid.Firstname + ".jpg",
+
 						});
 					filepath = file.Path;	
 					var bytes = default(byte[]);
@@ -63,6 +68,11 @@ namespace PickUpApp
 					}
 					if (bytes.Length > 0)
 					{
+						//resize it!
+					
+						var dep = DependencyService.Get<PickUpApp.IImageResizer>();
+						bytes = dep.ResizeImage(bytes, 300,300, file.Path);
+
 						//upload it!
 						await AzureBlobAccess.addContainerIfNotExists_async(App.myAccount.id);
 						await AzureBlobAccess.uploadToBlobStorage_async(bytes, ViewModel.CurrentKid.Firstname.ToLower() + ".jpg", App.myAccount.id.ToLower());
@@ -71,10 +81,7 @@ namespace PickUpApp
 						await ViewModel.ExecuteAddEditCommand();
 					}
 				}
-
-
-
-
+					
 
 				kidImage = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 					BorderColor = Color.Black,

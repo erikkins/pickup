@@ -9,6 +9,7 @@ x:Class="PickUpApp.Schedule1">
 	<StackLayout VerticalOptions="FillAndExpand"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
 	<Label Text="Schedule: Step 1"></Label>
 	<Entry Placeholder="Activity Name" Text="{Binding CurrentSchedule.Activity}"></Entry>
+	<Entry Placeholder="Location Name" Text="{Binding CurrentSchedule.Location}"></Entry>
 	<Label x:Name="lblAddress" MinimumHeightRequest="30" Font="Large" Text="{Binding CurrentSchedule.Address}"></Label>
 	<ListView ItemsSource="{Binding Kids}">
 		<ListView.ItemTemplate>

@@ -16,7 +16,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG;__MOBILE__;__IOS__;__ANDROID__;WINDOWS_PHONE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -84,10 +84,10 @@
       <DependentUpon>MySchedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateSchedulePart1.xaml.cs">
-      <DependentUpon>CreateSchedulePart1.xaml</DependentUpon>
+      <DependentUpon>xxxCreateSchedulePart1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateSchedulePart2.xaml.cs">
-      <DependentUpon>CreateSchedulePart2.xaml</DependentUpon>
+      <DependentUpon>xxxCreateSchedulePart2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\EmptyClass.cs" />
     <Compile Include="ViewModels\ScheduleAddEditViewModel.cs" />
@@ -130,6 +130,15 @@
     </Compile>
     <Compile Include="Views\WebViewer.xaml.cs">
       <DependentUpon>WebViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\IPhoneDialer.cs" />
+    <Compile Include="Models\GoogleResult.cs" />
+    <Compile Include="Models\GoogleLocation.cs" />
+    <Compile Include="Common\ImageResizer.cs" />
+    <Compile Include="Models\BingModel.cs" />
+    <Compile Include="ViewModels\TurnByTurnViewModel.cs" />
+    <Compile Include="Views\TurnByTurnView.xaml.cs">
+      <DependentUpon>TurnByTurnView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
@@ -241,12 +250,6 @@
     <EmbeddedResource Include="Views\MySchedule.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateSchedulePart1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateSchedulePart2.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\Schedule1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -270,6 +273,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WebViewer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TurnByTurnView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\xxxCreateSchedulePart1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\xxxCreateSchedulePart2.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

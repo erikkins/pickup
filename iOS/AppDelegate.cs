@@ -30,6 +30,7 @@ namespace PickUpApp.iOS
 			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
 			Refractored.Xam.Forms.Vibrate.iOS.Vibrate.Init ();
 
+
 			// Register for Notifications
 			if (Convert.ToInt16(UIDevice.CurrentDevice.SystemVersion.Split('.')[0].ToString()) < 8) {
 				UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
@@ -85,6 +86,7 @@ namespace PickUpApp.iOS
 			//MainView =App.GetMainPage().CreateViewController();
 			//window.RootViewController = MainView;
 			//window.MakeKeyAndVisible ();
+
 
 			return base.FinishedLaunching (app, options);
 		}

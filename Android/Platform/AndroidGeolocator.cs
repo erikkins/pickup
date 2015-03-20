@@ -25,7 +25,7 @@ using Android.OS;
 using Java.Lang;
 using Xamarin.Forms;
 using Xamarin.Forms.Labs.Droid.Services.Geolocation;
-using PickUpApp.Android;
+using PickUpApp.droid;
 using Xamarin.Forms.Labs.Services.Geolocation;
 
 [assembly: Dependency(typeof (Geolocator))]

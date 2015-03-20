@@ -18,7 +18,6 @@ namespace PickUpApp
 				NotifyPropertyChanged ();
 			}
 		}
-
 	}
 
 	public class YelpModel : BaseModel

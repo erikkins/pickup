@@ -20,9 +20,6 @@ namespace PickUpApp.iOS
 	{
 		public async Task<MobileServiceUser> Authorize(Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider provider)
 		{
-
-
-
 			var accountStore = AccountStore.Create ();
 
 			var accounts = accountStore.FindAccountsForService ("Facebook").ToArray ();

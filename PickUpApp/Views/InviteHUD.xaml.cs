@@ -12,6 +12,7 @@ namespace PickUpApp
 	{
 		private InviteInfo _thisInviteInfo;
 
+
 		public InviteHUD (InviteInfo thisInfo)
 		{
 			InitializeComponent ();
@@ -36,20 +37,31 @@ namespace PickUpApp
 			TableSection ts = new TableSection ();
 			ts.Add (new TrafficTickerCell ());
 			ts.Add (new ActivityCell (ViewModel.ThisInvite.Kids));
-			ts.Add (new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude));
+			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude);
+			ts.Add (mc);
+			mc.Tapped += async delegate(object sender, EventArgs e) {
+				await Navigation.PushModalAsync(new TurnByTurnView(ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude));
+			};
 
 			ImageCell messageCell = new ImageCell ();
 			messageCell.Text = "Send a message to " + _thisInviteInfo.Requestor;
-			messageCell.ImageSource = "messageicongraysmall.jpg";
+			messageCell.ImageSource = "appbarmessage.png";
 			messageCell.Height = 55;
 			ts.Add (messageCell);
 
 			ImageCell phoneCell = new ImageCell ();
 			phoneCell.Text = "Call " + _thisInviteInfo.Requestor;
-			phoneCell.ImageSource = "icon-phone.png";
-			phoneCell.Height = 55;
-			phoneCell.Tapped += async delegate(object sender, EventArgs e) {
+			phoneCell.ImageSource = "appbarphone.png";
 
+//			beachImage.Source =  Device.OnPlatform(
+//				iOS: ImageSource.FromFile("Images/waterfront.jpg"),
+//				Android:  ImageSource.FromFile("waterfront.jpg"),
+//				WinPhone: ImageSource.FromFile("Images/waterfront.png"));
+
+			phoneCell.Height = 55;
+			phoneCell.Tapped +=  delegate(object sender, EventArgs e) {
+				var dep = DependencyService.Get<PickUpApp.IPhoneDialer>();
+				dep.DialPhone("+17736191320");
 				//var device = Resolver.Resolve<IDevice>();
 				// not all devices have phone service, f.e. iPod and Android tablets
 				// so we need to check if phone service is available
@@ -60,12 +72,10 @@ namespace PickUpApp
 			};
 			ts.Add (phoneCell);
 
-
-
 			ImageCell yelpCell = new ImageCell ();
 			yelpCell.Text = "What to do?";
 			yelpCell.Height = 55;
-			yelpCell.ImageSource = ImageSource.FromUri(new Uri("https://s3-media1.fl.yelpcdn.com/assets/2/www/img/55e2efe681ed/developers/yelp_logo_50x25.png"));
+			yelpCell.ImageSource = "appbarsocialyelp.png"; //ImageSource.FromUri(new Uri("https://s3-media1.fl.yelpcdn.com/assets/2/www/img/55e2efe681ed/developers/yelp_logo_50x25.png"));
 			yelpCell.Tapped += async delegate(object sender, EventArgs e) {
 				//ok, pop the popover!
 				await Navigation.PushModalAsync(new YelpView(_thisInviteInfo.Latitude, _thisInviteInfo.Longitude));
@@ -74,6 +84,10 @@ namespace PickUpApp
 
 			tv.Root.Add (ts);
 			stacker.Children.Add (tv);
+
+			this.Appearing += delegate {
+				mc.Navigate ();
+			};
 
 			//we need to add the Yelp cells, but only once we get the data back, right?
 //			ListView lv =new ListView();
@@ -86,21 +100,47 @@ namespace PickUpApp
 
 			//stacker.Children.Add (lv);
 
+			MessagingCenter.Subscribe<Invite> (this, "Completed", (s) => {
+				Navigation.PopModalAsync();
+			});
+
+			Button btnCancel = new Button ();
+			btnCancel.Text = "Close";
+			btnCancel.TextColor = Color.Black;
+			btnCancel.FontSize = 18;
+			btnCancel.WidthRequest = 80;
+			btnCancel.BackgroundColor = Color.Red;
+			btnCancel.HorizontalOptions = LayoutOptions.Start;
+			btnCancel.Clicked += async delegate(object sender, EventArgs e) {
+				await Navigation.PopModalAsync();
+			};
+
+
 			Button btnGotIt = new Button ();
 			btnGotIt.Text = "Picked Up";
 			btnGotIt.TextColor = Color.Black;
 			btnGotIt.FontSize = 18;
 			btnGotIt.BackgroundColor = Color.Green;
-			btnGotIt.VerticalOptions = LayoutOptions.End;
+			btnGotIt.HorizontalOptions = LayoutOptions.FillAndExpand;
 			btnGotIt.Clicked += async delegate(object sender, EventArgs e) {
 				//need to let the Requestor know that all is good
 
-				await Navigation.PopModalAsync();
+				await ViewModel.ExecuteAddEditCommand();
+
+				//await Navigation.PopModalAsync();
 			};
-			stacker.Children.Add (btnGotIt);
+
+			StackLayout slHoriz = new StackLayout ();
+			slHoriz.Orientation = StackOrientation.Horizontal;
+			slHoriz.VerticalOptions = LayoutOptions.End;
+			slHoriz.HorizontalOptions = LayoutOptions.Fill;
+			slHoriz.Children.Add (btnCancel);
+			slHoriz.Children.Add (btnGotIt);
+
+			stacker.Children.Add (slHoriz);
 
 			//let's see if we can yelp it up
-			ViewModel.LoadItemsCommand.Execute (null);
+			//ViewModel.LoadItemsCommand.Execute (null);
 
 
 			Device.StartTimer (new TimeSpan (0, 0, 10), () => {
@@ -113,9 +153,12 @@ namespace PickUpApp
 
 			Device.StartTimer (new TimeSpan (0, 0, 1), () => {
 				//Issue is that the endtime isn't adjusting for UTC
+				DateTime endtime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 				DateTime now = DateTime.Now;
-				DateTime endtime = Util.RoundUp(now, TimeSpan.FromTicks(_thisInviteInfo.EndTimeTicks));
-				if ( (endtime - now).Hours > 1)
+				TimeSpan tsEnd = TimeSpan.FromTicks(_thisInviteInfo.EndTimeTicks);
+				endtime += tsEnd;
+
+				if ( (endtime - now).Hours >= 1)
 				{
 					ViewModel.Countdown = (endtime - now).Hours.ToString() + ":" + (endtime - now).Minutes.ToString().PadLeft(2, '0');
 				}
@@ -156,12 +199,52 @@ namespace PickUpApp
 	public class MapCell : ViewCell
 	{
 		private double _latitude, _longitude;
+		private Map _theMap;
 
 		public MapCell (double latitude, double longitude)
 		{
 			_latitude = latitude;
 			_longitude = longitude;
 		}
+
+		public void Navigate()
+		{
+
+			//MEGA KLUDGE FOR ANDROID!
+			#if __ANDROID__
+			Device.StartTimer(new TimeSpan(0, 0, 1), () => {
+
+				Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (_latitude, _longitude);
+
+				Pin p = new Pin ();
+				p.SetBinding (Pin.AddressProperty, "ThisInvite.Address");
+				p.Position = thispos;
+				p.Label = "Hey";
+
+				_theMap.Pins.Add (p);
+
+				_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
+					Distance.FromMiles (0.1)));
+
+				return false;
+			});
+			#else
+			Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (_latitude, _longitude);
+
+			Pin p = new Pin ();
+			p.SetBinding (Pin.AddressProperty, "ThisInvite.Address");
+			p.Position = thispos;
+			p.Label = "Hey";
+
+			_theMap.Pins.Add (p);
+
+			_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
+			Distance.FromMiles (0.1)));
+			#endif
+
+
+		}
+
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged ();
@@ -177,8 +260,8 @@ namespace PickUpApp
 			slAddress.Orientation = StackOrientation.Vertical;
 
 			Label locationLabel = new Label ();
-			locationLabel.Text = "Home!";
-			//locationLabel.SetBinding (Label.TextProperty, "ThisInvite.Location");
+			//locationLabel.Text = "Home!";
+			locationLabel.SetBinding (Label.TextProperty, "ThisInvite.Location");
 			slAddress.Children.Add (locationLabel);
 
 			Label addresslabel = new Label ();
@@ -187,25 +270,19 @@ namespace PickUpApp
 			slAddress.Children.Add (addresslabel);
 			sl.Children.Add(slAddress);
 
-			Xamarin.Forms.Maps.Map map = new Xamarin.Forms.Maps.Map ();
-			map.WidthRequest = 200;
-			map.HeightRequest = 200;
-			map.MinimumHeightRequest = 100;
-			map.MinimumWidthRequest = 100;
-			map.HorizontalOptions = LayoutOptions.EndAndExpand;
+			_theMap = new Xamarin.Forms.Maps.Map ();
+			_theMap.WidthRequest = 200;
+			_theMap.HeightRequest = 200;
+			_theMap.MinimumHeightRequest = 100;
+			_theMap.MinimumWidthRequest = 100;
+			_theMap.HorizontalOptions = LayoutOptions.EndAndExpand;
+			_theMap.MapType = MapType.Street;
+			_theMap.IsShowingUser = false;
+			_theMap.HasScrollEnabled = false;
+			_theMap.HasZoomEnabled = false;
 
+			sl.Children.Add (_theMap);
 
-			Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (_latitude, _longitude);
-			map.Pins.Add (new Pin {
-				Label = "",
-				Position = thispos,
-				Address = ""
-			});
-
-			map.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
-				Distance.FromMiles (0.1)));
-
-			sl.Children.Add (map);
 			View = sl;
 		
 		
@@ -230,7 +307,7 @@ namespace PickUpApp
 			sl.Padding = new Thickness (0, Device.OnPlatform (20, 0, 0), 0, 0);
 			sl.Orientation = StackOrientation.Vertical;
 			sl.HorizontalOptions = LayoutOptions.Center;
-			sl.VerticalOptions = LayoutOptions.Start;
+			sl.VerticalOptions = LayoutOptions.Center;
 		
 			StackLayout slKids = new StackLayout ();
 			slKids.Orientation = StackOrientation.Horizontal;
@@ -240,6 +317,13 @@ namespace PickUpApp
 				StackLayout slThis = new StackLayout ();
 				slThis.Orientation = StackOrientation.Vertical;
 				slThis.HorizontalOptions = LayoutOptions.Center;
+
+				var uis = new UriImageSource ();
+				uis.CacheValidity = new TimeSpan (0, 5, 0);
+				uis.CachingEnabled = true;
+				string azureURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower () + "/" + k.Trim ().ToLower () + ".jpg";
+				uis.Uri = new Uri (azureURL);
+
 				ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 					BorderColor = Color.Black,
 					BorderThickness = 1,
@@ -247,10 +331,14 @@ namespace PickUpApp
 					WidthRequest = 100,
 					HeightRequest = 100,
 					HorizontalOptions = LayoutOptions.Center,
-					Source = UriImageSource.FromUri (new Uri ("https://pickupapp.blob.core.windows.net/" + App.myAccount.id.ToLower() + "/" + k.Trim().ToLower() + ".jpg"))
+					//AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + ViewModel.CurrentKid.Firstname.ToLower() + ".jpg";
+					Source = uis
 				};
 
+	
 				slThis.Children.Add (ci);
+				ci = null;
+				GC.Collect ();
 
 				Label namelabel = new Label ();
 				namelabel.HorizontalOptions = LayoutOptions.Center;
@@ -277,6 +365,7 @@ namespace PickUpApp
 			activityLabel.FontSize = 32;
 			activityLabel.SetBinding (Label.TextProperty, "ThisInvite.Activity");
 			activityLabel.HorizontalOptions = LayoutOptions.CenterAndExpand;
+			activityLabel.VerticalOptions = LayoutOptions.Center;
 			slFull.Children.Add (activityLabel);
 
 			View = slFull;

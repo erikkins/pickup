@@ -93,13 +93,14 @@ namespace PickUpApp
 			}
 			catch (Exception ex)
 			{
-				IsLoading = false; //allow future calls to work
 				var page = new ContentPage();
 				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
+			}
+			finally{
 				IsLoading = false;
 			}
 
-			IsLoading = false;
+			IsLoading = false; //redundant
 		}
 	}
 }

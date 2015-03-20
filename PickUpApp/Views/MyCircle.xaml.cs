@@ -15,7 +15,7 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.ViewModel = new MyCircleViewModel (App.client);
 			btnContacts.Clicked += HandleClicked; 
-			Debug.WriteLine (lstCircle.Id.ToString ());
+			//Debug.WriteLine (lstCircle.Id.ToString ());
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			MessagingCenter.Subscribe<LocalContact> (this, "ContactAdded", (s) => {
 				Navigation.PopModalAsync ();

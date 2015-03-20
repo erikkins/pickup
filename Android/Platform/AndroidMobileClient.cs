@@ -13,13 +13,13 @@ using Android.Webkit;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 //using Xamarin.Forms;
-using PickUpApp.Android;
+using PickUpApp.droid;
 using Xamarin.Auth;
 using Newtonsoft.Json.Linq;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidLoginClient))]
 
-namespace PickUpApp.Android
+namespace PickUpApp.droid
 {
 
 	public class AndroidLoginClient : IMobileClient

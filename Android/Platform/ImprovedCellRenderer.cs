@@ -1,5 +1,5 @@
 ﻿using System;
-using PickUpApp.Android;
+using PickUpApp.droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Views;
@@ -7,7 +7,7 @@ using Android.Content;
 
 [assembly: ExportRenderer(typeof(TextCell), typeof(ImprovedTextCellRenderer))]
 
-namespace PickUpApp.Android
+namespace PickUpApp.droid
 {
 	public class ImprovedTextCellRenderer : TextCellRenderer
 	{

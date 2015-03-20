@@ -25,12 +25,12 @@ namespace PickUpApp
 
 			if (string.IsNullOrEmpty (account)) {
 				//we don't have a saved account...require them to login!
-				System.Diagnostics.Debug.WriteLine ("nothin");
+				//System.Diagnostics.Debug.WriteLine ("nothin");
 				IsAuthenticated = false;
 
 			} else {
 				//load the existing account
-				System.Diagnostics.Debug.WriteLine (account);
+				//System.Diagnostics.Debug.WriteLine (account);
 			//	IsAuthenticated = true;
 
 			}
@@ -72,10 +72,13 @@ namespace PickUpApp
 				else {
 					var page = new ContentPage ();
 					var result = page.DisplayAlert ("Error", "Error loading data Splash. Please check connectivity and try again.", "OK", "Cancel");
-					System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
+					System.Diagnostics.Debug.WriteLine ("SplashEx " + ex.Message + result.Status.ToString ());
 				}
 			}
-			IsLoading = false;
+			finally{
+				IsLoading = false;
+			}
+			IsLoading = false; //redundant
 		}
 
 		public override async Task ExecuteAddEditCommand ()
@@ -100,8 +103,11 @@ namespace PickUpApp
 				var page = new ContentPage();
 				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
 			}
+			finally{
+				IsLoading = false;
+			}
 
-			IsLoading = false;
+			IsLoading = false;  //redundant
 		}
 
 		public static async Task SaveIt()

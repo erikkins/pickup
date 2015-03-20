@@ -32,25 +32,31 @@ namespace PickUpApp
 
 
 
-
-			var refreshList = new PullToRefreshListView {
-				RefreshCommand = ViewModel.LoadItemsCommand, 
-				Message = "Loading...",
-				ItemTemplate = new DataTemplate(typeof(TodayTemplateLayout))
+			ListView lvToday = new ListView () {
+				RefreshCommand = ViewModel.LoadItemsCommand,
+				ItemTemplate = new DataTemplate (typeof(TodayTemplateLayout)),
+				ItemsSource = ViewModel.Todays,
+				IsPullToRefreshEnabled = true
 			};
+			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
+				lvToday.IsRefreshing = false;
+			});
 
-			//refreshList.ItemTemplate = new DataTemplate (typeof(TodayTemplateLayout));
 
-			refreshList.ItemSelected +=	 (object sender, SelectedItemChangedEventArgs e) => {
+			lvToday.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => {
 
-				//need to differentiate between a schedule item and an accepted invite item...how?
+				if (e.SelectedItem == null)
+				{
+					return;
+				}
+
 				Today today = ((Today)e.SelectedItem);
-//				if (today.RowType == "schedule")
-//				{
-//					Schedule s = new Schedule();
-//					s.id = today.id;
-//					Navigation.PushModalAsync(new CircleSelect(s));
-//				}
+				if (today.RowType == "schedule123")
+				{
+					Schedule s = new Schedule();
+					s.id = today.id;
+					Navigation.PushModalAsync(new CircleSelect(s));
+				}
 				if (today.RowType == "schedule") //should be "invite"
 				{
 					//seems a little silly to have these supertypes that cross map to each other...
@@ -72,25 +78,53 @@ namespace PickUpApp
 
 					Navigation.PushModalAsync(new InviteHUD(i));
 				}
-
-
+				lvToday.SelectedItem = null;
 			};
+			stacker.Children.Add (lvToday);
 
-			refreshList.SetBinding<TodayViewModel> (PullToRefreshListView.IsRefreshingProperty, vm => vm.IsLoading);
-			refreshList.SetBinding<TodayViewModel> (PullToRefreshListView.ItemsSourceProperty, vm => vm.Todays);
 
-			stacker.Children.Add (refreshList);
+//			var refreshList = new PullToRefreshListView {
+//				RefreshCommand = ViewModel.LoadItemsCommand, 
+//				Message = "Loading...",
+//				ItemTemplate = new DataTemplate(typeof(TodayTemplateLayout))
+//			};
+//
+//			refreshList.ItemSelected +=	 (object sender, SelectedItemChangedEventArgs e) => {
+//
+//				//need to differentiate between a schedule item and an accepted invite item...how?
+//				Today today = ((Today)e.SelectedItem);
+//				if (today.RowType == "schedule")
+//				{
+//					Schedule s = new Schedule();
+//					s.id = today.id;
+//					Navigation.PushModalAsync(new CircleSelect(s));
+//				}
+//				if (today.RowType == "invite") 
+//				{
+//					//seems a little silly to have these supertypes that cross map to each other...
+//					InviteInfo i = new InviteInfo();
+//					i.Activity = today.Activity;
+//					i.Address = today.Address;
+//					i.EndTimeTicks = today.EndTimeTicks;
+//					i.Id = today.id;
+//					i.Kids = today.Kids;
+//					i.Latitude = double.Parse(today.Latitude);
+//					i.Location = today.Location;
+//					i.Longitude = double.Parse(today.Longitude);
+//					i.Message = today.Message;
+//					i.PickupDate = today.PickupDate;
+//					i.Requestor = today.Requestor;
+//					//i.Solved missing
+//					//i.SolvedBy missing
+//					i.StartTimeTicks = today.StartTimeTicks;
+//
+//					Navigation.PushModalAsync(new InviteHUD(i));
+//				}
+//			};
+//			refreshList.SetBinding<TodayViewModel> (PullToRefreshListView.IsRefreshingProperty, vm => vm.IsLoading);
+//			refreshList.SetBinding<TodayViewModel> (PullToRefreshListView.ItemsSourceProperty, vm => vm.Todays);
+//			stacker.Children.Add (refreshList);
 
-			//can I get the list?
-			//Account acct = PickupService.DefaultService.GetAccount ();
-
-			//PickupService.LoadAccount ();
-
-			//Task<System.Collections.ObjectModel.ObservableCollection<Account>> loaded = PickupService.LoadAccount ();
-			//ViewModels.CurrentAccount ca = new PickUpApp.ViewModels.CurrentAccount ();
-			//ca.Accounts = loaded.Result;
-
-			//System.Diagnostics.Debug.WriteLine (acct.Email);
 		}
 
 		protected TodayViewModel ViewModel
@@ -137,7 +171,7 @@ namespace PickUpApp
 			//namelabel.Text = c.Activity;
 			sl.Children.Add (namelabel);
 			Label startlabel = new Label();
-			startlabel.SetBinding (Label.TextProperty, "StartTime");
+			startlabel.SetBinding (Label.TextProperty, "ActualAtWhen");
 			startlabel.HorizontalOptions = LayoutOptions.End;
 			//startlabel.Text = c.StartTime;
 			sl.Children.Add (startlabel);

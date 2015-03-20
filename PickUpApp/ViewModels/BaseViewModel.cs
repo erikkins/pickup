@@ -78,7 +78,7 @@ namespace PickUpApp.ViewModels
 			//this is just the placeholder...should be completely overriden
 			var page = new ContentPage();
 			var result = await page.DisplayAlert("Not Configured", "You must override ExecuteLoadItemsCommand", "OK", "Cancel");
-			System.Diagnostics.Debug.WriteLine (result.ToString ());
+			System.Diagnostics.Debug.WriteLine ("Unconfigured LoadItems! " + result.ToString ());
 		}
 		#endregion
 
@@ -138,7 +138,7 @@ namespace PickUpApp.ViewModels
 			{
 				//await App.Platform.Authorize(container, provider);
 				var user = await DependencyService.Get<IMobileClient>().Authorize(provider);
-				System.Diagnostics.Debug.WriteLine(user.UserId);
+				//System.Diagnostics.Debug.WriteLine(user.UserId);
 				try{
 
 				MessagingCenter.Send(client, "LoggedIn");
@@ -160,8 +160,11 @@ namespace PickUpApp.ViewModels
 				var page = new ContentPage();
 				await page.DisplayAlert("Error", "Error logging in. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
 			}
+			finally {
+				IsLoading = false;
+			}
 
-			IsLoading = false;
+			IsLoading = false;  //redundant
 		}
 
 		public void Logout()
