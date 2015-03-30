@@ -46,7 +46,7 @@ namespace PickUpApp.iOS
 			// Process any potential notification data from launch
 			ProcessNotification (options, true);
 
-			MessagingCenter.Subscribe<Account> (this, "loaded", (s) => {
+			MessagingCenter.Subscribe<Account> (this, "loaded", async(s) => {
 				//can I do the NotificationHub stuff here?
 				// Register our info with Azure
 				// Connection string from your azure dashboard
@@ -67,14 +67,32 @@ namespace PickUpApp.iOS
 //						Console.WriteLine("Success");
 //				});
 
-				string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\" }}";
-				var expire = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
-				hub.RegisterTemplateAsync(deviceNotificationToken, "pickupTemplate", template, expire, tagSet, err=>{
-					if (err != null)
-						Console.WriteLine("Error: " + err.Description);
-					else
-						Console.WriteLine("Success");
-				});
+				try{
+					string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\" }}";
+					var expire = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
+
+					hub.UnregisterAllAsync(deviceNotificationToken, err=>{
+						if (err == null)
+						{
+							hub.RegisterTemplateAsync(deviceNotificationToken, "pickupTemplate", template, expire, tagSet, errreg=>{
+								if (errreg != null)
+									Console.WriteLine("Error: " + err.Description);
+								else
+									Console.WriteLine("Success");
+							});
+						}
+					});
+
+
+
+					//ok, we're registered...stop listening
+					await System.Threading.Tasks.Task.Delay(25);
+					MessagingCenter.Unsubscribe<Account>(this, "loaded");
+				}
+				catch(Exception ex)
+				{
+					Console.WriteLine(ex.Message);
+				}
 
 
 			});
@@ -177,17 +195,53 @@ namespace PickUpApp.iOS
 
 				//if msgtype="invite", then we will pop the invite view with salient information (scheduleID will get passed in)
 
+				//I've received an invite
 				if (aps.ContainsKey(new NSString("invite")) && !string.IsNullOrEmpty(aps ["invite"].ToString ())) {
 					Invite i = new Invite ();
 					i.Id = aps ["invite"].ToString ();
 					MessagingCenter.Send <Invite>(i, "invite");
 				}
 
-				//if msgtype="pickup", this means someone has accepted your invite (you'll get an accountid for this person)
+				//my kids have been picked up
 				if (aps.ContainsKey (new NSString("pickup")) && !string.IsNullOrEmpty(aps ["pickup"].ToString ())) {
 					Invite i = new Invite ();
 					i.Id = aps ["pickup"].ToString ();
 					MessagingCenter.Send<Invite> (i, "pickup");
+				}
+
+				//someone has accepted my invite
+				if (aps.ContainsKey (new NSString("accepted")) && !string.IsNullOrEmpty(aps ["accepted"].ToString ())) {
+					Invite i = new Invite ();
+					i.Id = aps ["accepted"].ToString ();
+					MessagingCenter.Send<Invite> (i, "accepted");
+				}
+
+				//nobody has accepted my invite
+				if (aps.ContainsKey (new NSString("nobody")) && !string.IsNullOrEmpty(aps ["nobody"].ToString ())) {
+					Invite i = new Invite ();
+					i.Id = aps ["nobody"].ToString ();
+					MessagingCenter.Send<Invite> (i, "nobody");
+				}
+
+				//I accepted and was the first to do so
+				if (aps.ContainsKey (new NSString("confirm")) && !string.IsNullOrEmpty(aps ["confirm"].ToString ())) {
+					Invite i = new Invite ();
+					i.Id = aps ["confirm"].ToString ();
+					MessagingCenter.Send<Invite> (i, "confirm");
+				}
+
+				//I accepted and was NOT the first to do so
+				if (aps.ContainsKey (new NSString("notfirst")) && !string.IsNullOrEmpty(aps ["notfirst"].ToString ())) {
+					Invite i = new Invite ();
+					i.Id = aps ["notfirst"].ToString ();
+					MessagingCenter.Send<Invite> (i, "notfirst");
+				}
+
+				//I accepted but the requestor has canceled so I'm off the hook
+				if (aps.ContainsKey (new NSString("cancel")) && !string.IsNullOrEmpty(aps ["cancel"].ToString ())) {
+					Invite i = new Invite ();
+					i.Id = aps ["cancel"].ToString ();
+					MessagingCenter.Send<Invite> (i, "cancel");
 				}
 
 				//Extract the alert text

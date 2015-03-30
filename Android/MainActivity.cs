@@ -32,6 +32,7 @@ namespace PickUpApp.droid
 			//SetPage (App.Current.MainPage);
 
 			LoadApplication (new App ());
+
 			RegisterWithGCM ();
 			var listener = new GestureListener();
 			_gestureDetector = new GestureDetector(this, listener);
@@ -63,7 +64,13 @@ namespace PickUpApp.droid
 
 			// Register for push notifications
 			System.Diagnostics.Debug.WriteLine("Registering...");
-			GcmClient.Register(this, Constants.SenderID);	
+
+			var preferences = GetSharedPreferences("AppData", FileCreationMode.Private);
+			var deviceId = preferences.GetString("DeviceId","");
+
+			if (string.IsNullOrEmpty (deviceId)) {
+				GcmClient.Register(this, Constants.SenderID);
+			}
 		}
 	}
 

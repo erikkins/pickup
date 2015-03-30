@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 xmlns:controls="clr-namespace:Xamarin.Forms.Labs.Controls;assembly=Xamarin.Forms.Labs"
+xmlns:sys="clr-namespace:System;assembly=mscorlib"
 x:Class="PickUpApp.AddEditKid">
   <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness">
@@ -14,6 +15,13 @@ x:Class="PickUpApp.AddEditKid">
 			<Entry Text="{Binding CurrentKid.Firstname}" WidthRequest="400" HorizontalOptions="FillAndExpand" />
 			<Label Text="Last Name" HorizontalOptions="FillAndExpand" />
 			<Entry Text="{Binding CurrentKid.Lastname}" WidthRequest="400" HorizontalOptions="FillAndExpand" />
+			<Label Text="Date of Birth" HorizontalOptions="FillAndExpand" />
+			<DatePicker Date="{Binding CurrentKid.DateOfBirth}" MaximumDate="{x:Static sys:DateTime.Now}"></DatePicker>
+			<Label Text="Gender" HorizontalOptions="FillAndExpand" />
+			<Picker x:Name="genderPicker"></Picker>
+		
+			<Label Text="Allergies" HorizontalOptions="FillAndExpand" />
+			<Entry Placeholder="No Known Allergies" Text="{Binding CurrentKid.Allergies}" WidthRequest="400" HorizontalOptions="FillAndExpand"></Entry>
 			<StackLayout Orientation="Horizontal">
 			<Button HorizontalOptions="StartAndExpand" x:Name="btnSave"  Text="Save" />
 			<Button HorizontalOptions="End" x:Name="btnCancel"  Text="Cancel" />

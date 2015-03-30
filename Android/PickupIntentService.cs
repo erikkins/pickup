@@ -1,5 +1,4 @@
 ﻿using System;
-using ByteSmith.WindowsAzure.Messaging;
 using System.Text;
 using Android.App;
 using Android.Content;
@@ -8,64 +7,81 @@ using Android.Widget;
 using Gcm.Client;
 using System.Collections.Generic;
 using Xamarin.Forms;
-
-[assembly: Permission(Name = "pickUpApp.Android.permission.C2D_MESSAGE")]
-[assembly: UsesPermission(Name = "pickUpApp.Android.permission.C2D_MESSAGE")]
-[assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
-
-//GET_ACCOUNTS is only needed for android versions 4.0.3 and below
-[assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
-[assembly: UsesPermission(Name = "android.permission.INTERNET")]
-[assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
+using Android.Runtime;
+using Android.Views;
+using Android.OS;
+using ByteSmith.WindowsAzure.Messaging;
 
 namespace PickUpApp.droid
 {
-	[BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
-
-	[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "pickUpApp.Android" })]
-	[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "pickUpApp.Android" })]
-	[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "pickUpApp.Android" })]
-	[IntentFilter(new[] {Intent.ActionBootCompleted})]
-	public class PickUpBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
+	public class PickupIntentService : IntentService
 	{
-		public static string[] SENDER_IDS = new string[] { Constants.SenderID };
-
-		public const string TAG = "PickUpBroadcastReceiver-GCM";
-
-//		public override void OnReceive (Context context, Intent intent)
-//		{
-//			PickupIntentService.RunIntentInService(context, intent);
-//
-//			SetResult(Result.Ok, null, null);
-//		}
-	}
-
-	[Service] //Must use the service tag
-	public class PushHandlerService : GcmServiceBase
-	{
-		public static string RegistrationID { get; private set; }
+		static PowerManager.WakeLock sWakeLock;
+		static object LOCK = new object();
 		private NotificationHub Hub { get; set; }
 
-		public PushHandlerService() : base(Constants.SenderID) 
+		public PickupIntentService()
 		{
-			//System.Diagnostics.Debug.WriteLine(PickUpBroadcastReceiver.TAG, "GcmService() constructor"); 
+			
 		}
-		protected override void OnError (Context context, string errorId)
+
+		public static void RunIntentInService(Context context, Intent intent)
 		{
-			throw new NotImplementedException ();
+			lock (LOCK)
+			{
+				if (sWakeLock == null)
+				{
+					// This is called from BroadcastReceiver, there is no init.
+					var pm = PowerManager.FromContext(context);
+					sWakeLock = pm.NewWakeLock(
+						WakeLockFlags.Partial, "My WakeLock Tag");
+				}
+			}
+
+			sWakeLock.Acquire();
+			intent.SetClass(context, typeof(PickupIntentService));
+			context.StartService(intent);
+			sWakeLock.Release ();
+
 		}
-		protected override void OnUnRegistered (Context context, string registrationId)
+
+		protected override void OnHandleIntent (Intent intent)
 		{
-			System.Diagnostics.Debug.WriteLine ("GCMSERVICE UNREGISTERED");
-			//throw new NotImplementedException ();
+			
+			try
+			{
+				Context context = ApplicationContext;
+				string action = intent.Action;
+
+				if (action.Equals("com.google.android.c2dm.intent.REGISTRATION"))
+				{
+					HandleRegistration(context, intent);
+				}
+				else if (action.Equals("com.google.android.c2dm.intent.RECEIVE"))
+				{
+					HandleMessage(context, intent);
+				}
+			}
+			finally
+			{
+				lock (LOCK)
+				{
+					//Sanity check for null as this is a public method
+					if (sWakeLock != null)
+						sWakeLock.Release();
+				}
+			}
 		}
 
 
-
-		protected override void OnRegistered(Context context, string registrationId)
+		protected void HandleRegistration(Context context, Intent intent)
 		{
+			string registrationId = intent.GetStringExtra("registration_id");
+			string error = intent.GetStringExtra("error");
+			string unregistration = intent.GetStringExtra("unregistered");
+
 			//System.Diagnostics.Debug.WriteLine(PickUpBroadcastReceiver.TAG, "GCM Registered: " + registrationId);
-			RegistrationID = registrationId;
+			//RegistrationID = registrationId;
 
 			//make sure we save the registrationID locally, so we don't keep asking for it!
 			var preferences = GetSharedPreferences("AppData", FileCreationMode.Private);
@@ -84,7 +100,8 @@ namespace PickUpApp.droid
 				Hub = new NotificationHub (Constants.NotificationHubPath, Constants.ConnectionString);
 
 				try {
-					//was awaited
+					//really don't need to be unregistering each time...only if unregistration comes across
+					//but we were seeing some funkiness with multiple reg's so leave it in...for now.
 					await Hub.UnregisterAllAsync (registrationId);
 				} catch (Exception ex) {
 					System.Diagnostics.Debug.WriteLine ("Loaded " + ex.Message);
@@ -107,8 +124,8 @@ namespace PickUpApp.droid
 
 						//issue with MessagingCenter that needs to enum the subscriptions, so give it a breath.
 						//Device.BeginInvokeOnMainThread(()=>{
-							await System.Threading.Tasks.Task.Delay(25);
-							MessagingCenter.Unsubscribe<Account>(this, "loaded");
+						await System.Threading.Tasks.Task.Delay(25);
+						MessagingCenter.Unsubscribe<Account>(this, "loaded");
 						//});
 
 					} catch (Exception ex) {
@@ -118,60 +135,14 @@ namespace PickUpApp.droid
 				}
 			});
 		}
-
-
-		//GCM is firing multiple times for the same message...so, only allow the first one through
-		private static List<Guid> _Last10MessageIds;
-
-		private bool IsRecentGuid(string checker)
+		protected void HandleMessage(Context context, Intent intent)
 		{
-			if (string.IsNullOrEmpty (checker)) {
-				return false;
-			}
-
-			Guid iChecker = Guid.Parse (checker);
-
-			if (_Last10MessageIds.Contains (iChecker)) {
-				return true;
-			}
-
-			//it's not there, so add it
-			_Last10MessageIds.Insert(0, iChecker);
-			//and now make sure the list is only 10 long!
-			if (_Last10MessageIds.Count > 10) {
-				_Last10MessageIds.RemoveRange (10, _Last10MessageIds.Count - 10);
-			}
-			return false;
-		}
-
-		protected override void OnHandleIntent (Intent intent)
-		{
-			OnMessage (this.BaseContext, intent);
-		}
-
-		protected override void OnMessage(Context context, Intent intent)
-		{
-			if (_Last10MessageIds == null)
-			{
-				_Last10MessageIds = new List<Guid>();
-			}
-			//System.Diagnostics.Debug.WriteLine(PickUpBroadcastReceiver.TAG, "GCM Message Received!");
-
 			var msg = new StringBuilder();
 
 			if (intent != null && intent.Extras != null)
 			{
 				foreach (var key in intent.Extras.KeySet())
 					msg.AppendLine(key + "=" + intent.Extras.Get(key).ToString());
-			}
-
-
-			//System.Diagnostics.Debug.WriteLine ("GCM: " + msg);
-
-			//likely don't need this...had garbage registrations in Azure notification hub
-			if (IsRecentGuid(intent.Extras.GetString("uid")))
-			{
-				return;
 			}
 
 			//I'm getting an invite
@@ -224,8 +195,9 @@ namespace PickUpApp.droid
 				return;
 			}
 
-			//createNotification("Unknown message details", msg.ToString());
+
 		}
+
 		void createNotification(string title, string desc)
 		{
 			//Create notification

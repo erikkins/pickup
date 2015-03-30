@@ -3,7 +3,6 @@
 	<ContentPage.Content>
 	<StackLayout x:Name="stacker">
 	<Label HorizontalOptions="CenterAndExpand" FontSize="24" VerticalOptions="Start" Text="Pickup Complete!"></Label>
-
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

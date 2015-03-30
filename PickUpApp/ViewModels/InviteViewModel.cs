@@ -28,6 +28,7 @@ namespace PickUpApp
 			this.client = client;
 			this._currentInvite = invite;
 			this.CurrentInviteInfo = new InviteInfo ();
+			LoadItemsCommand.Execute (null);
 		}
 
 		public override async Task ExecuteLoadItemsCommand ()
@@ -41,6 +42,8 @@ namespace PickUpApp
 					CurrentInviteInfo = inviteInfo[0];
 				}
 				MessagingCenter.Send<InviteInfo>(CurrentInviteInfo, "inviteinfoloaded");
+
+
 //				var kids = await client.GetTable<Kid>().ToListAsync();
 //
 //				App.myKids.Clear();
@@ -66,6 +69,7 @@ namespace PickUpApp
 			try
 			{
 				var inviteresponse = await client.InvokeApiAsync<InviteInfo, List<InviteResponse>>("respondinvite",CurrentInviteInfo);
+				System.Diagnostics.Debug.WriteLine("responses " + inviteresponse.Count.ToString());
 				MessagingCenter.Send<InviteInfo>(CurrentInviteInfo, "InfoSubmitted");
 			}
 			catch (Exception ex)

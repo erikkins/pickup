@@ -91,7 +91,10 @@ namespace PickUpApp.ViewModels
 
 		public virtual async Task ExecuteAddEditCommand()
 		{
-
+			//this is just the placeholder...should be completely overriden
+			var page = new ContentPage();
+			var result = await page.DisplayAlert("Not Configured", "You must override ExecuteAddEditCommand", "OK", "Cancel");
+			System.Diagnostics.Debug.WriteLine ("Unconfigured AddEditItems! " + result.ToString ());
 		}
 
 		#endregion
@@ -138,7 +141,7 @@ namespace PickUpApp.ViewModels
 			{
 				//await App.Platform.Authorize(container, provider);
 				var user = await DependencyService.Get<IMobileClient>().Authorize(provider);
-				//System.Diagnostics.Debug.WriteLine(user.UserId);
+				System.Diagnostics.Debug.WriteLine(user.UserId);
 				try{
 
 				MessagingCenter.Send(client, "LoggedIn");

@@ -97,7 +97,7 @@ namespace PickUpApp
 				}
 			};
 
-			lstSearch.ItemSelected += async delegate(object sender, SelectedItemChangedEventArgs e) {
+			lstSearch.ItemSelected += delegate(object sender, SelectedItemChangedEventArgs e) {
 				lstSearch.IsVisible = false;
 				LayoutRel.IsVisible = false;
 

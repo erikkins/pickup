@@ -36,10 +36,17 @@ namespace PickUpApp
 				RefreshCommand = ViewModel.LoadItemsCommand,
 				ItemTemplate = new DataTemplate (typeof(TodayTemplateLayout)),
 				ItemsSource = ViewModel.Todays,
-				IsPullToRefreshEnabled = true
+				IsPullToRefreshEnabled = true,
+				HasUnevenRows = true
 			};
 			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
 				lvToday.IsRefreshing = false;
+			});
+
+
+			MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
+				await ViewModel.ExecuteLoadItemsCommand();
+
 			});
 
 
@@ -51,13 +58,13 @@ namespace PickUpApp
 				}
 
 				Today today = ((Today)e.SelectedItem);
-				if (today.RowType == "schedule123")
+				if (today.RowType == "schedule")
 				{
 					Schedule s = new Schedule();
 					s.id = today.id;
 					Navigation.PushModalAsync(new CircleSelect(s));
 				}
-				if (today.RowType == "schedule") //should be "invite"
+				if (today.RowType == "invite") //should be "invite"
 				{
 					//seems a little silly to have these supertypes that cross map to each other...
 					InviteInfo i = new InviteInfo();
@@ -72,9 +79,12 @@ namespace PickUpApp
 					i.Message = today.Message;
 					i.PickupDate = today.PickupDate;
 					i.Requestor = today.Requestor;
+					i.RequestorPhone = today.RequestorPhone;
 					//i.Solved missing
 					//i.SolvedBy missing
 					i.StartTimeTicks = today.StartTimeTicks;
+					i.Complete = false;
+
 
 					Navigation.PushModalAsync(new InviteHUD(i));
 				}
@@ -161,6 +171,9 @@ namespace PickUpApp
 			base.OnBindingContextChanged();
 
 			dynamic c = BindingContext;
+			this.Height = 55;
+			StackLayout slmain = new StackLayout ();
+			slmain.Orientation = StackOrientation.Vertical;
 
 			StackLayout sl = new StackLayout ();
 			sl.Orientation = StackOrientation.Horizontal;
@@ -176,7 +189,16 @@ namespace PickUpApp
 			//startlabel.Text = c.StartTime;
 			sl.Children.Add (startlabel);
 
-			View = sl;
+			Label pickerUpperLabel = new Label ();
+			pickerUpperLabel.HorizontalOptions = LayoutOptions.Start;
+			pickerUpperLabel.VerticalOptions = LayoutOptions.Start;
+			pickerUpperLabel.SetBinding (Label.TextProperty, "TodayDescriptor");
+
+
+			slmain.Children.Add (sl);
+			slmain.Children.Add (pickerUpperLabel);
+
+			View = slmain;
 		}
 	}
 }

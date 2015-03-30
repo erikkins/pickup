@@ -47,7 +47,7 @@ namespace PickUpApp
 				tempAccount.Phone = CurrentContact.Phone;
 
 				var contact = await client.InvokeApiAsync<Account, Account>("checkandregisteraccount", tempAccount);
-				//System.Diagnostics.Debug.WriteLine(contact.ToString());
+				System.Diagnostics.Debug.WriteLine(contact.Fullname);
 			}
 			catch(Exception ex) {
 				System.Diagnostics.Debug.WriteLine ("checkregex " + ex.Message);

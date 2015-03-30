@@ -102,6 +102,7 @@ namespace PickUpApp
 			try
 			{
 				MobileServiceUser user = await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook, new Newtonsoft.Json.Linq.JObject());
+				System.Diagnostics.Debug.WriteLine(user.MobileServiceAuthenticationToken);
 			}
 			catch (Exception ex)
 			{
@@ -146,6 +147,7 @@ namespace PickUpApp
 
 			} catch (MobileServiceInvalidOperationException e) {
 				//Console.Error.WriteLine (@"ERROR {0}", e.Message);
+				System.Diagnostics.Debug.WriteLine(e.Message);
 			}
 		}
 
@@ -155,7 +157,7 @@ namespace PickUpApp
 				await scheduleTable.InsertAsync(scheduleItem);
 			}
 			catch(MobileServiceInvalidOperationException e) {
-				
+				System.Diagnostics.Debug.WriteLine(e.Message);
 			}
 		}
 

@@ -16,11 +16,11 @@ using System;
 using Android.Support.V4.Widget;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using PullToRefreshAndroidForms;
+//using PullToRefreshAndroidForms;
 using PullToRefreshAndroidFormsAndroid;
 using Android.Views;
 using PickUpApp;
-using PullToRefreshAndroidFormsAndroid;
+//using PullToRefreshAndroidFormsAndroid;
 
 [assembly:ExportRendererAttribute(typeof(PullToRefreshAndroidForms.PullToRefreshListView), typeof(FormsSwipeRefreshLayout))]
 namespace PullToRefreshAndroidFormsAndroid

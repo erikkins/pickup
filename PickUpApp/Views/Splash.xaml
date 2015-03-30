@@ -3,9 +3,11 @@
 	<ContentPage.Content>
 <StackLayout>
 	<ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Aqua" />
-	<Label Text="SPLASH!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-	<Button x:Name="btnFacebook" Text="Login" CommandParameter="Facebook" VerticalOptions="CenterAndExpand" />
-	<Button x:Name="btnLogout" Text="Logout" VerticalOptions="CenterAndExpand" />
+	<Label Text="Welcome to PickUp!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+	<StackLayout Orientation="Horizontal" VerticalOptions="End">
+	<Button x:Name="btnFacebook" Text="Login" CommandParameter="Facebook" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" />
+	<Button x:Name="btnLogout" Text="Logout" VerticalOptions="CenterAndExpand" HorizontalOptions="End" />
+	</StackLayout>
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

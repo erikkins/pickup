@@ -39,8 +39,9 @@ namespace PickUpApp
 			ts.Add (new ActivityCell (ViewModel.ThisInvite.Kids));
 			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude);
 			ts.Add (mc);
+		
 			mc.Tapped += async delegate(object sender, EventArgs e) {
-				await Navigation.PushModalAsync(new TurnByTurnView(ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude));
+				await Navigation.PushModalAsync(new TurnByTurnView(ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude, ViewModel.Itineraries));
 			};
 
 			ImageCell messageCell = new ImageCell ();
@@ -49,28 +50,31 @@ namespace PickUpApp
 			messageCell.Height = 55;
 			ts.Add (messageCell);
 
-			ImageCell phoneCell = new ImageCell ();
-			phoneCell.Text = "Call " + _thisInviteInfo.Requestor;
-			phoneCell.ImageSource = "appbarphone.png";
+			if (_thisInviteInfo.RequestorPhone != null) {
+
+				ImageCell phoneCell = new ImageCell ();
+				phoneCell.Text = "Call " + _thisInviteInfo.Requestor;
+				phoneCell.ImageSource = "appbarphone.png";
 
 //			beachImage.Source =  Device.OnPlatform(
 //				iOS: ImageSource.FromFile("Images/waterfront.jpg"),
 //				Android:  ImageSource.FromFile("waterfront.jpg"),
 //				WinPhone: ImageSource.FromFile("Images/waterfront.png"));
 
-			phoneCell.Height = 55;
-			phoneCell.Tapped +=  delegate(object sender, EventArgs e) {
-				var dep = DependencyService.Get<PickUpApp.IPhoneDialer>();
-				dep.DialPhone("+17736191320");
-				//var device = Resolver.Resolve<IDevice>();
-				// not all devices have phone service, f.e. iPod and Android tablets
-				// so we need to check if phone service is available
-				//if (device.PhoneService != null)
-				//{
-				//	device.PhoneService.DialNumber("+1 (773) 619-1320");
-				//}
-			};
-			ts.Add (phoneCell);
+				phoneCell.Height = 55;
+				phoneCell.Tapped += delegate(object sender, EventArgs e) {
+					var dep = DependencyService.Get<PickUpApp.IPhoneDialer> ();
+					dep.DialPhone (_thisInviteInfo.RequestorPhone);
+					//var device = Resolver.Resolve<IDevice>();
+					// not all devices have phone service, f.e. iPod and Android tablets
+					// so we need to check if phone service is available
+					//if (device.PhoneService != null)
+					//{
+					//	device.PhoneService.DialNumber("+1 (773) 619-1320");
+					//}
+				};
+				ts.Add (phoneCell);
+			}
 
 			ImageCell yelpCell = new ImageCell ();
 			yelpCell.Text = "What to do?";
@@ -100,8 +104,18 @@ namespace PickUpApp
 
 			//stacker.Children.Add (lv);
 
-			MessagingCenter.Subscribe<Invite> (this, "Completed", (s) => {
-				Navigation.PopModalAsync();
+			MessagingCenter.Subscribe<Invite> (this, "Completed", async(s) => {
+				
+				//also need to reload Today
+				try{
+					await Navigation.PopModalAsync();
+				}
+				catch(Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine("POP SUX:" + ex.Message + ex.StackTrace);
+				}
+				MessagingCenter.Send<string>("InviteHud", "NeedsRefresh");
+
 			});
 
 			Button btnCancel = new Button ();
@@ -176,6 +190,9 @@ namespace PickUpApp
 		}
 	}
 
+	//Android only tap workaround
+	public class ListMap : Map { }
+
 	public class YelpCell : ViewCell
 	{
 		protected override void OnBindingContextChanged()
@@ -199,7 +216,7 @@ namespace PickUpApp
 	public class MapCell : ViewCell
 	{
 		private double _latitude, _longitude;
-		private Map _theMap;
+		private ListMap _theMap;
 
 		public MapCell (double latitude, double longitude)
 		{
@@ -270,7 +287,7 @@ namespace PickUpApp
 			slAddress.Children.Add (addresslabel);
 			sl.Children.Add(slAddress);
 
-			_theMap = new Xamarin.Forms.Maps.Map ();
+			_theMap = new ListMap ();
 			_theMap.WidthRequest = 200;
 			_theMap.HeightRequest = 200;
 			_theMap.MinimumHeightRequest = 100;
@@ -282,7 +299,7 @@ namespace PickUpApp
 			_theMap.HasZoomEnabled = false;
 
 			sl.Children.Add (_theMap);
-
+				
 			View = sl;
 		
 		
@@ -338,7 +355,7 @@ namespace PickUpApp
 	
 				slThis.Children.Add (ci);
 				ci = null;
-				GC.Collect ();
+				//GC.Collect ();
 
 				Label namelabel = new Label ();
 				namelabel.HorizontalOptions = LayoutOptions.Center;

@@ -36,6 +36,7 @@ namespace PickUpApp
 		{
 			try
 			{
+				IsLoading = true;
 				var kids = await client.GetTable<Kid>().ToListAsync();
 
 				App.myKids.Clear();
@@ -50,6 +51,9 @@ namespace PickUpApp
 				var page = new ContentPage();
 				var result = page.DisplayAlert("Error", "Error loading data Kids. Please check connectivity and try again.", "OK", "Cancel");
 				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
+			}
+			finally {
+				IsLoading = false;
 			}
 		}
 		/*

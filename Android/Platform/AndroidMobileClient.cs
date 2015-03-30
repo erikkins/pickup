@@ -65,15 +65,15 @@ namespace PickUpApp.droid
 						tmsu.MobileServiceAuthenticationToken
 					}
 				});
-				accountStore.Save (account, "Facebook");
-
+				//accountStore.Save (account, "Facebook");
+				AccountStore.Create (Application.Context).Save (account, "Facebook");
 				return tmsu;
 			}
 		}
 
 		public void Logout()
 		{
-
+			
 			CookieSyncManager.CreateInstance(Application.Context);
 			CookieManager.Instance.RemoveAllCookie();
 

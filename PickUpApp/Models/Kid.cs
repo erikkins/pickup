@@ -57,6 +57,65 @@ namespace PickUpApp
 				}
 			}
 		}
+
+
+		public string Age
+		{
+			get{
+				DateTime today = DateTime.Now;
+
+				return (((today.Year - _dob.Year) * 372 + (today.Month - _dob.Month) * 31 + (today.Day - _dob.Day)) / 372).ToString();
+			}
+		}
+
+		private DateTime _dob;
+		[JsonProperty(PropertyName = "dob")]
+		public DateTime DateOfBirth
+		{
+			get{
+				if (_dob == DateTime.MinValue) {
+					_dob = new DateTime (1900, 1, 1);
+				}
+				return _dob;
+			}
+			set{
+				if (value != _dob) {
+					_dob = value; NotifyPropertyChanged ();
+				}
+			}
+		}
+
+		private string _allergies;
+		[JsonProperty(PropertyName = "allergies")]
+		public string Allergies
+		{
+			get{
+				return _allergies;
+			}
+			set{
+				if (value != _allergies) {
+					_allergies = value; NotifyPropertyChanged ();
+				}
+			}
+		}
+
+		private string _gender;
+		[JsonProperty(PropertyName = "gender")]
+		public string Gender
+		{
+			get{
+				if (string.IsNullOrEmpty (_gender)) {
+					_gender = "Unknown";
+				}
+				return _gender;
+			}
+			set{
+				if (value != _gender) {
+					_gender = value; NotifyPropertyChanged ();
+				}
+			}
+		}
+
 	}
 }
 

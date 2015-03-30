@@ -99,7 +99,7 @@ namespace PickUpApp
 				//but wait, there's more!
 				//gotta add the kidids to the scheduleid (nest this somehow in a single call?)
 				//whack 'em first
-				var dels = await client.InvokeApiAsync<Schedule, EmptyClass>("deleteschedulekids", CurrentSchedule);
+				await client.InvokeApiAsync<Schedule, EmptyClass>("deleteschedulekids", CurrentSchedule);
 
 				var kidsched = client.GetTable<KidSchedule>();
 				foreach (KidSchedule ks in KidSchedules)

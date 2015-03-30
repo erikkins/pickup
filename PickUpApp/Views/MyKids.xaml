@@ -11,6 +11,10 @@
 	<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
+						<ViewCell.ContextActions>
+							<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+               					Text="Delete" IsDestructive="True" />
+						</ViewCell.ContextActions>
 						<ViewCell.View>
 							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
 								<Label Text="{Binding Firstname}" HorizontalOptions="Start"  />
@@ -19,7 +23,7 @@
 						</ViewCell.View>
 					</ViewCell>
 				</DataTemplate>
-			</ListView.ItemTemplate>
+	</ListView.ItemTemplate>
 	</ListView>
 	<Button x:Name="btnAdd" Text="Add Kid"></Button>
 	</StackLayout>

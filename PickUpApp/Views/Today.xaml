@@ -5,6 +5,5 @@
 	x:Class="PickUpApp.TodayView"
 	>
 <StackLayout x:Name="stacker">
-<Label Text="TODAY PLACEHOLDER" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 	</StackLayout>
 </ContentPage>

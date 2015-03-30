@@ -12,9 +12,10 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.ViewModel = new ConfirmationViewModel (App.client, invite);
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+			//ViewModel.LoadItemsCommand.Execute (null);
 
 			MessagingCenter.Subscribe<InviteInfo> (this, "confirmationloaded", (s) => {
-
+				try{
 				TableView tv = new TableView ();
 				tv.HasUnevenRows = true;
 				TableSection ts = new TableSection ();
@@ -59,12 +60,19 @@ namespace PickUpApp
 				btnOK.BackgroundColor = Color.Green;
 				btnOK.VerticalOptions = LayoutOptions.End;
 				btnOK.Clicked += async delegate(object sender, EventArgs e) {
+					MessagingCenter.Send<string>("Confirmation", "NeedsRefresh");
 					await Navigation.PopModalAsync();
 				};
 				stacker.Children.Add (btnOK);
+
+				}
+				catch(Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine(ex.Message);
+				}
 			});
 
-			ViewModel.LoadItemsCommand.Execute (null);
+
 
 
 

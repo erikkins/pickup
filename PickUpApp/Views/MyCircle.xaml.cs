@@ -15,8 +15,8 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.ViewModel = new MyCircleViewModel (App.client);
 			btnContacts.Clicked += HandleClicked; 
-			//Debug.WriteLine (lstCircle.Id.ToString ());
-			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+
+			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);	
 			MessagingCenter.Subscribe<LocalContact> (this, "ContactAdded", (s) => {
 				Navigation.PopModalAsync ();
 				ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
@@ -50,6 +50,11 @@ namespace PickUpApp
 				}
 			}, TaskScheduler.FromCurrentSynchronizationContext());
 			*/
+		}
+		public void OnDelete (object sender, EventArgs e) {
+			var mi = ((MenuItem)sender);
+			Account a = (Account)mi.CommandParameter;
+			DisplayAlert("Delete Context Action", a.id + " delete context action", "OK");
 		}
 
 		protected MyCircleViewModel ViewModel

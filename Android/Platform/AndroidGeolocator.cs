@@ -38,7 +38,7 @@ namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 		private readonly LocationManager manager;
 		private readonly object positionSync = new object();
 		private readonly string[] providers;
-		private string headingProvider;
+		//private string headingProvider;
 		private Position lastPosition;
 		private GeolocationContinuousListenerERIK listener;
 

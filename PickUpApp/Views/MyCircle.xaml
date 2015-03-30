@@ -5,11 +5,14 @@
  x:Class="PickUpApp.MyCircle">
 	<ContentPage.Content>
 		<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-			<Label Text="MY CIRCLE PLACEHOLDER" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
-			<ListView x:Name="lstCircle" ItemsSource="{Binding Circle}">
+			<ListView ItemsSource="{Binding Circle}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
+						<ViewCell.ContextActions>
+							<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+               					Text="Delete" IsDestructive="True" />
+						</ViewCell.ContextActions>
 						<ViewCell.View>
 							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
 								<Label Text="{Binding Firstname}" HorizontalOptions="Start"  />
@@ -22,8 +25,6 @@
 			</ListView>
 			 
 			<Button x:Name="btnContacts" Text="Add Contact" VerticalOptions="End"></Button>
-
 		</StackLayout>
-
 	</ContentPage.Content>
 </ContentPage>

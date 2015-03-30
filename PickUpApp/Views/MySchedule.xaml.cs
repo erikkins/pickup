@@ -42,6 +42,13 @@ namespace PickUpApp
 			lstSched.SelectedItem = null;
 
 		}
+
+		public void OnDelete (object sender, EventArgs e) {
+			var mi = ((MenuItem)sender);
+			Schedule s = (Schedule)mi.CommandParameter;
+			DisplayAlert("Delete Context Action", s.id + " delete context action", "OK");
+		}
+
 		protected ScheduleViewModel ViewModel
 		{
 			get { return this.BindingContext as ScheduleViewModel; }

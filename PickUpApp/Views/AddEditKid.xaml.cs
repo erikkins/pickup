@@ -20,6 +20,23 @@ namespace PickUpApp
 			btnSave.Clicked += HandleClicked;
 			btnCancel.Clicked += HandleClicked1;
 			this.ViewModel = new KidAddEditViewModel (App.client);
+
+			List<string> genders = new List<string> ();
+			genders.Add ("Unknown");
+			genders.Add ("Female");
+			genders.Add ("Male");
+
+			foreach (string g in genders) {
+				genderPicker.Items.Add (g);
+			}
+
+			genderPicker.SelectedIndex = genders.IndexOf (selectedKid.Gender);
+
+			genderPicker.SelectedIndexChanged += (object sender, EventArgs e) => {
+				ViewModel.CurrentKid.Gender = genderPicker.Items[genderPicker.SelectedIndex];
+			};
+				
+
 			if (selectedKid != null) {
 				//txtFirstname.Text = selectedKid.Firstname;
 				//txtLastname.Text = selectedKid.Lastname;

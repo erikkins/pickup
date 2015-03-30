@@ -13,23 +13,35 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.ViewModel = new InviteViewModel (App.client, invite);
 			MessagingCenter.Subscribe<InviteInfo> (this, "inviteinfoloaded", (ii) => {
-				Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (ii.Latitude, ii.Longitude);
 
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
-					Distance.FromMiles (0.1)));
-				map.Pins.Add (new Pin {
-					Label = ii.Address,
-					Position = thispos,
-					Address = ii.Address
+				Device.BeginInvokeOnMainThread(()=>{
+					Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (ii.Latitude, ii.Longitude);
+
+					map.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
+						Distance.FromMiles (0.1)));
+					map.Pins.Add (new Pin {
+						Label = ii.Address,
+						Position = thispos,
+						Address = ii.Address
+					});
 				});
 
 				//map.MoveToRegion (new Xamarin.Forms.Maps.MapSpan (map.VisibleRegion.Center, ii.Latitude, ii.Longitude));	
 			});
-			this.ViewModel.ExecuteLoadItemsCommand ().ConfigureAwait (false);
+
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
-			MessagingCenter.Subscribe<InviteInfo> (this, "InfoSubmitted", (s) => {
-				Navigation.PopModalAsync ();
+			MessagingCenter.Subscribe<InviteInfo> (this, "InfoSubmitted", async(s) => {
+				//refresh the today screen
+				try{
+				await Navigation.PopModalAsync ();
+				}
+				catch(Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine("POPSUXINV:" + ex.Message + ex.StackTrace);
+				}
+				MessagingCenter.Send<string>("Invite", "NeedsRefresh");
+
 			});
 
 		}

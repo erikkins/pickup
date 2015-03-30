@@ -27,6 +27,7 @@ namespace PickUpApp
 			this.client = client;
 			_currentInvite = invite;
 			CurrentInviteInfo = new InviteInfo ();
+			LoadItemsCommand.Execute (null);
 		}
 
 		public override async Task ExecuteLoadItemsCommand ()
@@ -40,7 +41,10 @@ namespace PickUpApp
 				{
 					CurrentInviteInfo = inviteInfo[0];
 				}
+
+
 				MessagingCenter.Send<InviteInfo>(CurrentInviteInfo, "confirmationloaded");
+				
 
 			}
 			catch (Exception ex)

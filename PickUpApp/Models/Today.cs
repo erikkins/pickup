@@ -162,6 +162,11 @@ namespace PickUpApp
 		public string Requestor { get{ return _Requestor; } set{if (value != _Requestor) {
 					_Requestor = value; NotifyPropertyChanged ();} } }
 
+		private string _RequestorPhone;
+		[JsonProperty(PropertyName = "requestorphone")]
+		public string RequestorPhone { get{ return _RequestorPhone; } set{if (value != _RequestorPhone) {
+					_RequestorPhone = value; NotifyPropertyChanged ();} } }
+
 		private string _Kids;
 		[JsonProperty(PropertyName = "kids")]
 		public string Kids { get{ return _Kids; } set{if (value != _Kids) {
@@ -179,6 +184,16 @@ namespace PickUpApp
 					_Message = value; NotifyPropertyChanged ();
 				} } }
 
+		private string _ConfirmedBy;
+		[JsonProperty(PropertyName = "confirmedby")]
+		public string ConfirmedBy 
+		{ 
+			get{
+				return _ConfirmedBy;
+			} 
+			set{if (value != _ConfirmedBy) {
+					_ConfirmedBy = value; NotifyPropertyChanged ();
+				} } }
 
 		public string ActualAtWhen
 		{
@@ -205,6 +220,27 @@ namespace PickUpApp
 
 				return string.Format ("{0:hh:mm tt}", endtime);
 				}
+		}
+
+		public string TodayDescriptor
+		{
+			get
+			{
+				string ret = "";
+				switch (this.RowType) {
+				case "schedule":
+					if (!string.IsNullOrEmpty (this.ConfirmedBy)) {
+						ret = this.ConfirmedBy + " will be picking up";
+					}
+					break;
+				case "invite":
+					if (!string.IsNullOrEmpty (this.Requestor)) {
+						ret = "You are picking up for " + this.Requestor;
+					}
+					break;
+				}
+				return ret;
+			}
 		}
 	}
 }

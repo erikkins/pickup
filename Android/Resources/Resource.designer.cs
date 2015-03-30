@@ -26,8 +26,6 @@ namespace PickUpApp.droid
 		
 		public static void UpdateIdValues()
 		{
-			global::PCLStorage.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
-			global::PCLStorage.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
 			global::Gcm.Client.Resource.String.library_name = global::PickUpApp.droid.Resource.String.library_name;
 			global::ByteSmith.WindowsAzure.Messaging.Resource.String.library_name = global::PickUpApp.droid.Resource.String.library_name;
 			global::Refractored.Xam.Forms.Vibrate.Droid.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;

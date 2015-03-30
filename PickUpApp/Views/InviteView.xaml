@@ -16,7 +16,8 @@
 		</StackLayout>
 		<StackLayout Orientation="Horizontal">
 		<Label Text="Message: "></Label><Label Text="{Binding CurrentInviteInfo.Message}"></Label>
-		</StackLayout>
+	</StackLayout>
+		
 			<maps:Map WidthRequest="320" HeightRequest="200"
             x:Name="map"
             IsShowingUser="false" 

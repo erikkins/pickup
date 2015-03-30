@@ -36,7 +36,11 @@ namespace PickUpApp
 			lstKids.SelectedItem = null;
 
 		}
-
+		public void OnDelete (object sender, EventArgs e) {
+			var mi = ((MenuItem)sender);
+			Kid k = (Kid)mi.CommandParameter;
+			DisplayAlert("Delete Context Action", k.Id + " delete context action", "OK");
+		}
 		protected KidsViewModel ViewModel
 		{
 			get { return this.BindingContext as KidsViewModel; }

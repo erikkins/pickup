@@ -31,12 +31,16 @@ namespace PickUpApp
 
 		private double _latitude, _longitude;
 
-		public TurnByTurnViewModel (double destinationLatitude, double destinationLongitude) : this()
+		public TurnByTurnViewModel (double destinationLatitude, double destinationLongitude, ObservableCollection<BingItineraryItem> itineraries) : this()
 		{
-			this.client = client;
+			App.client = client;
 			_latitude = destinationLatitude;
 			_longitude = destinationLongitude;
-			LoadItemsCommand.Execute (null);
+			if (itineraries != null && itineraries.Count > 0) {
+				Itineraries = itineraries;
+			} else {
+				LoadItemsCommand.Execute (null);
+			}
 		}
 
 		public override async Task ExecuteLoadItemsCommand ()
@@ -76,7 +80,7 @@ namespace PickUpApp
 			}
 			}
 			catch(Exception ex) {
-				
+				System.Diagnostics.Debug.WriteLine ("TurnByTurn Error2 " + ex.Message);
 			}
 
 		}

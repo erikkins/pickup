@@ -31,7 +31,7 @@ namespace PickUpApp
 		private static string _positionStatus = string.Empty;
 		private static string _positionLatitude = string.Empty;
 		private static string _positionLongitude = string.Empty;
-		private static bool IsLoading;
+		public static bool IsUpdatingPosition;
 
 		public App ()
 		{
@@ -43,7 +43,7 @@ namespace PickUpApp
 				}
 				//System.Diagnostics.Debug.WriteLine("here");
 			};
-			GetPosition ();
+			GetPosition ().ConfigureAwait (false);
 				// The root page of your application
 				MainPage = new Splash ();
 		
@@ -134,12 +134,12 @@ namespace PickUpApp
 			PositionStatus = string.Empty;
 			PositionLatitude = string.Empty;
 			PositionLongitude = string.Empty;
-			//IsBusy = true;
+			IsUpdatingPosition = true;
 			await
 			Geolocator.GetPositionAsync(10000, _cancelSource.Token, true)
 				.ContinueWith(t =>
 					{
-						//IsBusy = false;
+						IsUpdatingPosition = false;
 						if (t.IsFaulted)
 						{
 							PositionStatus = ((GeolocationException) t.Exception.InnerException).Error.ToString();

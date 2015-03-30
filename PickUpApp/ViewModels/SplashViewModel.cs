@@ -1,15 +1,68 @@
 ﻿using System;
 using PickUpApp.ViewModels;
 using Microsoft.WindowsAzure.MobileServices;
-using PCLStorage;
+
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using System.Collections.ObjectModel;
+using PickUpApp;
 
 namespace PickUpApp
 {
 	public class SplashViewModel:BaseViewModel
 	{
+		
+		public string Firstname
+		{
+			get{
+				return App.myAccount.Firstname;
+			}
+			set{
+				App.myAccount.Firstname = value;
+				NotifyPropertyChanged ();
+			}
+		}
+		public string Lastname
+		{
+			get{
+				return App.myAccount.Lastname;
+			}
+			set{
+				App.myAccount.Lastname = value;
+				NotifyPropertyChanged ();
+			}
+		}
+		public string Phone
+		{
+			get{
+				return App.myAccount.Phone;
+			}
+			set{
+				App.myAccount.Phone = value;
+				NotifyPropertyChanged ();
+			}
+		}
+		public string Email
+		{
+			get{
+				return App.myAccount.Email;
+			}
+			set{
+				App.myAccount.Email = value;
+				NotifyPropertyChanged ();
+			}
+		}
+		public string PhotoURL
+		{
+			get{
+				return App.myAccount.PhotoURL;
+			}
+			set{
+				App.myAccount.PhotoURL = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
 		public SplashViewModel ()
 		{
 
@@ -21,19 +74,19 @@ namespace PickUpApp
 			//SaveIt ();
 			//WhackIt ();
 			//ok, so first see if we have a local account already saved
-			string account = GetLocalAccount ().Result;
+			//string account = GetLocalAccount ().Result;
 
-			if (string.IsNullOrEmpty (account)) {
-				//we don't have a saved account...require them to login!
-				//System.Diagnostics.Debug.WriteLine ("nothin");
-				IsAuthenticated = false;
-
-			} else {
-				//load the existing account
-				//System.Diagnostics.Debug.WriteLine (account);
-			//	IsAuthenticated = true;
-
-			}
+//			if (string.IsNullOrEmpty (account)) {
+//				//we don't have a saved account...require them to login!
+//				//System.Diagnostics.Debug.WriteLine ("nothin");
+//				IsAuthenticated = false;
+//
+//			} else {
+//				//load the existing account
+//				//System.Diagnostics.Debug.WriteLine (account);
+//			//	IsAuthenticated = true;
+//
+//			}
 		}
 
 		public async Task ExecuteLoadItemsCommand (string Id)
@@ -62,7 +115,7 @@ namespace PickUpApp
 			}
 			catch (Exception ex)
 			{
-				if (ex.Message == "Error: NameResolutionFailure") {
+ 				if (ex.Message == "Error: NameResolutionFailure") {
 					//why are we getting this?
 				} else if (ex.Message == "Error: The authentication token has expired.") {
 					//force them to login!
@@ -70,6 +123,7 @@ namespace PickUpApp
 					Logout ();
 				}
 				else {
+					
 					var page = new ContentPage ();
 					var result = page.DisplayAlert ("Error", "Error loading data Splash. Please check connectivity and try again.", "OK", "Cancel");
 					System.Diagnostics.Debug.WriteLine ("SplashEx " + ex.Message + result.Status.ToString ());
@@ -92,11 +146,15 @@ namespace PickUpApp
 
 
 				if (string.IsNullOrEmpty(App.myAccount.id))
+				{
 					await acct.InsertAsync(App.myAccount);
+					MessagingCenter.Send<Account>(App.myAccount, "loaded");
+				}
 				else
+				{
 					await acct.UpdateAsync(App.myAccount);
-
-				MessagingCenter.Send<MobileServiceClient>(client, "Refresh");
+					MessagingCenter.Send<Account>(App.myAccount, "Refresh");
+				}
 			}
 			catch (Exception ex)
 			{
@@ -110,35 +168,35 @@ namespace PickUpApp
 			IsLoading = false;  //redundant
 		}
 
-		public static async Task SaveIt()
-		{
-			IFolder rootFolder = FileSystem.Current.LocalStorage;
-			IFolder folder = await rootFolder.CreateFolderAsync("pickupSettings",
-				CreationCollisionOption.OpenIfExists);
-			IFile file = await folder.CreateFileAsync("account.txt",
-				CreationCollisionOption.ReplaceExisting);
-			await file.WriteAllTextAsync ("F722D8D8-3B5A-4C62-A22B-AA776841BB38");
-		}
-		public static async Task WhackIt()
-		{
-			IFolder rootFolder = FileSystem.Current.LocalStorage;
-			IFolder folder = await rootFolder.CreateFolderAsync("pickupSettings",
-				CreationCollisionOption.OpenIfExists);
-
-			IFile file = await folder.CreateFileAsync("account.txt",
-				CreationCollisionOption.OpenIfExists);
-			await file.DeleteAsync ();
-		}
-
-		public static async Task<string> GetLocalAccount()
-		{
-			IFolder rootFolder = FileSystem.Current.LocalStorage;
-			IFolder folder = await rootFolder.CreateFolderAsync("pickupSettings",
-				CreationCollisionOption.OpenIfExists).ConfigureAwait(false);
-			IFile file = await folder.CreateFileAsync("account.txt",
-				CreationCollisionOption.OpenIfExists);
-			return await file.ReadAllTextAsync ();
-		}
+//		public static async Task SaveIt()
+//		{
+//			IFolder rootFolder = FileSystem.Current.LocalStorage;
+//			IFolder folder = await rootFolder.CreateFolderAsync("pickupSettings",
+//				CreationCollisionOption.OpenIfExists);
+//			IFile file = await folder.CreateFileAsync("account.txt",
+//				CreationCollisionOption.ReplaceExisting);
+//			await file.WriteAllTextAsync ("F722D8D8-3B5A-4C62-A22B-AA776841BB38");
+//		}
+//		public static async Task WhackIt()
+//		{
+//			IFolder rootFolder = FileSystem.Current.LocalStorage;
+//			IFolder folder = await rootFolder.CreateFolderAsync("pickupSettings",
+//				CreationCollisionOption.OpenIfExists);
+//
+//			IFile file = await folder.CreateFileAsync("account.txt",
+//				CreationCollisionOption.OpenIfExists);
+//			await file.DeleteAsync ();
+//		}
+//
+//		public static async Task<string> GetLocalAccount()
+//		{
+//			IFolder rootFolder = FileSystem.Current.LocalStorage;
+//			IFolder folder = await rootFolder.CreateFolderAsync("pickupSettings",
+//				CreationCollisionOption.OpenIfExists).ConfigureAwait(false);
+//			IFile file = await folder.CreateFileAsync("account.txt",
+//				CreationCollisionOption.OpenIfExists);
+//			return await file.ReadAllTextAsync ();
+//		}
 
 	}
 }

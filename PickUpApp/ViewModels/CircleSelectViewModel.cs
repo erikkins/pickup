@@ -67,8 +67,8 @@ namespace PickUpApp
 					circle = _myselectedcircle
 				};
 				var invitedata = await client.InvokeApiAsync<InviteRequest, List<Account>>("createinvite",req);
-				//System.Diagnostics.Debug.WriteLine("");
-
+				System.Diagnostics.Debug.WriteLine("createinvite respondents: " + invitedata.Count.ToString());
+			
 				/*
 				var kids = client.GetTable<Kid>();
 

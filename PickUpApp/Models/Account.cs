@@ -76,6 +76,19 @@ namespace PickUpApp
 			get { return _selected; }
 			set { _selected = value; }
 		}
+		private string _photoURL;
+		[JsonProperty(PropertyName = "photourl")]
+		public string PhotoURL
+		{
+			get{
+				return _photoURL;
+			}
+			set{
+				if (value != _photoURL) {
+					_photoURL = value; NotifyPropertyChanged ();
+				}
+			}
+		}
 	}
 }
 

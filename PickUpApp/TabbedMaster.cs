@@ -11,8 +11,8 @@ namespace PickUpApp
 			this.Children.Add (new MyCircle ());
 			this.Children.Add (new MyKids ());
 			this.Children.Add (new MySchedule ());
-
 		}
+
 	}
 }
 

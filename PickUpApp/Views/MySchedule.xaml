@@ -6,6 +6,10 @@
 		<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
+						<ViewCell.ContextActions>
+							<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+               					Text="Delete" IsDestructive="True" />
+						</ViewCell.ContextActions>
 						<ViewCell.View>
 							<StackLayout Orientation="Vertical">
 							<StackLayout Orientation="Horizontal">
