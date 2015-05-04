@@ -18,7 +18,7 @@ namespace PickUpApp.ViewModels
 		public TodayViewModel(MobileServiceClient client) : this()
 		{
 			this.client = client;
-			LoadItemsCommand.Execute(null);
+			//LoadItemsCommand.Execute(null);
 		}
 
 		public override async Task ExecuteLoadItemsCommand ()

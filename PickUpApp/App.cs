@@ -22,6 +22,7 @@ namespace PickUpApp
 
 		public static ObservableCollection<Kid> myKids = new ObservableCollection<Kid>();
 		public static ObservableCollection<Account> myCircle = new ObservableCollection<Account> ();
+		public static ObservableCollection<AccountPlace> myPlaces = new ObservableCollection<AccountPlace> ();
 
 		//public static Schedule pendingInvite = null;  //are we actually using this?
 
@@ -32,6 +33,7 @@ namespace PickUpApp
 		private static string _positionLatitude = string.Empty;
 		private static string _positionLongitude = string.Empty;
 		public static bool IsUpdatingPosition;
+
 
 		public App ()
 		{
@@ -45,8 +47,9 @@ namespace PickUpApp
 			};
 			GetPosition ().ConfigureAwait (false);
 				// The root page of your application
-				MainPage = new Splash ();
-		
+			//	MainPage = new Splash ();
+			MainPage = new HomePage ();
+
 		}
 
 		//deprecated

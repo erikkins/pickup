@@ -7,6 +7,7 @@ using System.Linq;
 using Foundation;
 using System.Collections.Generic;
 using System.Collections;
+using PickUpApp;
 
 [assembly: Xamarin.Forms.Dependency (typeof(iOSAddressBook))]
 namespace PickUpApp.iOS
@@ -18,7 +19,7 @@ namespace PickUpApp.iOS
 	
 		}
 
-		public async Task<List<LocalContact>> testIt ()
+		public async Task<List<LocalContact>> loadContacts ()
 		{
 			List<LocalContact> myContacts = new List<LocalContact> ();
 			NSError err;

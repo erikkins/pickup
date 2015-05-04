@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="Location" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" x:Class="PickUpApp.PlaceSearch">
+	<ContentPage.Content>
+<StackLayout>
+<SearchBar x:Name="searchBar" Placeholder="Search Address"></SearchBar>
+<RelativeLayout Opacity="0.9" x:Name="LayoutRel" IsVisible="false"> 
+	<ListView x:Name="lstSearch" IsVisible="false" HeightRequest="200" RowHeight="100" Opacity="0.9" ItemsSource="{Binding Places}">
+		<ListView.ItemTemplate>
+			<DataTemplate>
+				<ViewCell Height="100">
+					<ViewCell.View>
+						<StackLayout Orientation="Vertical">
+						<Label Text="{Binding Name}" HorizontalOptions="StartAndExpand"  />
+						<Label Font="Small" Text="{Binding Address}" HorizontalOptions="Start" />
+						</StackLayout>
+					</ViewCell.View>
+				</ViewCell>
+			</DataTemplate>
+		</ListView.ItemTemplate>
+	</ListView>
+</RelativeLayout>
+	<maps:Map WidthRequest="320" HeightRequest="200"
+            x:Name="map"
+            IsShowingUser="true" 
+            MapType="Street"
+        />
+<StackLayout Orientation="Horizontal">
+        <Button x:Name="btnCancel" Text="Cancel" HorizontalOptions="StartAndExpand"></Button>
+        <Button x:Name="btnSave" Text="Save" HorizontalOptions="End"></Button>
+         
+        </StackLayout>
+</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

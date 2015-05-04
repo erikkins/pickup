@@ -65,12 +65,23 @@ namespace PickUpApp
 
 			btnPic.Clicked += async delegate {
 				string filepath = "";
+
+				//ok, since we're storing the filename as the kid.id guid, we need to make sure there is one
+				//otherwise, make it up.
+				string photoid = ViewModel.CurrentKid.Id.ToLower();
+				if (string.IsNullOrEmpty(photoid))
+				{
+					photoid = Guid.NewGuid().ToString().ToLower();
+					//I guess we should just set it
+					ViewModel.CurrentKid.Id = photoid;
+				}
+
 				if (Media.Plugin.CrossMedia.Current.IsCameraAvailable) {
 
 					var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
 						{ 
 							Directory = "MyKidPics",
-							Name = ViewModel.CurrentKid.Firstname + ".jpg",
+							Name = photoid + ".jpg",
 
 						});
 					filepath = file.Path;	
@@ -91,10 +102,11 @@ namespace PickUpApp
 						bytes = dep.ResizeImage(bytes, 300,300, file.Path);
 
 						//upload it!
+
 						await AzureBlobAccess.addContainerIfNotExists_async(App.myAccount.id);
-						await AzureBlobAccess.uploadToBlobStorage_async(bytes, ViewModel.CurrentKid.Firstname.ToLower() + ".jpg", App.myAccount.id.ToLower());
+						await AzureBlobAccess.uploadToBlobStorage_async(bytes, photoid + ".jpg", App.myAccount.id.ToLower());
 						//ok, let's create the photo URL
-						ViewModel.CurrentKid.PhotoURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + ViewModel.CurrentKid.Firstname.ToLower() + ".jpg";
+						ViewModel.CurrentKid.PhotoURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + photoid + ".jpg";
 						await ViewModel.ExecuteAddEditCommand();
 					}
 				}

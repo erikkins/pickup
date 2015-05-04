@@ -40,7 +40,9 @@ namespace PickUpApp
 				{
 					System.Diagnostics.Debug.WriteLine("POPSUXINV:" + ex.Message + ex.StackTrace);
 				}
-				MessagingCenter.Send<string>("Invite", "NeedsRefresh");
+
+				//really the response from the server should kick off the refresh, so not here, but in the modals.
+				//MessagingCenter.Send<string>("Invite", "NeedsRefresh");
 
 			});
 

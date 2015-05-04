@@ -89,6 +89,12 @@ namespace PickUpApp
 			}
 		}
 
+		private string _LocationMessage;
+		[JsonProperty(PropertyName = "locationmessage")]
+		public string LocationMessage { get{return _LocationMessage; } set{if (value != _LocationMessage) {
+					_LocationMessage = value; NotifyPropertyChanged ();
+				} } }
+
 		private DateTime _AtWhenEnd;
 		[JsonProperty(PropertyName = "atwhenend")]
 		public DateTime AtWhenEnd { get{ return _AtWhenEnd; } set

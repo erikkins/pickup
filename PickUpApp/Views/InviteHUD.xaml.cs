@@ -36,7 +36,15 @@ namespace PickUpApp
 			tv.HasUnevenRows = true;
 			TableSection ts = new TableSection ();
 			ts.Add (new TrafficTickerCell ());
-			ts.Add (new ActivityCell (ViewModel.ThisInvite.Kids));
+			ts.Add (new ActivityCell (ViewModel.ThisInvite.Kids, ViewModel.ThisInvite.AccountID));
+
+			if (!string.IsNullOrEmpty (ViewModel.ThisInvite.LocationMessage)) {
+				TextCell tc = new TextCell ();
+				tc.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
+				tc.Text = ViewModel.ThisInvite.LocationMessage;
+				ts.Add (tc);
+			}
+
 			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude);
 			ts.Add (mc);
 		
@@ -45,6 +53,7 @@ namespace PickUpApp
 			};
 
 			ImageCell messageCell = new ImageCell ();
+			messageCell.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
 			messageCell.Text = "Send a message to " + _thisInviteInfo.Requestor;
 			messageCell.ImageSource = "appbarmessage.png";
 			messageCell.Height = 55;
@@ -53,6 +62,7 @@ namespace PickUpApp
 			if (_thisInviteInfo.RequestorPhone != null) {
 
 				ImageCell phoneCell = new ImageCell ();
+				phoneCell.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
 				phoneCell.Text = "Call " + _thisInviteInfo.Requestor;
 				phoneCell.ImageSource = "appbarphone.png";
 
@@ -79,6 +89,7 @@ namespace PickUpApp
 			ImageCell yelpCell = new ImageCell ();
 			yelpCell.Text = "What to do?";
 			yelpCell.Height = 55;
+			yelpCell.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
 			yelpCell.ImageSource = "appbarsocialyelp.png"; //ImageSource.FromUri(new Uri("https://s3-media1.fl.yelpcdn.com/assets/2/www/img/55e2efe681ed/developers/yelp_logo_50x25.png"));
 			yelpCell.Tapped += async delegate(object sender, EventArgs e) {
 				//ok, pop the popover!
@@ -222,14 +233,16 @@ namespace PickUpApp
 		{
 			_latitude = latitude;
 			_longitude = longitude;
+
 		}
+
+
 
 		public void Navigate()
 		{
-
-			//MEGA KLUDGE FOR ANDROID!
+			//MEGA KLUDGE FOR ANDROID! Map somehow loads twice...correctly, then Africa.  Gotta load it again!
 			#if __ANDROID__
-			Device.StartTimer(new TimeSpan(0, 0, 1), () => {
+			Device.StartTimer(new TimeSpan(0, 0, 2), () => {
 
 				Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (_latitude, _longitude);
 
@@ -309,10 +322,12 @@ namespace PickUpApp
 	public class ActivityCell: ViewCell
 	{
 		private string _kids;
+		private string _accountID;
 
-		public ActivityCell (string Kids)
+		public ActivityCell (string Kids, string AccountID)
 		{
 			_kids = Kids;
+			_accountID = AccountID;
 		}
 		protected override void OnBindingContextChanged()
 		{
@@ -338,7 +353,15 @@ namespace PickUpApp
 				var uis = new UriImageSource ();
 				uis.CacheValidity = new TimeSpan (0, 5, 0);
 				uis.CachingEnabled = true;
-				string azureURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower () + "/" + k.Trim ().ToLower () + ".jpg";
+
+				//ok the new kid is name|id so we need to parse that bad bear
+				string[] kidparts = k.Split('|');
+				string kidname = kidparts [0];
+				string kidid = kidparts [1].ToLower();
+
+				//wow, this cannot by MY account number..it's got to be the Invitor's account id
+				//string azureURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower () + "/" + k.Trim ().ToLower () + ".jpg";
+				string azureURL = AzureStorageConstants.BlobEndPoint + _accountID.ToLower() + "/" + kidid.Trim ().ToLower () + ".jpg";
 				uis.Uri = new Uri (azureURL);
 
 				ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
@@ -360,7 +383,7 @@ namespace PickUpApp
 				Label namelabel = new Label ();
 				namelabel.HorizontalOptions = LayoutOptions.Center;
 				//namelabel.SetBinding (Label.TextProperty, "Kids");
-				namelabel.Text = k;
+				namelabel.Text = kidname;
 				slThis.Children.Add (namelabel);
 				slKids.Children.Add (slThis);
 			}
@@ -384,6 +407,13 @@ namespace PickUpApp
 			activityLabel.HorizontalOptions = LayoutOptions.CenterAndExpand;
 			activityLabel.VerticalOptions = LayoutOptions.Center;
 			slFull.Children.Add (activityLabel);
+
+//			Label locationMessageLabel = new Label ();
+//			activityLabel.FontSize = 14;
+//			activityLabel.SetBinding (Label.TextProperty, "ThisInvite.LocationMessage");
+//			activityLabel.HorizontalOptions = LayoutOptions.CenterAndExpand;
+//			activityLabel.VerticalOptions = LayoutOptions.End;
+//			slFull.Children.Add (locationMessageLabel);
 
 			View = slFull;
 		}
@@ -425,6 +455,9 @@ namespace PickUpApp
 			startlabel.FontSize = 32;
 			//startlabel.Text = "26";
 			sl.Children.Add (startlabel);
+
+			ActivityIndicator trafficLoading = new ActivityIndicator ();
+			trafficLoading.SetBinding (ActivityIndicator.IsRunningProperty, "LocationUpdating");
 
 			Label trafficMinutesLabel = new Label ();
 			trafficMinutesLabel.Text = "traffic\nminutes";

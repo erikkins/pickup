@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="My Places" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MyPlaces">
+<ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness">
+      <OnPlatform.iOS>0, 20, 0, 0</OnPlatform.iOS>
+    </OnPlatform>
+  </ContentPage.Padding>
+	<ContentPage.Content>
+<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<ListView x:Name="lstPlaces" ItemsSource="{Binding MyPlaces}">
+	<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.ContextActions>
+							<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+               					Text="Delete" IsDestructive="True" />
+						</ViewCell.ContextActions>
+						<ViewCell.View>
+							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+								<Label Text="{Binding Placename}" HorizontalOptions="Start"  />
+								<Label Text="{Binding Address}" HorizontalOptions="Fill" />
+							</StackLayout>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+	</ListView.ItemTemplate>
+	</ListView>
+	<Button x:Name="btnAdd" Text="Add Place"></Button>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

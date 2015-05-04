@@ -5,6 +5,7 @@ using Xamarin.Contacts;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using PickUpApp;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidAddressBook))]
 
@@ -13,7 +14,7 @@ namespace PickUpApp.droid
 	public class AndroidAddressBook:iAddressBook
 	{
 
-		public async Task<List<LocalContact>> testIt ()
+		public async Task<List<LocalContact>> loadContacts ()
 		{
 		
 			List<LocalContact> myContacts = new List<LocalContact> ();

@@ -39,7 +39,19 @@ namespace PickUpApp
 				var inviteInfo = await client.InvokeApiAsync<Invite, List<InviteInfo>>("getinviteinfo", _currentInvite);
 				if (inviteInfo.Count > 0)
 				{
-					CurrentInviteInfo = inviteInfo[0];
+					//atleast right now, we don't need the pipe-delimited kids variable, so we need to fix that
+					InviteInfo interimInfo = inviteInfo[0];
+					string[] kiddos = interimInfo.Kids.Split(',');
+					string newkids = "";
+					foreach (string k in kiddos)
+					{
+						string[] parts = k.Split('|');
+						newkids += parts[0] + ",";
+					}
+					newkids.Remove(newkids.Length -1);
+					interimInfo.Kids = newkids;
+
+					CurrentInviteInfo = interimInfo;
 				}
 				MessagingCenter.Send<InviteInfo>(CurrentInviteInfo, "inviteinfoloaded");
 

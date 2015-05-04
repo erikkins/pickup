@@ -17,6 +17,7 @@
 		</ScrollView>
 
 		<StackLayout VerticalOptions="End" Orientation="Vertical">
+			<Picker Title="Choose dropoff location" x:Name="placePicker" ></Picker>
 			<Label Text="Instructions:"></Label>
 			<Editor Text="{Binding Note}" MinimumHeightRequest="60" HeightRequest="90" BackgroundColor="Silver"></Editor>
 			<Button x:Name="btnCancel" HorizontalOptions="Start" Text="Cancel"></Button>

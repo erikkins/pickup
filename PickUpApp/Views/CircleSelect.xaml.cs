@@ -17,6 +17,13 @@ namespace PickUpApp
 
 			this.ViewModel = new CircleSelectViewModel (_selectedSchedule, App.client);
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+
+			placePicker.Items.Clear ();
+			foreach (AccountPlace ap in App.myPlaces)
+			{
+				placePicker.Items.Add (ap.PlaceName);
+			}
+
 			btnCancel.Clicked += (object sender, EventArgs e) => 
 			{
 				lstCircle.SelectedItem = null;

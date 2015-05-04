@@ -124,8 +124,8 @@ namespace PickUpApp.droid
 
 						//issue with MessagingCenter that needs to enum the subscriptions, so give it a breath.
 						//Device.BeginInvokeOnMainThread(()=>{
-						await System.Threading.Tasks.Task.Delay(25);
-						MessagingCenter.Unsubscribe<Account>(this, "loaded");
+						//await System.Threading.Tasks.Task.Delay(25);
+						//MessagingCenter.Unsubscribe<Account>(this, "loaded");
 						//});
 
 					} catch (Exception ex) {

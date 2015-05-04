@@ -28,6 +28,13 @@ namespace PickUpApp
 			set{ _trafficTime = value; NotifyPropertyChanged ();}
 		}
 
+		public bool LocationUpdating
+		{
+			get{
+				return App.IsUpdatingPosition;
+			}
+		}
+
 		private InviteInfo _thisInvite;
 		public InviteInfo ThisInvite
 		{
@@ -73,8 +80,12 @@ namespace PickUpApp
 		}
 		public async Task UpdateTraffic()
 		{
-			
-			await App.GetPosition();
+			//only get location if we don't already have it
+			//TODO: determine if there's a lag between where we really are and where we think we are.
+			if (string.IsNullOrEmpty (App.PositionLatitude)) {
+				await App.GetPosition ();
+			}
+
 			App.IsUpdatingPosition = true;
 			try{
 			PortableRest.RestRequest req = new PortableRest.RestRequest ("Routes", System.Net.Http.HttpMethod.Get);

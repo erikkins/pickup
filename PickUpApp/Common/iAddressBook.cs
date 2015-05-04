@@ -6,7 +6,7 @@ namespace PickUpApp
 {
 	public interface iAddressBook
 	{
-		Task<List<LocalContact>> testIt();
+		Task<List<LocalContact>> loadContacts();
 		//void launch();
 	}
 }

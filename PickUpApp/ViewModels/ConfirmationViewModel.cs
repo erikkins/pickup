@@ -12,11 +12,17 @@ namespace PickUpApp
 	{
 		private Invite _currentInvite { get; set; }
 
-		private InviteInfo _currentInviteInfo;
-		public InviteInfo CurrentInviteInfo { 
-			get{return _currentInviteInfo; }
+		private InviteInfo _thisInvite;
+		public InviteInfo ThisInvite
+		{
+			get{
+				return _thisInvite;
+			}
 			set{
-				_currentInviteInfo = value; NotifyPropertyChanged ();
+				if (value != _thisInvite) {
+					_thisInvite = value;
+					NotifyPropertyChanged ();
+				}
 			}
 		}
 		public ConfirmationViewModel ()
@@ -26,7 +32,7 @@ namespace PickUpApp
 		{
 			this.client = client;
 			_currentInvite = invite;
-			CurrentInviteInfo = new InviteInfo ();
+			ThisInvite = new InviteInfo ();
 			LoadItemsCommand.Execute (null);
 		}
 
@@ -39,11 +45,12 @@ namespace PickUpApp
 				var inviteInfo = await client.InvokeApiAsync<Invite, List<InviteInfo>>("getinviteinfo", _currentInvite);
 				if (inviteInfo.Count > 0)
 				{
-					CurrentInviteInfo = inviteInfo[0];
+					ThisInvite = inviteInfo[0];
 				}
 
-
-				MessagingCenter.Send<InviteInfo>(CurrentInviteInfo, "confirmationloaded");
+				Device.BeginInvokeOnMainThread(()=>{
+				MessagingCenter.Send<InviteInfo>(ThisInvite, "confirmationloaded");
+				});
 				
 
 			}

@@ -65,7 +65,7 @@ namespace PickUpApp
 			IsLoading = true;
 			try
 			{
-				var contacts = await DependencyService.Get<iAddressBook> ().testIt ();
+				var contacts = await DependencyService.Get<iAddressBook> ().loadContacts ();
 				Contacts.Clear();
 				foreach (var c in contacts)
 				{

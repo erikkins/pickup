@@ -17,7 +17,7 @@ namespace PickUpApp.droid
 			//Control.Focusable = false;
 			//Control.Clickable = true;
 			Control.Focusable = false;
-			e.NewElement.Unfocus ();
+			//e.NewElement.Unfocus ();
 			//((ViewCell)Control.Parent).View.ShouldBeMadeClickable ();
 			//Control.Click += Control_Click;
 			//((ListView)Control.Parent).

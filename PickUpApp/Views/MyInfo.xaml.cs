@@ -15,6 +15,10 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 
+			btnManagePlaces.Clicked += async delegate(object sender, EventArgs e) {
+				Navigation.PushModalAsync(new MyPlaces());
+			};
+
 			ImageCircle.Forms.Plugin.Abstractions.CircleImage myImage = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
 				BorderThickness = 1,

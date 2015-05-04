@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using PickUpApp.droid;
 using Xamarin.Auth;
 using Newtonsoft.Json.Linq;
+using PickUpApp;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidLoginClient))]
 

@@ -11,6 +11,8 @@ x:Class="PickUpApp.Schedule1">
 	<Entry Placeholder="Activity Name" Text="{Binding CurrentSchedule.Activity}"></Entry>
 	<Entry Placeholder="Location Name" Text="{Binding CurrentSchedule.Location}"></Entry>
 	<Label x:Name="lblAddress" MinimumHeightRequest="30" Font="Large" Text="{Binding CurrentSchedule.Address}"></Label>
+	<Label Text="Location-specific message: "></Label>
+	<Entry Text="{Binding CurrentSchedule.LocationMessage}" MinimumHeightRequest="40"></Entry>
 	<ListView ItemsSource="{Binding Kids}">
 		<ListView.ItemTemplate>
 				<DataTemplate>

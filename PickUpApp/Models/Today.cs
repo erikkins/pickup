@@ -120,7 +120,13 @@ namespace PickUpApp
 		public string Location { get{return _Location; } set{if (value != _Location) {
 					_Location = value; NotifyPropertyChanged ();
 				} } }
-
+		
+		private string _LocationMessage;
+		[JsonProperty(PropertyName = "locationmessage")]
+		public string LocationMessage { get{return _LocationMessage; } set{if (value != _LocationMessage) {
+					_LocationMessage = value; NotifyPropertyChanged ();
+				} } }
+		
 		private string _UserId;
 		[JsonProperty(PropertyName = "userId")]
 		public string UserId { get{return _UserId; } set{if (value != _UserId) {
@@ -157,6 +163,20 @@ namespace PickUpApp
 			}
 		}
 
+
+		private string _AccountID;
+		[JsonProperty(PropertyName="accountid")]
+		public string AccountID
+		{ 
+			get{ return _AccountID; }
+			set
+			{
+				if (value != _AccountID) {
+					_AccountID = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
 		private string _Requestor;
 		[JsonProperty(PropertyName = "requestor")]
 		public string Requestor { get{ return _Requestor; } set{if (value != _Requestor) {

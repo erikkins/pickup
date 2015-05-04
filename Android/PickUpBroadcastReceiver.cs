@@ -107,8 +107,8 @@ namespace PickUpApp.droid
 
 						//issue with MessagingCenter that needs to enum the subscriptions, so give it a breath.
 						//Device.BeginInvokeOnMainThread(()=>{
-							await System.Threading.Tasks.Task.Delay(25);
-							MessagingCenter.Unsubscribe<Account>(this, "loaded");
+							//await System.Threading.Tasks.Task.Delay(25);
+							//MessagingCenter.Unsubscribe<Account>(this, "loaded");
 						//});
 
 					} catch (Exception ex) {
@@ -174,6 +174,8 @@ namespace PickUpApp.droid
 				return;
 			}
 
+			bool launchFromNotification = true;
+
 			//I'm getting an invite
 			if (intent.Extras.ContainsKey ("invite") && !string.IsNullOrEmpty(intent.Extras.GetString("invite"))) {
 				Invite i = new Invite ();
@@ -190,25 +192,35 @@ namespace PickUpApp.droid
 			if (intent.Extras.ContainsKey ("accepted")&& !string.IsNullOrEmpty(intent.Extras.GetString("accepted"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("accepted");
-				MessagingCenter.Send <Invite>(i, "accepted");
+				launchFromNotification = false;
+				Device.BeginInvokeOnMainThread (() => {
+					MessagingCenter.Send <Invite> (i, "accepted");
+				});
 			}
 			//nobody has accepted my invite
 			if (intent.Extras.ContainsKey ("nobody")&& !string.IsNullOrEmpty(intent.Extras.GetString("nobody"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("nobody");
-				MessagingCenter.Send <Invite>(i, "nobody");
+				Device.BeginInvokeOnMainThread (() => {
+					MessagingCenter.Send <Invite> (i, "nobody");
+				});
 			}
 			//I accepted and was the first to do so
 			if (intent.Extras.ContainsKey ("confirm")&& !string.IsNullOrEmpty(intent.Extras.GetString("confirm"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("confirm");
-				MessagingCenter.Send <Invite>(i, "confirm");
+				Device.BeginInvokeOnMainThread (() => {
+					MessagingCenter.Send <Invite> (i, "confirm");
+				});
 			}
 			//I accepted and was NOT the first, so I'm off the hook
 			if (intent.Extras.ContainsKey ("notfirst")&& !string.IsNullOrEmpty(intent.Extras.GetString("notfirst"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("notfirst");
-				MessagingCenter.Send <Invite>(i, "notfirst");
+				launchFromNotification = false;
+				Device.BeginInvokeOnMainThread (() => {
+					MessagingCenter.Send <Invite> (i, "notfirst");
+				});
 			}
 			//requestor canceled...I'm off the hoook
 			if (intent.Extras.ContainsKey ("cancel")&& !string.IsNullOrEmpty(intent.Extras.GetString("cancel"))) {
@@ -220,13 +232,13 @@ namespace PickUpApp.droid
 			string messageText = intent.Extras.GetString("alert");
 			if (!string.IsNullOrEmpty(messageText))
 			{
-				createNotification("Pickup!", messageText);
+				createNotification("Pickup!", messageText, launchFromNotification);
 				return;
 			}
 
 			//createNotification("Unknown message details", msg.ToString());
 		}
-		void createNotification(string title, string desc)
+		void createNotification(string title, string desc, bool launchFromNotification = true)
 		{
 			//Create notification
 			var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
@@ -243,9 +255,11 @@ namespace PickUpApp.droid
 			//Set the notification info
 			//we use the pending intent, passing our ui intent over which will get called
 			//when the notification is tapped.
-
-			notification.SetLatestEventInfo(this, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
-
+			if (launchFromNotification) {
+				notification.SetLatestEventInfo (this, title, desc, PendingIntent.GetActivity (this, 0, uiIntent, 0));
+			} else {
+				notification.SetLatestEventInfo (this, title, desc, null);
+			}
 			//Show the notification
 			notificationManager.Notify(1, notification);
 		}

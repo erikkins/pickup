@@ -18,10 +18,10 @@ namespace PickUpApp
 		{
 			this.client = client;
 		}
-		public KidAddEditViewModel(Kid kid) : this()
-		{
-			this.CurrentKid = kid;
-		}
+//		public KidAddEditViewModel(Kid kid) : this()
+//		{
+//			this.CurrentKid = kid;
+//		}
 		public Kid CurrentKid
 		{
 			get { return this._currentKid; }

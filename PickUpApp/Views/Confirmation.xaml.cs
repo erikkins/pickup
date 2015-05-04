@@ -12,20 +12,25 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.ViewModel = new ConfirmationViewModel (App.client, invite);
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-			//ViewModel.LoadItemsCommand.Execute (null);
 
 			MessagingCenter.Subscribe<InviteInfo> (this, "confirmationloaded", (s) => {
+				stacker.Children.Clear();
+				//until we track down WHY this was getting called a second time with a null invite
+				if (ViewModel.ThisInvite == null || ViewModel.ThisInvite.Kids == null)
+				{
+					return;
+				}
 				try{
 				TableView tv = new TableView ();
 				tv.HasUnevenRows = true;
 				TableSection ts = new TableSection ();
-				ts.Add (new ActivityCell (ViewModel.CurrentInviteInfo.Kids));
+				ts.Add (new ActivityCell (ViewModel.ThisInvite.Kids, ViewModel.ThisInvite.AccountID));
 
 
 
 				string infoString = "";
 
-				if (ViewModel.CurrentInviteInfo.Kids.IndexOf (',') > -1) {
+				if (ViewModel.ThisInvite.Kids.IndexOf (',') > -1) {
 					//more than 1 kid
 					infoString = "have ";
 				} else {
@@ -35,9 +40,9 @@ namespace PickUpApp
 
 
 				//string timeonly = string.Format("{0}:{1}", ViewModel.CurrentInviteInfo.CompleteAtWhen.ToLocalTime().Hour, ViewModel.CurrentInviteInfo.CompleteAtWhen.ToLocalTime().Minute.ToString().PadLeft(2,'0'), ViewModel.CurrentInviteInfo.CompleteAtWhen.ToLocalTime());
-				string timeampm = string.Format("{0:hh:mm tt}", ViewModel.CurrentInviteInfo.CompleteAtWhen.ToLocalTime());
+				string timeampm = string.Format("{0:hh:mm tt}", ViewModel.ThisInvite.CompleteAtWhen.ToLocalTime());
 
-				infoString += "been Picked Up from " + ViewModel.CurrentInviteInfo.Activity;// + " at " + timeampm;
+				infoString += "been Picked Up from " + ViewModel.ThisInvite.Activity;// + " at " + timeampm;
 				string timeString = "at " + timeampm;
 //				Label l = new Label ();
 //				l.Text = infoString;
@@ -46,6 +51,7 @@ namespace PickUpApp
 
 				TextCell tc = new TextCell();
 				tc.Height = 100;
+				tc.TextColor = Device.OnPlatform(Color.Black, Color.FromRgb(211,211,211), Color.Black);
 				tc.Text = infoString;
 				tc.Detail = timeString;
 				ts.Add(tc);

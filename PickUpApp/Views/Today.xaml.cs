@@ -60,9 +60,16 @@ namespace PickUpApp
 				Today today = ((Today)e.SelectedItem);
 				if (today.RowType == "schedule")
 				{
-					Schedule s = new Schedule();
-					s.id = today.id;
-					Navigation.PushModalAsync(new CircleSelect(s));
+					if (string.IsNullOrEmpty(today.ConfirmedBy))
+					{
+						Schedule s = new Schedule();
+						s.id = today.id;
+						Navigation.PushModalAsync(new CircleSelect(s));
+					}
+					else{
+						
+						Navigation.PushModalAsync(new InviteResponseView(today));
+					}
 				}
 				if (today.RowType == "invite") //should be "invite"
 				{
@@ -84,7 +91,8 @@ namespace PickUpApp
 					//i.SolvedBy missing
 					i.StartTimeTicks = today.StartTimeTicks;
 					i.Complete = false;
-
+					i.LocationMessage = today.LocationMessage;
+					i.AccountID = today.AccountID;
 
 					Navigation.PushModalAsync(new InviteHUD(i));
 				}
@@ -137,7 +145,7 @@ namespace PickUpApp
 
 		}
 
-		protected TodayViewModel ViewModel
+		public  TodayViewModel ViewModel
 		{
 			get { return this.BindingContext as TodayViewModel; }
 			set { this.BindingContext = value; }

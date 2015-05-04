@@ -206,7 +206,7 @@ namespace PickUpApp
 		public static string Account = "pickupapp";
 		public static string SharedKeyAuthorizationScheme = "SharedKey";
 		public static string BlobEndPoint = "https://pickupapp.blob.core.windows.net/";
-		public static string Key = "GVuDK09yEND22Yv5tFkn5E82aZ1bSQHIuHMpUt0mu2XcRVHkhZylsCrKQuTOtS428sTbNCLzPQnnsH8fjkmhLQ==";
+		public static string Key = "GVuDK09yEND22Yv5tFkn5E82aZ1bSQHIuHMpUt0mu2XcRVHkhZylsCrKQuTOtS428sTbNCLzPQnnsH8fjkmhLQ==";									
 		//public static string ContainerName = "yourcontainer/here/hher";
 		//public static string FileLocation = BlobEndPoint + ContainerName;
 	}

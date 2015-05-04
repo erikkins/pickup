@@ -19,6 +19,20 @@ namespace PickUpApp
 			}
 		}
 
+		private string _AccountID;
+		[JsonProperty(PropertyName="accountid")]
+		public string AccountID
+		{ 
+			get{ return _AccountID; }
+			set
+			{
+				if (value != _AccountID) {
+					_AccountID = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
+
 		private string _Requestor;
 		[JsonProperty(PropertyName = "requestor")]
 		public string Requestor { get{ return _Requestor; } set{if (value != _Requestor) {
@@ -147,6 +161,12 @@ namespace PickUpApp
 		[JsonProperty(PropertyName = "completeatwhen")]
 		public DateTime CompleteAtWhen { get{return  _CompleteAtWhen; } set{if (value != _CompleteAtWhen) {
 					_CompleteAtWhen = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _LocationMessage;
+		[JsonProperty(PropertyName = "locationmessage")]
+		public string LocationMessage { get{return _LocationMessage; } set{if (value != _LocationMessage) {
+					_LocationMessage = value; NotifyPropertyChanged ();
 				} } }
 
 	}

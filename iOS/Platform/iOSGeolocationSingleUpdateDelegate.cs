@@ -85,6 +85,11 @@ namespace Xamarin.Forms.Labs.iOS
 
 		public override bool ShouldDisplayHeadingCalibration (CLLocationManager manager)
 		{
+			//this pops up annoyingly frequently while testing...
+			#if DEBUG
+			return false;
+			#endif
+			//not sure how it will be in production!
 			return true;
 		}
 
