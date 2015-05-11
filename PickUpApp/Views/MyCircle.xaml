@@ -5,18 +5,24 @@
  x:Class="PickUpApp.MyCircle">
 	<ContentPage.Content>
 		<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-			<ListView ItemsSource="{Binding Circle}">
+			<ListView ItemsSource="{Binding Circle}" HasUnevenRows="true">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<ViewCell>
+					<ViewCell Height="55">
 						<ViewCell.ContextActions>
 							<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
                					Text="Delete" IsDestructive="True" />
 						</ViewCell.ContextActions>
 						<ViewCell.View>
-							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
-								<Label Text="{Binding Firstname}" HorizontalOptions="Start"  />
-								<Label Text="{Binding Lastname}" HorizontalOptions="Fill" />
+						<StackLayout Orientation="Vertical">
+								<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+									<Label FontAttributes="Bold" Text="{Binding Firstname}" HorizontalOptions="Start"  />
+									<Label FontAttributes="Bold" Text="{Binding Lastname}" HorizontalOptions="Fill" />
+									<Label Text="{Binding Phone}" HorizontalOptions="EndAndExpand"></Label>
+								</StackLayout>
+								<StackLayout Orientation="Horizontal">
+								<Label TextColor="Gray" Text="{Binding Email}" HorizontalOptions="StartAndExpand"></Label>
+								</StackLayout>
 							</StackLayout>
 						</ViewCell.View>
 					</ViewCell>

@@ -5,7 +5,7 @@
 			<ListView x:Name="lstContacts" ItemsSource="{Binding ContactsSorted}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Key}" GroupShortNameBinding="{Binding Key}" HasUnevenRows="true">
 				<ListView.GroupHeaderTemplate>
 					<DataTemplate>
-						<ViewCell Height="25">
+						<ViewCell>
 							<StackLayout VerticalOptions="FillAndExpand" Padding="5" BackgroundColor="#3498DB">
 								<Label Text="{Binding Key}" TextColor="White" VerticalOptions="Center" />
 							</StackLayout>
@@ -14,11 +14,14 @@
 				</ListView.GroupHeaderTemplate>
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<ViewCell>
+						<ViewCell Height="55">
 							<ViewCell.View>
-								<StackLayout Orientation="Horizontal" VerticalOptions="Center">
-									<Label Text="{Binding DisplayName}" HorizontalOptions="Start" />
-									<Label Text="{Binding Phone}" HorizontalOptions="EndAndExpand" />
+								<StackLayout Orientation="Vertical">
+									<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+										<Label FontAttributes="Bold" Text="{Binding DisplayName}" HorizontalOptions="Start" />
+										<Label Text="{Binding Phone}" HorizontalOptions="EndAndExpand" />
+									</StackLayout>
+									<Label TextColor="Gray" Text="{Binding Email}"></Label>
 								</StackLayout>
 							</ViewCell.View>
 						</ViewCell>
