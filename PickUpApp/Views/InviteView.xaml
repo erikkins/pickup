@@ -12,6 +12,9 @@
 		<Label Text="Pickup Time: "></Label><Label Text="{Binding CurrentInviteInfo.PickupDate}"></Label>
 		</StackLayout>
 		<StackLayout Orientation="Horizontal">
+		<Label Text="Dropoff Location: "></Label><Label Text="{Binding CurrentInviteInfo.ReturnTo}"></Label>
+		</StackLayout>
+		<StackLayout Orientation="Horizontal">
 		<Label Text="Address: "></Label><Label Text="{Binding CurrentInviteInfo.Address}"></Label>
 		</StackLayout>
 		<StackLayout Orientation="Horizontal">

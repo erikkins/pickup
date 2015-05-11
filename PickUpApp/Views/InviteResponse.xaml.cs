@@ -28,6 +28,7 @@ namespace PickUpApp
 			});
 		}
 		public void OnCancel (object sender, EventArgs e) {
+			ViewModel.ExecuteCancelCommand ().ConfigureAwait (false);
 			Navigation.PopModalAsync ();
 
 		}

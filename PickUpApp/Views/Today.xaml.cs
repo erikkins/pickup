@@ -94,6 +94,11 @@ namespace PickUpApp
 					i.LocationMessage = today.LocationMessage;
 					i.AccountID = today.AccountID;
 
+					i.ReturnTo = today.ReturnTo;
+					i.ReturnToAddress = today.ReturnToAddress;
+					i.ReturnToLatitude = today.ReturnToLatitude;
+					i.ReturnToLongitude = today.ReturnToLongitude;
+
 					Navigation.PushModalAsync(new InviteHUD(i));
 				}
 				lvToday.SelectedItem = null;

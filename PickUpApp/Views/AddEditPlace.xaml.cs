@@ -35,10 +35,30 @@ namespace PickUpApp
 					if (places.Count == 1)
 					{
 						//this is really it!
-						this.ViewModel.CurrentPlace.Address = places[0].Address;
+						if (places[0].Address == "United States" && places[0].Geometry.Location != null)
+						{
+							//it has latlong but not a readable address...let's just leave it how it was entered
+							this.ViewModel.CurrentPlace.Address = txtAddress.Text;
+						}
+						else
+						{
+							this.ViewModel.CurrentPlace.Address = places[0].Address;
+						}
 						this.ViewModel.CurrentPlace.Latitude = places[0].Geometry.Location.Latitude.ToString();
 						this.ViewModel.CurrentPlace.Longitude = places[0].Geometry.Location.Longitude.ToString();
 						await this.ViewModel.ExecuteAddEditCommand();
+					}
+					else{
+						if (places.Count == 0)
+						{
+							//no matches
+							await DisplayAlert("Oops", "No address could be found for " + txtAddress.Text + ". Please revise.", "OK");
+						}
+						else
+						{
+							//for now, just hope they can modify it...later we'll add a picker
+							await DisplayAlert("Oops", places.Count.ToString() + " addresses were found for " + txtAddress.Text + ". Please revise.", "OK");
+						}
 					}
 					//now deal with 0 or more than 1
 				}

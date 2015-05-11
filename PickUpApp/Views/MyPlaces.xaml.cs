@@ -13,7 +13,10 @@ namespace PickUpApp
 			this.ViewModel = new AccountPlaceViewModel (App.client);
 			lstPlaces.ItemSelected += HandleItemSelected;
 			btnAdd.Clicked += HandleClicked;
-			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+			btnCancel.Clicked += async delegate(object sender, EventArgs e) {
+				await Navigation.PopModalAsync();
+			};
+			this.Padding = new Thickness(10, Device.OnPlatform(25, 0, 0), 10, 5);
 			MessagingCenter.Subscribe<AccountPlace>(this, "PlaceAdded", (s) =>
 				{
 					Navigation.PopModalAsync();
@@ -31,7 +34,7 @@ namespace PickUpApp
 		{
 			//I guess we'd edit from here
 			if (e.SelectedItem == null) return;
-			Navigation.PushModalAsync(new AddEditKid(e.SelectedItem as Kid));
+			Navigation.PushModalAsync(new AddEditPlace(e.SelectedItem as AccountPlace));
 			lstPlaces.SelectedItem = null;
 
 		}

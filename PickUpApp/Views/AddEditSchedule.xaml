@@ -27,8 +27,8 @@
 	</TableView>
 	</StackLayout>
 	<StackLayout VerticalOptions="End" Orientation="Horizontal">
-	<Button HorizontalOptions="StartAndExpand" x:Name="btnSave" Text="Save"></Button>
-	<Button HorizontalOptions="End" x:Name="btnCancel" Text="Cancel"></Button></StackLayout>
+	<Button HorizontalOptions="StartAndExpand" x:Name="btnCancel" Text="Cancel"></Button></StackLayout>
+	<Button HorizontalOptions="End" x:Name="btnSave" Text="Save"></Button>
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

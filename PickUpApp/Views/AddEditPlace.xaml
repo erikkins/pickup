@@ -6,15 +6,15 @@
     </OnPlatform>
   </ContentPage.Padding>
 	<ContentPage.Content>
-	<StackLayout x:Name="stacker" ><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<StackLayout ><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
 		<Label Text="Place Name" HorizontalOptions="FillAndExpand" />
 			<Entry Text="{Binding CurrentPlace.PlaceName}" WidthRequest="400" HorizontalOptions="FillAndExpand" />
 			<Label Text="Address" HorizontalOptions="FillAndExpand" />
 			<Entry x:Name="txtAddress" Text="{Binding CurrentPlace.Address}" WidthRequest="400" HorizontalOptions="FillAndExpand" />
 
 			<StackLayout Orientation="Horizontal">
-			<Button HorizontalOptions="StartAndExpand" x:Name="btnSave"  Text="Save" />
-			<Button HorizontalOptions="End" x:Name="btnCancel"  Text="Cancel" />
+			<Button HorizontalOptions="StartAndExpand" x:Name="btnCancel"  Text="Cancel" />
+			<Button HorizontalOptions="End" x:Name="btnSave"  Text="Save" />
 			</StackLayout>
 
 		

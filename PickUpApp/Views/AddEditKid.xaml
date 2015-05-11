@@ -23,8 +23,8 @@ x:Class="PickUpApp.AddEditKid">
 			<Label Text="Allergies" HorizontalOptions="FillAndExpand" />
 			<Entry Placeholder="No Known Allergies" Text="{Binding CurrentKid.Allergies}" WidthRequest="400" HorizontalOptions="FillAndExpand"></Entry>
 			<StackLayout Orientation="Horizontal">
-			<Button HorizontalOptions="StartAndExpand" x:Name="btnSave"  Text="Save" />
-			<Button HorizontalOptions="End" x:Name="btnCancel"  Text="Cancel" />
+			<Button HorizontalOptions="StartAndExpand" x:Name="btnCancel"  Text="Cancel" />
+			<Button HorizontalOptions="End" x:Name="btnSave"  Text="Save" />
 			</StackLayout>
 
 			<Button Text="Pic" x:Name="btnPic"></Button>

@@ -36,10 +36,11 @@ namespace PickUpApp
 			tv.HasUnevenRows = true;
 			TableSection ts = new TableSection ();
 			ts.Add (new TrafficTickerCell ());
-			ts.Add (new ActivityCell (ViewModel.ThisInvite.Kids, ViewModel.ThisInvite.AccountID));
+			ActivityCell ac = new ActivityCell (ViewModel.ThisInvite.Kids, ViewModel.ThisInvite.AccountID);
+			ts.Add (ac);
 
+			TextCell tc = new TextCell ();
 			if (!string.IsNullOrEmpty (ViewModel.ThisInvite.LocationMessage)) {
-				TextCell tc = new TextCell ();
 				tc.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
 				tc.Text = ViewModel.ThisInvite.LocationMessage;
 				ts.Add (tc);
@@ -48,9 +49,18 @@ namespace PickUpApp
 			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude);
 			ts.Add (mc);
 		
-			mc.Tapped += async delegate(object sender, EventArgs e) {
-				await Navigation.PushModalAsync(new TurnByTurnView(ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude, ViewModel.Itineraries));
-			};
+			mc.Tapped += Mc_Tapped;
+//			mc.Tapped += async delegate(object sender, EventArgs e) {
+//
+//				Location loc = new Location();
+//				loc.FullAddress = ViewModel.ThisInvite.Address;
+//				loc.Latitude = ViewModel.ThisInvite.Latitude;
+//				loc.Longitude = ViewModel.ThisInvite.Longitude;
+//				loc.Name = ViewModel.ThisInvite.Activity;
+//				LaunchMapApp(loc);
+//					
+//				//await Navigation.PushModalAsync(new TurnByTurnView(ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude, ViewModel.Itineraries));
+//			};
 
 			ImageCell messageCell = new ImageCell ();
 			messageCell.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
@@ -87,7 +97,7 @@ namespace PickUpApp
 			}
 
 			ImageCell yelpCell = new ImageCell ();
-			yelpCell.Text = "What to do?";
+			yelpCell.Text = "What to do after pickup?";
 			yelpCell.Height = 55;
 			yelpCell.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
 			yelpCell.ImageSource = "appbarsocialyelp.png"; //ImageSource.FromUri(new Uri("https://s3-media1.fl.yelpcdn.com/assets/2/www/img/55e2efe681ed/developers/yelp_logo_50x25.png"));
@@ -115,19 +125,7 @@ namespace PickUpApp
 
 			//stacker.Children.Add (lv);
 
-			MessagingCenter.Subscribe<Invite> (this, "Completed", async(s) => {
-				
-				//also need to reload Today
-				try{
-					await Navigation.PopModalAsync();
-				}
-				catch(Exception ex)
-				{
-					System.Diagnostics.Debug.WriteLine("POP SUX:" + ex.Message + ex.StackTrace);
-				}
-				MessagingCenter.Send<string>("InviteHud", "NeedsRefresh");
 
-			});
 
 			Button btnCancel = new Button ();
 			btnCancel.Text = "Close";
@@ -152,6 +150,9 @@ namespace PickUpApp
 
 				await ViewModel.ExecuteAddEditCommand();
 
+				//well, they've been picked up, but now we've gotta get them home!
+
+
 				//await Navigation.PopModalAsync();
 			};
 
@@ -164,11 +165,66 @@ namespace PickUpApp
 
 			stacker.Children.Add (slHoriz);
 
+
+			MessagingCenter.Subscribe<Invite> (this, "Completed", async(s) => {
+
+
+				//actually this only means we've picked them up...still need to return them home!
+				ViewModel.OnReturn = true;
+				ac = new ActivityCell (ViewModel.ThisInvite.Kids, ViewModel.ThisInvite.AccountID);
+				//somehow need to refresh the ActivityCell
+				ac.BindingContext = this.BindingContext;
+
+				await ViewModel.UpdateTraffic();
+				mc = new MapCell(ViewModel.ThisInvite.ReturnToLatitude, ViewModel.ThisInvite.ReturnToLongitude);
+				mc.BindingContext = this.BindingContext;
+				//do we have to remove the old async delegate?
+				//mc.Tapped -= Mc_Tapped;
+
+
+
+				//tc pertains to location text on the way THERE
+				tc.Text = "";
+				//do we have to remote the old async delegate?
+				yelpCell.Tapped += async delegate(object sender, EventArgs e) {
+					//ok, pop the popover!
+					await Navigation.PushModalAsync(new YelpView(_thisInviteInfo.ReturnToLatitude, _thisInviteInfo.ReturnToLongitude));
+				};
+
+				btnGotIt.Text = "Done";
+
+
+				//				try{
+				//					await Navigation.PopModalAsync();
+				//				}
+				//				catch(Exception ex)
+				//				{
+				//					System.Diagnostics.Debug.WriteLine("POP SUX:" + ex.Message + ex.StackTrace);
+				//				}
+				//				MessagingCenter.Send<string>("InviteHud", "NeedsRefresh");
+
+			});
+
+			MessagingCenter.Subscribe<Invite> (this, "Returned", async(sim) => {
+				try{
+					await Navigation.PopModalAsync();
+				}
+				catch(Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine("POP SUX:" + ex.Message + ex.StackTrace);
+				}
+				MessagingCenter.Send<string>("InviteHud", "NeedsRefresh");
+			});
+
 			//let's see if we can yelp it up
 			//ViewModel.LoadItemsCommand.Execute (null);
 
 
 			Device.StartTimer (new TimeSpan (0, 0, 10), () => {
+				if (ViewModel.OnReturn)
+				{
+					return false;
+				}
 				if (!ViewModel.IsLoading)
 				{
 					ViewModel.UpdateTrafficCommand.Execute(null);
@@ -177,6 +233,11 @@ namespace PickUpApp
 			});
 
 			Device.StartTimer (new TimeSpan (0, 0, 1), () => {
+				if (ViewModel.OnReturn)
+				{
+					ViewModel.Countdown = "0:00";
+					return false;
+				}
 				//Issue is that the endtime isn't adjusting for UTC
 				DateTime endtime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 				DateTime now = DateTime.Now;
@@ -194,10 +255,40 @@ namespace PickUpApp
 				return true;
 			});
 		}
+
+		void Mc_Tapped (object sender, EventArgs e)
+		{
+			Location loc = new Location();
+			loc.FullAddress = ViewModel.ThisInvite.Address;
+			loc.Latitude = ViewModel.ThisInvite.Latitude.ToString();
+			loc.Longitude = ViewModel.ThisInvite.Longitude.ToString();
+			loc.Name = ViewModel.ThisInvite.Address;
+			LaunchMapApp(loc);
+		}
 		protected InviteHUDViewModel ViewModel
 		{
 			get { return this.BindingContext as InviteHUDViewModel; }
 			set { this.BindingContext = value; }
+		}
+
+		public void LaunchMapApp(Location loc) {
+			// Windows Phone doesn't like ampersands in the names and the normal URI escaping doesn't help
+			var name = loc.Name.Replace("&", "and"); // var name = Uri.EscapeUriString(place.Name);
+			var location = string.Format("{0},{1}",loc.Latitude, loc.Longitude);
+			var addr = Uri.EscapeUriString(loc.FullAddress);
+
+			var request = Device.OnPlatform(
+				// iOS doesn't like %s or spaces in their URLs, so manually replace spaces with +s
+				string.Format("http://maps.apple.com/maps?q={0}&sll={1}", name.Replace(' ', '+'), location),
+
+				// pass the address to Android if we have it
+				string.Format("geo:0,0?q={0}({1})", string.IsNullOrWhiteSpace(addr) ? location : addr, name),
+
+				// WinPhone
+				string.Format("bingmaps:?cp={0}&q={1}", location, name)
+			);
+
+			Device.OpenUri(new Uri(request));
 		}
 	}
 
