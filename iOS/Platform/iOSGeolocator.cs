@@ -21,7 +21,8 @@ using System.Threading;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
-using Xamarin.Forms.Labs.Services.Geolocation;
+//using Xamarin.Forms.Labs.Services.Geolocation;
+using XLabs.Platform.Services.Geolocation;
 using ObjCRuntime;
 
 [assembly: Dependency(typeof(Xamarin.Forms.Labs.iOS.Services.Geolocation.Geolocator))]

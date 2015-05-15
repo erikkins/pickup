@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using Xamarin.Forms.Labs;
+//using Xamarin.Forms.Labs;
+using XLabs.Forms;
 using System.Threading.Tasks;
 
 namespace PickUpApp

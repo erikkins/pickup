@@ -8,16 +8,21 @@ using UIKit;
 using Xamarin.Forms;
 using Microsoft.WindowsAzure.MobileServices;
 using WindowsAzure.Messaging;
-using Xamarin.Forms.Labs;
-using Xamarin.Forms.Labs.iOS;
-using Xamarin.Forms.Labs.Services;
+//using Xamarin.Forms.Labs;
+//using Xamarin.Forms.Labs.iOS;
+using XLabs.Forms;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services.Media;
+using XLabs.Ioc;
+using XLabs.Platform.Services;
+
+//using Xamarin.Forms.Labs.Services;
 
 namespace PickUpApp.iOS
 {
 
 	[Register ("AppDelegate")]
-	public partial class AppDelegate : 
-	global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate // superclass new in 1.3
+	public partial class AppDelegate : XFormsApplicationDelegate // superclass new in 1.3 (was global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate)
 	{
 		//UIWindow window;
 		//public static UIKit.UIViewController  MainView;

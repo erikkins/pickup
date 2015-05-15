@@ -13,7 +13,30 @@ namespace PickUpApp
 {
 	public class InviteHUDViewModel:BaseViewModel
 	{
-		
+		private bool _onReturn;
+		public bool OnReturn
+		{
+			get
+			{
+				return _onReturn;
+			}
+			set
+			{
+				_onReturn = value;
+
+				if (_onReturn == true) {
+					//kludge...
+					ThisInvite.Address = ThisInvite.ReturnToAddress;
+					ThisInvite.Location = ThisInvite.ReturnTo;
+					ThisInvite.Activity = ThisInvite.ReturnTo;
+					ThisInvite.Latitude = ThisInvite.ReturnToLatitude;
+					ThisInvite.Longitude = ThisInvite.ReturnToLongitude;
+					//need we do the latlong?
+				}
+
+				NotifyPropertyChanged ();
+			}
+		}
 
 		private string _countdown;
 		public string Countdown
@@ -90,7 +113,14 @@ namespace PickUpApp
 			try{
 			PortableRest.RestRequest req = new PortableRest.RestRequest ("Routes", System.Net.Http.HttpMethod.Get);
 			req.AddQueryString ("wp.0", App.PositionLatitude + "," + App.PositionLongitude);
+			if (_onReturn)
+			{
+			req.AddQueryString ("wp.1", _thisInvite.ReturnToLatitude + "," + _thisInvite.ReturnToLongitude);
+			}
+			else
+			{
 			req.AddQueryString ("wp.1", _thisInvite.Latitude + "," + _thisInvite.Longitude);
+			}
 			req.AddQueryString ("du", "mi");
 			req.AddQueryString ("avoid", "minimizeTolls");
 			req.AddQueryString ("key", "AqXf-x5KdOluBQB35EjKT3owEzBLbfUqetvc0rPZ7xAbW_EKMsZ0RB0IYWkypdwH");
@@ -196,6 +226,15 @@ namespace PickUpApp
 
 		public override async Task ExecuteAddEditCommand ()
 		{
+			if (_onReturn) {
+				Invite i = new Invite()
+				{
+					Id = _thisInvite.Id
+				};
+				MessagingCenter.Send<Invite> (i, "Returned");
+				return;
+			}
+
 			if (IsLoading) return;
 			IsLoading = true;
 

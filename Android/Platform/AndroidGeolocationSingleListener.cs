@@ -20,7 +20,8 @@ using Android.Locations;
 using Android.OS;
 using System.Threading;
 using System.Collections.Generic;
-using Xamarin.Forms.Labs.Services.Geolocation;
+using XLabs.Platform.Services.Geolocation;
+//using Xamarin.Forms.Labs.Services.Geolocation;
 
 namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 {

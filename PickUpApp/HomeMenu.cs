@@ -78,6 +78,9 @@ namespace PickUpApp
 				case "My Info":
 					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new MyInfo()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
 					break;
+				case "Calendar":
+					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new CalendarTest()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
+					break;
 				}
 
 					// Show the detail page.
@@ -123,6 +126,7 @@ namespace PickUpApp
 			this.Add (new HomeMenuItem ("My Kids", "children.png"));
 			this.Add (new HomeMenuItem ("My Circle", "groups.png"));
 			this.Add (new HomeMenuItem ("My Info", "contacts.png"));
+			this.Add (new HomeMenuItem ("Calendar", "calendar.png"));
 		}
 	}
 

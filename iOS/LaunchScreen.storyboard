@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" customColorSpace="calibratedWhite" cocoaTouchSystemColor="darkTextColor"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Upliss" lineBreakMode="tailTruncation" minimumFontSize="10" id="9" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center" preferredMaxLayoutWidth="72" misplaced="YES">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="PickUp" lineBreakMode="tailTruncation" minimumFontSize="10" id="9" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center" preferredMaxLayoutWidth="72" misplaced="YES">
                                 <rect key="frame" x="152" y="257" width="72" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -49,5 +49,18 @@
     <resources>
         <image name="Default-568h.png" width="640" height="1136"/>
         <image name="car_icon.png" width="800" height="600"/>
+        <image name="messageicongraysmall.jpg" width="184" height="184"/>
+        <image name="iconphone.png" width="512" height="512"/>
+        <image name="appbarmessage.png" width="76" height="76"/>
+        <image name="appbarsocialyelp.png" width="76" height="76"/>
+        <image name="appbarphone.png" width="76" height="76"/>
+        <image name="appbarlayoutexpandright.png" width="76" height="76"/>
+        <image name="logout.png" width="32" height="32"/>
+        <image name="calendar.png" width="48" height="48"/>
+        <image name="children.png" width="48" height="48"/>
+        <image name="contacts.png" width="48" height="48"/>
+        <image name="groups.png" width="50" height="50"/>
+        <image name="sun.png" width="48" height="48"/>
+        <image name="appbarlayoutexpandrightvariant.png" width="76" height="76"/>
     </resources>
 </document>

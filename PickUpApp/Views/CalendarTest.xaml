@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+
+	x:Class="PickUpApp.CalendarTest">
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness">
+      <OnPlatform.iOS>0, 25, 0, 0</OnPlatform.iOS>
+    </OnPlatform>
+  </ContentPage.Padding>
+	<ContentPage.Content>
+	<StackLayout Orientation="Vertical" x:Name="stacker">
+
+	<ListView x:Name="lstEvents" VerticalOptions="EndAndExpand">
+	<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.View>
+							<StackLayout Orientation="Horizontal" VerticalOptions="Start">
+								<StackLayout Orientation="Vertical" HorizontalOptions="Start" VerticalOptions="End" WidthRequest="70" MinimumWidthRequest="70">
+								<Label Text="{Binding StartTime}" VerticalOptions="End" FontSize="12" HorizontalOptions="Start"  />
+								<Label TextColor="Gray" Text="{Binding EndTime}" VerticalOptions="End" FontSize="12" HorizontalOptions="Start"  />
+								</StackLayout>
+								<StackLayout Orientation="Vertical">
+								<Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="End" LineBreakMode="TailTruncation"  />
+								<Label TextColor="Gray" LineBreakMode="TailTruncation" FontSize="12" Text="{Binding Description}" HorizontalOptions="Start" />
+								</StackLayout>
+							</StackLayout>
+						</ViewCell.View>
+					</ViewCell>
+				</DataTemplate>
+	</ListView.ItemTemplate>
+	</ListView>
+	<Button x:Name="btnCalendar" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontSize="18" Text="Calendars" TextColor="Red"></Button>
+	</StackLayout>
+
+
+	</ContentPage.Content>
+</ContentPage>

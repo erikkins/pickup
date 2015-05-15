@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Microsoft.WindowsAzure.MobileServices;
-using Xamarin.Forms.Labs.Controls;
+//using Xamarin.Forms.Labs.Controls;
+using XLabs.Forms.Controls;
 using Refractored.Xam.Vibrate.Abstractions;
 using System.IO;
 using System.Net;

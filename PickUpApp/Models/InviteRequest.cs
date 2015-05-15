@@ -23,6 +23,12 @@ namespace PickUpApp
 		public string note { get{return _note; } set{ if (value != _note) {
 					_note = value; NotifyPropertyChanged ();
 				} } }
+
+		private string _returnTo;
+		[JsonProperty(PropertyName = "returnto")]
+		public string returnto { get{return _returnTo; } set{ if (value != _returnTo) {
+					_returnTo = value; NotifyPropertyChanged ();
+				} } }
 	}
 }
 

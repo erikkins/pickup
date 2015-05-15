@@ -24,10 +24,10 @@ using Android.Locations;
 using Android.OS;
 using Java.Lang;
 using Xamarin.Forms;
-using Xamarin.Forms.Labs.Droid.Services.Geolocation;
+//using Xamarin.Forms.Labs.Droid.Services.Geolocation;
 using PickUpApp.droid;
-using Xamarin.Forms.Labs.Services.Geolocation;
-
+//using Xamarin.Forms.Labs.Services.Geolocation;
+using XLabs.Platform.Services.Geolocation;
 [assembly: Dependency(typeof (Geolocator))]
 
 namespace Xamarin.Forms.Labs.Droid.Services.Geolocation

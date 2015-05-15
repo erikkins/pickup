@@ -11,7 +11,10 @@ namespace PickUpApp
 	public class InviteResponseViewModel:BaseViewModel
 	{
 		private Today _currentInvite { get; set; }
-
+		public Today CurrentInvite
+		{
+			get { return _currentInvite; }
+		}
 
 		public InviteResponseViewModel ()
 		{
@@ -43,7 +46,7 @@ namespace PickUpApp
 
 				await client.InvokeApiAsync<Invite, EmptyClass>("cancelpickup",i);
 
-				MessagingCenter.Send<Today>(_currentInvite, "Completed");
+				MessagingCenter.Send<Today>(_currentInvite, "Canceled");
 
 			}
 			catch (Exception ex) {
@@ -65,16 +68,14 @@ namespace PickUpApp
 			//we've already got this data
 		}
 
-		public override async Task ExecuteAddEditCommand ()
-		{
-			if (IsLoading) return;
-			IsLoading = true;
-
-			//I suppose this woule be the cancel command
-
-
-			IsLoading = false; //redundant
-		}
+//		public override async Task ExecuteAddEditCommand ()
+//		{
+//			if (IsLoading) return;
+//			IsLoading = true;
+//
+//
+//			IsLoading = false; //redundant
+//		}
 	}
 }
 

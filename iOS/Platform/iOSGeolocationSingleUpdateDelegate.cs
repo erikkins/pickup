@@ -18,8 +18,8 @@ using System;
 using CoreLocation;
 using System.Threading.Tasks;
 using System.Threading;
-using Xamarin.Forms.Labs.Services.Geolocation;
-
+//using Xamarin.Forms.Labs.Services.Geolocation;
+using XLabs.Platform.Services.Geolocation;
 
 namespace Xamarin.Forms.Labs.iOS
 {

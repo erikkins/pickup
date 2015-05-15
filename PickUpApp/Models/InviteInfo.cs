@@ -169,6 +169,30 @@ namespace PickUpApp
 					_LocationMessage = value; NotifyPropertyChanged ();
 				} } }
 
+
+		private string _ReturnTo;
+		[JsonProperty(PropertyName = "returnto")]
+		public string ReturnTo { get{return _ReturnTo; } set{if (value != _ReturnTo) {
+					_ReturnTo = value; NotifyPropertyChanged ();
+				} } }
+
+		private double _ReturnToLatitude;
+		[JsonProperty(PropertyName = "returntolatitude")]
+		public double ReturnToLatitude { get{return _ReturnToLatitude; } set{if (value != _ReturnToLatitude) {
+					_ReturnToLatitude = value; NotifyPropertyChanged ();
+				} } }
+
+		private double _ReturnToLongitude;
+		[JsonProperty(PropertyName = "returntolongitude")]
+		public double ReturnToLongitude { get{return _ReturnToLongitude; } set{if (value != _ReturnToLongitude) {
+					_ReturnToLongitude = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _ReturnToAddress;
+		[JsonProperty(PropertyName = "returntoaddress")]
+		public string ReturnToAddress { get{return _ReturnToAddress; } set{if (value != _ReturnToAddress) {
+					_ReturnToAddress = value; NotifyPropertyChanged ();
+				} } }
 	}
 }
 

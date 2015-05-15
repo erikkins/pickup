@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 //using PCLStorage;
 using System.Collections.ObjectModel;
-using Xamarin.Forms.Labs.Services.Geolocation;
+//using Xamarin.Forms.Labs.Services.Geolocation;
+using XLabs.Platform.Services.Geolocation;
 using System.Threading;
 
 namespace PickUpApp
@@ -47,9 +48,9 @@ namespace PickUpApp
 			};
 			GetPosition ().ConfigureAwait (false);
 				// The root page of your application
-			//	MainPage = new Splash ();
-			MainPage = new HomePage ();
 
+
+			MainPage = new HomePage ();
 		}
 
 		//deprecated

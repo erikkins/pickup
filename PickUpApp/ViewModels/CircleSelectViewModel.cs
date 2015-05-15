@@ -32,6 +32,16 @@ namespace PickUpApp
 				}
 		}
 
+		private string _returnTo;
+		public string ReturnTo
+		{
+			get{ return _returnTo; }
+			set{ if (value != _returnTo) {
+					_returnTo = value; NotifyPropertyChanged ();
+				}
+			}
+		}
+
 		private ObservableCollection<Kid> _myKids
 		{
 			get{
@@ -64,7 +74,8 @@ namespace PickUpApp
 				{
 					ScheduleID = _sched.id,
 					note = _note,
-					circle = _myselectedcircle
+					circle = _myselectedcircle,
+					returnto = _returnTo
 				};
 				var invitedata = await client.InvokeApiAsync<InviteRequest, List<Account>>("createinvite",req);
 				System.Diagnostics.Debug.WriteLine("createinvite respondents: " + invitedata.Count.ToString());

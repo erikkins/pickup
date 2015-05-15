@@ -48,6 +48,18 @@ namespace PickUpApp
 		public string SolvedBy { get{return  _SolvedBy; } set{if (value != _SolvedBy) {
 					_SolvedBy = value; NotifyPropertyChanged ();
 				} } }
+
+		private string _ReturnTo;
+		[JsonProperty(PropertyName = "returnto")]
+		public string ReturnTo {
+			get { return _ReturnTo; }
+			set {
+				if (value != _ReturnTo) {
+					_ReturnTo = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
 	}
 }
 

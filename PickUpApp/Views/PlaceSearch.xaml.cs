@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Linq;
-using Xamarin.Forms.Labs.Services;
+//using Xamarin.Forms.Labs.Services;
+using XLabs.Platform.Services;
 using System.Threading.Tasks;
-using Xamarin.Forms.Labs.Services.Geolocation;
+//using Xamarin.Forms.Labs.Services.Geolocation;
+using XLabs.Platform.Services.Geolocation;
 using RestSharp.Portable;
 using System.Collections.ObjectModel;
 

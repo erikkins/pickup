@@ -21,8 +21,11 @@ using Android.OS;
 using System.Threading;
 using System.Collections.Generic;
 using Xamarin.Forms.Labs;
-using Xamarin.Forms.Labs.Services.Geolocation;
-using Xamarin.Forms.Labs.Droid.Services.Geolocation;
+//using Xamarin.Forms.Labs.Services.Geolocation;
+using XLabs.Platform.Services.Geolocation;
+//using Xamarin.Forms.Labs.Droid.Services.Geolocation;
+//using XLabs.Platform.Services.Geolocation;
+
 
 namespace Xamarin.Forms.Labs.Droid.Services.Geolocation
 {
