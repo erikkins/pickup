@@ -72,9 +72,9 @@ namespace PickUpApp
 			//someone has accepted my invite
 			MessagingCenter.Subscribe<Invite> (this, "accepted", (i) => {
 				v.Vibration (500);	
-				//Device.BeginInvokeOnMainThread(()=>{
+				Device.BeginInvokeOnMainThread(()=>{
 				DisplayAlert("Invite has been accepted!", i.Message, "OK");
-				//});
+				});
 				MessagingCenter.Send<string>("InviteAccepted", "NeedsRefresh");
 				//let's just make this an alert
 				//				if (App.client.CurrentUser == null)
@@ -204,10 +204,19 @@ namespace PickUpApp
 
 
 			MessagingCenter.Subscribe<AccountDevice>(this, "changed", (s) =>
-				{
+			{
 
-					PickupService.DefaultService.InsertAccountDeviceAsync(s).Wait(10000);
+				PickupService.DefaultService.InsertAccountDeviceAsync(s).Wait(10000);
+			});
+
+			MessagingCenter.Subscribe<InviteMessage>(this, "arrived", (s) =>
+				{
+					//let's see...this is assuming that a message came in regarding this invite
+					//if I'm the pickup, this should pop the invitemessageview
+					//if I'm the parent, this should pop the InviteResponse view
+
 				});
+
 		}
 
 

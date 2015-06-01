@@ -38,6 +38,10 @@ namespace PickUpApp
 			TableSection ts = new TableSection ();
 			ts.Add (new TrafficTickerCell ());
 			ActivityCell ac = new ActivityCell (ViewModel.ThisInvite.Kids, ViewModel.ThisInvite.AccountID);
+			ac.Tapped += async delegate(object sender, EventArgs e) {
+				//ok, let's load up the allergen and kid info for these guys?
+				DisplayAlert("Kid info", "This will show allergies and ages", "OK");
+			};
 			ts.Add (ac);
 
 			TextCell tc = new TextCell ();
@@ -68,6 +72,10 @@ namespace PickUpApp
 			messageCell.Text = "Send a message to " + _thisInviteInfo.Requestor;
 			messageCell.ImageSource = "appbarmessage.png";
 			messageCell.Height = 55;
+			messageCell.Tapped += delegate(object sender, EventArgs e) {
+				Navigation.PushModalAsync(new InviteMessageView(_thisInviteInfo));
+			};
+
 			ts.Add (messageCell);
 
 			if (_thisInviteInfo.RequestorPhone != null) {
@@ -465,8 +473,7 @@ namespace PickUpApp
 					HorizontalOptions = LayoutOptions.Center,
 					//AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + ViewModel.CurrentKid.Firstname.ToLower() + ".jpg";
 					Source = uis
-				};
-
+				};					
 	
 				slThis.Children.Add (ci);
 				ci = null;

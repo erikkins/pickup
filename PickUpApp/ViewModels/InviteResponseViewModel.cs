@@ -16,6 +16,27 @@ namespace PickUpApp
 			get { return _currentInvite; }
 		}
 
+		private InviteMessage _thisMessage;
+		public InviteMessage ThisMessage
+		{
+			get { return _thisMessage; }
+			set{
+				_thisMessage = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private ObservableCollection<InviteMessage> _Messages;
+		public ObservableCollection<InviteMessage> Messages{
+			get {
+				return _Messages;
+			}
+			set{
+				_Messages = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
 		public InviteResponseViewModel ()
 		{
 
@@ -24,6 +45,7 @@ namespace PickUpApp
 		{
 			this.client = client;
 			this._currentInvite = invite;
+			Messages = new ObservableCollection<InviteMessage> ();
 			LoadItemsCommand.Execute (null);
 		}
 
@@ -65,17 +87,56 @@ namespace PickUpApp
 
 		public override async Task ExecuteLoadItemsCommand ()
 		{
-			//we've already got this data
+			try{
+				IsLoading = true;
+			//we have the invite data, but I really want the InviteMessage data
+			var msgs = await client.InvokeApiAsync<Today,List<InviteMessage>>("getinvitemessages", _currentInvite);
+
+			Messages.Clear ();
+			foreach (var msg in msgs)
+			{
+				Messages.Add (msg);
+			}
+			}
+			catch(Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex.ToString ());
+			}
+			finally {
+				IsLoading = false;
+			}
 		}
 
-//		public override async Task ExecuteAddEditCommand ()
-//		{
-//			if (IsLoading) return;
-//			IsLoading = true;
+		public override async Task ExecuteAddEditCommand ()
+		{
+			if (IsLoading) return;
+			IsLoading = true;
+
+			try
+			{
+
+				var invitedata = await client.InvokeApiAsync<InviteMessage, EmptyClass>("savemessage",ThisMessage);
+
+//				var msgs = client.GetTable<InviteMessage>();
 //
-//
-//			IsLoading = false; //redundant
-//		}
+//				if (string.IsNullOrEmpty(ThisMessage.Id))
+//					await msgs.InsertAsync(ThisMessage);
+//				else
+//					await msgs.UpdateAsync(ThisMessage);
+
+				//really we need to just update the LoadItems
+				await ExecuteLoadItemsCommand();
+				//MessagingCenter.Send<InviteMessage>(ThisMessage, "MessageAdded");
+			}
+			catch (Exception ex)
+			{
+				var page = new ContentPage();
+				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
+			}
+			finally{
+				IsLoading = false;
+			}
+			IsLoading = false; //redundant
+		}
 	}
 }
 

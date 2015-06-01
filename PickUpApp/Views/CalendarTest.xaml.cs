@@ -81,8 +81,8 @@ namespace PickUpApp
 				Schedule s = new Schedule();
 				PUCalendarEvent puce = (PUCalendarEvent)e.SelectedItem;
 				s.Activity = puce.Name;
-				s.StartTime = TimeSpan.FromTicks(puce.Start.Ticks);
-				s.EndTime = TimeSpan.FromTicks(puce.End.Ticks);
+				s.StartTimeTicks = puce.Start.Ticks;
+				s.EndTimeTicks = puce.End.Ticks;
 				s.AtWhen = puce.Start;
 				s.UserId = App.myAccount.UserId;
 

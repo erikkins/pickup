@@ -180,19 +180,25 @@ namespace PickUpApp.droid
 			if (intent.Extras.ContainsKey ("invite") && !string.IsNullOrEmpty(intent.Extras.GetString("invite"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("invite");
-				MessagingCenter.Send <Invite> (i, "invite");
+				Device.BeginInvokeOnMainThread (() => {
+					MessagingCenter.Send <Invite> (i, "invite");
+				});
 			}
 			//my kids have been picked up
 			if (intent.Extras.ContainsKey ("pickup")&& !string.IsNullOrEmpty(intent.Extras.GetString("pickup"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("pickup");
-				MessagingCenter.Send <Invite>(i, "pickup");
+				Device.BeginInvokeOnMainThread (() => {
+					MessagingCenter.Send <Invite> (i, "pickup");
+				});
+				//intent.Extras.Remove ("alert");
 			}
 			//someone has accepted my invite
 			if (intent.Extras.ContainsKey ("accepted")&& !string.IsNullOrEmpty(intent.Extras.GetString("accepted"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("accepted");
 				launchFromNotification = false;
+				//intent.Extras.Remove ("alert");
 				Device.BeginInvokeOnMainThread (() => {
 					MessagingCenter.Send <Invite> (i, "accepted");
 				});
@@ -201,6 +207,7 @@ namespace PickUpApp.droid
 			if (intent.Extras.ContainsKey ("nobody")&& !string.IsNullOrEmpty(intent.Extras.GetString("nobody"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("nobody");
+				//intent.Extras.Remove ("alert");
 				Device.BeginInvokeOnMainThread (() => {
 					MessagingCenter.Send <Invite> (i, "nobody");
 				});
@@ -209,6 +216,7 @@ namespace PickUpApp.droid
 			if (intent.Extras.ContainsKey ("confirm")&& !string.IsNullOrEmpty(intent.Extras.GetString("confirm"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("confirm");
+				//intent.Extras.Remove ("alert");
 				Device.BeginInvokeOnMainThread (() => {
 					MessagingCenter.Send <Invite> (i, "confirm");
 				});
@@ -218,6 +226,7 @@ namespace PickUpApp.droid
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("notfirst");
 				launchFromNotification = false;
+				//intent.Extras.Remove ("alert");
 				Device.BeginInvokeOnMainThread (() => {
 					MessagingCenter.Send <Invite> (i, "notfirst");
 				});
@@ -227,6 +236,14 @@ namespace PickUpApp.droid
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("cancel");
 				MessagingCenter.Send <Invite>(i, "cancel");
+				//intent.Extras.Remove ("alert");
+			}
+
+			if (intent.Extras.ContainsKey ("invmsg")&& !string.IsNullOrEmpty(intent.Extras.GetString("invmsg"))) {
+				InviteMessage im = new InviteMessage ();
+				im.Id = intent.Extras.GetString ("invmsg");
+				MessagingCenter.Send <InviteMessage>(im, "arrived");
+				//intent.Extras.Remove ("alert");
 			}
 
 			string messageText = intent.Extras.GetString("alert");

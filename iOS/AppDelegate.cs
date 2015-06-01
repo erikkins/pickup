@@ -249,6 +249,12 @@ namespace PickUpApp.iOS
 					MessagingCenter.Send<Invite> (i, "cancel");
 				}
 
+				if (aps.ContainsKey (new NSString("invmsg")) && !string.IsNullOrEmpty(aps ["invmsg"].ToString ())) {
+					InviteMessage im = new InviteMessage ();
+					im.Id = aps ["invmsg"].ToString ();
+					MessagingCenter.Send<InviteMessage> (im, "arrived");
+				}
+
 				//Extract the alert text
 				// NOTE: If you're using the simple alert by just specifying 
 				// "  aps:{alert:"alert msg here"}  " this will work fine.

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.InviteResponseView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.InviteMessageView">
 	<ContentPage.Content>
 	<StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
 	<StackLayout Orientation="Horizontal">
@@ -20,8 +20,6 @@
 	</ListView>
 	<Editor x:Name="messageEditor" ></Editor>
 	<Button Text="Send Message" BackgroundColor="Green" TextColor="White" Clicked="OnMessage"></Button>
-	<BoxView HeightRequest="30" BackgroundColor="Transparent"></BoxView>
-	<Button Text="Cancel Pickup" BackgroundColor="Red" TextColor="Black" Clicked="OnCancel"></Button>
 	<Button Text="Close" BackgroundColor="Gray" TextColor="Black" Clicked="OnClose"></Button>
 	</StackLayout>
 	</ContentPage.Content>

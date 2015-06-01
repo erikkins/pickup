@@ -5,42 +5,21 @@ using Xamarin.Forms;
 
 namespace PickUpApp
 {
-	public partial class InviteResponseView : ContentPage
+	public partial class InviteMessageView : ContentPage
 	{
-		public InviteResponseView (Today invite)
+		public InviteMessageView (InviteInfo invite)
 		{
 			InitializeComponent ();
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-			this.ViewModel = new InviteResponseViewModel (App.client, invite);
+			Today t = new Today ();
+			t.id = invite.Id;
+			this.ViewModel = new InviteResponseViewModel (App.client, t);
 
-			MessagingCenter.Subscribe<Today> (this, "Completed", async(s) => {
-
-				//also need to reload Today
-				try{
-					await Navigation.PopModalAsync();
-				}
-				catch(Exception ex)
-				{
-					System.Diagnostics.Debug.WriteLine("POPIR SUX:" + ex.Message + ex.StackTrace);
-				}
-				MessagingCenter.Send<string>("InviteResponse", "NeedsRefresh");
-
-			});
 		}
-
+			
 		public void OnClose (object sender, EventArgs e) {
-			Navigation.PopModalAsync ();
-		}
-
-		public void OnCancel (object sender, EventArgs e) {
-			//maybe make sure they want to cancel?
-			bool accepted = DisplayAlert("Confirm", "Are you sure you want to cancel the PickUp?", "Yes", "No").Result;
-			if (accepted) {
-				ViewModel.ExecuteCancelCommand ().ConfigureAwait (false);
 				Navigation.PopModalAsync ();
-			}
 		}
-
 		public void OnMessage (object sender, EventArgs e) {
 			//basically we're saving a new row into the InviteMessage table
 			InviteMessage im = new InviteMessage();
@@ -51,7 +30,10 @@ namespace PickUpApp
 			ViewModel.ThisMessage = im;
 			ViewModel.ExecuteAddEditCommand ().ConfigureAwait (false);
 			messageEditor.Text = "";
+
+			//Navigation.PopModalAsync ();
 		}
+
 		protected InviteResponseViewModel ViewModel
 		{
 			get { return this.BindingContext as InviteResponseViewModel; }
