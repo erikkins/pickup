@@ -15,6 +15,25 @@ namespace PickUpApp
 			t.id = invite.Id;
 			this.ViewModel = new InviteResponseViewModel (App.client, t);
 
+			ViewModel.Messages.CollectionChanged += delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+				if (ViewModel.Messages.Count > 0)
+				{
+					Device.BeginInvokeOnMainThread(()=>{
+						lstMessages.SelectedItem = ViewModel.Messages[ViewModel.Messages.Count-1];
+					});
+				}
+				//await System.Threading.Tasks.Task.Delay(500);
+				//Device.BeginInvokeOnMainThread(()=>{
+				//lstMessages.ScrollTo(ViewModel.Messages[ViewModel.Messages.Count-1], ScrollToPosition.End, false);
+				//});
+			};
+
+			//if we get a notification from the other sender...
+			MessagingCenter.Subscribe<InviteMessage>(this, "arrived", (s) =>
+			{
+				//presumably there's a new message arriveth
+				ViewModel.LoadItemsCommand.Execute(null);
+			});
 		}
 			
 		public void OnClose (object sender, EventArgs e) {

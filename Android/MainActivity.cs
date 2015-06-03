@@ -63,7 +63,7 @@ namespace PickUpApp.droid
 			GcmClient.CheckManifest(this);
 
 			// Register for push notifications
-			System.Diagnostics.Debug.WriteLine("Registering...");
+			//System.Diagnostics.Debug.WriteLine("Registering...");
 
 			var preferences = GetSharedPreferences("AppData", FileCreationMode.Private);
 			var deviceId = preferences.GetString("DeviceId","");

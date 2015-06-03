@@ -38,16 +38,17 @@ namespace PickUpApp
 			TableSection ts = new TableSection ();
 			ts.Add (new TrafficTickerCell ());
 			ActivityCell ac = new ActivityCell (ViewModel.ThisInvite.Kids, ViewModel.ThisInvite.AccountID);
-			ac.Tapped += async delegate(object sender, EventArgs e) {
+			ac.Tapped +=  delegate(object sender, EventArgs e) {
 				//ok, let's load up the allergen and kid info for these guys?
-				DisplayAlert("Kid info", "This will show allergies and ages", "OK");
+				DisplayAlert("Kid info", ac.KidInfo, "OK");
 			};
 			ts.Add (ac);
 
 			TextCell tc = new TextCell ();
 			if (!string.IsNullOrEmpty (ViewModel.ThisInvite.LocationMessage)) {
 				tc.TextColor = Device.OnPlatform (Color.Black, Color.FromRgb(211,211,211), Color.Black);
-				tc.Text = ViewModel.ThisInvite.LocationMessage;
+				tc.Detail = ViewModel.ThisInvite.LocationMessage;
+
 				ts.Add (tc);
 			}
 
@@ -424,6 +425,11 @@ namespace PickUpApp
 		private string _kids;
 		private string _accountID;
 
+		public string KidInfo {
+			get;
+			set;
+		}
+
 		public ActivityCell (string Kids, string AccountID)
 		{
 			_kids = Kids;
@@ -458,6 +464,17 @@ namespace PickUpApp
 				string[] kidparts = k.Split('|');
 				string kidname = kidparts [0];
 				string kidid = kidparts [1].ToLower();
+				string kiddob = kidparts [2];
+				string kidallergies = kidparts [3];
+				string kidgender = kidparts [4];
+
+				KidInfo += kidname + Environment.NewLine + "=========" + Environment.NewLine;
+				KidInfo += "DOB: " + kiddob + Environment.NewLine;
+				KidInfo += "Gender: " + kidgender + Environment.NewLine;
+				if (kidallergies.Length > 0) {
+					KidInfo += "Allergies: " + kidallergies + Environment.NewLine;
+				}
+				KidInfo += Environment.NewLine;
 
 				//wow, this cannot by MY account number..it's got to be the Invitor's account id
 				//string azureURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower () + "/" + k.Trim ().ToLower () + ".jpg";

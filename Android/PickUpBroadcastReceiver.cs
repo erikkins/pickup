@@ -99,9 +99,9 @@ namespace PickUpApp.droid
 						//was awaited
 						//var hubRegistration = Hub.RegisterNativeAsync (registrationId, tags).ConfigureAwait(false);
 
-						string template = "{\"data\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\" }}";
+						string template = "{\"data\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\" }}";
 						//var expire = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
-						await Hub.RegisterTemplateAsync(registrationId, template, "pickup2", tags);
+						await Hub.RegisterTemplateAsync(registrationId, template, "pickup3", tags);
 
 						//we've registered, we're not gonna need it again!
 
@@ -151,6 +151,18 @@ namespace PickUpApp.droid
 
 		protected override void OnMessage(Context context, Intent intent)
 		{
+
+			if (intent.Action == "com.google.android.c2dm.intent.REGISTRATION") {
+				//why is the registration coming in through here?
+				var registrationId = intent.Extras.ContainsKey("registration_id") ? intent.Extras.GetString("registration_id") : string.Empty;
+
+				if (!string.IsNullOrEmpty (registrationId)) {
+					OnRegistered (context, registrationId);
+				}
+
+			}
+
+
 			if (_Last10MessageIds == null)
 			{
 				_Last10MessageIds = new List<Guid>();
@@ -241,7 +253,9 @@ namespace PickUpApp.droid
 
 			if (intent.Extras.ContainsKey ("invmsg")&& !string.IsNullOrEmpty(intent.Extras.GetString("invmsg"))) {
 				InviteMessage im = new InviteMessage ();
-				im.Id = intent.Extras.GetString ("invmsg");
+				string[] parts = intent.Extras.GetString ("invmsg").Split ('|');
+				im.Id = parts [0];
+				im.AccountID = parts [1];
 				MessagingCenter.Send <InviteMessage>(im, "arrived");
 				//intent.Extras.Remove ("alert");
 			}

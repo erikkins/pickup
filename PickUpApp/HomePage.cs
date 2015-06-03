@@ -209,13 +209,10 @@ namespace PickUpApp
 				PickupService.DefaultService.InsertAccountDeviceAsync(s).Wait(10000);
 			});
 
-			MessagingCenter.Subscribe<InviteMessage>(this, "arrived", (s) =>
-				{
-					//let's see...this is assuming that a message came in regarding this invite
-					//if I'm the pickup, this should pop the invitemessageview
-					//if I'm the parent, this should pop the InviteResponse view
-
-				});
+//			MessagingCenter.Subscribe<InviteMessage>(this, "arrived", (s) =>
+//				{
+//
+//				});
 
 		}
 

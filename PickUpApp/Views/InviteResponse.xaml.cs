@@ -12,6 +12,25 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			this.ViewModel = new InviteResponseViewModel (App.client, invite);
+			//lstMessages.ScrollTo(ViewModel.Messages[ViewModel.Messages.Count], ScrollToPosition.End, false);
+			ViewModel.Messages.CollectionChanged += delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {				
+				if (ViewModel.Messages.Count > 0)
+				{
+					Device.BeginInvokeOnMainThread(()=>{
+					lstMessages.SelectedItem = ViewModel.Messages[ViewModel.Messages.Count-1];
+					});
+				}
+				//await System.Threading.Tasks.Task.Delay(500);
+				//Device.BeginInvokeOnMainThread(()=>{
+				//lstMessages.ScrollTo(ViewModel.Messages[ViewModel.Messages.Count-1], ScrollToPosition.End, false);
+				//});
+			};
+
+			MessagingCenter.Subscribe<InviteMessage>(this, "arrived", (s) =>
+				{
+					//presumably there's a new message arriveth
+					ViewModel.LoadItemsCommand.Execute(null);	
+				});
 
 			MessagingCenter.Subscribe<Today> (this, "Completed", async(s) => {
 

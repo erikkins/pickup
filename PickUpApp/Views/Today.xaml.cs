@@ -67,7 +67,7 @@ namespace PickUpApp
 						Navigation.PushModalAsync(new CircleSelect(s));
 					}
 					else{
-						
+						//issue here is that we have the scheduleid but we really need the inviteid
 						Navigation.PushModalAsync(new InviteResponseView(today));
 					}
 				}

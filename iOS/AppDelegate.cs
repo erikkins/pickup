@@ -73,13 +73,13 @@ namespace PickUpApp.iOS
 //				});
 
 				try{
-					string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\" }}";
+					string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\" }}";
 					var expire = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 
 					hub.UnregisterAllAsync(deviceNotificationToken, err=>{
 						if (err == null)
 						{
-							hub.RegisterTemplateAsync(deviceNotificationToken, "pickupTemplate", template, expire, tagSet, errreg=>{
+							hub.RegisterTemplateAsync(deviceNotificationToken, "pickupTemplate2", template, expire, tagSet, errreg=>{
 								if (errreg != null)
 									Console.WriteLine("Error: " + err.Description);
 								else
@@ -251,7 +251,9 @@ namespace PickUpApp.iOS
 
 				if (aps.ContainsKey (new NSString("invmsg")) && !string.IsNullOrEmpty(aps ["invmsg"].ToString ())) {
 					InviteMessage im = new InviteMessage ();
-					im.Id = aps ["invmsg"].ToString ();
+					string[] parts = aps["invmsg"].ToString ().Split ('|');
+					im.Id = parts [0];
+					im.AccountID = parts [1];
 					MessagingCenter.Send<InviteMessage> (im, "arrived");
 				}
 
