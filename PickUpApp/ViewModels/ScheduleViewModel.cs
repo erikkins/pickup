@@ -15,6 +15,11 @@ namespace PickUpApp
 		{
 			RecurringSchedule = new ObservableCollection<Schedule> ();
 
+			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
+				await ExecuteLoadItemsCommand();
+				Refresh();
+			});
+
 		}
 		public ScheduleViewModel(MobileServiceClient client) : this()
 		{
@@ -26,7 +31,7 @@ namespace PickUpApp
 			IsLoading = true;
 			try
 			{
-				var recs = await client.InvokeApiAsync<List<Schedule>>("getmyrecurringschedule");
+				var recs = await client.InvokeApiAsync<List<Schedule>>("getmyactivities");
 				RecurringSchedule.Clear();
 				foreach (var sched in recs)
 				{

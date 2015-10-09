@@ -2,23 +2,23 @@
 <ContentPage Title="My Places" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MyPlaces">
 <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness">
-      <OnPlatform.iOS>0, 25, 0, 0</OnPlatform.iOS>
+      <OnPlatform.iOS>0, 0, 0, 0</OnPlatform.iOS>
     </OnPlatform>
   </ContentPage.Padding>
 	<ContentPage.Content>
 <StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-	<ListView x:Name="lstPlaces" ItemsSource="{Binding MyPlaces}" RowHeight="60" HasUnevenRows="true">
+	<ListView x:Name="lstPlaces" ItemsSource="{Binding MyPlaces}" BackgroundColor="#EEECF3"  RowHeight="60" HasUnevenRows="true">
 	<ListView.ItemTemplate>
 				<DataTemplate>
-					<ViewCell Height="60">
+					<ViewCell Height="60" StyleId="disclosure">
 						<ViewCell.ContextActions>
 							<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
                					Text="Delete" IsDestructive="True" />
 						</ViewCell.ContextActions>
 						<ViewCell.View>
-							<StackLayout Orientation="Vertical">
-								<Label Text="{Binding PlaceName}" VerticalOptions="Start" HorizontalOptions="Start"  />
-								<Label Text="{Binding Address}" VerticalOptions="End" HorizontalOptions="Start" />
+							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
+							<BoxView WidthRequest="10"></BoxView>
+								<Label Text="{Binding PlaceName}" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"  />							
 							</StackLayout>
 						</ViewCell.View>
 					</ViewCell>
@@ -26,7 +26,7 @@
 	</ListView.ItemTemplate>
 	</ListView>
 	<StackLayout Orientation="Horizontal">
-	<Button x:Name="btnCancel" Text="Cancel" HorizontalOptions="StartAndExpand"></Button><Button x:Name="btnAdd" Text="Add Place" HorizontalOptions="End"></Button>
+
 	</StackLayout>
 	</StackLayout>
 	</ContentPage.Content>

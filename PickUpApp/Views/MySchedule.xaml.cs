@@ -10,16 +10,21 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 			this.ViewModel = new ScheduleViewModel (App.client);
-			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-			lstSched.ItemSelected += HandleItemSelected;
-			btnAdd.Clicked += HandleClicked;
+			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+			this.ToolbarItems.Add (new ToolbarItem ("Add Activity", "icn_new.png", () => {
 
-			MessagingCenter.Subscribe<Schedule> (this, "ScheduleAdded", (s) => {
-				ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
-				ViewModel.Refresh();
-				Navigation.PopModalAsync ();
-				Navigation.PopModalAsync();
-			});
+				Navigation.PushAsync(new AddEditActivity(new Schedule()));
+
+//				Schedule s = new Schedule ();
+//				s.AtWhen = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30));
+//				s.StartTimeTicks = s.AtWhen.TimeOfDay.Ticks;
+//				s.AtWhenEnd = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30)).AddHours (1);
+//				s.EndTimeTicks = s.AtWhenEnd.TimeOfDay.Ticks;
+//				s.Frequency = "";
+//				Navigation.PushModalAsync (new Schedule1 (s));
+			}));
+
+			lstSched.ItemSelected += HandleItemSelected;
 				
 		}
 
@@ -38,7 +43,8 @@ namespace PickUpApp
 		{
 			//I guess we'd edit from here
 			if (e.SelectedItem == null) return;
-			Navigation.PushModalAsync (new Schedule1 (e.SelectedItem as Schedule));
+			//Navigation.PushModalAsync (new Schedule1 (e.SelectedItem as Schedule));
+			Navigation.PushAsync(new AddEditActivity(e.SelectedItem as Schedule));
 			lstSched.SelectedItem = null;
 
 		}

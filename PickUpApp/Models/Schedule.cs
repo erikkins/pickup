@@ -7,6 +7,16 @@ namespace PickUpApp
 	{
 		public const string ADDRESS_PLACEHOLDER = "Click to set address";
 
+		public Schedule()
+		{
+			//set some defaults
+			AtWhen = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30));
+			StartTimeTicks = AtWhen.TimeOfDay.Ticks;
+			AtWhenEnd = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30)).AddHours (1);
+			EndTimeTicks = AtWhenEnd.TimeOfDay.Ticks;
+			Frequency = "";
+		}
+
 		private string _Id;
 		public string id 
 		{ 
@@ -35,6 +45,132 @@ namespace PickUpApp
 			} 
 		}
 
+		private DateTime _atwhenDropoff;
+		[JsonProperty(PropertyName = "atwhendropoff")]
+		public DateTime AtWhenDropOff
+		{ get
+			{ return _atwhenDropoff; } 
+			set
+			{
+				if (value != _atwhenDropoff) {
+					_atwhenDropoff = value;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
+
+		private DateTime _atwhenPickup;
+		[JsonProperty(PropertyName = "atwhenpickup")]
+		public DateTime AtWhenPickup
+		{ get
+			{ return _atwhenPickup; } 
+			set
+			{
+				if (value != _atwhenPickup) {
+					_atwhenPickup = value;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
+
+		private string _dropoffnotes;
+		[JsonProperty(PropertyName = "dropoffnotes")]
+		public string DropOffNotes { get{ return _dropoffnotes; } set{if (value != _dropoffnotes) {
+					_dropoffnotes = value; NotifyPropertyChanged ();} } }
+
+		private string _pickupnotes;
+		[JsonProperty(PropertyName = "pickupnotes")]
+		public string PickupNotes { get{ return _pickupnotes; } set{if (value != _pickupnotes) {
+					_pickupnotes = value; NotifyPropertyChanged ();} } }
+
+		private string _DefaultDropOffAccount;
+		[JsonProperty(PropertyName = "defaultdropoffaccount")]
+		public string DefaultDropOffAccount { get{return _DefaultDropOffAccount; } set{if (value != _DefaultDropOffAccount) {
+					_DefaultDropOffAccount = value; NotifyPropertyChanged ();
+				} } }
+					
+		private string _DefaultDropOffAccountFirstName;
+		[JsonProperty(PropertyName = "defaultdropoffaccountfirstname")]
+
+		public string DefaultDropOffAccountFirstName { get{return _DefaultDropOffAccountFirstName; } set{if (value != _DefaultDropOffAccountFirstName) {
+					_DefaultDropOffAccountFirstName = value; NotifyPropertyChanged ();
+				} } }
+		public bool ShouldSerializeDefaultDropOffAccountFirstName()
+		{
+			return false;
+		}
+		public bool ShouldSerializeDefaultDropOffAccountLastName()
+		{
+			return false;
+		}
+		public bool ShouldSerializeDefaultDropOffAccountPhotoURL()
+		{
+			return false;
+		}
+		public bool ShouldSerializeDefaultDropOffAccountFullname()
+		{
+			return false;
+		}
+		private string _DefaultDropOffAccountLastName;
+		[JsonProperty(PropertyName = "defaultdropoffaccountlastname")]
+		public string DefaultDropOffAccountLastName { get{return _DefaultDropOffAccountLastName; } set{if (value != _DefaultDropOffAccountLastName) {
+					_DefaultDropOffAccountLastName = value; NotifyPropertyChanged ();
+				} } }
+
+		public string DefaultDropOffAccountFullname
+		{
+			get{ return _DefaultDropOffAccountFirstName + " " + _DefaultDropOffAccountLastName; }
+		}
+
+		private string _DefaultDropOffAccountPhotoURL;
+		[JsonProperty(PropertyName = "defaultdropoffaccountphotourl")]
+		public string DefaultDropOffAccountPhotoURL { get{return _DefaultDropOffAccountPhotoURL; } set{if (value != _DefaultDropOffAccountPhotoURL) {
+					_DefaultDropOffAccountPhotoURL = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _DefaultPickupAccount;
+		[JsonProperty(PropertyName = "defaultpickupaccount")]
+		public string DefaultPickupAccount { get{return _DefaultPickupAccount; } set{if (value != _DefaultPickupAccount) {
+					_DefaultPickupAccount = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _DefaultPickupAccountFirstName;
+		[JsonProperty(PropertyName = "defaultpickupaccountfirstname")]
+		public string DefaultPickupAccountFirstName { get{return _DefaultPickupAccountFirstName; } set{if (value != _DefaultPickupAccountFirstName) {
+					_DefaultPickupAccountFirstName = value; NotifyPropertyChanged ();
+				} } }
+		private string _DefaultPickupAccountLastName;
+		[JsonProperty(PropertyName = "defaultpickupaccountlastname")]
+		public string DefaultPickupAccountLastName { get{return _DefaultPickupAccountLastName; } set{if (value != _DefaultPickupAccountLastName) {
+					_DefaultPickupAccountLastName = value; NotifyPropertyChanged ();
+				} } }
+
+		public string DefaultPickupAccountFullname
+		{
+			get{ return _DefaultPickupAccountFirstName + " " + _DefaultPickupAccountLastName; }
+		}
+
+		private string _DefaultPickupAccountPhotoURL;
+		[JsonProperty(PropertyName = "defaultpickupaccountphotourl")]
+		public string DefaultPickupAccountPhotoURL { get{return _DefaultPickupAccountPhotoURL; } set{if (value != _DefaultPickupAccountPhotoURL) {
+					_DefaultPickupAccountPhotoURL = value; NotifyPropertyChanged ();
+				} } }
+		public bool ShouldSerializeDefaultPickupAccountFirstName()
+		{
+			return false;
+		}
+		public bool ShouldSerializeDefaultPickupAccountLastName()
+		{
+			return false;
+		}
+		public bool ShouldSerializeDefaultPickupAccountPhotoURL()
+		{
+			return false;
+		}
+		public bool ShouldSerializeDefaultPickupAccountFullname()
+		{
+			return false;
+		}
 
 
 		private string _Activity;
@@ -147,6 +283,81 @@ namespace PickUpApp
 				}
 			}
 		}
+
+
+		private string _StartPlaceID;
+		[JsonProperty(PropertyName = "startplaceid")]
+		public string StartPlaceID { get{return _StartPlaceID; } set{if (value != _StartPlaceID) {
+					_StartPlaceID = value; NotifyPropertyChanged ();
+				} } }
+
+
+		private string _StartPlaceName;
+		[JsonProperty(PropertyName = "startplacename")]
+		public string StartPlaceName { get{return _StartPlaceName; } set{if (value != _StartPlaceName) {
+					_StartPlaceName = value; NotifyPropertyChanged ();
+				} } }
+		private string _StartPlaceAddress;
+		[JsonProperty(PropertyName = "startplaceaddress")]
+		public string StartPlaceAddress { get{return _StartPlaceAddress; } set{if (value != _StartPlaceAddress) {
+					_StartPlaceAddress = value; NotifyPropertyChanged ();
+				} } }
+		public bool ShouldSerializeStartPlaceName()
+		{
+			return false;
+		}
+		public bool ShouldSerializeStartPlaceAddress()
+		{
+			return false;
+		}
+
+		private int _StartPlaceDistance;
+		[JsonProperty(PropertyName = "startplacedistance")]
+		public int StartPlaceDistance { get{return _StartPlaceDistance; } set{if (value != _StartPlaceDistance) {
+					_StartPlaceDistance = value; NotifyPropertyChanged ();
+				} } }
+		private int _StartPlaceTravelTime;
+		[JsonProperty(PropertyName = "startplacetraveltime")]
+		public int StartPlaceTravelTime { get{return _StartPlaceTravelTime; } set{if (value != _StartPlaceTravelTime) {
+					_StartPlaceTravelTime = value; NotifyPropertyChanged ();
+				} } }
+
+
+		private string _EndPlaceID;
+		[JsonProperty(PropertyName = "endplaceid")]
+		public string EndPlaceID { get{return _EndPlaceID; } set{if (value != _EndPlaceID) {
+					_EndPlaceID = value; NotifyPropertyChanged ();
+				} } }
+		private string _EndPlaceName;
+		[JsonProperty(PropertyName = "endplacename")]
+		public string EndPlaceName { get{return _EndPlaceName; } set{if (value != _EndPlaceName) {
+					_EndPlaceName = value; NotifyPropertyChanged ();
+				} } }
+		private string _EndPlaceAddress;
+		[JsonProperty(PropertyName = "endplaceaddress")]
+		public string EndPlaceAddress { get{return _EndPlaceAddress; } set{if (value != _EndPlaceAddress) {
+					_EndPlaceAddress = value; NotifyPropertyChanged ();
+				} } }
+
+		public bool ShouldSerializeEndPlaceName()
+		{
+			return false;
+		}
+		public bool ShouldSerializeEndPlaceAddress()
+		{
+			return false;
+		}
+
+		private int _EndPlaceDistance;
+		[JsonProperty(PropertyName = "endplacedistance")]
+		public int EndPlaceDistance { get{return _EndPlaceDistance; } set{if (value != _EndPlaceDistance) {
+					_EndPlaceDistance = value; NotifyPropertyChanged ();
+				} } }
+		private int _EndPlaceTravelTime;
+		[JsonProperty(PropertyName = "endplacetraveltime")]
+		public int EndPlaceTravelTime { get{return _EndPlaceTravelTime; } set{if (value != _EndPlaceTravelTime) {
+					_EndPlaceTravelTime = value; NotifyPropertyChanged ();
+				} } }
 
 		#region non-serializable
 		[JsonIgnore]

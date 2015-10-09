@@ -22,8 +22,23 @@ namespace PickUpApp.iOS
 		{
 			var accountStore = AccountStore.Create ();
 
-			var accounts = accountStore.FindAccountsForService ("Facebook").ToArray ();
+			//right now let's support Facebook, Google and our own
+			switch (provider) {
+			case Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider.Facebook:
+				App.ServiceProvider = "Facebook";
+				break;
+			case Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider.Google:
+				App.ServiceProvider = "Google";
+				break;
+			case Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory:
+				App.ServiceProvider = "AD";
+				break;
+			}
 
+			var accounts = accountStore.FindAccountsForService (App.ServiceProvider).ToArray ();
+//			if (accounts.Count() > 0) {
+//				accountStore.Delete (accounts.First (), App.ServiceProvider);
+//			}
 			if (accounts.Count() != 0) {
 			
 				string realUsername = accounts [0].Username; //accounts [0].Username.Substring (accounts [0].Username.IndexOf (":") + 1);
@@ -35,18 +50,24 @@ namespace PickUpApp.iOS
 
 			} else {
 				//normal login
+				try{
+					//MobileServiceUser tmsu = await App.client.LoginAsync (UIApplication.SharedApplication.KeyWindow.RootViewController, provider);
 
-				MobileServiceUser tmsu = await App.client.LoginAsync (UIApplication.SharedApplication.KeyWindow.RootViewController, provider);
+					MobileServiceUser tmsu = await App.client.LoginAsync (UIApplication.SharedApplication.KeyWindow.RootViewController.PresentedViewController, provider);
+					var account = new Xamarin.Auth.Account (tmsu.UserId, new Dictionary<string,string> { {
+							"token",
+							tmsu.MobileServiceAuthenticationToken
+						}
+					});
 
+					accountStore.Save (account, App.ServiceProvider);			
 
-				var account = new Xamarin.Auth.Account (tmsu.UserId, new Dictionary<string,string> { {
-						"token",
-						tmsu.MobileServiceAuthenticationToken
-					}
-				});
-				accountStore.Save (account, "Facebook");			
-
-				return tmsu;
+					return tmsu;
+				}
+				catch 	(Exception ex) {
+					System.Diagnostics.Debug.WriteLine (ex.ToString ());
+				}
+				return null;
 			}
 		}
 
@@ -57,9 +78,9 @@ namespace PickUpApp.iOS
 
 			App.client.Logout();
 			var accountStore = AccountStore.Create ();
-			var myaccounts = accountStore.FindAccountsForService ("Facebook");
+			var myaccounts = accountStore.FindAccountsForService (App.ServiceProvider);
 			if (myaccounts.Count() > 0) {
-				accountStore.Delete (myaccounts.First (), "Facebook");
+				accountStore.Delete (myaccounts.First (), App.ServiceProvider);
 			}
 		}
 	}

@@ -30,6 +30,7 @@ namespace PickUpApp
 					_Lastname = value; NotifyPropertyChanged ();
 				} } }
 
+
 		private string _Phone;
 		[JsonProperty(PropertyName = "phone")]
 		public string Phone { get{return _Phone; } set{if (value != _Phone) {
@@ -47,6 +48,7 @@ namespace PickUpApp
 		public string UserId { get{return _UserId; } set{if (value != _UserId) {
 					_UserId = value; NotifyPropertyChanged ();
 				} } }
+
 
 		private string _Gender;
 		[JsonProperty(PropertyName = "gender")]
@@ -89,6 +91,9 @@ namespace PickUpApp
 				}
 			}
 		}
+
+
+
 	}
 }
 

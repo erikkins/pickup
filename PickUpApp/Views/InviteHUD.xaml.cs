@@ -303,7 +303,7 @@ namespace PickUpApp
 	}
 
 	//Android only tap workaround
-	public class ListMap : Map { }
+	public class ListMapHUD : Map { }
 
 	public class YelpCell : ViewCell
 	{
@@ -325,12 +325,12 @@ namespace PickUpApp
 		}
 	}
 
-	public class MapCell : ViewCell
+	public class MapCellHUD : ViewCell
 	{
 		private double _latitude, _longitude;
 		private ListMap _theMap;
 
-		public MapCell (double latitude, double longitude)
+		public MapCellHUD (double latitude, double longitude)
 		{
 			_latitude = latitude;
 			_longitude = longitude;
@@ -450,7 +450,7 @@ namespace PickUpApp
 			StackLayout slKids = new StackLayout ();
 			slKids.Orientation = StackOrientation.Horizontal;
 
-			string[] kiddos = _kids.Split (',');
+			string[] kiddos = _kids.Split ('~');
 			foreach (string k in kiddos) {
 				StackLayout slThis = new StackLayout ();
 				slThis.Orientation = StackOrientation.Vertical;

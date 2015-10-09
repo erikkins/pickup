@@ -57,7 +57,7 @@ namespace PickUpApp
 				{
 					App.myPlaces.Add(place);
 				}
-
+				App.menuItems.Insert(3, new FFMenuItem("Places", App.myPlaces.Count));
 			}
 			catch (Exception ex)
 			{

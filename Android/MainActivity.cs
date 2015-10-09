@@ -29,6 +29,18 @@ namespace PickUpApp.droid
 			ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init ();
 			Refractored.Xam.Forms.Vibrate.Droid.Vibrate.Init ();
 			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+
+
+			//NOTE:  VERY IMPORTANT
+			//DO NOT FORGET TO ADD THE INIT STUFF FOR IDEVICE, etc. HERE
+			//TODO:THIS
+//			var container = new SimpleContainer ();
+//			container.Register<IDevice> (t => AppleDevice.CurrentDevice);
+//			container.Register<IDisplay> (t => t.Resolve<IDevice> ().Display);
+//			container.Register<INetwork>(t=> t.Resolve<IDevice>().Network);
+//			Resolver.SetResolver (container.GetResolver ());
+
+
 			//SetPage (App.Current.MainPage);
 
 			LoadApplication (new App ());

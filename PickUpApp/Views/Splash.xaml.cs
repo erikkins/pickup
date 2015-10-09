@@ -15,8 +15,20 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.ViewModel = new SplashViewModel (App.client);
 			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-			btnFacebook.Command = ViewModel.LoginCommand;
+			//btnFacebook.Command = ViewModel.LoginCommand;
+
+
 			btnLogout.Clicked += btnLogout_Clicked;
+
+			btnFacebook.Clicked += delegate(object sender, EventArgs e) {
+				this.ViewModel.LoginCommand.Execute ("Facebook");
+			};
+			btnAD.Clicked +=  delegate(object sender, EventArgs e) {
+					this.ViewModel.LoginCommand.Execute ("AD");
+			};
+			btnGoogle.Clicked += delegate(object sender, EventArgs e) {
+				this.ViewModel.LoginCommand.Execute("Google");
+			};
 
 			MessagingCenter.Subscribe<MobileServiceClient>(this, "LoggedIn", (s) =>{
 					ViewModel.Refresh();
@@ -53,9 +65,9 @@ namespace PickUpApp
 				this.BindingContext = new AccountPlaceViewModel(App.client);
 				lblActivity.Text = "Loading Places";
 				await ((AccountPlaceViewModel)BindingContext).ExecuteLoadItemsCommand();
-//
-				//when done loading other stuff, reset it to be just a splashviewmodel
+
 				this.BindingContext = new SplashViewModel(App.client);
+
 
 
 				//really since we have a message waiting on our auth, we want to atleast load the
@@ -250,7 +262,22 @@ namespace PickUpApp
 				PickupService.DefaultService.InsertAccountDeviceAsync(s).Wait(10000);
 			});
 					
+			//autologin
+			this.ViewModel.LoginCommand.Execute("Facebook");
+			//this used to be in there
+//			if (ViewModel.IsAuthenticated) {
+//				//Navigation.PushModalAsync (new TabbedMaster ());
+//				Navigation.PopModalAsync();
+//			} else {
+//				//this.ViewModel.ExecuteLoginCommand ("Facebook").ConfigureAwait (false);
+//				Device.BeginInvokeOnMainThread (() => {
+//					this.ViewModel.LoginCommand.Execute ("Facebook");
+//				});
+//			}
+
 		}
+
+
 
 
 
@@ -259,13 +286,18 @@ namespace PickUpApp
 			
 			base.OnAppearing ();
 
-			if (ViewModel.IsAuthenticated) {
-				//Navigation.PushModalAsync (new TabbedMaster ());
-				Navigation.PopModalAsync();
-			} else {
-				//this.ViewModel.ExecuteLoginCommand ("Facebook").ConfigureAwait (false);
-				this.ViewModel.LoginCommand.Execute("Facebook");
-			}
+
+
+			//why did we remove this?
+//			if (ViewModel.IsAuthenticated) {
+//				//Navigation.PushModalAsync (new TabbedMaster ());
+//				Navigation.PopModalAsync();
+//			} else {
+//				//this.ViewModel.ExecuteLoginCommand ("Facebook").ConfigureAwait (false);
+//				Device.BeginInvokeOnMainThread (() => {
+//					this.ViewModel.LoginCommand.Execute ("Facebook");
+//				});
+//			}
 
 		}
 		void btnLogout_Clicked(object sender, EventArgs e)

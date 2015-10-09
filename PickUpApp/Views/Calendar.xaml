@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.CalendarPicker">
+	<ContentPage.Content>
+	<StackLayout x:Name="superstacker" VerticalOptions="StartAndExpand" Orientation="Vertical">
+	<StackLayout x:Name="stacker" Orientation="Vertical"></StackLayout>
+	<Button x:Name="btnToday" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="50" WidthRequest="340" FontAttributes="Bold" FontSize="18" Text="Pick Today" TextColor="#F6637F" BackgroundColor="#49376D" BorderColor="#54D29F" BorderRadius="8" BorderWidth="2"></Button>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

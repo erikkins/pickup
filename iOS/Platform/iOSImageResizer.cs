@@ -43,7 +43,7 @@ namespace PickUpApp.iOS
 				(int)(4 * width), CGColorSpace.CreateDeviceRGB (),
 				CGImageAlphaInfo.PremultipliedFirst)) {
 
-				RectangleF imageRect = new RectangleF (0, 0, width, height);
+				CGRect imageRect = new CGRect (0, 0, width, height);
 
 				// draw the image
 				context.DrawImage (imageRect, originalImage.CGImage);
@@ -134,7 +134,7 @@ namespace PickUpApp.iOS
 					break;
 				}
 
-				bitmap.DrawImage(new Rectangle(0, 0, width, height), imageRef);
+				bitmap.DrawImage(new CGRect(0, 0, width, height), imageRef);
 
 
 				res = UIImage.FromImage(bitmap.ToImage());
@@ -150,14 +150,14 @@ namespace PickUpApp.iOS
 			int kMaxResolution = 2048;
 
 			CGImage imgRef = imageIn.CGImage;
-			float width = imgRef.Width;
-			float height = imgRef.Height;
+			nfloat width = imgRef.Width;
+			nfloat height = imgRef.Height;
 			CGAffineTransform transform = CGAffineTransform.MakeIdentity ();
-			RectangleF bounds = new RectangleF( 0, 0, width, height );
+			CGRect bounds = new CGRect( 0, 0, width, height );
 
 			if ( width > kMaxResolution || height > kMaxResolution )
 			{
-				float ratio = width/height;
+				nfloat ratio = width/height;
 
 				if (ratio > 1)
 				{
@@ -171,10 +171,10 @@ namespace PickUpApp.iOS
 				}
 			}
 
-			float scaleRatio = bounds.Width / width;
-			SizeF imageSize = new SizeF( width, height);
+			nfloat scaleRatio = bounds.Width / width;
+			CGSize imageSize = new CGSize( width, height);
 			UIImageOrientation orient = orIn;
-			float boundHeight;
+			nfloat boundHeight;
 
 			switch(orient)
 			{
@@ -251,7 +251,7 @@ namespace PickUpApp.iOS
 			}
 
 			context.ConcatCTM(transform);
-			context.DrawImage (new RectangleF (0, 0, width, height), imgRef);
+			context.DrawImage (new CGRect (0, 0, width, height), imgRef);
 
 			UIImage imageCopy = UIGraphics.GetImageFromCurrentImageContext ();
 			UIGraphics.EndImageContext ();

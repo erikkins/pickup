@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:common="clr-namespace:PickUpApp;assembly=PickUpApp" x:Class="PickUpApp.Splash">
 	<ContentPage.Content>
 <StackLayout>
-	<Label Text="Welcome to PickUp!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+	<Label Text="Welcome to FamFetch!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 	<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions = "CenterAndExpand">
 	<Label x:Name = "lblActivity" HorizontalOptions="CenterAndExpand"></Label>
 	<ActivityIndicator IsRunning="{Binding IsLoading}" HorizontalOptions="CenterAndExpand" IsVisible="true" />
 	</StackLayout>
-	<StackLayout Orientation="Horizontal" VerticalOptions="End">
-	<Button x:Name="btnFacebook" Text="Login" CommandParameter="Facebook" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+	<StackLayout Orientation="Vertical" VerticalOptions="End">
+	<Button x:Name="btnFacebook" Text="Facebook" CommandParameter="Facebook" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+	<Button x:Name="btnGoogle" Text="Google" CommandParameter="Facebook" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+	<Button x:Name="btnAD" CommandParameter="AD" Text="ActiveDirectory" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
 	<Button x:Name="btnLogout" Text="Logout" VerticalOptions="CenterAndExpand" HorizontalOptions="End" />
 	</StackLayout>
 	</StackLayout>

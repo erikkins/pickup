@@ -9,14 +9,20 @@ namespace PickUpApp
 {
 	public class KidsViewModel: BaseViewModel
 	{
+		public ObservableCollection<Grouping<string, Kid>> KidsSorted { get; set; }
+
 		public ObservableCollection<Kid> Kids 
 		{ get{ return App.myKids; } 
 			set{
 				if (value != App.myKids) {
 					App.myKids = value;
+					NotifyPropertyChanged ();
 				}
 			} 
 		}
+
+
+
 		public KidsViewModel ()
 		{
 			App.myKids = new ObservableCollection<Kid> ();
@@ -25,10 +31,19 @@ namespace PickUpApp
 
 
 
-		public KidsViewModel(MobileServiceClient client) : this()
+		public KidsViewModel(MobileServiceClient client) //: this()
 		{
+			if (App.myKids == null) {
+				App.myKids = new ObservableCollection<Kid> ();
+			}
+			if (KidsSorted == null && App.myKids != null) {
+				//this is just kludgy...need to trace why this was needed
+				KidsSorted = new ObservableCollection<Grouping<string, Kid>>();
+				KidsSorted.Add (new Grouping<string, Kid> ("MY KIDS", App.myKids));
+			}
+			//KidsSorted = new ObservableCollection<Grouping<string, Kid>> ();
 			this.client = client;
-			LoadItemsCommand.Execute (null);
+			//LoadItemsCommand.Execute (null);
 
 		}
 
@@ -43,8 +58,40 @@ namespace PickUpApp
 				foreach (var kid in kids)
 				{
 					App.myKids.Add(kid);
-				}
 
+				}
+				if (KidsSorted == null)
+				{
+					KidsSorted = new ObservableCollection<Grouping<string, Kid>>();
+				}
+				KidsSorted.Add(new Grouping<string, Kid>("MY KIDS", App.myKids));
+
+				FFMenuItem kidmenu = new FFMenuItem("Kids", App.myKids.Count);
+				foreach (Kid k in App.myKids)
+				{
+					if (k.PhotoURL == null)
+					{
+						string initials = "";
+						if (k.Firstname == null)
+						{
+							initials = k.Lastname.Substring(0,1).ToUpper();
+						}
+						else if (k.Lastname == null)
+						{
+							initials = k.Firstname.Substring(0,1).ToUpper();
+						}
+						else
+						{
+							initials = k.Firstname.Substring(0,1).ToUpper() + k.Lastname.Substring(0,1).ToUpper();
+						}
+
+						var dep = DependencyService.Get<PickUpApp.ICircleText>();
+						string filename = dep.CreateCircleText(initials,50,50);
+						k.PhotoURL = filename;
+					}
+					kidmenu.Photos.Add(k.PhotoURL);
+				}
+				App.menuItems.Insert(1,kidmenu);
 			}
 			catch (Exception ex)
 			{

@@ -8,6 +8,9 @@ using System.Collections.ObjectModel;
 //using Xamarin.Forms.Labs.Services.Geolocation;
 using XLabs.Platform.Services.Geolocation;
 using System.Threading;
+using XLabs.Platform.Device;
+using System.ComponentModel;
+using PickUpApp.ViewModels;
 
 namespace PickUpApp
 {
@@ -17,13 +20,20 @@ namespace PickUpApp
 		public const string applicationKey = @"smfGLlHZSdujNrejkOSaRtVbGmPwwz12";
 		public static MobileServiceClient client = new MobileServiceClient(applicationURL, applicationKey);
 		public static MobileServiceUser user;
+		public static string ServiceProvider = "";
 
 		public static Account myAccount = new Account();
 		public static AccountDevice myDevice = new AccountDevice();
 
-		public static ObservableCollection<Kid> myKids = new ObservableCollection<Kid>();
+		public static IDevice Device = XLabs.Ioc.Resolver.Resolve<IDevice> ();
+
+		public static ObservableCollection<Kid> myKids = new TrulyObservableCollection<Kid> ();
+
+
 		public static ObservableCollection<Account> myCircle = new ObservableCollection<Account> ();
 		public static ObservableCollection<AccountPlace> myPlaces = new ObservableCollection<AccountPlace> ();
+
+		public static MenuListData menuItems = new MenuListData();
 
 		//public static Schedule pendingInvite = null;  //are we actually using this?
 
@@ -46,6 +56,7 @@ namespace PickUpApp
 				}
 				//System.Diagnostics.Debug.WriteLine("here");
 			};
+
 			GetPosition ().ConfigureAwait (false);
 				// The root page of your application
 

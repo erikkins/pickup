@@ -15,6 +15,7 @@ using XLabs.Platform.Device;
 using XLabs.Platform.Services.Media;
 using XLabs.Ioc;
 using XLabs.Platform.Services;
+using XLabs.Platform.Services.IO;
 
 //using Xamarin.Forms.Labs.Services;
 
@@ -34,6 +35,13 @@ namespace PickUpApp.iOS
 			Xamarin.FormsMaps.Init ();
 			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
 			Refractored.Xam.Forms.Vibrate.iOS.Vibrate.Init ();
+			var container = new SimpleContainer ();
+			container.Register<IDevice> (t => AppleDevice.CurrentDevice);
+			container.Register<IDisplay> (t => t.Resolve<IDevice> ().Display);
+			container.Register<INetwork>(t=> t.Resolve<IDevice>().Network);
+			container.Register<IFileManager>(t=>t.Resolve<IDevice>().FileManager);
+
+			Resolver.SetResolver (container.GetResolver ());
 
 
 			// Register for Notifications

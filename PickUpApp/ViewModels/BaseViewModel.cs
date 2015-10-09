@@ -109,9 +109,10 @@ namespace PickUpApp.ViewModels
 		}
 		public async Task ExecuteLoginCommand(string service)
 		{
+			bool isCustom = false;
 			if (IsLoading || string.IsNullOrEmpty(service)) return;
 
-			MobileServiceAuthenticationProvider provider;
+			MobileServiceAuthenticationProvider provider = MobileServiceAuthenticationProvider.Facebook;
 
 			switch (service)
 			{
@@ -130,41 +131,58 @@ namespace PickUpApp.ViewModels
 			case "Google":
 				provider = MobileServiceAuthenticationProvider.Google;
 				break;
-
+			case "AD":
+				provider = MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory;
+				break;
+			case "Custom":
+				//ok, we're logging in using our own method
+				isCustom = true;
+				break;
 			default:
 				throw new ArgumentOutOfRangeException(service);
 			}
 
 			IsLoading = true;
+			if (isCustom) {
 
-			try
-			{
-				//await App.Platform.Authorize(container, provider);
-				var user = await DependencyService.Get<IMobileClient>().Authorize(provider);
-				System.Diagnostics.Debug.WriteLine(user.UserId);
-				try{
+				//let's do this directly to azure
+				var accounts = client.GetTable<AuthAccounts>();
+				AuthAccounts aa = new AuthAccounts ();
+				aa.Email = "erik@test.com";
+				aa.Username = "erik@test.com";
+				aa.Password = "test123";
+				aa.UserID = "";
+				aa.Token = "";
+				System.Collections.Generic.Dictionary<string,string> parms = new System.Collections.Generic.Dictionary<string, string> ();
+				parms.Add ("login", "yo");
+				await accounts.InsertAsync (aa, parms);
 
-				MessagingCenter.Send(client, "LoggedIn");
-				}
-				catch(Exception ex2)
-				{
-					System.Diagnostics.Debug.WriteLine(ex2.Message);
-				}
-			}
- 			catch (InvalidOperationException ex)
-			{
-				if (ex.Message.Contains("Authentication was cancelled by the user"))
-				{
 
+
+				System.Diagnostics.Debug.WriteLine (aa.Token);
+
+
+			} else {
+				try {
+					//await App.Platform.Authorize(container, provider);
+					var user = await DependencyService.Get<IMobileClient> ().Authorize (provider);
+					System.Diagnostics.Debug.WriteLine (user.UserId);
+					try {
+
+						MessagingCenter.Send (client, "LoggedIn");
+					} catch (Exception ex2) {
+						System.Diagnostics.Debug.WriteLine (ex2.Message);
+					}
+				} catch (InvalidOperationException ex) {
+					if (ex.Message.Contains ("Authentication was cancelled by the user")) {
+
+					}
+				} catch (Exception ex) {
+					var page = new ContentPage ();
+					await page.DisplayAlert ("Error", "Error logging in. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
+				} finally {
+					IsLoading = false;
 				}
-			}
-			catch (Exception ex)
-			{
-				var page = new ContentPage();
-				await page.DisplayAlert("Error", "Error logging in. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
-			}
-			finally {
-				IsLoading = false;
 			}
 
 			IsLoading = false;  //redundant

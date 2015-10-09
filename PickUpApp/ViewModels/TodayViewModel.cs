@@ -32,10 +32,52 @@ namespace PickUpApp.ViewModels
 
 				var today = await client.InvokeApiAsync<Dictionary<string,string>,List<Today>>("getmytoday", dict);
 
+				bool hasNext = false;
+
 				Todays.Clear();
 				foreach (var sched in today)
 				{
+
+					//well, we really need to split the today into two parts--dropoff and pickup...so need to create potentially 2 rows for each one
+
+					if (sched.AtWhen != DateTime.MinValue)
+					{
+						sched.IsPickup = false; //means it's a dropoff
+					}
+
+
+					if (!hasNext && (!sched.DropOffComplete || !sched.PickupComplete))
+					{
+						sched.IsNext = true;
+						hasNext = true;
+					}
+					else{
+						sched.IsNext = false;
+					}
+
 					Todays.Add(sched);
+
+
+					//now see if we need to add a pickup
+					if (sched.AtWhenEnd != DateTime.MinValue)
+					{
+						Today pickup = sched;
+						pickup.IsPickup = true;
+
+						if (!hasNext && (!pickup.DropOffComplete || !pickup.PickupComplete))
+						{
+							pickup.IsNext = true;
+							hasNext = true;
+						}
+						else{
+							pickup.IsNext = false;
+						}
+
+						Todays.Add(pickup);
+					}
+
+
+
 				}
 				//sweet, we now have our today list!
 				IsLoading = false;

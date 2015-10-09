@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using System.Collections.Specialized;
+using System.Collections.ObjectModel;
 
 namespace PickUpApp
 {
@@ -8,17 +10,18 @@ namespace PickUpApp
 	{
 		public HomeMenu ()
 		{
-			this.Title = "Menu";
-			this.Icon = Device.OS == TargetPlatform.iOS ? "logout.png" : null;
+			this.Title = "MY SETTINGS";
+			this.BackgroundColor = Color.FromRgb (73, 55, 109);
+
+			//this.Icon = Device.OS == TargetPlatform.iOS ? "settings.png" : null;
+			this.Icon = "icn_settings.png";
+
+
 			this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
 
 			//this.Icon = "appbarlayoutexpandrightvariant.png";
-			Label header = new Label
-			{
-				Text = "MENU",
-				FontSize = 20,
-				HorizontalOptions = LayoutOptions.Center
-			};
+
+
 			// create an array of the Page names
 //			string[] myPageNames = {
 //				"Today",
@@ -44,6 +47,7 @@ namespace PickUpApp
 //			};
 
 			ListView listView = new MenuListView();
+			listView.ItemsSource = App.menuItems;
 
 			listView.ItemSelected += (sender, args) =>
 			{
@@ -55,43 +59,49 @@ namespace PickUpApp
 
 					// This is where you would put your “go to one of the selected pages” 
 
-				switch (((HomeMenuItem)args.SelectedItem).MenuName)
+				switch (((FFMenuItem)args.SelectedItem).MenuName)
 				{
 				case "Today":
 					//Page displayPage = (Page)Activator.CreateInstance (typeof(TodayView));
 					//((MasterDetailPage)this.Parent).Detail = new NavigationPage(displayPage);
-					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new TodayView()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new TodayView()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					//this is a special page because it's the first hosted page and therefore receives
 					//its command to load from external sources
-					TodayView tv = (TodayView)((NavigationPage)((MasterDetailPage)this.Parent).Detail).CurrentPage;
+					TodayView tv = (TodayView)((NavigationPage)((MasterDetailPage)this.Parent.Parent).Detail).CurrentPage;
 					tv.ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 					break;
-				case "Manage Schedule":
-					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new MySchedule()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
+				case "Activities":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MySchedule()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					break;
-				case "My Kids":
-					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new MyKids()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
+				case "Kids":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyKids()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					break;
-				case "My Circle":
-					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new MyCircle()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
+				case "Circle":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyCircle()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					break;
-				case "My Info":
-					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new MyInfo()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
+				case "Account":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyInfo()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					break;
+				case "Places":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyPlaces()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					break;
 				case "Calendar":
-					((MasterDetailPage)this.Parent).Detail = new NavigationPage(new CalendarTest()){ BarTextColor = Device.OnPlatform(Color.Black,Color.White,Color.Black) };
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new CalendarTest()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					break;
+				case "Logout":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new Splash()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					break;
 				}
 
 					// Show the detail page.
-					((MasterDetailPage)this.Parent).IsPresented = false;
+					((MasterDetailPage)this.Parent.Parent).IsPresented = false;
 					};
 
 
 			Content = new StackLayout { 
 				Children = {
-					header, listView
-				}
+					listView
+				}, Padding = 0
 			};
 		}
 	}
@@ -100,34 +110,235 @@ namespace PickUpApp
 	{
 		public MenuListView ()
 		{
-			List<HomeMenuItem> data = new MenuListData ();
+			//ObservableCollection<FFMenuItem> data = new MenuListData ();
 
-			ItemsSource = data;
+			ItemsSource = App.menuItems; //data;
 			VerticalOptions = LayoutOptions.FillAndExpand;
 			BackgroundColor = Color.Transparent;
+			HasUnevenRows = true;
+			SeparatorColor = Color.Black;
+			SeparatorVisibility = SeparatorVisibility.Default;
+		
+			//RowHeight = 141;
 
-			RowHeight = 70;
-
-			var cell = new DataTemplate (typeof(ImageCell));
-			cell.SetBinding (TextCell.TextProperty, "MenuName");
-			cell.SetValue (TextCell.TextColorProperty, Device.OnPlatform (Color.Black, Color.FromRgb (211, 211, 211), Color.Black));
-			cell.SetBinding (ImageCell.ImageSourceProperty, "MenuIconURL");
+			var cell = new DataTemplate (typeof(FFMenuCell));
+			//cell.SetBinding (TextCell.TextProperty, "MenuName");
+			//cell.SetValue (TextCell.TextColorProperty, Device.OnPlatform (Color.White, Color.FromRgb (211, 211, 211), Color.Black));
+			//cell.SetBinding (ImageCell.ImageSourceProperty, "MenuIconURL");
 
 			ItemTemplate = cell;
 		}
-	}
 
-	public class MenuListData : List<HomeMenuItem>
+	}
+		
+
+	public class MenuListData : ObservableCollection<FFMenuItem>, INotifyCollectionChanged
 	{
 		public MenuListData ()
 		{
-			this.Add (new HomeMenuItem ("Today", "sun.png"));
-			this.Add (new HomeMenuItem ("Manage Schedule", "calendar.png"));
-			this.Add (new HomeMenuItem ("My Kids", "children.png"));
-			this.Add (new HomeMenuItem ("My Circle", "groups.png"));
-			this.Add (new HomeMenuItem ("My Info", "contacts.png"));
-			this.Add (new HomeMenuItem ("Calendar", "calendar.png"));
+			//FFMenuItem kids = new FFMenuItem ("Kids", App.myKids.Count);		
+			//this.Add (kids);
+			//this.Add (new FFMenuItem ("Circle", App.myCircle.Count));
+			//this.Add (new FFMenuItem ("Places", App.myPlaces.Count));
+			this.Add (new FFMenuItem("Today", 0));
+			this.Add (new FFMenuItem ("Activities", 0));
+			this.Add (new FFMenuItem ("Account", 0));
+			this.Add (new FFMenuItem ("Logout", 0));
+			this.OnCollectionChanged (new NotifyCollectionChangedEventArgs (NotifyCollectionChangedAction.Reset));
+			//this.Add(new FFMenuItem
+
+//			this.Add (new HomeMenuItem ("Today", "sun.png"));
+//			this.Add (new HomeMenuItem ("Manage Schedule", "calendar.png"));
+//			this.Add (new HomeMenuItem ("My Kids", "children.png"));
+//			this.Add (new HomeMenuItem ("My Circle", "groups.png"));
+//			this.Add (new HomeMenuItem ("My Info", "contacts.png"));
+//			this.Add (new HomeMenuItem ("Calendar", "calendar.png"));
+//			this.Add (new HomeMenuItem ("Logout", "contacts.png"));
+
+
 		}
+
+	}
+
+
+	public class FFMenuCell : ViewCell
+	{
+		public FFMenuCell()
+		{
+			//init
+		}
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged ();
+
+			dynamic c = BindingContext;
+			this.Height = 75;
+
+			StackLayout sl = new StackLayout ();
+			sl.Orientation = StackOrientation.Horizontal;
+			sl.HorizontalOptions = LayoutOptions.Center;
+			sl.VerticalOptions = LayoutOptions.Center;
+			sl.BackgroundColor = Color.FromRgb (73, 55, 109);
+			sl.HeightRequest = 141;
+			sl.WidthRequest = App.Device.Display.Width / 2;
+			sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+
+			StackLayout slPix = new StackLayout ();
+			slPix.Orientation = StackOrientation.Vertical;
+			slPix.HorizontalOptions = LayoutOptions.Center;
+			slPix.VerticalOptions = LayoutOptions.Center;
+			slPix.WidthRequest = 175;
+
+
+
+			//really two things in this cell
+			//the name (count)
+			//and the supporting images (3 per row)
+
+			Label menuNameLabel = new Label ();
+			if (((FFMenuItem)c).MenuName == "Logout") {
+				menuNameLabel.TextColor = Color.FromRgb (246, 99, 127);
+			} else {
+				menuNameLabel.TextColor = Color.White;
+			}
+			menuNameLabel.FontAttributes = FontAttributes.Bold;
+			menuNameLabel.FontSize = 18;
+			menuNameLabel.HorizontalOptions = LayoutOptions.Start;
+			menuNameLabel.VerticalOptions = LayoutOptions.Center;
+			menuNameLabel.Text = ((FFMenuItem)c).MenuName;
+			sl.Children.Add (menuNameLabel);
+
+
+				Label countLabel = new Label ();
+				countLabel.TextColor = Color.White;
+				countLabel.FontSize = 18;
+				countLabel.FontFamily = "HelveticaNeue-Light";
+			if (((FFMenuItem)c).Count > 0) {
+				countLabel.Text = "(" + ((FFMenuItem)c).Count.ToString () + ")";
+			}
+				countLabel.HorizontalOptions = LayoutOptions.StartAndExpand;
+				countLabel.VerticalOptions = LayoutOptions.Center;
+				//countLabel.SetBinding (Label.TextProperty, "App.myKids.Count");
+				sl.Children.Add (countLabel);
+
+
+
+			//maybe we have a few special cases
+			switch (((FFMenuItem)c).MenuName) {
+			case "Places":
+				Image imgPlaces = new Image ();
+				imgPlaces.Source = "icn_places.png";
+				imgPlaces.HorizontalOptions = LayoutOptions.End;
+				sl.Children.Add (imgPlaces);
+				break;
+			case "Activities":
+				Image imgActivities = new Image ();
+				imgActivities.Source = "icn_activities.png";
+				imgActivities.HorizontalOptions = LayoutOptions.End;
+				sl.Children.Add (imgActivities);
+				break;
+			case "Account":
+				Image imgAccount = new Image ();
+				imgAccount.Source = "icn_account.png";
+				imgAccount.HorizontalOptions = LayoutOptions.End;
+				sl.Children.Add (imgAccount);
+				break;
+			case "Kids":
+				Image imgKids = new Image ();
+				imgKids.Source = "icn_kids.png";
+				imgKids.HorizontalOptions = LayoutOptions.End;
+				sl.Children.Add (imgKids);
+				break;
+			case "Circle":
+				Image imgCircle = new Image ();
+				imgCircle.Source = "icn_circle.png";
+				imgCircle.HorizontalOptions = LayoutOptions.End;
+				sl.Children.Add (imgCircle);
+				break;
+			
+			default:
+				//this is basically unused now
+				//ok, now let's add any photos
+				if (((FFMenuItem)c).Photos.Count > 0) {
+
+					int cnt = 0;
+					StackLayout slPixSub = new StackLayout ();
+					slPixSub.Orientation = StackOrientation.Horizontal;
+					slPixSub.HorizontalOptions = LayoutOptions.Center;
+					slPixSub.VerticalOptions = LayoutOptions.End;
+
+					foreach (string url in ((FFMenuItem)c).Photos) {
+						if (cnt % 3 == 0 && slPixSub.Children.Count > 0) {
+							//we've now added 3 photos...create a new horizontal stacker
+							slPix.Children.Add(slPixSub);
+							this.Height += 30;
+							slPixSub = new StackLayout ();
+							slPixSub.Orientation = StackOrientation.Horizontal;
+							slPixSub.HorizontalOptions = LayoutOptions.Center;
+							slPixSub.VerticalOptions = LayoutOptions.End;
+						}
+						//Uri auri = new Uri (url);
+						ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
+							BorderColor = Color.Black,
+							BorderThickness = 0,
+							Aspect = Aspect.AspectFill,
+							WidthRequest = 42,
+							HeightRequest = 42,
+							HorizontalOptions = LayoutOptions.Center,
+							VerticalOptions = LayoutOptions.Center,
+							Source = url
+						};	
+						slPixSub.Children.Add (ci);
+						cnt++;
+					}
+					if (slPixSub.Children.Count > 0) {
+						slPix.Children.Add (slPixSub);
+						this.Height += 30;
+					}
+				}
+				break;
+			}
+
+			if (slPix.Children.Count > 0) {
+				sl.Children.Add (slPix);
+			}
+
+			View = sl;
+
+		}
+	}
+
+	public class FFMenuItem : BaseModel
+	{
+		public FFMenuItem (string MenuName, int Count)
+		{
+			_menuName = MenuName;
+			_count = Count;
+			Photos = new List<string> ();
+		}
+
+
+		private string _menuName;
+		public string MenuName
+		{
+			get{ return _menuName; }
+			set { _menuName = value; NotifyPropertyChanged ("MenuName");}
+		}
+
+		private int _count;
+		public int Count
+		{
+			get { return _count; }
+			set { _count = value; NotifyPropertyChanged ("Count"); }
+		}
+
+		private List<string> _photos;
+		public List<string> Photos
+		{
+			get{ return _photos; }
+			set {_photos = value; }
+		}
+
 	}
 
 	public class HomeMenuItem

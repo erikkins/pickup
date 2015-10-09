@@ -1,5 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Drawing;
+using System.IO;
+using System.Collections.ObjectModel;
 
 
 namespace PickUpApp

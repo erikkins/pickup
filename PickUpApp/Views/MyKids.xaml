@@ -1,31 +1,53 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="My Kids" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MyKids">
+<ContentPage Title="KIDS" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" x:Class="PickUpApp.MyKids">
 	  <ContentPage.Padding>
     <OnPlatform x:TypeArguments="Thickness">
-      <OnPlatform.iOS>0, 20, 0, 0</OnPlatform.iOS>
+      <OnPlatform.iOS>0, 0, 0, 0</OnPlatform.iOS>
     </OnPlatform>
   </ContentPage.Padding>
 	<ContentPage.Content>
-<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-	<ListView x:Name="lstKids" ItemsSource="{Binding Kids}">
-	<ListView.ItemTemplate>
-				<DataTemplate>
-					<ViewCell>
-						<ViewCell.ContextActions>
-							<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
-               					Text="Delete" IsDestructive="True" />
-						</ViewCell.ContextActions>
-						<ViewCell.View>
-							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
-								<Label Text="{Binding Firstname}" HorizontalOptions="Start"  />
-								<Label Text="{Binding Lastname}" HorizontalOptions="Fill" />
+<StackLayout Spacing="0" Padding="0" VerticalOptions="Center" ><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+<ListView x:Name="lstKids" ItemsSource="{Binding KidsSorted}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Key}" BackgroundColor="#EEECF3" HasUnevenRows="true">
+				<ListView.GroupHeaderTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout Padding="0" BackgroundColor="#49376D">
+								<Label VerticalOptions="CenterAndExpand"  Text="{Binding Key}" TranslationX="30" FontAttributes="Bold" HorizontalOptions="Start" TextColor="White" />
 							</StackLayout>
-						</ViewCell.View>
-					</ViewCell>
-				</DataTemplate>
-	</ListView.ItemTemplate>
-	</ListView>
-	<Button x:Name="btnAdd" Text="Add Kid"></Button>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.GroupHeaderTemplate>
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell Height="65" StyleId="disclosure">
+							<ViewCell.View>								
+									<StackLayout Orientation="Horizontal" VerticalOptions="Center" >
+										<BoxView WidthRequest="10"></BoxView>
+										<controls:CircleImage Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" Source="{Binding PhotoURL}">
+										  <controls:CircleImage.WidthRequest>
+										    <OnPlatform x:TypeArguments="x:Double">
+										      <OnPlatform.iOS>50</OnPlatform.iOS>
+										      <OnPlatform.Android>50 </OnPlatform.Android>
+										      <OnPlatform.WinPhone>70</OnPlatform.WinPhone>
+										    </OnPlatform>
+										   </controls:CircleImage.WidthRequest>
+							
+										<controls:CircleImage.HeightRequest>
+										    <OnPlatform x:TypeArguments="x:Double">
+										      <OnPlatform.iOS>50</OnPlatform.iOS>
+										      <OnPlatform.Android>50</OnPlatform.Android>
+										      <OnPlatform.WinPhone>70</OnPlatform.WinPhone>
+										    </OnPlatform>
+										   </controls:CircleImage.HeightRequest>
+										</controls:CircleImage>
+										<Label TranslationX="5" FontAttributes="Bold" Text="{Binding Fullname}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+									</StackLayout>
+								
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

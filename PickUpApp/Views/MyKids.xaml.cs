@@ -10,9 +10,16 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 			this.ViewModel = new KidsViewModel (App.client);
+
+			this.ToolbarItems.Add (new ToolbarItem ("Add Kid", "icn_new.png", async() => {
+				Kid k = new Kid ();
+				//should this be modal?
+				await Navigation.PushModalAsync (new AddEditKid (k));
+			}));
+
 			lstKids.ItemSelected += HandleItemSelected;
-			btnAdd.Clicked += HandleClicked;
-			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+			//btnAdd.Clicked += HandleClicked;
+			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			MessagingCenter.Subscribe<Kid>(this, "KidAdded", (s) =>
 				{
 					//ViewModel.Refresh();

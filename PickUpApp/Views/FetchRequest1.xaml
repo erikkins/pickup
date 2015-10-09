@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="FETCH REQUEST" xmlns="http://xamarin.com/schemas/2014/forms" 
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+x:Class="PickUpApp.FetchRequest1">
+	<ContentPage.Content>
+	<StackLayout Spacing="0" Padding="0" VerticalOptions="Center" ><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+<ListView x:Name="lstCircle" ItemsSource="{Binding Circle}" BackgroundColor="#EEECF3" HasUnevenRows="true">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell Height="65" StyleId="none">
+							<ViewCell.View>								
+									<StackLayout x:Name="stacker" Orientation="Horizontal" VerticalOptions="Center" >
+										<BoxView WidthRequest="10"></BoxView>
+										<controls:CircleImage Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" Source="{Binding PhotoURL}">
+										  <controls:CircleImage.WidthRequest>
+										    <OnPlatform x:TypeArguments="x:Double">
+										      <OnPlatform.iOS>50</OnPlatform.iOS>
+										      <OnPlatform.Android>50 </OnPlatform.Android>
+										      <OnPlatform.WinPhone>70</OnPlatform.WinPhone>
+										    </OnPlatform>
+										   </controls:CircleImage.WidthRequest>
+							
+										<controls:CircleImage.HeightRequest>
+										    <OnPlatform x:TypeArguments="x:Double">
+										      <OnPlatform.iOS>50</OnPlatform.iOS>
+										      <OnPlatform.Android>50</OnPlatform.Android>
+										      <OnPlatform.WinPhone>70</OnPlatform.WinPhone>
+										    </OnPlatform>
+										   </controls:CircleImage.HeightRequest>
+										</controls:CircleImage>
+										<Label TranslationX="5" FontAttributes="Bold" Text="{Binding Fullname}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
+										<Image HorizontalOptions="EndAndExpand" Source="ui_check_filled.png"></Image>
+										<BoxView WidthRequest="10" HorizontalOptions="End"></BoxView>
+									</StackLayout>
+								
+							</ViewCell.View>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
