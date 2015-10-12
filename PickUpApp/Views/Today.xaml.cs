@@ -447,9 +447,11 @@ namespace PickUpApp
 
 			Label l = new Label ();
 			if (t.IsPickup) {
-				l.Text = DateTime.Parse (t.ActualAtWhen).AddMinutes (-t.EndPlaceTravelTime).ToLocalTime ().ToString ("t");
+				l.Text = t.TSPickup.Subtract (TimeSpan.FromMinutes (t.EndPlaceTravelTime)).ToString ("hh\\:mm");
+				//l.Text = DateTime.Parse (t.TSPickup).AddMinutes (-t.EndPlaceTravelTime).ToLocalTime ().ToString ("t");
 			} else {
-				l.Text = DateTime.Parse (t.ActualAtWhen).AddMinutes (-t.StartPlaceTravelTime).ToLocalTime ().ToString ("t");
+				l.Text = t.TSDropOff.Subtract (TimeSpan.FromMinutes (t.StartPlaceTravelTime)).ToString ("hh\\:mm");
+				//l.Text = DateTime.Parse (t.TSDropOff).AddMinutes (-t.StartPlaceTravelTime).ToLocalTime ().ToString ("t");
 			}
 			l.VerticalOptions = LayoutOptions.Start;
 			l.FontAttributes = FontAttributes.Bold;
@@ -461,14 +463,14 @@ namespace PickUpApp
 			if (t.IsPickup) {
 				l2.FormattedText.Spans.Add (new Span { Text = "Leave " + t.EndPlaceName, ForegroundColor = Color.Black });
 				l2.FormattedText.Spans.Add (new Span {
-					Text = "\nDrive " + t.EndPlaceDistance + " miles",
+					Text = "\nDrive " + Math.Round(t.EndPlaceDistance,1) + " miles",
 					ForegroundColor = Color.Gray,
 					FontAttributes = FontAttributes.Italic
 				});
 			} else {
 				l2.FormattedText.Spans.Add (new Span { Text = "Leave " + t.StartPlaceName, ForegroundColor = Color.Black });
 				l2.FormattedText.Spans.Add (new Span {
-					Text = "\nDrive " + t.StartPlaceDistance + " miles",
+					Text = "\nDrive " + Math.Round(t.StartPlaceDistance,1) + " miles",
 					ForegroundColor = Color.Gray,
 					FontAttributes = FontAttributes.Italic
 				});
@@ -509,7 +511,11 @@ namespace PickUpApp
 
 
 			Label l3 = new Label ();
-			l3.Text = DateTime.Parse (t.ActualAtWhen).ToLocalTime ().ToString ("t");
+			if (t.IsPickup) {
+				l3.Text = t.TSPickup.ToString ("hh\\:mm");
+			} else {
+				l3.Text = t.TSDropOff.ToString ("hh\\:mm"); 
+			}
 			l3.VerticalOptions = LayoutOptions.Start;
 			l3.FontAttributes = FontAttributes.Bold;
 			detailGrid.Children.Add (l3, 1, 2, 2, 3);

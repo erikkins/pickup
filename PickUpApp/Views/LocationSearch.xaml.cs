@@ -10,11 +10,17 @@ using System.Threading.Tasks;
 using XLabs.Platform.Services.Geolocation;
 using RestSharp.Portable;
 using System.Collections.ObjectModel;
+using XLabs.Forms.Controls;
 
 namespace PickUpApp
 {
 	public partial class LocationSearch : ContentPage
 	{
+
+		SimpleTextCell stcName;
+		PickUpApp.SimpleTextCell stcValue;
+		ExtendedTableView tvLocation;
+
 		private Location tempLocation;
 		private ObservableCollection<GoogleResult> _places;
 		public ObservableCollection<GoogleResult> Places 
@@ -27,22 +33,54 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 			tempLocation = new Location ();
-			this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
+			tempLocation.FullAddress = currentSchedule.Address;
+			tempLocation.Name = currentSchedule.Location;
+			//this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
 
-			btnSave.Clicked += (object sender, EventArgs e) => {
+			searchBar.BackgroundColor = Color.FromRgb (238, 236, 243);
+
+			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
+				//pop the calendar window
+				currentSchedule.Location = tempLocation.Name;
 				currentSchedule.Address = tempLocation.FullAddress;
 				currentSchedule.Latitude = tempLocation.Latitude;
 				currentSchedule.Longitude = tempLocation.Longitude;
 
-				MessagingCenter.Send<Schedule> (currentSchedule, "LocationUpdated");
-			};
+				MessagingCenter.Send<Schedule>(currentSchedule, "UpdatePlease");
+				await Navigation.PopAsync();
+			}));
 
 
+//			btnSave.Clicked += (object sender, EventArgs e) => {
+//				currentSchedule.Address = tempLocation.FullAddress;
+//				currentSchedule.Latitude = tempLocation.Latitude;
+//				currentSchedule.Longitude = tempLocation.Longitude;
+//
+//				MessagingCenter.Send<Schedule> (currentSchedule, "LocationUpdated");
+//			};
 
-			btnCancel.Clicked += async (object sender, EventArgs e) => {
-				await Navigation.PopModalAsync ();
-			};
 
+			tvLocation = new ExtendedTableView ();
+			tvLocation.Intent = TableIntent.Form;
+			tvLocation.BindingContext = tempLocation;
+			tvLocation.HasUnevenRows = false;
+			tvLocation.RowHeight = 80;
+			tvLocation.BackgroundColor = Color.FromRgb (238, 236, 243);
+
+			listStacker.Children.Add (tvLocation);
+			TableSection ts = new TableSection ();
+
+			stcName = new SimpleTextCell ("Name");
+
+			ts.Add (stcName);
+			stcValue = new SimpleTextCell ("Address");
+			ts.Add (stcValue);
+			tvLocation.Root.Add (ts);
+
+//			btnCancel.Clicked += async (object sender, EventArgs e) => {
+//				await Navigation.PopModalAsync ();
+//			};
+//
 			if (currentSchedule.Latitude == null) {
 				//nothing in there...we don't want Rome, so let's try to map using their current location?
 				//Xamarin.Forms.Labs.Services.Geolocation.IGeolocator igeo = DependencyService.Get<Xamarin.Forms.Labs.Services.Geolocation.IGeolocator>();
@@ -104,9 +142,9 @@ namespace PickUpApp
 				LayoutRel.IsVisible = false;
 
 				map.Pins.Clear ();
-				var addressQuery = searchBar.Text;
-				searchBar.Text = "";
-				searchBar.Unfocus ();
+		//		var addressQuery = searchBar.Text;
+		//		searchBar.Text = "";
+		//		searchBar.Unfocus ();
 				//await GetPosition ();
 				//TODO: use Google's geocoder for all searches
 
@@ -135,6 +173,9 @@ namespace PickUpApp
 				tempLocation.FullAddress = result.Address;
 				tempLocation.Latitude = position.Latitude.ToString();
 				tempLocation.Longitude = position.Longitude.ToString();
+				tempLocation.Name = result.Name;
+
+				//tvLocation.OnDataChanged();
 			};
 
 //			searchBar.SearchButtonPressed += async (e, a) => {
@@ -171,9 +212,35 @@ namespace PickUpApp
 //			};
 		}
 
+
+
+
+//		private void SearchLocations (string what)
+//		{
+//
+//
+//			using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
+//			{
+//				var request = new RestRequest("textsearch/json", System.Net.Http.HttpMethod.Get);	
+//	
+//				request.AddQueryParameter ("query", what);
+//				request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
+//
+//				var result =  client.Execute(request);
+//				GoogleResponse yr = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleResponse>(System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
+//
+//				Places = yr.Results;
+//				lstSearch.ItemsSource = Places;
+//
+//				//var yelpresponse = Newtonsoft.Json.Linq.JObject.Parse (System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
+//				//System.Diagnostics.Debug.WriteLine(result);
+//			}
+//
+//		}
+
 		void CancelClicked (object sender, EventArgs e)
 		{
-			Navigation.PopModalAsync ();
+			Navigation.PopAsync ();
 		}
 
 		private readonly TaskScheduler scheduler = TaskScheduler.FromCurrentSynchronizationContext();
@@ -254,6 +321,76 @@ namespace PickUpApp
 			//			});
 		}
 
+	}
+
+	public class SimpleTextCell : ViewCell
+	{
+		private string _title;
+		public SimpleTextCell(string title)
+		{
+			_title = title;
+		}
+
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged ();
+
+			dynamic c = BindingContext;
+			this.Height = 80;
+
+			Grid g = new Grid ();
+			g.ColumnDefinitions = new ColumnDefinitionCollection ();
+			ColumnDefinition cd = new ColumnDefinition ();
+			cd.Width = 120;
+			g.ColumnDefinitions.Add (cd);
+			cd = new ColumnDefinition ();
+			cd.Width = GridLength.Auto;
+			g.ColumnDefinitions.Add (cd);
+
+			StackLayout sl = new StackLayout ();
+			sl.Orientation = StackOrientation.Horizontal;
+			sl.HorizontalOptions = LayoutOptions.Start;
+			sl.VerticalOptions = LayoutOptions.Center;
+			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
+			sl.HeightRequest = 80;
+			//sl.WidthRequest = App.Device.Display.Width / 4;
+			//sl.MinimumWidthRequest = App.Device.Display.Width / 4;
+
+			BoxView bv = new BoxView ();
+			bv.WidthRequest = 10;
+			sl.Children.Add (bv);
+
+			Label l = new Label ();
+
+			l.Text = _title;
+
+			l.TextColor = Color.FromRgb (246, 99, 127);
+			l.HorizontalOptions = LayoutOptions.StartAndExpand;
+			l.VerticalOptions = LayoutOptions.Center;
+			l.FontAttributes = FontAttributes.Bold;
+			l.LineBreakMode = LineBreakMode.TailTruncation;
+			l.FontSize = 16;
+			l.WidthRequest = 100;
+
+			g.Children.Add (l, 0, 0);
+
+			Label l2 = new Label();
+			if (_title == "Name") {
+				l2.SetBinding (Label.TextProperty, "Name");
+			} else {
+				l2.SetBinding (Label.TextProperty, "FullAddress");
+			}
+			//l2.Text = _value;
+			l2.VerticalOptions = LayoutOptions.Center;
+			l2.HorizontalOptions = LayoutOptions.StartAndExpand;
+			l2.LineBreakMode = LineBreakMode.TailTruncation;
+
+			g.Children.Add (l2, 1, 0);
+
+			sl.Children.Add (g);
+
+			View = sl;
+		}
 	}
 }
 

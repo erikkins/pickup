@@ -50,7 +50,59 @@ namespace PickUpApp
 			} 
 		}
 
+		private long _dropoffticks;
+		[JsonProperty(PropertyName = "dropoffticks")]
+		public long DropOffTicks
+		{ get
+			{ return _dropoffticks; } 
+			set
+			{
+				if (value != _dropoffticks) {
+					_dropoffticks = value;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
 
+		[JsonIgnore]
+		public TimeSpan TSDropOff
+		{ get
+			{ return TimeSpan.FromTicks(_dropoffticks); } 
+			set
+			{
+				if (value.Ticks != _dropoffticks) {
+					_dropoffticks = value.Ticks;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
+
+		private long _pickupticks;
+		[JsonProperty(PropertyName = "pickupticks")]
+		public long PickupTicks
+		{ get
+			{ return _pickupticks; } 
+			set
+			{
+				if (value != _pickupticks) {
+					_pickupticks = value;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
+
+		[JsonIgnore]
+		public TimeSpan TSPickup
+		{ get
+			{ return TimeSpan.FromTicks(_pickupticks); } 
+			set
+			{
+				if (value.Ticks != _pickupticks) {
+					_pickupticks = value.Ticks;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
 
 		private string _Activity;
 		[JsonProperty(PropertyName = "activity")]

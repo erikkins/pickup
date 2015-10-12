@@ -45,29 +45,55 @@ namespace PickUpApp
 			} 
 		}
 
-		private DateTime _atwhenDropoff;
-		[JsonProperty(PropertyName = "atwhendropoff")]
-		public DateTime AtWhenDropOff
+		private long _dropoffticks;
+		[JsonProperty(PropertyName = "dropoffticks")]
+		public long DropOffTicks
 		{ get
-			{ return _atwhenDropoff; } 
+			{ return _dropoffticks; } 
 			set
 			{
-				if (value != _atwhenDropoff) {
-					_atwhenDropoff = value;
+				if (value != _dropoffticks) {
+					_dropoffticks = value;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
+			
+		[JsonIgnore]
+		public TimeSpan TSDropOff
+		{ get
+			{ return TimeSpan.FromTicks(_dropoffticks); } 
+			set
+			{
+				if (value.Ticks != _dropoffticks) {
+					_dropoffticks = value.Ticks;
 					NotifyPropertyChanged ();
 				}
 			} 
 		}
 
-		private DateTime _atwhenPickup;
-		[JsonProperty(PropertyName = "atwhenpickup")]
-		public DateTime AtWhenPickup
+		private long _pickupticks;
+		[JsonProperty(PropertyName = "pickupticks")]
+		public long PickupTicks
 		{ get
-			{ return _atwhenPickup; } 
+			{ return _pickupticks; } 
 			set
 			{
-				if (value != _atwhenPickup) {
-					_atwhenPickup = value;
+				if (value != _pickupticks) {
+					_pickupticks = value;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
+
+		[JsonIgnore]
+		public TimeSpan TSPickup
+		{ get
+			{ return TimeSpan.FromTicks(_pickupticks); } 
+			set
+			{
+				if (value.Ticks != _pickupticks) {
+					_pickupticks = value.Ticks;
 					NotifyPropertyChanged ();
 				}
 			} 
@@ -311,14 +337,14 @@ namespace PickUpApp
 			return false;
 		}
 
-		private int _StartPlaceDistance;
+		private decimal _StartPlaceDistance;
 		[JsonProperty(PropertyName = "startplacedistance")]
-		public int StartPlaceDistance { get{return _StartPlaceDistance; } set{if (value != _StartPlaceDistance) {
+		public decimal StartPlaceDistance { get{return _StartPlaceDistance; } set{if (value != _StartPlaceDistance) {
 					_StartPlaceDistance = value; NotifyPropertyChanged ();
 				} } }
-		private int _StartPlaceTravelTime;
+		private decimal _StartPlaceTravelTime;
 		[JsonProperty(PropertyName = "startplacetraveltime")]
-		public int StartPlaceTravelTime { get{return _StartPlaceTravelTime; } set{if (value != _StartPlaceTravelTime) {
+		public decimal StartPlaceTravelTime { get{return _StartPlaceTravelTime; } set{if (value != _StartPlaceTravelTime) {
 					_StartPlaceTravelTime = value; NotifyPropertyChanged ();
 				} } }
 
@@ -348,14 +374,14 @@ namespace PickUpApp
 			return false;
 		}
 
-		private int _EndPlaceDistance;
+		private decimal _EndPlaceDistance;
 		[JsonProperty(PropertyName = "endplacedistance")]
-		public int EndPlaceDistance { get{return _EndPlaceDistance; } set{if (value != _EndPlaceDistance) {
+		public decimal EndPlaceDistance { get{return _EndPlaceDistance; } set{if (value != _EndPlaceDistance) {
 					_EndPlaceDistance = value; NotifyPropertyChanged ();
 				} } }
-		private int _EndPlaceTravelTime;
+		private decimal _EndPlaceTravelTime;
 		[JsonProperty(PropertyName = "endplacetraveltime")]
-		public int EndPlaceTravelTime { get{return _EndPlaceTravelTime; } set{if (value != _EndPlaceTravelTime) {
+		public decimal EndPlaceTravelTime { get{return _EndPlaceTravelTime; } set{if (value != _EndPlaceTravelTime) {
 					_EndPlaceTravelTime = value; NotifyPropertyChanged ();
 				} } }
 

@@ -18,9 +18,10 @@ namespace PickUpApp
 			//TODO: fix this
 			this.ViewModel = new ActivityAddEditViewModel(App.client, CurrentActivity); 
 
-			this.ToolbarItems.Add (new ToolbarItem ("Edit", null, async() => {
+			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
-				await DisplayAlert("ACTIVITY!", "edit", "Cancel");
+				await this.ViewModel.ExecuteAddEditCommand();
+				Navigation.PopAsync();
 
 			}));
 				
@@ -32,9 +33,9 @@ namespace PickUpApp
 
 			loadSelf (CurrentActivity);
 
-			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", (s) => {
-				//ViewModel.CurrentSchedule = s;
-				//stacker.Children.Clear();
+			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
+				await this.ViewModel.ExecuteAddEditCommand();
+				
 				tv.Root.Clear();
 				loadSelf(s);
 			});
@@ -51,8 +52,11 @@ namespace PickUpApp
 			ts.Add (dest);
 			dest.Tapped += async delegate(object sender, EventArgs e) {
 				//this is going to NOT come from my places, but rather is the wide open one
-
+				await Navigation.PushAsync(new LocationSearch(ViewModel.CurrentSchedule));
 			};
+
+
+
 			KidCell kc = new KidCell ();
 			ts.Add (kc);
 			kc.Tapped += async delegate(object sender, EventArgs e) {
@@ -466,36 +470,51 @@ namespace PickUpApp
 				slIconTime.Children.Add (img);
 
 				//this will need to be a button
-				Label lTime = new Label ();
-				lTime.FormattedText = new FormattedString ();
-				lTime.VerticalOptions = LayoutOptions.Center;
+				//Label lTime = new Label ();
+				//lTime.FormattedText = new FormattedString ();
+				//lTime.VerticalOptions = LayoutOptions.Center;
 
-				string shortTime;
+//				lTime.FormattedText.Spans.Add (new Span {
+//					Text = parts[0],
+//					FontSize = 24,
+//					ForegroundColor = Color.Black,
+//					FontAttributes = FontAttributes.Bold
+//				});
+//				lTime.FormattedText.Spans.Add (new Span {
+//					Text = parts[1],
+//					FontFamily = Device.OnPlatform ("HelveticaNeue-Light", "", ""),
+//					FontSize = 24,
+//					ForegroundColor = Color.Black,
+//					FontAttributes = FontAttributes.None
+//				});
+
+
+
+				ExtendedTimePicker tp = new ExtendedTimePicker();
+				tp.HasBorder = false;
+
+				//string shortTime;
 				if (_isPickup) {
 
-					shortTime = s.AtWhenPickup.ToLocalTime ().ToString ("t");
+					//shortTime = s.AtWhenPickup.ToLocalTime ().ToString ("t");
+					//tp.Time = s.AtWhenPickup.ToLocalTime ().TimeOfDay;
+
+					tp.SetBinding (ExtendedTimePicker.TimeProperty, "CurrentSchedule.TSPickup");
 
 				} else {
-					shortTime = s.AtWhenDropOff.ToLocalTime ().ToString ("t");
+					//shortTime = s.AtWhenDropOff.ToLocalTime ().ToString ("t");
+					//tp.Time = s.AtWhenDropOff.ToLocalTime ().TimeOfDay;
+					tp.SetBinding (ExtendedTimePicker.TimeProperty, "CurrentSchedule.TSDropOff");
 				}
-				string[] parts = shortTime.Split (' ');
-				lTime.FormattedText.Spans.Add (new Span {
-					Text = parts[0],
-					FontSize = 24,
-					ForegroundColor = Color.Black,
-					FontAttributes = FontAttributes.Bold
-				});
-				lTime.FormattedText.Spans.Add (new Span {
-					Text = parts[1],
-					FontFamily = Device.OnPlatform ("HelveticaNeue-Light", "", ""),
-					FontSize = 24,
-					ForegroundColor = Color.Black,
-					FontAttributes = FontAttributes.None
-				});
+				//string[] parts = shortTime.Split (' ');
 
 
 
-				slIconTime.Children.Add (lTime);
+
+
+
+
+				slIconTime.Children.Add (tp);
 
 				g.Children.Add (slIconTime, 1, 0);
 
@@ -599,9 +618,11 @@ namespace PickUpApp
 
 				ExtendedDatePicker dp = new ExtendedDatePicker();
 				if (_startsOn) {
-					dp.Date = s.AtWhen;
+					//dp.Date = s.AtWhen;
+					dp.SetBinding (ExtendedDatePicker.DateProperty, "CurrentSchedule.AtWhen");
 				} else {
-					dp.Date = s.AtWhenEnd;
+					//dp.Date = s.AtWhenEnd;
+					dp.SetBinding(ExtendedDatePicker.DateProperty, "CurrentSchedule.AtWhenEnd");
 				}
 				dp.HasBorder = false;
 
