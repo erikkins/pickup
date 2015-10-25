@@ -18,6 +18,19 @@ namespace PickUpApp
 
 		public string Latitude {get;set;}
 		public string Longitude {get;set;}
+
+		//this is for AccountPlace compat
+		private string _phone;
+		public string Phone {
+			get{ return _phone; }
+			set{ _phone = value; NotifyPropertyChanged ("Phone"); }
+		}
+
+		private string _notes;
+		public string Notes {
+			get{ return _notes; }
+			set{ _notes = value; NotifyPropertyChanged ("Notes"); }
+		}
 	}
 }
 

@@ -127,6 +127,7 @@ namespace PickUpApp
 					var page = new ContentPage ();
 					var result = page.DisplayAlert ("Error", "Error loading data Splash. Please check connectivity and try again.", "OK", "Cancel");
 					System.Diagnostics.Debug.WriteLine ("SplashEx " + ex.Message + result.Status.ToString ());
+					MessagingCenter.Send<Exception> (ex, "Error");
 				}
 			}
 			finally{

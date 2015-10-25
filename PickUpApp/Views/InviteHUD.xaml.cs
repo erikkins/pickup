@@ -52,7 +52,7 @@ namespace PickUpApp
 				ts.Add (tc);
 			}
 
-			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude);
+			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude, ViewModel.ThisInvite.Address);
 			ts.Add (mc);
 		
 			mc.Tapped += Mc_Tapped;
@@ -186,7 +186,7 @@ namespace PickUpApp
 				ac.BindingContext = this.BindingContext;
 
 				await ViewModel.UpdateTraffic();
-				mc = new MapCell(ViewModel.ThisInvite.ReturnToLatitude, ViewModel.ThisInvite.ReturnToLongitude);
+				mc = new MapCell(ViewModel.ThisInvite.ReturnToLatitude, ViewModel.ThisInvite.ReturnToLongitude, ViewModel.ThisInvite.Address);
 				mc.BindingContext = this.BindingContext;
 				//do we have to remove the old async delegate?
 				//mc.Tapped -= Mc_Tapped;
@@ -450,7 +450,7 @@ namespace PickUpApp
 			StackLayout slKids = new StackLayout ();
 			slKids.Orientation = StackOrientation.Horizontal;
 
-			string[] kiddos = _kids.Split ('~');
+			string[] kiddos = _kids.Split ('^');
 			foreach (string k in kiddos) {
 				StackLayout slThis = new StackLayout ();
 				slThis.Orientation = StackOrientation.Vertical;

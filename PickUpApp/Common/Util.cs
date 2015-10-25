@@ -3,7 +3,10 @@ using Xamarin.Forms;
 using System.Drawing;
 using System.IO;
 using System.Collections.ObjectModel;
-
+using System.Runtime;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters;
+using Newtonsoft.Json;
 
 namespace PickUpApp
 {
@@ -52,7 +55,19 @@ namespace PickUpApp
 //			}
 //		}
 	}
+	public static class Cloner
+	{
+		public static  T Clone<T>(this T source)
+		{
+			if (Object.ReferenceEquals(source, null))
+			{
+				return default(T);
+			}
 
+			// In the PCL we do not have the BinaryFormatter
+			return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(source));
+		}
+	}
 
 }
 

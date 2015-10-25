@@ -14,10 +14,14 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 			this.ViewModel = new SplashViewModel (App.client);
-			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			//btnFacebook.Command = ViewModel.LoginCommand;
 
+			MessagingCenter.Subscribe<Exception> (this, "Error", (ex) => {
+				DisplayAlert("Error", ex.Message, "OK");
+			});
 
+			/*
 			btnLogout.Clicked += btnLogout_Clicked;
 
 			btnFacebook.Clicked += delegate(object sender, EventArgs e) {
@@ -29,6 +33,7 @@ namespace PickUpApp
 			btnGoogle.Clicked += delegate(object sender, EventArgs e) {
 				this.ViewModel.LoginCommand.Execute("Google");
 			};
+			*/
 
 			MessagingCenter.Subscribe<MobileServiceClient>(this, "LoggedIn", (s) =>{
 					ViewModel.Refresh();

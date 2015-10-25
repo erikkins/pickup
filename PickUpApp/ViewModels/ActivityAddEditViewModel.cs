@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using System.Diagnostics;
 
 namespace PickUpApp
 {
@@ -16,7 +16,7 @@ namespace PickUpApp
 			this.client = client;
 			_currentSchedule = currentSchedule;
 			Kids = new ObservableCollection<Kid> ();
-			KidSchedules = new ObservableCollection<KidSchedule> ();
+			KidSchedules = new TrulyObservableCollection<KidSchedule> ();
 
 			LoadInitialCommand.Execute(null);
 
@@ -24,7 +24,7 @@ namespace PickUpApp
 
 
 
-		public ActivityAddEditViewModel (MobileServiceClient client, Schedule currentSchedule, ObservableCollection<KidSchedule> kidSchedule, ObservableCollection<Kid> kids)
+		public ActivityAddEditViewModel (MobileServiceClient client, Schedule currentSchedule, TrulyObservableCollection<KidSchedule> kidSchedule, ObservableCollection<Kid> kids)
 		{
 			this.client = client;
 			_currentSchedule = currentSchedule;
@@ -46,8 +46,8 @@ namespace PickUpApp
 		}
 		public ObservableCollection<Kid> Kids { get; set; }
 
-		private ObservableCollection<KidSchedule> _kidschedules;
-		public ObservableCollection<KidSchedule> KidSchedules 
+		private TrulyObservableCollection<KidSchedule> _kidschedules;
+		public TrulyObservableCollection<KidSchedule> KidSchedules 
 		{get{ return _kidschedules; } 
 			set{
 				_kidschedules = value; 
@@ -66,10 +66,10 @@ namespace PickUpApp
 
 
 					foreach (AccountPlace ap in App.myPlaces) {
-						if (ap.id == _currentSchedule.StartPlaceID) {
-							ap.Selected = true;
-
-						}
+						//this selection needs to be done a bit closer to the user!
+//						if (ap.id == _currentSchedule.StartPlaceID) {
+//							ap.Selected = true;
+//						}
 						_accountPlaces.Add (ap);
 					}
 
@@ -106,7 +106,13 @@ namespace PickUpApp
 		}
 		public async  System.Threading.Tasks.Task CalculateDriveTime()
 		{
+
+			if (IsLoading) {
+				return;
+			}
+
 			try{
+				IsLoading = true;
 				PortableRest.RestRequest req = new PortableRest.RestRequest ("Routes", System.Net.Http.HttpMethod.Get);
 
 				AccountPlace selectedPlace = new AccountPlace();
@@ -148,22 +154,24 @@ namespace PickUpApp
 				req = null;
 
 
-
+				Debug.WriteLine("ActivityAddEditVM -- CalculatedDriveTime");
 				//ok, we get total seconds, so we need to divide by 60 to get minutes
 				//decimal min = decimal.Parse(bingresponse ["resourceSets"] [0] ["resources"] [0] ["travelDurationTraffic"].ToString())/60;
 				//bingresponse.RemoveAll();
 				//bingresponse = null;
 
-				CurrentSchedule.StartPlaceTravelTime = min;
-				CurrentSchedule.StartPlaceDistance = distance;
+				CurrentSchedule.StartPlaceTravelTime = Math.Round(min, 2);
+				CurrentSchedule.StartPlaceDistance = Math.Round(distance, 2);
+				IsLoading = false;
 			}
 			catch(Exception ex)
 			{
+				IsLoading = false;
 				System.Diagnostics.Debug.WriteLine ("BingError " + ex.Message);
 			}
 			finally
 			{
-
+				IsLoading = false;
 			
 			}
 		}
@@ -196,15 +204,21 @@ namespace PickUpApp
 				await CalculateDriveTime();
 
 				if (string.IsNullOrEmpty(CurrentSchedule.id))
+				{
 					await sched.InsertAsync(CurrentSchedule);
+					Debug.WriteLine("ActivityAddEditVM -- Schedule Added");
+				}
 				else
+				{
 					await sched.UpdateAsync(CurrentSchedule);
+					Debug.WriteLine("ActivityAddEditVM -- Schedule Updated");
+				}
 
 				//but wait, there's more!
 				//gotta add the kidids to the scheduleid (nest this somehow in a single call?)
 				//whack 'em first
 				await client.InvokeApiAsync<Schedule, EmptyClass>("deleteschedulekids", CurrentSchedule);
-
+				Debug.WriteLine("ActivityAddEditVM -- DeletedScheduleKids");
 				var kidsched = client.GetTable<KidSchedule>();
 				foreach (KidSchedule ks in KidSchedules)
 				{
@@ -214,12 +228,13 @@ namespace PickUpApp
 					}
 					await kidsched.InsertAsync(ks);
 				}
-
+				Debug.WriteLine("ActivityAddEditVM -- Added " + KidSchedules.Count.ToString() + " kids");
 
 				MessagingCenter.Send<Schedule>(CurrentSchedule, "ScheduleAdded");
 			}
 			catch (Exception ex)
 			{
+				Debug.WriteLine ("ActivityAddEditCommand " + ex);
 				var page = new ContentPage();
 				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
 			}
@@ -255,10 +270,11 @@ namespace PickUpApp
 
 				var theseKids = await client.InvokeApiAsync<Schedule, List<KidSchedule>>("getschedulekids", CurrentSchedule);
 				KidSchedules.Clear();
+				//Debug.WriteLine("KidSchedules Clear from LoadInitial");
 				foreach (KidSchedule ks in theseKids)
 				{
 					KidSchedules.Add(ks);
-
+					//Debug.WriteLine("KidSchedule " + ks.KidID + " added from LoadInitial");
 					foreach(Kid k in Kids)
 					{
 						if (k.Id == ks.KidID)

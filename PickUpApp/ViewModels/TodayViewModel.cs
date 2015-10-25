@@ -40,7 +40,7 @@ namespace PickUpApp.ViewModels
 
 					//well, we really need to split the today into two parts--dropoff and pickup...so need to create potentially 2 rows for each one
 
-					if (sched.AtWhen != DateTime.MinValue)
+					if (sched.TSDropOff != TimeSpan.Zero)
 					{
 						sched.IsPickup = false; //means it's a dropoff
 					}
@@ -59,9 +59,10 @@ namespace PickUpApp.ViewModels
 
 
 					//now see if we need to add a pickup
-					if (sched.AtWhenEnd != DateTime.MinValue)
+					if (sched.TSPickup != TimeSpan.Zero)
 					{
-						Today pickup = sched;
+						//need a deep clone here
+						Today pickup = sched.Clone();
 						pickup.IsPickup = true;
 
 						if (!hasNext && (!pickup.DropOffComplete || !pickup.PickupComplete))

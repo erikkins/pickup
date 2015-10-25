@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
 using System.Linq;
+using System.Diagnostics;
 
 namespace PickUpApp
 {
@@ -20,8 +21,9 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
+				await Navigation.PopAsync();
+
 				await this.ViewModel.ExecuteAddEditCommand();
-				Navigation.PopAsync();
 
 			}));
 				
@@ -34,10 +36,22 @@ namespace PickUpApp
 			loadSelf (CurrentActivity);
 
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
+				Debug.WriteLine("AddEditActivity -- UpdatePlease Fired");
 				await this.ViewModel.ExecuteAddEditCommand();
-				
+			});
+
+			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded",  (t) => {
+//				Device.BeginInvokeOnMainThread( ()=>{
+//					//await System.Threading.Tasks.Task.Delay(25);
+//					Navigation.PopAsync();
+//				});
+				Debug.WriteLine("AddEditActivity -- ScheduleAdded Fired");
+				//now tell the parent controller to reload its listview
+				MessagingCenter.Send<Schedule>(t, "RefreshSched");
+
 				tv.Root.Clear();
-				loadSelf(s);
+				loadSelf(t);
+
 			});
 
 
@@ -48,24 +62,40 @@ namespace PickUpApp
 
 			ts = new TableSection ();
 			ts.Add (new ActivityCell ());
-			PlacePickerCell dest = new PlacePickerCell (true);
+			PlacePickerCell dest = new PlacePickerCell (PlaceType.ActivityPlace);
 			ts.Add (dest);
 			dest.Tapped += async delegate(object sender, EventArgs e) {
-				//this is going to NOT come from my places, but rather is the wide open one
-				await Navigation.PushAsync(new LocationSearch(ViewModel.CurrentSchedule));
+				
+				System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in this.ViewModel.AccountPlaces where aps.id == this.ViewModel.CurrentSchedule.AccountPlaceID select aps;
+				if (ap.Count() == 0)
+				{
+					await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, null, PlaceType.ActivityPlace), true);
+				}
+				else{
+				await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, ap.FirstOrDefault(), PlaceType.ActivityPlace), true);
+				}
 			};
-
-
+				
 
 			KidCell kc = new KidCell ();
 			ts.Add (kc);
 			kc.Tapped += async delegate(object sender, EventArgs e) {
 				await Navigation.PushAsync(new KidSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids), true);
 			};
-			PlacePickerCell origin = new PlacePickerCell (false);
+
+
+			PlacePickerCell origin = new PlacePickerCell (PlaceType.StartingPlace);
 			ts.Add (origin);
 			origin.Tapped += async delegate(object sender, EventArgs e) {
-				await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids), true);
+//				AccountPlace ap = new AccountPlace();
+//				//since we know this is the origin cell, we need to set the accountplace accordingly
+//				ap.Address = this.ViewModel.CurrentSchedule.StartPlaceAddress;
+//				ap.id = this.ViewModel.CurrentSchedule.StartPlaceID;
+//				ap.PlaceName = this.ViewModel.CurrentSchedule.StartPlaceName;
+
+				System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in this.ViewModel.AccountPlaces where aps.id == this.ViewModel.CurrentSchedule.StartPlaceID select aps;
+
+				await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, ap.FirstOrDefault(), PlaceType.StartingPlace), true);
 			};
 		
 			ts.Add (new PickupDropoffSelectorCell (false));
@@ -509,11 +539,6 @@ namespace PickUpApp
 				//string[] parts = shortTime.Split (' ');
 
 
-
-
-
-
-
 				slIconTime.Children.Add (tp);
 
 				g.Children.Add (slIconTime, 1, 0);
@@ -531,28 +556,87 @@ namespace PickUpApp
 				l2.FontAttributes = FontAttributes.Bold;
 				l2.FontSize = 16;
 
+
 				g.Children.Add (l2, 0, 1);
 
-				//and now a notes thingy
-				StackLayout slHoriz = new StackLayout();
-				slHoriz.Orientation = StackOrientation.Horizontal;
-				slHoriz.HorizontalOptions = LayoutOptions.Start;
 
-				Image imgAddNote =  new Image();
-				imgAddNote.Source = "icn_new_grey.png";
-				imgAddNote.VerticalOptions = LayoutOptions.Center;
-				imgAddNote.HorizontalOptions = LayoutOptions.Start;
-				slHoriz.Children.Add (imgAddNote);
+				bool noNote = false;
 
-				Label lAddNote = new Label ();
-				lAddNote.Text = "Add a note";
-				lAddNote.TextColor = Color.FromRgb (186, 186, 186);
-				lAddNote.VerticalOptions = LayoutOptions.Center;
-				lAddNote.HorizontalOptions = LayoutOptions.Start;
-				slHoriz.Children.Add (lAddNote);
+				if (_isPickup) {
+					if (string.IsNullOrEmpty (s.PickupNotes)) {
+						//show the add button
+						noNote = true;
+					} else {
+						Label pnotes = new Label ();
+						pnotes.SetBinding (Label.TextProperty, "CurrentSchedule.PickupNotes");
+						pnotes.VerticalOptions = LayoutOptions.Center;
+						pnotes.FontSize = 14;
+						pnotes.LineBreakMode = LineBreakMode.WordWrap;
+						pnotes.WidthRequest = (App.Device.Display.Width / 2) - 205;
+						g.Children.Add (pnotes, 1, 1);
 
-				g.Children.Add (slHoriz, 1, 1);
+						TapGestureRecognizer labelTap = new TapGestureRecognizer ();
+						labelTap.Tapped += async delegate(object sender, EventArgs e) {
+							var b = (Label)sender;
+							await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+						};
+						pnotes.GestureRecognizers.Add (labelTap);
 
+					}
+				} else {
+					if (string.IsNullOrEmpty (s.DropOffNotes)) {
+						noNote = true;
+					} else {
+						Label dnotes = new Label ();
+						dnotes.SetBinding (Label.TextProperty, "CurrentSchedule.DropOffNotes");
+						dnotes.VerticalOptions = LayoutOptions.Center;
+						dnotes.LineBreakMode = LineBreakMode.WordWrap;
+						dnotes.WidthRequest = (App.Device.Display.Width / 2) - 205;
+						dnotes.FontSize = 14;
+						g.Children.Add (dnotes, 1, 1);
+						TapGestureRecognizer tgr = new TapGestureRecognizer ();
+						tgr.Tapped += async delegate(object sender, EventArgs e) {
+							var b = (Label)sender;
+							await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+						};
+
+						dnotes.GestureRecognizers.Add (tgr);
+					}
+				}
+				if (noNote) {
+					//and now a notes thingy
+					StackLayout slHoriz = new StackLayout ();
+					slHoriz.Orientation = StackOrientation.Horizontal;
+					slHoriz.HorizontalOptions = LayoutOptions.Start;
+
+//					Image imgAddNote = new Image ();
+//					imgAddNote.Source = "icn_new_grey.png";
+//					imgAddNote.VerticalOptions = LayoutOptions.Center;
+//					imgAddNote.HorizontalOptions = LayoutOptions.Start;
+//					slHoriz.Children.Add (imgAddNote);
+
+					Button bAddNote = new Button ();
+					bAddNote.Image = "icn_new_grey.png";
+					bAddNote.VerticalOptions = LayoutOptions.Center;
+					bAddNote.HorizontalOptions = LayoutOptions.Start;
+					slHoriz.Children.Add (bAddNote);
+
+
+					bAddNote.Clicked += async delegate(object sender, EventArgs e) {
+						var b = (Button)sender;
+						await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+						//await ((ContentPage)((ListView)((StackLayout)b.ParentView).ParentView).ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+					};
+
+					Label lAddNote = new Label ();
+					lAddNote.Text = "Add a note";
+					lAddNote.TextColor = Color.FromRgb (186, 186, 186);
+					lAddNote.VerticalOptions = LayoutOptions.Center;
+					lAddNote.HorizontalOptions = LayoutOptions.Start;
+					slHoriz.Children.Add (lAddNote);
+
+					g.Children.Add (slHoriz, 1, 1);
+				}
 
 				sl.Children.Add (g);
 
@@ -683,7 +767,8 @@ namespace PickUpApp
 				g.Children.Add (l, 0, 0);
 
 				XLabs.Forms.Controls.ExtendedEntry e = new XLabs.Forms.Controls.ExtendedEntry ();
-				e.Text = s.Activity;
+				//e.Text = s.Activity;
+				e.SetBinding (ExtendedEntry.TextProperty, "CurrentSchedule.Activity");
 				e.HorizontalOptions = LayoutOptions.StartAndExpand;
 				e.VerticalOptions = LayoutOptions.Center;
 				e.BackgroundColor = Color.Transparent;
@@ -701,10 +786,10 @@ namespace PickUpApp
 
 		public class PlacePickerCell : ViewCell
 		{
-			bool _isDestination;
-			public PlacePickerCell(bool isDestination)
+			PlaceType _placeType;
+			public PlacePickerCell(PlaceType placeType)
 			{
-				_isDestination = isDestination;
+				_placeType = placeType;
 			}
 			protected override void OnBindingContextChanged()
 			{
@@ -738,7 +823,7 @@ namespace PickUpApp
 				sl.Children.Add (bv);
 
 				Label l = new Label ();
-				if (_isDestination) {
+				if (_placeType == PlaceType.ActivityPlace) {
 					l.Text = "Place";
 				} else {
 					l.Text = "Leaving from";
@@ -771,9 +856,10 @@ namespace PickUpApp
 				slAddress.Spacing = 1;
 				slAddress.VerticalOptions = LayoutOptions.Center;
 				slAddress.Orientation = StackOrientation.Vertical;
+				slAddress.WidthRequest = (App.Device.Display.Width / 2) - 205;
 
 				Label nameLabel = new Label ();
-				if (_isDestination) {
+				if (_placeType == PlaceType.ActivityPlace) {
 					nameLabel.Text = s.Location;
 				} else {
 					nameLabel.Text = s.StartPlaceName;	
@@ -785,7 +871,7 @@ namespace PickUpApp
 				slAddress.Children.Add (nameLabel);
 
 				Label addressLabel = new Label ();
-				if (_isDestination) {
+				if (_placeType == PlaceType.ActivityPlace) {
 					addressLabel.Text = s.Address;
 				} else {
 					addressLabel.Text = s.StartPlaceAddress;	
@@ -834,6 +920,8 @@ namespace PickUpApp
 			{
 				base.OnBindingContextChanged ();
 
+				Debug.WriteLine ("KidCell -- BindingContextChanged");
+
 				dynamic c = BindingContext;
 				this.Height = 75;
 				//finalHeight = this.Height;
@@ -872,22 +960,100 @@ namespace PickUpApp
 
 				g.Children.Add (l, 0, 0);
 
-				ObservableCollection<KidSchedule> kidschedule = ((ActivityAddEditViewModel)c).KidSchedules;
+				//ObservableCollection<KidSchedule> kidschedule = ((ActivityAddEditViewModel)c).KidSchedules;
 				ObservableCollection<Kid> kids = ((ActivityAddEditViewModel)c).Kids;
 				StackLayout slKidHolder = new StackLayout ();
 				slKidHolder.Orientation = StackOrientation.Horizontal;
 
-				kidschedule.CollectionChanged+=  delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+
+				//START PRELOAD
+				finalHeight = 75;
+				if (((ActivityAddEditViewModel)c).KidSchedules.Count > 0)
+				{
 					slKidHolder.Children.Clear();
+					StackLayout slKids = new StackLayout ();
+					slKids.Orientation = StackOrientation.Vertical;
+					slKids.HorizontalOptions = LayoutOptions.StartAndExpand;
+					slKids.VerticalOptions = LayoutOptions.Center;
+
+					foreach (KidSchedule ks in ((ActivityAddEditViewModel)c).KidSchedules) {
+						StackLayout slKiddo = new StackLayout ();
+						slKiddo.Orientation = StackOrientation.Horizontal;
+
+						//actually have to go pull the kids out
+						Kid thisKid = kids.Single(k=>k.Id == ks.KidID);
+						ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
+							BorderColor = Color.Black,
+							BorderThickness = 0,
+							Aspect = Aspect.AspectFill,
+							WidthRequest = 50,
+							HeightRequest = 50,
+							HorizontalOptions = LayoutOptions.Start,
+							VerticalOptions = LayoutOptions.Center,
+							Source= thisKid.PhotoURL
+						};	
+
+
+						slKiddo.Children.Add (ci);
+						Label kidName = new Label();
+						kidName.VerticalOptions = LayoutOptions.Center;
+						kidName.Text = thisKid.Fullname;
+						kidName.FontSize = 14;
+						//kidName.SetBinding (Label.TextProperty, "Fullname");
+						slKiddo.Children.Add (kidName);
+						slKids.Children.Add (slKiddo);
+
+						//this.Height += 60;
+						finalHeight += 40;
+					}	
+					//Debug.WriteLine("Adding " + ((ActivityAddEditViewModel)c).KidSchedules.Count.ToString() + " kids directly");
+					slKidHolder.Children.Add(slKids);
+				}
+				else{
+
+					//simply add the add kid button
+					StackLayout slHoriz = new StackLayout();
+					slHoriz.Orientation = StackOrientation.Horizontal;
+					slHoriz.HorizontalOptions = LayoutOptions.Start;
+
+					Image imgAddKid =  new Image();
+					imgAddKid.Source = "icn_new_grey.png";
+					imgAddKid.VerticalOptions = LayoutOptions.Center;
+					imgAddKid.HorizontalOptions = LayoutOptions.Start;
+					slHoriz.Children.Add (imgAddKid);
+
+					Label lAddKid = new Label ();
+					lAddKid.Text = "Add Kids";
+					lAddKid.TextColor = Color.FromRgb (186, 186, 186);
+					lAddKid.VerticalOptions = LayoutOptions.Center;
+					lAddKid.HorizontalOptions = LayoutOptions.Start;
+					slHoriz.Children.Add (lAddKid);
+
+					//Debug.WriteLine("Adding Add Kids button directly");
+					slKidHolder.Children.Add(slHoriz);
+				}
+				this.Height = finalHeight;
+				g.Children.Add(slKidHolder, 1, 0);
+
+				//END PRELOAD
+
+
+				//this is so that if the kids collection changes, we can update it
+				((ActivityAddEditViewModel)c).KidSchedules.CollectionChanged+=  delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+					//Debug.WriteLine("CollectionChanged: " + e.Action.ToString());
+
 					finalHeight = 75;
-					if (kidschedule.Count > 0)
+					//Debug.WriteLine("KidSchedulesCollectionChanged with " + ((ActivityAddEditViewModel)c).KidSchedules.Count.ToString() + " kidschedules");
+					if (((ActivityAddEditViewModel)c).KidSchedules.Count > 0)
 					{
+						//Debug.WriteLine("Clearing slKidHolder");
+						slKidHolder.Children.Clear();
 						StackLayout slKids = new StackLayout ();
 						slKids.Orientation = StackOrientation.Vertical;
 						slKids.HorizontalOptions = LayoutOptions.StartAndExpand;
 						slKids.VerticalOptions = LayoutOptions.Center;
 
-						foreach (KidSchedule ks in kidschedule) {
+						foreach (KidSchedule ks in ((ActivityAddEditViewModel)c).KidSchedules) {
 							StackLayout slKiddo = new StackLayout ();
 							slKiddo.Orientation = StackOrientation.Horizontal;
 
@@ -918,27 +1084,7 @@ namespace PickUpApp
 							finalHeight += 40;
 						}	
 							
-
-						//simply add the add kid button
-//						StackLayout slHoriz = new StackLayout();
-//						slHoriz.Orientation = StackOrientation.Horizontal;
-//						slHoriz.HorizontalOptions = LayoutOptions.Start;
-//						slHoriz.TranslationX = 11;
-//
-//						Image imgAddKid =  new Image();
-//						imgAddKid.Source = "icn_new_grey.png";
-//						imgAddKid.VerticalOptions = LayoutOptions.Center;
-//						imgAddKid.HorizontalOptions = LayoutOptions.Start;
-//						slHoriz.Children.Add (imgAddKid);
-//
-//						Label lAddKid = new Label ();
-//						lAddKid.Text = "Add Kids";
-//						lAddKid.TextColor = Color.FromRgb (186, 186, 186);
-//						lAddKid.VerticalOptions = LayoutOptions.Center;
-//						lAddKid.HorizontalOptions = LayoutOptions.Start;
-//						slHoriz.Children.Add(lAddKid);
-//						slKids.Children.Add (slHoriz);
-//
+						//Debug.WriteLine("Adding " + ((ActivityAddEditViewModel)c).KidSchedules.Count.ToString() + " kids from Event");
 						slKidHolder.Children.Add(slKids);
 
 
@@ -963,20 +1109,26 @@ namespace PickUpApp
 						lAddKid.HorizontalOptions = LayoutOptions.Start;
 						slHoriz.Children.Add (lAddKid);
 
+
+						//Debug.WriteLine("Adding Add Kids button from Event");
 						slKidHolder.Children.Add(slHoriz);
 					}
 
 					//g.Children.Add (slKids, 1, 0);
+					//Debug.WriteLine("Adding slKidHolder to the grid");
 					g.Children.Add(slKidHolder, 1, 0);
 					if (finalHeight > 0)
 					{
 						this.OnPropertyChanged("FinalHeight");
 					}
-				};
 
+				};
+					
 				sl.Children.Add (g);
+				
 
 				View = sl;
+
 			}
 		}
 

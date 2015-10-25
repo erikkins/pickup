@@ -67,12 +67,26 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>https://pickup.azure-mobile.net</key>
-			<dict/>
+			<dict>
+				<key>NSIncludesSubDomains</key>
+				<true/>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
 		</dict>
 	</dict>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon</string>
+		<string>Icon@2x</string>
+		<string>Icon-72</string>
+		<string>Icon-72@2x</string>
+		<string>Icon-Small-50</string>
+		<string>Icon-Small-50@2x</string>
+	</array>
 </dict>
 </plist>

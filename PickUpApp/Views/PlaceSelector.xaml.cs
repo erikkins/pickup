@@ -8,43 +8,78 @@ using System.Linq;
 
 namespace PickUpApp
 {
-
+	public enum PlaceType
+	{
+		ActivityPlace,
+		StartingPlace,
+		EndingPlace
+	}
 
 	public partial class PlaceSelector : ContentPage
 	{
 		private Schedule _currentSchedule;
+		private PlaceType _placeType;
 
+		private MapCell _mapCell;
 
-
-		public PlaceSelector (Schedule currentSchedule, ObservableCollection<KidSchedule> kidschedule, ObservableCollection<Kid> kids)
+		public PlaceSelector (Schedule currentSchedule, TrulyObservableCollection<KidSchedule> kidschedule, ObservableCollection<Kid> kids, AccountPlace selectedPlace, PlaceType placeType)
 		{
 			InitializeComponent ();
 			_currentSchedule = currentSchedule;
 			this.ViewModel = new ActivityAddEditViewModel (App.client, currentSchedule, kidschedule, kids);
+			_placeType = placeType;
 
-			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
-
-				//how do we set the selected item?
-				//need to set the StartPlaceID based upon the selected value!
-
-				//what we really need to be doing here is calculating the travel time!
-
+			this.ToolbarItems.Add (new ToolbarItem ("Done", null, () => {
 
 				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
-				await Navigation.PopAsync();
-
+				Navigation.PopAsync();
 			}));
 
 
-			//gotta be a lambda for this, but...
-//			foreach (AccountPlace ap in myPlaces) {
-//				if (ap.id == currentSchedule.StartPlaceID) {
-//					ap.Selected = true;
-//				} else {
-//					ap.Selected = false;
-//				}	}
+			//gotta be a lambda for this, but...this is just poor design! 
+			foreach (AccountPlace ap in App.myPlaces) {
+				switch (_placeType) {
+				case PlaceType.ActivityPlace:
+					if (ap.id == currentSchedule.AccountPlaceID) {
+						ap.Selected = true;
+					} else {
+						ap.Selected = false;
+					}	
+					break;
+				case PlaceType.StartingPlace:
+					if (ap.id == currentSchedule.StartPlaceID) {
+						ap.Selected = true;
+					} else {
+						ap.Selected = false;
+					}	
+					break;
+				case PlaceType.EndingPlace:
+					break;
+				}
+
+			}
 				
 			this.BackgroundColor = Color.FromRgb (238, 236, 243);
+
+			TableView tvMap = new TableView ();
+			tvMap.Intent = TableIntent.Data;
+			TableSection ts = new TableSection ();
+
+
+			if (selectedPlace == null) {
+				_mapCell = new MapCell (double.Parse(App.PositionLatitude), double.Parse(App.PositionLongitude), "No address selected");
+				//_mapCell = new MapCell (double.Parse (currentSchedule.Latitude), double.Parse (currentSchedule.Longitude), currentSchedule.Address);
+			} else {
+				_mapCell = new MapCell (double.Parse(selectedPlace.Latitude), double.Parse(selectedPlace.Longitude), selectedPlace.Address);
+			}
+			ts.Add (_mapCell);
+			tvMap.Root.Add (ts);
+			tvMap.HeightRequest = 202;
+			tvMap.VerticalOptions = LayoutOptions.Start;
+			stacker.Children.Add (tvMap);
+			this.Appearing += delegate(object sender, EventArgs e) {
+				_mapCell.Navigate();
+			};
 
 
 			ListView lvKids = new ListView () {
@@ -56,9 +91,27 @@ namespace PickUpApp
 				RowHeight = 75,
 				Header = null
 			};
+			stacker.Children.Add (lvKids);
 
+			Button btnAdd = new Button ();
+			btnAdd.VerticalOptions = LayoutOptions.Center;
+			btnAdd.HorizontalOptions = LayoutOptions.Center;
+			btnAdd.HeightRequest = 50;
+			btnAdd.WidthRequest = (App.Device.Display.Width/2) - 40;
+			btnAdd.FontAttributes = FontAttributes.Bold;
+			btnAdd.FontSize = 18;
+			btnAdd.BorderRadius = 8;
+			btnAdd.BackgroundColor = Color.FromRgb (73, 55, 109);
+			btnAdd.TextColor = Color.FromRgb (84, 210, 159);
+			btnAdd.Text = "ADD NEW PLACE";
+			btnAdd.TranslationY = - 10;
+			stacker.Children.Add (btnAdd);
 
+			btnAdd.Clicked += async delegate(object sender, EventArgs e) {
 
+				await this.Navigation.PushAsync(new LocationSearch());
+
+			};
 
 //			lvKids.ItemTapped += delegate(object sender, ItemTappedEventArgs e) {
 //
@@ -91,16 +144,45 @@ namespace PickUpApp
 					return;
 				}
 
-				_currentSchedule.StartPlaceID = ((AccountPlace)e.SelectedItem).id;
-				_currentSchedule.StartPlaceName = ((AccountPlace)e.SelectedItem).PlaceName;
-				_currentSchedule.StartPlaceAddress = ((AccountPlace)e.SelectedItem).Address;
+				//ok, we need to differentiate between StartPlace and ActualLocation
+				switch (_placeType)
+				{
+				case PlaceType.ActivityPlace:
+					_currentSchedule.AccountPlaceID = ((AccountPlace)e.SelectedItem).id;
+					break;
+				case PlaceType.StartingPlace:
+					_currentSchedule.StartPlaceID = ((AccountPlace)e.SelectedItem).id;
+					break;
+				case PlaceType.EndingPlace:
+					break;
+				}
+
+				//_currentSchedule.StartPlaceName = ((AccountPlace)e.SelectedItem).PlaceName;
+				//_currentSchedule.StartPlaceAddress = ((AccountPlace)e.SelectedItem).Address;
+
+				_mapCell.Navigate(double.Parse(((AccountPlace)e.SelectedItem).Latitude), double.Parse(((AccountPlace)e.SelectedItem).Longitude), ((AccountPlace)e.SelectedItem).Address);
 
 				foreach (AccountPlace ap in ViewModel.AccountPlaces) {
-					if (ap.id == currentSchedule.StartPlaceID) {
-						ap.Selected = true;
-					} else {
-						ap.Selected = false;
+					switch (_placeType)
+					{
+					case PlaceType.ActivityPlace:
+						if (ap.id == currentSchedule.AccountPlaceID) {
+							ap.Selected = true;
+						} else {
+							ap.Selected = false;
+						}
+						break;
+					case PlaceType.StartingPlace:
+						if (ap.id == currentSchedule.StartPlaceID) {
+							ap.Selected = true;
+						} else {
+							ap.Selected = false;
+						}
+						break;
+					case PlaceType.EndingPlace:
+						break;
 					}
+
 				}
 				//ViewModel.Refresh();
 				lvKids.ItemTemplate = new DataTemplate (typeof(PlaceCell));
@@ -162,6 +244,7 @@ namespace PickUpApp
 			ib.ImageHeightRequest = 27;
 			ib.ImageWidthRequest = 27;
 			if (ap.Selected) {
+				
 				ib.Source = "ui_check_filled.png";
 			} else {
 				ib.Source = "ui_check_empty.png";

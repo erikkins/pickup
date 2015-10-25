@@ -14,9 +14,12 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 			this.ViewModel = new MyCircleViewModel (App.client);
-			btnContacts.Clicked += HandleClicked; 
+			this.ToolbarItems.Add (new ToolbarItem ("Add Contact", "icn_new.png", async() => {
+				await Navigation.PushAsync(new SelectContact());
+			}));
 
-			this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);	
+			this.BackgroundColor = Color.FromRgb (238, 236, 243);
+			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);	
 			MessagingCenter.Subscribe<LocalContact> (this, "ContactAdded", (s) => {
 				Navigation.PopModalAsync ();
 				ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
@@ -25,32 +28,6 @@ namespace PickUpApp
 		}
 
 
-		void HandleClicked (object sender, EventArgs e)
-		{
-
-			//launch the contacts page modally
-			Navigation.PushModalAsync (new SelectContact ());
-
-			//change the observablecollection
-			//ViewModel.search ("k");
-			//lstContacts.ItemsSource = ViewModel.ContactsSorted;
-
-			//var contacts = DependencyService.Get<iAddressBook> ().testIt ().Result;
-			//Debug.WriteLine (contacts);
-			/*
-			var book = new AddressBook (null);
-			book.RequestPermission().ContinueWith (t => {
-				if (!t.Result) {
-					Debug.WriteLine("Permission denied by user or manifest");
-					return;
-				}
-
-				foreach (Contact contact in book.OrderBy (c => c.LastName)) {
-					Debug.WriteLine ("{0} {1}", contact.FirstName, contact.LastName);
-				}
-			}, TaskScheduler.FromCurrentSynchronizationContext());
-			*/
-		}
 		public void OnDelete (object sender, EventArgs e) {
 			var mi = ((MenuItem)sender);
 			Account a = (Account)mi.CommandParameter;

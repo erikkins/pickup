@@ -70,18 +70,19 @@ namespace PickUpApp
 			});
 
 
+
+
 			lvToday.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => {
 
 				if (e.SelectedItem == null)
 				{
 					return;
 				}
-
-				Navigation.PushAsync(new RouteDetail());
+				Today today = ((Today)e.SelectedItem);
+				Navigation.PushAsync(new RouteDetail(today));
 				lvToday.SelectedItem = null;
 				return;
 
-				Today today = ((Today)e.SelectedItem);
 				if (today.RowType == "schedule")
 				{
 					if (string.IsNullOrEmpty(today.ConfirmedBy))
@@ -249,6 +250,10 @@ namespace PickUpApp
 		//NOTE: THIS IS COUNTING NEWLINES AND COMMAS
 		private static int CountOfNewlines(string s)
 		{
+			if (string.IsNullOrEmpty (s)) {
+				return 0;
+			}
+			try{
 			int n = 0;
 			foreach( var c in s )
 			{
@@ -257,6 +262,10 @@ namespace PickUpApp
 					n++;
 			}
 			return n+1;
+			}
+			catch {
+				return 0;
+			}
 		}
 
 		private enum ActivityState
@@ -273,6 +282,10 @@ namespace PickUpApp
 			dynamic c = BindingContext;
 			this.Height = 195;
 			Today t = (Today)c;
+
+			if (t == null) {
+				return;
+			}
 
 			ActivityState currentState = ActivityState.Future;
 			if (t.IsNext) {
@@ -447,10 +460,12 @@ namespace PickUpApp
 
 			Label l = new Label ();
 			if (t.IsPickup) {
-				l.Text = t.TSPickup.Subtract (TimeSpan.FromMinutes (t.EndPlaceTravelTime)).ToString ("hh\\:mm");
+				DateTime intermediate = DateTime.Today.Add (t.TSPickup.Subtract (TimeSpan.FromMinutes (t.EndPlaceTravelTime)));
+				l.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
 				//l.Text = DateTime.Parse (t.TSPickup).AddMinutes (-t.EndPlaceTravelTime).ToLocalTime ().ToString ("t");
 			} else {
-				l.Text = t.TSDropOff.Subtract (TimeSpan.FromMinutes (t.StartPlaceTravelTime)).ToString ("hh\\:mm");
+				DateTime intermediate = DateTime.Today.Add (t.TSDropOff.Subtract (TimeSpan.FromMinutes (t.StartPlaceTravelTime)));
+				l.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
 				//l.Text = DateTime.Parse (t.TSDropOff).AddMinutes (-t.StartPlaceTravelTime).ToLocalTime ().ToString ("t");
 			}
 			l.VerticalOptions = LayoutOptions.Start;
@@ -512,9 +527,11 @@ namespace PickUpApp
 
 			Label l3 = new Label ();
 			if (t.IsPickup) {
-				l3.Text = t.TSPickup.ToString ("hh\\:mm");
+				DateTime intermediate = DateTime.Today.Add (t.TSPickup);
+				l3.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
 			} else {
-				l3.Text = t.TSDropOff.ToString ("hh\\:mm"); 
+				DateTime intermediate = DateTime.Today.Add (t.TSDropOff);
+				l3.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture); 
 			}
 			l3.VerticalOptions = LayoutOptions.Start;
 			l3.FontAttributes = FontAttributes.Bold;
@@ -545,10 +562,12 @@ namespace PickUpApp
 
 			StackLayout slKids = new StackLayout ();
 			slKids.Orientation = StackOrientation.Horizontal;
+			slKids.WidthRequest = 60;
+			//slKids.BackgroundColor = Color.Blue;
 
 			//split the kids
 			if (!string.IsNullOrEmpty (t.Kids)) {
-				string[] kids = t.Kids.Split ('~');
+				string[] kids = t.Kids.Split ('^');
 				this.Height += 50;
 				foreach (string s in kids) {
 
@@ -564,7 +583,7 @@ namespace PickUpApp
 						HorizontalOptions = LayoutOptions.Center,
 						Source = auri
 					};	
-						
+					slKids.WidthRequest += 60;	
 					slKids.Children.Add (ci);
 				}
 				slDrop.Children.Add (slKids);

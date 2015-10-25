@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace PickUpApp
 {
@@ -44,6 +45,12 @@ namespace PickUpApp
 				}
 			} 
 		}
+
+
+		private string _accountplaceid;
+		[JsonProperty(PropertyName = "accountplaceid")]
+		public string AccountPlaceID { get{ return _accountplaceid; } set{if (value != _accountplaceid) {
+					_accountplaceid = value; NotifyPropertyChanged ();} } }
 
 		private long _dropoffticks;
 		[JsonProperty(PropertyName = "dropoffticks")]
@@ -217,13 +224,39 @@ namespace PickUpApp
 
 		private string _Latitude;
 		[JsonProperty(PropertyName = "latitude")]
-		public string Latitude { get{return _Latitude; } set{if (value != _Latitude) {
+		public string Latitude { 
+			get{
+				//actually need to pull the latitude from the AccountPlace for the accountplaceid
+				if (this.AccountPlaceID == null) {
+					return null;
+				} else {
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+					                                                         where aps.id == this.AccountPlaceID
+					                                                         select aps;
+					return ap.FirstOrDefault ().Latitude;
+				}
+				//return _Latitude; 
+			} 
+			set{if (value != _Latitude) {
 					_Latitude = value; NotifyPropertyChanged ();
 				} } }
 
 		private string _Longitude;
 		[JsonProperty(PropertyName = "longitude")]
-		public string Longitude { get{return _Longitude; } set{if (value != _Longitude) {
+		public string Longitude 
+		{ get
+			{
+				if (this.AccountPlaceID == null) {
+					return null;
+				} else {
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+					                                                         where aps.id == this.AccountPlaceID
+					                                                         select aps;
+					return ap.FirstOrDefault ().Longitude;
+				}
+				//return _Longitude; 
+			} 
+			set{if (value != _Longitude) {
 					_Longitude = value; NotifyPropertyChanged ();
 				} } }
 
@@ -237,7 +270,15 @@ namespace PickUpApp
 					return ADDRESS_PLACEHOLDER;
 				} else {
 					//strip out CRLF?
-					return _Address.Replace (Environment.NewLine, "  ");
+					if (this.AccountPlaceID == null) {
+						return null;
+					} else {
+						System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+						                                                         where aps.id == this.AccountPlaceID
+						                                                         select aps;
+						return ap.FirstOrDefault ().Address;
+					}
+					//return _Address.Replace (Environment.NewLine, "  ");
 					//return _Address;
 				}
 			} 
@@ -270,9 +311,60 @@ namespace PickUpApp
 
 		private string _Location;
 		[JsonProperty(PropertyName = "location")]
-		public string Location { get{return _Location; } set{if (value != _Location) {
+		public string Location 
+		{ get
+			{
+				if (this.AccountPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+					                                                         where aps.id == this.AccountPlaceID
+					                                                         select aps;
+					return ap.FirstOrDefault ().PlaceName;
+				}
+				//return _Location; 
+			} 
+			set{if (value != _Location) {
 					_Location = value; NotifyPropertyChanged ();
 				} } }
+
+
+
+		[JsonIgnore]
+		public string LocationPhone
+		{
+			get{
+				if (this.AccountPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.AccountPlaceID
+						select aps;
+					return ap.FirstOrDefault ().Phone;
+				}
+			}
+		}
+
+		[JsonIgnore]
+		public string LocationNotes
+		{
+			get{
+				if (this.AccountPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.AccountPlaceID
+						select aps;
+					return ap.FirstOrDefault ().Notes;
+				}
+			}
+		}
 
 		private string _UserId;
 		[JsonProperty(PropertyName = "userId")]

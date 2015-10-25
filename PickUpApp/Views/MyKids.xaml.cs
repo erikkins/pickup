@@ -23,8 +23,7 @@ namespace PickUpApp
 			MessagingCenter.Subscribe<Kid>(this, "KidAdded", (s) =>
 				{
 					//ViewModel.Refresh();
-
-					Navigation.PopModalAsync();
+					Navigation.PopAsync();
 					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 				});
 		}
@@ -39,7 +38,7 @@ namespace PickUpApp
 		{
 			//I guess we'd edit from here
 			if (e.SelectedItem == null) return;
-			Navigation.PushModalAsync(new AddEditKid(e.SelectedItem as Kid));
+			Navigation.PushAsync(new AddEditKid(e.SelectedItem as Kid));
 			lstKids.SelectedItem = null;
 
 		}

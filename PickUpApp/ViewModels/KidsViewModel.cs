@@ -52,9 +52,10 @@ namespace PickUpApp
 			try
 			{
 				IsLoading = true;
-				var kids = await client.GetTable<Kid>().ToListAsync();
+				var kids = await client.GetTable<Kid>().OrderBy(x => x.Firstname).ToListAsync();
 
 				App.myKids.Clear();
+				KidsSorted.Clear();
 				foreach (var kid in kids)
 				{
 					App.myKids.Add(kid);
@@ -98,6 +99,7 @@ namespace PickUpApp
 				var page = new ContentPage();
 				var result = page.DisplayAlert("Error", "Error loading data Kids. Please check connectivity and try again.", "OK", "Cancel");
 				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
+				MessagingCenter.Send<Exception> (ex, "Error");
 			}
 			finally {
 				IsLoading = false;

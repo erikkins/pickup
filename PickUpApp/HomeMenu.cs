@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Collections.Specialized;
 using System.Collections.ObjectModel;
+using XLabs.Forms.Controls;
 
 namespace PickUpApp
 {
@@ -69,33 +70,45 @@ namespace PickUpApp
 					//its command to load from external sources
 					TodayView tv = (TodayView)((NavigationPage)((MasterDetailPage)this.Parent.Parent).Detail).CurrentPage;
 					tv.ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+					//listView.SelectedItem =  null;
 					break;
 				case "Activities":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MySchedule()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
 					break;
 				case "Kids":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyKids()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
 					break;
 				case "Circle":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyCircle()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
 					break;
 				case "Account":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyInfo()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
 					break;
 				case "Places":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MyPlaces()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
 					break;
 				case "Calendar":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new CalendarTest()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
 					break;
 				case "Logout":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new Splash()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
+					break;
+				case "Intro":
+					((MasterDetailPage)this.Parent.Parent).Navigation.PushModalAsync(new CarouselMaster());
 					break;
 				}
 
 					// Show the detail page.
 					((MasterDetailPage)this.Parent.Parent).IsPresented = false;
-					};
+				//listView.SelectedItem = null;		
+			};
 
 
 			Content = new StackLayout { 
@@ -132,7 +145,7 @@ namespace PickUpApp
 	}
 		
 
-	public class MenuListData : ObservableCollection<FFMenuItem>, INotifyCollectionChanged
+	public class MenuListData : TrulyObservableCollection<FFMenuItem>, INotifyCollectionChanged
 	{
 		public MenuListData ()
 		{
@@ -143,8 +156,10 @@ namespace PickUpApp
 			this.Add (new FFMenuItem("Today", 0));
 			this.Add (new FFMenuItem ("Activities", 0));
 			this.Add (new FFMenuItem ("Account", 0));
+			this.Add (new FFMenuItem ("Intro", 0));
 			this.Add (new FFMenuItem ("Logout", 0));
 			this.OnCollectionChanged (new NotifyCollectionChangedEventArgs (NotifyCollectionChangedAction.Reset));
+			this.OnPropertyChanged (new System.ComponentModel.PropertyChangedEventArgs (""));
 			//this.Add(new FFMenuItem
 
 //			this.Add (new HomeMenuItem ("Today", "sun.png"));
@@ -157,6 +172,7 @@ namespace PickUpApp
 
 
 		}
+
 
 	}
 

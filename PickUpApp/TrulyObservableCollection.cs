@@ -7,7 +7,8 @@ using System.ComponentModel;
 
 namespace PickUpApp
 {
-	public sealed class TrulyObservableCollection<T> : ObservableCollection<T>
+	//was public sealed
+	public  class TrulyObservableCollection<T> : ObservableCollection<T>
 		where T : INotifyPropertyChanged
 	{
 		public TrulyObservableCollection()

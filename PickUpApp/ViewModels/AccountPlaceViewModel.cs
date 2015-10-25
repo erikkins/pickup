@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace PickUpApp
 {
@@ -50,14 +51,28 @@ namespace PickUpApp
 			try
 			{
 				IsLoading = true;
-				var places = await client.GetTable<AccountPlace>().ToListAsync();
+				var places = await client.GetTable<AccountPlace>().OrderBy(x => x.PlaceName).ToListAsync();
 
 				App.myPlaces.Clear();
 				foreach (var place in places)
 				{
 					App.myPlaces.Add(place);
 				}
-				App.menuItems.Insert(3, new FFMenuItem("Places", App.myPlaces.Count));
+
+				FFMenuItem placesItem = new FFMenuItem("Places", App.myPlaces.Count);
+				//if( ! employee.TypeOfWorks.Any(tow => tow.Id == theNewGUID) )
+
+				if (App.menuItems.Any(mi => mi.MenuName == "Places"))
+				{
+					//we already have this item, let's just update it
+					System.Collections.Generic.IEnumerable<FFMenuItem> ffmi = from menus in App.menuItems where menus.MenuName == "Places" select menus;
+					ffmi.FirstOrDefault().Count = placesItem.Count;
+
+					//hope this updates?
+				}
+				else{
+					App.menuItems.Insert(3, placesItem);
+				}
 			}
 			catch (Exception ex)
 			{

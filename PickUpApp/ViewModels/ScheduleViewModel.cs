@@ -15,7 +15,8 @@ namespace PickUpApp
 		{
 			RecurringSchedule = new ObservableCollection<Schedule> ();
 
-			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
+			MessagingCenter.Subscribe<Schedule> (this, "RefreshSched", async(s) => {
+				System.Diagnostics.Debug.WriteLine("ScheduleViewModel -- RefreshSched Fired");
 				await ExecuteLoadItemsCommand();
 				Refresh();
 			});
@@ -37,10 +38,11 @@ namespace PickUpApp
 				{
 					RecurringSchedule.Add(sched);
 				}
-
+				System.Diagnostics.Debug.WriteLine("ScheduleViewModel -- Activities loaded");
 			}
 			catch (Exception ex)
 			{
+				System.Diagnostics.Debug.WriteLine ("ScheduleViewModelEx -- " + ex);
 				var page = new ContentPage();
 				var result = page.DisplayAlert("Error", "Error loading data Circle. Please check connectivity and try again.", "OK", "Cancel");
 				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());

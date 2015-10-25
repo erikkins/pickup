@@ -51,6 +51,7 @@ namespace PickUpApp
 			}
 			catch (Exception ex)
 			{
+				MessagingCenter.Send<Exception> (ex, "Error");
 				var page = new ContentPage();
 				await page.DisplayAlert("Error", "Error saving data. Please check connectivity and try again." + ex.Message, "OK", "Cancel");
 			}

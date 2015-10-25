@@ -1,10 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace PickUpApp
 {
+	
 	public class Today : BaseModel
 	{
+		public const string ADDRESS_PLACEHOLDER = "Click to set address";
 		//ok this is a merged class between Schedule and Invite
 		//seems stupid to copy the fields directly
 		private string _Id;
@@ -35,6 +38,12 @@ namespace PickUpApp
 				}
 			}
 		}
+
+		private string _accountplaceid;
+		[JsonProperty(PropertyName = "accountplaceid")]
+		public string AccountPlaceID { get{ return _accountplaceid; } set{if (value != _accountplaceid) {
+					_accountplaceid = value; NotifyPropertyChanged ();} } }
+
 
 		private DateTime _AtWhen;
 		[JsonProperty(PropertyName = "atwhen")]
@@ -91,6 +100,7 @@ namespace PickUpApp
 			} 
 		}
 
+
 		[JsonIgnore]
 		public TimeSpan TSPickup
 		{ get
@@ -103,6 +113,16 @@ namespace PickUpApp
 				}
 			} 
 		}
+
+		private string _dropoffnotes;
+		[JsonProperty(PropertyName = "dropoffnotes")]
+		public string DropOffNotes { get{ return _dropoffnotes; } set{if (value != _dropoffnotes) {
+					_dropoffnotes = value; NotifyPropertyChanged ();} } }
+
+		private string _pickupnotes;
+		[JsonProperty(PropertyName = "pickupnotes")]
+		public string PickupNotes { get{ return _pickupnotes; } set{if (value != _pickupnotes) {
+					_pickupnotes = value; NotifyPropertyChanged ();} } }
 
 		private string _Activity;
 		[JsonProperty(PropertyName = "activity")]
@@ -122,13 +142,39 @@ namespace PickUpApp
 
 		private string _Latitude;
 		[JsonProperty(PropertyName = "latitude")]
-		public string Latitude { get{return _Latitude; } set{if (value != _Latitude) {
+		public string Latitude { 
+			get{
+				//actually need to pull the latitude from the AccountPlace for the accountplaceid
+				if (this.AccountPlaceID == null) {
+					return null;
+				} else {
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.AccountPlaceID
+						select aps;
+					return ap.FirstOrDefault ().Latitude;
+				}
+				//return _Latitude; 
+			} 
+			set{if (value != _Latitude) {
 					_Latitude = value; NotifyPropertyChanged ();
 				} } }
 
 		private string _Longitude;
 		[JsonProperty(PropertyName = "longitude")]
-		public string Longitude { get{return _Longitude; } set{if (value != _Longitude) {
+		public string Longitude 
+		{ get
+			{
+				if (this.AccountPlaceID == null) {
+					return null;
+				} else {
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.AccountPlaceID
+						select aps;
+					return ap.FirstOrDefault ().Longitude;
+				}
+				//return _Longitude; 
+			} 
+			set{if (value != _Longitude) {
 					_Longitude = value; NotifyPropertyChanged ();
 				} } }
 
@@ -139,10 +185,18 @@ namespace PickUpApp
 			get
 			{ 
 				if (string.IsNullOrEmpty (_Address)) {
-					return "WHAT?";
+					return ADDRESS_PLACEHOLDER;
 				} else {
 					//strip out CRLF?
-					return _Address.Replace (Environment.NewLine, "  ");
+					if (this.AccountPlaceID == null) {
+						return null;
+					} else {
+						System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+								where aps.id == this.AccountPlaceID
+							select aps;
+						return ap.FirstOrDefault ().Address;
+					}
+					//return _Address.Replace (Environment.NewLine, "  ");
 					//return _Address;
 				}
 			} 
@@ -169,10 +223,61 @@ namespace PickUpApp
 
 		private string _Location;
 		[JsonProperty(PropertyName = "location")]
-		public string Location { get{return _Location; } set{if (value != _Location) {
+		public string Location 
+		{ get
+			{
+				if (this.AccountPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.AccountPlaceID
+						select aps;
+					return ap.FirstOrDefault ().PlaceName;
+				}
+				//return _Location; 
+			} 
+			set{if (value != _Location) {
 					_Location = value; NotifyPropertyChanged ();
 				} } }
 		
+		[JsonIgnore]
+		public string LocationPhone
+		{
+			get{
+				if (this.AccountPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.AccountPlaceID
+						select aps;
+					return ap.FirstOrDefault ().Phone;
+				}
+			}
+		}
+			
+
+		[JsonIgnore]
+		public string LocationNotes
+		{
+			get{
+				if (this.AccountPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.AccountPlaceID
+						select aps;
+					return ap.FirstOrDefault ().Notes;
+				}
+			}
+		}
+
+		//unused?
 		private string _LocationMessage;
 		[JsonProperty(PropertyName = "locationmessage")]
 		public string LocationMessage { get{return _LocationMessage; } set{if (value != _LocationMessage) {

@@ -10,6 +10,7 @@ x:Class="PickUpApp.AddEditKid">
   </ContentPage.Padding>
 	<ContentPage.Content>
 	<StackLayout x:Name="stacker" ><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<!---
 		<Label Text="First Name" HorizontalOptions="FillAndExpand" />
 			<Entry Text="{Binding CurrentKid.Firstname}" WidthRequest="400" HorizontalOptions="FillAndExpand" />
 			<Label Text="Last Name" HorizontalOptions="FillAndExpand" />
@@ -27,6 +28,7 @@ x:Class="PickUpApp.AddEditKid">
 			</StackLayout>
 
 			<Button Text="Pic" x:Name="btnPic"></Button>
+			-->
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

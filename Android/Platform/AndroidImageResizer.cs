@@ -4,6 +4,7 @@ using Android.Graphics;
 using System.IO;
 using Android.Media;
 
+
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidImageResizer))]
 namespace PickUpApp.droid
 {	

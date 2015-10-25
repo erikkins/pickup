@@ -2,12 +2,13 @@
 <ContentPage Title="My Info" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MyInfo">
 	<ContentPage.Content>
 	<StackLayout x:Name="stacker" Orientation="Vertical">
+	<!---
 	<Label Text="Please provide this minimal information so everyone can keep in touch!"></Label>
 	<Entry Placeholder="First Name" Text="{Binding Firstname}"></Entry>
 	<Entry Placeholder="Last Name" Text="{Binding Lastname}"></Entry>
 	<Entry Placeholder="Cell Phone" Keyboard="Telephone" Text="{Binding Phone}"></Entry>
 	<Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}"></Entry>
-	<Button x:Name="btnManagePlaces" Text="Manage Places" BackgroundColor="Gray" TextColor="Black" BorderWidth="1" BorderColor="Black" ></Button>
+	-->
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

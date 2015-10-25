@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage Title="Location" xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage Title="LOCATION" xmlns="http://xamarin.com/schemas/2014/forms" 
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
@@ -16,6 +16,7 @@ x:Class="PickUpApp.LocationSearch">
 						<StackLayout Orientation="Vertical">
 						<Label TranslationX="10" Text="{Binding Name}" HorizontalOptions="StartAndExpand"  />
 						<Label TranslationX="10" Font="Small" Text="{Binding Address}" HorizontalOptions="Start" />
+						<Label TranslationX="10" Font="Small" Text="{Binding Phone}" HorizontalOptions="Start" />
 						</StackLayout>
 					</ViewCell.View>
 				</ViewCell>

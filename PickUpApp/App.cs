@@ -62,7 +62,8 @@ namespace PickUpApp
 
 
 			MainPage = new HomePage ();
-		}
+
+		} 
 
 		//deprecated
 		//public static Page GetMainPage ()

@@ -90,6 +90,36 @@ namespace PickUpApp
 			}
 		}
 
+		private string _phone;
+		[JsonProperty(PropertyName = "phone")]
+		public string Phone
+		{
+			get{
+				return _phone;
+			}
+			set{
+				if (value != _phone) {
+					_phone = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
+
+		private string _notes;
+		[JsonProperty(PropertyName = "notes")]
+		public string Notes
+		{
+			get{
+				return _notes;
+			}
+			set{
+				if (value != _notes) {
+					_notes = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
+
 		[JsonIgnore]
 		private bool _selected;
 		public bool Selected

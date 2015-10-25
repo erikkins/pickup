@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using XLabs.Forms.Controls;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace PickUpApp
 {
@@ -10,17 +11,18 @@ namespace PickUpApp
 	{
 
 		private Schedule _currentSchedule;
-		private ObservableCollection<KidSchedule> _kidschedule;
+		private TrulyObservableCollection<KidSchedule> _kidschedule;
 		private ObservableCollection <Kid> _kids;
 
-		public KidSelector (Schedule CurrentSchedule, ObservableCollection<KidSchedule> KidSchedule, ObservableCollection<Kid> Kids )
+		public KidSelector (Schedule CurrentSchedule, TrulyObservableCollection<KidSchedule> KidSchedule, ObservableCollection<Kid> Kids )
 		{
 			InitializeComponent ();
 
-			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
+			this.ToolbarItems.Add (new ToolbarItem ("Done", null, () => {
 				//pop the calendar window
 				//basically need to save the thing
 
+				//Debug.WriteLine("Clearing kids from KidSelector");
 				_kidschedule.Clear();
 				foreach (Kid k in _kids)
 				{
@@ -30,11 +32,15 @@ namespace PickUpApp
 						ks.KidID = k.Id;
 						ks.ScheduleID = _currentSchedule.id;
 						_kidschedule.Add(ks);
+						//Debug.WriteLine("Adding kid " + ks.KidID + " from KidSelector");
+
 					}
 				}
+				Debug.WriteLine("KidSelector calling UpdatePlease");
 
-				await this.ViewModel.ExecuteAddEditCommand();
-				await Navigation.PopAsync();
+				//await this.ViewModel.ExecuteAddEditCommand();
+				Navigation.PopAsync();
+				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
 
 			}));
 

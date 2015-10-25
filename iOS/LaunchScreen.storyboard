@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4443" systemVersion="13A451" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
         <scene sceneID="4">
             <objects>
                 <viewController id="5" sceneMemberID="viewController">
@@ -14,121 +15,39 @@
                     <view key="view" contentMode="scaleToFill" id="6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" customColorSpace="calibratedWhite" colorSpace="calibratedRGB" red="0.28627450980392155" green="0.21568627450980393" blue="0.42745098039215684" alpha="1"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fam" lineBreakMode="tailTruncation" minimumFontSize="10" id="9" preferredMaxLayoutWidth="72" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="87" y="276" width="91" height="43"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
-                                <color key="textColor" colorSpace="calibratedRGB" red="0.96862745098039216" green="0.38823529411764707" blue="0.49803921568627452" alpha="1"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fetch" lineBreakMode="tailTruncation" minimumFontSize="10" id="37" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="177" y="276" width="127" height="43"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="48"/>
-                                <color key="textColor" colorSpace="calibratedRGB" red="0.32941176470588235" green="0.82745098039215681" blue="0.62745098039215685" alpha="1"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Daily Carpool Manager" lineBreakMode="tailTruncation" minimumFontSize="10" id="41" textAlignment="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="97" y="327" width="194" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Daily Carpool Manager" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="41">
+                                <rect key="frame" x="110" y="327" width="194" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="For Active Families" lineBreakMode="tailTruncation" minimumFontSize="10" id="42" textAlignment="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="117" y="349" width="154" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="For Active Families" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="42">
+                                <rect key="frame" x="130" y="349" width="154" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="ui_splash_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="72">
+                                <rect key="frame" x="64" y="258" width="285" height="61"/>
+                            </imageView>
                         </subviews>
+                        <color key="backgroundColor" red="0.28627450980392155" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <connections/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="418" y="64"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ui_splash_logo.png" width="285" height="61"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina55"/>
     </simulatedMetricsContainer>
-    <resources>
-        <image name="Default-568h.png" width="640" height="1136"/>
-        <image name="car_icon.png" width="800" height="600"/>
-        <image name="messageicongraysmall.jpg" width="184" height="184"/>
-        <image name="iconphone.png" width="512" height="512"/>
-        <image name="appbarmessage.png" width="76" height="76"/>
-        <image name="appbarsocialyelp.png" width="76" height="76"/>
-        <image name="appbarphone.png" width="76" height="76"/>
-        <image name="appbarlayoutexpandright.png" width="76" height="76"/>
-        <image name="logout.png" width="32" height="32"/>
-        <image name="calendar.png" width="48" height="48"/>
-        <image name="children.png" width="48" height="48"/>
-        <image name="contacts.png" width="48" height="48"/>
-        <image name="groups.png" width="50" height="50"/>
-        <image name="sun.png" width="48" height="48"/>
-        <image name="appbarlayoutexpandrightvariant.png" width="76" height="76"/>
-        <image name="cal.png" width="58" height="58"/>
-        <image name="graydrop.png" width="78" height="100"/>
-        <image name="grayline.png" width="39" height="12"/>
-        <image name="graypickup.png" width="78" height="100"/>
-        <image name="graystart.png" width="39" height="20"/>
-        <image name="greendone.png" width="78" height="100"/>
-        <image name="greenline.png" width="39" height="12"/>
-        <image name="greenstart.png" width="39" height="18"/>
-        <image name="messages.png" width="156" height="156"/>
-        <image name="redline.png" width="39" height="12"/>
-        <image name="redpickup.png" width="78" height="100"/>
-        <image name="redstart.png" width="39" height="20"/>
-        <image name="settings.png" width="58" height="58"/>
-        <image name="warning.png" width="68" height="68"/>
-        <image name="ui_tri_pink.png" width="16" height="8"/>
-        <image name="ui_tri_purple.png" width="20" height="10"/>
-        <image name="ui_tri_green.png" width="16" height="8"/>
-        <image name="ui_tri_grey.png" width="16" height="8"/>
-        <image name="ui_tri_purple..png" width="40" height="20"/>
-        <image name="icn_text.png" width="25" height="29"/>
-        <image name="icn_places.png" width="55" height="40"/>
-        <image name="icn_settings.png" width="27" height="27"/>
-        <image name="icn_pin_up_grey.png" width="37" height="48"/>
-        <image name="icn_pin_up_pink.png" width="37" height="48"/>
-        <image name="icn_pin_dwn_pink.png" width="37" height="48"/>
-        <image name="icn_pin_check_sm.png" width="21" height="27"/>
-        <image name="icn_pin_dwn_grey.png" width="37" height="48"/>
-        <image name="icn_pin_check.png" width="37" height="48"/>
-        <image name="icn_pin_grey.png" width="22" height="28"/>
-        <image name="icn_phone.png" width="25" height="29"/>
-        <image name="icn_pin.png" width="22" height="28"/>
-        <image name="icn_new_grey.png" width="27" height="27"/>
-        <image name="ui_messages.png" width="69" height="69"/>
-        <image name="icn_map_pin.png" width="27" height="37"/>
-        <image name="icn_new.png" width="27" height="27"/>
-        <image name="ui_line_green.png" width="2" height="6"/>
-        <image name="icn_close.png" width="19" height="19"/>
-        <image name="ui_line_dash_grey.png" width="2" height="6"/>
-        <image name="ui_line_dash_pink.png" width="2" height="6"/>
-        <image name="ui_check_filled.png" width="27" height="27"/>
-        <image name="ui_cal_circle.png" width="37" height="37"/>
-        <image name="ui_check_empty.png" width="27" height="27"/>
-        <image name="icn_arrow_pink.png" width="24" height="19"/>
-        <image name="icn_back.png" width="27" height="27"/>
-        <image name="icn_cal.png" width="27" height="27"/>
-        <image name="icn_arrow_dwn.png" width="22" height="28"/>
-        <image name="icn_arrow_grey.png" width="24" height="19"/>
-        <image name="icn_arrow_up.png" width="22" height="28"/>
-        <image name="icn_alert.png" width="36" height="36"/>
-        <image name="icn_acitivites.png" width="55" height="40"/>
-        <image name="icn_activities.png" width="165" height="120"/>
-        <image name="icn_account.png" width="55" height="40"/>
-        <image name="icn_pin_dwn_pink_sm.png" width="21" height="27"/>
-        <image name="icn_pin_dwn_grey_sm.png" width="21" height="27"/>
-        <image name="icn_pin_up_pink_sm.png" width="21" height="27"/>
-        <image name="icn_pin_up_grey_sm.png" width="21" height="27"/>
-    </resources>
 </document>

@@ -6,7 +6,7 @@
     </OnPlatform>
   </ContentPage.Padding>
 	<ContentPage.Content>
-<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+<StackLayout BackgroundColor="#EEECF3"  x:Name="stacker"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
 	<ListView x:Name="lstPlaces" ItemsSource="{Binding MyPlaces}" BackgroundColor="#EEECF3"  RowHeight="60" HasUnevenRows="true">
 	<ListView.ItemTemplate>
 				<DataTemplate>

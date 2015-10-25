@@ -12,23 +12,25 @@ namespace PickUpApp
 {
 	public partial class RouteDetail : ContentPage
 	{
-		public RouteDetail ()
+		public RouteDetail (Today currentToday)
 		{
 			InitializeComponent ();
 			this.Padding = new Thickness(0, Device.OnPlatform(0, 0, 0), 0, 0);
 			this.ViewModel = new RouteDetailViewModel (App.client);
 
 			TableView tv = new TableView ();
-
+			tv.BindingContext = currentToday;
 			tv.HasUnevenRows = true;
 			TableSection ts = new TableSection ();
 		
-			MapCell mc = new MapCell(42.0772,-87.7236);
+			MapCell mc = new MapCell(double.Parse(currentToday.Latitude),double.Parse(currentToday.Longitude), currentToday.Address);
 			ts.Add (mc);
 			ts.Add (new RouteCell ());
 			ts.Add (new TrafficCell ());
 			ts.Add (new ContactCell ());
-			ts.Add (new LocationContactCell ());
+			if (!string.IsNullOrEmpty (currentToday.LocationPhone)) {
+				ts.Add (new LocationContactCell ());
+			}
 			ts.Add (new ButtonCell ());
 			tv.Root.Add (ts);
 			stacker.Children.Add (tv);
@@ -104,6 +106,8 @@ namespace PickUpApp
 			base.OnBindingContextChanged ();
 
 			dynamic c = BindingContext;
+
+			Today t = (Today)c;
 			this.Height = 150;
 			this.IsEnabled = false;
 
@@ -140,16 +144,28 @@ namespace PickUpApp
 
 			Label time = new Label ();
 			time.FormattedText = new FormattedString ();
-			time.FormattedText.Spans.Add (new Span { Text = "3:15", FontSize= 24, ForegroundColor = Color.Black, FontAttributes = FontAttributes.Bold });
-			time.FormattedText.Spans.Add (new Span { Text = " pm", FontFamily=Device.OnPlatform("HelveticaNeue-Light", "", ""), FontSize = 24, ForegroundColor = Color.Black, FontAttributes = FontAttributes.None });
-	
+			if (t.IsPickup) {
+				DateTime intermediate = DateTime.Today.Add (t.TSPickup);
+				time.FormattedText.Spans.Add (new Span { Text = intermediate.ToString(@"h\:mm"), FontSize= 24, ForegroundColor = Color.Black, FontAttributes = FontAttributes.Bold });
+				time.FormattedText.Spans.Add (new Span { Text = " " + intermediate.ToString("tt", System.Globalization.CultureInfo.InvariantCulture).ToLower(), FontFamily=Device.OnPlatform("HelveticaNeue-Light", "", ""), FontSize = 24, ForegroundColor = Color.Black, FontAttributes = FontAttributes.None });
+			} 
+			else {
+				DateTime intermediate = DateTime.Today.Add (t.TSDropOff);
+				time.FormattedText.Spans.Add (new Span { Text = intermediate.ToString(@"h\:mm"), FontSize= 24, ForegroundColor = Color.Black, FontAttributes = FontAttributes.Bold });
+				time.FormattedText.Spans.Add (new Span { Text = " " + intermediate.ToString("tt", System.Globalization.CultureInfo.InvariantCulture).ToLower(), FontFamily=Device.OnPlatform("HelveticaNeue-Light", "", ""), FontSize = 24, ForegroundColor = Color.Black, FontAttributes = FontAttributes.None });
+			}
+
 
 
 			time.VerticalOptions = LayoutOptions.Start;
 			detail2.Children.Add (time);
 
 			Label activity = new Label ();
-			activity.Text = "School Pickup";
+			if (t.IsPickup) {
+				activity.Text = t.Activity + " Pickup";
+			} else {
+				t.Activity = t.Activity + " Dropoff";
+			}
 			activity.FontAttributes = FontAttributes.Bold;
 			activity.FontSize = 16;
 			activity.VerticalOptions = LayoutOptions.End;
@@ -161,32 +177,47 @@ namespace PickUpApp
 			left.Children.Add (detail);
 
 			Label instructions = new Label ();
-			instructions.Text = "Carpool lane forms two rows. Just follow the other cars";
+			if (t.IsPickup) {
+				instructions.Text = t.PickupNotes;
+			} else {
+				instructions.Text = t.DropOffNotes;
+			}
 			instructions.TextColor = Color.Gray;
 			instructions.FontSize = 14;
 			instructions.FontAttributes = FontAttributes.Italic;
 			left.Children.Add (instructions);
 
+			if (!string.IsNullOrEmpty (t.Kids)) {
+				string[] kids = t.Kids.Split ('^');
+				this.Height += 50;
+				foreach (string s in kids) {
 
-			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
-				BorderColor = Color.Black,
-				BorderThickness = 0,
-				Aspect = Aspect.AspectFill,
-				WidthRequest = 50,
-				HeightRequest = 50,
-				HorizontalOptions = LayoutOptions.Center
-			};	
+					string[] parts = s.Split ('|');
+					string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
+					Uri auri = new Uri (azureURL);
+					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
+						BorderColor = Color.Black,
+						BorderThickness = 0,
+						Aspect = Aspect.AspectFill,
+						WidthRequest = 50,
+						HeightRequest = 50,
+						HorizontalOptions = LayoutOptions.Center,
+						Source = auri
+					};	
+					StackLayout kid = new StackLayout ();
+					kid.Orientation = StackOrientation.Horizontal;
+					kid.VerticalOptions = LayoutOptions.Center;
+					kid.Children.Add (ci);
+					Label kidname = new Label ();
+					kidname.Text = parts [0];
+					kidname.VerticalOptions = LayoutOptions.Center;
+					kidname.FontSize = 14;
+					kid.Children.Add (kidname);
 
-			StackLayout kid = new StackLayout ();
-			kid.Orientation = StackOrientation.Horizontal;
-			kid.VerticalOptions = LayoutOptions.Center;
-			kid.Children.Add (ci);
-			Label kidname = new Label ();
-			kidname.Text = "Matt S.";
-			kidname.FontSize = 14;
-			kid.Children.Add (kidname);
+					right.Children.Add (kid);
+				}
 
-			right.Children.Add (kid);
+			}
 
 			outer.Children.Add (left);
 			outer.Children.Add (right);
@@ -205,14 +236,24 @@ namespace PickUpApp
 	{
 		private double _latitude, _longitude;
 		private ListMap _theMap;
+		string _address;
+		private Label whiteaddress;
 
-		public MapCell (double latitude, double longitude)
+		public MapCell (double latitude, double longitude, string address)
 		{
 			_latitude = latitude;
 			_longitude = longitude;
-
+			_address = address;
 		}
 
+		public void Navigate(double latitude, double longitude, string address)
+		{
+			_latitude = latitude;
+			_longitude = longitude;
+			_address = address;
+			whiteaddress.Text = _address;
+			this.Navigate ();
+		}
 
 		public void Navigate()
 		{
@@ -238,8 +279,8 @@ namespace PickUpApp
 			#endif
 
 			#if __IOS__
-			p.Address = "427 Illinois Rd.  Wilmette, IL  60091";
-			p.SetBinding (Pin.AddressProperty, "427 Illinois Rd. Wilmette, IL  60091");
+			p.Address = _address;
+			p.SetBinding (Pin.AddressProperty, _address);
 			p.Position = thispos;
 			p.Label = "Hey";
 			_theMap.Pins.Add (p);
@@ -349,11 +390,12 @@ namespace PickUpApp
 			gradient.WidthRequest = App.Device.Display.Width / 4;
 			sl.Children.Add(gradient, new Rectangle(0, 142, App.Device.Display.Width /2, 60),AbsoluteLayoutFlags.None);
 
-			Label whiteaddress = new Label ();
+			whiteaddress = new Label ();
 			whiteaddress.TextColor = Color.White;
 			whiteaddress.FontSize = 14;
-			whiteaddress.Text = "427 Illinois Rd.  Wilmette, IL  60091";
-			sl.Children.Add (whiteaddress, new Rectangle (80, 179, App.Device.Display.Width / 2, 12), AbsoluteLayoutFlags.None);
+			whiteaddress.Text = _address;
+			whiteaddress.LineBreakMode = LineBreakMode.WordWrap;
+			sl.Children.Add (whiteaddress, new Rectangle (80, 179, App.Device.Display.Width / 3, 24), AbsoluteLayoutFlags.None);
 
 			View = sl;
 
@@ -520,7 +562,7 @@ namespace PickUpApp
 			dynamic c = BindingContext;
 			this.Height = 80;
 			//this.IsEnabled = false;
-
+			Today t = (Today)c;
 
 
 			Label cntct = new Label ();
@@ -543,7 +585,7 @@ namespace PickUpApp
 			contactName.FontFamily = Device.OnPlatform ("HelveticaNeue-Light", "", "");
 			contactName.FontSize = 22;
 			contactName.HorizontalOptions = LayoutOptions.StartAndExpand;
-			contactName.Text = "School";
+			contactName.Text = t.Location;
 			contactName.TranslationX = 5;
 			slContact.Children.Add (contactName);
 
@@ -570,7 +612,8 @@ namespace PickUpApp
 			btnPhone.TranslationX = -20;
 			slMain.Children.Add (btnPhone);
 			btnPhone.Clicked += async delegate(object sender, EventArgs e) {
-				await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Call", "Cancel");
+				//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Call", "Cancel");
+				App.Device.PhoneService.DialNumber(t.LocationPhone);
 			};
 
 

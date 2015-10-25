@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace PickUpApp
 {
-	public class BaseModel:INotifyPropertyChanged
+	public class BaseModel:INotifyPropertyChanged 
 	{
 		public BaseModel ()
 		{

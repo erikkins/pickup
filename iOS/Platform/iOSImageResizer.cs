@@ -147,7 +147,7 @@ namespace PickUpApp.iOS
 		}
 
 		UIImage ScaleAndRotateImage(UIImage imageIn, UIImageOrientation orIn) {
-			int kMaxResolution = 2048;
+			int kMaxResolution = 1024; //2048;
 
 			CGImage imgRef = imageIn.CGImage;
 			nfloat width = imgRef.Width;
