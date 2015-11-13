@@ -5,5 +5,6 @@
 	x:Class="PickUpApp.TodayView"
 	>
 <StackLayout x:Name="stacker">
+<Label x:Name="lblNone" Text="You have nothing going on today!" TextColor="White" IsVisible="false" VerticalOptions="Center" HorizontalOptions="Center"></Label>
 	</StackLayout>
 </ContentPage>

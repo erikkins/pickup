@@ -44,10 +44,7 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 
-				//this needs to save the AccountPlace...potentially adding it to the schedule
-				//if it was added inline and return to where it started
-
-
+				try{
 					//we're just adding this place!
 					tempLocation.accountid = App.myAccount.id;
 				
@@ -55,23 +52,12 @@ namespace PickUpApp
 					await ViewModel.ExecuteAddEditCommand();
 					//reload the app cache
 					await ViewModel.ExecuteLoadItemsCommand();
-					await Navigation.PopAsync();
-
-
-					//pop the calendar window
-					//actually this shouldn't be saving the discrete elements anymore...
-					//schedule should only reference the place IDs
-
-//					_currentSchedule.Location = tempLocation.Name;
-//					_currentSchedule.Address = tempLocation.FullAddress;
-//					_currentSchedule.Latitude = tempLocation.Latitude;
-//					_currentSchedule.Longitude = tempLocation.Longitude;
-
-
-
-					//MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
 					//await Navigation.PopAsync();
-				
+				}
+				catch(Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine(ex);		
+				}
 			}));
 
 
@@ -421,8 +407,8 @@ namespace PickUpApp
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 			sl.HeightRequest = 80;
-			//sl.WidthRequest = App.Device.Display.Width / 4;
-			//sl.MinimumWidthRequest = App.Device.Display.Width / 4;
+			//sl.WidthRequest = App.ScaledWidth/ 4;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
 
 			BoxView bv = new BoxView ();
 			bv.WidthRequest = 10;
@@ -458,7 +444,80 @@ namespace PickUpApp
 			l2.VerticalOptions = LayoutOptions.Center;
 			l2.HorizontalOptions = LayoutOptions.StartAndExpand;
 			//l2.LineBreakMode = LineBreakMode.TailTruncation;
-			l2.WidthRequest = (App.Device.Display.Width / 2) - 150;
+			l2.WidthRequest = (App.ScaledWidth) - 150;
+
+			g.Children.Add (l2, 1, 0);
+
+			sl.Children.Add (g);
+
+			View = sl;
+		}
+	}
+
+
+	public class SimpleBoundLabelCell : ViewCell
+	{
+		private string _title;
+		private string _binding;
+
+		public SimpleBoundLabelCell(string title, string binding)
+		{
+			_title = title;
+			_binding = binding;
+
+		}
+
+
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged ();
+
+			dynamic c = BindingContext;
+			this.Height = 75;
+
+			Grid g = new Grid ();
+			g.ColumnDefinitions = new ColumnDefinitionCollection ();
+			ColumnDefinition cd = new ColumnDefinition ();
+			cd.Width = 120;
+			g.ColumnDefinitions.Add (cd);
+			cd = new ColumnDefinition ();
+			cd.Width = GridLength.Auto;
+			g.ColumnDefinitions.Add (cd);
+
+			StackLayout sl = new StackLayout ();
+			sl.Orientation = StackOrientation.Horizontal;
+			sl.HorizontalOptions = LayoutOptions.Start;
+			sl.VerticalOptions = LayoutOptions.Center;
+			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
+			sl.HeightRequest = 80;
+			//sl.WidthRequest = App.ScaledWidth/ 4;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
+
+			BoxView bv = new BoxView ();
+			bv.WidthRequest = 10;
+			sl.Children.Add (bv);
+
+			Label l = new Label ();
+			l.Text = _title;
+			l.FontAttributes = FontAttributes.Bold;
+			l.FontSize = 16;
+			l.TextColor = Color.FromRgb (246, 99, 127);
+			l.HorizontalOptions = LayoutOptions.StartAndExpand;
+			l.VerticalOptions = LayoutOptions.Center;
+			l.WidthRequest = 100;
+
+			g.Children.Add (l, 0, 0);
+
+
+			ExtendedLabel l2 = new ExtendedLabel();
+			l2.BackgroundColor = Color.Transparent;
+			l2.SetBinding (ExtendedLabel.TextProperty, _binding);
+
+			//l2.Text = _value;
+			l2.VerticalOptions = LayoutOptions.Center;
+			l2.HorizontalOptions = LayoutOptions.StartAndExpand;
+			//l2.LineBreakMode = LineBreakMode.TailTruncation;
+			l2.WidthRequest = (App.ScaledWidth) - 150;
 
 			g.Children.Add (l2, 1, 0);
 
@@ -503,8 +562,8 @@ namespace PickUpApp
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 			sl.HeightRequest = 80;
-			//sl.WidthRequest = App.Device.Display.Width / 4;
-			//sl.MinimumWidthRequest = App.Device.Display.Width / 4;
+			//sl.WidthRequest = App.ScaledWidth/ 4;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
 
 			BoxView bv = new BoxView ();
 			bv.WidthRequest = 10;
@@ -531,9 +590,108 @@ namespace PickUpApp
 			l2.VerticalOptions = LayoutOptions.Center;
 			l2.HorizontalOptions = LayoutOptions.StartAndExpand;
 			//l2.LineBreakMode = LineBreakMode.TailTruncation;
-			l2.WidthRequest = (App.Device.Display.Width / 2) - 150;
+			l2.WidthRequest = (App.ScaledWidth) - 150;
 
 			g.Children.Add (l2, 1, 0);
+
+			sl.Children.Add (g);
+
+			View = sl;
+		}
+	}
+
+	public class SimpleBoundRadioCell : ViewCell
+	{
+		private string _title;
+		//private string _binding;
+		public BindableProperty SelectedProperty;
+
+
+		public bool IsChecked{
+			get { return (bool)GetValue (SelectedProperty); }
+			set{
+				SetValue (SelectedProperty, value);
+			}
+		}
+		
+		public SimpleBoundRadioCell(string title, string binding)
+		{
+			_title = title;
+			//_binding = binding;
+			//SelectedProperty = BindableProperty.Create (binding, typeof(bool), BindingMode.TwoWay.GetType(),null, null, null, null, null);
+			SelectedProperty = BindableProperty.Create<SimpleBoundRadioCell, bool>(p => p.IsChecked, false, BindingMode.TwoWay);
+			this.SetBinding (SelectedProperty, binding);
+		}
+
+
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged ();
+
+			dynamic c = BindingContext;
+			this.Height = 75;
+
+			Grid g = new Grid ();
+			g.ColumnDefinitions = new ColumnDefinitionCollection ();
+			ColumnDefinition cd = new ColumnDefinition ();
+			cd.Width = 120;
+			g.ColumnDefinitions.Add (cd);
+			cd = new ColumnDefinition ();
+			cd.Width = GridLength.Auto;
+			g.ColumnDefinitions.Add (cd);
+
+			StackLayout sl = new StackLayout ();
+			sl.Orientation = StackOrientation.Horizontal;
+			sl.HorizontalOptions = LayoutOptions.Start;
+			sl.VerticalOptions = LayoutOptions.Center;
+			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
+			sl.HeightRequest = 80;
+			//sl.WidthRequest = App.ScaledWidth/ 4;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
+
+			BoxView bv = new BoxView ();
+			bv.WidthRequest = 10;
+			sl.Children.Add (bv);
+
+			Label l = new Label ();
+			l.Text = _title;
+			l.FontAttributes = FontAttributes.Bold;
+			l.FontSize = 16;
+			l.TextColor = Color.FromRgb (246, 99, 127);
+			l.HorizontalOptions = LayoutOptions.StartAndExpand;
+			l.VerticalOptions = LayoutOptions.Center;
+			l.WidthRequest = 100;
+
+			g.Children.Add (l, 0, 0);
+
+			ImageButton ib = new ImageButton ();
+			ib.TranslationX = 5;
+			ib.ImageHeightRequest = 27;
+			ib.ImageWidthRequest = 27;
+
+
+			if (IsChecked) {
+				ib.Source = "ui_check_filled.png";
+			} else {
+				ib.Source = "ui_check_empty.png";
+			}
+			ib.VerticalOptions = LayoutOptions.Center;
+			ib.HorizontalOptions = LayoutOptions.Center;
+			ib.Clicked += delegate(object sender, EventArgs e) {
+				if (IsChecked)
+				{
+					IsChecked = false;
+					//ViewModel.RememberPassword = false;
+					ib.Source = "ui_check_empty.png";
+				}
+				else{
+					IsChecked = true;
+					//ViewModel.RememberPassword = true;
+					ib.Source = "ui_check_filled.png";
+				}
+			};
+
+			g.Children.Add (ib, 1, 0);
 
 			sl.Children.Add (g);
 
@@ -587,8 +745,8 @@ namespace PickUpApp
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 			sl.HeightRequest = 80;
-			//sl.WidthRequest = App.Device.Display.Width / 4;
-			//sl.MinimumWidthRequest = App.Device.Display.Width / 4;
+			//sl.WidthRequest = App.ScaledWidth/ 4;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
 
 			BoxView bv = new BoxView ();
 			bv.WidthRequest = 10;
@@ -611,7 +769,7 @@ namespace PickUpApp
 			dp.Date = _date;
 			dp.VerticalOptions = LayoutOptions.Center;
 			dp.HorizontalOptions = LayoutOptions.StartAndExpand;
-			dp.WidthRequest = (App.Device.Display.Width / 2) - 150;
+			dp.WidthRequest = (App.ScaledWidth) - 150;
 			if (!string.IsNullOrEmpty (_binding)) {
 				dp.SetBinding (ExtendedDatePicker.DateProperty, _binding);
 			}
@@ -677,8 +835,8 @@ namespace PickUpApp
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 			sl.HeightRequest = 80;
-			//sl.WidthRequest = App.Device.Display.Width / 4;
-			//sl.MinimumWidthRequest = App.Device.Display.Width / 4;
+			//sl.WidthRequest = App.ScaledWidth/ 4;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
 
 			BoxView bv = new BoxView ();
 			bv.WidthRequest = 10;
@@ -698,7 +856,7 @@ namespace PickUpApp
 
 			Picker p = new Picker ();
 
-			p.WidthRequest = App.Device.Display.Width / 4;
+			p.WidthRequest = App.ScaledWidth/ 4;
 			p.BackgroundColor = Color.FromRgb(238, 236, 243); 
 			foreach (string s in _items) {
 				p.Items.Add (s);
@@ -719,21 +877,35 @@ namespace PickUpApp
 
 	public class SimpleImageCell : ViewCell
 	{
-		private string _imagePath;
+		private ImageSource _imagePath;
+		private ImageCircle.Forms.Plugin.Abstractions.CircleImage ci;
+		private StackLayout sl;
 
 		public SimpleImageCell(string imagePath)
-		{
-			_imagePath = imagePath;
+		{			
+			ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage ();
+			sl = new StackLayout ();
+			ImagePath = imagePath;
 		}
+			
 
-		public string ImagePath
+		public ImageSource ImagePath
 		{
 			get{
+				
 				return _imagePath;
 			}
-			set{
-				_imagePath = value;
-
+			set{				
+				if (value.GetType () == typeof(UriImageSource)) {
+					//check if URL
+					if (((UriImageSource)value).Uri.ToString ().ToLower ().StartsWith ("http")) {
+						_imagePath = new UriImageSource { CachingEnabled = false, Uri = ((UriImageSource)value).Uri };
+					}
+				} else {
+					_imagePath = value;
+				}
+				ci.Source = _imagePath;
+				//this.OnBindingContextChanged ();
 			}
 		}
 
@@ -744,17 +916,17 @@ namespace PickUpApp
 			dynamic c = BindingContext;
 			this.Height = 120;
 
-			StackLayout sl = new StackLayout ();
+			sl = new StackLayout ();
 			sl.Orientation = StackOrientation.Vertical;
 			sl.HorizontalOptions = LayoutOptions.Center;
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
-			sl.HeightRequest = 100;
-			sl.WidthRequest = App.Device.Display.Width / 2;
-			//sl.MinimumWidthRequest = App.Device.Display.Width / 4;
+			sl.HeightRequest = 120;
+			sl.WidthRequest = App.ScaledWidth;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
 
 
-			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
+			ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
 				BorderThickness = 1,
 				Aspect = Aspect.AspectFill,

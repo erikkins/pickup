@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.Register">
+	<ContentPage.Content>
+	<StackLayout x:Name="stacker" BackgroundColor="#49376D">
+	<Label Text="Register" FontFamily="HelveticaNeue-Light" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="40"/>
+	<StackLayout x:Name="bottomstack" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions = "Start">
+	<Label x:Name = "lblActivity" Text="" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"></Label>
+	<ActivityIndicator Color="White" IsRunning="{Binding IsLoading}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" IsVisible="true" />
+	</StackLayout>
+	<StackLayout Orientation="Vertical" x:Name="fields" VerticalOptions="StartAndExpand" HorizontalOptions="Center"></StackLayout>
+
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

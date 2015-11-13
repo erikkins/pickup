@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.Intro1">
 	<ContentPage.Content>
-	<StackLayout x:Name="stacker" BackgroundColor="#49376D">
+	<StackLayout x:Name="stacker" BackgroundColor="#49376D" VerticalOptions="FillAndExpand">
 	<Image HorizontalOptions="Center" Source="intro_face.png"></Image>
 	<Label FontSize="21" TextColor="White" WidthRequest="250" XAlign="Center">
 		<Label.Text>
@@ -11,7 +11,7 @@ active families trying to
 manage their daily lives.
 		</Label.Text>
 	</Label>
-	<Image HorizontalOptions="Center" Source="icn_arrow_orange.png"></Image>
+	<Image x:Name="orangearrow" HorizontalOptions="Center" Source="icn_arrow_orange.png"></Image>
 	<Label HorizontalOptions="Center" TextColor="#F1B346" XAlign="Center">
 	<Label.Text>
 See How

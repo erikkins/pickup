@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Microsoft.WindowsAzure.MobileServices;
+using XLabs.Forms.Controls;
 
 //using System.Threading.Tasks;
 //using PickUpApp.ViewModels;
@@ -14,6 +15,7 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 			this.ViewModel = new SplashViewModel (App.client);
+			this.BackgroundColor = Color.FromRgb (73, 55, 109);
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			//btnFacebook.Command = ViewModel.LoginCommand;
 
@@ -21,19 +23,11 @@ namespace PickUpApp
 				DisplayAlert("Error", ex.Message, "OK");
 			});
 
-			/*
-			btnLogout.Clicked += btnLogout_Clicked;
 
-			btnFacebook.Clicked += delegate(object sender, EventArgs e) {
-				this.ViewModel.LoginCommand.Execute ("Facebook");
-			};
-			btnAD.Clicked +=  delegate(object sender, EventArgs e) {
-					this.ViewModel.LoginCommand.Execute ("AD");
-			};
-			btnGoogle.Clicked += delegate(object sender, EventArgs e) {
-				this.ViewModel.LoginCommand.Execute("Google");
-			};
-			*/
+			MessagingCenter.Subscribe<string> (this, "LoginError", (ex) => {
+				lblActivity.Text = ex;	
+			});
+
 
 			MessagingCenter.Subscribe<MobileServiceClient>(this, "LoggedIn", (s) =>{
 					ViewModel.Refresh();
@@ -44,19 +38,7 @@ namespace PickUpApp
 				});
 
 			MessagingCenter.Subscribe<Account> (this, "loaded", async(s) => {
-
-				//if we're launching out to the TabbedMaster, unsubscribe to the invite and pickup events
-				//MessagingCenter.Unsubscribe<Invite>(this, "invite");
-				//MessagingCenter.Unsubscribe<Invite>(this, "pickup");
-
-				//if we don't have sufficient user information, pop the MyInfo page!
-//				if (string.IsNullOrEmpty(App.myAccount.Email) || string.IsNullOrEmpty(App.myAccount.Phone))
-//				{
-//					Navigation.PushModalAsync(new MyInfo());
-//				}
-//				else{
-//					Navigation.PushModalAsync (new TabbedMaster ()); 
-//				}
+				
 
 				//now we're fully loaded, account, logged in, but we need to preload the other pages (kids, circle, schedule, places)
 				this.BindingContext = new KidsViewModel(App.client);
@@ -73,15 +55,20 @@ namespace PickUpApp
 
 				this.BindingContext = new SplashViewModel(App.client);
 
-
-
 				//really since we have a message waiting on our auth, we want to atleast load the
 				//main page before popping the popover (else we won't see it!)
 
-				MessagingCenter.Send<Splash>(this, "auth");
+				//ok, don't need this anymore since we've already come in?
+				//MessagingCenter.Unsubscribe<Account>(this, "loaded");
+
+				//MessagingCenter.Send<Splash>(this, "auth");
 				MessagingCenter.Send<string>("splash", "NeedsRefresh");
-				await Navigation.PopModalAsync();
+
+				//await Navigation.PopModalAsync();
+
+				MessagingCenter.Send<string>("splash", "launch");
 			});
+
 
 			MessagingCenter.Subscribe<Account> (this, "Refresh", (s) => {
 				//right now this is only triggered when the Account is Updated (e.g. from MyInfo)
@@ -268,7 +255,7 @@ namespace PickUpApp
 			});
 					
 			//autologin
-			this.ViewModel.LoginCommand.Execute("Facebook");
+			//this.ViewModel.LoginCommand.Execute("Facebook");
 			//this used to be in there
 //			if (ViewModel.IsAuthenticated) {
 //				//Navigation.PushModalAsync (new TabbedMaster ());

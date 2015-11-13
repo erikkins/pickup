@@ -20,6 +20,10 @@
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell Height="65" StyleId="disclosure">
+						<ViewCell.ContextActions>
+								<MenuItem Clicked="OnDelete" CommandParameter="{Binding .}"
+	               					Text="Delete" IsDestructive="True" />
+							</ViewCell.ContextActions>
 							<ViewCell.View>								
 									<StackLayout Orientation="Horizontal" VerticalOptions="Center" >
 										<BoxView WidthRequest="10"></BoxView>

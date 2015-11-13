@@ -11,7 +11,18 @@ namespace PickUpApp
 {
 	public class SplashViewModel:BaseViewModel
 	{
-		
+
+		public bool RememberPassword
+		{
+			get{
+				return Settings.RememberPassword;
+			}
+			set{
+				Settings.RememberPassword = value;
+				NotifyPropertyChanged ("RememberPassword");
+			}
+		}
+
 		public string Firstname
 		{
 			get{
@@ -109,7 +120,10 @@ namespace PickUpApp
 					//hoping the only other alternative would be 0, not more than 1
 					//I guess we need to add it
 					//no API to get phone number, so we'll need them to add it at some point
-					await ExecuteAddEditCommand();
+					IsLoading = false;
+					Logout();
+					//what do we do here? we didn't get one account back???
+					//await ExecuteAddEditCommand();
 				}
 
 			}

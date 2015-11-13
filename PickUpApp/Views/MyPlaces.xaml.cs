@@ -21,7 +21,7 @@ namespace PickUpApp
 //			btnAdd.VerticalOptions = LayoutOptions.Center;
 //			btnAdd.HorizontalOptions = LayoutOptions.Center;
 //			btnAdd.HeightRequest = 50;
-//			btnAdd.WidthRequest = (App.Device.Display.Width/2) - 40;
+//			btnAdd.WidthRequest = (App.ScaledQuarterWidth/2) - 40;
 //			btnAdd.FontAttributes = FontAttributes.Bold;
 //			btnAdd.FontSize = 18;
 //			btnAdd.BorderRadius = 8;
@@ -39,16 +39,16 @@ namespace PickUpApp
 			//this.Padding = new Thickness(10, Device.OnPlatform(25, 0, 0), 10, 5);
 			MessagingCenter.Subscribe<AccountPlace>(this, "PlaceAdded", (s) =>
 				{
-					 Navigation.PopModalAsync();
+					 Navigation.PopAsync();
 					 ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 				});
 		}
 
-		void HandleClicked (object sender, EventArgs e)
-		{
-			AccountPlace ap = new AccountPlace ();
-			Navigation.PushModalAsync (new AddEditPlace (ap));
-		}
+//		void HandleClicked (object sender, EventArgs e)
+//		{
+//			AccountPlace ap = new AccountPlace ();
+//			Navigation.PushModalAsync (new AddEditPlace (ap));
+//		}
 
 		void HandleItemSelected (object sender, SelectedItemChangedEventArgs e)
 		{

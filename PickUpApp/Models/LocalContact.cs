@@ -11,6 +11,10 @@ namespace PickUpApp
 		public string LastName {get;set;}
 		public string Email {get;set;}
 		public string Phone {get;set;} 
+		private bool _coparent;
+		public bool Coparent {
+			get{return _coparent; } 
+			set{ _coparent = value; NotifyPropertyChanged ("Coparent"); }}
 		public string NameSort
 		{
 			get

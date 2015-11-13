@@ -57,8 +57,19 @@ namespace PickUpApp
 				IsPullToRefreshEnabled = true,
 				HasUnevenRows = true,
 				BackgroundColor = Color.Transparent,
-				Header = null
+				Header = null,
 			};
+
+			lvToday.BindingContextChanged +=  delegate(object sender, EventArgs e) {
+				if (ViewModel.Todays.Count == 0)
+				{
+					lblNone.IsVisible = true;
+				}
+				else{
+					lblNone.IsVisible = false;
+				}
+			};
+
 			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
 				lvToday.IsRefreshing = false;
 			});
@@ -116,7 +127,7 @@ namespace PickUpApp
 					//i.SolvedBy missing
 					i.StartTimeTicks = today.StartTimeTicks;
 					i.Complete = false;
-					i.LocationMessage = today.LocationMessage;
+					i.LocationMessage = today.LocationNotes;
 					i.AccountID = today.AccountID;
 
 					i.ReturnTo = today.ReturnTo;

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage Title="MESSAGE CENTER"  BackgroundColor="#EEECF3" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MessageCenter">
+	<ContentPage.Content>
+	<StackLayout x:Name="stacker" Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill"></StackLayout>
+	</ContentPage.Content>
+</ContentPage>

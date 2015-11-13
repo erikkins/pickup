@@ -49,7 +49,7 @@ namespace PickUpApp
 			}
 		}
 
-		public ObservableCollection<Account> _myCircle
+		public ObservableCollection<AccountCircle> _myCircle
 		{
 			get{
 				return App.myCircle;

@@ -69,14 +69,14 @@ namespace PickUpApp
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 			sl.HeightRequest = 75;
-			sl.WidthRequest = App.Device.Display.Width / 2;
-			sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+			sl.WidthRequest = App.ScaledWidth;
+			sl.MinimumWidthRequest = App.ScaledWidth;
 
 			Button btnComplete = new Button ();
 			btnComplete.VerticalOptions = LayoutOptions.Center;
 			btnComplete.HorizontalOptions = LayoutOptions.Center;
 			btnComplete.HeightRequest = 50;
-			btnComplete.WidthRequest = (App.Device.Display.Width/2) - 40;
+			btnComplete.WidthRequest = (App.ScaledQuarterWidth/2) - 40;
 			btnComplete.FontAttributes = FontAttributes.Bold;
 			btnComplete.FontSize = 18;
 			btnComplete.BorderRadius = 8;
@@ -116,19 +116,19 @@ namespace PickUpApp
 			StackLayout outer = new StackLayout ();
 			outer.Orientation = StackOrientation.Horizontal;
 			outer.HorizontalOptions = LayoutOptions.StartAndExpand;
-			outer.WidthRequest = App.Device.Display.Width/2;
+			outer.WidthRequest = App.ScaledQuarterWidth/2;
 			outer.Padding = 20;
 			outer.BackgroundColor = Color.FromRgb (238, 236, 243);
 
 			StackLayout left = new StackLayout ();
 			left.Orientation = StackOrientation.Vertical;
 			left.HorizontalOptions = LayoutOptions.StartAndExpand;
-			left.WidthRequest = App.Device.Display.Width/4;
+			left.WidthRequest = App.ScaledQuarterWidth;
 
 			StackLayout right = new StackLayout ();
 			right.Orientation = StackOrientation.Vertical;
 			right.HorizontalOptions = LayoutOptions.EndAndExpand;
-			right.WidthRequest = App.Device.Display.Width/4;
+			right.WidthRequest = App.ScaledQuarterWidth;
 
 			StackLayout detail = new StackLayout ();
 			detail.Orientation = StackOrientation.Horizontal;
@@ -326,7 +326,7 @@ namespace PickUpApp
 			_theMap = new ListMap ();
 			//XLabs.Platform.Device.IDisplay disp;
 
-			_theMap.WidthRequest = App.Device.Display.Width/2;
+			_theMap.WidthRequest = App.ScaledQuarterWidth/2;
 			_theMap.HeightRequest = 202;
 			_theMap.MinimumHeightRequest = 100;
 			_theMap.MinimumWidthRequest = 200;
@@ -346,11 +346,11 @@ namespace PickUpApp
 			header.HorizontalOptions = LayoutOptions.StartAndExpand;
 			header.HeightRequest = 45;
 
-			sl.Children.Add (header, new Rectangle(0,0,App.Device.Display.Width/2, 45), AbsoluteLayoutFlags.None);
+			sl.Children.Add (header, new Rectangle(0,0,App.ScaledQuarterWidth/2, 45), AbsoluteLayoutFlags.None);
 
 
 			//let's figure out Rects for all the positions -5 through 0 and +5
-			double pinStart = (App.Device.Display.Width /4) - 10.5;
+			double pinStart = (App.ScaledWidth/4) - 10.5;
 			Rectangle rectZero = new Rectangle(pinStart, 10, 21, 27);
 			Rectangle rectMinusOne = new Rectangle(pinStart - 30, 10, 21, 27);
 			Rectangle rectPlusOne = new Rectangle(pinStart + 30, 10, 21, 27);
@@ -379,7 +379,7 @@ namespace PickUpApp
 			imgPurple.Source = "ui_tri_purple.png";
 			imgPurple.HorizontalOptions = LayoutOptions.Center;
 
-			double startPoint = (App.Device.Display.Width / 4) - 10;
+			double startPoint = (App.ScaledWidth/ 4) - 10;
 			sl.Children.Add (imgPurple, new Rectangle (startPoint, 45, 20, 10), AbsoluteLayoutFlags.None);
 
 			//need to create the gradient and the address text
@@ -387,15 +387,15 @@ namespace PickUpApp
 			gradient.Source = "gradient.png";
 			gradient.Aspect = Aspect.AspectFill;
 			gradient.Opacity = 0.4;
-			gradient.WidthRequest = App.Device.Display.Width / 4;
-			sl.Children.Add(gradient, new Rectangle(0, 142, App.Device.Display.Width /2, 60),AbsoluteLayoutFlags.None);
+			gradient.WidthRequest = App.ScaledWidth/ 4;
+			sl.Children.Add(gradient, new Rectangle(0, 142, App.ScaledWidth/2, 60),AbsoluteLayoutFlags.None);
 
 			whiteaddress = new Label ();
 			whiteaddress.TextColor = Color.White;
 			whiteaddress.FontSize = 14;
 			whiteaddress.Text = _address;
 			whiteaddress.LineBreakMode = LineBreakMode.WordWrap;
-			sl.Children.Add (whiteaddress, new Rectangle (80, 179, App.Device.Display.Width / 3, 24), AbsoluteLayoutFlags.None);
+			sl.Children.Add (whiteaddress, new Rectangle (80, 179, App.ScaledWidth/ 3, 24), AbsoluteLayoutFlags.None);
 
 			View = sl;
 
@@ -428,7 +428,7 @@ namespace PickUpApp
 
 			StackLayout slTraffic = new StackLayout ();
 			slTraffic.Orientation = StackOrientation.Horizontal;
-			slTraffic.WidthRequest = App.Device.Display.Width / 2;
+			slTraffic.WidthRequest = App.ScaledWidth;
 			slTraffic.Padding = 20;	
 			slTraffic.BackgroundColor = Color.FromRgb (238, 236, 243);
 			slTraffic.Children.Add (est);
@@ -475,7 +475,7 @@ namespace PickUpApp
 
 			StackLayout slContact = new StackLayout ();
 			slContact.Orientation = StackOrientation.Vertical;
-			slContact.WidthRequest = App.Device.Display.Width / 2;
+			slContact.WidthRequest = App.ScaledWidth;
 			slContact.Padding =	20;
 			slContact.BackgroundColor = Color.FromRgb (238, 236, 243);
 			slContact.Children.Add (cntct);
@@ -576,7 +576,7 @@ namespace PickUpApp
 
 			StackLayout slContact = new StackLayout ();
 			slContact.Orientation = StackOrientation.Vertical;
-			slContact.WidthRequest = App.Device.Display.Width / 2;
+			slContact.WidthRequest = App.ScaledWidth;
 			slContact.Padding =	20;
 			slContact.BackgroundColor = Color.FromRgb (238, 236, 243);
 			slContact.Children.Add (cntct);

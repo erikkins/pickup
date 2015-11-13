@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PickUpApp
 {
@@ -90,9 +91,23 @@ namespace PickUpApp
 						string filename = dep.CreateCircleText(initials,50,50);
 						k.PhotoURL = filename;
 					}
+
+
 					kidmenu.Photos.Add(k.PhotoURL);
 				}
-				App.menuItems.Insert(1,kidmenu);
+
+				if (App.menuItems.Any(mi => mi.MenuName == "Kids"))
+				{
+					//we already have this item, let's just update it
+					System.Collections.Generic.IEnumerable<FFMenuItem> ffmi = from menus in App.menuItems where menus.MenuName == "Kids" select menus;
+					ffmi.FirstOrDefault().Count = App.myKids.Count;
+
+					//hope this updates?
+				}
+				else{
+					App.menuItems.Insert(1, kidmenu);
+				}
+
 			}
 			catch (Exception ex)
 			{

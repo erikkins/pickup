@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace PickUpApp
 {
@@ -12,7 +13,11 @@ namespace PickUpApp
 	{
 		public ObservableCollection<LocalContact> Contacts { get; set; }
 		public ObservableCollection<Grouping<string, LocalContact>> ContactsSorted { get; set; }
-		public LocalContact CurrentContact{ get; set;}
+		private LocalContact _localContact;
+		public LocalContact CurrentContact{
+			get{ return _localContact; } 
+			set{ _localContact = value; NotifyPropertyChanged (); }
+		}
 
 		public SelectContactViewModel ()
 		{
@@ -40,17 +45,22 @@ namespace PickUpApp
 
 			try{
 
-				Account tempAccount = new Account();
+				AccountCircle tempAccount = new AccountCircle();
 				tempAccount.Email = CurrentContact.Email;
 				tempAccount.Firstname = CurrentContact.FirstName;
 				tempAccount.Lastname = CurrentContact.LastName;
 				tempAccount.Phone = CurrentContact.Phone;
+				tempAccount.Accepted = false;
+				tempAccount.Coparent = CurrentContact.Coparent;
+				tempAccount.id = CurrentContact.Id;
 
-				var contact = await client.InvokeApiAsync<Account, Account>("checkandregisteraccount", tempAccount);
-				System.Diagnostics.Debug.WriteLine(contact.Fullname);
+				//anyway to pull the accountcircle id instead of the account id?
+
+				var contact = await client.InvokeApiAsync<AccountCircle, AccountCircle>("savecircle", tempAccount);
+				//System.Diagnostics.Debug.WriteLine(contact[0].Fullname);
 			}
 			catch(Exception ex) {
-				System.Diagnostics.Debug.WriteLine ("checkregex " + ex.Message);
+				System.Diagnostics.Debug.WriteLine ("savecontact " + ex);
 			}
 			finally{
 				IsLoading = false;
@@ -65,7 +75,17 @@ namespace PickUpApp
 			IsLoading = true;
 			try
 			{
-				var contacts = await DependencyService.Get<iAddressBook> ().loadContacts ();
+				string err = "";
+				var contacts =  DependencyService.Get<iAddressBook> ().loadContacts (out err);
+				if (!string.IsNullOrEmpty(err))
+				{
+					MessagingCenter.Send<string>(err, "ContactsError");
+				}
+				if (contacts == null)
+				{
+					//something happened in there
+					return;
+				}
 				Contacts.Clear();
 				foreach (var c in contacts)
 				{

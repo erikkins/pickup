@@ -96,12 +96,27 @@ namespace PickUpApp
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new CalendarTest()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					//listView.SelectedItem =  null;
 					break;
+				case "Messages":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MessageCenter()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
+					break;
 				case "Logout":
-					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new Splash()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+
+					//actually need to pop the masterdetailpage down to AppRoot, then clear Settings, then push Login
+					//((MasterDetailPage)this.Parent.Parent).Navigation.PopModalAsync();
+					Settings.CachedAuthToken = "";
+					Settings.CachedUserName = "";
+					Settings.RememberPassword = false;
+					MessagingCenter.Send<string>("menu", "login");
+
+					//((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new Splash()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					//listView.SelectedItem =  null;
 					break;
 				case "Intro":
 					((MasterDetailPage)this.Parent.Parent).Navigation.PushModalAsync(new CarouselMaster());
+					break;
+				case "Reg":
+					((MasterDetailPage)this.Parent.Parent).Navigation.PushModalAsync(new Register());
 					break;
 				}
 
@@ -156,7 +171,7 @@ namespace PickUpApp
 			this.Add (new FFMenuItem("Today", 0));
 			this.Add (new FFMenuItem ("Activities", 0));
 			this.Add (new FFMenuItem ("Account", 0));
-			this.Add (new FFMenuItem ("Intro", 0));
+			this.Add(new FFMenuItem("Messages", 0));
 			this.Add (new FFMenuItem ("Logout", 0));
 			this.OnCollectionChanged (new NotifyCollectionChangedEventArgs (NotifyCollectionChangedAction.Reset));
 			this.OnPropertyChanged (new System.ComponentModel.PropertyChangedEventArgs (""));
@@ -196,8 +211,8 @@ namespace PickUpApp
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (73, 55, 109);
 			sl.HeightRequest = 141;
-			sl.WidthRequest = App.Device.Display.Width / 2;
-			sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+			sl.WidthRequest = App.ScaledWidth;
+			sl.MinimumWidthRequest = App.ScaledWidth;
 
 			StackLayout slPix = new StackLayout ();
 			slPix.Orientation = StackOrientation.Vertical;
@@ -210,6 +225,12 @@ namespace PickUpApp
 			//really two things in this cell
 			//the name (count)
 			//and the supporting images (3 per row)
+
+			if (c == null) {
+				return;
+				System.Diagnostics.Debug.WriteLine ("OOPS");
+			}
+
 
 			Label menuNameLabel = new Label ();
 			if (((FFMenuItem)c).MenuName == "Logout") {

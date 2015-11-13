@@ -12,10 +12,11 @@ namespace PickUpApp
 
 			Detail = new NavigationPage(new TodayView ()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 
-			if (!((TodayView)((NavigationPage)Detail).CurrentPage).ViewModel.IsAuthenticated)
-			{
-				Navigation.PushModalAsync (new Splash ());
-			}
+//			if (!((TodayView)((NavigationPage)Detail).CurrentPage).ViewModel.IsAuthenticated)
+//			{
+//				Navigation.PushModalAsync (new Splash ());
+//			}
+//
 			//need the menu to load AFTER we've downloaded all prelim data
 			Master = new NavigationPage(new HomeMenu ()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127), Title = "MY SETTINGS", Icon="icn_settings.png" };//new HomeMenu ();
 

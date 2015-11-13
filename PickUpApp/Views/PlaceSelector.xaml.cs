@@ -97,7 +97,7 @@ namespace PickUpApp
 			btnAdd.VerticalOptions = LayoutOptions.Center;
 			btnAdd.HorizontalOptions = LayoutOptions.Center;
 			btnAdd.HeightRequest = 50;
-			btnAdd.WidthRequest = (App.Device.Display.Width/2) - 40;
+			btnAdd.WidthRequest = (App.ScaledQuarterWidth/2) - 40;
 			btnAdd.FontAttributes = FontAttributes.Bold;
 			btnAdd.FontSize = 18;
 			btnAdd.BorderRadius = 8;

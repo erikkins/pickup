@@ -26,11 +26,27 @@ namespace PickUpApp
 		public static AccountDevice myDevice = new AccountDevice();
 
 		public static IDevice Device = XLabs.Ioc.Resolver.Resolve<IDevice> ();
+		public static double ScaledHeight {
+			get {
+				return App.Device.Display.Height / App.Device.Display.Scale;
+			}
+		}
+		public static double ScaledWidth {
+			get {
+				return App.Device.Display.Width / App.Device.Display.Scale;
+			}
+		}
+		public static double ScaledQuarterWidth {
+			get {
+				return App.Device.Display.Width / (App.Device.Display.Scale * 2);
+			}
+		}
+
 
 		public static ObservableCollection<Kid> myKids = new TrulyObservableCollection<Kid> ();
 
 
-		public static ObservableCollection<Account> myCircle = new ObservableCollection<Account> ();
+		public static ObservableCollection<AccountCircle> myCircle = new ObservableCollection<AccountCircle> ();
 		public static ObservableCollection<AccountPlace> myPlaces = new ObservableCollection<AccountPlace> ();
 
 		public static MenuListData menuItems = new MenuListData();
@@ -48,6 +64,8 @@ namespace PickUpApp
 
 		public App ()
 		{
+			
+
 			myDevice.PropertyChanged += async (object sender, System.ComponentModel.PropertyChangedEventArgs e) => {
 				if (myDevice.accountid != null && myDevice.notificationid != null && myDevice.userId != null)
 				{
@@ -60,10 +78,17 @@ namespace PickUpApp
 			GetPosition ().ConfigureAwait (false);
 				// The root page of your application
 
+			MainPage = new AppRoot ();
 
-			MainPage = new HomePage ();
+			//MainPage = new HomePage ();
 
 		} 
+
+		protected override void OnResume ()
+		{
+			base.OnResume ();
+			//app just came back...how do we go on?
+		}
 
 		//deprecated
 		//public static Page GetMainPage ()

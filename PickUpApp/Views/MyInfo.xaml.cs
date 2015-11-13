@@ -40,53 +40,111 @@ namespace PickUpApp
 			sicPhoto = new SimpleImageCell (ViewModel.PhotoURL);
 			ts.Add (sicPhoto);
 			sicPhoto.Tapped += async delegate(object sender, EventArgs e) {
+
+				var action = await DisplayActionSheet ("Choose Image Source", "Cancel", null, "Camera", "Photos");
+				Debug.WriteLine("Action: " + action); 
+
 				string filepath = "";
 
 				//ok, since we're storing the filename as the kid.id guid, we need to make sure there is one
 				//otherwise, make it up.
 				string photoid = App.myAccount.id;
+				switch (action)
+				{
+				case "Camera":
 
-				if (Media.Plugin.CrossMedia.Current.IsCameraAvailable) {
+					if (Media.Plugin.CrossMedia.Current.IsCameraAvailable && Media.Plugin.CrossMedia.Current.IsTakePhotoSupported) {
 					
-					var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
-						{ 
-							Directory = "MyKidPics",
-							Name = photoid + ".jpg",
-							DefaultCamera = Media.Plugin.Abstractions.CameraDevice.Front
-						});
+						var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
+							{ 
+								Directory = "MyPics",
+								Name = photoid + ".jpg",
+								DefaultCamera = Media.Plugin.Abstractions.CameraDevice.Front
+							});
 
-					if (file == null)
+						if (file == null)
+						{
+							//they canceled!
+							return;
+						}
+						//update the image immediately
+						sicPhoto.ImagePath = file.Path;
+
+						filepath = file.Path;	
+						var bytes = default(byte[]);
+						using (var streamReader = new StreamReader(file.GetStream()))
+						{
+							using (var memstream = new MemoryStream())
+							{
+								streamReader.BaseStream.CopyTo(memstream);
+								bytes = memstream.ToArray();
+							}
+						}
+						file.Dispose();
+						if (bytes.Length > 0)
+						{
+							//resize it!
+
+							var dep = DependencyService.Get<PickUpApp.IImageResizer>();
+							bytes = dep.ResizeImage(bytes, 150,150, filepath);
+
+							//upload it!
+
+							await AzureBlobAccess.addContainerIfNotExists_async(App.myAccount.id);
+							await AzureBlobAccess.uploadToBlobStorage_async(bytes, photoid + ".jpg", App.myAccount.id.ToLower());
+							//ok, let's create the photo URL
+							ViewModel.PhotoURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + photoid + ".jpg";
+							await ViewModel.ExecuteAddEditCommand();
+							//sicPhoto.ImagePath = ViewModel.PhotoURL;
+
+							tv.OnDataChanged();
+						}
+					}
+					else{
+						await DisplayAlert("Oops", "Your camera is not available!", "OK");
+					}
+					break;
+				case "Photos":
+					if (!Media.Plugin.CrossMedia.Current.IsPickPhotoSupported)
 					{
-						//they canceled!
+						await DisplayAlert("Oops", "Photo picking is not supported!", "OK");
 						return;
 					}
-					filepath = file.Path;	
-					var bytes = default(byte[]);
-					using (var streamReader = new StreamReader(file.GetStream()))
+					var photofile  = await Media.Plugin.CrossMedia.Current.PickPhotoAsync();
+					if (photofile == null)
+					{
+						return;
+					}
+					sicPhoto.ImagePath = photofile.Path;
+					var photobytes = default(byte[]);
+					using (var streamReader = new StreamReader(photofile.GetStream()))
 					{
 						using (var memstream = new MemoryStream())
 						{
 							streamReader.BaseStream.CopyTo(memstream);
-							bytes = memstream.ToArray();
+							photobytes = memstream.ToArray();
 						}
 					}
-					if (bytes.Length > 0)
+					if (photobytes.Length > 0)
 					{
 						//resize it!
 
 						var dep = DependencyService.Get<PickUpApp.IImageResizer>();
-						bytes = dep.ResizeImage(bytes, 150,150, file.Path);
+						photobytes = dep.ResizeImage(photobytes, 150,150, photofile.Path);
 
 						//upload it!
 
 						await AzureBlobAccess.addContainerIfNotExists_async(App.myAccount.id);
-						await AzureBlobAccess.uploadToBlobStorage_async(bytes, photoid + ".jpg", App.myAccount.id.ToLower());
+						await AzureBlobAccess.uploadToBlobStorage_async(photobytes, photoid + ".jpg", App.myAccount.id.ToLower());
 						//ok, let's create the photo URL
 						ViewModel.PhotoURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + photoid + ".jpg";
 						await ViewModel.ExecuteAddEditCommand();
-						sicPhoto.ImagePath = ViewModel.PhotoURL;
+						//sicPhoto.ImagePath = ViewModel.PhotoURL;
+
 						tv.OnDataChanged();
 					}
+
+					break;
 				}
 			};
 			sbtcFirstName = new SimpleBoundTextCell ("First name", "Firstname");

@@ -6,6 +6,7 @@ namespace PickUpApp
 	public class Account:BaseModel
 	{
 		private string _Id;
+		[JsonProperty(PropertyName = "id")]
 		public string id 
 		{ 
 			get{ return _Id; }

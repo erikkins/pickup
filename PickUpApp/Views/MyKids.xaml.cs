@@ -14,7 +14,7 @@ namespace PickUpApp
 			this.ToolbarItems.Add (new ToolbarItem ("Add Kid", "icn_new.png", async() => {
 				Kid k = new Kid ();
 				//should this be modal?
-				await Navigation.PushModalAsync (new AddEditKid (k));
+				await Navigation.PushAsync (new AddEditKid (k));
 			}));
 
 			lstKids.ItemSelected += HandleItemSelected;
@@ -26,6 +26,12 @@ namespace PickUpApp
 					Navigation.PopAsync();
 					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 				});
+		}
+
+		public void OnDelete (object sender, EventArgs e) {
+			var mi = ((MenuItem)sender);
+			Kid k = (Kid)mi.CommandParameter;
+			DisplayAlert("Delete Context Action", k.Fullname + " delete context action", "OK");
 		}
 
 		void HandleClicked (object sender, EventArgs e)
@@ -42,11 +48,7 @@ namespace PickUpApp
 			lstKids.SelectedItem = null;
 
 		}
-		public void OnDelete (object sender, EventArgs e) {
-			var mi = ((MenuItem)sender);
-			Kid k = (Kid)mi.CommandParameter;
-			DisplayAlert("Delete Context Action", k.Id + " delete context action", "OK");
-		}
+
 		protected KidsViewModel ViewModel
 		{
 			get { return this.BindingContext as KidsViewModel; }

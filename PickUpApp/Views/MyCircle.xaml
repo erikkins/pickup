@@ -4,8 +4,9 @@
  xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
  x:Class="PickUpApp.MyCircle">
 	<ContentPage.Content>
-		<StackLayout><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-			<ListView BackgroundColor="#EEECF3" ItemsSource="{Binding Circle}" HasUnevenRows="true">
+		<StackLayout x:Name="stacker" Orientation="Vertical"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+		<!---
+			<ListView x:Name="lstCircle" BackgroundColor="#EEECF3" ItemsSource="{Binding Circle}" HasUnevenRows="true">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell Height="65" StyleId="none">
@@ -41,6 +42,7 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 			</ListView>
+			-->
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

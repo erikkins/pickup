@@ -28,6 +28,7 @@ namespace PickUpApp
 			//btnSave.Clicked += HandleClicked;
 			//btnCancel.Clicked += HandleClicked1;
 			this.ViewModel = new KidAddEditViewModel (App.client);
+			this.ViewModel.CurrentKid = selectedKid;
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
@@ -37,7 +38,7 @@ namespace PickUpApp
 //					await Navigation.PopAsync();
 //				});
 
-				ViewModel.CurrentKid = selectedKid;
+				//ViewModel.CurrentKid = selectedKid;
 				await this.ViewModel.ExecuteAddEditCommand();
 
 			}));
@@ -113,51 +114,119 @@ namespace PickUpApp
 //			stacker.Children.Add (kidImage);
 				
 			sicPic.Tapped += async delegate {
+				try{
+
+				var action = await DisplayActionSheet ("Choose Image Source", "Cancel", null, "Camera", "Photos");
+
 				string filepath = "";
 
 				//ok, since we're storing the filename as the kid.id guid, we need to make sure there is one
 				//otherwise, make it up.
-				string photoid = ViewModel.CurrentKid.Id.ToLower();
-				if (string.IsNullOrEmpty(photoid))
+
+				string photoid = "";
+				if (ViewModel.CurrentKid == null)
 				{
+					//ViewModel.CurrentKid = new Kid();
 					photoid = Guid.NewGuid().ToString().ToLower();
-					//I guess we should just set it
-					ViewModel.CurrentKid.Id = photoid;
 				}
+				else{
+						if (string.IsNullOrEmpty(ViewModel.CurrentKid.Id))
+						{
+							photoid = Guid.NewGuid().ToString().ToLower();
+						}
+						else{
+							photoid = ViewModel.CurrentKid.Id.ToLower();
+						}
+				}
+				
 
-				if (Media.Plugin.CrossMedia.Current.IsCameraAvailable) {
+				ViewModel.CurrentKid.PhotoURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + photoid + ".jpg";
+					
+				switch (action)
+				{
+				case "Camera":
+					if (Media.Plugin.CrossMedia.Current.IsCameraAvailable && Media.Plugin.CrossMedia.Current.IsTakePhotoSupported) {
 
-					var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
-						{ 
-							Directory = "MyKidPics",
-							Name = photoid + ".jpg",
+						var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
+							{ 
+								Directory = "MyKidPics",
+								Name = photoid + ".jpg",
 
-						});
-					filepath = file.Path;	
-					var bytes = default(byte[]);
-					using (var streamReader = new StreamReader(file.GetStream()))
+							});
+						filepath = file.Path;	
+						sicPic.ImagePath = filepath;
+
+						var bytes = default(byte[]);
+						using (var streamReader = new StreamReader(file.GetStream()))
+						{
+							using (var memstream = new MemoryStream())
+							{
+								streamReader.BaseStream.CopyTo(memstream);
+								bytes = memstream.ToArray();
+							}
+						}
+						file.Dispose();
+						if (bytes.Length > 0)
+						{
+							//resize it!
+						
+							var dep = DependencyService.Get<PickUpApp.IImageResizer>();
+							bytes = dep.ResizeImage(bytes, 150,150, filepath);
+
+							//upload it!
+
+							await AzureBlobAccess.addContainerIfNotExists_async(App.myAccount.id);
+							await AzureBlobAccess.uploadToBlobStorage_async(bytes, photoid + ".jpg", App.myAccount.id.ToLower());
+							//ok, let's create the photo URL
+							//ViewModel.CurrentKid.PhotoURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + photoid + ".jpg";
+							//await ViewModel.ExecuteAddEditCommand();
+							tv.OnDataChanged();
+						}
+					}
+					else{
+						await DisplayAlert("Oops", "Your camera is not available!", "OK");
+					}
+					break;
+				case "Photos":
+					if (!Media.Plugin.CrossMedia.Current.IsPickPhotoSupported)
+					{
+						await DisplayAlert("Oops", "Photo picking is not supported!", "OK");
+						return;
+					}
+					var photofile  = await Media.Plugin.CrossMedia.Current.PickPhotoAsync();
+					if (photofile == null)
+					{
+						return;
+					}
+					sicPic.ImagePath = photofile.Path;
+					var photobytes = default(byte[]);
+					using (var streamReader = new StreamReader(photofile.GetStream()))
 					{
 						using (var memstream = new MemoryStream())
 						{
 							streamReader.BaseStream.CopyTo(memstream);
-							bytes = memstream.ToArray();
+							photobytes = memstream.ToArray();
 						}
 					}
-					if (bytes.Length > 0)
+					if (photobytes.Length > 0)
 					{
 						//resize it!
-					
+
 						var dep = DependencyService.Get<PickUpApp.IImageResizer>();
-						bytes = dep.ResizeImage(bytes, 150,150, file.Path);
+						photobytes = dep.ResizeImage(photobytes, 150,150, photofile.Path);
 
 						//upload it!
 
 						await AzureBlobAccess.addContainerIfNotExists_async(App.myAccount.id);
-						await AzureBlobAccess.uploadToBlobStorage_async(bytes, photoid + ".jpg", App.myAccount.id.ToLower());
+						await AzureBlobAccess.uploadToBlobStorage_async(photobytes, photoid + ".jpg", App.myAccount.id.ToLower());
 						//ok, let's create the photo URL
-						ViewModel.CurrentKid.PhotoURL = AzureStorageConstants.BlobEndPoint + App.myAccount.id.ToLower() + "/" + photoid + ".jpg";
-						await ViewModel.ExecuteAddEditCommand();
+						
+						//await ViewModel.ExecuteAddEditCommand();
+
+						tv.OnDataChanged();
 					}
+
+					break;
 				}
 					
 
@@ -171,7 +240,11 @@ namespace PickUpApp
 //					Source = UriImageSource.FromUri (new Uri (ViewModel.CurrentKid.PhotoURL))
 //				};
 
-
+				}
+				catch (Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine(ex);
+				}
 			};
 
 			/*

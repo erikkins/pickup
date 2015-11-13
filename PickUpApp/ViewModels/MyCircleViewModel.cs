@@ -12,7 +12,7 @@ namespace PickUpApp
 {
 	public class MyCircleViewModel:BaseViewModel
 	{
-		public ObservableCollection<Account> Circle 
+		public ObservableCollection<AccountCircle> Circle 
 		{ get{ return App.myCircle; } 
 			set{ if (value == App.myCircle) {
 					App.myCircle = value;
@@ -20,21 +20,40 @@ namespace PickUpApp
 					}
 				} 
 		}
+
+		public AccountCircle CurrentAccountCircle;
 	
 		public MyCircleViewModel ()
 		{
-			App.myCircle = new ObservableCollection<Account> ();
+			App.myCircle = new ObservableCollection<AccountCircle> ();
 		}
 
 		public MyCircleViewModel(MobileServiceClient client) //: this()
 		{
 			if (App.myCircle == null) {
-				App.myCircle = new ObservableCollection<Account> ();
+				App.myCircle = new ObservableCollection<AccountCircle> ();
 			}
 			this.client = client;
 			//LoadItemsCommand.Execute (null);
 		}
 
+		public override async Task ExecuteDeleteCommand ()
+		{
+			IsLoading = true;
+
+			try
+			{
+				IMobileServiceTable<AccountCircle> circle = client.GetTable<AccountCircle>();
+				await circle.DeleteAsync(CurrentAccountCircle);
+				await ExecuteLoadItemsCommand();
+			}
+			catch(Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+			finally{
+				IsLoading = false;
+			}
+		}
 
 
 		public override async Task ExecuteLoadItemsCommand ()
@@ -42,7 +61,7 @@ namespace PickUpApp
 			IsLoading = true;
 			try
 			{
-				var circle = await client.InvokeApiAsync<List<Account>>("getmycircle");
+				var circle = await client.InvokeApiAsync<List<AccountCircle>>("getmycircle");
 				App.myCircle.Clear();
 				foreach (var acct in circle)
 				{
@@ -79,7 +98,18 @@ namespace PickUpApp
 								circlemenu.Photos.Add(circ.PhotoURL);
 							}
 						}
+
+					if (App.menuItems.Any(mi => mi.MenuName == "Circle"))
+					{
+						//we already have this item, let's just update it
+						System.Collections.Generic.IEnumerable<FFMenuItem> ffmi = from menus in App.menuItems where menus.MenuName == "Circle" select menus;
+						ffmi.FirstOrDefault().Count = App.myCircle.Count;
+
+						//hope this updates?
+					}
+					else{
 						App.menuItems.Insert(2, circlemenu);
+					}
 				}
 				catch(Exception exer)
 				{

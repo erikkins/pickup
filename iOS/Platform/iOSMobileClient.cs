@@ -33,6 +33,7 @@ namespace PickUpApp.iOS
 			case Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory:
 				App.ServiceProvider = "AD";
 				break;
+			
 			}
 
 			var accounts = accountStore.FindAccountsForService (App.ServiceProvider).ToArray ();

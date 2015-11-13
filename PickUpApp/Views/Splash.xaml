@@ -1,26 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:common="clr-namespace:PickUpApp;assembly=PickUpApp" x:Class="PickUpApp.Splash">
 	<ContentPage.Content>
-<StackLayout x:Name="stacker" BackgroundColor="#49376D">
-	
-	<Label Text="Login" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="40"/>
-	<StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions = "CenterAndExpand">
-	<Label x:Name = "lblActivity" HorizontalOptions="CenterAndExpand"></Label>
-	<ActivityIndicator IsRunning="{Binding IsLoading}" HorizontalOptions="CenterAndExpand" IsVisible="true" />
+<StackLayout x:Name="stacker" BackgroundColor="#49376D" VerticalOptions="Center" HorizontalOptions="Center">
+	<StackLayout x:Name="bottomstack" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions = "Center">
+	<Label x:Name = "lblActivity" Text="" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"></Label>
+	<ActivityIndicator Color="White" IsRunning="{Binding IsLoading}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" IsVisible="true" />
 	</StackLayout>
-	<StackLayout Orientation="Vertical">
-	<Entry x:Name="txtEmail" Placeholder="Email"  TextColor="White" WidthRequest="300" ></Entry>
-	<Entry x:Name="txtPassword" IsPassword="false" Placeholder="Password"  TextColor="White" WidthRequest="300" ></Entry>
-	<Button x:Name="btnToday" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="50" WidthRequest="340" FontAttributes="Bold" FontSize="18" Text="Pick Today" TextColor="#F6637F" BackgroundColor="#49376D" BorderColor="#54D29F" BorderRadius="8" BorderWidth="2"></Button>
-	</StackLayout>
-	<!---
-	<StackLayout Orientation="Vertical" VerticalOptions="End">
-	<Button x:Name="btnFacebook" Text="Facebook" CommandParameter="Facebook" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-	<Button x:Name="btnGoogle" Text="Google" CommandParameter="Facebook" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-	<Button x:Name="btnAD" CommandParameter="AD" Text="ActiveDirectory" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" />
-	<Button x:Name="btnLogout" Text="Logout" VerticalOptions="CenterAndExpand" HorizontalOptions="End" />
-	</StackLayout>
-	-->
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

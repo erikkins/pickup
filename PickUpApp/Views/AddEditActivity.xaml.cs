@@ -146,8 +146,8 @@ namespace PickUpApp
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 				sl.HeightRequest = 75;
-				//sl.WidthRequest = (App.Device.Display.Width / 2)- 60;
-				//sl.MinimumWidthRequest = (App.Device.Display.Width / 2) - 60;
+				//sl.WidthRequest = (App.ScaledWidth)- 60;
+				//sl.MinimumWidthRequest = (App.ScaledWidth) - 60;
 
 
 				StackLayout slSide = new StackLayout ();
@@ -174,7 +174,7 @@ namespace PickUpApp
 				slDays.Orientation = StackOrientation.Horizontal;
 				slDays.VerticalOptions = LayoutOptions.Start;
 				slDays.HorizontalOptions = LayoutOptions.Center;
-				//slDays.WidthRequest = App.Device.Display.Width / 2;
+				//slDays.WidthRequest = App.ScaledWidth;
 				//slDays.Spacing = 20;
 
 				StackLayout slMonday = new StackLayout ();
@@ -465,8 +465,8 @@ namespace PickUpApp
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 				sl.HeightRequest = 75;
-				sl.WidthRequest = App.Device.Display.Width / 2;
-				sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+				sl.WidthRequest = App.ScaledWidth;
+				sl.MinimumWidthRequest = App.ScaledWidth;
 
 				BoxView bv = new BoxView ();
 				bv.WidthRequest = 10;
@@ -572,7 +572,7 @@ namespace PickUpApp
 						pnotes.VerticalOptions = LayoutOptions.Center;
 						pnotes.FontSize = 14;
 						pnotes.LineBreakMode = LineBreakMode.WordWrap;
-						pnotes.WidthRequest = (App.Device.Display.Width / 2) - 205;
+						pnotes.WidthRequest = (App.ScaledWidth) - 205;
 						g.Children.Add (pnotes, 1, 1);
 
 						TapGestureRecognizer labelTap = new TapGestureRecognizer ();
@@ -591,7 +591,7 @@ namespace PickUpApp
 						dnotes.SetBinding (Label.TextProperty, "CurrentSchedule.DropOffNotes");
 						dnotes.VerticalOptions = LayoutOptions.Center;
 						dnotes.LineBreakMode = LineBreakMode.WordWrap;
-						dnotes.WidthRequest = (App.Device.Display.Width / 2) - 205;
+						dnotes.WidthRequest = (App.ScaledWidth) - 205;
 						dnotes.FontSize = 14;
 						g.Children.Add (dnotes, 1, 1);
 						TapGestureRecognizer tgr = new TapGestureRecognizer ();
@@ -676,8 +676,8 @@ namespace PickUpApp
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 				sl.HeightRequest = 75;
-				sl.WidthRequest = App.Device.Display.Width / 2;
-				sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+				sl.WidthRequest = App.ScaledWidth;
+				sl.MinimumWidthRequest = App.ScaledWidth;
 
 				BoxView bv = new BoxView ();
 				bv.WidthRequest = 10;
@@ -747,8 +747,8 @@ namespace PickUpApp
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 				sl.HeightRequest = 75;
-				sl.WidthRequest = App.Device.Display.Width / 2;
-				sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+				sl.WidthRequest = App.ScaledWidth;
+				sl.MinimumWidthRequest = App.ScaledWidth;
 
 				BoxView bv = new BoxView ();
 				bv.WidthRequest = 10;
@@ -815,8 +815,8 @@ namespace PickUpApp
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 				sl.HeightRequest = 75;
-				sl.WidthRequest = App.Device.Display.Width / 2;
-				sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+				sl.WidthRequest = App.ScaledWidth;
+				sl.MinimumWidthRequest = App.ScaledWidth;
 
 				BoxView bv = new BoxView ();
 				bv.WidthRequest = 10;
@@ -856,7 +856,7 @@ namespace PickUpApp
 				slAddress.Spacing = 1;
 				slAddress.VerticalOptions = LayoutOptions.Center;
 				slAddress.Orientation = StackOrientation.Vertical;
-				slAddress.WidthRequest = (App.Device.Display.Width / 2) - 205;
+				slAddress.WidthRequest = (App.ScaledWidth) - 205;
 
 				Label nameLabel = new Label ();
 				if (_placeType == PlaceType.ActivityPlace) {
@@ -930,8 +930,8 @@ namespace PickUpApp
 				sl.HorizontalOptions = LayoutOptions.Start;
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
-				sl.WidthRequest = App.Device.Display.Width / 2;
-				sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+				sl.WidthRequest = App.ScaledWidth;
+				sl.MinimumWidthRequest = App.ScaledWidth;
 
 				Grid g = new Grid ();
 				g.ColumnDefinitions = new ColumnDefinitionCollection ();
@@ -1161,8 +1161,8 @@ namespace PickUpApp
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 				sl.HeightRequest = 75;
-				sl.WidthRequest = App.Device.Display.Width / 2;
-				sl.MinimumWidthRequest = App.Device.Display.Width / 2;
+				sl.WidthRequest = App.ScaledWidth;
+				sl.MinimumWidthRequest = App.ScaledWidth;
 
 				BoxView bv = new BoxView ();
 				bv.WidthRequest = 10;

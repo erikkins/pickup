@@ -7,6 +7,7 @@ namespace PickUpApp
 	
 	public class Today : BaseModel
 	{
+
 		public const string ADDRESS_PLACEHOLDER = "Click to set address";
 		//ok this is a merged class between Schedule and Invite
 		//seems stupid to copy the fields directly
@@ -145,15 +146,15 @@ namespace PickUpApp
 		public string Latitude { 
 			get{
 				//actually need to pull the latitude from the AccountPlace for the accountplaceid
-				if (this.AccountPlaceID == null) {
-					return null;
-				} else {
-					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
-							where aps.id == this.AccountPlaceID
-						select aps;
-					return ap.FirstOrDefault ().Latitude;
-				}
-				//return _Latitude; 
+//				if (this.AccountPlaceID == null) {
+//					return null;
+//				} else {
+//					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+//							where aps.id == this.AccountPlaceID
+//						select aps;
+//					return ap.FirstOrDefault ().Latitude;
+//				}
+				return _Latitude; 
 			} 
 			set{if (value != _Latitude) {
 					_Latitude = value; NotifyPropertyChanged ();
@@ -164,15 +165,15 @@ namespace PickUpApp
 		public string Longitude 
 		{ get
 			{
-				if (this.AccountPlaceID == null) {
-					return null;
-				} else {
-					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
-							where aps.id == this.AccountPlaceID
-						select aps;
-					return ap.FirstOrDefault ().Longitude;
-				}
-				//return _Longitude; 
+//				if (this.AccountPlaceID == null) {
+//					return null;
+//				} else {
+//					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+//							where aps.id == this.AccountPlaceID
+//						select aps;
+//					return ap.FirstOrDefault ().Longitude;
+//				}
+				return _Longitude; 
 			} 
 			set{if (value != _Longitude) {
 					_Longitude = value; NotifyPropertyChanged ();
@@ -184,21 +185,22 @@ namespace PickUpApp
 		{ 
 			get
 			{ 
-				if (string.IsNullOrEmpty (_Address)) {
-					return ADDRESS_PLACEHOLDER;
-				} else {
-					//strip out CRLF?
-					if (this.AccountPlaceID == null) {
-						return null;
-					} else {
-						System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
-								where aps.id == this.AccountPlaceID
-							select aps;
-						return ap.FirstOrDefault ().Address;
-					}
-					//return _Address.Replace (Environment.NewLine, "  ");
-					//return _Address;
-				}
+				return _Address.Replace (Environment.NewLine, "  ");
+//				if (string.IsNullOrEmpty (_Address)) {
+//					return ADDRESS_PLACEHOLDER;
+//				} else {
+//					//strip out CRLF?
+//					if (this.AccountPlaceID == null) {
+//						return null;
+//					} else {
+//						System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+//								where aps.id == this.AccountPlaceID
+//							select aps;
+//						return ap.FirstOrDefault ().Address;
+//					}
+//					//return _Address.Replace (Environment.NewLine, "  ");
+//					//return _Address;
+//				}
 			} 
 			set
 			{
@@ -226,63 +228,77 @@ namespace PickUpApp
 		public string Location 
 		{ get
 			{
-				if (this.AccountPlaceID == null) {
-					return null;
-				}
-				else
-				{
-					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
-							where aps.id == this.AccountPlaceID
-						select aps;
-					return ap.FirstOrDefault ().PlaceName;
-				}
-				//return _Location; 
+//				if (this.AccountPlaceID == null) {
+//					return null;
+//				}
+//				else
+//				{
+//					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+//							where aps.id == this.AccountPlaceID
+//						select aps;
+//					return ap.FirstOrDefault ().PlaceName;
+//				}
+				return _Location; 
 			} 
 			set{if (value != _Location) {
 					_Location = value; NotifyPropertyChanged ();
 				} } }
 		
-		[JsonIgnore]
+		//[JsonIgnore]
+		private string _locationPhone;
+		[JsonProperty(PropertyName = "locationphone")]
 		public string LocationPhone
 		{
 			get{
-				if (this.AccountPlaceID == null) {
-					return null;
-				}
-				else
-				{
-					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
-							where aps.id == this.AccountPlaceID
-						select aps;
-					return ap.FirstOrDefault ().Phone;
-				}
+				return _locationPhone;
+//				if (this.AccountPlaceID == null) {
+//					return null;
+//				}
+//				else
+//				{
+//					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+//							where aps.id == this.AccountPlaceID
+//						select aps;
+//					return ap.FirstOrDefault ().Phone;
+//				}
+			}
+			set{
+				_locationPhone = value;
+				NotifyPropertyChanged ();
 			}
 		}
 			
 
-		[JsonIgnore]
+		//[JsonIgnore]
+		private string _locationNotes;
+		[JsonProperty(PropertyName = "locationnotes")]
 		public string LocationNotes
 		{
 			get{
-				if (this.AccountPlaceID == null) {
-					return null;
-				}
-				else
-				{
-					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
-							where aps.id == this.AccountPlaceID
-						select aps;
-					return ap.FirstOrDefault ().Notes;
-				}
+				return _locationNotes;
+//				if (this.AccountPlaceID == null) {
+//					return null;
+//				}
+//				else
+//				{
+//					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+//							where aps.id == this.AccountPlaceID
+//						select aps;
+//					return ap.FirstOrDefault ().Notes;
+//				}
+			}
+			set{
+				_locationNotes = value;
+				NotifyPropertyChanged();
 			}
 		}
 
 		//unused?
-		private string _LocationMessage;
-		[JsonProperty(PropertyName = "locationmessage")]
-		public string LocationMessage { get{return _LocationMessage; } set{if (value != _LocationMessage) {
-					_LocationMessage = value; NotifyPropertyChanged ();
-				} } }
+//		private string _LocationMessage;
+//		[JsonProperty(PropertyName = "locationmessage")]
+//		public string LocationMessage { get{return _LocationMessage; } set{if (value != _LocationMessage) {
+//					_LocationMessage = value; NotifyPropertyChanged ();
+//				} } }
 		
 		private string _UserId;
 		[JsonProperty(PropertyName = "userId")]
