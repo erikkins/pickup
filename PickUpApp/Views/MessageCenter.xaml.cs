@@ -23,9 +23,26 @@ namespace PickUpApp
 			elv.Header = null;
 			elv.IsPullToRefreshEnabled = true;
 
+
 			stacker.Children.Add (elv);
 
 			this.ViewModel.ExecuteLoadItemsCommand ().ConfigureAwait(false);
+
+			MessagingCenter.Subscribe<string> (this, "messagesloaded", (s) => {
+				elv.IsRefreshing = false;
+			});
+
+			MessagingCenter.Subscribe<EmptyClass>(this, "messagesupdated", async(ec) =>
+			{
+					await this.ViewModel.ExecuteLoadItemsCommand();
+					this.ViewModel.Refresh();
+					elv.IsRefreshing = false;
+			});
+
+			MessagingCenter.Subscribe<RespondMessage> (this, "messageresponse", async(mr) => {
+				this.ViewModel.CurrentMessageResponse = mr;
+			    await this.ViewModel.ExecuteAddEditCommand();
+			});
 
 		}
 
@@ -47,7 +64,7 @@ namespace PickUpApp
 		{
 			var msg = (MessageView)item;
 			switch (msg.MessageType) {
-			case "fetch":
+			case "fetch":				
 				return FetchRequest;
 				break;
 			case "circle":
@@ -86,6 +103,12 @@ namespace PickUpApp
 			}
 		}
 
+		private bool _isActionable;
+		public PickupRequestCell (bool IsActionable)
+		{
+			_isActionable = IsActionable;
+		}
+
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged ();
@@ -93,7 +116,9 @@ namespace PickUpApp
 			dynamic c = BindingContext;
 
 			MessageView mv = (MessageView)c;
-
+			if (mv == null) {
+				return;
+			}
 			StackLayout slMain = new StackLayout ();
 
 			slMain.Orientation = StackOrientation.Vertical;
@@ -389,59 +414,72 @@ namespace PickUpApp
 			slMain.Children.Add (slDetail);
 
 			
+			if (_isActionable) {
 
+				//now add the buttons
+				StackLayout slButtons = new StackLayout ();
+				slButtons.Orientation = StackOrientation.Horizontal;
+				slButtons.BackgroundColor = Color.White;
+				slButtons.HorizontalOptions = LayoutOptions.FillAndExpand;
+				slButtons.Padding = new Thickness (10, 10, 10, 10);
+				//<Button x:Name="btnToday" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="50" WidthRequest="340" FontAttributes="Bold" FontSize="18" Text="Pick Today" TextColor="#F6637F" BackgroundColor="#49376D" BorderColor="#54D29F" BorderRadius="8" BorderWidth="2"></Button>
 
-			//now add the buttons
-			StackLayout slButtons = new StackLayout ();
-			slButtons.Orientation = StackOrientation.Horizontal;
-			slButtons.BackgroundColor = Color.White;
-			slButtons.HorizontalOptions = LayoutOptions.FillAndExpand;
-			slButtons.Padding = new Thickness (10, 10, 10, 10);
-			//<Button x:Name="btnToday" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="50" WidthRequest="340" FontAttributes="Bold" FontSize="18" Text="Pick Today" TextColor="#F6637F" BackgroundColor="#49376D" BorderColor="#54D29F" BorderRadius="8" BorderWidth="2"></Button>
+				Button bAccept = new Button ();
+				bAccept.VerticalOptions = LayoutOptions.Center;
+				bAccept.HorizontalOptions = LayoutOptions.StartAndExpand;
+				bAccept.HeightRequest = 40;
+				bAccept.WidthRequest = App.ScaledQuarterWidth - 30;
+				bAccept.FontAttributes = FontAttributes.Bold;
+				bAccept.FontSize = 18;
+				bAccept.TextColor = Color.FromRgb (84, 210, 159);
+				bAccept.BorderColor = Color.FromRgb (84, 210, 159);
+				bAccept.BorderRadius = 8;
+				bAccept.BorderWidth = 2;
+				bAccept.BackgroundColor = Color.White;
+				bAccept.Text = "Accept";
+				bAccept.Clicked += delegate(object sender, EventArgs e) {
+					RespondMessage rm = new RespondMessage ();
+					rm.MessageID = mv.Id;
+					rm.Response = "1";
+					rm.Status = "read";
+					MessagingCenter.Send<RespondMessage> (rm, "messageresponse");
+				};
+				slButtons.Children.Add (bAccept);
 
-			Button bAccept = new Button ();
-			bAccept.VerticalOptions = LayoutOptions.Center;
-			bAccept.HorizontalOptions = LayoutOptions.StartAndExpand;
-			bAccept.HeightRequest = 40;
-			bAccept.WidthRequest = App.ScaledQuarterWidth - 30;
-			bAccept.FontAttributes = FontAttributes.Bold;
-			bAccept.FontSize = 18;
-			bAccept.TextColor = Color.FromRgb (84, 210, 159);
-			bAccept.BorderColor = Color.FromRgb (84, 210, 159);
-			bAccept.BorderRadius = 8;
-			bAccept.BorderWidth = 2;
-			bAccept.BackgroundColor = Color.White;
-			bAccept.Text = "Accept";
+				Button bDecline = new Button ();
+				bDecline.VerticalOptions = LayoutOptions.Center;
+				bDecline.HorizontalOptions = LayoutOptions.EndAndExpand;
+				bDecline.HeightRequest = 40;
+				bDecline.WidthRequest = App.ScaledQuarterWidth - 30;
+				bDecline.FontAttributes = FontAttributes.Bold;
+				bDecline.FontSize = 18;
+				bDecline.TextColor = Color.FromRgb (246, 99, 127);
+				bDecline.BorderColor = Color.FromRgb (246, 99, 127);
+				bDecline.BorderRadius = 8;
+				bDecline.BorderWidth = 2;
+				bDecline.BackgroundColor = Color.White;
+				bDecline.Text = "Decline";
+				bDecline.Clicked += delegate(object sender, EventArgs e) {
+					RespondMessage rm = new RespondMessage ();
+					rm.MessageID = mv.Id;
+					rm.Response = "0";
+					rm.Status = "read";
+					MessagingCenter.Send<RespondMessage> (rm, "messageresponse");
+				};
+				slButtons.Children.Add (bDecline);
 
-			slButtons.Children.Add (bAccept);
+				StackLayout slButtonBorder = new StackLayout ();
+				slButtonBorder.BackgroundColor = Color.FromRgb (157, 157, 157);
+				slButtonBorder.Padding = new Thickness (0.5);
+				slButtonBorder.WidthRequest = App.ScaledWidth - 20;
+				slButtonBorder.HorizontalOptions = LayoutOptions.Center;
+				slButtonBorder.Children.Add (slButtons);
+				slMain.Children.Add (slButtonBorder);
 
-			Button bDecline = new Button ();
-			bDecline.VerticalOptions = LayoutOptions.Center;
-			bDecline.HorizontalOptions = LayoutOptions.EndAndExpand;
-			bDecline.HeightRequest = 40;
-			bDecline.WidthRequest = App.ScaledQuarterWidth - 30;
-			bDecline.FontAttributes = FontAttributes.Bold;
-			bDecline.FontSize = 18;
-			bDecline.TextColor = Color.FromRgb (246, 99, 127);
-			bDecline.BorderColor = Color.FromRgb (246, 99, 127);
-			bDecline.BorderRadius = 8;
-			bDecline.BorderWidth = 2;
-			bDecline.BackgroundColor = Color.White;
-			bDecline.Text = "Decline";
-
-			slButtons.Children.Add (bDecline);
-
-			StackLayout slButtonBorder = new StackLayout ();
-			slButtonBorder.BackgroundColor = Color.FromRgb (157, 157, 157);
-			slButtonBorder.Padding = new Thickness (0.5);
-			slButtonBorder.WidthRequest = App.ScaledWidth - 20;
-			slButtonBorder.HorizontalOptions = LayoutOptions.Center;
-			slButtonBorder.Children.Add (slButtons);
-			slMain.Children.Add (slButtonBorder);
-
-			bv = new BoxView();
-			bv.HeightRequest = 10;
-			slMain.Children.Add (bv);
+				bv = new BoxView ();
+				bv.HeightRequest = 10;
+				slMain.Children.Add (bv);
+			}
 
 			View = slMain;
 		}
@@ -455,6 +493,10 @@ namespace PickUpApp
 
 			dynamic c = BindingContext;
 			MessageView mv = (MessageView)c;
+
+			if (mv == null) {
+				return;
+			}
 
 			StackLayout slMain = new StackLayout ();
 		
@@ -536,6 +578,14 @@ namespace PickUpApp
 			bAccept.BackgroundColor = Color.White;
 			bAccept.Text = "Accept";
 
+			bAccept.Clicked +=  delegate(object sender, EventArgs e) {
+				RespondMessage rm = new RespondMessage();
+				rm.MessageID = mv.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				MessagingCenter.Send<RespondMessage>(rm, "messageresponse");
+			};
+
 			slButtons.Children.Add (bAccept);
 
 			Button bDecline = new Button ();
@@ -551,6 +601,14 @@ namespace PickUpApp
 			bDecline.BorderWidth = 2;
 			bDecline.BackgroundColor = Color.White;
 			bDecline.Text = "Decline";
+
+			bDecline.Clicked +=  delegate(object sender, EventArgs e) {
+				RespondMessage rm = new RespondMessage();
+				rm.MessageID = mv.Id;
+				rm.Response = "0";
+				rm.Status = "read";
+				MessagingCenter.Send<RespondMessage>(rm, "messageresponse");
+			};
 
 			slButtons.Children.Add (bDecline);
 

@@ -38,7 +38,17 @@ namespace PickUpApp
 				});
 
 			MessagingCenter.Subscribe<Account> (this, "loaded", async(s) => {
-				
+
+
+				//let's make sure they've clicked on the activation link!
+				if (!App.myAccount.Validated)
+				{
+					//launch a screen that reminds them and lets them retry
+					await Navigation.PushModalAsync(new ValidationCheck());
+					return;
+				}
+
+
 
 				//now we're fully loaded, account, logged in, but we need to preload the other pages (kids, circle, schedule, places)
 				this.BindingContext = new KidsViewModel(App.client);
@@ -52,6 +62,8 @@ namespace PickUpApp
 				this.BindingContext = new AccountPlaceViewModel(App.client);
 				lblActivity.Text = "Loading Places";
 				await ((AccountPlaceViewModel)BindingContext).ExecuteLoadItemsCommand();
+
+
 
 				this.BindingContext = new SplashViewModel(App.client);
 

@@ -32,14 +32,14 @@ namespace PickUpApp
 						ks.KidID = k.Id;
 						ks.ScheduleID = _currentSchedule.id;
 						_kidschedule.Add(ks);
-						//Debug.WriteLine("Adding kid " + ks.KidID + " from KidSelector");
+						Debug.WriteLine("Adding kid " + ks.KidID + " from KidSelector");
 
 					}
 				}
-				Debug.WriteLine("KidSelector calling UpdatePlease");
+				//Debug.WriteLine("KidSelector calling UpdatePlease");
 
 				//await this.ViewModel.ExecuteAddEditCommand();
-				Navigation.PopAsync();
+				//Navigation.PopAsync();
 				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
 
 			}));

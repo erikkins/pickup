@@ -21,6 +21,10 @@ namespace PickUpApp
 				} 
 		}
 
+		public ObservableCollection<AccountCircle> AcceptedCircle 
+		{ get{ return new ObservableCollection<AccountCircle>(App.myCircle.Where (ac => ac.Accepted == true)); } 
+		}
+
 		public AccountCircle CurrentAccountCircle;
 	
 		public MyCircleViewModel ()
@@ -64,7 +68,7 @@ namespace PickUpApp
 				var circle = await client.InvokeApiAsync<List<AccountCircle>>("getmycircle");
 				App.myCircle.Clear();
 				foreach (var acct in circle)
-				{
+				{					
 					App.myCircle.Add(acct);
 				}
 				try{
@@ -125,6 +129,7 @@ namespace PickUpApp
 			}
 			finally{
 				IsLoading = false;
+				MessagingCenter.Send<string>("mycircleviewmodel", "circleloaded");
 			}
 			IsLoading = false;  //redundant
 		}

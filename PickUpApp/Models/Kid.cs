@@ -116,6 +116,30 @@ namespace PickUpApp
 			}
 		}
 
+		private string _via;
+		[JsonProperty(PropertyName = "via")]
+		public string Via
+		{
+			get{
+				return _via;
+			}
+			set{
+				if (value != _via) {
+					_via = value; NotifyPropertyChanged ();
+				}
+			}
+		}
+
+		private bool _mine;
+		public bool Mine {get { return _mine; }
+			set {
+				if (value != _mine) {
+					_mine = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
+
 	}
 }
 

@@ -18,7 +18,7 @@ namespace PickUpApp.ViewModels
 		public TodayViewModel(MobileServiceClient client) : this()
 		{
 			this.client = client;
-			//LoadItemsCommand.Execute(null);
+			LoadItemsCommand.Execute(null);
 		}
 
 		public override async Task ExecuteLoadItemsCommand ()
@@ -28,7 +28,7 @@ namespace PickUpApp.ViewModels
 			{
 
 				Dictionary<string,string> dict = new Dictionary<string, string>();
-				dict.Add("deviceTime", DateTime.Now.ToString());
+				dict.Add("deviceTime", App.CurrentToday.ToString());
 
 				var today = await client.InvokeApiAsync<Dictionary<string,string>,List<Today>>("getmytoday", dict);
 
@@ -46,7 +46,7 @@ namespace PickUpApp.ViewModels
 					}
 
 
-					if (!hasNext && (!sched.DropOffComplete || !sched.PickupComplete))
+					if (!hasNext && (!sched.DropOffComplete && !sched.PickupComplete))
 					{
 						sched.IsNext = true;
 						hasNext = true;

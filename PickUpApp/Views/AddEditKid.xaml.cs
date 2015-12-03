@@ -18,6 +18,7 @@ namespace PickUpApp
 		SimpleDateCell stcDOB;
 		SimplePickerCell stcGender;
 		SimpleImageCell sicPic;
+		SimpleBoundTextCell stcAllergies;
 
 		public AddEditKid (Kid selectedKid)
 		{
@@ -73,6 +74,8 @@ namespace PickUpApp
 			ts.Add (stcDOB);
 			stcGender = new SimplePickerCell ("Gender", selectedKid.Gender, genders);
 			ts.Add (stcGender);
+			stcAllergies = new SimpleBoundTextCell ("Allergies", "Allergies");
+			ts.Add (stcAllergies);
 
 			tv.Root.Add (ts);
 			stacker.Children.Add (tv);

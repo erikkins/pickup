@@ -113,8 +113,8 @@ namespace PickUpApp
 
 			try
 			{
-
-				var invitedata = await client.InvokeApiAsync<InviteMessage, EmptyClass>("savemessage",ThisMessage);
+				//OK THIS IS NOT BEING USED ANY MORE
+				var invitedata = await client.InvokeApiAsync<InviteMessage, EmptyClass>("savemessageDONOTUSE",ThisMessage);
 
 //				var msgs = client.GetTable<InviteMessage>();
 //

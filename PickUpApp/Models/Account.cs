@@ -93,6 +93,14 @@ namespace PickUpApp
 			}
 		}
 
+		private bool _validated;
+		[JsonProperty(PropertyName = "validated")]
+		public bool Validated
+		{
+			get { return _validated; }
+			set { _validated = value; NotifyPropertyChanged (); }
+		}
+
 
 
 	}

@@ -15,6 +15,7 @@ namespace PickUpApp
 			this.ViewModel = new TodayViewModel(App.client);
 			this.Padding = new Thickness(0, Device.OnPlatform(0, 0, 0), 0, 5);
 			//lstAccount.ItemSelected += lstAccount_ItemSelected;
+				
 
 			this.ToolbarItems.Add (new ToolbarItem ("Calendar", "icn_cal.png", async() => {
 				//pop the calendar window
@@ -72,6 +73,20 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
 				lvToday.IsRefreshing = false;
+
+				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
+				if (App.CurrentToday.Date == DateTime.Today) {
+					this.Title += " (Today)";
+				}
+
+				if (t.Todays.Count == 0)
+				{
+					lblNone.IsVisible = true;
+				}
+				else
+				{
+					lblNone.IsVisible = false;
+				}
 			});
 
 
@@ -80,7 +95,9 @@ namespace PickUpApp
 
 			});
 
-
+			MessagingCenter.Subscribe<Today>(this, "fetchrequest", async(t) => {
+				await Navigation.PushAsync(new FetchRequest1(t));
+			});
 
 
 			lvToday.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => {
@@ -93,7 +110,7 @@ namespace PickUpApp
 				Navigation.PushAsync(new RouteDetail(today));
 				lvToday.SelectedItem = null;
 				return;
-
+				/*
 				if (today.RowType == "schedule")
 				{
 					if (string.IsNullOrEmpty(today.ConfirmedBy))
@@ -137,7 +154,9 @@ namespace PickUpApp
 
 					Navigation.PushModalAsync(new InviteHUD(i));
 				}
+
 				lvToday.SelectedItem = null;
+				*/
 			};
 			stacker.Children.Add (lvToday);
 
@@ -302,8 +321,9 @@ namespace PickUpApp
 			if (t.IsNext) {
 				currentState = ActivityState.Next;
 			} else {
-				if (t.PickupComplete) {
+				if (t.PickupComplete || t.DropOffComplete) {
 					currentState = ActivityState.Complete;
+					this.IsEnabled = false; //shouldn't be able to click on an already complete cell
 				}
 			}
 
@@ -311,11 +331,11 @@ namespace PickUpApp
 			mainlayout.Spacing = 0;
 			mainlayout.Orientation = StackOrientation.Vertical;
 			mainlayout.VerticalOptions = LayoutOptions.StartAndExpand;
-			mainlayout.BackgroundColor = Color.FromRgb (73, 55, 55);//109);
+			mainlayout.BackgroundColor = AppColor.AppPurple; //Color.FromRgb (73, 55, 55);//109);
 
 			//make a purple header
 			StackLayout sl = new StackLayout ();
-			sl.BackgroundColor = Color.FromRgb (73,55,109);
+			sl.BackgroundColor = AppColor.AppPurple;
 			sl.Orientation = StackOrientation.Horizontal;
 			sl.VerticalOptions = LayoutOptions.Start;
 			sl.HeightRequest = 46;
@@ -338,7 +358,7 @@ namespace PickUpApp
 			mainlayout.Children.Add (sl);
 
 
-			Color bgColor = Color.FromRgb (238, 236, 243);
+			Color bgColor = AppColor.AppGray;
 			if (currentState == ActivityState.Next) {
 				bgColor = Color.White;
 			}
@@ -520,7 +540,9 @@ namespace PickUpApp
 				b.VerticalOptions = LayoutOptions.Start;
 				b.Clicked += async delegate(object sender, EventArgs e) {
 					//await ((TodayView)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "create a fetch request", "Cancel");
-					await ((TodayView)this.ParentView.Parent.Parent).Navigation.PushAsync(new FetchRequest1());
+					//await ((TodayView)this.ParentView.Parent.Parent).Navigation.PushAsync(new FetchRequest1());
+					//we probably should just fire a messagingcenter event!
+					MessagingCenter.Send<Today>(t, "fetchrequest");
 				};
 				detailGrid.Children.Add (b, 3, 4, 0, 1);
 			}
@@ -585,6 +607,10 @@ namespace PickUpApp
 					string[] parts = s.Split ('|');
 					string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
 					Uri auri = new Uri (azureURL);
+					var uis = new UriImageSource ();
+					uis.CacheValidity = new TimeSpan (0, 5, 0);
+					uis.CachingEnabled = false;
+					uis.Uri = auri;
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
 						BorderThickness = 0,
@@ -592,7 +618,7 @@ namespace PickUpApp
 						WidthRequest = 50,
 						HeightRequest = 50,
 						HorizontalOptions = LayoutOptions.Center,
-						Source = auri
+						Source = uis
 					};	
 					slKids.WidthRequest += 60;	
 					slKids.Children.Add (ci);
@@ -601,8 +627,129 @@ namespace PickUpApp
 				detailGrid.Children.Add (slDrop, 2, 3, 2, 3);
 			}
 
-			mainlayout.Children.Add (detailGrid);
+			//if there's a message attached to this Today, we need to wrap the grid in the pretty box with current Message Status
+			string responseInfo = "";
+			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageStatus)) {
+				StackLayout slPickup = new StackLayout ();
+				slPickup.HeightRequest = this.Height + 75;
+				slPickup.WidthRequest = App.ScaledWidth - 20;
+				slPickup.HorizontalOptions = LayoutOptions.Center;
+				slPickup.BackgroundColor = Color.White;
+				slPickup.Orientation = StackOrientation.Vertical;
+				mainlayout.BackgroundColor = AppColor.AppGray;
+				bv.BackgroundColor = AppColor.AppGray;
+				bv.HeightRequest = 10;
 
+				//first stick in the header
+				StackLayout slp = new StackLayout ();
+				switch (t.PickupMessageStatus) {
+				case "Pending Response":
+					slp.BackgroundColor = AppColor.AppPink;
+					responseInfo = "Pending Response";
+					break;
+				case "Accepted":
+					slp.BackgroundColor = AppColor.AppGreen;
+					responseInfo = t.PickupMessageID; //for now
+					break;
+				case "Declined":
+					slp.BackgroundColor = NamedColor.Red;
+					responseInfo = "All Declined";
+					break;
+				}
+
+				slp.Orientation = StackOrientation.Horizontal;
+				slp.VerticalOptions = LayoutOptions.Start;
+				slp.HeightRequest = 46;
+
+				BoxView spacer = new BoxView ();
+				spacer.WidthRequest = 5;
+				slp.Children.Add (spacer);
+
+				Label frs = new Label ();
+				frs.TextColor = Color.White;
+				frs.Text = "Fetch Request Sent";
+				frs.FontSize = 14;
+				frs.VerticalOptions = LayoutOptions.Center;
+				frs.HorizontalOptions = LayoutOptions.StartAndExpand;
+				slp.Children.Add (frs);
+
+				Label lri = new Label ();
+				lri.TextColor = Color.White;
+				lri.Text = responseInfo;
+				lri.FontSize = 14;
+				lri.FontAttributes = FontAttributes.Italic;
+				lri.HorizontalOptions = LayoutOptions.End;
+				lri.VerticalOptions = LayoutOptions.Center;
+				slp.Children.Add (lri);
+
+				spacer = new BoxView ();
+				spacer.WidthRequest = 5;
+				slp.Children.Add (spacer);
+
+				slPickup.Children.Add (slp);
+				slPickup.Children.Add (detailGrid);
+				mainlayout.Children.Add (slPickup);
+
+			} else if (!t.IsPickup && !string.IsNullOrEmpty (t.DropOffMessageStatus)) {
+				StackLayout slDropoff = new StackLayout ();
+				slDropoff.Orientation = StackOrientation.Vertical;
+				slDropoff.BackgroundColor = Color.White;
+				slDropoff.HeightRequest = this.Height + 75;
+				slDropoff.WidthRequest = App.ScaledWidth - 20;
+				mainlayout.BackgroundColor = AppColor.AppGray;
+				bv.BackgroundColor = AppColor.AppGray;
+				bv.HeightRequest = 10;
+				//first stick in the header
+				StackLayout sld = new StackLayout ();
+
+				switch (t.DropOffMessageStatus) {
+				case "Pending Response":
+					sld.BackgroundColor = AppColor.AppPink;
+					responseInfo = "Pending Response";
+					break;
+				case "Accepted":
+					sld.BackgroundColor = AppColor.AppGreen;
+					responseInfo = t.DropOffMessageID; //for now
+					break;
+				case "Declined":
+					sld.BackgroundColor = NamedColor.Red;
+					responseInfo = "All Declined";
+					break;
+				}
+
+				sld.Orientation = StackOrientation.Horizontal;
+				sld.VerticalOptions = LayoutOptions.Start;
+				sld.HeightRequest = 46;
+
+				BoxView spacer = new BoxView ();
+				spacer.WidthRequest = 5;
+				sld.Children.Add (spacer);
+
+				Label frs = new Label ();
+				frs.TextColor = Color.White;
+				frs.Text = "Fetch Request Sent";
+				frs.HorizontalOptions = LayoutOptions.StartAndExpand;
+				frs.VerticalOptions = LayoutOptions.Center;
+				sld.Children.Add (frs);
+
+				Label lri = new Label ();
+				lri.TextColor = Color.White;
+				lri.Text = responseInfo;
+				lri.FontAttributes = FontAttributes.Italic;
+				lri.VerticalOptions = LayoutOptions.Center;
+				lri.HorizontalOptions = LayoutOptions.End;
+				sld.Children.Add (lri);
+
+				spacer = new BoxView ();
+				spacer.WidthRequest = 5;
+				sld.Children.Add (spacer);
+
+				slDropoff.Children.Add (sld);
+				slDropoff.Children.Add (detailGrid);
+				mainlayout.Children.Add (slDropoff);
+			} else {
+				mainlayout.Children.Add (detailGrid);
+			}				
 			View = mainlayout;
 		}
 	}

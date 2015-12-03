@@ -21,10 +21,8 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
-				await Navigation.PopAsync();
-
 				await this.ViewModel.ExecuteAddEditCommand();
-
+				await Navigation.PopAsync();
 			}));
 				
 			stacker.Spacing = 0;
@@ -36,7 +34,7 @@ namespace PickUpApp
 			loadSelf (CurrentActivity);
 
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
-				Debug.WriteLine("AddEditActivity -- UpdatePlease Fired");
+				//Debug.WriteLine("AddEditActivity -- UpdatePlease Fired");
 				await this.ViewModel.ExecuteAddEditCommand();
 			});
 
@@ -45,15 +43,26 @@ namespace PickUpApp
 //					//await System.Threading.Tasks.Task.Delay(25);
 //					Navigation.PopAsync();
 //				});
-				Debug.WriteLine("AddEditActivity -- ScheduleAdded Fired");
+				//Debug.WriteLine("AddEditActivity -- ScheduleAdded Fired");
 				//now tell the parent controller to reload its listview
-				MessagingCenter.Send<Schedule>(t, "RefreshSched");
 
-				tv.Root.Clear();
-				loadSelf(t);
+				MessagingCenter.Send<Schedule>(t, "RefreshSched");
 
 			});
 
+			MessagingCenter.Subscribe<Schedule> (this, "RefreshComplete", async(s) => {
+				//parent controller has completed its update...
+				tv.Root.Clear();
+				ViewModel.CurrentSchedule = s;
+				//dang...we need to keep track if we actually popped anything
+				if (Navigation != null && Navigation.NavigationStack != null && Navigation.NavigationStack.Count == 3)
+				{
+					Debug.WriteLine("Popping with " + Navigation.NavigationStack.Count.ToString() + " views");
+					await Navigation.PopAsync();
+				}
+				loadSelf(s);
+
+			});
 
 		}
 
@@ -920,7 +929,7 @@ namespace PickUpApp
 			{
 				base.OnBindingContextChanged ();
 
-				Debug.WriteLine ("KidCell -- BindingContextChanged");
+				//Debug.WriteLine ("KidCell -- BindingContextChanged");
 
 				dynamic c = BindingContext;
 				this.Height = 75;
@@ -1029,6 +1038,9 @@ namespace PickUpApp
 					lAddKid.HorizontalOptions = LayoutOptions.Start;
 					slHoriz.Children.Add (lAddKid);
 
+					if (((ActivityAddEditViewModel)c).KidSchedules.Count > 0) {
+						slHoriz.TranslationX = 12;
+					}
 					//Debug.WriteLine("Adding Add Kids button directly");
 					slKidHolder.Children.Add(slHoriz);
 				}
@@ -1041,17 +1053,20 @@ namespace PickUpApp
 				//this is so that if the kids collection changes, we can update it
 				((ActivityAddEditViewModel)c).KidSchedules.CollectionChanged+=  delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
 					//Debug.WriteLine("CollectionChanged: " + e.Action.ToString());
+					slKidHolder.Children.Clear();
+					StackLayout slKids = new StackLayout ();
+					slKids.Orientation = StackOrientation.Vertical;
+					slKids.HorizontalOptions = LayoutOptions.StartAndExpand;
+					slKids.VerticalOptions = LayoutOptions.Center;
+
 
 					finalHeight = 75;
 					//Debug.WriteLine("KidSchedulesCollectionChanged with " + ((ActivityAddEditViewModel)c).KidSchedules.Count.ToString() + " kidschedules");
 					if (((ActivityAddEditViewModel)c).KidSchedules.Count > 0)
 					{
 						//Debug.WriteLine("Clearing slKidHolder");
-						slKidHolder.Children.Clear();
-						StackLayout slKids = new StackLayout ();
-						slKids.Orientation = StackOrientation.Vertical;
-						slKids.HorizontalOptions = LayoutOptions.StartAndExpand;
-						slKids.VerticalOptions = LayoutOptions.Center;
+						//slKidHolder.Children.Clear();
+
 
 						foreach (KidSchedule ks in ((ActivityAddEditViewModel)c).KidSchedules) {
 							StackLayout slKiddo = new StackLayout ();
@@ -1085,34 +1100,38 @@ namespace PickUpApp
 						}	
 							
 						//Debug.WriteLine("Adding " + ((ActivityAddEditViewModel)c).KidSchedules.Count.ToString() + " kids from Event");
-						slKidHolder.Children.Add(slKids);
+
 
 
 					}
-					else{
-
-						//simply add the add kid button
-						StackLayout slHoriz = new StackLayout();
-						slHoriz.Orientation = StackOrientation.Horizontal;
-						slHoriz.HorizontalOptions = LayoutOptions.Start;
-
-						Image imgAddKid =  new Image();
-						imgAddKid.Source = "icn_new_grey.png";
-						imgAddKid.VerticalOptions = LayoutOptions.Center;
-						imgAddKid.HorizontalOptions = LayoutOptions.Start;
-						slHoriz.Children.Add (imgAddKid);
-
-						Label lAddKid = new Label ();
-						lAddKid.Text = "Add Kids";
-						lAddKid.TextColor = Color.FromRgb (186, 186, 186);
-						lAddKid.VerticalOptions = LayoutOptions.Center;
-						lAddKid.HorizontalOptions = LayoutOptions.Start;
-						slHoriz.Children.Add (lAddKid);
+					slKidHolder.Children.Add(slKids);
 
 
-						//Debug.WriteLine("Adding Add Kids button from Event");
-						slKidHolder.Children.Add(slHoriz);
+					//simply add the add kid button
+					StackLayout slHoriz = new StackLayout();
+					slHoriz.Orientation = StackOrientation.Horizontal;
+					slHoriz.HorizontalOptions = LayoutOptions.Start;
+
+					Image imgAddKid =  new Image();
+					imgAddKid.Source = "icn_new_grey.png";
+					imgAddKid.VerticalOptions = LayoutOptions.Center;
+					imgAddKid.HorizontalOptions = LayoutOptions.Start;
+					slHoriz.Children.Add (imgAddKid);
+
+					Label lAddKid = new Label ();
+					lAddKid.Text = "Add Kids";
+					lAddKid.TextColor = Color.FromRgb (186, 186, 186);
+					lAddKid.VerticalOptions = LayoutOptions.Center;
+					lAddKid.HorizontalOptions = LayoutOptions.Start;
+					slHoriz.Children.Add (lAddKid);
+					if (((ActivityAddEditViewModel)c).KidSchedules.Count > 0)
+					{
+						//need to slide the plus over if we have kids else it looks funny
+						slHoriz.TranslationX = 12;
 					}
+					//Debug.WriteLine("Adding Add Kids button from Event");
+					slKids.Children.Add(slHoriz);
+
 
 					//g.Children.Add (slKids, 1, 0);
 					//Debug.WriteLine("Adding slKidHolder to the grid");

@@ -20,6 +20,8 @@ namespace PickUpApp
 
 			lstCircle.ItemsSource = ViewModel.Circle;
 			lstCircle.ItemTemplate = new DataTemplate (typeof(CircleCell));
+			lstCircle.RefreshCommand = ViewModel.LoadItemsCommand;
+			lstCircle.IsPullToRefreshEnabled = true;
 			lstCircle.HasUnevenRows = true;
 			lstCircle.BackgroundColor = AppColor.AppGray;
 			stacker.Children.Add (lstCircle);
@@ -50,14 +52,18 @@ namespace PickUpApp
 				lstCircle.SelectedItem = null;
 			};
 
+
+			MessagingCenter.Subscribe<string> (this, "circleloaded", (s) => {
+				lstCircle.IsRefreshing = false;
+			});
 			MessagingCenter.Subscribe<AccountCircle>(this, "deleteac", (ac) => {
 				ViewModel.CurrentAccountCircle = ac;
 				ViewModel.ExecuteDeleteCommand();
 			});
 
 			MessagingCenter.Subscribe<LocalContact> (this, "contactpicked", async(lc) => {
-				await Navigation.PopAsync();
-				await Navigation.PushAsync(new AddEditContact(lc, true));
+				await Navigation.PopAsync(false);
+				await Navigation.PushAsync(new AddEditContact(lc, true),false);
 			});
 
 			this.ToolbarItems.Add (new ToolbarItem ("Add Contact", "icn_new.png", async() => {

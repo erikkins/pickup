@@ -12,6 +12,29 @@ namespace PickUpApp
 	public class MessageViewModel:BaseViewModel
 	{
 		private MessageView _currentMessage;
+		public MessageView CurrentMessage
+		{
+			get{
+				return _currentMessage;
+			}
+			set{
+				_currentMessage = value;
+				NotifyPropertyChanged ();
+				}
+		}
+
+		private RespondMessage _currentResponse;
+		public RespondMessage CurrentMessageResponse
+		{
+			get{
+				return _currentResponse;
+			}
+			set{
+				_currentResponse = value;
+				NotifyPropertyChanged ();
+				}
+		}
+
 //
 //		private Today _currentToday;
 //		public Today CurrentToday
@@ -48,6 +71,41 @@ namespace PickUpApp
 			dict.Add ("senderId", senderId);
 			var today = await client.InvokeApiAsync<Dictionary<string,string>,List<Today>> ("getactivity", dict);
 			return today.FirstOrDefault();
+		}
+
+		private Command createCommand;
+		public Command CreateCommand
+		{
+			get { return createCommand ?? (createCommand = new Command<MessageView>(async (mv) => await ExecuteCreateCommand(mv))); }
+		}
+
+		public virtual async Task ExecuteCreateCommand(MessageView messageView)
+		{
+			try{
+				var invitedata = await client.InvokeApiAsync<MessageView, EmptyClass>("savemessage",messageView);
+
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
+
+
+		public override async Task ExecuteAddEditCommand ()
+		{
+			IsLoading = true;
+			try{
+			var msgresponse = await client.InvokeApiAsync<RespondMessage, EmptyClass> ("respondmessage", _currentResponse);
+		
+			MessagingCenter.Send<EmptyClass> (msgresponse, "messagesupdated");
+			}
+			catch(Exception ex) {
+				//what should we really be doing with exceptions?
+				System.Diagnostics.Debug.WriteLine(ex);
+			}
+			finally {
+				IsLoading = false;
+			}
 		}
 
 		public override async Task ExecuteLoadItemsCommand ()

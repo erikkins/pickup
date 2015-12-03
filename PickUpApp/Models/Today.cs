@@ -527,6 +527,31 @@ namespace PickUpApp
 				} } }
 
 
+		private string _DropOffMessageID;
+		[JsonProperty(PropertyName = "dropoffmessageid")]
+		public string DropOffMessageID { get{return _DropOffMessageID; } set{if (value != _DropOffMessageID) {
+					_DropOffMessageID = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _DropOffMessageStatus;
+		[JsonProperty(PropertyName = "dropoffmessagestatus")]
+		public string DropOffMessageStatus { get{return _DropOffMessageStatus; } set{if (value != _DropOffMessageStatus) {
+					_DropOffMessageStatus = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _PickupMessageID;
+		[JsonProperty(PropertyName = "pickupmessageid")]
+		public string PickupMessageID { get{return _PickupMessageID; } set{if (value != _PickupMessageID) {
+					_PickupMessageID = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _PickupMessageStatus;
+		[JsonProperty(PropertyName = "pickupmessagestatus")]
+		public string PickupMessageStatus { get{return _PickupMessageStatus; } set{if (value != _PickupMessageStatus) {
+					_PickupMessageStatus = value; NotifyPropertyChanged ();
+				} } }
+
+
 		//not serialized
 		private bool _IsNext;
 		public bool IsNext { get{return _IsNext; } set{if (value != _IsNext) {

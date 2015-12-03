@@ -29,6 +29,14 @@ namespace PickUpApp
 			get { return _coparent; }
 			set { _coparent = value; NotifyPropertyChanged (); }
 		}
+
+		private string _via;
+		[JsonProperty(PropertyName = "via")]
+		public string Via
+		{
+			get { return _via; }
+			set { _via = value; NotifyPropertyChanged (); }
+		}
 	}
 }
 

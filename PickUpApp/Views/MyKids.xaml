@@ -7,7 +7,7 @@
   </ContentPage.Padding>
 	<ContentPage.Content>
 <StackLayout Spacing="0" Padding="0" VerticalOptions="Center" ><ActivityIndicator BackgroundColor="#EEECF3" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-<ListView x:Name="lstKids" ItemsSource="{Binding KidsSorted}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding Key}" BackgroundColor="#EEECF3" HasUnevenRows="true">
+<ListView x:Name="lstKids" ItemsSource="{Binding KidsSorted}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding KidsSorted.Key}" BackgroundColor="#EEECF3" HasUnevenRows="true">
 				<ListView.GroupHeaderTemplate>
 					<DataTemplate>
 						<ViewCell>

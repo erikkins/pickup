@@ -11,12 +11,16 @@ namespace PickUpApp
 	{
 		public ObservableCollection<Schedule> RecurringSchedule {get;set;}
 
+		public Schedule CurrentSchedule{ get; set; }
+
 		public ScheduleViewModel ()
 		{
 			RecurringSchedule = new ObservableCollection<Schedule> ();
 
 			MessagingCenter.Subscribe<Schedule> (this, "RefreshSched", async(s) => {
-				System.Diagnostics.Debug.WriteLine("ScheduleViewModel -- RefreshSched Fired");
+				//System.Diagnostics.Debug.WriteLine("ScheduleViewModel -- RefreshSched Fired");
+				//issue is, we're looking at a single schedule and trying to update it regardless of the others
+				CurrentSchedule = s;
 				await ExecuteLoadItemsCommand();
 				Refresh();
 			});
@@ -37,8 +41,21 @@ namespace PickUpApp
 				foreach (var sched in recs)
 				{
 					RecurringSchedule.Add(sched);
+					//this is so the selected schedule in AddEditActivity shows changes correctly.
+					if (CurrentSchedule != null)
+					{
+						if (CurrentSchedule.id == sched.id)
+						{
+							CurrentSchedule = sched;
+						}
+					}
 				}
-				System.Diagnostics.Debug.WriteLine("ScheduleViewModel -- Activities loaded");
+				if (CurrentSchedule != null)
+				{
+					MessagingCenter.Send<Schedule>(CurrentSchedule, "RefreshComplete");
+					CurrentSchedule = null;
+				}
+				//System.Diagnostics.Debug.WriteLine("ScheduleViewModel -- Activities loaded");
 			}
 			catch (Exception ex)
 			{

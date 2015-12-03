@@ -77,7 +77,7 @@ namespace PickUpApp
 			catch (Exception ex)
 			{
 				var page = new ContentPage();
-				var result = page.DisplayAlert("Error", "Error loading data Kids. Please check connectivity and try again.", "OK", "Cancel");
+				var result = page.DisplayAlert("Error", "Error loading data Places. Please check connectivity and try again.", "OK", "Cancel");
 				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
 			}
 			finally {

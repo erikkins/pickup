@@ -9,7 +9,8 @@ namespace PickUpApp
 		[JsonProperty(PropertyName = "status")]
 		public string Status { get{return _Status; } set{if (value != _Status) {
 					_Status = value; NotifyPropertyChanged ();
-				} } }
+				} } }		
+
 	}
 }
 

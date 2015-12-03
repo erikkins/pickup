@@ -25,6 +25,12 @@ namespace PickUpApp
 
 			ExtendedEditor note = new ExtendedEditor ();
 			note.HeightRequest = 200;
+			note.WidthRequest = App.ScaledWidth - 20;
+			note.HorizontalOptions = LayoutOptions.Center;
+		
+			note.Completed += delegate(object sender, EventArgs e) {
+				MessagingCenter.Send<Schedule>(CurrentSchedule, "UpdatePlease");
+			};
 			if (IsPickup) {
 				note.SetBinding (ExtendedEditor.TextProperty, "CurrentSchedule.PickupNotes");
 			} else {
@@ -34,7 +40,7 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Save", "", () => {
 				MessagingCenter.Send<Schedule>(CurrentSchedule, "UpdatePlease");
-				Navigation.PopAsync();
+				//Navigation.PopAsync();
 			}));
 
 		}

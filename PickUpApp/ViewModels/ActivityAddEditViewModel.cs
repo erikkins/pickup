@@ -57,31 +57,34 @@ namespace PickUpApp
 		}
 
 
-		private ObservableCollection<AccountPlace> _accountPlaces;
+		//private ObservableCollection<AccountPlace> _accountPlaces;
 		public ObservableCollection<AccountPlace> AccountPlaces
 		{
 			get {
-				if (_accountPlaces == null) {
-					_accountPlaces = new ObservableCollection<AccountPlace> ();
+//				if (_accountPlaces == null) {
+//					_accountPlaces = new ObservableCollection<AccountPlace> ();
+//
+//
+//					foreach (AccountPlace ap in App.myPlaces) {
+//						//this selection needs to be done a bit closer to the user!
+////						if (ap.id == _currentSchedule.StartPlaceID) {
+////							ap.Selected = true;
+////						}
+//						_accountPlaces.Add (ap);
+//					}
+//
+//				}
+//				return _accountPlaces;
 
-
-					foreach (AccountPlace ap in App.myPlaces) {
-						//this selection needs to be done a bit closer to the user!
-//						if (ap.id == _currentSchedule.StartPlaceID) {
-//							ap.Selected = true;
-//						}
-						_accountPlaces.Add (ap);
-					}
-
-				}
-				return _accountPlaces;
+				return App.myPlaces;
 			}
 			set{
-				if (_accountPlaces != value) {
-					_accountPlaces = value;
+				//if (_accountPlaces != value) {
+					//_accountPlaces = value;
+					App.myPlaces = value;
 					NotifyPropertyChanged ();
 					NotifyPropertyChanged ("AccountPlaces");
-				}
+				//}
 			}
 		}
 
@@ -154,7 +157,7 @@ namespace PickUpApp
 				req = null;
 
 
-				Debug.WriteLine("ActivityAddEditVM -- CalculatedDriveTime");
+				//Debug.WriteLine("ActivityAddEditVM -- CalculatedDriveTime");
 				//ok, we get total seconds, so we need to divide by 60 to get minutes
 				//decimal min = decimal.Parse(bingresponse ["resourceSets"] [0] ["resources"] [0] ["travelDurationTraffic"].ToString())/60;
 				//bingresponse.RemoveAll();
@@ -162,6 +165,9 @@ namespace PickUpApp
 
 				CurrentSchedule.StartPlaceTravelTime = Math.Round(min, 2);
 				CurrentSchedule.StartPlaceDistance = Math.Round(distance, 2);
+				//for now, assume the pickup is departing from the same place
+				CurrentSchedule.EndPlaceTravelTime = Math.Round(min,2);
+				CurrentSchedule.EndPlaceDistance = Math.Round(distance, 2);
 				IsLoading = false;
 			}
 			catch(Exception ex)
@@ -180,7 +186,7 @@ namespace PickUpApp
 		public override async System.Threading.Tasks.Task ExecuteAddEditCommand ()
 		{
 			if (IsLoading) return;
-			IsLoading = true;
+			//IsLoading = true;
 
 			try
 			{
@@ -202,11 +208,11 @@ namespace PickUpApp
 				//CurrentSchedule.AtWhen = TimeZoneInfo.ConvertTime(CurrentSchedule.AtWhen, TimeZoneInfo.Utc);
 
 				await CalculateDriveTime();
-
+				IsLoading = true;
 				if (string.IsNullOrEmpty(CurrentSchedule.id))
 				{
 					await sched.InsertAsync(CurrentSchedule);
-					Debug.WriteLine("ActivityAddEditVM -- Schedule Added");
+					//Debug.WriteLine("ActivityAddEditVM -- Schedule Added");
 				}
 				else
 				{
@@ -217,7 +223,7 @@ namespace PickUpApp
 				//but wait, there's more!
 				//gotta add the kidids to the scheduleid (nest this somehow in a single call?)
 				//whack 'em first
-				await client.InvokeApiAsync<Schedule, EmptyClass>("deleteschedulekids", CurrentSchedule);
+				EmptyClass res = await client.InvokeApiAsync<Schedule, EmptyClass>("deleteschedulekids", CurrentSchedule);
 				Debug.WriteLine("ActivityAddEditVM -- DeletedScheduleKids");
 				var kidsched = client.GetTable<KidSchedule>();
 				foreach (KidSchedule ks in KidSchedules)
@@ -226,6 +232,7 @@ namespace PickUpApp
 					{
 						ks.ScheduleID = CurrentSchedule.id;
 					}
+					Debug.WriteLine("Saving kid " + ks.KidID + " with id " + ks.id);
 					await kidsched.InsertAsync(ks);
 				}
 				Debug.WriteLine("ActivityAddEditVM -- Added " + KidSchedules.Count.ToString() + " kids");

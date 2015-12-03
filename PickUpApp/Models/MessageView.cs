@@ -73,6 +73,12 @@ namespace PickUpApp
 					_Title = value; NotifyPropertyChanged ();
 				} } }
 
+		private string _RecipientString;
+		[JsonProperty(PropertyName = "recipientstring")]
+		public string RecipientString { get{return _RecipientString; } set{if (value != _RecipientString) {
+					_RecipientString = value; NotifyPropertyChanged ();
+				} } }
+
 		private string _Message;
 		[JsonProperty(PropertyName = "message")]
 		public string Message { get{return _Message; } set{if (value != _Message) {
@@ -97,11 +103,23 @@ namespace PickUpApp
 					_Link = value; NotifyPropertyChanged ();
 				} } }
 
+
+		private string _LinkDetail;
+		[JsonProperty(PropertyName = "linkdetail")]
+		public string LinkDetail { get{return _LinkDetail; } set{if (value != _LinkDetail) {
+					_LinkDetail = value; NotifyPropertyChanged ();
+				} } }
+
 		private Today _messageToday;
 		public Today MessageToday
 		{get{ return _messageToday; }
 			set{ _messageToday = value; NotifyPropertyChanged (); }
 		}
+
+		[JsonProperty(PropertyName = "scheduledate")]
+		public DateTime ScheduleDate { get{return _messageToday.AtWhen; } set{if (value != _messageToday.AtWhen) {
+					_messageToday.AtWhen = value; NotifyPropertyChanged ();
+				} } }
 	}
 }
 

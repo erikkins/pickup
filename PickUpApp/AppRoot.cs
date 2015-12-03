@@ -34,7 +34,7 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<string> (this, "launch", async(s) => {
 				await Navigation.PopModalAsync();
-				await Navigation.PushModalAsync(new HomePage());
+				await Navigation.PushModalAsync(new HomePage(), false);
 			});
 			MessagingCenter.Subscribe<string> (this, "login", async(s) => {
 				await Navigation.PopModalAsync(false);
@@ -79,6 +79,7 @@ namespace PickUpApp
 				MessagingCenter.Send<Microsoft.WindowsAzure.MobileServices.MobileServiceClient>(App.client, "LoggedIn");
 			}
 
+			App.GetPosition ().ConfigureAwait (false);
 
 			var v  = DependencyService.Get<Refractored.Xam.Vibrate.Abstractions.IVibrate>();
 			//I've received an invite

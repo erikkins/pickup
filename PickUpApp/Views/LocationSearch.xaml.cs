@@ -41,6 +41,7 @@ namespace PickUpApp
 			this.ViewModel = new AccountPlaceViewModel (App.client);
 
 			searchBar.BackgroundColor = Color.FromRgb (238, 236, 243);
+			searchBar.TextColor = Color.Black;
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 
@@ -51,7 +52,7 @@ namespace PickUpApp
 					ViewModel.CurrentPlace = tempLocation;
 					await ViewModel.ExecuteAddEditCommand();
 					//reload the app cache
-					await ViewModel.ExecuteLoadItemsCommand();
+					//await ViewModel.ExecuteLoadItemsCommand();
 					//await Navigation.PopAsync();
 				}
 				catch(Exception ex)
@@ -600,6 +601,67 @@ namespace PickUpApp
 		}
 	}
 
+	public class SimpleBoundTextAreaCell : ViewCell
+	{
+		private string _binding;
+		private string _placeholderText;
+		public SimpleBoundTextAreaCell(string placeholderText, string binding)
+		{
+			_binding = binding;
+			_placeholderText = placeholderText;
+		}
+
+
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged ();
+
+			dynamic c = BindingContext;
+			this.Height = 75;
+
+			Grid g = new Grid ();
+			g.ColumnDefinitions = new ColumnDefinitionCollection ();
+			ColumnDefinition cd = new ColumnDefinition ();
+			cd.Width = 120;
+			g.ColumnDefinitions.Add (cd);
+			cd = new ColumnDefinition ();
+			cd.Width = GridLength.Auto;
+			g.ColumnDefinitions.Add (cd);
+
+			StackLayout sl = new StackLayout ();
+			sl.Orientation = StackOrientation.Horizontal;
+			sl.HorizontalOptions = LayoutOptions.Start;
+			sl.VerticalOptions = LayoutOptions.Center;
+			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
+			sl.HeightRequest = 80;
+			//sl.WidthRequest = App.ScaledWidth/ 4;
+			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
+
+			BoxView bv = new BoxView ();
+			bv.WidthRequest = 10;
+			sl.Children.Add (bv);
+
+
+			ExtendedEntry l2 = new ExtendedEntry();
+			l2.HasBorder = false;
+			l2.BackgroundColor = Color.Transparent;
+			l2.SetBinding (ExtendedEntry.TextProperty, _binding);
+			l2.Placeholder = _placeholderText;
+
+			//l2.Text = _value;
+			l2.VerticalOptions = LayoutOptions.Center;
+			l2.HorizontalOptions = LayoutOptions.StartAndExpand;
+			//l2.LineBreakMode = LineBreakMode.TailTruncation;
+			l2.WidthRequest = (App.ScaledWidth) - 50;
+
+			g.Children.Add (l2, 0, 0);
+
+			sl.Children.Add (g);
+
+			View = sl;
+		}
+	}
+
 	public class SimpleBoundRadioCell : ViewCell
 	{
 		private string _title;
@@ -925,6 +987,9 @@ namespace PickUpApp
 			sl.WidthRequest = App.ScaledWidth;
 			//sl.MinimumWidthRequest = App.ScaledWidth/ 4;
 
+//			BoxView bv = new BoxView ();
+//			bv.HeightRequest = 5;
+//			sl.Children.Add (bv);
 
 			ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,

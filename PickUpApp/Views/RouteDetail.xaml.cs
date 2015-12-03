@@ -38,6 +38,31 @@ namespace PickUpApp
 				mc.Navigate();
 			};
 
+			MessagingCenter.Subscribe<Today> (this, "markcomplete", async (t) => {
+				ScheduleAudit sa = new ScheduleAudit();
+				if(t.IsPickup)
+				{
+					sa.PickupComplete = true;
+					sa.PickupCompleteAtWhen = DateTime.UtcNow;
+					sa.PickupUserID = App.myAccount.UserId;
+				}
+				else
+				{
+					sa.DropoffComplete = true;
+					sa.DropoffCompleteAtWhen = DateTime.UtcNow;
+					sa.DropoffUserID = App.myAccount.UserId;
+				}
+				sa.ScheduleDate = currentToday.AtWhen;
+				sa.ScheduleID = currentToday.id;
+
+				//since this isn't coming in via any messages we can't know that from here
+				await ViewModel.ExecuteAuditCommand(sa);
+
+				MessagingCenter.Send<string>("routedetail", "needsrefresh");
+
+				await Navigation.PopAsync();
+			});
+
 
 
 		}
@@ -76,7 +101,7 @@ namespace PickUpApp
 			btnComplete.VerticalOptions = LayoutOptions.Center;
 			btnComplete.HorizontalOptions = LayoutOptions.Center;
 			btnComplete.HeightRequest = 50;
-			btnComplete.WidthRequest = (App.ScaledQuarterWidth/2) - 40;
+			btnComplete.WidthRequest = (App.ScaledWidth) - 50;
 			btnComplete.FontAttributes = FontAttributes.Bold;
 			btnComplete.FontSize = 18;
 			btnComplete.BorderRadius = 8;
@@ -85,9 +110,9 @@ namespace PickUpApp
 			btnComplete.Text = "Mark as Complete";
 			sl.Children.Add (btnComplete);
 
-			btnComplete.Clicked += async delegate(object sender, EventArgs e) {
-				await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("DONE!", "Complete", "Cancel");
-
+			btnComplete.Clicked += delegate(object sender, EventArgs e) {
+				//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("DONE!", "Complete", "Cancel");
+				MessagingCenter.Send<Today>((Today)c, "markcomplete");
 			};
 
 			View = sl;
@@ -326,7 +351,7 @@ namespace PickUpApp
 			_theMap = new ListMap ();
 			//XLabs.Platform.Device.IDisplay disp;
 
-			_theMap.WidthRequest = App.ScaledQuarterWidth/2;
+			_theMap.WidthRequest = App.ScaledWidth;
 			_theMap.HeightRequest = 202;
 			_theMap.MinimumHeightRequest = 100;
 			_theMap.MinimumWidthRequest = 200;
@@ -346,11 +371,11 @@ namespace PickUpApp
 			header.HorizontalOptions = LayoutOptions.StartAndExpand;
 			header.HeightRequest = 45;
 
-			sl.Children.Add (header, new Rectangle(0,0,App.ScaledQuarterWidth/2, 45), AbsoluteLayoutFlags.None);
+			sl.Children.Add (header, new Rectangle(0,0,App.ScaledWidth, 45), AbsoluteLayoutFlags.None);
 
 
 			//let's figure out Rects for all the positions -5 through 0 and +5
-			double pinStart = (App.ScaledWidth/4) - 10.5;
+			double pinStart = (App.ScaledWidth/2) - 10.5;
 			Rectangle rectZero = new Rectangle(pinStart, 10, 21, 27);
 			Rectangle rectMinusOne = new Rectangle(pinStart - 30, 10, 21, 27);
 			Rectangle rectPlusOne = new Rectangle(pinStart + 30, 10, 21, 27);
@@ -379,7 +404,7 @@ namespace PickUpApp
 			imgPurple.Source = "ui_tri_purple.png";
 			imgPurple.HorizontalOptions = LayoutOptions.Center;
 
-			double startPoint = (App.ScaledWidth/ 4) - 10;
+			double startPoint = (App.ScaledWidth/ 2) - 10;
 			sl.Children.Add (imgPurple, new Rectangle (startPoint, 45, 20, 10), AbsoluteLayoutFlags.None);
 
 			//need to create the gradient and the address text
@@ -387,15 +412,15 @@ namespace PickUpApp
 			gradient.Source = "gradient.png";
 			gradient.Aspect = Aspect.AspectFill;
 			gradient.Opacity = 0.4;
-			gradient.WidthRequest = App.ScaledWidth/ 4;
-			sl.Children.Add(gradient, new Rectangle(0, 142, App.ScaledWidth/2, 60),AbsoluteLayoutFlags.None);
+			gradient.WidthRequest = App.ScaledWidth/ 2;
+			sl.Children.Add(gradient, new Rectangle(0, 142, App.ScaledWidth, 60),AbsoluteLayoutFlags.None);
 
 			whiteaddress = new Label ();
 			whiteaddress.TextColor = Color.White;
 			whiteaddress.FontSize = 14;
 			whiteaddress.Text = _address;
 			whiteaddress.LineBreakMode = LineBreakMode.WordWrap;
-			sl.Children.Add (whiteaddress, new Rectangle (80, 179, App.ScaledWidth/ 3, 24), AbsoluteLayoutFlags.None);
+			sl.Children.Add (whiteaddress, new Rectangle (80, 179, App.ScaledWidth, 24), AbsoluteLayoutFlags.None);
 
 			View = sl;
 

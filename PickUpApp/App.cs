@@ -22,6 +22,8 @@ namespace PickUpApp
 		public static MobileServiceUser user;
 		public static string ServiceProvider = "";
 
+		public static DateTime CurrentToday = DateTime.Now.ToLocalTime ();
+
 		public static Account myAccount = new Account();
 		public static AccountDevice myDevice = new AccountDevice();
 
@@ -44,8 +46,7 @@ namespace PickUpApp
 
 
 		public static ObservableCollection<Kid> myKids = new TrulyObservableCollection<Kid> ();
-
-
+		public static ObservableCollection<Kid> otherKids = new TrulyObservableCollection<Kid> ();
 		public static ObservableCollection<AccountCircle> myCircle = new ObservableCollection<AccountCircle> ();
 		public static ObservableCollection<AccountPlace> myPlaces = new ObservableCollection<AccountPlace> ();
 
@@ -75,7 +76,7 @@ namespace PickUpApp
 				//System.Diagnostics.Debug.WriteLine("here");
 			};
 
-			GetPosition ().ConfigureAwait (false);
+			//GetPosition ().ConfigureAwait (false);
 				// The root page of your application
 
 			MainPage = new AppRoot ();

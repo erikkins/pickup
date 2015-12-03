@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PickUpApp
@@ -41,6 +42,7 @@ namespace PickUpApp
 				//this is just kludgy...need to trace why this was needed
 				KidsSorted = new ObservableCollection<Grouping<string, Kid>>();
 				KidsSorted.Add (new Grouping<string, Kid> ("MY KIDS", App.myKids));
+				KidsSorted.Add (new Grouping<string, Kid> ("OTHER KIDS", App.otherKids));
 			}
 			//KidsSorted = new ObservableCollection<Grouping<string, Kid>> ();
 			this.client = client;
@@ -53,13 +55,21 @@ namespace PickUpApp
 			try
 			{
 				IsLoading = true;
-				var kids = await client.GetTable<Kid>().OrderBy(x => x.Firstname).ToListAsync();
+				//var kids = await client.GetTable<Kid>().OrderBy(x => x.Firstname).ToListAsync();
+
+				var kids = await client.InvokeApiAsync<List<Kid>>("getmykids");
 
 				App.myKids.Clear();
 				KidsSorted.Clear();
 				foreach (var kid in kids)
 				{
-					App.myKids.Add(kid);
+					if (kid.Mine)
+					{
+						App.myKids.Add(kid);
+					}
+					else{
+						App.otherKids.Add(kid);
+					}
 
 				}
 				if (KidsSorted == null)
@@ -67,6 +77,7 @@ namespace PickUpApp
 					KidsSorted = new ObservableCollection<Grouping<string, Kid>>();
 				}
 				KidsSorted.Add(new Grouping<string, Kid>("MY KIDS", App.myKids));
+				KidsSorted.Add(new Grouping<string, Kid>("OTHER KIDS", App.otherKids));
 
 				FFMenuItem kidmenu = new FFMenuItem("Kids", App.myKids.Count);
 				foreach (Kid k in App.myKids)

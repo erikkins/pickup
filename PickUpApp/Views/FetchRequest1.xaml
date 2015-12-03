@@ -4,7 +4,8 @@ xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
 x:Class="PickUpApp.FetchRequest1">
 	<ContentPage.Content>
-	<StackLayout Spacing="0" Padding="0" VerticalOptions="Center" ><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<StackLayout Spacing="0" x:Name="stacker" Padding="0" VerticalOptions="Center" ><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+	<!---
 <ListView x:Name="lstCircle" ItemsSource="{Binding Circle}" BackgroundColor="#EEECF3" HasUnevenRows="true">
 				<ListView.ItemTemplate>
 					<DataTemplate>
@@ -39,6 +40,7 @@ x:Class="PickUpApp.FetchRequest1">
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
+			-->
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

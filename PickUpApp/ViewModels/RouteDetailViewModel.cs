@@ -20,6 +20,26 @@ namespace PickUpApp
 			LoadItemsCommand.Execute (null);
 		}
 
+
+		private Command auditCommand;
+		public Command AuditCommand
+		{
+			get { return auditCommand ?? (auditCommand = new Command<ScheduleAudit>(async (sa) => await ExecuteAuditCommand(sa))); }
+		}
+
+		public virtual async Task ExecuteAuditCommand(ScheduleAudit AuditEntry)
+		{
+			try{
+				var logger =  await client.InvokeApiAsync<ScheduleAudit, EmptyClass>("savescheduleaudit", AuditEntry);
+				System.Diagnostics.Debug.WriteLine(logger.Status);
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
+
+
+
 		public override async Task ExecuteLoadItemsCommand ()
 		{
 			try

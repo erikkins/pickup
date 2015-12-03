@@ -8,7 +8,7 @@ namespace PickUpApp
 	public partial class CalendarPicker : ContentPage
 	{
 		Grid calGrid;
-		DateTime currentDay = DateTime.Today;
+		DateTime currentDay = App.CurrentToday;
 
 
 		public CalendarPicker ()
@@ -23,7 +23,12 @@ namespace PickUpApp
 
 			btnToday.Clicked += delegate(object sender, EventArgs e) {
 				currentDay = DateTime.Today;
-				RenderCalendar();
+				App.CurrentToday = DateTime.Today.ToLocalTime();
+				MessagingCenter.Send<string>("calendar", "NeedsRefresh");
+				Navigation.PopAsync();
+
+
+				//RenderCalendar();
 			};
 
 			this.BackgroundColor = Color.FromRgb (73, 55, 100);
@@ -206,7 +211,11 @@ namespace PickUpApp
 					//create a new day
 					DateTime nextDate = new DateTime(currentDay.Year, currentDay.Month, int.Parse(theDay.Text));
 					currentDay = nextDate;
-					RenderCalendar();
+
+					App.CurrentToday = nextDate;
+					MessagingCenter.Send<string>("calendar", "NeedsRefresh");
+					Navigation.PopAsync();
+					//RenderCalendar();
 				};
 
 

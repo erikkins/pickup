@@ -32,7 +32,7 @@ namespace PickUpApp
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, () => {
 
 				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
-				Navigation.PopAsync();
+				//Navigation.PopAsync();
 			}));
 
 
@@ -67,7 +67,11 @@ namespace PickUpApp
 
 
 			if (selectedPlace == null) {
-				_mapCell = new MapCell (double.Parse(App.PositionLatitude), double.Parse(App.PositionLongitude), "No address selected");
+				if (!string.IsNullOrEmpty (App.PositionLatitude) && !string.IsNullOrEmpty (App.PositionLongitude)) {
+					_mapCell = new MapCell (double.Parse (App.PositionLatitude), double.Parse (App.PositionLongitude), "No address selected");
+				} else {
+					_mapCell = new MapCell (41.8369, -87.6847, "No address selected");
+				}
 				//_mapCell = new MapCell (double.Parse (currentSchedule.Latitude), double.Parse (currentSchedule.Longitude), currentSchedule.Address);
 			} else {
 				_mapCell = new MapCell (double.Parse(selectedPlace.Latitude), double.Parse(selectedPlace.Longitude), selectedPlace.Address);
@@ -82,7 +86,7 @@ namespace PickUpApp
 			};
 
 
-			ListView lvKids = new ListView () {
+			ExtendedListView lvPlaces = new ExtendedListView () {
 				ItemsSource = ViewModel.AccountPlaces,
 				ItemTemplate = new DataTemplate (typeof(PlaceCell)),
 				IsPullToRefreshEnabled = false,
@@ -91,13 +95,13 @@ namespace PickUpApp
 				RowHeight = 75,
 				Header = null
 			};
-			stacker.Children.Add (lvKids);
+			stacker.Children.Add (lvPlaces);
 
 			Button btnAdd = new Button ();
 			btnAdd.VerticalOptions = LayoutOptions.Center;
 			btnAdd.HorizontalOptions = LayoutOptions.Center;
 			btnAdd.HeightRequest = 50;
-			btnAdd.WidthRequest = (App.ScaledQuarterWidth/2) - 40;
+			btnAdd.WidthRequest = App.ScaledWidth - 100;
 			btnAdd.FontAttributes = FontAttributes.Bold;
 			btnAdd.FontSize = 18;
 			btnAdd.BorderRadius = 8;
@@ -112,6 +116,25 @@ namespace PickUpApp
 				await this.Navigation.PushAsync(new LocationSearch());
 
 			};
+
+			MessagingCenter.Subscribe<AccountPlace>(this, "PlaceAdded", async (ap) =>
+				{									
+					//we actually need to reload places!
+					//this is the loadEvent of AccountPlaceViewModel
+					AccountPlaceViewModel apvm = new AccountPlaceViewModel(App.client);
+					await apvm.ExecuteLoadItemsCommand();
+
+					//but we want to mark this new place as the selected one!
+					foreach(AccountPlace place in ViewModel.AccountPlaces)
+					{
+						if (ap.id == place.id)
+						{
+							place.Selected = true;
+						}
+					}
+
+					await Navigation.PopAsync();
+				});
 
 //			lvKids.ItemTapped += delegate(object sender, ItemTappedEventArgs e) {
 //
@@ -137,7 +160,7 @@ namespace PickUpApp
 //
 //			};
 
-			lvKids.ItemSelected += delegate(object sender, SelectedItemChangedEventArgs e) {
+			lvPlaces.ItemSelected += delegate(object sender, SelectedItemChangedEventArgs e) {
 
 				if (e.SelectedItem == null)
 				{
@@ -185,11 +208,11 @@ namespace PickUpApp
 
 				}
 				//ViewModel.Refresh();
-				lvKids.ItemTemplate = new DataTemplate (typeof(PlaceCell));
+				lvPlaces.ItemTemplate = new DataTemplate (typeof(PlaceCell));
 
 			};
 
-			stacker.Children.Add (lvKids);
+			stacker.Children.Add (lvPlaces);
 
 
 		}

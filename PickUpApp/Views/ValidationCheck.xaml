@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.ValidationCheck">
+	<ContentPage.Content>
+	<StackLayout x:Name="stacker" BackgroundColor="#49376D" Padding="20">
+	<Label Text="Validation" FontFamily="HelveticaNeue-Light" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" TextColor="White" FontSize="40"/>
+	<Label TextColor="White" VerticalOptions="FillAndExpand" Text="You have not yet verified your email.  Please check your email and click on the verify link to continue."/>
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
