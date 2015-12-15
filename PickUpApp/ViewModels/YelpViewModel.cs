@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using RestSharp.Portable;
 using RestSharp.Portable.Authenticators;
+using RestSharp.Portable.HttpClient;
+
 
 namespace PickUpApp
 {
@@ -43,9 +45,11 @@ namespace PickUpApp
 		{
 			IsLoading = true;
 			try {
+				
+
 				using (var client = new RestClient(new Uri("http://api.yelp.com/v2/")))
-				{
-					var request = new RestRequest("search", System.Net.Http.HttpMethod.Get);	
+				{										
+					var request = new RestRequest("search", Method.GET);	
 					client.Authenticator = OAuth1Authenticator.ForProtectedResource ("ntqQRQUmuzfyWIVma9vvSA", "Fdmh-EDE78avQAhUsbX8phjOYJE", "pBOuhp9FO6UFuQ_Pr4w9vfzx_M9kc_cS", "HGyA9x5e-CO1RjCcPjlMJW0oWiA");				
 					//request.AddQueryParameter ("term", "children");
 					//request.AddQueryParameter("limit", "100");

@@ -20,11 +20,18 @@ namespace PickUpApp
 			lstKids.ItemSelected += HandleItemSelected;
 			//btnAdd.Clicked += HandleClicked;
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-			MessagingCenter.Subscribe<Kid>(this, "KidAdded", (s) =>
+			MessagingCenter.Subscribe<Kid>(this, "KidAdded", async (s) =>
 				{
 					//ViewModel.Refresh();
-					Navigation.PopAsync();
-					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+					try{
+						await Navigation.PopAsync();
+
+					}
+					catch(Exception ex)
+					{
+						System.Diagnostics.Debug.WriteLine(ex);		
+					}
+					await ViewModel.ExecuteLoadItemsCommand();
 				});
 		}
 

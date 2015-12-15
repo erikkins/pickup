@@ -44,6 +44,7 @@ namespace PickUpApp
 			}
 		}
 
+		public static IHUD hudder = DependencyService.Get<PickUpApp.IHUD>();
 
 		public static ObservableCollection<Kid> myKids = new TrulyObservableCollection<Kid> ();
 		public static ObservableCollection<Kid> otherKids = new TrulyObservableCollection<Kid> ();

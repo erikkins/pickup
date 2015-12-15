@@ -35,7 +35,7 @@ namespace PickUpApp
 			l.FontSize = 21;
 			l.TextColor = Color.White;
 			l.Text = "Start by adding\ryour kids.";
-			l.XAlign = TextAlignment.Center;
+			l.HorizontalTextAlignment = TextAlignment.Center;
 			l.HorizontalOptions = LayoutOptions.Center;
 			stacker.Children.Add (l);
 

@@ -58,7 +58,7 @@ namespace PickUpApp
 				IsPullToRefreshEnabled = true,
 				HasUnevenRows = true,
 				BackgroundColor = Color.Transparent,
-				Header = null,
+				Header = null
 			};
 
 			lvToday.BindingContextChanged +=  delegate(object sender, EventArgs e) {

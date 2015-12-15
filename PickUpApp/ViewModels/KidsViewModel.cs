@@ -28,6 +28,7 @@ namespace PickUpApp
 		public KidsViewModel ()
 		{
 			App.myKids = new ObservableCollection<Kid> ();
+			App.otherKids = new ObservableCollection<Kid> ();
 			//Kids = new ObservableCollection<Kid> ();
 		}
 
@@ -38,6 +39,10 @@ namespace PickUpApp
 			if (App.myKids == null) {
 				App.myKids = new ObservableCollection<Kid> ();
 			}
+			if (App.otherKids == null) {
+				App.otherKids = new ObservableCollection<Kid> ();
+			}
+
 			if (KidsSorted == null && App.myKids != null) {
 				//this is just kludgy...need to trace why this was needed
 				KidsSorted = new ObservableCollection<Grouping<string, Kid>>();
@@ -60,7 +65,8 @@ namespace PickUpApp
 				var kids = await client.InvokeApiAsync<List<Kid>>("getmykids");
 
 				App.myKids.Clear();
-				KidsSorted.Clear();
+				App.otherKids.Clear();
+			
 				foreach (var kid in kids)
 				{
 					if (kid.Mine)
@@ -72,12 +78,14 @@ namespace PickUpApp
 					}
 
 				}
-				if (KidsSorted == null)
-				{
-					KidsSorted = new ObservableCollection<Grouping<string, Kid>>();
-				}
-				KidsSorted.Add(new Grouping<string, Kid>("MY KIDS", App.myKids));
-				KidsSorted.Add(new Grouping<string, Kid>("OTHER KIDS", App.otherKids));
+				//if (KidsSorted == null)
+				//{
+				//	KidsSorted = new ObservableCollection<Grouping<string, Kid>>();
+				//}
+
+				//KidsSorted.Clear();
+				//KidsSorted.Add(new Grouping<string, Kid>("MY KIDS", App.myKids));
+				//KidsSorted.Add(new Grouping<string, Kid>("OTHER KIDS", App.otherKids));
 
 				FFMenuItem kidmenu = new FFMenuItem("Kids", App.myKids.Count);
 				foreach (Kid k in App.myKids)

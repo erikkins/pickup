@@ -51,7 +51,9 @@ namespace PickUpApp
 			try
 			{
 				IsLoading = true;
-				var places = await client.GetTable<AccountPlace>().OrderBy(x => x.PlaceName).ToListAsync();
+				//var places = await client.GetTable<AccountPlace>().OrderBy(x => x.PlaceName).ToListAsync();
+
+				var places = await client.InvokeApiAsync<List<AccountPlace>>("getmyplaces");
 
 				App.myPlaces.Clear();
 				foreach (var place in places)

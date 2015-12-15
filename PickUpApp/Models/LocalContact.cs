@@ -15,6 +15,10 @@ namespace PickUpApp
 		public bool Coparent {
 			get{return _coparent; } 
 			set{ _coparent = value; NotifyPropertyChanged ("Coparent"); }}
+		private bool _accepted;
+		public bool Accepted {
+			get{return _accepted; } 
+			set{ _accepted = value; NotifyPropertyChanged ("Accepted"); }}
 		public string NameSort
 		{
 			get

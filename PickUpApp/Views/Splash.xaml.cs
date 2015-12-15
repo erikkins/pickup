@@ -50,20 +50,25 @@ namespace PickUpApp
 
 
 
+				App.hudder.showHUD("Loading stuff");
+
 				//now we're fully loaded, account, logged in, but we need to preload the other pages (kids, circle, schedule, places)
 				this.BindingContext = new KidsViewModel(App.client);
-				lblActivity.Text = "Loading Kids";
+				//lblActivity.Text = "Loading Kids";
+				App.hudder.showHUD("Loading Kids");
 				await ((KidsViewModel)BindingContext).ExecuteLoadItemsCommand();
 
 				this.BindingContext = new MyCircleViewModel(App.client);
-				lblActivity.Text = "Loading Circle";
+				//lblActivity.Text = "Loading Circle";
+				App.hudder.showHUD("Loading Circle");
 				await ((MyCircleViewModel)BindingContext).ExecuteLoadItemsCommand();
 
 				this.BindingContext = new AccountPlaceViewModel(App.client);
-				lblActivity.Text = "Loading Places";
+				//lblActivity.Text = "Loading Places";
+				App.hudder.showHUD("Loading Places");
 				await ((AccountPlaceViewModel)BindingContext).ExecuteLoadItemsCommand();
 
-
+				App.hudder.hideHUD();
 
 				this.BindingContext = new SplashViewModel(App.client);
 

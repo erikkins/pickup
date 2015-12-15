@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 //using Xamarin.Forms.Labs.Services.Geolocation;
 using XLabs.Platform.Services.Geolocation;
 using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
 using System.Collections.ObjectModel;
 
 namespace PickUpApp
@@ -82,7 +83,7 @@ namespace PickUpApp
 				//need to feed it to some webservice (Google places or Yelp?)
 				using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
 				{
-					var request = new RestRequest("textsearch/json", System.Net.Http.HttpMethod.Get);	
+					var request = new RestRequest("textsearch/json", Method.GET);	
 		
 					request.AddQueryParameter ("query", searchBar.Text);
 					request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");

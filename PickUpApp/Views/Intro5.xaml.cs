@@ -21,6 +21,12 @@ namespace PickUpApp
 			AbsoluteLayout.SetLayoutBounds (spline, new Rectangle (0, 0, App.ScaledWidth, App.ScaledHeight));
 			abs.Children.Add (spline);
 
+			int firstRowHeight = 100;
+			if (App.ScaledHeight < 600)
+			{
+				firstRowHeight = 20;
+			}
+
 			Grid imageGrid = new Grid
 			{
 				VerticalOptions = LayoutOptions.StartAndExpand,
@@ -31,9 +37,9 @@ namespace PickUpApp
 				//ColumnSpacing = 0,
 				RowDefinitions = 
 				{
-					new RowDefinition { Height = new GridLength(100, GridUnitType.Absolute) },
+					new RowDefinition { Height = new GridLength(firstRowHeight, GridUnitType.Absolute) },
 					new RowDefinition { Height = new GridLength(150, GridUnitType.Absolute) },
-					new RowDefinition {Height = new GridLength(100, GridUnitType.Absolute)}
+					new RowDefinition {Height = new GridLength(firstRowHeight, GridUnitType.Absolute)}
 				},
 				ColumnDefinitions = 
 				{
@@ -64,7 +70,7 @@ namespace PickUpApp
 			l.FontSize = 21;
 			l.TextColor = Color.White;
 			l.Text = "Now you can see your schedule\rand send fetch requests to\ryour circle when needed.";
-			l.XAlign = TextAlignment.Center;
+			l.HorizontalTextAlignment = TextAlignment.Center;
 			l.HorizontalOptions = LayoutOptions.Center;
 			stacker.Children.Add (l);
 

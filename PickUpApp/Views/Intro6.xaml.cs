@@ -38,7 +38,7 @@ namespace PickUpApp
 			l.FontSize = 21;
 			l.TextColor = Color.White;
 			l.Text = "FamFetch puts you in the driver's\rseat when it comes to your kid's\rpickups and dropoffs.";
-			l.XAlign = TextAlignment.Center;
+			l.HorizontalTextAlignment = TextAlignment.Center;
 			l.HorizontalOptions = LayoutOptions.Center;
 			l.VerticalOptions = LayoutOptions.End;
 			stacker.Children.Add (l);

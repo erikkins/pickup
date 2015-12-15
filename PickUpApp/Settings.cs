@@ -1,6 +1,8 @@
 ﻿using System;
-using Refractored.Xam.Settings;
-using Refractored.Xam.Settings.Abstractions;
+//using Refractored.Xam.Settings;
+//using Refractored.Xam.Settings.Abstractions;
+using Plugin.Settings;
+using Plugin.Settings.Abstractions;
 
 namespace PickUpApp
 {

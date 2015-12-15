@@ -34,6 +34,7 @@ namespace PickUpApp
 		public override async System.Threading.Tasks.Task ExecuteLoadItemsCommand ()
 		{
 			IsLoading = true;
+			App.hudder.showHUD ("Loading Activities");
 			try
 			{
 				var recs = await client.InvokeApiAsync<List<Schedule>>("getmyactivities");
@@ -66,6 +67,7 @@ namespace PickUpApp
 			}
 			finally{
 				IsLoading = false;
+				App.hudder.hideHUD ();
 			}
 			IsLoading = false;  //redundant
 		}

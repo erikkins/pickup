@@ -79,6 +79,9 @@ namespace PickUpApp
 
 			dynamic c = BindingContext;
 			this.Height = 75;
+			if (c == null) {
+				return;
+			}
 			Kid k = (Kid)c;
 
 			StackLayout slHoriz = new StackLayout ();

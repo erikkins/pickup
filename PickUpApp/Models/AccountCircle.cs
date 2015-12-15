@@ -37,6 +37,10 @@ namespace PickUpApp
 			get { return _via; }
 			set { _via = value; NotifyPropertyChanged (); }
 		}
+		public bool ShouldSerializeVia()
+		{
+			return false;
+		}
 	}
 }
 

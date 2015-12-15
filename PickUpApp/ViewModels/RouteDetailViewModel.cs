@@ -18,6 +18,7 @@ namespace PickUpApp
 		{
 			this.client = client;
 			LoadItemsCommand.Execute (null);
+
 		}
 
 

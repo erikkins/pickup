@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Linq;
 using XLabs.Forms.Controls;
 using System.IO;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 
 namespace PickUpApp
 {
@@ -53,13 +55,13 @@ namespace PickUpApp
 				{
 				case "Camera":
 
-					if (Media.Plugin.CrossMedia.Current.IsCameraAvailable && Media.Plugin.CrossMedia.Current.IsTakePhotoSupported) {
+					if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported) {
 					
-						var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
+						var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
 							{ 
 								Directory = "MyPics",
 								Name = photoid + ".jpg",
-								DefaultCamera = Media.Plugin.Abstractions.CameraDevice.Front
+								DefaultCamera = CameraDevice.Front
 							});
 
 						if (file == null)
@@ -105,12 +107,12 @@ namespace PickUpApp
 					}
 					break;
 				case "Photos":
-					if (!Media.Plugin.CrossMedia.Current.IsPickPhotoSupported)
+					if (!CrossMedia.Current.IsPickPhotoSupported)
 					{
 						await DisplayAlert("Oops", "Photo picking is not supported!", "OK");
 						return;
 					}
-					var photofile  = await Media.Plugin.CrossMedia.Current.PickPhotoAsync();
+					var photofile  = await CrossMedia.Current.PickPhotoAsync();
 					if (photofile == null)
 					{
 						return;

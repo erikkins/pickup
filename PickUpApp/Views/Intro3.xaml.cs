@@ -38,7 +38,7 @@ namespace PickUpApp
 			l.FontSize = 21;
 			l.TextColor = Color.White;
 			l.Text = "Then add the people you\rtrust to drive them around.";
-			l.XAlign = TextAlignment.Center;
+			l.HorizontalTextAlignment = TextAlignment.Center;
 			l.HorizontalOptions = LayoutOptions.Center;
 			stacker.Children.Add (l);
 

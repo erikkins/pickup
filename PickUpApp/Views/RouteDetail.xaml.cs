@@ -26,11 +26,52 @@ namespace PickUpApp
 			MapCell mc = new MapCell(double.Parse(currentToday.Latitude),double.Parse(currentToday.Longitude), currentToday.Address);
 			ts.Add (mc);
 			ts.Add (new RouteCell ());
-			ts.Add (new TrafficCell ());
-			ts.Add (new ContactCell ());
+
+			//deal is, we really want to load this cell with 0 delay, then run the traffic call to check realtime
+
+			DistanceService ds = new DistanceService ();
+			if (currentToday.IsPickup) {
+				ds.ExpectedTravelTime = (decimal)currentToday.EndPlaceTravelTime;				
+			} else {
+				ds.ExpectedTravelTime = (decimal)currentToday.StartPlaceTravelTime;
+			}
+			Location start = new Location ();
+			start.Latitude = App.PositionLatitude;
+			start.Longitude = App.PositionLongitude;
+			Location end = new Location ();
+			end.Latitude = currentToday.Latitude;
+			end.Longitude = currentToday.Longitude;
+
+
+			ds.StartingLocation = start;
+			ds.EndingLocation = end;
+			ds.CalculateDriveTime ().ConfigureAwait (true);
+			TrafficCell tc = new TrafficCell (0);
+			tc.BindingContext = ds;
+			ts.Add (tc);
+//			if (currentToday.IsPickup) {
+//				if (ds.TravelTime != (decimal)currentToday.EndPlaceTravelTime) {
+//					//disparity
+//					ts.Add (new TrafficCell (ds.TravelTime - (decimal)currentToday.EndPlaceTravelTime));
+//				}
+//			} else {
+//				if (ds.TravelTime != (decimal)currentToday.StartPlaceTravelTime) {
+//					//something interesting
+//					ts.Add (new TrafficCell (ds.TravelTime - (decimal)currentToday.StartPlaceTravelTime));
+//				}
+//			}
+
+
+
+			//really this should only be shown if this is a fetch request
+			if (!string.IsNullOrEmpty (currentToday.Requestor)) {
+				ts.Add (new ContactCell ());
+			}
+
 			if (!string.IsNullOrEmpty (currentToday.LocationPhone)) {
 				ts.Add (new LocationContactCell ());
 			}
+
 			ts.Add (new ButtonCell ());
 			tv.Root.Add (ts);
 			stacker.Children.Add (tv);
@@ -133,7 +174,7 @@ namespace PickUpApp
 			dynamic c = BindingContext;
 
 			Today t = (Today)c;
-			this.Height = 150;
+			this.Height = 130;
 			this.IsEnabled = false;
 
 			//this is the cell that shows the pickup detail
@@ -141,8 +182,8 @@ namespace PickUpApp
 			StackLayout outer = new StackLayout ();
 			outer.Orientation = StackOrientation.Horizontal;
 			outer.HorizontalOptions = LayoutOptions.StartAndExpand;
-			outer.WidthRequest = App.ScaledQuarterWidth/2;
-			outer.Padding = 20;
+			outer.WidthRequest = App.ScaledWidth;
+			outer.Padding = 10;
 			outer.BackgroundColor = Color.FromRgb (238, 236, 243);
 
 			StackLayout left = new StackLayout ();
@@ -187,9 +228,9 @@ namespace PickUpApp
 
 			Label activity = new Label ();
 			if (t.IsPickup) {
-				activity.Text = t.Activity + " Pickup";
+				activity.Text = t.Activity +  " Pickup";
 			} else {
-				t.Activity = t.Activity + " Dropoff";
+				activity.Text= t.Activity + " Dropoff";
 			}
 			activity.FontAttributes = FontAttributes.Bold;
 			activity.FontSize = 16;
@@ -214,7 +255,7 @@ namespace PickUpApp
 
 			if (!string.IsNullOrEmpty (t.Kids)) {
 				string[] kids = t.Kids.Split ('^');
-				this.Height += 50;
+				this.Height += 60;
 				foreach (string s in kids) {
 
 					string[] parts = s.Split ('|');
@@ -430,8 +471,11 @@ namespace PickUpApp
 
 	public class TrafficCell : ViewCell
 	{
-		public TrafficCell()
+		decimal _diff;
+
+		public TrafficCell(decimal diff)
 		{
+			_diff = diff;
 		}
 
 		protected override void OnBindingContextChanged()
@@ -439,6 +483,7 @@ namespace PickUpApp
 			base.OnBindingContextChanged ();
 
 			dynamic c = BindingContext;
+
 			this.Height = 66;
 			this.IsEnabled = false;
 
@@ -448,6 +493,7 @@ namespace PickUpApp
 			est.TextColor = Color.Black;
 			est.HorizontalOptions = LayoutOptions.StartAndExpand;
 			est.VerticalOptions = LayoutOptions.Center;
+			est.VerticalTextAlignment = TextAlignment.Center;
 			est.TranslationX = 40;
 			est.FontAttributes = FontAttributes.Bold;
 
@@ -461,11 +507,15 @@ namespace PickUpApp
 			Label traffic = new Label ();
 			traffic.HorizontalOptions = LayoutOptions.EndAndExpand;
 			traffic.VerticalOptions = LayoutOptions.Center;
+			traffic.VerticalTextAlignment = TextAlignment.Center;
 			traffic.FormattedText = new FormattedString ();
-			traffic.TranslationX = -10;
-			traffic.TranslationY = -5;
-			traffic.FormattedText.Spans.Add (new Span { Text = "+15", FontSize= 24, ForegroundColor = Color.FromRgb(241, 179, 70), FontAttributes = FontAttributes.Bold });
-			traffic.FormattedText.Spans.Add (new Span { Text = " min", FontFamily=Device.OnPlatform("HelveticaNeue-Light", "", ""), FontSize = 24, ForegroundColor = Color.FromRgb(241, 179, 70), FontAttributes = FontAttributes.None });
+			traffic.WidthRequest = App.ScaledQuarterWidth - 40;
+			//traffic.TranslationX = -10;
+			//traffic.TranslationY = -2;
+			//traffic.FormattedText.Spans.Add (new Span { Text = _diff.ToString(), FontSize= 24, ForegroundColor = Color.FromRgb(241, 179, 70), FontAttributes = FontAttributes.Bold });
+			//traffic.FormattedText.Spans.Add (new Span { Text = " min", FontFamily=Device.OnPlatform("HelveticaNeue-Light", "", ""), FontSize = 24, ForegroundColor = Color.FromRgb(241, 179, 70), FontAttributes = FontAttributes.None });
+			traffic.SetBinding (Label.FormattedTextProperty, "TravelString");
+
 			slTraffic.Children.Add (traffic);
 
 
@@ -486,6 +536,7 @@ namespace PickUpApp
 			base.OnBindingContextChanged ();
 
 			dynamic c = BindingContext;
+			Today t = (Today)c;
 			this.Height = 80;
 			//this.IsEnabled = false;
 
@@ -509,7 +560,7 @@ namespace PickUpApp
 			contactName.FontFamily = Device.OnPlatform ("HelveticaNeue-Light", "", "");
 			contactName.FontSize = 22;
 			contactName.HorizontalOptions = LayoutOptions.StartAndExpand;
-			contactName.Text = "Aija Kins";
+			contactName.Text = t.Requestor;
 			contactName.TranslationX = 5;
 			slContact.Children.Add (contactName);
 
@@ -547,7 +598,9 @@ namespace PickUpApp
 			btnPhone.TranslationX = -30;
 			slMain.Children.Add (btnPhone);
 			btnPhone.Clicked += async delegate(object sender, EventArgs e) {
-				await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Call", "Cancel");
+				//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Call", "Cancel");
+				App.Device.PhoneService.DialNumber(t.RequestorPhone);
+
 			};
 				
 
@@ -612,6 +665,7 @@ namespace PickUpApp
 			contactName.HorizontalOptions = LayoutOptions.StartAndExpand;
 			contactName.Text = t.Location;
 			contactName.TranslationX = 5;
+			contactName.LineBreakMode = LineBreakMode.TailTruncation;
 			slContact.Children.Add (contactName);
 
 			StackLayout slMain = new StackLayout ();
@@ -636,9 +690,15 @@ namespace PickUpApp
 			btnPhone.BackgroundColor = Color.FromRgb (238, 236, 243);
 			btnPhone.TranslationX = -20;
 			slMain.Children.Add (btnPhone);
-			btnPhone.Clicked += async delegate(object sender, EventArgs e) {
+			btnPhone.Clicked +=  delegate(object sender, EventArgs e) {
 				//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Call", "Cancel");
+				try{
 				App.Device.PhoneService.DialNumber(t.LocationPhone);
+				}
+				catch (Exception ex)
+				{
+					App.hudder.showToast("Cannot access telephone");
+				}
 			};
 
 

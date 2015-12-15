@@ -61,6 +61,7 @@ namespace PickUpApp
 			ee.HasBorder = false;
 			ee.Placeholder = "Email";
 			ee.TextColor = Color.White;
+			ee.Keyboard = Keyboard.Email;
 			ee.PlaceholderTextColor = Color.Gray;
 			Font f = Font.SystemFontOfSize (22);
 			ee.Font = f;

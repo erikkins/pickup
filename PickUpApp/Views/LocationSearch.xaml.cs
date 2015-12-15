@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 //using Xamarin.Forms.Labs.Services.Geolocation;
 using XLabs.Platform.Services.Geolocation;
 using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
 using System.Collections.ObjectModel;
 using XLabs.Forms.Controls;
+using System.Net;
+using System.IO;
 
 namespace PickUpApp
 {
@@ -79,9 +82,38 @@ namespace PickUpApp
 				lstSearch.IsVisible = true;
 				LayoutRel.IsVisible = true;
 				//need to feed it to some webservice (Google places or Yelp?)
+
+//				HttpWebRequest req = (HttpWebRequest)HttpWebRequest.CreateHttp("https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + System.Net.WebUtility.UrlEncode(searchBar.Text) + "&key=AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
+//
+//				req.ContentType = "textsearch/json";
+//				req.Method = "GET";
+//
+//				using (WebResponse response = await req.GetResponseAsync ())
+//				{
+//					
+//					// Get a stream representation of the HTTP web response:
+//					using (Stream stream = response.GetResponseStream ())
+//					{
+//						StreamReader sr = new StreamReader(stream);
+//						byte[] bytes = sr.CurrentEncoding.GetBytes(sr.ReadToEnd());
+//
+//						GoogleResponse yr = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleResponse>(System.Text.Encoding.UTF8.GetString(bytes, 0, bytes.Length));
+//						Places = yr.Results;
+//						lstSearch.ItemsSource = Places;
+//							// Use this stream to build a JSON document object:
+//						//JsonValue jsonDoc = await Task.Run (() => JsonObject.Load (stream));
+//						//Console.Out.WriteLine("Response: {0}", jsonDoc.ToString ());
+//
+//						// Return the JSON document:
+//						//return jsonDoc;
+//					}
+//				}
+					
+
 				using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
 				{
-					var request = new RestRequest("textsearch/json", System.Net.Http.HttpMethod.Get);	
+					
+					var request = new RestRequest("textsearch/json", Method.GET);	
 
 					request.AddQueryParameter ("query", searchBar.Text);
 					request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
@@ -454,8 +486,7 @@ namespace PickUpApp
 			View = sl;
 		}
 	}
-
-
+		
 	public class SimpleBoundLabelCell : ViewCell
 	{
 		private string _title;
@@ -852,6 +883,7 @@ namespace PickUpApp
 		private string _value;
 		private List<string> _items;
 		private int _selectedIndex;
+		public BindableProperty SelectedProperty;
 
 		public SimplePickerCell(string title, string defaultValue, List<string> pickerItems)
 		{
@@ -865,12 +897,14 @@ namespace PickUpApp
 		public string SelectedValue
 		{
 			get{
+
 				return _value;
 			}
 			set{
 				_value = value;
 				_selectedIndex = _items.IndexOf (_value);
 				this.OnPropertyChanged ("SelectedValue");
+				//SetValue (SelectedProperty, _selectedIndex);
 			}
 		}
 
@@ -924,7 +958,11 @@ namespace PickUpApp
 				p.Items.Add (s);
 			}
 			p.SelectedIndex = _items.IndexOf (_value);
-			//p.SetBinding (Picker.SelectedIndexProperty, "_selectedIndex");
+			p.SelectedIndexChanged +=  delegate(object sender, EventArgs e) {
+				_selectedIndex = p.SelectedIndex;
+				SelectedValue = _items[_selectedIndex];
+			};
+			//p.SetBinding (Picker.SelectedIndexProperty, "_selectedIndex" );
 
 			
 			g.Children.Add (p, 1, 0);

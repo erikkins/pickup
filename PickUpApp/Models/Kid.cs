@@ -6,6 +6,7 @@ namespace PickUpApp
 	public class Kid: BaseModel
 	{
 		private string _Id;
+		[JsonProperty(PropertyName = "id")]
 		public string Id 
 		{ 
 			get{ return _Id; }
@@ -128,6 +129,10 @@ namespace PickUpApp
 					_via = value; NotifyPropertyChanged ();
 				}
 			}
+		}
+		public bool ShouldSerializeVia()
+		{
+			return false;
 		}
 
 		private bool _mine;

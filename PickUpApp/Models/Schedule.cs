@@ -477,6 +477,17 @@ namespace PickUpApp
 					_EndPlaceTravelTime = value; NotifyPropertyChanged ();
 				} } }
 
+
+		private string _via;
+		[JsonProperty(PropertyName = "via")]
+		public string Via { get{return _via; } set{if (value != _via) {
+					_via = value; NotifyPropertyChanged ();
+				} } }
+		public bool ShouldSerializeVia()
+		{
+			return false;
+		}
+
 		#region non-serializable
 		[JsonIgnore]
 		public TimeSpan StartTime 

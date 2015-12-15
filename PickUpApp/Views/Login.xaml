@@ -6,7 +6,6 @@
 	<Label Text="Login" FontFamily="HelveticaNeue-Light" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="40"/>
 	<StackLayout x:Name="bottomstack" Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions = "Start">
 	<Label x:Name = "lblActivity" Text="" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"></Label>
-	<ActivityIndicator Color="White" IsRunning="{Binding IsLoading}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" IsVisible="true" />
 	</StackLayout>
 	<StackLayout Orientation="Vertical" x:Name="fields" VerticalOptions="StartAndExpand" HorizontalOptions="Center"></StackLayout>
 

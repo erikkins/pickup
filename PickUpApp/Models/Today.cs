@@ -550,7 +550,16 @@ namespace PickUpApp
 		public string PickupMessageStatus { get{return _PickupMessageStatus; } set{if (value != _PickupMessageStatus) {
 					_PickupMessageStatus = value; NotifyPropertyChanged ();
 				} } }
+		private string _via;
+		[JsonProperty(PropertyName = "via")]
+		public string Via { get{return _via; } set{if (value != _via) {
+					_via = value; NotifyPropertyChanged ();
+				} } }
 
+		public bool ShouldSerializeVia()
+		{
+			return false;
+		}
 
 		//not serialized
 		private bool _IsNext;

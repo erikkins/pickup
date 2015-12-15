@@ -21,6 +21,8 @@ namespace PickUpApp
 				await Navigation.PopAsync();
 			}));
 
+			btnToday.WidthRequest = App.ScaledWidth - 20;
+
 			btnToday.Clicked += delegate(object sender, EventArgs e) {
 				currentDay = DateTime.Today;
 				App.CurrentToday = DateTime.Today.ToLocalTime();
@@ -31,11 +33,15 @@ namespace PickUpApp
 				//RenderCalendar();
 			};
 
+
+			//figure out the correct width of each cell, given the device's width (with 40 pixels of padding)
+			double cellwidth = Math.Round((App.ScaledWidth-30) / 7);
+
 			this.BackgroundColor = Color.FromRgb (73, 55, 100);
 			calGrid = new Grid
 			{
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.Center,
 				BackgroundColor = Color.FromRgb(73,55,109),
 				RowSpacing = 0,
 				//ColumnSpacing = 0,
@@ -52,13 +58,13 @@ namespace PickUpApp
 				},
 				ColumnDefinitions = 
 				{
-					new ColumnDefinition { Width = new GridLength(45, GridUnitType.Absolute) },
-					new ColumnDefinition { Width = new GridLength(45, GridUnitType.Absolute) },
-					new ColumnDefinition { Width = new GridLength(45, GridUnitType.Absolute) },
-					new ColumnDefinition { Width = new GridLength(45, GridUnitType.Absolute) },
-					new ColumnDefinition { Width = new GridLength(45, GridUnitType.Absolute) },
-					new ColumnDefinition { Width = new GridLength(45, GridUnitType.Absolute) },
-					new ColumnDefinition { Width = new GridLength(45, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
 				}
 				};
 

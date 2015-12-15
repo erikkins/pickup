@@ -120,6 +120,25 @@ namespace PickUpApp
 			}
 		}
 
+		private string _via;
+		[JsonProperty(PropertyName = "via")]
+		public string Via
+		{
+			get{
+				return _via;
+			}
+			set{
+				if (value != _via) {
+					_via = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
+		public bool ShouldSerializeVia()
+		{
+			return false;
+		}
+
 		[JsonIgnore]
 		private bool _selected;
 		public bool Selected

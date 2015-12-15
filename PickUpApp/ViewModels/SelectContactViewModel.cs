@@ -50,7 +50,7 @@ namespace PickUpApp
 				tempAccount.Firstname = CurrentContact.FirstName;
 				tempAccount.Lastname = CurrentContact.LastName;
 				tempAccount.Phone = CurrentContact.Phone;
-				tempAccount.Accepted = false;
+				tempAccount.Accepted = CurrentContact.Accepted;
 				tempAccount.Coparent = CurrentContact.Coparent;
 				tempAccount.id = CurrentContact.Id;
 

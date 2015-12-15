@@ -47,6 +47,7 @@ namespace PickUpApp
 				lc.LastName = ac.Lastname;
 				lc.Phone = ac.Phone;
 				lc.PhotoId = ac.PhotoURL;
+				lc.Accepted = ac.Accepted;
 
 				await Navigation.PushAsync(new AddEditContact(lc, false));
 				lstCircle.SelectedItem = null;

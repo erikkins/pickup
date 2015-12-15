@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 
@@ -22,7 +23,7 @@ namespace PickUpApp
 				//before we save this, we have to validate the address to make sure the GPS coordinates work
 				using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
 				{
-					var request = new RestRequest("textsearch/json", System.Net.Http.HttpMethod.Get);	
+					var request = new RestRequest("textsearch/json", Method.GET);	
 
 					request.AddQueryParameter ("query", txtAddress.Text);
 					request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");

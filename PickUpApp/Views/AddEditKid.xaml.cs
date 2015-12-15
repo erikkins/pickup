@@ -5,6 +5,8 @@ using Microsoft.WindowsAzure.MobileServices;
 //using Xamarin.Forms.Labs.Controls;
 using XLabs.Forms.Controls;
 using Refractored.Xam.Vibrate.Abstractions;
+using Plugin.Media.Abstractions;
+using Plugin.Media;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -40,6 +42,7 @@ namespace PickUpApp
 //				});
 
 				//ViewModel.CurrentKid = selectedKid;
+				selectedKid.Gender = stcGender.SelectedValue;
 				await this.ViewModel.ExecuteAddEditCommand();
 
 			}));
@@ -148,9 +151,9 @@ namespace PickUpApp
 				switch (action)
 				{
 				case "Camera":
-					if (Media.Plugin.CrossMedia.Current.IsCameraAvailable && Media.Plugin.CrossMedia.Current.IsTakePhotoSupported) {
+					if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported) {
 
-						var file = await Media.Plugin.CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
+						var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
 							{ 
 								Directory = "MyKidPics",
 								Name = photoid + ".jpg",
@@ -191,12 +194,12 @@ namespace PickUpApp
 					}
 					break;
 				case "Photos":
-					if (!Media.Plugin.CrossMedia.Current.IsPickPhotoSupported)
+					if (!CrossMedia.Current.IsPickPhotoSupported)
 					{
 						await DisplayAlert("Oops", "Photo picking is not supported!", "OK");
 						return;
 					}
-					var photofile  = await Media.Plugin.CrossMedia.Current.PickPhotoAsync();
+					var photofile  = await CrossMedia.Current.PickPhotoAsync();
 					if (photofile == null)
 					{
 						return;

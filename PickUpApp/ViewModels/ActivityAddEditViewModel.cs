@@ -15,7 +15,7 @@ namespace PickUpApp
 		{
 			this.client = client;
 			_currentSchedule = currentSchedule;
-			Kids = new ObservableCollection<Kid> ();
+			//Kids = new ObservableCollection<Kid> ();
 			KidSchedules = new TrulyObservableCollection<KidSchedule> ();
 
 			LoadInitialCommand.Execute(null);
@@ -29,7 +29,7 @@ namespace PickUpApp
 			this.client = client;
 			_currentSchedule = currentSchedule;
 			_kidschedules = kidSchedule;
-			Kids = kids;
+			//Kids = kids;
 		}
 
 		private Schedule _currentSchedule;
@@ -44,7 +44,7 @@ namespace PickUpApp
 				NotifyPropertyChanged ("EndTime");
 			}
 		}
-		public ObservableCollection<Kid> Kids { get; set; }
+		public ObservableCollection<Kid> Kids { get { return App.myKids; }  }
 
 		private TrulyObservableCollection<KidSchedule> _kidschedules;
 		public TrulyObservableCollection<KidSchedule> KidSchedules 
@@ -267,6 +267,7 @@ namespace PickUpApp
 			IsLoading = true;
 			try{
 				//seems silly to have to load this again...better way?
+				/*
 				var kids = await client.GetTable<Kid>().ToListAsync();
 
 				Kids.Clear();
@@ -274,6 +275,7 @@ namespace PickUpApp
 				{
 					Kids.Add(kid);
 				}
+				*/
 
 				var theseKids = await client.InvokeApiAsync<Schedule, List<KidSchedule>>("getschedulekids", CurrentSchedule);
 				KidSchedules.Clear();
