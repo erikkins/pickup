@@ -15,7 +15,7 @@ namespace PickUpApp
 			this.BackgroundColor = Color.FromRgb (73, 55, 109);
 
 			//this.Icon = Device.OS == TargetPlatform.iOS ? "settings.png" : null;
-			this.Icon = "icn_settings.png";
+		//	this.Icon = "icn_settings.png";
 
 
 			this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
@@ -317,7 +317,7 @@ namespace PickUpApp
 						//Uri auri = new Uri (url);
 						ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 							BorderColor = Color.Black,
-							BorderThickness = 0,
+							BorderThickness = 1,
 							Aspect = Aspect.AspectFill,
 							WidthRequest = 42,
 							HeightRequest = 42,

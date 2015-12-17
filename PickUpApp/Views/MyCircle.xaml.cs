@@ -153,7 +153,7 @@ namespace PickUpApp
 
 			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
-				//BorderThickness = 1,
+				BorderThickness = 1,
 				Aspect = Aspect.AspectFill,
 				WidthRequest = 50,
 				HeightRequest = 50,

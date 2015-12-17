@@ -11,13 +11,14 @@ namespace PickUpApp
 		public MessageCenter ()
 		{
 			InitializeComponent ();
-			this.ViewModel = new MessageViewModel (App.client, null);
+			this.ViewModel = new MessageViewModel (App.client, null);		
+			this.Icon = "icn_back.png";
 
 			ExtendedListView elv = new ExtendedListView ();
 			elv.BackgroundColor = Color.FromRgb (238, 236, 243);
 			elv.HasUnevenRows = true;
 			elv.RefreshCommand = ViewModel.LoadItemsCommand;
-			elv.ItemsSource = ViewModel.Messages;
+			elv.ItemsSource = App.myMessages;
 			elv.ItemTemplateSelector = new MessageTemplateSelector ();
 			elv.SeparatorVisibility = SeparatorVisibility.None;
 			elv.Header = null;
@@ -391,7 +392,7 @@ namespace PickUpApp
 					Uri auri = new Uri (azureURL);
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci1 = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
-						BorderThickness = 0,
+						BorderThickness = 1,
 						Aspect = Aspect.AspectFill,
 						WidthRequest = 50,
 						HeightRequest = 50,

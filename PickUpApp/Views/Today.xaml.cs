@@ -16,6 +16,16 @@ namespace PickUpApp
 			this.Padding = new Thickness(0, Device.OnPlatform(0, 0, 0), 0, 5);
 			//lstAccount.ItemSelected += lstAccount_ItemSelected;
 				
+			StackLayout stacker = new StackLayout ();
+			stacker.Orientation = StackOrientation.Vertical;
+
+			Label lblNone = new Label ();
+			lblNone.Text = "You have nothing going on today!";
+			lblNone.TextColor = Color.White;
+			lblNone.IsVisible = false;
+			lblNone.VerticalOptions = LayoutOptions.Center;
+			lblNone.HorizontalOptions = LayoutOptions.Center;
+			stacker.Children.Add (lblNone);
 
 			this.ToolbarItems.Add (new ToolbarItem ("Calendar", "icn_cal.png", async() => {
 				//pop the calendar window
@@ -158,9 +168,80 @@ namespace PickUpApp
 				lvToday.SelectedItem = null;
 				*/
 			};
+				
+
 			stacker.Children.Add (lvToday);
 
+			RelativeLayout rl = new RelativeLayout ();
+			rl.Children.Add (stacker, 
+				xConstraint: Constraint.Constant (0), 
+				yConstraint: Constraint.Constant (0),
+				widthConstraint: Constraint.RelativeToParent ((parent) => {
+					return parent.Width;
+				}),
+				heightConstraint: Constraint.RelativeToParent ((parent) => {
+					return parent.Height;
+				}));
 
+
+			//try to float the messages icon with absolute layout
+			if (App.myMessages.Count > 0) {
+				RelativeLayout rlMessage = new RelativeLayout ();
+
+				Image msgimg = new Image ();
+				msgimg.Source = "ui_messages.png";
+
+				rlMessage.Children.Add (msgimg,
+					xConstraint: Constraint.Constant (0), 
+					yConstraint: Constraint.Constant (0),
+					widthConstraint: Constraint.Constant (69),
+					heightConstraint: Constraint.Constant (69));
+
+				Label lblMessageCount = new Label ();
+				lblMessageCount.TextColor = Color.White;
+				lblMessageCount.FontSize = 24;
+				//lblMessageCount.Text = App.myMessages.Count.ToString ();
+				//lblMessageCount.SetBinding (Label.TextProperty, "App.myMessages", 0, new CollectionConvertor());
+
+				var binding = new Binding ();
+				//binding.Path = "myMessages";
+				binding.Source = App.myMessages;
+				binding.Mode = BindingMode.Default;
+				binding.Converter = new CollectionConvertor ();
+				lblMessageCount.SetBinding (Label.TextProperty, binding);
+
+
+				lblMessageCount.VerticalTextAlignment = TextAlignment.Center;
+				lblMessageCount.HorizontalTextAlignment = TextAlignment.Center;
+
+
+				rlMessage.Children.Add (lblMessageCount,
+					xConstraint: Constraint.Constant (0), 
+					yConstraint: Constraint.Constant (0),
+					widthConstraint: Constraint.Constant (69),
+					heightConstraint: Constraint.Constant (69));
+
+
+				var tap = new TapGestureRecognizer ();
+				tap.Tapped += (sender, e) => {
+					Navigation.PushAsync (new MessageCenter ());
+				};
+
+				rlMessage.GestureRecognizers.Add (tap);
+
+
+				rl.Children.Add (rlMessage, 
+					xConstraint: Constraint.RelativeToParent ((parent) => {
+						return parent.Width - 84;
+					}),
+					yConstraint: Constraint.RelativeToParent ((parent) => {
+						return parent.Height - 84;
+					}));
+			}
+
+
+			this.Content = rl;
+	
 //			var refreshList = new PullToRefreshListView {
 //				RefreshCommand = ViewModel.LoadItemsCommand, 
 //				Message = "Loading...",
@@ -602,23 +683,32 @@ namespace PickUpApp
 			if (!string.IsNullOrEmpty (t.Kids)) {
 				string[] kids = t.Kids.Split ('^');
 				this.Height += 50;
-				foreach (string s in kids) {
 
+				foreach (string s in kids) {	
 					string[] parts = s.Split ('|');
 					string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
-					Uri auri = new Uri (azureURL);
-					var uis = new UriImageSource ();
-					uis.CacheValidity = new TimeSpan (0, 5, 0);
-					uis.CachingEnabled = false;
-					uis.Uri = auri;
+
+					foreach (Kid k in App.myKids) {
+						if (k.Id.ToLower () == parts [1].ToLower ()) {
+							azureURL = k.PhotoURL;
+							break;
+						}
+					}
+					//string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
+//					Uri auri = new Uri (azureURL);
+//					var uis = new UriImageSource ();
+//					uis.CacheValidity = new TimeSpan (0, 5, 0);
+//					uis.CachingEnabled = false;
+//					uis.Uri = auri;
+
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
-						BorderThickness = 0,
+						BorderThickness = 1,
 						Aspect = Aspect.AspectFill,
 						WidthRequest = 50,
 						HeightRequest = 50,
 						HorizontalOptions = LayoutOptions.Center,
-						Source = uis
+						Source = azureURL
 					};	
 					slKids.WidthRequest += 60;	
 					slKids.Children.Add (ci);
@@ -696,6 +786,7 @@ namespace PickUpApp
 				slDropoff.BackgroundColor = Color.White;
 				slDropoff.HeightRequest = this.Height + 75;
 				slDropoff.WidthRequest = App.ScaledWidth - 20;
+				slDropoff.HorizontalOptions = LayoutOptions.Center;
 				mainlayout.BackgroundColor = AppColor.AppGray;
 				bv.BackgroundColor = AppColor.AppGray;
 				bv.HeightRequest = 10;
@@ -746,8 +837,10 @@ namespace PickUpApp
 
 				slDropoff.Children.Add (sld);
 				slDropoff.Children.Add (detailGrid);
+
 				mainlayout.Children.Add (slDropoff);
-			} else {
+			} else 
+			{
 				mainlayout.Children.Add (detailGrid);
 			}				
 			View = mainlayout;

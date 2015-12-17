@@ -19,6 +19,8 @@ namespace PickUpApp
 			//TODO: fix this
 			this.ViewModel = new ActivityAddEditViewModel(App.client, CurrentActivity); 
 
+			NavigationPage.SetBackButtonTitle (this, "");
+
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
 
@@ -995,7 +997,7 @@ namespace PickUpApp
 						Kid thisKid = kids.Single(k=>k.Id == ks.KidID);
 						ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 							BorderColor = Color.Black,
-							BorderThickness = 0,
+							BorderThickness = 1,
 							Aspect = Aspect.AspectFill,
 							WidthRequest = 50,
 							HeightRequest = 50,
@@ -1078,7 +1080,7 @@ namespace PickUpApp
 							Kid thisKid = kids.Single(k=>k.Id == ks.KidID);
 							ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 								BorderColor = Color.Black,
-								BorderThickness = 0,
+								BorderThickness = 1,
 								Aspect = Aspect.AspectFill,
 								WidthRequest = 50,
 								HeightRequest = 50,

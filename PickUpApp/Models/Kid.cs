@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace PickUpApp
 {
@@ -50,6 +51,28 @@ namespace PickUpApp
 		public string PhotoURL
 		{
 			get{
+
+				if (_photoURL == null) {
+					//generate one on the fly...
+					string initials = "";
+					if (Firstname == null)
+					{
+						initials = Lastname.Substring(0,1).ToUpper();
+					}
+					else if (Lastname == null)
+					{
+						initials = Firstname.Substring(0,1).ToUpper();
+					}
+					else
+					{
+						initials = Firstname.Substring(0,1).ToUpper() + Lastname.Substring(0,1).ToUpper();
+					}
+
+					var dep = DependencyService.Get<PickUpApp.ICircleText>();
+					string filename = dep.CreateCircleText(initials,50,50);
+					return filename;
+				}
+
 				return _photoURL;
 			}
 			set{

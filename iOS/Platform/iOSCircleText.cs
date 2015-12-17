@@ -27,7 +27,7 @@ namespace PickUpApp.iOS
 				//const float width = 150;
 				//const float height = 150;
 
-				context.SetFillColor (UIColor.FromRGB(73,113,149).CGColor);
+				context.SetFillColor (UIColor.FromRGB(73, 55, 109).CGColor);
 				context.FillEllipseInRect (new CGRect (0, 0, width, height));
 
 				var contentString = new NSString (content);

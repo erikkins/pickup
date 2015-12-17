@@ -73,6 +73,7 @@ namespace PickUpApp
 				}
 				try{
 						FFMenuItem circlemenu = new FFMenuItem("Circle", App.myCircle.Count);
+						/*
 						foreach (Account circ in App.myCircle)
 						{
 							if (circ.PhotoURL == null)
@@ -102,6 +103,7 @@ namespace PickUpApp
 								circlemenu.Photos.Add(circ.PhotoURL);
 							}
 						}
+						*/
 
 					if (App.menuItems.Any(mi => mi.MenuName == "Circle"))
 					{

@@ -17,6 +17,7 @@ namespace PickUpApp
 			InitializeComponent ();
 			this.Padding = new Thickness(0, Device.OnPlatform(0, 0, 0), 0, 0);
 			this.ViewModel = new RouteDetailViewModel (App.client);
+			//NavigationPage.SetHasBackButton (this, true);
 
 			TableView tv = new TableView ();
 			tv.BindingContext = currentToday;
@@ -263,7 +264,7 @@ namespace PickUpApp
 					Uri auri = new Uri (azureURL);
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
-						BorderThickness = 0,
+						BorderThickness = 1,
 						Aspect = Aspect.AspectFill,
 						WidthRequest = 50,
 						HeightRequest = 50,

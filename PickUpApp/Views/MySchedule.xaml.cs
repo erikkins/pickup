@@ -10,6 +10,7 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 			this.ViewModel = new ScheduleViewModel (App.client);
+			NavigationPage.SetBackButtonTitle (this, "");
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			this.ToolbarItems.Add (new ToolbarItem ("Add Activity", "icn_new.png", () => {
 

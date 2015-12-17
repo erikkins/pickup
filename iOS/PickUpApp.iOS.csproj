@@ -454,6 +454,8 @@
     <Compile Include="Platform\iOSViewCellRenderer.cs" />
     <Compile Include="Platform\iOSSpline.cs" />
     <Compile Include="Platform\iOSHUD.cs" />
+    <Compile Include="Platform\iOSNavigationRenderer.cs" />
+    <Compile Include="Platform\iOSNoBackButtonPageRenderer.cs" />
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

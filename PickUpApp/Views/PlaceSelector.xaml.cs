@@ -28,7 +28,7 @@ namespace PickUpApp
 			_currentSchedule = currentSchedule;
 			this.ViewModel = new ActivityAddEditViewModel (App.client, currentSchedule, kidschedule, kids);
 			_placeType = placeType;
-
+			NavigationPage.SetBackButtonTitle(this, "");
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, () => {
 
 				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");

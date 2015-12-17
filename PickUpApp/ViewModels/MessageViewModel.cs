@@ -46,22 +46,23 @@ namespace PickUpApp
 //			}
 //		}
 
-		private ObservableCollection<MessageView>_messages;
-		public ObservableCollection<MessageView> Messages{
-			get{
-				return _messages;
-			}
-			set{
-				_messages = value;
-				NotifyPropertyChanged ();
-			}
-		}
+		//private ObservableCollection<MessageView>_messages;
+//		public ObservableCollection<MessageView> Messages{
+//			get{
+//				return App.myMessages;//_messages;
+//			}
+//			set{
+//				//_messages = value;
+//				App.myMessages = value;
+//				NotifyPropertyChanged ();
+//			}
+//		}
 
 		public MessageViewModel (MobileServiceClient client, MessageView currentMessage)
 		{
 			this.client = client;
 			_currentMessage = currentMessage;
-			_messages = new ObservableCollection<MessageView> ();
+			//App.myMessages = new ObservableCollection<MessageView> ();
 		}
 
 		public async Task<Today> LoadToday(string todayId, string senderId)
@@ -115,7 +116,8 @@ namespace PickUpApp
 			{
 				//load this invite!
 				var messages = await client.InvokeApiAsync<List<MessageView>>("getmymessages");
-				Messages.Clear();
+				App.myMessages.Clear();
+				//Messages.Clear();
 				if (messages.Count > 0)
 				{
 					//atleast right now, we don't need the pipe-delimited kids variable, so we need to fix that
@@ -126,9 +128,14 @@ namespace PickUpApp
 							mv.MessageToday = await LoadToday(mv.Link, mv.SenderID);
 
 						}
-						Messages.Add(mv);
+						//Messages.Add(mv);
+						App.myMessages.Add(mv);
 					}
 				}
+
+
+
+
 				MessagingCenter.Send<string>("messages", "messagesloaded");
 			}
 			catch (Exception ex)

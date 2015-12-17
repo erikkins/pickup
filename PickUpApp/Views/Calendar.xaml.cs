@@ -15,6 +15,8 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 
+
+
 			this.ToolbarItems.Add (new ToolbarItem ("Close", "icn_close.png", async() => {
 				//pop the calendar window
 				//await DisplayAlert("CAL!", "show the calendar", "Cancel");
@@ -28,8 +30,6 @@ namespace PickUpApp
 				App.CurrentToday = DateTime.Today.ToLocalTime();
 				Navigation.PopAsync();
 				MessagingCenter.Send<string>("calendar", "NeedsRefresh");
-
-
 
 				//RenderCalendar();
 			};

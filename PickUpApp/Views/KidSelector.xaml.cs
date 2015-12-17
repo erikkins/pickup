@@ -32,7 +32,7 @@ namespace PickUpApp
 						ks.KidID = k.Id;
 						ks.ScheduleID = _currentSchedule.id;
 						_kidschedule.Add(ks);
-						Debug.WriteLine("Adding kid " + ks.KidID + " from KidSelector");
+						//Debug.WriteLine("Adding kid " + ks.KidID + " from KidSelector");
 
 					}
 				}
@@ -94,7 +94,7 @@ namespace PickUpApp
 
 			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
-				BorderThickness = 0,
+				BorderThickness = 1,
 				Aspect = Aspect.AspectFill,
 				WidthRequest = 50,
 				HeightRequest = 50,

@@ -68,6 +68,11 @@ namespace PickUpApp
 				App.hudder.showHUD("Loading Places");
 				await ((AccountPlaceViewModel)BindingContext).ExecuteLoadItemsCommand();
 
+				this.BindingContext = new MessageViewModel(App.client, null);
+				App.hudder.showHUD("Loading Messages");
+				await ((MessageViewModel)BindingContext).ExecuteLoadItemsCommand();
+				//App.myMessages = ((MessageViewModel)BindingContext).Messages;
+
 				App.hudder.hideHUD();
 
 				this.BindingContext = new SplashViewModel(App.client);

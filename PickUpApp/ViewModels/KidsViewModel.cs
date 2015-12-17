@@ -95,6 +95,7 @@ namespace PickUpApp
 				//KidsSorted.Add(new Grouping<string, Kid>("OTHER KIDS", App.otherKids));
 
 				FFMenuItem kidmenu = new FFMenuItem("Kids", App.myKids.Count);
+				/*
 				foreach (Kid k in App.myKids)
 				{
 					if (k.PhotoURL == null)
@@ -118,9 +119,10 @@ namespace PickUpApp
 						k.PhotoURL = filename;
 					}
 
-
-					kidmenu.Photos.Add(k.PhotoURL);
+					//this is no longer necessary
+					//kidmenu.Photos.Add(k.PhotoURL);
 				}
+				*/
 
 				if (App.menuItems.Any(mi => mi.MenuName == "Kids"))
 				{

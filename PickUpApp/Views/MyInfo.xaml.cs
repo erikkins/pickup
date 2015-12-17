@@ -27,7 +27,7 @@ namespace PickUpApp
 			this.BackgroundColor = Color.FromRgb(238, 236, 243);
 			this.ViewModel = new SplashViewModel (App.client);
 
-			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
+			this.ToolbarItems.Add (new ToolbarItem ("Save", null, async() => {
 				await ViewModel.ExecuteAddEditCommand();
 			}));
 

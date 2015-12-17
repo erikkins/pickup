@@ -233,7 +233,11 @@ namespace PickUpApp
 					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
 					                                                         where aps.id == this.AccountPlaceID
 					                                                         select aps;
-					return ap.FirstOrDefault ().Latitude;
+					if (ap.Count () > 0) {
+						return ap.FirstOrDefault ().Latitude;
+					} else {
+						return null;
+					}
 				}
 				//return _Latitude; 
 			} 
@@ -252,7 +256,11 @@ namespace PickUpApp
 					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
 					                                                         where aps.id == this.AccountPlaceID
 					                                                         select aps;
-					return ap.FirstOrDefault ().Longitude;
+					if (ap.Count () > 0) {
+						return ap.FirstOrDefault ().Longitude;
+					} else {
+						return null;
+					}
 				}
 				//return _Longitude; 
 			} 
@@ -275,8 +283,13 @@ namespace PickUpApp
 					} else {
 						System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
 						                                                         where aps.id == this.AccountPlaceID
-						                                                         select aps;
-						return ap.FirstOrDefault ().Address;
+							                                                       select aps;
+
+						if (ap.Count() == 0) {
+							return null;
+						} else {
+							return ap.FirstOrDefault ().Address;
+						}
 					}
 					//return _Address.Replace (Environment.NewLine, "  ");
 					//return _Address;
@@ -322,7 +335,13 @@ namespace PickUpApp
 					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
 					                                                         where aps.id == this.AccountPlaceID
 					                                                         select aps;
-					return ap.FirstOrDefault ().PlaceName;
+
+					if (ap.Count() > 0) {
+						return ap.FirstOrDefault ().PlaceName;
+					} else {
+						return null;
+					}
+
 				}
 				//return _Location; 
 			} 
@@ -344,7 +363,11 @@ namespace PickUpApp
 					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
 							where aps.id == this.AccountPlaceID
 						select aps;
-					return ap.FirstOrDefault ().Phone;
+					if (ap.Count () > 0) {
+						return ap.FirstOrDefault ().Phone;
+					} else {
+						return null;
+					}
 				}
 			}
 		}
