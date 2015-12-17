@@ -78,6 +78,13 @@ namespace PickUpApp
 					}
 
 				}
+
+				//feels kludgy
+				Grouping<string, Kid> gMy = new Grouping<string, Kid>("MY KIDS", App.myKids);
+				KidsSorted[0] = gMy;
+				Grouping<string, Kid> gOther = new Grouping<string, Kid>("OTHER KIDS", App.otherKids);
+				KidsSorted[1] = gOther;
+
 				//if (KidsSorted == null)
 				//{
 				//	KidsSorted = new ObservableCollection<Grouping<string, Kid>>();

@@ -224,7 +224,7 @@ namespace PickUpApp
 				//gotta add the kidids to the scheduleid (nest this somehow in a single call?)
 				//whack 'em first
 				EmptyClass res = await client.InvokeApiAsync<Schedule, EmptyClass>("deleteschedulekids", CurrentSchedule);
-				Debug.WriteLine("ActivityAddEditVM -- DeletedScheduleKids");
+				Debug.WriteLine("ActivityAddEditVM -- DeletedScheduleKids" + res.Status);
 				var kidsched = client.GetTable<KidSchedule>();
 				foreach (KidSchedule ks in KidSchedules)
 				{

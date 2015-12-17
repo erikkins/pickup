@@ -33,7 +33,10 @@ namespace PickUpApp
 				
 
 			MessagingCenter.Subscribe<string> (this, "launch", async(s) => {
-				await Navigation.PopModalAsync();
+				if (Navigation.ModalStack.Count > 0)
+				{
+					await Navigation.PopModalAsync();
+				}
 				await Navigation.PushModalAsync(new HomePage(), false);
 			});
 			MessagingCenter.Subscribe<string> (this, "login", async(s) => {

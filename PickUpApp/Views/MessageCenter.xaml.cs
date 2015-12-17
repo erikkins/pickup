@@ -64,18 +64,18 @@ namespace PickUpApp
 		{
 			var msg = (MessageView)item;
 			switch (msg.MessageType) {
-			case "fetch":				
+			case "pickup":				
 				return FetchRequest;
-				break;
+				//break;
 			case "circle":
 				return CircleRequest;
-				break;
+				//break;
 			case "message":
 				return MessageTemplate;
-				break;
+				//break;
 			default:
 				return null;
-				break;
+				//break;
 			}
 			//return base.SelectTemplate (item, container);
 		}
@@ -102,12 +102,16 @@ namespace PickUpApp
 				return 0;
 			}
 		}
-
-		private bool _isActionable;
-		public PickupRequestCell (bool IsActionable)
+		private bool _isActionable = true;
+		public bool IsActionable
 		{
-			_isActionable = IsActionable;
+			get { return _isActionable; }
+			set { _isActionable = value; }
 		}
+//		public PickupRequestCell (bool IsActionable = false)
+//		{
+//			_isActionable = IsActionable;
+//		}
 
 		protected override void OnBindingContextChanged()
 		{

@@ -46,7 +46,9 @@ namespace PickUpApp
 			ts.Add (new SimpleBoundTextCell ("Subject", "Title"));
 			ts.Add (new SimpleBoundTextAreaCell ("Enter message", "Message"));
 
-			ts.Add (new PickupRequestCell (false));
+			PickupRequestCell prc = new PickupRequestCell ();
+			prc.IsActionable = false;
+			ts.Add (prc);
 			etv.Root.Add (ts);
 			stacker.Children.Add (etv);
 

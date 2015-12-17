@@ -75,7 +75,7 @@ namespace PickUpApp
 		{
 			get{
 				if (_dob == DateTime.MinValue) {
-					_dob = new DateTime (1900, 1, 1);
+					_dob = new DateTime (DateTime.Now.AddYears(-5).Year, 6, 15);
 				}
 				return _dob;
 			}

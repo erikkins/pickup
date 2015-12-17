@@ -26,8 +26,9 @@ namespace PickUpApp
 			btnToday.Clicked += delegate(object sender, EventArgs e) {
 				currentDay = DateTime.Today;
 				App.CurrentToday = DateTime.Today.ToLocalTime();
-				MessagingCenter.Send<string>("calendar", "NeedsRefresh");
 				Navigation.PopAsync();
+				MessagingCenter.Send<string>("calendar", "NeedsRefresh");
+
 
 
 				//RenderCalendar();
@@ -35,7 +36,7 @@ namespace PickUpApp
 
 
 			//figure out the correct width of each cell, given the device's width (with 40 pixels of padding)
-			double cellwidth = Math.Round((App.ScaledWidth-30) / 7);
+			double cellwidth = Math.Round((App.ScaledWidth-40) / 8); //8 because I wanted 1 cell thickness of padding
 
 			this.BackgroundColor = Color.FromRgb (73, 55, 100);
 			calGrid = new Grid
@@ -58,7 +59,7 @@ namespace PickUpApp
 				},
 				ColumnDefinitions = 
 				{
-					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
+					new ColumnDefinition { Width = new GridLength(cellwidth + 10, GridUnitType.Absolute) }, //dayname
 					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
 					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
 					new ColumnDefinition { Width = new GridLength(cellwidth, GridUnitType.Absolute) },
@@ -219,8 +220,9 @@ namespace PickUpApp
 					currentDay = nextDate;
 
 					App.CurrentToday = nextDate;
-					MessagingCenter.Send<string>("calendar", "NeedsRefresh");
 					Navigation.PopAsync();
+					MessagingCenter.Send<string>("calendar", "NeedsRefresh");
+
 					//RenderCalendar();
 				};
 

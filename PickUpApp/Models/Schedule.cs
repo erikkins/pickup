@@ -13,7 +13,7 @@ namespace PickUpApp
 			//set some defaults
 			AtWhen = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30));
 			StartTimeTicks = AtWhen.TimeOfDay.Ticks;
-			AtWhenEnd = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30)).AddHours (1);
+			AtWhenEnd = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30)).AddHours (1).AddYears(1);
 			EndTimeTicks = AtWhenEnd.TimeOfDay.Ticks;
 			Frequency = "";
 		}

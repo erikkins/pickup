@@ -121,7 +121,7 @@ namespace PickUpApp
 					//atleast right now, we don't need the pipe-delimited kids variable, so we need to fix that
 					foreach (MessageView mv in messages)
 					{
-						if (mv.MessageType == "fetch")
+						if (mv.MessageType == "pickup")
 						{
 							mv.MessageToday = await LoadToday(mv.Link, mv.SenderID);
 

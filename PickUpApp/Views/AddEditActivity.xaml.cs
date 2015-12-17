@@ -21,8 +21,10 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
-				await this.ViewModel.ExecuteAddEditCommand();
+
 				await Navigation.PopAsync();
+
+				await this.ViewModel.ExecuteAddEditCommand();
 			}));
 				
 			stacker.Spacing = 0;
