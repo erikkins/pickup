@@ -27,7 +27,7 @@
 							<ViewCell.View>								
 									<StackLayout Orientation="Horizontal" VerticalOptions="Center" >
 										<BoxView WidthRequest="10"></BoxView>
-										<controls:CircleImage Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" Source="{Binding PhotoURL}">
+										<controls:CircleImage Aspect="AspectFill" VerticalOptions="Center" BorderColor="Black" BorderThickness="1" HorizontalOptions="Center" Source="{Binding PhotoURL}">
 										  <controls:CircleImage.WidthRequest>
 										    <OnPlatform x:TypeArguments="x:Double">
 										      <OnPlatform.iOS>50</OnPlatform.iOS>

@@ -435,12 +435,58 @@ namespace PickUpApp
 
 		private string _StartPlaceName;
 		[JsonProperty(PropertyName = "startplacename")]
-		public string StartPlaceName { get{return _StartPlaceName; } set{if (value != _StartPlaceName) {
+		public string StartPlaceName { 
+			get{
+
+				if (this.StartPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.StartPlaceID
+						select aps;
+
+					if (ap.Count() > 0) {
+						return ap.FirstOrDefault ().PlaceName;
+					} else {
+						return null;
+					}
+
+				}
+
+				//return _StartPlaceName; 
+			} 
+			set{if (value != _StartPlaceName) {
 					_StartPlaceName = value; NotifyPropertyChanged ();
 				} } }
 		private string _StartPlaceAddress;
 		[JsonProperty(PropertyName = "startplaceaddress")]
-		public string StartPlaceAddress { get{return _StartPlaceAddress; } set{if (value != _StartPlaceAddress) {
+		public string StartPlaceAddress { 
+			get{
+				if (_StartPlaceAddress == null) {
+					return ADDRESS_PLACEHOLDER;
+				}
+
+				if (this.StartPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.StartPlaceID
+						select aps;
+
+					if (ap.Count() > 0) {
+						return ap.FirstOrDefault ().Address;
+					} else {
+						return null;
+					}
+				}
+					
+				//return _StartPlaceAddress; 
+			} 
+			set{if (value != _StartPlaceAddress) {
 					_StartPlaceAddress = value; NotifyPropertyChanged ();
 				} } }
 		public bool ShouldSerializeStartPlaceName()

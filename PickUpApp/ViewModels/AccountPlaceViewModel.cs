@@ -113,6 +113,29 @@ namespace PickUpApp
 			}
 			IsLoading = false; //redundant
 		}
+
+		public override async Task ExecuteDeleteCommand ()
+		{
+
+			try{
+				List<EmptyClass> placedelete = await client.InvokeApiAsync<AccountPlace,List<EmptyClass>>("deleteplace", CurrentPlace);
+
+				if (placedelete.Count == 0)
+				{
+					MessagingCenter.Send<EmptyClass>(new EmptyClass(), "PlaceDeleted");
+				}
+				else{
+					MessagingCenter.Send<EmptyClass>(placedelete.FirstOrDefault(), "PlaceDeleted");
+				}
+			}
+			catch(Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);		
+			}
+			finally{
+						
+			}
+
+		}
 	}
 }
 

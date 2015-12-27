@@ -55,6 +55,10 @@ namespace PickUpApp
 				if (_photoURL == null) {
 					//generate one on the fly...
 					string initials = "";
+					if (Firstname == null && Lastname == null) {
+						//sol
+						return "";
+					}
 					if (Firstname == null)
 					{
 						initials = Lastname.Substring(0,1).ToUpper();

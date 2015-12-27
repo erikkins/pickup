@@ -68,8 +68,6 @@ namespace PickUpApp
 
 		public App ()
 		{
-			
-
 			myDevice.PropertyChanged += async (object sender, System.ComponentModel.PropertyChangedEventArgs e) => {
 				if (myDevice.accountid != null && myDevice.notificationid != null && myDevice.userId != null)
 				{

@@ -184,8 +184,10 @@ namespace PickUpApp
 				}));
 
 
+
+
 			//try to float the messages icon with absolute layout
-			if (App.myMessages.Count > 0) {
+
 				RelativeLayout rlMessage = new RelativeLayout ();
 
 				Image msgimg = new Image ();
@@ -237,8 +239,22 @@ namespace PickUpApp
 					yConstraint: Constraint.RelativeToParent ((parent) => {
 						return parent.Height - 84;
 					}));
+			
+			if (App.myMessages.Count > 0) {
+				rlMessage.IsVisible = true;
+			} else {
+				rlMessage.IsVisible = false;
 			}
-
+			MessagingCenter.Subscribe<EmptyClass> (this, "messagesupdated", async(ec) => {
+				if (App.myMessages.Count > 0)
+				{
+					rlMessage.IsVisible = true;
+				}
+				else
+				{
+					rlMessage.IsVisible = false;
+				}
+			});
 
 			this.Content = rl;
 	

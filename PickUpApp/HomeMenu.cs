@@ -63,6 +63,7 @@ namespace PickUpApp
 				switch (((FFMenuItem)args.SelectedItem).MenuName)
 				{
 				case "Today":
+					App.CurrentToday = DateTime.Today.ToLocalTime();
 					//Page displayPage = (Page)Activator.CreateInstance (typeof(TodayView));
 					//((MasterDetailPage)this.Parent).Detail = new NavigationPage(displayPage);
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new TodayView()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };

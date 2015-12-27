@@ -32,6 +32,8 @@ namespace PickUpApp
 			//Kids = kids;
 		}
 
+		public string ReturnVerb;
+
 		private Schedule _currentSchedule;
 		public Schedule CurrentSchedule 
 		{ get { return _currentSchedule; }
@@ -237,7 +239,15 @@ namespace PickUpApp
 				}
 				Debug.WriteLine("ActivityAddEditVM -- Added " + KidSchedules.Count.ToString() + " kids");
 
-				MessagingCenter.Send<Schedule>(CurrentSchedule, "ScheduleAdded");
+
+				if (string.IsNullOrEmpty(ReturnVerb))
+				{
+					MessagingCenter.Send<Schedule>(CurrentSchedule, "ScheduleAdded");
+				}
+				else{
+					MessagingCenter.Send<Schedule>(CurrentSchedule, ReturnVerb);
+					ReturnVerb = null; //one time use
+				}
 			}
 			catch (Exception ex)
 			{

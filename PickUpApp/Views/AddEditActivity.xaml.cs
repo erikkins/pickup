@@ -23,10 +23,9 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
-
-				await Navigation.PopAsync();
-
 				await this.ViewModel.ExecuteAddEditCommand();
+
+				//await Navigation.PopAsync();
 			}));
 				
 			stacker.Spacing = 0;
@@ -38,20 +37,21 @@ namespace PickUpApp
 			loadSelf (CurrentActivity);
 
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
+				//this should be a soft save (though we do need UI updates)
+
 				//Debug.WriteLine("AddEditActivity -- UpdatePlease Fired");
+				ViewModel.ReturnVerb = "RefreshComplete"; //trick it so that we don't update the parent view just yet...
 				await this.ViewModel.ExecuteAddEditCommand();
 			});
 
-			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded",  (t) => {
+			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded", (t) => {
 //				Device.BeginInvokeOnMainThread( ()=>{
 //					//await System.Threading.Tasks.Task.Delay(25);
 //					Navigation.PopAsync();
 //				});
 				//Debug.WriteLine("AddEditActivity -- ScheduleAdded Fired");
 				//now tell the parent controller to reload its listview
-
 				MessagingCenter.Send<Schedule>(t, "RefreshSched");
-
 			});
 
 			MessagingCenter.Subscribe<Schedule> (this, "RefreshComplete", async(s) => {
@@ -59,11 +59,18 @@ namespace PickUpApp
 				tv.Root.Clear();
 				ViewModel.CurrentSchedule = s;
 				//dang...we need to keep track if we actually popped anything
-				if (Navigation != null && Navigation.NavigationStack != null && Navigation.NavigationStack.Count == 3)
-				{
-					Debug.WriteLine("Popping with " + Navigation.NavigationStack.Count.ToString() + " views");
+				//if (Navigation != null && Navigation.NavigationStack != null && Navigation.NavigationStack.Count >= 2) //was ==3
+				//{
+				//	Debug.WriteLine("Popping with " + Navigation.NavigationStack.Count.ToString() + " views");
+				try{
 					await Navigation.PopAsync();
 				}
+				catch(Exception ex)
+				{
+					//hm, why the crash vern?
+					DisplayAlert("hm", "Why the crash, Vern?", "oops");
+				}
+				//}
 				loadSelf(s);
 
 			});
@@ -107,8 +114,13 @@ namespace PickUpApp
 //				ap.PlaceName = this.ViewModel.CurrentSchedule.StartPlaceName;
 
 				System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in this.ViewModel.AccountPlaces where aps.id == this.ViewModel.CurrentSchedule.StartPlaceID select aps;
-
-				await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, ap.FirstOrDefault(), PlaceType.StartingPlace), true);
+				if (ap.Count() == 0)
+				{
+					await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, null, PlaceType.StartingPlace), true);
+				}
+				else{
+					await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, ap.FirstOrDefault(), PlaceType.StartingPlace), true);
+				}
 			};
 		
 			ts.Add (new PickupDropoffSelectorCell (false));

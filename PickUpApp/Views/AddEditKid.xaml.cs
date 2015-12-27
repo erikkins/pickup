@@ -33,19 +33,22 @@ namespace PickUpApp
 			this.ViewModel = new KidAddEditViewModel (App.client);
 			this.ViewModel.CurrentKid = selectedKid;
 
-			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
-				//pop the calendar window
+			//only allow saves for kids that are mine
+			if (selectedKid.Mine) {
+				this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
+					//pop the calendar window
 
 //				Device.BeginInvokeOnMainThread(async() => {
 //					await System.Threading.Tasks.Task.Delay(50);
 //					await Navigation.PopAsync();
 //				});
 
-				//ViewModel.CurrentKid = selectedKid;
-				selectedKid.Gender = stcGender.SelectedValue;
-				await this.ViewModel.ExecuteAddEditCommand();
+					//ViewModel.CurrentKid = selectedKid;
+					selectedKid.Gender = stcGender.SelectedValue;
+					await this.ViewModel.ExecuteAddEditCommand ();
 
-			}));
+				}));
+			}
 //			MessagingCenter.Subscribe<Kid>(this, "KidAdded", (s) =>
 //			{					
 //					Device.BeginInvokeOnMainThread(async() => {
@@ -68,16 +71,22 @@ namespace PickUpApp
 
 			TableSection ts = new TableSection ();
 			sicPic = new SimpleImageCell (selectedKid.PhotoURL);
+			sicPic.IsEnabled = selectedKid.Mine;
 			ts.Add (sicPic);
 			stcFirstName = new SimpleBoundTextCell ("First name", "Firstname");
+			stcFirstName.IsEnabled = selectedKid.Mine;
 			ts.Add (stcFirstName);
 			stcLastName = new SimpleBoundTextCell ("Last name", "Lastname");
+			stcLastName.IsEnabled = selectedKid.Mine;
 			ts.Add (stcLastName);
 			stcDOB = new SimpleDateCell ("Date of Birth", selectedKid.DateOfBirth, "DateOfBirth");
+			stcDOB.IsEnabled = selectedKid.Mine;
 			ts.Add (stcDOB);
 			stcGender = new SimplePickerCell ("Gender", selectedKid.Gender, genders);
+			stcGender.IsEnabled = selectedKid.Mine;
 			ts.Add (stcGender);
 			stcAllergies = new SimpleBoundTextCell ("Allergies", "Allergies");
+			stcAllergies.IsEnabled = selectedKid.Mine;
 			ts.Add (stcAllergies);
 
 			tv.Root.Add (ts);
@@ -119,6 +128,7 @@ namespace PickUpApp
 //			}
 //			stacker.Children.Add (kidImage);
 				
+
 			sicPic.Tapped += async delegate {
 				try{
 

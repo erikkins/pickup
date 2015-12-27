@@ -42,6 +42,17 @@ namespace PickUpApp
 					 Navigation.PopAsync();
 					 ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 				});
+
+			MessagingCenter.Subscribe<EmptyClass> (this, "PlaceDeleted", (p) => {
+				if (string.IsNullOrEmpty(p.Status))
+				{
+					//Navigation.PopAsync();
+					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+				}
+				else{
+					DisplayAlert("Could not delete", "This place is in use in the following activities: " + p.Status, "OK");
+				}
+			});
 		}
 
 //		void HandleClicked (object sender, EventArgs e)
@@ -62,7 +73,9 @@ namespace PickUpApp
 		public void OnDelete (object sender, EventArgs e) {
 			var mi = ((MenuItem)sender);
 			AccountPlace ap = (AccountPlace)mi.CommandParameter;
-			DisplayAlert("Delete Context Action", ap.id + " delete context action", "OK");
+
+			ViewModel.CurrentPlace = ap;
+			ViewModel.ExecuteDeleteCommand ().ConfigureAwait(false);
 		}
 
 		protected AccountPlaceViewModel ViewModel

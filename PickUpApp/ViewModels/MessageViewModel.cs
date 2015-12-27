@@ -132,10 +132,7 @@ namespace PickUpApp
 						App.myMessages.Add(mv);
 					}
 				}
-
-
-
-
+					
 				MessagingCenter.Send<string>("messages", "messagesloaded");
 			}
 			catch (Exception ex)

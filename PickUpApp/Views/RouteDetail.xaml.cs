@@ -329,32 +329,32 @@ namespace PickUpApp
 
 
 			//MEGA KLUDGE FOR ANDROID! Map somehow loads twice...correctly, then Africa.  Gotta load it again!
-			#if __ANDROID__
-			Device.StartTimer(new TimeSpan(0, 0, 2), () => {
-				//p.SetBinding (Pin.AddressProperty, "427 Illinois Rd  Wilmette, IL  60091");
+			if (Device.OS == TargetPlatform.Android) {
+				Device.StartTimer (new TimeSpan (0, 0, 2), () => {
+					//p.SetBinding (Pin.AddressProperty, "427 Illinois Rd  Wilmette, IL  60091");
+					p.Position = thispos;
+
+					p.Label = "Hey";
+
+					_theMap.Pins.Add (p);
+
+					_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
+						Distance.FromMiles (0.1)));
+
+					return false;
+				});
+			}
+
+			if (Device.OS == TargetPlatform.iOS) {
+				p.Address = _address;
+				p.SetBinding (Pin.AddressProperty, _address);
 				p.Position = thispos;
-
 				p.Label = "Hey";
-
 				_theMap.Pins.Add (p);
 
 				_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
 					Distance.FromMiles (0.1)));
-
-				return false;
-			});
-			#endif
-
-			#if __IOS__
-			p.Address = _address;
-			p.SetBinding (Pin.AddressProperty, _address);
-			p.Position = thispos;
-			p.Label = "Hey";
-			_theMap.Pins.Add (p);
-
-			_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
-			Distance.FromMiles (0.1)));
-			#endif
+			}
 
 
 		}
@@ -462,7 +462,9 @@ namespace PickUpApp
 			whiteaddress.FontSize = 14;
 			whiteaddress.Text = _address;
 			whiteaddress.LineBreakMode = LineBreakMode.WordWrap;
-			sl.Children.Add (whiteaddress, new Rectangle (80, 179, App.ScaledWidth, 24), AbsoluteLayoutFlags.None);
+			whiteaddress.VerticalTextAlignment = TextAlignment.Center;
+			whiteaddress.HorizontalTextAlignment = TextAlignment.Center;
+			sl.Children.Add (whiteaddress, new Rectangle (0, 142, App.ScaledWidth, 60), AbsoluteLayoutFlags.None);
 
 			View = sl;
 

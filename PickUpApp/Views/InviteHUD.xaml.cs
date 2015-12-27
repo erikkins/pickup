@@ -342,9 +342,24 @@ namespace PickUpApp
 		public void Navigate()
 		{
 			//MEGA KLUDGE FOR ANDROID! Map somehow loads twice...correctly, then Africa.  Gotta load it again!
-			#if __ANDROID__
-			Device.StartTimer(new TimeSpan(0, 0, 2), () => {
+			if (Device.OS == TargetPlatform.Android) {
+				Device.StartTimer (new TimeSpan (0, 0, 2), () => {
 
+					Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (_latitude, _longitude);
+
+					Pin p = new Pin ();
+					p.SetBinding (Pin.AddressProperty, "ThisInvite.Address");
+					p.Position = thispos;
+					p.Label = "Hey";
+
+					_theMap.Pins.Add (p);
+
+					_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
+						Distance.FromMiles (0.1)));
+
+					return false;
+				});
+			} else {
 				Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (_latitude, _longitude);
 
 				Pin p = new Pin ();
@@ -356,22 +371,7 @@ namespace PickUpApp
 
 				_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
 					Distance.FromMiles (0.1)));
-
-				return false;
-			});
-			#else
-			Xamarin.Forms.Maps.Position thispos = new Xamarin.Forms.Maps.Position (_latitude, _longitude);
-
-			Pin p = new Pin ();
-			p.SetBinding (Pin.AddressProperty, "ThisInvite.Address");
-			p.Position = thispos;
-			p.Label = "Hey";
-
-			_theMap.Pins.Add (p);
-
-			_theMap.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
-			Distance.FromMiles (0.1)));
-			#endif
+			}
 
 
 		}

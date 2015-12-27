@@ -14,6 +14,12 @@ namespace PickUpApp
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			this.ToolbarItems.Add (new ToolbarItem ("Add Activity", "icn_new.png", () => {
 
+				//let's make sure that no kids are selected at this point (nasty cache)
+				foreach (Kid k in App.myKids)
+				{
+					k.Selected = false;
+				}
+
 				Navigation.PushAsync(new AddEditActivity(new Schedule()));
 
 //				Schedule s = new Schedule ();
