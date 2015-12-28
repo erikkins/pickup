@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace PickUpApp
 {
@@ -70,6 +71,27 @@ namespace PickUpApp
 				App.hudder.hideHUD ();
 			}
 			IsLoading = false;  //redundant
+		}
+
+		public override async System.Threading.Tasks.Task ExecuteDeleteCommand ()
+		{
+			try{
+				List<EmptyClass> activitydelete = await client.InvokeApiAsync<Schedule,List<EmptyClass>>("deleteactivity", CurrentSchedule );
+
+				if (activitydelete.Count == 0)
+				{
+					MessagingCenter.Send<EmptyClass>(new EmptyClass(), "ActivityDeleted");
+				}
+				else{
+					MessagingCenter.Send<EmptyClass>(activitydelete.FirstOrDefault(), "ActivityDeleted");
+				}
+			}
+			catch(Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);		
+			}
+			finally{
+
+			}
 		}
 	}
 }

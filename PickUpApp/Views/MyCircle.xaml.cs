@@ -57,9 +57,20 @@ namespace PickUpApp
 			MessagingCenter.Subscribe<string> (this, "circleloaded", (s) => {
 				lstCircle.IsRefreshing = false;
 			});
-			MessagingCenter.Subscribe<AccountCircle>(this, "deleteac", (ac) => {
+			MessagingCenter.Subscribe<AccountCircle>(this, "deleteac", async(ac) => {
 				ViewModel.CurrentAccountCircle = ac;
-				ViewModel.ExecuteDeleteCommand();
+				await ViewModel.ExecuteDeleteCommand();
+			});
+
+			MessagingCenter.Subscribe<EmptyClass> (this, "CircleDeleted", (p) => {
+				if (string.IsNullOrEmpty(p.Status))
+				{
+					//Navigation.PopAsync();
+					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+				}
+				else{
+					DisplayAlert("Could not delete", "This user is in use in the following activities: " + p.Status, "OK");
+				}
 			});
 
 			MessagingCenter.Subscribe<LocalContact> (this, "contactpicked", async(lc) => {
@@ -96,6 +107,9 @@ namespace PickUpApp
 		public void OnDelete (object sender, EventArgs e) {
 			var mi = ((MenuItem)sender);
 			Account a = (Account)mi.CommandParameter;
+
+
+
 			DisplayAlert("Delete Context Action", a.id + " delete context action", "OK");
 		}
 

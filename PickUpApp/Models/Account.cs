@@ -86,6 +86,9 @@ namespace PickUpApp
 		{
 			get{
 				if (_photoURL == null) {
+					if (Firstname == null && Lastname == null) {
+						return null;
+					}
 					string initials = "";
 					if (Firstname == null)
 					{

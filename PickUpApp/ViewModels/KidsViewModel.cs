@@ -23,6 +23,7 @@ namespace PickUpApp
 			} 
 		}
 
+		public Kid SelectedKid{ get; set; }
 
 
 		public KidsViewModel ()
@@ -146,6 +147,28 @@ namespace PickUpApp
 			}
 			finally {
 				IsLoading = false;
+			}
+		}
+
+		public override async Task ExecuteDeleteCommand ()
+		{
+
+			try{
+				List<EmptyClass> kiddelete = await client.InvokeApiAsync<Kid,List<EmptyClass>>("deletekid", SelectedKid );
+
+				if (kiddelete.Count == 0)
+				{
+					MessagingCenter.Send<EmptyClass>(new EmptyClass(), "KidDeleted");
+				}
+				else{
+					MessagingCenter.Send<EmptyClass>(kiddelete.FirstOrDefault(), "KidDeleted");
+				}
+			}
+			catch(Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);		
+			}
+			finally{
+
 			}
 		}
 		/*

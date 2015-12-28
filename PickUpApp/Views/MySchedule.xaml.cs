@@ -33,6 +33,16 @@ namespace PickUpApp
 
 			lstSched.ItemSelected += HandleItemSelected;
 				
+			MessagingCenter.Subscribe<EmptyClass> (this, "ActivityDeleted", (p) => {
+				if (string.IsNullOrEmpty(p.Status))
+				{
+					//Navigation.PopAsync();
+					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+				}
+				else{
+					DisplayAlert("Could not delete", p.Status, "OK");
+				}
+			});
 		}
 
 		void HandleClicked (object sender, EventArgs e)
@@ -59,7 +69,9 @@ namespace PickUpApp
 		public void OnDelete (object sender, EventArgs e) {
 			var mi = ((MenuItem)sender);
 			Schedule s = (Schedule)mi.CommandParameter;
-			DisplayAlert("Delete Context Action", s.id + " delete context action", "OK");
+			ViewModel.CurrentSchedule = s;
+			ViewModel.ExecuteDeleteCommand ().ConfigureAwait (false);
+			//DisplayAlert("Delete Context Action", s.id + " delete context action", "OK");
 		}
 
 		protected ScheduleViewModel ViewModel

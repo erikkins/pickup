@@ -32,12 +32,30 @@ namespace PickUpApp
 					}
 					 await ViewModel.ExecuteLoadItemsCommand();
 				});
+
+			MessagingCenter.Subscribe<EmptyClass> (this, "KidDeleted", (p) => {
+				if (string.IsNullOrEmpty(p.Status))
+				{
+					//Navigation.PopAsync();
+					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+				}
+				else{
+					DisplayAlert("Could not delete", "This kid is in use in the following activities: " + p.Status, "OK");
+				}
+			});
+
 		}
 
 		public void OnDelete (object sender, EventArgs e) {
 			var mi = ((MenuItem)sender);
 			Kid k = (Kid)mi.CommandParameter;
-			DisplayAlert("Delete Context Action", k.Fullname + " delete context action", "OK");
+			if (k.Mine) {
+				ViewModel.SelectedKid = k;
+				ViewModel.ExecuteDeleteCommand ().ConfigureAwait (false);
+			} else {
+				DisplayAlert ("Uh oh", "You cannot delete someone else's kid!", "OK");
+			}
+			//DisplayAlert("Delete Context Action", k.Fullname + " delete context action", "OK");
 		}
 
 		void HandleClicked (object sender, EventArgs e)

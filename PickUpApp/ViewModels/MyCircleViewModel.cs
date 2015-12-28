@@ -47,9 +47,19 @@ namespace PickUpApp
 
 			try
 			{
-				IMobileServiceTable<AccountCircle> circle = client.GetTable<AccountCircle>();
-				await circle.DeleteAsync(CurrentAccountCircle);
-				await ExecuteLoadItemsCommand();
+//				IMobileServiceTable<AccountCircle> circle = client.GetTable<AccountCircle>();
+//				await circle.DeleteAsync(CurrentAccountCircle);
+//				await ExecuteLoadItemsCommand();
+
+				List<EmptyClass> resps = await client.InvokeApiAsync<AccountCircle, List<EmptyClass>>("deletecircle", CurrentAccountCircle);
+				if (resps.Count == 0)
+				{
+					MessagingCenter.Send<EmptyClass>(new EmptyClass(), "CircleDeleted");
+				}
+				else{
+					MessagingCenter.Send<EmptyClass>(resps.FirstOrDefault(), "CircleDeleted");
+				}
+
 			}
 			catch(Exception ex) {
 				System.Diagnostics.Debug.WriteLine (ex);

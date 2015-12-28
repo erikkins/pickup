@@ -34,7 +34,8 @@ namespace PickUpApp.iOS
 			global::Xamarin.Forms.Forms.Init ();
 			Xamarin.FormsMaps.Init ();
 			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
-			Refractored.Xam.Forms.Vibrate.iOS.Vibrate.Init ();
+
+			//Plugin.Vibrate.iOS.Vibrate.Init ();
 			var container = new SimpleContainer ();
 			container.Register<IDevice> (t => AppleDevice.CurrentDevice);
 			container.Register<IDisplay> (t => t.Resolve<IDevice> ().Display);

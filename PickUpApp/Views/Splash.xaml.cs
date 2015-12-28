@@ -98,7 +98,7 @@ namespace PickUpApp
 			});
 
 
-			var v  = DependencyService.Get<Refractored.Xam.Vibrate.Abstractions.IVibrate>();
+			var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
 			//I've received an invite
 			MessagingCenter.Subscribe<Invite> (this, "invite", (i) => {
 				v.Vibration (500);	
