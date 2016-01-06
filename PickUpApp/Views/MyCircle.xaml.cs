@@ -87,9 +87,14 @@ namespace PickUpApp
 					//really this should push AddEditContact, then push the selectcontact screen modally
 					await Navigation.PushAsync(new SelectContact());
 				}
+				else
+					if (action == "Manually Enter")
+					{
+						LocalContact lc = new LocalContact();
+						await Navigation.PushAsync(new AddEditContact(lc, true));
+					}	
 				else{
-					LocalContact lc = new LocalContact();
-					await Navigation.PushAsync(new AddEditContact(lc, true));
+						return;
 				}
 
 			}));

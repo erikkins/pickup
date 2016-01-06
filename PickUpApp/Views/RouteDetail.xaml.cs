@@ -100,11 +100,14 @@ namespace PickUpApp
 				//since this isn't coming in via any messages we can't know that from here
 				await ViewModel.ExecuteAuditCommand(sa);
 
-				MessagingCenter.Send<string>("routedetail", "needsrefresh");
+				MessagingCenter.Send<string>("routedetail", "NeedsRefresh");
 
-				await Navigation.PopAsync();
+				//await Navigation.PopAsync();
 			});
-
+			MessagingCenter.Subscribe<PickUpApp.ViewModels.TodayViewModel> (this, "TodayLoaded", async(t) => {
+				await Navigation.PopAsync ();
+				MessagingCenter.Unsubscribe<PickUpApp.ViewModels.TodayViewModel>(this, "TodayLoaded");
+			});
 
 
 		}
@@ -261,7 +264,16 @@ namespace PickUpApp
 
 					string[] parts = s.Split ('|');
 					string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
-					Uri auri = new Uri (azureURL);
+					if (!string.IsNullOrEmpty (parts [5])) {
+						azureURL = parts [5].Trim ();
+					}
+					foreach (Kid k in App.myKids) {
+						if (k.Id.ToLower () == parts [1].ToLower ()) {
+							azureURL = k.PhotoURL;
+							break;
+						}
+					}
+					//Uri auri = new Uri (azureURL);
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
 						BorderThickness = 1,
@@ -269,7 +281,7 @@ namespace PickUpApp
 						WidthRequest = 50,
 						HeightRequest = 50,
 						HorizontalOptions = LayoutOptions.Center,
-						Source = auri
+						Source = azureURL
 					};	
 					StackLayout kid = new StackLayout ();
 					kid.Orientation = StackOrientation.Horizontal;

@@ -245,7 +245,8 @@ namespace PickUpApp
 			} else {
 				rlMessage.IsVisible = false;
 			}
-			MessagingCenter.Subscribe<EmptyClass> (this, "messagesupdated", async(ec) => {
+
+			MessagingCenter.Subscribe<EmptyClass> (this, "messagesupdated", (ec) => {
 				if (App.myMessages.Count > 0)
 				{
 					rlMessage.IsVisible = true;
@@ -417,12 +418,13 @@ namespace PickUpApp
 			ActivityState currentState = ActivityState.Future;
 			if (t.IsNext) {
 				currentState = ActivityState.Next;
-			} else {
-				if (t.PickupComplete || t.DropOffComplete) {
-					currentState = ActivityState.Complete;
-					this.IsEnabled = false; //shouldn't be able to click on an already complete cell
-				}
 			}
+
+			if (t.PickupComplete || t.DropOffComplete) {
+				currentState = ActivityState.Complete;
+				this.IsEnabled = false; //shouldn't be able to click on an already complete cell
+			}
+
 
 			StackLayout mainlayout = new StackLayout ();
 			mainlayout.Spacing = 0;

@@ -22,7 +22,7 @@ namespace PickUpApp
 		public static MobileServiceUser user;
 		public static string ServiceProvider = "";
 
-		public static DateTime CurrentToday = DateTime.Now.ToLocalTime ();
+		public static DateTime CurrentToday = DateTime.Today.ToLocalTime ();
 
 		public static Account myAccount = new Account();
 		public static AccountDevice myDevice = new AccountDevice();

@@ -138,6 +138,21 @@ namespace PickUpApp
 			bForgot.Text = "Forgot password?";
 			bForgot.TextColor = Color.White;
 			bForgot.FontAttributes = FontAttributes.Bold | FontAttributes.Italic;
+			bForgot.Clicked += async delegate(object sender, EventArgs e) {
+				//we will send an autoreminder to the email listed in the ee field
+				if (string.IsNullOrEmpty(ee.Text))
+				{
+					await DisplayAlert("Oops!", "You must supply an email address for which you forgot the password", "OK");
+					return;
+				}
+
+				//make the API call that will send the reminder email
+				Account a = new Account();
+				a.Email = ee.Text;
+				await this.ViewModel.ExecuteForgotCommand(a);
+				await DisplayAlert("Sent!", "An email has been sent to " + ee.Text + " with a password reset link.", "OK");
+			};
+
 			fields.Children.Add (bForgot);
 
 

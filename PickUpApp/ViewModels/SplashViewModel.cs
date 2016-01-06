@@ -188,6 +188,24 @@ namespace PickUpApp
 			IsLoading = false;  //redundant
 		}
 
+		private Command forgotCommand;
+		public Command ForgotCommand
+		{
+			get { return forgotCommand ?? (forgotCommand = new Command<Account>(async (a) => await ExecuteForgotCommand(a))); }
+		}
+
+		public virtual async Task ExecuteForgotCommand(Account AccountEntry)
+		{
+			try{
+				var logger =  await client.InvokeApiAsync<Account, EmptyClass>("forgotpassword", AccountEntry);
+				System.Diagnostics.Debug.WriteLine(logger.Status);
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
+
+
 //		public static async Task SaveIt()
 //		{
 //			IFolder rootFolder = FileSystem.Current.LocalStorage;
