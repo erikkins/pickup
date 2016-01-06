@@ -4,7 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
-
+using Xamarin;
 using Xamarin.Forms;
 using Microsoft.WindowsAzure.MobileServices;
 using WindowsAzure.Messaging;
@@ -34,6 +34,7 @@ namespace PickUpApp.iOS
 			global::Xamarin.Forms.Forms.Init ();
 			Xamarin.FormsMaps.Init ();
 			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
+			Insights.Initialize("882979cfc38cb829ecfaf090e99781b90980c55a");
 
 			//Plugin.Vibrate.iOS.Vibrate.Init ();
 			var container = new SimpleContainer ();

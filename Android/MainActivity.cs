@@ -12,6 +12,7 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Labs.Droid;
 using ByteSmith.WindowsAzure.Messaging;
 using Gcm.Client;
+using Xamarin;
 
 namespace PickUpApp.droid
 {
@@ -27,9 +28,10 @@ namespace PickUpApp.droid
 			Xamarin.Forms.Forms.Init (this, bundle);
 			Xamarin.FormsMaps.Init (this, bundle);
 			ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init ();
-			Refractored.Xam.Forms.Vibrate.Droid.Vibrate.Init ();
-			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+			//Refractored.Xam.Forms.Vibrate.Droid.Vibrate.Init ();
 
+			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
+			Insights.Initialize("882979cfc38cb829ecfaf090e99781b90980c55a", this);
 
 			//NOTE:  VERY IMPORTANT
 			//DO NOT FORGET TO ADD THE INIT STUFF FOR IDEVICE, etc. HERE

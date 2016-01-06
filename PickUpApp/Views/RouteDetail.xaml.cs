@@ -47,6 +47,9 @@ namespace PickUpApp
 			ds.StartingLocation = start;
 			ds.EndingLocation = end;
 			ds.CalculateDriveTime ().ConfigureAwait (true);
+			PickUpApp.fflog logentry = new fflog("BingLocation for " + currentToday.id + " from RouteDetail");
+			this.ViewModel.ExecuteLogCommand(logentry);
+
 			TrafficCell tc = new TrafficCell (0);
 			tc.BindingContext = ds;
 			ts.Add (tc);

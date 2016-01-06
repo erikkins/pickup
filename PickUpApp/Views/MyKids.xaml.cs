@@ -13,6 +13,7 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Add Kid", "icn_new.png", async() => {
 				Kid k = new Kid ();
+				k.Mine = true;
 				//should this be modal?
 				await Navigation.PushAsync (new AddEditKid (k));
 			}));

@@ -189,6 +189,7 @@ namespace PickUpApp
 
 				TravelTime = Math.Round(min, 2);
 				Distance = Math.Round(distance, 2);
+					
 			}
 			catch(Exception ex)
 			{
