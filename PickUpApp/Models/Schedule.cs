@@ -68,12 +68,30 @@ namespace PickUpApp
 			
 		[JsonIgnore]
 		public TimeSpan TSDropOff
-		{ get
-			{ return TimeSpan.FromTicks(_dropoffticks); } 
+		{ 
+			get
+			{ 
+				//convert from UTC
+				DateTime dtUTC = new DateTime(_dropoffticks).AddDays(1);
+				DateTime dt = dtUTC.ToLocalTime ();
+				TimeSpan ts = dt.TimeOfDay;
+				return ts;
+
+				//orig
+				//return TimeSpan.FromTicks(_dropoffticks); 
+			} 
 			set
 			{
-				if (value.Ticks != _dropoffticks) {
-					_dropoffticks = value.Ticks;
+				if (value.Ticks != _dropoffticks) {	
+
+					//convert to UTC
+					DateTime dt = new DateTime(value.Ticks).AddDays(1);
+					DateTime dtUTC = dt.ToUniversalTime ();
+					TimeSpan tsUTC = dtUTC.TimeOfDay;
+					_dropoffticks = tsUTC.Ticks;
+
+					//ORIG
+					//_dropoffticks = value.Ticks;
 					NotifyPropertyChanged ();
 				}
 			} 
@@ -95,12 +113,30 @@ namespace PickUpApp
 
 		[JsonIgnore]
 		public TimeSpan TSPickup
-		{ get
-			{ return TimeSpan.FromTicks(_pickupticks); } 
+		{ 
+			get
+			{
+				//convert from UTC
+				DateTime dtUTC = new DateTime(_pickupticks).AddDays(1);
+				DateTime dt = dtUTC.ToLocalTime ();
+				TimeSpan ts = dt.TimeOfDay;
+				return ts;
+
+				//orig
+				//return TimeSpan.FromTicks(_pickupticks); 
+			} 
 			set
 			{
 				if (value.Ticks != _pickupticks) {
-					_pickupticks = value.Ticks;
+
+					//convert to UTC
+					DateTime dt = new DateTime(value.Ticks).AddDays(1);
+					DateTime dtUTC = dt.ToUniversalTime ();
+					TimeSpan tsUTC = dtUTC.TimeOfDay;
+					_pickupticks = tsUTC.Ticks;
+
+					//orig
+					//_pickupticks = value.Ticks;
 					NotifyPropertyChanged ();
 				}
 			} 

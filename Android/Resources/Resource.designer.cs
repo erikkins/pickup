@@ -28,8 +28,6 @@ namespace PickUpApp.droid
 		{
 			global::Gcm.Client.Resource.String.library_name = global::PickUpApp.droid.Resource.String.library_name;
 			global::ByteSmith.WindowsAzure.Messaging.Resource.String.library_name = global::PickUpApp.droid.Resource.String.library_name;
-			global::Refractored.Xam.Forms.Vibrate.Droid.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
-			global::Refractored.Xam.Forms.Vibrate.Droid.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
 			global::XLabs.Platform.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
 			global::XLabs.Platform.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
 			global::XLabs.Forms.Resource.Animation.abc_fade_in = global::PickUpApp.droid.Resource.Animation.abc_fade_in;
@@ -3102,6 +3100,8 @@ namespace PickUpApp.droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::PickUpApp.droid.Resource.Styleable.ProgressWheel_ahText;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::PickUpApp.droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::PickUpApp.droid.Resource.Styleable.ProgressWheel_ahTextSize;
+			global::Plugin.Vibrate.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
+			global::Plugin.Vibrate.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -5912,11 +5912,11 @@ namespace PickUpApp.droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a0042
-			public const int ApplicationName = 2131361858;
-			
 			// aapt resource value: 0x7f0a0041
-			public const int Hello = 2131361857;
+			public const int ApplicationName = 2131361857;
+			
+			// aapt resource value: 0x7f0a0040
+			public const int Hello = 2131361856;
 			
 			// aapt resource value: 0x7f0a002e
 			public const int abc_action_bar_home_description = 2131361838;
@@ -6089,8 +6089,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f0a0044
 			public const int invalid_date = 2131361860;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int library_name = 2131361856;
+			// aapt resource value: 0x7f0a0042
+			public const int library_name = 2131361858;
 			
 			// aapt resource value: 0x7f0a0045
 			public const int month_name_format = 2131361861;

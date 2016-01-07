@@ -113,7 +113,14 @@ namespace PickUpApp
 
 			btnAdd.Clicked += async delegate(object sender, EventArgs e) {
 
-				await this.Navigation.PushAsync(new LocationSearch());
+				AccountPlace ap = new AccountPlace();
+				if (!string.IsNullOrEmpty(App.PositionLongitude))
+				{
+					ap.Latitude = App.PositionLatitude;
+					ap.Longitude = App.PositionLongitude;
+				}
+
+				await this.Navigation.PushAsync(new LocationSearch(ap));
 
 			};
 

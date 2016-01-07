@@ -6,6 +6,8 @@ namespace PickUpApp
 {	
 	public partial class MySchedule : ContentPage
 	{	
+		AddEditActivity editor;
+
 		public MySchedule ()
 		{
 			InitializeComponent ();
@@ -20,7 +22,16 @@ namespace PickUpApp
 					k.Selected = false;
 				}
 
-				Navigation.PushAsync(new AddEditActivity(new Schedule()));
+				if (editor != null)
+				{
+				MessagingCenter.Unsubscribe<Schedule> (editor, "UpdatePlease");
+				MessagingCenter.Unsubscribe<Schedule> (editor, "ScheduleAdded");
+				MessagingCenter.Unsubscribe<Schedule> (editor, "DetailUpdate");
+				MessagingCenter.Unsubscribe<Schedule> (editor, "RefreshComplete");
+				}
+				editor = new AddEditActivity(new Schedule());
+
+				Navigation.PushAsync(editor);
 
 //				Schedule s = new Schedule ();
 //				s.AtWhen = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30));
@@ -31,7 +42,21 @@ namespace PickUpApp
 //				Navigation.PushModalAsync (new Schedule1 (s));
 			}));
 
-			lstSched.ItemSelected += HandleItemSelected;
+			//lstSched.ItemSelected += HandleItemSelected;
+			lstSched.ItemSelected += async delegate(object sender, SelectedItemChangedEventArgs e) {
+				if (e.SelectedItem == null) return;
+				if (editor != null)
+				{
+				MessagingCenter.Unsubscribe<Schedule> (editor, "UpdatePlease");
+				MessagingCenter.Unsubscribe<Schedule> (editor, "ScheduleAdded");
+				MessagingCenter.Unsubscribe<Schedule> (editor, "DetailUpdate");
+				MessagingCenter.Unsubscribe<Schedule> (editor, "RefreshComplete");
+				}
+				editor = new AddEditActivity(e.SelectedItem as Schedule);
+
+				await Navigation.PushAsync(editor);
+				lstSched.SelectedItem = null;
+			};
 				
 			MessagingCenter.Subscribe<EmptyClass> (this, "ActivityDeleted", (p) => {
 				if (string.IsNullOrEmpty(p.Status))

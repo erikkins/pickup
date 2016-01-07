@@ -14,7 +14,13 @@ namespace PickUpApp
 			lstPlaces.ItemSelected += HandleItemSelected;
 
 			this.ToolbarItems.Add (new ToolbarItem ("Add Place", "icn_new.png", async() => {
-				await this.Navigation.PushAsync(new LocationSearch());
+				AccountPlace emptyPlace = new AccountPlace();
+				if (!string.IsNullOrEmpty(App.PositionLatitude))
+				{
+					emptyPlace.Latitude = App.PositionLatitude;
+					emptyPlace.Longitude = App.PositionLongitude;
+				}
+				await this.Navigation.PushAsync(new LocationSearch(emptyPlace));
 			}));
 
 //			Button btnAdd = new Button ();
@@ -41,6 +47,7 @@ namespace PickUpApp
 				{
 					 Navigation.PopAsync();
 					 ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+					//now show the 
 				});
 
 			MessagingCenter.Subscribe<EmptyClass> (this, "PlaceDeleted", (p) => {

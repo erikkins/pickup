@@ -73,10 +73,6 @@ namespace PickUpApp
 			//				MessagingCenter.Send<Schedule> (currentSchedule, "LocationUpdated");
 			//			};
 
-
-
-
-
 			searchBar.SearchButtonPressed += async (e, a) => {
 				//we're actually going to do a location search and fill the listview
 				lstSearch.IsVisible = true;

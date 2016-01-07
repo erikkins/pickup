@@ -148,6 +148,13 @@ namespace PickUpApp
 		public async  System.Threading.Tasks.Task CalculateDriveTime()
 		{
 
+			if (_startLoc == null || string.IsNullOrEmpty (_startLoc.Latitude) || string.IsNullOrEmpty (_startLoc.Longitude)) {
+				return;
+			}
+			if (_endLoc == null || string.IsNullOrEmpty (_endLoc.Latitude) || string.IsNullOrEmpty (_endLoc.Longitude)) {
+				return;
+			}
+
 			try{
 
 				PortableRest.RestRequest req = new PortableRest.RestRequest ("Routes", System.Net.Http.HttpMethod.Get);

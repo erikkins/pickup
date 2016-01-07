@@ -4,6 +4,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PickUpApp.ViewModels
 {
@@ -31,6 +32,10 @@ namespace PickUpApp.ViewModels
 				dict.Add("deviceTime", App.CurrentToday.ToString());
 
 				var today = await client.InvokeApiAsync<Dictionary<string,string>,List<Today>>("getmytoday", dict);
+
+				//let's re-sort it by TSDropOff
+				//today = today.OrderBy(o=>o.TSDropOff).ToList();
+				today.Sort((x,y) => x.TSDropOff.CompareTo(y.TSDropOff));
 
 				bool hasNext = false;
 

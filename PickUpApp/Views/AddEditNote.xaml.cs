@@ -29,7 +29,7 @@ namespace PickUpApp
 			note.HorizontalOptions = LayoutOptions.Center;
 		
 			note.Completed += delegate(object sender, EventArgs e) {
-				MessagingCenter.Send<Schedule>(CurrentSchedule, "UpdatePlease");
+			//	MessagingCenter.Send<Schedule>(CurrentSchedule, "UpdatePlease");
 			};
 			if (IsPickup) {
 				note.SetBinding (ExtendedEditor.TextProperty, "CurrentSchedule.PickupNotes");

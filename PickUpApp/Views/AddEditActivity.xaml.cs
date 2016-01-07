@@ -12,6 +12,58 @@ namespace PickUpApp
 	{
 		ExtendedTableView tv = new ExtendedTableView ();
 		TableSection ts = new TableSection ();
+		bool fromDone = false;
+		protected override void OnDisappearing ()
+		{
+			if (fromDone) {
+				MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
+			}
+				MessagingCenter.Unsubscribe<Schedule> (this, "DetailUpdate");
+				MessagingCenter.Unsubscribe<Schedule> (this, "ScheduleAdded");
+				MessagingCenter.Unsubscribe<Schedule> (this, "RefreshComplete");
+
+			base.OnDisappearing ();
+		}
+		protected override void OnAppearing ()
+		{
+			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
+				ViewModel.ReturnVerb = "DetailUpdate"; //trick it so that we don't update the parent view just yet...
+				await ViewModel.ExecuteAddEditCommand();
+				Navigation.PopAsync();
+				MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
+			});
+
+			MessagingCenter.Subscribe<Schedule> (this, "DetailUpdate", (s) => {
+				tv.Root.Clear ();
+				ViewModel.CurrentSchedule = s;
+
+				loadSelf (s);
+				//remove the popped detail screen
+//				Device.BeginInvokeOnMainThread(()=>{
+//					Navigation.PopAsync();
+//				});
+				//Navigation.PopAsync();
+			});
+
+			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded", (s) => {
+				//now tell the parent controller to reload its listview											
+				Navigation.PopAsync();
+
+				MessagingCenter.Send<Schedule>(s, "RefreshSched");
+			});
+
+
+			MessagingCenter.Subscribe<Schedule> (this, "RefreshComplete", (s) => {
+				//parent controller has completed its update...
+				tv.Root.Clear ();
+				ViewModel.CurrentSchedule = s;
+
+				loadSelf (s);
+
+				Navigation.PopAsync();
+			});
+			base.OnAppearing ();
+		}
 
 		public AddEditActivity (Schedule CurrentActivity)
 		{
@@ -23,8 +75,8 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
+				//fromDone = true;
 				await this.ViewModel.ExecuteAddEditCommand();
-
 				//await Navigation.PopAsync();
 			}));
 				
@@ -35,45 +87,6 @@ namespace PickUpApp
 			this.BackgroundColor = Color.FromRgb (73, 55, 109);
 
 			loadSelf (CurrentActivity);
-
-			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
-				//this should be a soft save (though we do need UI updates)
-
-				//Debug.WriteLine("AddEditActivity -- UpdatePlease Fired");
-				ViewModel.ReturnVerb = "RefreshComplete"; //trick it so that we don't update the parent view just yet...
-				await this.ViewModel.ExecuteAddEditCommand();
-			});
-
-			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded", (t) => {
-//				Device.BeginInvokeOnMainThread( ()=>{
-//					//await System.Threading.Tasks.Task.Delay(25);
-//					Navigation.PopAsync();
-//				});
-				//Debug.WriteLine("AddEditActivity -- ScheduleAdded Fired");
-				//now tell the parent controller to reload its listview
-				MessagingCenter.Send<Schedule>(t, "RefreshSched");
-			});
-
-			MessagingCenter.Subscribe<Schedule> (this, "RefreshComplete", async(s) => {
-				//parent controller has completed its update...
-				tv.Root.Clear();
-				ViewModel.CurrentSchedule = s;
-				//dang...we need to keep track if we actually popped anything
-				//if (Navigation != null && Navigation.NavigationStack != null && Navigation.NavigationStack.Count >= 2) //was ==3
-				//{
-				//	Debug.WriteLine("Popping with " + Navigation.NavigationStack.Count.ToString() + " views");
-				try{
-					await Navigation.PopAsync();
-				}
-				catch(Exception ex)
-				{
-					//hm, why the crash vern?
-					DisplayAlert("hm", "Why the crash, Vern?", "oops");
-				}
-				//}
-				loadSelf(s);
-
-			});
 
 		}
 

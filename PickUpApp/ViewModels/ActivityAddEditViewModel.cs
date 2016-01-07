@@ -18,8 +18,7 @@ namespace PickUpApp
 			//Kids = new ObservableCollection<Kid> ();
 			KidSchedules = new TrulyObservableCollection<KidSchedule> ();
 
-			LoadInitialCommand.Execute(null);
-
+			LoadInitialCommand.Execute(null);						
 		}
 
 
@@ -131,6 +130,12 @@ namespace PickUpApp
 					}
 				}
 
+				if (selectedPlace == null || string.IsNullOrEmpty(selectedPlace.Latitude) || string.IsNullOrEmpty(selectedPlace.Longitude) || string.IsNullOrEmpty(CurrentSchedule.Latitude) || string.IsNullOrEmpty(CurrentSchedule.Longitude))
+				{
+					System.Diagnostics.Debug.WriteLine ("Bailing on Bing ");
+					return;
+				}
+
 				req.AddQueryString ("wp.0", selectedPlace.Latitude + "," + selectedPlace.Longitude);
 				req.AddQueryString ("wp.1", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);
 				req.AddQueryString ("du", "mi");
@@ -148,7 +153,7 @@ namespace PickUpApp
 				decimal min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
 				decimal distance = br.ResourceSets[0].TripResources[0].TravelDistance;
 				string distanceUnit = br.ResourceSets[0].TripResources[0].DistanceUnit;
-				//save the turn by turn
+				//save the turn by tuSystem.Diagnostics.Debug.WriteLine ("BingError " + ex.Message);rn
 				try{
 					this.Itineraries = br.ResourceSets[0].TripResources[0].RouteLegs[0].ItineraryItems;
 				}
@@ -238,7 +243,17 @@ namespace PickUpApp
 						ks.ScheduleID = CurrentSchedule.id;
 					}
 					Debug.WriteLine("Saving kid " + ks.KidID + " with id " + ks.id);
-					await kidsched.InsertAsync(ks);
+					try{
+						await kidsched.InsertAsync(ks);
+					}
+					catch(Exception ex)
+					{
+						System.Diagnostics.Debug.WriteLine("Issue with KidSave(" + ks.id + "|" + ks.KidID + "): ");
+						if (ex != null)
+						{
+							System.Diagnostics.Debug.WriteLine(ex);
+						}
+					}
 				}
 				Debug.WriteLine("ActivityAddEditVM -- Added " + KidSchedules.Count.ToString() + " kids");
 
