@@ -221,7 +221,13 @@ namespace PickUpApp
 
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (thispos,
 					Distance.FromMiles (0.1)));
-				map.Pins.Add (new Pin {
+
+				if (string.IsNullOrEmpty(tempLocation.Address))
+				{
+					tempLocation.Address = "Unknown";
+				}
+
+				map.Pins.Add (new Pin {					
 					Label = tempLocation.Address,
 					Position = thispos,
 					Address = tempLocation.Address

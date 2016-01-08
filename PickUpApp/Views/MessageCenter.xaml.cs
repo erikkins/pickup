@@ -447,6 +447,7 @@ namespace PickUpApp
 					rm.MessageID = mv.Id;
 					rm.Response = "1";
 					rm.Status = "read";
+					rm.PostUpdate = "today";
 					MessagingCenter.Send<RespondMessage> (rm, "messageresponse");
 				};
 				slButtons.Children.Add (bAccept);
@@ -588,6 +589,7 @@ namespace PickUpApp
 				rm.MessageID = mv.Id;
 				rm.Response = "1";
 				rm.Status = "read";
+				rm.PostUpdate = "circlekids";
 				MessagingCenter.Send<RespondMessage>(rm, "messageresponse");
 			};
 
@@ -641,15 +643,85 @@ namespace PickUpApp
 			base.OnBindingContextChanged ();
 
 			dynamic c = BindingContext;
+			MessageView mv = (MessageView)c;
+
+			StackLayout slMain = new StackLayout ();
+
+			slMain.Orientation = StackOrientation.Vertical;
+			slMain.WidthRequest = App.ScaledWidth - 20;
+			slMain.HorizontalOptions = LayoutOptions.FillAndExpand;
+			slMain.Spacing = 0;
+
+			//add some space
+			BoxView bv = new BoxView();
+			bv.HeightRequest = 10;
+			slMain.Children.Add (bv);
+
 
 			StackLayout sl = new StackLayout ();
-			sl.Padding = new Thickness (0, Device.OnPlatform (20, 0, 0), 0, 0);
+			sl.Padding = new Thickness (5);
 			sl.Orientation = StackOrientation.Horizontal;
+			sl.BackgroundColor = Color.White;
 			Label l = new Label ();
-			l.SetBinding (Label.TextProperty, "YelpBusinesses.Name");
+			l.Text = mv.Message;
+			//l.SetBinding (Label.TextProperty, "Message");
 			sl.Children.Add (l);
 
-			View = sl;
+			StackLayout slBorder = new StackLayout ();
+			slBorder.WidthRequest = App.ScaledWidth - 20;
+			slBorder.BackgroundColor = Color.FromRgb (157, 157, 157);
+			slBorder.Padding = new Thickness (0.5);
+			slBorder.Children.Add (sl);
+			slBorder.HorizontalOptions = LayoutOptions.Center;
+			slMain.Children.Add (slBorder);
+
+			//now add the buttons
+			StackLayout slButtons = new StackLayout ();
+			slButtons.Orientation = StackOrientation.Vertical;
+			slButtons.BackgroundColor = Color.White;
+			slButtons.HorizontalOptions = LayoutOptions.FillAndExpand;
+			slButtons.Padding = new Thickness (10, 10, 10, 10);
+
+			//<Button x:Name="btnToday" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="50" WidthRequest="340" FontAttributes="Bold" FontSize="18" Text="Pick Today" TextColor="#F6637F" BackgroundColor="#49376D" BorderColor="#54D29F" BorderRadius="8" BorderWidth="2"></Button>
+
+			Button bAccept = new Button ();
+			bAccept.VerticalOptions = LayoutOptions.Center;
+			bAccept.HorizontalOptions = LayoutOptions.Center;
+			bAccept.HeightRequest = 40;
+			bAccept.WidthRequest = App.ScaledQuarterWidth - 30;
+			bAccept.FontAttributes = FontAttributes.Bold;
+			bAccept.FontSize = 18;
+			bAccept.TextColor = Color.FromRgb (84, 210, 159);
+			bAccept.BorderColor = Color.FromRgb (84, 210, 159);
+			bAccept.BorderRadius = 8;
+			bAccept.BorderWidth = 2;
+			bAccept.BackgroundColor = Color.White;
+			bAccept.Text = "OK";
+
+			bAccept.Clicked +=  delegate(object sender, EventArgs e) {
+				RespondMessage rm = new RespondMessage();
+				rm.MessageID = mv.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "";
+				MessagingCenter.Send<RespondMessage>(rm, "messageresponse");
+			};
+
+			slButtons.Children.Add (bAccept);
+
+			StackLayout slButtonBorder = new StackLayout ();
+			slButtonBorder.BackgroundColor = Color.FromRgb (157, 157, 157);
+			slButtonBorder.Padding = new Thickness (0.5);
+			slButtonBorder.WidthRequest = App.ScaledWidth - 20;
+			slButtonBorder.HorizontalOptions = LayoutOptions.Center;
+			slButtonBorder.Children.Add (slButtons);
+			slMain.Children.Add (slButtonBorder);
+
+			bv = new BoxView();
+			bv.HeightRequest = 10;
+			slMain.Children.Add (bv);
+
+			View = slMain;
 
 		}
 	}

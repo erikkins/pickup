@@ -23,6 +23,12 @@ namespace PickUpApp
 					_response = value; NotifyPropertyChanged ();
 				} } }
 
+
+		private string _postUpdate;
+		public string PostUpdate { get{return _postUpdate; } set{ if (value != _postUpdate) {
+					_postUpdate = value; NotifyPropertyChanged ();
+				} } }
+
 	}
 }
 
