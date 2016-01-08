@@ -17,8 +17,9 @@ namespace PickUpApp
 		{
 			if (fromDone) {
 				MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
-			}
 				MessagingCenter.Unsubscribe<Schedule> (this, "DetailUpdate");
+			}
+				
 				MessagingCenter.Unsubscribe<Schedule> (this, "ScheduleAdded");
 				MessagingCenter.Unsubscribe<Schedule> (this, "RefreshComplete");
 
@@ -29,8 +30,8 @@ namespace PickUpApp
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
 				ViewModel.ReturnVerb = "DetailUpdate"; //trick it so that we don't update the parent view just yet...
 				await ViewModel.ExecuteAddEditCommand();
-				Navigation.PopAsync();
-				MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
+				await Navigation.PopAsync();
+				//MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 			});
 
 			MessagingCenter.Subscribe<Schedule> (this, "DetailUpdate", (s) => {
@@ -38,6 +39,11 @@ namespace PickUpApp
 				ViewModel.CurrentSchedule = s;
 
 				loadSelf (s);
+
+				//MessagingCenter.Send<Schedule>(s, "RefreshSched");
+
+				MessagingCenter.Unsubscribe<Schedule>(this,"DetailUpdate");
+				MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 				//remove the popped detail screen
 //				Device.BeginInvokeOnMainThread(()=>{
 //					Navigation.PopAsync();
@@ -112,7 +118,7 @@ namespace PickUpApp
 
 			KidCell kc = new KidCell ();
 			ts.Add (kc);
-			kc.Tapped += async delegate(object sender, EventArgs e) {
+			kc.Tapped += async delegate(object sender, EventArgs e) {				
 				await Navigation.PushAsync(new KidSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids), true);
 			};
 

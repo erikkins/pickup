@@ -47,6 +47,20 @@ namespace PickUpApp
 			_currentSchedule = CurrentSchedule;
 			_kidschedule = KidSchedule;
 			_kids = Kids;
+
+			//reset all
+			foreach (Kid k in _kids) {
+				k.Selected = false;
+			}
+			//make sure that the kid selections are correct!
+			foreach (KidSchedule ks in _kidschedule) {
+				foreach (Kid k in _kids) {
+					if (ks.KidID == k.Id) {
+						k.Selected = true;
+					}
+				}
+			}
+
 			this.ViewModel = new ActivityAddEditViewModel (App.client, _currentSchedule, _kidschedule, _kids);
 			this.BackgroundColor = Color.FromRgb (238, 236, 243);
 			ListView lvKids = new ListView () {

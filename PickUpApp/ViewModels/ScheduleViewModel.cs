@@ -54,7 +54,7 @@ namespace PickUpApp
 				}
 				if (CurrentSchedule != null)
 				{
-					//MessagingCenter.Send<Schedule>(CurrentSchedule, "RefreshComplete");
+					MessagingCenter.Send<Schedule>(CurrentSchedule, "RefreshComplete");
 					CurrentSchedule = null;
 				}
 				//System.Diagnostics.Debug.WriteLine("ScheduleViewModel -- Activities loaded");
