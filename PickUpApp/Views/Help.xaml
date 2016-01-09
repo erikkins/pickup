@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.Help">
+	<ContentPage.Content>
+	<StackLayout x:Name="stacker" Padding="20" Orientation="Vertical">
+	<Label TextColor="#F6637F" Text= "Please help us make our app better and provide feedback!"></Label>
+	<Editor x:Name="contenteditor" HeightRequest="200"></Editor>
+	<Button x:Name="submitter" VerticalOptions="End" HorizontalOptions="Center" HeightRequest="50" WidthRequest="340" FontAttributes="Bold" FontSize="18" Text="Submit Feedback" TextColor="#F6637F" BackgroundColor="#49376D" BorderColor="#49376D" BorderRadius="8" BorderWidth="2"></Button>
+	<BoxView HeightRequest="20"></BoxView>
+	
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

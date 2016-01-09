@@ -101,6 +101,10 @@ namespace PickUpApp
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MessageCenter()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					//listView.SelectedItem =  null;
 					break;
+				case "Help/Feedback":
+					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new Help()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+					//listView.SelectedItem =  null;
+					break;
 				case "Logout":
 
 					//actually need to pop the masterdetailpage down to AppRoot, then clear Settings, then push Login
@@ -172,7 +176,8 @@ namespace PickUpApp
 			this.Add (new FFMenuItem("Today", 0));
 			this.Add (new FFMenuItem ("Activities", 0));
 			this.Add (new FFMenuItem ("Account", 0));
-			this.Add(new FFMenuItem("Messages", 0));
+			//this.Add(new FFMenuItem("Messages", 0));
+			this.Add(new FFMenuItem("Help/Feedback", 0));
 			this.Add (new FFMenuItem ("Logout", 0));
 			this.OnCollectionChanged (new NotifyCollectionChangedEventArgs (NotifyCollectionChangedAction.Reset));
 			this.OnPropertyChanged (new System.ComponentModel.PropertyChangedEventArgs (""));

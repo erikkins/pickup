@@ -17,7 +17,7 @@ namespace PickUpApp
 			_currentSchedule = currentSchedule;
 			//Kids = new ObservableCollection<Kid> ();
 			KidSchedules = new TrulyObservableCollection<KidSchedule> ();
-
+			BlackoutDates = new TrulyObservableCollection<BlackoutDate> ();
 			LoadInitialCommand.Execute(null);						
 		}
 
@@ -54,6 +54,18 @@ namespace PickUpApp
 				_kidschedules = value; 
 				NotifyPropertyChanged ();
 				NotifyPropertyChanged ("ViewName");
+			}
+		}
+
+		private TrulyObservableCollection<BlackoutDate> _blackoutDates;
+		public TrulyObservableCollection<BlackoutDate> BlackoutDates
+		{
+			get { return _blackoutDates;}
+			set{
+				_blackoutDates = value;
+				NotifyPropertyChanged ();
+				//NotifyPropertyChanged ("BlackoutDates");
+				NotifyPropertyChanged ("Selected");
 			}
 		}
 
@@ -258,6 +270,12 @@ namespace PickUpApp
 				Debug.WriteLine("ActivityAddEditVM -- Added " + KidSchedules.Count.ToString() + " kids");
 
 
+				foreach (BlackoutDate bod in BlackoutDates)
+				{
+					EmptyClass resbod = await client.InvokeApiAsync<BlackoutDate, EmptyClass>("setblackoutdate", bod);
+				}
+
+
 				if (string.IsNullOrEmpty(ReturnVerb))
 				{
 					MessagingCenter.Send<Schedule>(CurrentSchedule, "ScheduleAdded");
@@ -319,6 +337,16 @@ namespace PickUpApp
 							k.Selected = true;
 						}
 					}
+				}
+
+				BlackoutDate origin = new BlackoutDate();
+				origin.ScheduleID = CurrentSchedule.id;
+				var bods = await client.InvokeApiAsync<BlackoutDate, List<BlackoutDate>>("getblackoutdates", origin);
+				BlackoutDates.Clear();
+				foreach (BlackoutDate bod in bods)
+				{
+					bod.ScheduleID=CurrentSchedule.id;
+					BlackoutDates.Add(bod);
 				}
 
 			}

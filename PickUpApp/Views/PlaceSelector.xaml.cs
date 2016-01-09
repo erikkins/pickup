@@ -140,6 +140,9 @@ namespace PickUpApp
 						}
 					}
 
+		
+
+
 					await Navigation.PopAsync();
 				});
 

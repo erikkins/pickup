@@ -1186,6 +1186,36 @@ namespace PickUpApp
 			}
 		}
 
+
+		public class BlackoutLine : ViewCell
+		{
+			public BlackoutLine()
+			{
+			}
+
+			protected override void OnBindingContextChanged()
+			{
+				base.OnBindingContextChanged ();
+
+				dynamic c = BindingContext;
+
+				StackLayout slHoriz = new StackLayout ();
+				slHoriz.Orientation = StackOrientation.Horizontal;
+				FFCheckbox check = new FFCheckbox();			
+				slHoriz.Children.Add(check);
+				check.SetBinding(FFCheckbox.CheckedProperty, "Selected", BindingMode.TwoWay);
+				Label l2 = new Label ();
+				l2.WidthRequest = App.ScaledQuarterWidth - 20;
+				l2.LineBreakMode = LineBreakMode.WordWrap;
+				//l2.Text = bod.DisplayName;
+				l2.SetBinding(Label.TextProperty, "DisplayName");
+				l2.VerticalOptions = LayoutOptions.Center;
+				slHoriz.Children.Add (l2);
+
+				View = slHoriz;
+			}
+		}
+
 		public class BlackoutCell : ViewCell
 		{
 
@@ -1193,11 +1223,27 @@ namespace PickUpApp
 			{
 
 			}
+
+			double finalHeight = 155;
+
+			protected override void OnPropertyChanged (string propertyName)
+			{
+				base.OnPropertyChanged (propertyName);
+				if (propertyName == "FinalHeight") {
+					base.Height = finalHeight;
+					//this.View.HeightRequest = finalHeight;
+					//this.View.MinimumHeightRequest = finalHeight;
+					((ExtendedTableView)this.Parent).OnDataChanged ();
+				}
+			}
+
+
 			protected override void OnBindingContextChanged()
 			{
 				base.OnBindingContextChanged ();
 
 				dynamic c = BindingContext;
+
 				this.Height = 155;
 
 				Grid g = new Grid ();
@@ -1235,14 +1281,125 @@ namespace PickUpApp
 				g.Children.Add (l, 0, 0);
 
 				StackLayout slBOD = new StackLayout ();
+				slBOD.HeightRequest = 500;
 				slBOD.Orientation = StackOrientation.Vertical;
 				slBOD.HorizontalOptions = LayoutOptions.StartAndExpand;
 
-				StackLayout slHoriz = new StackLayout ();
-				slHoriz.Orientation = StackOrientation.Horizontal;
 
-				bool _checked = true;
 
+				//g.Children.Add (slBOD, 1, 0);
+
+
+				ListView lvButtons = new ListView ();
+				lvButtons.SeparatorVisibility = SeparatorVisibility.None;
+				lvButtons.BackgroundColor = AppColor.AppGray;
+				lvButtons.ItemsSource = ((ActivityAddEditViewModel)c).BlackoutDates;
+				lvButtons.ItemTemplate = new DataTemplate (typeof(BlackoutLine));
+				g.Children.Add (lvButtons, 1, 0);
+
+				sl.Children.Add (g);
+
+				((ActivityAddEditViewModel)c).BlackoutDates.CollectionChanged += delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {					
+					//save atleast one iteration
+					if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Reset) {
+						return;
+					}
+					finalHeight = 100 + (27 * ((ActivityAddEditViewModel)c).BlackoutDates.Count);
+					if (finalHeight > 0) {
+						this.OnPropertyChanged ("FinalHeight");
+					}
+				};
+
+				View = sl;
+
+
+
+				/*
+				//this section really doesn't ever called...
+				if (((ActivityAddEditViewModel)c).BlackoutDates.Count > 0) {
+
+					slBOD.Children.Clear ();
+
+					foreach (BlackoutDate bod in ((ActivityAddEditViewModel)c).BlackoutDates) {
+						StackLayout slHoriz = new StackLayout ();
+						slHoriz.Orientation = StackOrientation.Horizontal;
+						FFCheckbox check = new FFCheckbox();
+						check.SetBinding(FFCheckbox.CheckedProperty, "Selected");
+						slHoriz.Children.Add(check);
+						Label l2 = new Label ();
+						l2.Text = bod.DisplayName;
+						l2.VerticalOptions = LayoutOptions.Center;
+						slHoriz.Children.Add (l2);
+						slBOD.Children.Add (slHoriz);
+					}
+
+				}
+
+				((ActivityAddEditViewModel)c).BlackoutDates.CollectionChanged += delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+					slBOD.Children.Clear ();
+					//save atleast one iteration
+					if (e.Action== System.Collections.Specialized.NotifyCollectionChangedAction.Reset)
+					{
+						return;
+					}
+					foreach (BlackoutDate bod in ((ActivityAddEditViewModel)c).BlackoutDates) {
+						StackLayout slHoriz = new StackLayout ();
+						slHoriz.Orientation = StackOrientation.Horizontal;
+						FFCheckbox check = new FFCheckbox();			
+						slHoriz.Children.Add(check);
+						check.SetBinding(FFCheckbox.CheckedProperty, "BlackoutDates.Selected", BindingMode.TwoWay);
+						Label l2 = new Label ();
+						l2.WidthRequest = App.ScaledQuarterWidth - 20;
+						l2.LineBreakMode = LineBreakMode.WordWrap;
+						//l2.Text = bod.DisplayName;
+						l2.SetBinding(Label.TextProperty, "BlackoutDates.DisplayName", BindingMode.TwoWay );
+						l2.VerticalOptions = LayoutOptions.Center;
+						slHoriz.Children.Add (l2);
+						slBOD.Children.Add (slHoriz);
+
+					}
+					finalHeight = 100 + (27 * ((ActivityAddEditViewModel)c).BlackoutDates.Count);
+					if (finalHeight > 0)
+					{
+						this.OnPropertyChanged("FinalHeight");
+					}
+
+				};
+				*/
+
+					/*
+				foreach (BlackoutDate bod in ((ActivityAddEditViewModel)c).BlackoutDates) {
+					ImageButton ib = new ImageButton ();
+					ib.ImageHeightRequest = 27;
+					ib.ImageWidthRequest = 27;
+					if (bod.Selected) {
+						ib.Source = "ui_check_filled.png";
+					} else {
+						ib.Source = "ui_check_empty.png";
+					}
+					ib.VerticalOptions = LayoutOptions.Center;
+					ib.HorizontalOptions = LayoutOptions.Center;
+					ib.Clicked += delegate(object sender, EventArgs e) {
+						if (bod.Selected)
+						{
+							_checked = false;
+							ib.Source = "ui_check_empty.png";
+						}
+						else{
+							_checked = true;
+							ib.Source = "ui_check_filled.png";
+						}
+					};
+					slHoriz.Children.Add (ib);
+					Label l2 = new Label();
+					l2.Text = bod.DisplayName;
+					l2.VerticalOptions = LayoutOptions.Center;
+					slHoriz.Children.Add(l2);
+					slBOD.Children.Add (slHoriz);
+				}
+						*/
+
+				/*
 				//first
 				ImageButton ib = new ImageButton ();
 				ib.ImageHeightRequest = 27;
@@ -1303,13 +1460,9 @@ namespace PickUpApp
 				l3.VerticalOptions = LayoutOptions.Center;
 				slHoriz.Children.Add(l3);
 				slBOD.Children.Add (slHoriz);
+				*/
 
 
-				g.Children.Add (slBOD, 1, 0);
-
-				sl.Children.Add (g);
-
-				View = sl;
 			}
 		}
 	}
