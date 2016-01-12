@@ -62,6 +62,7 @@ namespace PickUpApp
 			set { AppSettings.AddOrUpdateValue<bool>(RememberPasswordKey, value); }
 		}
 
+
 	}
 }
 

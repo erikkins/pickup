@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using XLabs.Forms;
 
+
 namespace PickUpApp
 {
 	public partial class Help : ContentPage
@@ -45,6 +46,15 @@ namespace PickUpApp
 					App.hudder.showToast("Thank you!  Your feedback has been received!");
 				}
 			});
+
+			BoxView bvspace = new BoxView ();
+			bvspace.HeightRequest = 30;
+			stacker.Children.Add (bvspace);
+
+			FBLike fb = new FBLike ();
+			fb.HorizontalOptions = LayoutOptions.Center;
+			fb.WidthRequest = 100;
+			stacker.Children.Add (fb);
 
 		}
 

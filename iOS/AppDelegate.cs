@@ -16,8 +16,11 @@ using XLabs.Platform.Services.Media;
 using XLabs.Ioc;
 using XLabs.Platform.Services;
 using XLabs.Platform.Services.IO;
-
+//using Xamarin.Social;
+//using Xamarin.Social.Services;
 //using Xamarin.Forms.Labs.Services;
+using Facebook.CoreKit;
+using MTiRate;
 
 namespace PickUpApp.iOS
 {
@@ -29,12 +32,36 @@ namespace PickUpApp.iOS
 		//public static UIKit.UIViewController  MainView;
 		NSData deviceNotificationToken;
 
+//		private static FacebookService mFacebook;
+//		public static FacebookService Facebook
+//		{
+//			get
+//			{
+//				if (mFacebook == null)
+//				{
+//					mFacebook = new FacebookService() {
+//						ClientId = "445633295574438",
+//						RedirectUrl = new Uri ("Redirect URL from https://developers.facebook.com/apps")
+//					};
+//				}
+//
+//				return mFacebook;
+//			}
+//		}
+
+
+		//public override UIWindow Window { get; set; }
+
+
 		public override bool FinishedLaunching (UIKit.UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init ();
 			Xamarin.FormsMaps.Init ();
 			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
 			Insights.Initialize("882979cfc38cb829ecfaf090e99781b90980c55a");
+
+			//Window = new UIWindow (UIScreen.MainScreen.Bounds);
+
 
 			//Plugin.Vibrate.iOS.Vibrate.Init ();
 			var container = new SimpleContainer ();
@@ -112,14 +139,44 @@ namespace PickUpApp.iOS
 
 			});
 				
+
+			Profile.EnableUpdatesOnAccessTokenChange (true);
+			Facebook.CoreKit.Settings.AppID = "445633295574438";
+			Facebook.CoreKit.Settings.DisplayName = "FamFetch";
+			Facebook.CoreKit.AppEvents.ActivateApp ();
+
 			LoadApplication (new App ());
+
+
+//			iRate.SharedInstance.PreviewMode = true;
+//			iRate.SharedInstance.DaysUntilPrompt = 5;
+//			iRate.SharedInstance.UsesUntilPrompt = 30;
+//
+//			iRate.SharedInstance.UserDidAttemptToRateApp += (sender, e) => {
+//				Console.WriteLine ("User is rating app now!");
+//			};
+//
+//			iRate.SharedInstance.UserDidDeclineToRateApp += (sender, e) => {
+//				Console.WriteLine ("User does not want to rate app");
+//			};
+//
+//			iRate.SharedInstance.UserDidRequestReminderToRateApp += (sender, e) => {
+//				Console.WriteLine ("User will rate app later");
+//			};
+
+
+
+
 
 			//window = new UIWindow (UIScreen.MainScreen.Bounds);
 			//MainView = App.Current.MainPage.CreateViewController ();
 			//MainView =App.GetMainPage().CreateViewController();
-			//window.RootViewController = MainView;
-			//window.MakeKeyAndVisible ();
+			//Window.RootViewController = MainView;
+			//Window.MakeKeyAndVisible ();
 
+
+			Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
+			//return Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
 
 			return base.FinishedLaunching (app, options);
 		}
@@ -152,6 +209,13 @@ namespace PickUpApp.iOS
 			}
 
 		}
+
+		public override bool OpenUrl (UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+		{			
+			return Facebook.CoreKit.ApplicationDelegate.SharedInstance.OpenUrl (application, url, sourceApplication, annotation);
+			//return ApplicationDelegate.SharedInstance.OpenUrl (application, url, sourceApplication, annotation);
+		}
+
 
 		public override void RegisteredForRemoteNotifications (UIApplication app, NSData deviceToken)
 		{

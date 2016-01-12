@@ -27,7 +27,7 @@ namespace PickUpApp.ViewModels
 			IsLoading = true;
 			try
 			{
-
+				App.hudder.showHUD("Loading Today");
 				Dictionary<string,string> dict = new Dictionary<string, string>();
 				dict.Add("deviceTime", App.CurrentToday.ToString());
 
@@ -108,6 +108,7 @@ namespace PickUpApp.ViewModels
 			}
 			finally {
 				IsLoading = false;
+				App.hudder.hideHUD ();
 			}
 		}
 	}

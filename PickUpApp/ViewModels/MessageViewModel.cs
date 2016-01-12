@@ -98,7 +98,10 @@ namespace PickUpApp
 			try{
 			var msgresponse = await client.InvokeApiAsync<RespondMessage, EmptyClass> ("respondmessage", _currentResponse);
 		
-			MessagingCenter.Send<EmptyClass> (msgresponse, "messagesupdated");
+			MessagingCenter.Send<RespondMessage> (_currentResponse, "messagesupdated");
+
+
+			
 			}
 			catch(Exception ex) {
 				//what should we really be doing with exceptions?

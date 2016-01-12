@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using XLabs.Forms.Controls;
-
+using PickUpApp.ViewModels;
 using Xamarin.Forms;
 
 namespace PickUpApp
@@ -31,10 +31,43 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<string> (this, "messagesloaded", (s) => {
 				elv.IsRefreshing = false;
+
+
+				if (App.myMessages.Count == 0)
+				{
+					Navigation.PopAsync();
+				}
 			});
 
-			MessagingCenter.Subscribe<EmptyClass>(this, "messagesupdated", async(ec) =>
+			MessagingCenter.Subscribe<RespondMessage>(this, "messagesupdated", async(rm) =>
 			{
+
+					//we need to know if there are any other collections
+					//that need updating as a result of this...
+					//TODO: add support for reloading different sections based upon the response type
+					switch (rm.PostUpdate)
+					{
+					case "today":
+						this.BindingContext = new TodayViewModel(App.client);
+						App.hudder.showHUD("Loading Today");
+						await ((TodayViewModel)BindingContext).ExecuteLoadItemsCommand();
+						App.hudder.hideHUD();
+						break;
+					case "circlekids":
+						this.BindingContext = new KidsViewModel(App.client);
+						//lblActivity.Text = "Loading Kids";
+						App.hudder.showHUD("Loading Kids");
+						await ((KidsViewModel)BindingContext).ExecuteLoadItemsCommand();
+
+						this.BindingContext = new MyCircleViewModel(App.client);
+						//lblActivity.Text = "Loading Circle";
+						App.hudder.showHUD("Loading Circle");
+						await ((MyCircleViewModel)BindingContext).ExecuteLoadItemsCommand();
+						App.hudder.hideHUD();
+						break;
+					}
+
+
 					await this.ViewModel.ExecuteLoadItemsCommand();
 					this.ViewModel.Refresh();
 					elv.IsRefreshing = false;
