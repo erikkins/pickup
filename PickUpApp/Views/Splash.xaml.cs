@@ -19,8 +19,23 @@ namespace PickUpApp
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
 			//btnFacebook.Command = ViewModel.LoginCommand;
 
-			MessagingCenter.Subscribe<Exception> (this, "Error", (ex) => {
-				DisplayAlert("Error", ex.Message, "OK");
+			MessagingCenter.Subscribe<Exception> (this, "Error", async(ex) => {
+				if (ex.GetType().Name == "WebException")
+				{
+					//anyway to add some retry logic here?
+					bool shouldRetry = await DisplayAlert("Cannot Connect", "Please check your internet connection", "Retry", "Cancel");
+					if (shouldRetry)
+					{
+						await ViewModel.ExecuteLoadItemsCommand(App.client.CurrentUser.UserId).ConfigureAwait(false);
+					}
+					else{
+						//kill the app?
+
+					}
+				}
+				else{
+				await DisplayAlert("Error", ex.Message, "OK");
+				}
 			});
 
 

@@ -35,11 +35,15 @@ namespace PickUpApp.ViewModels
 
 				//let's re-sort it by TSDropOff
 				//today = today.OrderBy(o=>o.TSDropOff).ToList();
+				//not sure if we have to do this anymore since we are sorting again at the bottom...
 				today.Sort((x,y) => x.TSDropOff.CompareTo(y.TSDropOff));
 
 				bool hasNext = false;
 
 				Todays.Clear();
+
+				List<Today> tempTodayList = new List<Today>();
+
 				foreach (var sched in today)
 				{
 
@@ -60,8 +64,8 @@ namespace PickUpApp.ViewModels
 						sched.IsNext = false;
 					}
 
-					Todays.Add(sched);
-
+					//Todays.Add(sched);
+					tempTodayList.Add(sched);
 
 					//now see if we need to add a pickup
 					if (sched.TSPickup != TimeSpan.Zero)
@@ -79,13 +83,23 @@ namespace PickUpApp.ViewModels
 							pickup.IsNext = false;
 						}
 
-						Todays.Add(pickup);
+						//Todays.Add(pickup);
+						tempTodayList.Add(pickup);
 					}
 
 
 
 				}
 				//sweet, we now have our today list!
+
+				//but we really need to sort it by the activity time (right now it sorts only by dropoff time)
+				tempTodayList.Sort((x,y) => x.TSSort.CompareTo(y.TSSort));
+				foreach(Today t in tempTodayList)
+				{
+					Todays.Add(t);
+				}
+
+
 				IsLoading = false;
 
 				MessagingCenter.Send<TodayViewModel>(this, "TodayLoaded");

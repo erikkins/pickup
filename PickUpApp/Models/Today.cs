@@ -119,6 +119,17 @@ namespace PickUpApp
 			} 
 		}
 
+		[JsonIgnore]
+		public TimeSpan TSSort
+		{
+			get{
+				if (IsPickup) {
+					return TSPickup;
+				} else {
+					return TSDropOff;
+				}
+			}
+		}
 
 		[JsonIgnore]
 		public TimeSpan TSPickup

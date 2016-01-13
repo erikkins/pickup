@@ -30,7 +30,6 @@ namespace PickUpApp
 			_placeType = placeType;
 			NavigationPage.SetBackButtonTitle(this, "");
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, () => {
-
 				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
 				//Navigation.PopAsync();
 			}));
@@ -139,11 +138,14 @@ namespace PickUpApp
 							place.Selected = true;
 						}
 					}
-
-		
-
-
-					await Navigation.PopAsync();
+						
+					try{
+						await Navigation.PopAsync();
+					}
+					catch(Exception ex1)
+					{
+						System.Diagnostics.Debug.WriteLine("Could not pop window...probably already gone" + ex1);
+					}
 				});
 
 //			lvKids.ItemTapped += delegate(object sender, ItemTappedEventArgs e) {
