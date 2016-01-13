@@ -16,16 +16,15 @@ namespace PickUpApp
 			this.Padding = new Thickness(0, Device.OnPlatform(0, 0, 0), 0, 5);
 			//lstAccount.ItemSelected += lstAccount_ItemSelected;
 				
+//			AbsoluteLayout abs = new AbsoluteLayout();
+//			abs.VerticalOptions = LayoutOptions.FillAndExpand;
+//			abs.HorizontalOptions = LayoutOptions.FillAndExpand;
+//
+
+
 			StackLayout stacker = new StackLayout ();
 			stacker.Orientation = StackOrientation.Vertical;
 
-			Label lblNone = new Label ();
-			lblNone.Text = "You have nothing going on today!";
-			lblNone.TextColor = Color.White;
-			lblNone.IsVisible = false;
-			lblNone.VerticalOptions = LayoutOptions.Center;
-			lblNone.HorizontalOptions = LayoutOptions.Center;
-			stacker.Children.Add (lblNone);
 
 			this.ToolbarItems.Add (new ToolbarItem ("Calendar", "icn_cal.png", async() => {
 				//pop the calendar window
@@ -70,34 +69,6 @@ namespace PickUpApp
 				BackgroundColor = Color.Transparent,
 				Header = null
 			};
-
-			lvToday.BindingContextChanged +=  delegate(object sender, EventArgs e) {
-				if (ViewModel.Todays.Count == 0)
-				{
-					lblNone.IsVisible = true;
-				}
-				else{
-					lblNone.IsVisible = false;
-				}
-			};
-
-			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
-				lvToday.IsRefreshing = false;
-
-				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
-				if (App.CurrentToday.Date == DateTime.Today) {
-					this.Title += " (Today)";
-				}
-
-				if (t.Todays.Count == 0)
-				{
-					lblNone.IsVisible = true;
-				}
-				else
-				{
-					lblNone.IsVisible = false;
-				}
-			});
 
 
 			MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
@@ -185,6 +156,27 @@ namespace PickUpApp
 
 
 
+			//need to put this into an absolutelayout container...and only show when no kids, no places, no activity
+			FFArrow NEWarrow = new FFArrow ();
+			NEWarrow.Color = AppColor.AppPink;
+			NEWarrow.WidthRequest = App.Device.Display.Width;
+			NEWarrow.HeightRequest = App.Device.Display.Height;
+			NEWarrow.StartPoint = new Point (40, 10);
+			NEWarrow.EndPoint = new Point (App.ScaledQuarterWidth, App.ScaledHeight / 6);
+			NEWarrow.IsVisible = false;
+			rl.Children.Add (NEWarrow, Constraint.Constant(0), Constraint.Constant(0), null, null);
+
+			Editor edNew = new Editor ();
+			edNew.IsEnabled = false;
+			edNew.TextColor = AppColor.AppPink;
+			edNew.BackgroundColor = Color.Transparent;
+			edNew.Text = "Welcome! To get started, click on the Settings icon and begin adding Kids, Places and Activities.";
+			edNew.WidthRequest = 250;
+			edNew.IsVisible = false;
+			rl.Children.Add (edNew, Constraint.Constant (App.ScaledQuarterWidth -115), Constraint.Constant(App.ScaledHeight/6), null, null);
+
+
+			//arrow.IsVisible = false;
 
 			//try to float the messages icon with absolute layout
 
@@ -256,6 +248,63 @@ namespace PickUpApp
 					rlMessage.IsVisible = false;
 				}
 			});
+
+
+			Label lblNone = new Label ();
+			lblNone.Text = "You have no activities Today!";
+			lblNone.TextColor = Color.White;
+			lblNone.IsVisible = false;
+			lblNone.VerticalOptions = LayoutOptions.Center;
+			lblNone.HorizontalOptions = LayoutOptions.Center;
+
+			rl.Children.Add(lblNone,
+				Constraint.RelativeToParent (parent => {
+					return parent.Width /2 - lblNone.Width / 2;
+				}),Constraint.RelativeToParent (parent => {
+					return parent.Height /2 - lblNone.Height / 2;
+				}));
+					
+			lvToday.BindingContextChanged +=  delegate(object sender, EventArgs e) {
+				if (ViewModel.Todays.Count == 0)
+				{
+					lblNone.IsVisible = true;
+				}
+				else{
+					lblNone.IsVisible = false;
+				}
+			};
+
+			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
+				lvToday.IsRefreshing = false;
+
+				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
+				if (App.CurrentToday.Date == DateTime.Today) {
+					this.Title += " (Today)";
+				}
+
+				if (t.Todays.Count == 0)
+				{
+					lblNone.IsVisible = true;
+				}
+				else
+				{
+					lblNone.IsVisible = false;
+				}
+
+				if (App.myKids.Count == 0 && App.myPlaces.Count == 0 && App.myCircle.Count == 0)
+				{
+					//must be the first time!
+					lblNone.IsVisible = false;
+					NEWarrow.IsVisible = true;
+					edNew.IsVisible = true;
+				}
+				else{					
+					NEWarrow.IsVisible = false;
+					edNew.IsVisible = false;
+				}
+
+			});
+
 
 			this.Content = rl;
 	
