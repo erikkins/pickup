@@ -84,32 +84,45 @@ namespace PickUpApp
 
 			App.GetPosition ().ConfigureAwait (false);
 
-			var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
+			//var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
 			//I've received an invite
 			MessagingCenter.Subscribe<Invite> (this, "invite", (i) => {
-				v.Vibration (500);	
-				if (App.client.CurrentUser == null)
-				{
-					//we've encountered a race condition where we got a notification,
-					//we want to launch the invite, but we're not yet logged in...
-					MessagingCenter.Subscribe<Splash>(this, "auth", (s) =>
-						{
-							Device.BeginInvokeOnMainThread(()=>{
-								Navigation.PushModalAsync(new InviteView(i));
-							});
-							MessagingCenter.Unsubscribe<Splash>(this, "auth");
-						});
-				}
-				else{
-					Device.BeginInvokeOnMainThread(()=>{
-						Navigation.PushModalAsync(new InviteView(i));
-					});
-				}
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
+				MessageView mv = new MessageView();
+				mv.Id = i.Id;
+				MessagingCenter.Send<MessageView>(mv, "LoadMessages");
+
+//				if (App.client.CurrentUser == null)
+//				{
+//					//we've encountered a race condition where we got a notification,
+//					//we want to launch the invite, but we're not yet logged in...
+//					MessagingCenter.Subscribe<Splash>(this, "auth", (s) =>
+//						{
+//							Device.BeginInvokeOnMainThread(()=>{
+//								Navigation.PushModalAsync(new InviteView(i));
+//							});
+//							MessagingCenter.Unsubscribe<Splash>(this, "auth");
+//						});
+//				}
+//				else{
+//					Device.BeginInvokeOnMainThread(()=>{
+//						Navigation.PushModalAsync(new InviteView(i));
+//					});
+//				}
+
 			});
 
 			//someone has picked up my kids
 			MessagingCenter.Subscribe<Invite> (this, "pickup", (i) => {
-				v.Vibration (500);	
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
+
+				RespondMessage rm = new RespondMessage ();
+				rm.MessageID = i.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "today";
+				MessagingCenter.Send<RespondMessage> (rm, "messagesupdated");
+				/*
 				if (App.client.CurrentUser == null)
 				{
 					//we've encountered a race condition where we got a notification,
@@ -128,13 +141,20 @@ namespace PickUpApp
 						Navigation.PushModalAsync(new Confirmation(i));
 					});
 				}
+				*/
 			});
 
 			//someone has accepted my invite
 			MessagingCenter.Subscribe<Invite> (this, "accepted", (i) => {
-				v.Vibration (500);	
-				DisplayAlert("Invite has been accepted!", i.Message, "OK");
-				MessagingCenter.Send<string>("InviteAccepted", "NeedsRefresh");
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
+				DisplayAlert("Fetch request has been accepted!", i.Message, "OK");
+				RespondMessage rm = new RespondMessage ();
+				rm.MessageID = i.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "today";
+				MessagingCenter.Send<RespondMessage> (rm, "messagesupdated");
+				//MessagingCenter.Send<string>("InviteAccepted", "NeedsRefresh");
 				//let's just make this an alert
 				//				if (App.client.CurrentUser == null)
 				//				{
@@ -158,8 +178,17 @@ namespace PickUpApp
 
 			//nobody has accepted my invite
 			MessagingCenter.Subscribe<Invite> (this, "nobody", (i) => {
-				v.Vibration (500);
-				DisplayAlert("Invite not accepted!", i.Message, "OK");
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
+				DisplayAlert("Fetch request not accepted!", i.Message, "OK");
+
+				RespondMessage rm = new RespondMessage ();
+				rm.MessageID = i.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "today";
+				MessagingCenter.Send<RespondMessage> (rm, "messagesupdated");
+
+
 				//				if (App.client.CurrentUser == null)
 				//				{
 				//					//we've encountered a race condition where we got a notification,
@@ -182,9 +211,17 @@ namespace PickUpApp
 
 			//I accepted and was the first to do so
 			MessagingCenter.Subscribe<Invite> (this, "confirm", (i) => {
-				v.Vibration (500);
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
 				DisplayAlert("You are picking up!", i.Message, "OK");
-				MessagingCenter.Send<string>("InviteIsMine", "NeedsRefresh");
+
+				//need to refresh today
+				RespondMessage rm = new RespondMessage ();
+				rm.MessageID = i.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "today";
+				MessagingCenter.Send<RespondMessage> (rm, "messagesupdated");
+				//MessagingCenter.Send<string>("InviteIsMine", "NeedsRefresh");
 				//				if (App.client.CurrentUser == null)
 				//				{
 				//					//we've encountered a race condition where we got a notification,
@@ -207,8 +244,14 @@ namespace PickUpApp
 
 
 			MessagingCenter.Subscribe<Invite> (this, "notfirst", (i) => {
-				v.Vibration (500);	
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
 				DisplayAlert("Thank you but you weren't first!", i.Message, "OK");
+				RespondMessage rm = new RespondMessage ();
+				rm.MessageID = i.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "today";
+				MessagingCenter.Send<RespondMessage> (rm, "messagesupdated");
 				//				if (App.client.CurrentUser == null)
 				//				{
 				//					//we've encountered a race condition where we got a notification,
@@ -231,10 +274,16 @@ namespace PickUpApp
 
 
 			MessagingCenter.Subscribe<Invite> (this, "cancel", (i) => {
-				v.Vibration (500);	
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
 
 				//need to show a little more than just a dialog? showing them WHICH pickup is canceled?
-
+				RespondMessage rm = new RespondMessage ();
+				rm.MessageID = i.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "today";
+				MessagingCenter.Send<RespondMessage> (rm, "messagesupdated");
+				/*
 				if (App.client.CurrentUser == null)
 				{
 					//we've encountered a race condition where we got a notification,
@@ -253,6 +302,7 @@ namespace PickUpApp
 						Navigation.PushModalAsync(new InviteIsMine());
 					});
 				}
+				*/
 			});
 
 

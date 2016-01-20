@@ -84,6 +84,7 @@ namespace PickUpApp
 		{
 			try{
 				var invitedata = await client.InvokeApiAsync<MessageView, EmptyClass>("savemessage",messageView);
+				MessagingCenter.Send<MessageView>(messageView, "messagesent");
 
 			}
 			catch (Exception ex) {
@@ -99,8 +100,6 @@ namespace PickUpApp
 			var msgresponse = await client.InvokeApiAsync<RespondMessage, EmptyClass> ("respondmessage", _currentResponse);
 		
 			MessagingCenter.Send<RespondMessage> (_currentResponse, "messagesupdated");
-
-
 			
 			}
 			catch(Exception ex) {
@@ -131,6 +130,7 @@ namespace PickUpApp
 							mv.MessageToday = await LoadToday(mv.Link, mv.SenderID);
 
 						}
+						mv.IsActionable = true;
 						//Messages.Add(mv);
 						App.myMessages.Add(mv);
 					}

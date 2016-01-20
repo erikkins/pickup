@@ -112,28 +112,31 @@ namespace PickUpApp
 				//Navigation.PushModalAsync (new TabbedMaster ()); 
 			});
 
+			/*
 
 			var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
 			//I've received an invite
 			MessagingCenter.Subscribe<Invite> (this, "invite", (i) => {
-				v.Vibration (500);	
-				if (App.client.CurrentUser == null)
-				{
-					//we've encountered a race condition where we got a notification,
-					//we want to launch the invite, but we're not yet logged in...
-					MessagingCenter.Subscribe<Splash>(this, "auth", (s) =>
-						{
-							Device.BeginInvokeOnMainThread(()=>{
-								Navigation.PushModalAsync(new InviteView(i));
-							});
-							MessagingCenter.Unsubscribe<Splash>(this, "auth");
-						});
-				}
-				else{
-					Device.BeginInvokeOnMainThread(()=>{
-						Navigation.PushModalAsync(new InviteView(i));
-					});
-				}
+				//v.Vibration (500);	
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);
+
+//				if (App.client.CurrentUser == null)
+//				{
+//					//we've encountered a race condition where we got a notification,
+//					//we want to launch the invite, but we're not yet logged in...
+//					MessagingCenter.Subscribe<Splash>(this, "auth", (s) =>
+//						{
+//							Device.BeginInvokeOnMainThread(()=>{
+//								Navigation.PushModalAsync(new InviteView(i));
+//							});
+//							MessagingCenter.Unsubscribe<Splash>(this, "auth");
+//						});
+//				}
+//				else{
+//					Device.BeginInvokeOnMainThread(()=>{
+//						Navigation.PushModalAsync(new InviteView(i));
+//					});
+//				}
 			});
 
 			//someone has picked up my kids
@@ -284,7 +287,7 @@ namespace PickUpApp
 				}
 			});
 
-
+*/
 			MessagingCenter.Subscribe<AccountDevice>(this, "changed", (s) =>
 			{
 

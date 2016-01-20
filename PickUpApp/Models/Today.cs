@@ -573,6 +573,22 @@ namespace PickUpApp
 					_PickupComplete = value; NotifyPropertyChanged ();
 				} } }
 
+		private string _DefaultDropOffAccountFirstName;
+		[JsonProperty(PropertyName = "defaultdropoffaccountfirstname")]
+		public string DefaultDropOffAccountFirstName { get{return _DefaultDropOffAccountFirstName; } set{if (value != _DefaultDropOffAccountFirstName) {
+					_DefaultDropOffAccountFirstName = value; NotifyPropertyChanged ();
+				} } }
+		private string _DefaultDropOffAccountLastName;
+		[JsonProperty(PropertyName = "defaultdropoffaccountlastname")]
+		public string DefaultDropOffAccountLastName { get{return _DefaultDropOffAccountLastName; } set{if (value != _DefaultDropOffAccountLastName) {
+					_DefaultDropOffAccountLastName = value; NotifyPropertyChanged ();
+				} } }
+		private string _DefaultDropOffAccountPhotoURL;
+		[JsonProperty(PropertyName = "defaultdropoffaccountphotourl")]
+		public string DefaultDropOffAccountPhotoURL { get{return _DefaultDropOffAccountPhotoURL; } set{if (value != _DefaultDropOffAccountPhotoURL) {
+					_DefaultDropOffAccountPhotoURL = value; NotifyPropertyChanged ();
+				} } }
+		
 
 		private string _DropOffMessageID;
 		[JsonProperty(PropertyName = "dropoffmessageid")]
@@ -586,6 +602,23 @@ namespace PickUpApp
 					_DropOffMessageStatus = value; NotifyPropertyChanged ();
 				} } }
 
+
+		private string _DefaultPickupAccountFirstName;
+		[JsonProperty(PropertyName = "defaultpickupaccountfirstname")]
+		public string DefaultPickupAccountFirstName { get{return _DefaultPickupAccountFirstName; } set{if (value != _DefaultPickupAccountFirstName) {
+					_DefaultPickupAccountFirstName = value; NotifyPropertyChanged ();
+				} } }
+		private string _DefaultPickupAccountLastName;
+		[JsonProperty(PropertyName = "defaultpickupaccountlastname")]
+		public string DefaultPickupAccountLastName { get{return _DefaultPickupAccountLastName; } set{if (value != _DefaultPickupAccountLastName) {
+					_DefaultPickupAccountLastName = value; NotifyPropertyChanged ();
+				} } }
+		private string _DefaultPickupAccountPhotoURL;
+		[JsonProperty(PropertyName = "defaultpickupaccountphotourl")]
+		public string DefaultPickupAccountPhotoURL { get{return _DefaultPickupAccountPhotoURL; } set{if (value != _DefaultPickupAccountPhotoURL) {
+					_DefaultPickupAccountPhotoURL = value; NotifyPropertyChanged ();
+				} } }
+
 		private string _PickupMessageID;
 		[JsonProperty(PropertyName = "pickupmessageid")]
 		public string PickupMessageID { get{return _PickupMessageID; } set{if (value != _PickupMessageID) {
@@ -597,6 +630,12 @@ namespace PickUpApp
 		public string PickupMessageStatus { get{return _PickupMessageStatus; } set{if (value != _PickupMessageStatus) {
 					_PickupMessageStatus = value; NotifyPropertyChanged ();
 				} } }
+
+
+
+
+
+
 		private string _via;
 		[JsonProperty(PropertyName = "via")]
 		public string Via { get{return _via; } set{if (value != _via) {

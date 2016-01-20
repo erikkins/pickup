@@ -15,7 +15,7 @@ namespace PickUpApp
 			this.Icon = "icn_back.png";
 
 			ExtendedListView elv = new ExtendedListView ();
-			elv.BackgroundColor = Color.FromRgb (238, 236, 243);
+			elv.BackgroundColor = AppColor.AppGray;
 			elv.HasUnevenRows = true;
 			elv.RefreshCommand = ViewModel.LoadItemsCommand;
 			elv.ItemsSource = App.myMessages;
@@ -157,6 +157,9 @@ namespace PickUpApp
 			if (mv == null) {
 				return;
 			}
+
+			_isActionable = mv.IsActionable;
+
 			StackLayout slMain = new StackLayout ();
 
 			slMain.Orientation = StackOrientation.Vertical;
@@ -187,9 +190,26 @@ namespace PickUpApp
 			slVert.Children.Add (l);
 
 			Label lFrom = new Label();
-			lFrom.Text = "from " + mv.Sender + " • " + DateTimeExtensions.GetTimeSpan (mv.Created.ToLocalTime ().DateTime);
+			if (_isActionable) {
+				lFrom.Text = "from " + mv.Sender + " • " + DateTimeExtensions.GetTimeSpan (mv.Created.ToLocalTime ().DateTime);
+			} else {
+				lFrom.Text = "from " + App.myAccount.Fullname + " • " + DateTimeExtensions.GetTimeSpan (DateTime.Now.ToLocalTime ());
+
+			}
 			lFrom.TextColor = Color.FromRgb (157, 157, 157);
 			slVert.Children.Add (lFrom);
+
+			//we need a label saying the actual DATE when this will occur
+
+			Label lActivityDate = new Label ();
+			if (DateTime.UtcNow.Date == mv.ScheduleDate.ToUniversalTime ().Date) {
+				lActivityDate.Text = "for TODAY";
+			} else {
+				lActivityDate.Text = "for " + mv.ScheduleDate.ToUniversalTime ().ToString ("d");
+			}
+			lActivityDate.TextColor = Color.FromRgb (157, 157, 157);
+			slVert.Children.Add (lActivityDate);
+
 
 			sl.Children.Add (slVert);
 
@@ -422,7 +442,27 @@ namespace PickUpApp
 
 					string[] parts = s.Split ('|');
 					string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
-					Uri auri = new Uri (azureURL);
+
+					foreach (Kid k in App.myKids) {
+						if (k.Id.ToLower () == parts [1].ToLower ()) {
+							azureURL = k.PhotoURL;
+							break;
+						}
+					}
+					foreach (Kid k in App.otherKids) {
+						if (k.Id.ToLower () == parts [1].ToLower ()) {
+							azureURL = k.PhotoURL;
+							break;
+						}
+					}
+
+					//string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
+					//					Uri auri = new Uri (azureURL);
+					//					var uis = new UriImageSource ();
+					//					uis.CacheValidity = new TimeSpan (0, 5, 0);
+					//					uis.CachingEnabled = false;
+					//					uis.Uri = auri;
+
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci1 = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
 						BorderThickness = 1,
@@ -430,7 +470,7 @@ namespace PickUpApp
 						WidthRequest = 50,
 						HeightRequest = 50,
 						HorizontalOptions = LayoutOptions.Center,
-						Source = auri
+						Source = azureURL
 					};	
 					slKids.WidthRequest += 60;	
 					slKids.Children.Add (ci1);

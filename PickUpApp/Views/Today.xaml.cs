@@ -73,7 +73,6 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
 				await ViewModel.ExecuteLoadItemsCommand();
-
 			});
 
 			MessagingCenter.Subscribe<Today>(this, "fetchrequest", async(t) => {
@@ -238,6 +237,14 @@ namespace PickUpApp
 				rlMessage.IsVisible = false;
 			}
 
+			App.myMessages.CollectionChanged += delegate(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+				if (App.myMessages.Count > 0) {
+					rlMessage.IsVisible = true;
+				} else {
+					rlMessage.IsVisible = false;
+				}
+			};
+
 			MessagingCenter.Subscribe<EmptyClass> (this, "messagesupdated", (ec) => {
 				if (App.myMessages.Count > 0)
 				{
@@ -265,6 +272,10 @@ namespace PickUpApp
 				}));
 					
 			lvToday.BindingContextChanged +=  delegate(object sender, EventArgs e) {
+				if (ViewModel == null)
+				{
+					return;
+				}
 				if (ViewModel.Todays.Count == 0)
 				{
 					lblNone.IsVisible = true;
@@ -303,8 +314,22 @@ namespace PickUpApp
 					edNew.IsVisible = false;
 				}
 
+
+//				TodayViewModel tvm = (TodayViewModel)this.BindingContext;
+//				this.BindingContext = new MessageViewModel(App.client, null);
+//				App.hudder.showHUD("Loading Messages");
+//				((MessageViewModel)BindingContext).ExecuteLoadItemsCommand().ConfigureAwait(true);
+//				App.hudder.hideHUD();
+//				this.BindingContext = tvm;
+
 			});
 
+			MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {				
+				MessageViewModel mvm = new MessageViewModel(App.client, null);
+				App.hudder.showHUD("Loading Messages");
+				mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
+				App.hudder.hideHUD();
+			});
 
 			this.Content = rl;
 	
@@ -673,26 +698,29 @@ namespace PickUpApp
 			l2.FontAttributes = FontAttributes.Bold;
 			detailGrid.Children.Add (l2, 2, 3, 0, 2 );
 
-
-			if (currentState != ActivityState.Complete) {
-				Button b = new Button ();
-				switch (currentState) {
-				case ActivityState.Future:
-					b.Image = arrowgray;
-					break;
-				case ActivityState.Next:
-					b.Image = arrowpink;
-					break;
+			//this means someone is picking up or dropping off
+			if (string.IsNullOrEmpty (t.DropOffMessageID) && string.IsNullOrEmpty (t.PickupMessageID)) {
+				//nobody's picking up or dropping off, so make the option to invite available
+				if (currentState != ActivityState.Complete) {
+					Button b = new Button ();
+					switch (currentState) {
+					case ActivityState.Future:
+						b.Image = arrowgray;
+						break;
+					case ActivityState.Next:
+						b.Image = arrowpink;
+						break;
+					}
+					b.HorizontalOptions = LayoutOptions.Center;
+					b.VerticalOptions = LayoutOptions.Start;
+					b.Clicked += delegate(object sender, EventArgs e) {
+						//await ((TodayView)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "create a fetch request", "Cancel");
+						//await ((TodayView)this.ParentView.Parent.Parent).Navigation.PushAsync(new FetchRequest1());
+						//we probably should just fire a messagingcenter event!
+						MessagingCenter.Send<Today> (t, "fetchrequest");
+					};
+					detailGrid.Children.Add (b, 3, 4, 0, 1);
 				}
-				b.HorizontalOptions = LayoutOptions.Center;
-				b.VerticalOptions = LayoutOptions.Start;
-				b.Clicked += async delegate(object sender, EventArgs e) {
-					//await ((TodayView)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "create a fetch request", "Cancel");
-					//await ((TodayView)this.ParentView.Parent.Parent).Navigation.PushAsync(new FetchRequest1());
-					//we probably should just fire a messagingcenter event!
-					MessagingCenter.Send<Today>(t, "fetchrequest");
-				};
-				detailGrid.Children.Add (b, 3, 4, 0, 1);
 			}
 
 
@@ -761,6 +789,12 @@ namespace PickUpApp
 							break;
 						}
 					}
+					foreach (Kid k in App.otherKids) {
+						if (k.Id.ToLower () == parts [1].ToLower ()) {
+							azureURL = k.PhotoURL;
+							break;
+						}
+					}
 					//string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
 //					Uri auri = new Uri (azureURL);
 //					var uis = new UriImageSource ();
@@ -805,8 +839,13 @@ namespace PickUpApp
 					responseInfo = "Pending Response";
 					break;
 				case "Accepted":
+					
 					slp.BackgroundColor = AppColor.AppGreen;
-					responseInfo = t.PickupMessageID; //for now
+					if (t.DefaultPickupAccountLastName.Length > 0) {
+						responseInfo = t.PickupMessageStatus + " (" + t.DefaultPickupAccountFirstName + " " + t.DefaultPickupAccountLastName.Substring (0, 1) + ".)";
+					} else {
+						responseInfo = t.PickupMessageStatus + " (" + t.DefaultPickupAccountFirstName + ")";
+					}
 					break;
 				case "Declined":
 					slp.BackgroundColor = NamedColor.Red;
@@ -867,7 +906,11 @@ namespace PickUpApp
 					break;
 				case "Accepted":
 					sld.BackgroundColor = AppColor.AppGreen;
-					responseInfo = t.DropOffMessageID; //for now
+					if (t.DefaultDropOffAccountLastName.Length > 0) {
+						responseInfo = t.DropOffMessageStatus + " (" + t.DefaultDropOffAccountFirstName + " " + t.DefaultDropOffAccountLastName.Substring (0, 1) + ".)";
+					} else {
+						responseInfo = t.DropOffMessageStatus + " (" + t.DefaultDropOffAccountFirstName + ")";
+					}
 					break;
 				case "Declined":
 					sld.BackgroundColor = NamedColor.Red;

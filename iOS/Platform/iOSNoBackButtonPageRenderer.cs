@@ -20,6 +20,14 @@ namespace PickUpApp.iOS
 				ViewController.ParentViewController.NavigationItem.Title = "";
 				ViewController.ParentViewController.NavigationItem.SetHidesBackButton (true, false);
 			}
+
+			if (ViewController.Title == "FETCH REQUEST") {
+				ViewController.ParentViewController.NavigationItem.Title = "FETCH REQUEST";
+				ViewController.ParentViewController.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("", UIBarButtonItemStyle.Plain, null);
+
+				//ViewController.ParentViewController.NavigationItem.BackBarButtonItem.Title = "";
+				//ViewController.ParentViewController.NavigationItem.SetHidesBackButton (true, false);
+			}
 		}
 	}
 }

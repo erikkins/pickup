@@ -120,6 +120,21 @@ namespace PickUpApp
 		public DateTime ScheduleDate { get{return _messageToday.AtWhen; } set{if (value != _messageToday.AtWhen) {
 					_messageToday.AtWhen = value; NotifyPropertyChanged ();
 				} } }
+
+
+		private bool _isActionable;
+		public bool IsActionable
+		{
+			get {
+				return _isActionable;
+			}
+			set{
+				_isActionable = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+
 	}
 }
 

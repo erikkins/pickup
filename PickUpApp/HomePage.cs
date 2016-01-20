@@ -28,6 +28,11 @@ namespace PickUpApp
 //					new Label { Text = "Hello ContentPage" }
 //				}
 //			};
+
+
+			/*
+
+
 			var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
 			//I've received an invite
 			MessagingCenter.Subscribe<Invite> (this, "invite", (i) => {
@@ -213,7 +218,7 @@ namespace PickUpApp
 
 				PickupService.DefaultService.InsertAccountDeviceAsync(s).Wait(10000);
 			});
-
+*/
 //			MessagingCenter.Subscribe<InviteMessage>(this, "arrived", (s) =>
 //				{
 //

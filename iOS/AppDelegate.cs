@@ -118,9 +118,9 @@ namespace PickUpApp.iOS
 						{
 							hub.RegisterTemplateAsync(deviceNotificationToken, "pickupTemplate2", template, expire, tagSet, errreg=>{
 								if (errreg != null)
-									Console.WriteLine("Error: " + err.Description);
+									Console.WriteLine("HubRegistrationError: " + err.Description);
 								else
-									Console.WriteLine("Success");
+									Console.WriteLine("HubRegistrationSuccess--" + tagSet.ToString());
 							});
 						}
 					});
@@ -254,7 +254,7 @@ namespace PickUpApp.iOS
 //					Console.WriteLine("Success");
 //			});
 		}
-
+//
 //		public override void ReceivedRemoteNotification (UIApplication app, NSDictionary userInfo)
 //		{
 //			// Process a notification received while the app was already open
@@ -262,7 +262,7 @@ namespace PickUpApp.iOS
 //		}
 		public void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
 		{
-			// Check to see if the dictionary has the aps key.  This is the notification payload you would have sent
+			// Check to see if the dictionary has the aps key.  This is the notification payload you would have se
 			if (null != options && options.ContainsKey(new NSString("aps")))
 			{
 				//Get the aps dictionary
@@ -340,6 +340,10 @@ namespace PickUpApp.iOS
 				// so keep that in mind.
 				//if (aps.ContainsKey(new NSString("alert")))
 				//	alert = (aps [new NSString("alert")] as NSString).ToString();
+
+//				if (aps.ContainsKey (new NSString("alert"))) {
+//					alert = aps ["alert"].ToString ();
+//				}
 
 				//If this came from the ReceivedRemoteNotification while the app was running,
 				// we of course need to manually process things like the sound, badge, and alert.
