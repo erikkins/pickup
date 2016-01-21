@@ -92,6 +92,25 @@ namespace PickUpApp
 			}
 		}
 
+		private Command cancelCommand;
+		public Command CancelCommand
+		{
+			get { return cancelCommand ?? (cancelCommand = new Command<Today>(async (ct) => await ExecuteCancelCommand(ct))); }
+		}
+
+		public virtual async Task ExecuteCancelCommand(Today currentToday)
+		{
+			try{
+				var canceldata = await client.InvokeApiAsync<Today, EmptyClass>("cancelpickup",currentToday);
+				MessagingCenter.Send<Today>(currentToday, "fetchcanceled");
+
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
+
+
 
 		public override async Task ExecuteAddEditCommand ()
 		{

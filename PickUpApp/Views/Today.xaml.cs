@@ -87,7 +87,31 @@ namespace PickUpApp
 					return;
 				}
 				Today today = ((Today)e.SelectedItem);
-				Navigation.PushAsync(new RouteDetail(today));
+
+				//if this is an active FetchRequest (and I'm the sender!), take them to the ManageFetch screen, otherwise to the RouteDetail
+				bool allowManage = false;
+
+				if (today.AccountID == App.myAccount.id && (!string.IsNullOrEmpty(today.PickupMessageID) || !string.IsNullOrEmpty(today.DropOffMessageID)))
+				{
+					if (today.IsPickup && !string.IsNullOrEmpty(today.PickupMessageID) && today.PickupMessageStatus != "Canceled")
+					{
+						allowManage = true;
+					}
+					else{
+						if (!today.IsPickup && !string.IsNullOrEmpty(today.DropOffMessageID) && today.DropOffMessageStatus != "Canceled")
+						{
+							allowManage = true;
+						}
+					}
+				}
+
+				if (allowManage)
+				{					
+					Navigation.PushAsync(new ManageFetch(today));
+				}
+				else{
+					Navigation.PushAsync(new RouteDetail(today));
+				}
 				lvToday.SelectedItem = null;
 				return;
 				/*
@@ -699,7 +723,7 @@ namespace PickUpApp
 			detailGrid.Children.Add (l2, 2, 3, 0, 2 );
 
 			//this means someone is picking up or dropping off
-			if (string.IsNullOrEmpty (t.DropOffMessageID) && string.IsNullOrEmpty (t.PickupMessageID)) {
+			if ((string.IsNullOrEmpty (t.DropOffMessageID) && string.IsNullOrEmpty (t.PickupMessageID)) || t.DropOffMessageStatus=="Canceled" || t.PickupMessageStatus=="Canceled") {
 				//nobody's picking up or dropping off, so make the option to invite available
 				if (currentState != ActivityState.Complete) {
 					Button b = new Button ();
@@ -766,7 +790,7 @@ namespace PickUpApp
 			StackLayout slDrop = new StackLayout ();
 			slDrop.Orientation = StackOrientation.Vertical;
 			slDrop.VerticalOptions = LayoutOptions.StartAndExpand;
-
+			//slDrop.HeightRequest += 30;
 			slDrop.Children.Add (l4);
 
 			StackLayout slKids = new StackLayout ();
@@ -777,7 +801,7 @@ namespace PickUpApp
 			//split the kids
 			if (!string.IsNullOrEmpty (t.Kids)) {
 				string[] kids = t.Kids.Split ('^');
-				this.Height += 50;
+				this.Height += 65;
 
 				foreach (string s in kids) {	
 					string[] parts = s.Split ('|');
@@ -820,9 +844,12 @@ namespace PickUpApp
 
 			//if there's a message attached to this Today, we need to wrap the grid in the pretty box with current Message Status
 			string responseInfo = "";
-			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageStatus)) {
+			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageStatus) && t.PickupMessageStatus != "Canceled") {
+
+				detailGrid.BackgroundColor = Color.White;
+
 				StackLayout slPickup = new StackLayout ();
-				slPickup.HeightRequest = this.Height + 75;
+				slPickup.HeightRequest = this.Height + 100;
 				slPickup.WidthRequest = App.ScaledWidth - 20;
 				slPickup.HorizontalOptions = LayoutOptions.Center;
 				slPickup.BackgroundColor = Color.White;
@@ -863,7 +890,13 @@ namespace PickUpApp
 
 				Label frs = new Label ();
 				frs.TextColor = Color.White;
-				frs.Text = "Fetch Request Sent";
+				if (t.RowType == "pickup") {
+					frs.FontAttributes = FontAttributes.Bold;
+					frs.Text = "You are picking up!";
+					responseInfo = "";
+				} else {
+					frs.Text = "Fetch Request Sent";
+				}
 				frs.FontSize = 14;
 				frs.VerticalOptions = LayoutOptions.Center;
 				frs.HorizontalOptions = LayoutOptions.StartAndExpand;
@@ -884,13 +917,21 @@ namespace PickUpApp
 
 				slPickup.Children.Add (slp);
 				slPickup.Children.Add (detailGrid);
+
+				spacer = new BoxView ();
+				spacer.BackgroundColor = AppColor.AppGray;
+				spacer.HeightRequest = 10;
+				slPickup.Children.Add (spacer);
+
 				mainlayout.Children.Add (slPickup);
 
-			} else if (!t.IsPickup && !string.IsNullOrEmpty (t.DropOffMessageStatus)) {
+			} else if (!t.IsPickup && !string.IsNullOrEmpty (t.DropOffMessageStatus) && t.DropOffMessageStatus != "Canceled") {
+				detailGrid.BackgroundColor = Color.White;
+
 				StackLayout slDropoff = new StackLayout ();
 				slDropoff.Orientation = StackOrientation.Vertical;
 				slDropoff.BackgroundColor = Color.White;
-				slDropoff.HeightRequest = this.Height + 75;
+				slDropoff.HeightRequest = this.Height + 85;
 				slDropoff.WidthRequest = App.ScaledWidth - 20;
 				slDropoff.HorizontalOptions = LayoutOptions.Center;
 				mainlayout.BackgroundColor = AppColor.AppGray;
@@ -928,7 +969,13 @@ namespace PickUpApp
 
 				Label frs = new Label ();
 				frs.TextColor = Color.White;
-				frs.Text = "Fetch Request Sent";
+				if (t.RowType == "pickup") {
+					frs.FontAttributes = FontAttributes.Bold;
+					frs.Text = "You are dropping off!";					
+					responseInfo = "";
+				} else {
+					frs.Text = "Fetch Request Sent";
+				}
 				frs.HorizontalOptions = LayoutOptions.StartAndExpand;
 				frs.VerticalOptions = LayoutOptions.Center;
 				sld.Children.Add (frs);
@@ -947,6 +994,11 @@ namespace PickUpApp
 
 				slDropoff.Children.Add (sld);
 				slDropoff.Children.Add (detailGrid);
+
+				spacer = new BoxView ();
+				spacer.BackgroundColor = AppColor.AppGray;
+				spacer.HeightRequest = 10;
+				slDropoff.Children.Add (spacer);
 
 				mainlayout.Children.Add (slDropoff);
 			} else 

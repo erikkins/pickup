@@ -64,8 +64,17 @@ namespace PickUpApp.ViewModels
 						sched.IsNext = false;
 					}
 
-					//Todays.Add(sched);
-					tempTodayList.Add(sched);
+					//ok, check if this is a pickup row...then figure out if it's for pickup or dropoff
+					if (sched.RowType == "pickup")
+					{
+						if (!sched.IsPickup)
+						{
+							tempTodayList.Add(sched);
+						}
+					}
+					else{
+						tempTodayList.Add(sched);
+					}
 
 					//now see if we need to add a pickup
 					if (sched.TSPickup != TimeSpan.Zero)
@@ -83,8 +92,16 @@ namespace PickUpApp.ViewModels
 							pickup.IsNext = false;
 						}
 
-						//Todays.Add(pickup);
-						tempTodayList.Add(pickup);
+						if (sched.RowType == "pickup")
+						{
+							if (sched.IsPickup)
+							{
+								tempTodayList.Add(pickup);
+							}
+						}
+						else{												
+							tempTodayList.Add(pickup);
+						}
 					}
 
 

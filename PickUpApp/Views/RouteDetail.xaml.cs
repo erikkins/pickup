@@ -108,7 +108,13 @@ namespace PickUpApp
 				//await Navigation.PopAsync();
 			});
 			MessagingCenter.Subscribe<PickUpApp.ViewModels.TodayViewModel> (this, "TodayLoaded", async(t) => {
+				try{
 				await Navigation.PopAsync ();
+				}
+				catch (Exception ex)
+				{
+					//why does this periodically fail?
+				}
 				MessagingCenter.Unsubscribe<PickUpApp.ViewModels.TodayViewModel>(this, "TodayLoaded");
 			});
 

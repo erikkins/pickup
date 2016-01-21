@@ -48,12 +48,18 @@ namespace PickUpApp
 					switch (rm.PostUpdate)
 					{
 					case "today":
+						MessagingCenter.Send<string>("msgupdate", "NeedsRefresh");
+						/*
 						this.BindingContext = new TodayViewModel(App.client);
 						App.hudder.showHUD("Loading Today");
 						await ((TodayViewModel)BindingContext).ExecuteLoadItemsCommand();
 						App.hudder.hideHUD();
+						*/
 						break;
 					case "circlekids":
+
+						MessageViewModel bc = this.BindingContext as MessageViewModel;
+
 						this.BindingContext = new KidsViewModel(App.client);
 						//lblActivity.Text = "Loading Kids";
 						App.hudder.showHUD("Loading Kids");
@@ -64,6 +70,8 @@ namespace PickUpApp
 						App.hudder.showHUD("Loading Circle");
 						await ((MyCircleViewModel)BindingContext).ExecuteLoadItemsCommand();
 						App.hudder.hideHUD();
+
+						this.BindingContext = bc;
 						break;
 					}
 
