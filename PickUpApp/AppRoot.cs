@@ -84,6 +84,7 @@ namespace PickUpApp
 
 			App.GetPosition ().ConfigureAwait (false);
 
+
 			//var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
 			//I've received an invite
 			MessagingCenter.Subscribe<Invite> (this, "invite", (i) => {

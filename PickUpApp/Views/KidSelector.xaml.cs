@@ -40,6 +40,7 @@ namespace PickUpApp
 
 				//await this.ViewModel.ExecuteAddEditCommand();
 				//Navigation.PopAsync();
+				App.hudder.showHUD("Saving Kids");
 				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
 
 			}));

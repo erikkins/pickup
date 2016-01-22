@@ -61,9 +61,7 @@ namespace PickUpApp
 					//launch a screen that reminds them and lets them retry
 					await Navigation.PushModalAsync(new ValidationCheck());
 					return;
-				}
-
-
+				}					
 
 				App.hudder.showHUD("Loading stuff");
 

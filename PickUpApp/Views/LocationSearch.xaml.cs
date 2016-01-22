@@ -47,7 +47,7 @@ namespace PickUpApp
 			searchBar.TextColor = Color.Black;
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
-
+				App.hudder.showHUD("Adding Place");
 				try{
 					//we're just adding this place!
 					tempLocation.accountid = App.myAccount.id;

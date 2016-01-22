@@ -21,6 +21,21 @@ namespace PickUpApp
 //			abs.HorizontalOptions = LayoutOptions.FillAndExpand;
 //
 
+			if (!App.LaunchLocationRecorded) {
+				MessagingCenter.Subscribe<Location> (this, "LocationUpdated", (l) => {
+					LocationLog ll = new LocationLog ();
+					ll.Latitude = App.PositionLatitude;
+					ll.Longitude = App.PositionLongitude;
+					ll.LogType = "launch";
+					if (!string.IsNullOrEmpty (ll.Latitude) && !(string.IsNullOrEmpty (ll.Longitude))) {
+						this.ViewModel.ExecuteLocationLogCommand (ll).ConfigureAwait (false);
+						MessagingCenter.Unsubscribe<Location> (this, "LocationUpdated");
+						App.LaunchLocationRecorded = true;
+					}
+				});
+			}
+
+
 
 			StackLayout stacker = new StackLayout ();
 			stacker.Orientation = StackOrientation.Vertical;
@@ -110,7 +125,57 @@ namespace PickUpApp
 					Navigation.PushAsync(new ManageFetch(today));
 				}
 				else{
-					Navigation.PushAsync(new RouteDetail(today));
+					//need to calculate pin positions here
+					/*
+					 1 = Green
+					 2 = Pink Up
+					 3 = Pink Down
+					 4 = Grey Up
+					 5 = Grey Down
+					*/
+				
+					string pinstring = "";
+					int currentOrdinal = 0;
+					int tCount = 0;
+					foreach (Today t in ViewModel.Todays)
+					{						
+						if (t.id == today.id && t.IsPickup == today.IsPickup)
+						{
+							currentOrdinal = tCount;
+						}
+						tCount++;
+
+						ActivityState currentState = ActivityState.Future;
+						if (t.IsNext) {
+							currentState = ActivityState.Next;
+						}
+
+						if (t.PickupComplete || t.DropOffComplete) {
+							currentState = ActivityState.Complete;
+						}
+						switch (currentState) {
+						case ActivityState.Complete:
+							pinstring += "1";
+							break;
+						case ActivityState.Future:
+							if (t.IsPickup) {
+								pinstring += "4";
+							} else {
+								pinstring += "5";
+							}
+							break;
+						case ActivityState.Next:
+							if (t.IsPickup) {
+								pinstring += "2";
+							} else {
+								pinstring += "3";
+							}
+							break;
+						}
+					}
+
+
+					Navigation.PushAsync(new RouteDetail(today, pinstring, currentOrdinal));
 				}
 				lvToday.SelectedItem = null;
 				return;
@@ -413,7 +478,12 @@ namespace PickUpApp
 			//Navigation.PushAsync(new RebatesView(e.SelectedItem as Store));
 			//lstAccount.SelectedItem = null;
 		}
-
+		public enum ActivityState
+		{
+			Complete,
+			Next,
+			Future
+		}
 
 
 
@@ -494,12 +564,7 @@ namespace PickUpApp
 			}
 		}
 
-		private enum ActivityState
-		{
-			Complete,
-			Next,
-			Future
-		}
+
 
 		protected override void OnBindingContextChanged()
 		{
@@ -513,13 +578,13 @@ namespace PickUpApp
 				return;
 			}
 
-			ActivityState currentState = ActivityState.Future;
+			TodayView.ActivityState currentState = TodayView.ActivityState.Future;
 			if (t.IsNext) {
-				currentState = ActivityState.Next;
+				currentState = TodayView.ActivityState.Next;
 			}
 
 			if (t.PickupComplete || t.DropOffComplete) {
-				currentState = ActivityState.Complete;
+				currentState = TodayView.ActivityState.Complete;
 				this.IsEnabled = false; //shouldn't be able to click on an already complete cell
 			}
 
@@ -556,7 +621,7 @@ namespace PickUpApp
 
 
 			Color bgColor = AppColor.AppGray;
-			if (currentState == ActivityState.Next) {
+			if (currentState == TodayView.ActivityState.Next) {
 				bgColor = Color.White;
 			}
 
@@ -612,13 +677,13 @@ namespace PickUpApp
 
 			Image triangle = new Image ();
 			switch (currentState) {
-			case ActivityState.Complete:
+			case TodayView.ActivityState.Complete:
 				triangle.Source = trigreen;
 				break;
-			case ActivityState.Future:
+			case TodayView.ActivityState.Future:
 				triangle.Source = trigray;
 				break;
-			case ActivityState.Next:
+			case TodayView.ActivityState.Next:
 				triangle.Source = tripink;
 				break;
 			}
@@ -645,13 +710,13 @@ namespace PickUpApp
 				line.VerticalOptions = LayoutOptions.CenterAndExpand;
 				line.HorizontalOptions = LayoutOptions.Center;
 				switch (currentState) {
-				case ActivityState.Complete:
+				case TodayView.ActivityState.Complete:
 					line.Source = linegreen;
 					break;
-				case ActivityState.Future:
+				case TodayView.ActivityState.Future:
 					line.Source = linegray;
 					break;
-				case ActivityState.Next:
+				case TodayView.ActivityState.Next:
 					line.Source = linepink;
 					break;
 				}
@@ -662,17 +727,17 @@ namespace PickUpApp
 
 			Image pin = new Image ();
 			switch (currentState) {
-			case ActivityState.Complete:
+			case TodayView.ActivityState.Complete:
 				pin.Source = pingreen;
 				break;
-			case ActivityState.Future:
+			case TodayView.ActivityState.Future:
 				if (t.IsPickup) {
 					pin.Source = pinupgray;
 				} else {
 					pin.Source = pindowngray;
 				}
 				break;
-			case ActivityState.Next:
+			case TodayView.ActivityState.Next:
 				if (t.IsPickup) {
 					pin.Source = pinuppink;
 				} else {
@@ -725,13 +790,13 @@ namespace PickUpApp
 			//this means someone is picking up or dropping off
 			if ((string.IsNullOrEmpty (t.DropOffMessageID) && string.IsNullOrEmpty (t.PickupMessageID)) || t.DropOffMessageStatus=="Canceled" || t.PickupMessageStatus=="Canceled") {
 				//nobody's picking up or dropping off, so make the option to invite available
-				if (currentState != ActivityState.Complete) {
+				if (currentState != TodayView.ActivityState.Complete) {
 					Button b = new Button ();
 					switch (currentState) {
-					case ActivityState.Future:
+					case TodayView.ActivityState.Future:
 						b.Image = arrowgray;
 						break;
-					case ActivityState.Next:
+					case TodayView.ActivityState.Next:
 						b.Image = arrowpink;
 						break;
 					}

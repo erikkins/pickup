@@ -30,6 +30,7 @@ namespace PickUpApp
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
 				ViewModel.ReturnVerb = "DetailUpdate"; //trick it so that we don't update the parent view just yet...
 				await ViewModel.ExecuteAddEditCommand();
+				App.hudder.hideHUD();
 				await Navigation.PopAsync();
 				//MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 			});

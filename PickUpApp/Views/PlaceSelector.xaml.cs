@@ -30,6 +30,7 @@ namespace PickUpApp
 			_placeType = placeType;
 			NavigationPage.SetBackButtonTitle(this, "");
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, () => {
+				App.hudder.showHUD("Saving Place");
 				MessagingCenter.Send<Schedule>(_currentSchedule, "UpdatePlease");
 				//Navigation.PopAsync();
 			}));
@@ -67,13 +68,13 @@ namespace PickUpApp
 
 			if (selectedPlace == null) {
 				if (!string.IsNullOrEmpty (App.PositionLatitude) && !string.IsNullOrEmpty (App.PositionLongitude)) {
-					_mapCell = new MapCell (double.Parse (App.PositionLatitude), double.Parse (App.PositionLongitude), "No address selected");
+					_mapCell = new MapCell (double.Parse (App.PositionLatitude), double.Parse (App.PositionLongitude), "No address selected", "", 0);
 				} else {
-					_mapCell = new MapCell (41.8369, -87.6847, "No address selected");
+					_mapCell = new MapCell (41.8369, -87.6847, "No address selected", "", 0);
 				}
 				//_mapCell = new MapCell (double.Parse (currentSchedule.Latitude), double.Parse (currentSchedule.Longitude), currentSchedule.Address);
 			} else {
-				_mapCell = new MapCell (double.Parse(selectedPlace.Latitude), double.Parse(selectedPlace.Longitude), selectedPlace.Address);
+				_mapCell = new MapCell (double.Parse(selectedPlace.Latitude), double.Parse(selectedPlace.Longitude), selectedPlace.Address, "", 0);
 			}
 			ts.Add (_mapCell);
 			tvMap.Root.Add (ts);
@@ -129,6 +130,8 @@ namespace PickUpApp
 					//this is the loadEvent of AccountPlaceViewModel
 					AccountPlaceViewModel apvm = new AccountPlaceViewModel(App.client);
 					await apvm.ExecuteLoadItemsCommand();
+
+					App.hudder.hideHUD();
 
 					//but we want to mark this new place as the selected one!
 					foreach(AccountPlace place in ViewModel.AccountPlaces)

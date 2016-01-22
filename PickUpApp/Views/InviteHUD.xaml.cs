@@ -52,7 +52,7 @@ namespace PickUpApp
 				ts.Add (tc);
 			}
 
-			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude, ViewModel.ThisInvite.Address);
+			MapCell mc = new MapCell (ViewModel.ThisInvite.Latitude, ViewModel.ThisInvite.Longitude, ViewModel.ThisInvite.Address, "",0);
 			ts.Add (mc);
 		
 			mc.Tapped += Mc_Tapped;
@@ -186,7 +186,7 @@ namespace PickUpApp
 				ac.BindingContext = this.BindingContext;
 
 				await ViewModel.UpdateTraffic();
-				mc = new MapCell(ViewModel.ThisInvite.ReturnToLatitude, ViewModel.ThisInvite.ReturnToLongitude, ViewModel.ThisInvite.Address);
+				mc = new MapCell(ViewModel.ThisInvite.ReturnToLatitude, ViewModel.ThisInvite.ReturnToLongitude, ViewModel.ThisInvite.Address, "", 0);
 				mc.BindingContext = this.BindingContext;
 				//do we have to remove the old async delegate?
 				//mc.Tapped -= Mc_Tapped;

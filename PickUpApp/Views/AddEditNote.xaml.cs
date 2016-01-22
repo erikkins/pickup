@@ -39,6 +39,7 @@ namespace PickUpApp
 			stacker.Children.Add (note);
 
 			this.ToolbarItems.Add (new ToolbarItem ("Save", "", () => {
+				App.hudder.showHUD("Saving Note");
 				MessagingCenter.Send<Schedule>(CurrentSchedule, "UpdatePlease");
 				//Navigation.PopAsync();
 			}));

@@ -64,7 +64,7 @@ namespace PickUpApp
 		private static string _positionLatitude = string.Empty;
 		private static string _positionLongitude = string.Empty;
 		public static bool IsUpdatingPosition;
-
+		public static bool LaunchLocationRecorded;
 
 		public App ()
 		{
@@ -196,6 +196,10 @@ namespace PickUpApp
 							PositionStatus = t.Result.Timestamp.ToString("G");
 							PositionLatitude = t.Result.Latitude.ToString("N4");
 							PositionLongitude = t.Result.Longitude.ToString("N4");
+							Location l = new Location();
+							l.Latitude = PositionLatitude;
+							l.Longitude = PositionLongitude;
+							MessagingCenter.Send<Location>(l, "LocationUpdated");
 						}
 					}, _scheduler);
 		}
@@ -209,6 +213,7 @@ namespace PickUpApp
 
 		private static void OnPositionChanged(object sender, PositionEventArgs e)
 		{
+			
 			System.Diagnostics.Debug.WriteLine ("Changed");
 			////			BeginInvokeOnMainThread (() => {
 			////				ListenStatus.Text = e.Position.Timestamp.ToString("G");

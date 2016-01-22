@@ -12,7 +12,10 @@ namespace PickUpApp
 {
 	public partial class RouteDetail : ContentPage
 	{
-		public RouteDetail (Today currentToday)
+
+		private System.Threading.CancellationTokenSource cancellationToken = new System.Threading.CancellationTokenSource ();
+
+		public RouteDetail (Today currentToday, string PinString, int CurrentOrdinal)
 		{
 			InitializeComponent ();
 			this.Padding = new Thickness(0, Device.OnPlatform(0, 0, 0), 0, 0);
@@ -24,7 +27,7 @@ namespace PickUpApp
 			tv.HasUnevenRows = true;
 			TableSection ts = new TableSection ();
 		
-			MapCell mc = new MapCell(double.Parse(currentToday.Latitude),double.Parse(currentToday.Longitude), currentToday.Address);
+			MapCell mc = new MapCell(double.Parse(currentToday.Latitude),double.Parse(currentToday.Longitude), currentToday.Address, PinString, CurrentOrdinal);
 			ts.Add (mc);
 			ts.Add (new RouteCell ());
 
@@ -47,12 +50,49 @@ namespace PickUpApp
 			ds.StartingLocation = start;
 			ds.EndingLocation = end;
 			ds.CalculateDriveTime ().ConfigureAwait (true);
-			PickUpApp.fflog logentry = new fflog("BingLocation for " + currentToday.id + " from RouteDetail");
-			this.ViewModel.ExecuteLogCommand(logentry);
+			//PickUpApp.fflog logentry = new fflog("BingLocation for " + currentToday.id + " from RouteDetail");
+			//this.ViewModel.ExecuteLogCommand(logentry);
+
+
+			//log them right now
+			LocationLog ll = new LocationLog();
+			ll.Latitude = App.PositionLatitude;
+			ll.Longitude = App.PositionLongitude;
+			ll.LogType = "routedetail";
+			ll.ScheduleID = currentToday.id;
+			if (currentToday.IsPickup)
+			{
+				//picking up
+				if (!string.IsNullOrEmpty(currentToday.PickupMessageID))
+				{
+					ll.MessageID = currentToday.PickupMessageID;
+					ll.MessageIDType = "pickup";
+				}
+			}
+			else{
+				if (!string.IsNullOrEmpty(currentToday.DropOffMessageID))
+				{
+					ll.MessageID = currentToday.DropOffMessageID;
+					ll.MessageIDType = "dropoff";
+				}
+			}
+			if (!string.IsNullOrEmpty(ll.Latitude) && !(string.IsNullOrEmpty(ll.Longitude)))
+			{
+				this.ViewModel.ExecuteLocationLogCommand(ll).ConfigureAwait(false);
+			}
+
+			//every 30 seconds we're on this screen, log the coordinates
+			logLocationTimer (currentToday);		
+			//make sure we stop the timer!
+			this.Disappearing += delegate(object sender, EventArgs e) {
+				cancellationToken.Cancel();
+			};
+
 
 			TrafficCell tc = new TrafficCell (0);
 			tc.BindingContext = ds;
 			ts.Add (tc);
+
 //			if (currentToday.IsPickup) {
 //				if (ds.TravelTime != (decimal)currentToday.EndPlaceTravelTime) {
 //					//disparity
@@ -68,8 +108,10 @@ namespace PickUpApp
 
 
 			//really this should only be shown if this is a fetch request
-			if (!string.IsNullOrEmpty (currentToday.Requestor)) {
-				ts.Add (new ContactCell ());
+			if (!string.IsNullOrEmpty(currentToday.DropOffMessageID) || !string.IsNullOrEmpty(currentToday.PickupMessageID)) {
+				if (!string.IsNullOrEmpty (currentToday.ViaPhone)) {
+					ts.Add (new ContactCell ());
+				}
 			}
 
 			if (!string.IsNullOrEmpty (currentToday.LocationPhone)) {
@@ -125,6 +167,58 @@ namespace PickUpApp
 		{
 			get { return this.BindingContext as RouteDetailViewModel; }
 			set { this.BindingContext = value; }
+		}
+
+		private void logLocationTimer(Today currentToday)
+		{
+			Device.StartTimer(TimeSpan.FromSeconds(30), () =>
+				{
+
+					if (cancellationToken.IsCancellationRequested)
+					{
+						return false;
+					}
+
+					System.Threading.Tasks.Task.Factory.StartNew(async () =>
+						{
+							LocationLog ll = new LocationLog();
+							ll.Latitude = App.PositionLatitude;
+							ll.Longitude = App.PositionLongitude;
+							ll.LogType = "routedetail";
+							ll.ScheduleID = currentToday.id;
+							if (currentToday.IsPickup)
+							{
+								//picking up
+								if (!string.IsNullOrEmpty(currentToday.PickupMessageID))
+								{
+									ll.MessageID = currentToday.PickupMessageID;
+									ll.MessageIDType = "pickup";
+								}
+							}
+							else{
+								if (!string.IsNullOrEmpty(currentToday.DropOffMessageID))
+								{
+									ll.MessageID = currentToday.DropOffMessageID;
+									ll.MessageIDType = "dropoff";
+								}
+							}
+							if (!string.IsNullOrEmpty(ll.Latitude) && !(string.IsNullOrEmpty(ll.Longitude)))
+							{
+								await this.ViewModel.ExecuteLocationLogCommand(ll);
+							}
+							// Switch back to the UI thread to update the UI
+							Device.BeginInvokeOnMainThread(() =>
+								{
+									// Update the UI
+									// ...
+									// Now repeat by scheduling a new request
+									logLocationTimer(currentToday);
+								});
+						});
+
+					// Don't repeat the timer (we will start a new timer when the request is finished)
+					return false;
+				});
 		}
 	}
 
@@ -214,7 +308,20 @@ namespace PickUpApp
 			detail.HorizontalOptions = LayoutOptions.Start;
 
 			Image icon = new Image ();
-			icon.Source = "icn_pin_up_pink.png";
+			if (t.IsNext) {
+				if (t.IsPickup) {
+					icon.Source = "icn_pin_up_pink.png";
+				} else {
+					icon.Source = "icn_pin_dwn_pink.png";
+				}
+			} else {
+				if (t.IsPickup) {
+					icon.Source = "icn_pin_up_grey.png";
+				} else {
+					icon.Source = "icn_pin_dwn_grey.png";
+				}
+			}
+			//icon.Source = "icn_pin_up_pink.png";
 			icon.HorizontalOptions = LayoutOptions.Start;
 			detail.Children.Add (icon);
 
@@ -326,12 +433,16 @@ namespace PickUpApp
 		private ListMap _theMap;
 		string _address;
 		private Label whiteaddress;
+		private string _pinstring;
+		private int _currentOrdinal;
 
-		public MapCell (double latitude, double longitude, string address)
+		public MapCell (double latitude, double longitude, string address, string Pinstring, int CurrentOrdinal)
 		{
 			_latitude = latitude;
 			_longitude = longitude;
 			_address = address;
+			_pinstring = Pinstring;
+			_currentOrdinal = CurrentOrdinal;
 		}
 
 		public void Navigate(double latitude, double longitude, string address)
@@ -378,6 +489,78 @@ namespace PickUpApp
 			}
 
 
+		}
+
+
+		private Rectangle getOrdinalRect(int myordinal, int selectedOrdinal, int totalCount)
+		{
+			double pinStart = (App.ScaledWidth/2) - 10.5;
+			Rectangle rectZero = new Rectangle(pinStart, 10, 21, 27);
+			Rectangle rectMinusOne = new Rectangle(pinStart - 30, 10, 21, 27);
+			Rectangle rectMinusTwo = new Rectangle(pinStart - 60, 10, 21, 27);
+			Rectangle rectMinusThree = new Rectangle(pinStart - 90, 10, 21, 27);
+			Rectangle rectMinusFour = new Rectangle(pinStart - 120, 10, 21, 27);
+			Rectangle rectMinusFive = new Rectangle(pinStart - 150, 10, 21, 27);
+
+			Rectangle rectPlusOne = new Rectangle(pinStart + 30, 10, 21, 27);
+			Rectangle rectPlusTwo = new Rectangle(pinStart + 60, 10, 21, 27);
+			Rectangle rectPlusThree = new Rectangle(pinStart + 90, 10, 21, 27);
+			Rectangle rectPlusFour = new Rectangle(pinStart + 120, 10, 21, 27);
+			Rectangle rectPlusFive = new Rectangle(pinStart + 150, 10, 21, 27);
+
+			if (myordinal == selectedOrdinal) {
+				return rectZero;
+			}
+
+			if (myordinal < selectedOrdinal) {
+				//this is the minusrects
+				switch (selectedOrdinal - myordinal) {
+				case 1:
+					return rectMinusOne;
+					//break;
+				case 2:
+					return rectMinusTwo;
+					//break;
+				case 3:
+					return rectMinusThree;
+					//break;
+				case 4:
+					return rectMinusFour;
+					//break;
+				case 5:
+					return rectMinusFive;
+					//break;
+				default:
+					return Rectangle.Zero;
+					//break;
+				}
+			}
+			else{
+				//these are the pluses
+				switch (myordinal -selectedOrdinal)
+				{
+				case 1:
+					return rectPlusOne;
+					//break;
+				case 2:
+					return rectPlusTwo;
+					//break;
+				case 3:
+					return rectPlusThree;
+					//break;
+				case 4:
+					return rectPlusFour;
+					//break;
+				case 5:
+					return rectPlusFive;
+					//break;
+				default:
+					return Rectangle.Zero;
+					//break;
+				}
+			}
+
+			//return Rectangle.Zero;
 		}
 
 		protected override void OnBindingContextChanged()
@@ -437,31 +620,85 @@ namespace PickUpApp
 			sl.Children.Add (header, new Rectangle(0,0,App.ScaledWidth, 45), AbsoluteLayoutFlags.None);
 
 
-			//let's figure out Rects for all the positions -5 through 0 and +5
-			double pinStart = (App.ScaledWidth/2) - 10.5;
-			Rectangle rectZero = new Rectangle(pinStart, 10, 21, 27);
-			Rectangle rectMinusOne = new Rectangle(pinStart - 30, 10, 21, 27);
-			Rectangle rectPlusOne = new Rectangle(pinStart + 30, 10, 21, 27);
-			Rectangle rectPlusTwo = new Rectangle(pinStart + 60, 10, 21, 27);
 
-			Image imgPin = new Image ();
-			imgPin.Source = "icn_pin_check_sm.png";
+			//reality is that we need some cleansing here...at most we have 11 positions...the current one and 5 to either side
+			//if the pinstring has more than 11, we need to find where our 11 should be
 
-			//looks like we need to manually place everything for the absolutelayout (duh)
-			sl.Children.Add(imgPin, rectMinusOne, AbsoluteLayoutFlags.None);
+			if (_pinstring.Length > 11) {
+				//where in the longer string does our selected ordinal sit?  how many should be behind it, how many in front of it?
+				if (_currentOrdinal < 11) {
+					if (_currentOrdinal > 5) {
+						_pinstring = _pinstring.Substring (_currentOrdinal - 5, 11);
+						_currentOrdinal = 5;
+						//_currentOrdinal -= 5;
+					} else {
+						_pinstring = _pinstring.Substring (0, 11);
+					}
+
+				} else {
+
+					//first get our startpoint (this is easy, since it's always 5 back
+					int start = _currentOrdinal - 5;			
+
+					//now see how far forward we can go
+					int end = start + 11;
+					if ((start + end) > _pinstring.Length ) {
+						end = _pinstring.Length - start;
+					}
+					_pinstring = _pinstring.Substring (start, end);
+					_currentOrdinal = 5;
+				}
+			}
+				
+			for (int i = 0; i < _pinstring.Length; i++) {
+
+				string cs = _pinstring.Substring(i, 1);
+				string imgsrc = "";
+				switch (cs)
+				{
+					case "1":
+					imgsrc = "icn_pin_check_sm.png";
+						break;
+					case "2":
+					imgsrc = "icn_pin_up_pink_sm.png";
+						break;
+					case "3":
+					imgsrc = "icn_pin_dwn_pink_sm.png";
+						break;
+					case "4":
+					imgsrc = "icn_pin_up_grey_sm.png";
+						break;
+					case "5":
+					imgsrc = "icn_pin_dwn_grey_sm.png";
+						break;
+				}
+				Image img = new Image ();
+				img.Source = imgsrc;
+				Rectangle thisRect = getOrdinalRect (i, _currentOrdinal, _pinstring.Length);
+				if (thisRect != Rectangle.Zero) {
+					sl.Children.Add (img, thisRect, AbsoluteLayoutFlags.None);
+				}
+			}
 
 
-			Image imgUp = new Image ();
-			imgUp.Source = "icn_pin_dwn_grey_sm.png";
-			sl.Children.Add (imgUp, rectPlusTwo, AbsoluteLayoutFlags.None);
 
-			Image imgDown = new Image ();
-			imgDown.Source = "icn_pin_up_grey_sm.png";
-			sl.Children.Add (imgDown, rectPlusOne, AbsoluteLayoutFlags.None);
+//			Image imgPin = new Image ();
+//			imgPin.Source = "icn_pin_check_sm.png";
+//			sl.Children.Add(imgPin, rectMinusOne, AbsoluteLayoutFlags.None);
+//
+//			Image imgUp = new Image ();
+//			imgUp.Source = "icn_pin_dwn_grey_sm.png";
+//			sl.Children.Add (imgUp, rectPlusTwo, AbsoluteLayoutFlags.None);
+//
+//			Image imgDown = new Image ();
+//			imgDown.Source = "icn_pin_up_grey_sm.png";
+//			sl.Children.Add (imgDown, rectPlusOne, AbsoluteLayoutFlags.None);
+//
+//			Image imgPink = new Image ();
+//			imgPink.Source = "icn_pin_dwn_pink_sm.png";
+//			sl.Children.Add (imgPink, rectZero, AbsoluteLayoutFlags.None);
 
-			Image imgPink = new Image ();
-			imgPink.Source = "icn_pin_dwn_pink_sm.png";
-			sl.Children.Add (imgPink, rectZero, AbsoluteLayoutFlags.None);
+
 
 			Image imgPurple = new Image ();
 			imgPurple.Source = "ui_tri_purple.png";
@@ -584,7 +821,7 @@ namespace PickUpApp
 			contactName.FontFamily = Device.OnPlatform ("HelveticaNeue-Light", "", "");
 			contactName.FontSize = 22;
 			contactName.HorizontalOptions = LayoutOptions.StartAndExpand;
-			contactName.Text = t.Requestor;
+			contactName.Text = t.Via;
 			contactName.TranslationX = 5;
 			slContact.Children.Add (contactName);
 
@@ -623,7 +860,7 @@ namespace PickUpApp
 			slMain.Children.Add (btnPhone);
 			btnPhone.Clicked += async delegate(object sender, EventArgs e) {
 				//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Call", "Cancel");
-				App.Device.PhoneService.DialNumber(t.RequestorPhone);
+				App.Device.PhoneService.DialNumber(t.ViaPhone);
 
 			};
 				

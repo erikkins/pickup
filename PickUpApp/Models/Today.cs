@@ -642,6 +642,12 @@ namespace PickUpApp
 					_via = value; NotifyPropertyChanged ();
 				} } }
 
+		private string _viaphone;
+		[JsonProperty(PropertyName = "viaphone")]
+		public string ViaPhone { get{return _viaphone; } set{if (value != _viaphone) {
+					_viaphone = value; NotifyPropertyChanged ();
+				} } }
+
 		public bool ShouldSerializeVia()
 		{
 			return false;

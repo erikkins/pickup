@@ -99,6 +99,26 @@ namespace PickUpApp.ViewModels
 
 		#endregion
 
+		#region locationlog
+		private Command locationLogCommand;
+		public Command LocationLogCommand
+		{
+			get { return locationLogCommand ?? (locationLogCommand = new Command<LocationLog>(async (f) => await ExecuteLocationLogCommand(f))); }
+		}
+
+		public virtual async Task ExecuteLocationLogCommand(LocationLog LogEntry)
+		{
+			try{
+				var logger =  client.GetTable<LocationLog> ();
+				await logger.InsertAsync (LogEntry);
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
+
+		#endregion
+
 		#region LoadItems
 		private Command loadItemsCommand;
 		public Command LoadItemsCommand
