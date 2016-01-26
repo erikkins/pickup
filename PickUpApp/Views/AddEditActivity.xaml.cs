@@ -83,7 +83,34 @@ namespace PickUpApp
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
 				//fromDone = true;
-				await this.ViewModel.ExecuteAddEditCommand();
+
+				App.hudder.showHUD("Preemptive check...");
+				await ViewModel.CheckPreemptive(CurrentActivity.Frequency);
+				string tester = "";
+				foreach (Preemptive thispe in ViewModel.Preemptives)
+				{
+					//check if the times clash at all
+					if (CurrentActivity.StartTime.Ticks < thispe.EndTimeTicks)
+					{
+						tester += CurrentActivity.Activity + " starts before " + thispe.Activity + " ends" + Environment.NewLine;
+					}
+					if (CurrentActivity.EndTime.Ticks > thispe.DropoffDiff.Ticks)
+					{
+						tester += CurrentActivity.Activity + " ends after " + thispe.Activity + " on ";
+					}
+				}
+				App.hudder.hideHUD();
+				if (tester.Length > 0)
+				{
+					bool ret = await DisplayAlert("Preemptive Check", tester, "Continue", "Cancel");
+					if (ret)
+					{
+						await this.ViewModel.ExecuteAddEditCommand();
+					}
+				}
+				else{
+					await this.ViewModel.ExecuteAddEditCommand();
+				}
 				//await Navigation.PopAsync();
 			}));
 				

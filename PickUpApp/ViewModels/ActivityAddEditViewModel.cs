@@ -18,6 +18,7 @@ namespace PickUpApp
 			//Kids = new ObservableCollection<Kid> ();
 			KidSchedules = new TrulyObservableCollection<KidSchedule> ();
 			BlackoutDates = new TrulyObservableCollection<BlackoutDate> ();
+			Preemptives = new TrulyObservableCollection<Preemptive> ();
 			LoadInitialCommand.Execute(null);						
 		}
 
@@ -66,6 +67,16 @@ namespace PickUpApp
 				NotifyPropertyChanged ();
 				//NotifyPropertyChanged ("BlackoutDates");
 				NotifyPropertyChanged ("Selected");
+			}
+		}
+
+		private TrulyObservableCollection<Preemptive>_preemptives;
+		public TrulyObservableCollection<Preemptive>Preemptives
+		{
+			get { return _preemptives; }
+			set{
+				_preemptives = value;
+				NotifyPropertyChanged ();
 			}
 		}
 
@@ -298,7 +309,41 @@ namespace PickUpApp
 			IsLoading = false; //redundant
 		}
 
+		#region preemptive
+		private Command checkPreemptiveCommand;
+		public Command CheckPreemptiveCommand
+		{
+			get { return checkPreemptiveCommand ?? (checkPreemptiveCommand = new Command<string>(async (p) => await CheckPreemptive(p))); }
+		}
+		public async System.Threading.Tasks.Task CheckPreemptive(string days)
+		{
+			if (IsLoading) return;
+			IsLoading = true;
+			try{
+				//seems silly to have to load this again...better way?
+				Preemptive p = new Preemptive();
+				p.Days = days;
 
+				List<Preemptive> bPre = await client.InvokeApiAsync<Preemptive, List<Preemptive>>("checkpreemptive", p);
+				Preemptives.Clear();
+				foreach (Preemptive pe in bPre)
+				{
+					Preemptives.Add(pe);
+				}
+
+			}
+			catch(Exception ex) {
+				var page = new ContentPage();
+				var result = page.DisplayAlert("Error", "Error loading data preemptive async. Please check connectivity and try again.", "OK", "Cancel");
+				System.Diagnostics.Debug.WriteLine (ex.Message + result.Status.ToString ());
+
+			}
+			finally{
+				IsLoading = false;
+			}
+			IsLoading = false;  //redundant
+		}
+		#endregion
 
 
 		#region loadKids
