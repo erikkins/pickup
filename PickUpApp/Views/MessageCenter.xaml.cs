@@ -32,7 +32,7 @@ namespace PickUpApp
 			MessagingCenter.Subscribe<string> (this, "messagesloaded", (s) => {
 				elv.IsRefreshing = false;
 
-
+				App.hudder.hideHUD();
 				if (App.myMessages.Count == 0)
 				{
 					Navigation.PopAsync();
@@ -82,6 +82,7 @@ namespace PickUpApp
 			});
 
 			MessagingCenter.Subscribe<RespondMessage> (this, "messageresponse", async(mr) => {
+				App.hudder.showHUD("Saving Message");
 				this.ViewModel.CurrentMessageResponse = mr;
 			    await this.ViewModel.ExecuteAddEditCommand();
 			});

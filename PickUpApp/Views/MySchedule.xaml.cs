@@ -22,17 +22,23 @@ namespace PickUpApp
 					k.Selected = false;
 				}
 
-				if (editor != null)
-				{
-				MessagingCenter.Unsubscribe<Schedule> (editor, "UpdatePlease");
-				MessagingCenter.Unsubscribe<Schedule> (editor, "ScheduleAdded");
-				MessagingCenter.Unsubscribe<Schedule> (editor, "DetailUpdate");
-				MessagingCenter.Unsubscribe<Schedule> (editor, "RefreshComplete");
+				try{
+
+					if (editor != null)
+					{
+					MessagingCenter.Unsubscribe<Schedule> (editor, "UpdatePlease");
+					MessagingCenter.Unsubscribe<Schedule> (editor, "ScheduleAdded");
+					MessagingCenter.Unsubscribe<Schedule> (editor, "DetailUpdate");
+					MessagingCenter.Unsubscribe<Schedule> (editor, "RefreshComplete");
+					}
+					editor = new AddEditActivity(new Schedule());
+
+					Navigation.PushAsync(editor);
 				}
-				editor = new AddEditActivity(new Schedule());
-
-				Navigation.PushAsync(editor);
-
+				catch(Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine(ex);
+				}
 //				Schedule s = new Schedule ();
 //				s.AtWhen = Util.RoundUp (DateTime.Now, TimeSpan.FromMinutes (30));
 //				s.StartTimeTicks = s.AtWhen.TimeOfDay.Ticks;

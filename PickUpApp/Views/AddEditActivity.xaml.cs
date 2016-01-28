@@ -84,6 +84,19 @@ namespace PickUpApp
 				//pop the calendar window
 				//fromDone = true;
 
+				//before we even begin to try to save, let's make sure we atleast have a name and days
+				if (string.IsNullOrEmpty(CurrentActivity.Activity))
+				{
+					await DisplayAlert("Oops", "You must have Activity name!", "OK");
+					return;
+				}
+				if (string.IsNullOrEmpty(CurrentActivity.Frequency))
+				{
+					await DisplayAlert("Oops", "You must select atleast one day for " + CurrentActivity.Activity, "OK");
+					return;
+				}
+
+
 				App.hudder.showHUD("Preemptive check...");
 				await ViewModel.CheckPreemptive(CurrentActivity.Frequency);
 				string tester = "";
@@ -105,10 +118,12 @@ namespace PickUpApp
 					bool ret = await DisplayAlert("Preemptive Check", tester, "Continue", "Cancel");
 					if (ret)
 					{
+						App.hudder.showHUD("Saving Activity");
 						await this.ViewModel.ExecuteAddEditCommand();
 					}
 				}
 				else{
+					App.hudder.showHUD("Saving Activity");
 					await this.ViewModel.ExecuteAddEditCommand();
 				}
 				//await Navigation.PopAsync();

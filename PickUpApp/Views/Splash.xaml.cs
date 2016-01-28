@@ -23,7 +23,7 @@ namespace PickUpApp
 				if (ex.GetType().Name == "WebException")
 				{
 					//anyway to add some retry logic here?
-					bool shouldRetry = await DisplayAlert("Cannot Connect", "Please check your internet connection", "Retry", "Cancel");
+					bool shouldRetry = await DisplayAlert("Cannot Connect [001]", "Please check your internet connection", "Retry", "Cancel");
 					if (shouldRetry)
 					{
 						await ViewModel.ExecuteLoadItemsCommand(App.client.CurrentUser.UserId).ConfigureAwait(false);
@@ -33,7 +33,21 @@ namespace PickUpApp
 
 					}
 				}
-				else{
+				else if (ex.GetType().Name == "TaskCanceledException")
+				{
+					//what happened here?
+					bool shouldRetry = await DisplayAlert("Cannot Connect [002]", "Please check your internet connection", "Retry", "Cancel");
+					if (shouldRetry)
+					{
+						await ViewModel.ExecuteLoadItemsCommand(App.client.CurrentUser.UserId).ConfigureAwait(false);
+					}
+					else{
+						//kill the app?
+
+					}
+				}
+				else
+				{
 				await DisplayAlert("Error", ex.Message, "OK");
 				}
 			});
