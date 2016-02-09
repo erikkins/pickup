@@ -243,6 +243,7 @@
     <Compile Include="Platform\AndroidSpline.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="Platform\AndroidDeviceInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

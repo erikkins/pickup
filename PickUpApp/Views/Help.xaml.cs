@@ -56,6 +56,13 @@ namespace PickUpApp
 			fb.WidthRequest = 100;
 			stacker.Children.Add (fb);
 
+
+			Label lblVersion = new Label ();
+			lblVersion.TextColor = AppColor.AppPurple;
+			lblVersion.VerticalOptions = LayoutOptions.EndAndExpand;
+			lblVersion.HorizontalOptions = LayoutOptions.Center;
+			lblVersion.Text = DependencyService.Get<IDeviceInfo> ().AppVersion;
+			stacker.Children.Add (lblVersion);
 		}
 
 

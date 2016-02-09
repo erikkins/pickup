@@ -200,8 +200,8 @@ namespace PickUpApp
 				CurrentSchedule.EndPlaceDistance = Math.Round(distance, 2);
 				IsLoading = false;
 
-				PickUpApp.fflog logentry = new fflog("BingLocation for " + selectedPlace.id + " from AddEditActivity");
-				this.ExecuteLogCommand(logentry);
+				//PickUpApp.fflog logentry = new fflog("BingLocation for " + selectedPlace.id + " from AddEditActivity");
+				//this.ExecuteLogCommand(logentry);
 			}
 			catch(Exception ex)
 			{

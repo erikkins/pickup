@@ -104,7 +104,29 @@ namespace PickUpApp
 //						//return jsonDoc;
 //					}
 //				}
+
+				//ok. we should really do this with Bing...atleast settle on one!!!
+
+				//Bing just doesn't have a good Location/Local Business/POI search right now
+//				PortableRest.RestRequest req = new PortableRest.RestRequest ("Locations", System.Net.Http.HttpMethod.Get);
+//				req.AddQueryString ("key", "AiZzYU7682t3jrRWVPS6x139Nwpjxs0LXJy5QLweCP2-mLNPoHYWcTUREnntk_JA");
+//				req.AddQueryString("query", searchBar.Text);
+//				PortableRest.RestClient rc = new PortableRest.RestClient ();			
+//				rc.UserAgent = "PickUp";
+//				rc.BaseUrl = "http://dev.virtualearth.net/REST/V1/";
+//				PortableRest.RestResponse<string> resp = await rc.SendAsync<string>(req, default(System.Threading.CancellationToken));
+//				//var bingresponse = Newtonsoft.Json.Linq.JObject.Parse (resp.Content);
+//
+//				BingResponse br = Newtonsoft.Json.JsonConvert.DeserializeObject<BingResponse>(resp.Content);
+//				foreach (BingResourceSet brs in br.ResourceSets)
+//				{
+//
+//				}
+
+
 					
+
+
 
 				using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
 				{
@@ -123,6 +145,10 @@ namespace PickUpApp
 					//var yelpresponse = Newtonsoft.Json.Linq.JObject.Parse (System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
 					//System.Diagnostics.Debug.WriteLine(result);
 				}
+
+
+
+
 			};
 
 			lstSearch.ItemSelected += delegate(object sender, SelectedItemChangedEventArgs e) {

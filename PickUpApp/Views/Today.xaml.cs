@@ -360,19 +360,19 @@ namespace PickUpApp
 					return parent.Height /2 - lblNone.Height / 2;
 				}));
 					
-			lvToday.BindingContextChanged +=  delegate(object sender, EventArgs e) {
-				if (ViewModel == null)
-				{
-					return;
-				}
-				if (ViewModel.Todays.Count == 0)
-				{
-					lblNone.IsVisible = true;
-				}
-				else{
-					lblNone.IsVisible = false;
-				}
-			};
+//			lvToday.BindingContextChanged +=  delegate(object sender, EventArgs e) {
+//				if (ViewModel == null)
+//				{
+//					return;
+//				}
+//				if (ViewModel.Todays.Count == 0)
+//				{
+//					lblNone.IsVisible = true;
+//				}
+//				else{
+//					lblNone.IsVisible = false;
+//				}
+//			};
 
 			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
 				lvToday.IsRefreshing = false;

@@ -47,6 +47,39 @@ namespace PickUpApp
 
 	public class BingResource: BaseModel
 	{
+		private string _name;
+		[JsonProperty(PropertyName = "name")]
+		public string Name
+		{
+			get { return _name; }
+			set {
+				_name = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		public BingAddress _address;
+		[JsonProperty(PropertyName = "address")]
+		public BingAddress Address
+		{
+			get { return _address; }
+			set{
+				_address = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		public BingPoint _point;
+		[JsonProperty(PropertyName="point")]
+		public BingPoint Point
+		{
+			get { return _point; }
+			set{
+				_point = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
 		private string _distUnit;
 		[JsonProperty(PropertyName = "distanceUnit")]
 		public string DistanceUnit
@@ -308,6 +341,138 @@ namespace PickUpApp
 			get { return _text; }
 			set {
 				_text = value;
+				NotifyPropertyChanged ();
+			}
+		}
+	}
+
+	public class BingAddress:BaseModel
+	{
+		private string _adminDistrict;
+		[JsonProperty(PropertyName = "adminDistrict")]
+		public string AdminDistrict
+		{
+			get { return _adminDistrict; }
+			set {
+				_adminDistrict = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private string _adminDistrict2;
+		[JsonProperty(PropertyName = "adminDistrict2")]
+		public string AdminDistrict2
+		{
+			get { return _adminDistrict2; }
+			set {
+				_adminDistrict2 = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private string _countryRegion;
+		[JsonProperty(PropertyName = "countryRegion")]
+		public string CountryRegion
+		{
+			get { return _countryRegion; }
+			set {
+				_countryRegion = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private string _formattedAddress;
+		[JsonProperty(PropertyName = "formattedAddress")]
+		public string FormattedAddress
+		{
+			get { return _formattedAddress; }
+			set {
+				_formattedAddress = value;
+				NotifyPropertyChanged ();
+			}
+		}
+			
+		private string _locality;
+		[JsonProperty(PropertyName = "locality")]
+		public string Locality
+		{
+			get { return _locality; }
+			set {
+				_locality = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private string _neighborhood;
+		[JsonProperty(PropertyName = "neighborhood")]
+		public string Neighborhood
+		{
+			get { return _neighborhood; }
+			set {
+				_neighborhood = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private string _landmark;
+		[JsonProperty(PropertyName = "landmark")]
+		public string Landmark
+		{
+			get { return _landmark; }
+			set {
+				_landmark = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		
+	}
+
+	public class BingPoint:BaseModel
+	{
+		private string _pointType;
+		[JsonProperty(PropertyName = "pointType")]
+		public string PointType
+		{
+			get { return _pointType; }
+			set {
+				_pointType = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private double[] _coord;
+		[JsonProperty(PropertyName = "coordinates")]
+		public double[] Coordinates
+		{
+			get { return _coord; }
+			set {
+				_coord = value;
+				NotifyPropertyChanged ();
+			}
+		}
+	}
+
+	public class BingCoordinates:BaseModel
+	{
+		private string _latitude;
+		[JsonProperty(PropertyName = "latitude")]
+		public string Latitude
+		{
+			get { return _latitude; }
+			set {
+				_latitude = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
+		private string _longitude;
+		[JsonProperty(PropertyName = "longitude")]
+		public string Longitude
+		{
+			get { return _longitude; }
+			set {
+				_longitude = value;
 				NotifyPropertyChanged ();
 			}
 		}
