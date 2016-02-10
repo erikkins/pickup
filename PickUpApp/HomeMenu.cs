@@ -69,9 +69,11 @@ namespace PickUpApp
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new TodayView()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
 					//this is a special page because it's the first hosted page and therefore receives
 					//its command to load from external sources
-					TodayView tv = (TodayView)((NavigationPage)((MasterDetailPage)this.Parent.Parent).Detail).CurrentPage;
-					tv.ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
-					//listView.SelectedItem =  null;
+
+					//seems like there's no need here...redundnant
+					//TodayView tv = (TodayView)((NavigationPage)((MasterDetailPage)this.Parent.Parent).Detail).CurrentPage;
+					//tv.ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+
 					break;
 				case "Activities":
 					((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new MySchedule()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };

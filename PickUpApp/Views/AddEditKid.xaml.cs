@@ -22,6 +22,7 @@ namespace PickUpApp
 		SimplePickerCell stcGender;
 		SimpleImageCell sicPic;
 		SimpleBoundTextCell stcAllergies;
+		SimpleBoundTextCell stcSecretWord;
 
 		public AddEditKid (Kid selectedKid)
 		{
@@ -89,6 +90,9 @@ namespace PickUpApp
 			stcAllergies = new SimpleBoundTextCell ("Allergies", "Allergies");
 			stcAllergies.IsEnabled = selectedKid.Mine;
 			ts.Add (stcAllergies);
+			stcSecretWord = new SimpleBoundTextCell ("Secret Word", "SecretWord");
+			stcSecretWord.IsEnabled = selectedKid.Mine;
+			ts.Add (stcSecretWord);
 
 			tv.Root.Add (ts);
 			stacker.Children.Add (tv);

@@ -28,19 +28,28 @@ namespace PickUpApp
 			stacker.Children.Add (elv);
 
 			this.ViewModel.ExecuteLoadItemsCommand ().ConfigureAwait(false);
+			System.Diagnostics.Debug.WriteLine ("Loading Items from MessageCenter");
 
-			MessagingCenter.Subscribe<string> (this, "messagesloaded", (s) => {
+			MessagingCenter.Subscribe<string> (this, "messagesloaded", async(s) => {
 				elv.IsRefreshing = false;
 
 				App.hudder.hideHUD();
 				if (App.myMessages.Count == 0)
 				{
-					Navigation.PopAsync();
+					System.Diagnostics.Debug.WriteLine ("PopAsync from MessageCenter after messagesloaded");
+					try{
+					await Navigation.PopAsync();
+					}
+					catch{}
 				}
 			});
 
 			MessagingCenter.Subscribe<RespondMessage>(this, "messagesupdated", async(rm) =>
 			{
+					if (rm==null)
+					{
+						return;
+					}
 
 					//we need to know if there are any other collections
 					//that need updating as a result of this...
@@ -75,7 +84,7 @@ namespace PickUpApp
 						break;
 					}
 
-
+					System.Diagnostics.Debug.WriteLine ("Loading Items from MessageCenter within messagesupdated");
 					await this.ViewModel.ExecuteLoadItemsCommand();
 					this.ViewModel.Refresh();
 					elv.IsRefreshing = false;

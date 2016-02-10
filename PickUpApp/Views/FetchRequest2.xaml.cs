@@ -91,7 +91,10 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<MessageView>(this, "messagesent", async(msg)=>{
 				App.hudder.hideHUD();
+				try{
 				await Navigation.PopToRootAsync();
+				}
+				catch{}
 				MessagingCenter.Send<string>("fetch", "NeedsRefresh");
 			});
 		}

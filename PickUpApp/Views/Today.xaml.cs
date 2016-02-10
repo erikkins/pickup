@@ -8,6 +8,13 @@ namespace PickUpApp
 {	
 	public partial class TodayView : ContentPage
 	{
+		Label lblNone;
+		FFArrow NEWarrow;
+		Editor edNew;
+		Label lblMessageCount;
+		RelativeLayout rlMessage;
+	
+
 		public TodayView ()
 		{
 			InitializeComponent ();
@@ -33,9 +40,7 @@ namespace PickUpApp
 						App.LaunchLocationRecorded = true;
 					}
 				});
-			}
-
-
+			}				
 
 			StackLayout stacker = new StackLayout ();
 			stacker.Orientation = StackOrientation.Vertical;
@@ -85,14 +90,19 @@ namespace PickUpApp
 				Header = null
 			};
 
+			lblNone = new Label ();
 
-			MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
-				await ViewModel.ExecuteLoadItemsCommand();
-			});
 
-			MessagingCenter.Subscribe<Today>(this, "fetchrequest", async(t) => {
-				await Navigation.PushAsync(new FetchRequest1(t));
-			});
+
+
+			//moved into Appearing
+//			MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
+//				await ViewModel.ExecuteLoadItemsCommand();
+//			});
+//
+//			MessagingCenter.Subscribe<Today>(this, "fetchrequest", async(t) => {
+//				await Navigation.PushAsync(new FetchRequest1(t));
+//			});
 
 
 			lvToday.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => {
@@ -245,7 +255,7 @@ namespace PickUpApp
 
 
 			//need to put this into an absolutelayout container...and only show when no kids, no places, no activity
-			FFArrow NEWarrow = new FFArrow ();
+			NEWarrow = new FFArrow ();
 			NEWarrow.Color = AppColor.AppPink;
 			NEWarrow.WidthRequest = App.Device.Display.Width;
 			NEWarrow.HeightRequest = App.Device.Display.Height;
@@ -254,7 +264,7 @@ namespace PickUpApp
 			NEWarrow.IsVisible = false;
 			rl.Children.Add (NEWarrow, Constraint.Constant(0), Constraint.Constant(0), null, null);
 
-			Editor edNew = new Editor ();
+			edNew = new Editor ();
 			edNew.IsEnabled = false;
 			edNew.TextColor = AppColor.AppPink;
 			edNew.BackgroundColor = Color.Transparent;
@@ -268,7 +278,7 @@ namespace PickUpApp
 
 			//try to float the messages icon with absolute layout
 
-				RelativeLayout rlMessage = new RelativeLayout ();
+				rlMessage = new RelativeLayout ();
 
 				Image msgimg = new Image ();
 				msgimg.Source = "ui_messages.png";
@@ -279,7 +289,7 @@ namespace PickUpApp
 					widthConstraint: Constraint.Constant (69),
 					heightConstraint: Constraint.Constant (69));
 
-				Label lblMessageCount = new Label ();
+				lblMessageCount = new Label ();
 				lblMessageCount.TextColor = Color.White;
 				lblMessageCount.FontSize = 24;
 				//lblMessageCount.Text = App.myMessages.Count.ToString ();
@@ -334,19 +344,34 @@ namespace PickUpApp
 				}
 			};
 
-			MessagingCenter.Subscribe<EmptyClass> (this, "messagesupdated", (ec) => {
-				if (App.myMessages.Count > 0)
-				{
-					rlMessage.IsVisible = true;
-				}
-				else
-				{
-					rlMessage.IsVisible = false;
-				}
-			});
+			//moved into Appearing
+//			MessagingCenter.Subscribe<string> ("today", "messagesloaded", (ec) => {
+//				System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
+//				lblMessageCount.Text = App.myMessages.Count.ToString();
+//				if (App.myMessages.Count > 0)
+//				{
+//					rlMessage.IsVisible = true;
+//				}
+//				else
+//				{
+//					rlMessage.IsVisible = false;
+//				}
+//			});
+//
+//			MessagingCenter.Subscribe<string> ("today", "messagesupdated", (ec) => {
+//				System.Diagnostics.Debug.WriteLine ("Received messagesupdated in Today");
+//				if (App.myMessages.Count > 0)
+//				{
+//					rlMessage.IsVisible = true;
+//				}
+//				else
+//				{
+//					rlMessage.IsVisible = false;
+//				}
+//			});
 
 
-			Label lblNone = new Label ();
+			lblNone = new Label ();
 			lblNone.Text = "You have no activities Today!";
 			lblNone.TextColor = Color.White;
 			lblNone.IsVisible = false;
@@ -374,51 +399,155 @@ namespace PickUpApp
 //				}
 //			};
 
-			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
-				lvToday.IsRefreshing = false;
-
-				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
-				if (App.CurrentToday.Date == DateTime.Today) {
-					this.Title += " (Today)";
-				}
-
-				if (t.Todays.Count == 0)
-				{
-					lblNone.IsVisible = true;
-				}
-				else
-				{
-					lblNone.IsVisible = false;
-				}
-
-				if (App.myKids.Count == 0 && App.myPlaces.Count == 0 && App.myCircle.Count == 0)
-				{
-					//must be the first time!
-					lblNone.IsVisible = false;
-					NEWarrow.IsVisible = true;
-					edNew.IsVisible = true;
-				}
-				else{					
-					NEWarrow.IsVisible = false;
-					edNew.IsVisible = false;
-				}
-
-
-//				TodayViewModel tvm = (TodayViewModel)this.BindingContext;
-//				this.BindingContext = new MessageViewModel(App.client, null);
+			//moved into Appearing
+//			MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
+//
+//				System.Diagnostics.Debug.WriteLine("TODAYLOADED");
+//
+//				lvToday.IsRefreshing = false;
+//
+//				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
+//				if (App.CurrentToday.Date == DateTime.Today) {
+//					this.Title += " (Today)";
+//				}
+//
+//				if (t.Todays.Count == 0)
+//				{
+//					lblNone.IsVisible = true;
+//				}
+//				else
+//				{
+//					lblNone.IsVisible = false;
+//				}
+//
+//				if (App.myKids.Count == 0 && App.myPlaces.Count == 0 && App.myCircle.Count == 0)
+//				{
+//					//must be the first time!
+//					lblNone.IsVisible = false;
+//					NEWarrow.IsVisible = true;
+//					edNew.IsVisible = true;
+//				}
+//				else{					
+//					NEWarrow.IsVisible = false;
+//					edNew.IsVisible = false;
+//				}
+//
+//				//let's load the messages to see if there's anything in my inbox
+//				MessageView mv = new MessageView();
+//				MessagingCenter.Send<MessageView>(mv, "LoadMessages");
+////				TodayViewModel tvm = (TodayViewModel)this.BindingContext;
+////				this.BindingContext = new MessageViewModel(App.client, null);
+////				App.hudder.showHUD("Loading Messages");
+////				((MessageViewModel)BindingContext).ExecuteLoadItemsCommand().ConfigureAwait(true);
+////				App.hudder.hideHUD();
+////				this.BindingContext = tvm;
+//
+//			});
+//
+//			MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
+//				System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
+//				MessageViewModel mvm = new MessageViewModel(App.client, null);
 //				App.hudder.showHUD("Loading Messages");
-//				((MessageViewModel)BindingContext).ExecuteLoadItemsCommand().ConfigureAwait(true);
+//				mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
 //				App.hudder.hideHUD();
-//				this.BindingContext = tvm;
+//			});
 
-			});
 
-			MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {				
-				MessageViewModel mvm = new MessageViewModel(App.client, null);
-				App.hudder.showHUD("Loading Messages");
-				mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
-				App.hudder.hideHUD();
-			});
+			this.Appearing += delegate(object sender, EventArgs e) {
+				//do all the subscriptions
+				MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
+					await ViewModel.ExecuteLoadItemsCommand();
+				});
+
+				MessagingCenter.Subscribe<Today>(this, "fetchrequest", async(t) => {
+					await Navigation.PushAsync(new FetchRequest1(t));
+				});
+
+				MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
+
+					System.Diagnostics.Debug.WriteLine("TODAYLOADED");
+
+					lvToday.IsRefreshing = false;
+
+					this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
+					if (App.CurrentToday.Date == DateTime.Today) {
+						this.Title += " (Today)";
+					}
+
+					if (t.Todays.Count == 0)
+					{
+						lblNone.IsVisible = true;
+					}
+					else
+					{
+						lblNone.IsVisible = false;
+					}
+
+					if (App.myKids.Count == 0 && App.myPlaces.Count == 0 && App.myCircle.Count == 0)
+					{
+						//must be the first time!
+						lblNone.IsVisible = false;
+						NEWarrow.IsVisible = true;
+						edNew.IsVisible = true;
+					}
+					else{					
+						NEWarrow.IsVisible = false;
+						edNew.IsVisible = false;
+					}
+
+					//let's load the messages to see if there's anything in my inbox
+					MessageView mv = new MessageView();
+					MessagingCenter.Send<MessageView>(mv, "LoadMessages");
+				});
+
+				MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
+					System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
+					MessageViewModel mvm = new MessageViewModel(App.client, null);
+					App.hudder.showHUD("Loading Messages");
+					mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
+					App.hudder.hideHUD();
+				});
+
+				MessagingCenter.Subscribe<string> ("today", "messagesloaded", (ec) => {
+					System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
+					lblMessageCount.Text = App.myMessages.Count.ToString();
+					if (App.myMessages.Count > 0)
+					{
+						rlMessage.IsVisible = true;
+					}
+					else
+					{
+						rlMessage.IsVisible = false;
+					}
+				});
+
+				MessagingCenter.Subscribe<string> ("today", "messagesupdated", (ec) => {
+					System.Diagnostics.Debug.WriteLine ("Received messagesupdated in Today");
+					if (App.myMessages.Count > 0)
+					{
+						rlMessage.IsVisible = true;
+					}
+					else
+					{
+						rlMessage.IsVisible = false;
+					}
+				});
+
+				ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+			};
+
+			this.Disappearing += delegate(object sender, EventArgs e) {
+				//do all the unsubscriptions
+				MessagingCenter.Unsubscribe<string> (this, "NeedsRefresh");
+				MessagingCenter.Unsubscribe<Today>(this, "fetchrequest");
+				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
+				MessagingCenter.Unsubscribe<MessageView> (this, "LoadMessages");
+				MessagingCenter.Unsubscribe<string> ("today", "messagesloaded");
+				MessagingCenter.Unsubscribe<string> ("today", "messagesupdated");
+			};
+
+
+
 
 			this.Content = rl;
 	
@@ -788,9 +917,10 @@ namespace PickUpApp
 			detailGrid.Children.Add (l2, 2, 3, 0, 2 );
 
 			//this means someone is picking up or dropping off
-			if ((string.IsNullOrEmpty (t.DropOffMessageID) && string.IsNullOrEmpty (t.PickupMessageID)) || t.DropOffMessageStatus=="Canceled" || t.PickupMessageStatus=="Canceled") {
+			if ((string.IsNullOrEmpty (t.DropOffMessageID) && string.IsNullOrEmpty (t.PickupMessageID)) || t.DropOffMessageStatus=="Canceled" || t.PickupMessageStatus=="Canceled"  || t.DropOffMessageStatus=="Pending Response" || t.PickupMessageStatus=="Pending Response") {
 				//nobody's picking up or dropping off, so make the option to invite available
-				if (currentState != TodayView.ActivityState.Complete) {
+				//but only if it's mine to invite!
+				if (currentState != TodayView.ActivityState.Complete && string.IsNullOrEmpty(t.Via)) {
 					Button b = new Button ();
 					switch (currentState) {
 					case TodayView.ActivityState.Future:
@@ -956,6 +1086,7 @@ namespace PickUpApp
 				Label frs = new Label ();
 				frs.TextColor = Color.White;
 				if (t.RowType == "pickup") {
+					slp.BackgroundColor = AppColor.AppGreen;
 					frs.FontAttributes = FontAttributes.Bold;
 					frs.Text = "You are picking up!";
 					responseInfo = "";
@@ -1035,6 +1166,7 @@ namespace PickUpApp
 				Label frs = new Label ();
 				frs.TextColor = Color.White;
 				if (t.RowType == "pickup") {
+					sld.BackgroundColor = AppColor.AppGreen;
 					frs.FontAttributes = FontAttributes.Bold;
 					frs.Text = "You are dropping off!";					
 					responseInfo = "";

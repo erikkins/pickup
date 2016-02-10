@@ -144,6 +144,25 @@ namespace PickUpApp
 			}
 		}
 
+		private string _secretword;
+		[JsonProperty(PropertyName = "secretword")]
+		public string SecretWord
+		{
+			get{
+				if (string.IsNullOrEmpty (_secretword)) {
+					_secretword = "";
+				}
+				return _secretword;
+			}
+			set{
+				if (value != _secretword) {
+					_secretword = value; NotifyPropertyChanged ();
+				}
+			}
+		}
+
+
+
 		private string _via;
 		[JsonProperty(PropertyName = "via")]
 		public string Via

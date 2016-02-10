@@ -9,6 +9,7 @@ namespace PickUpApp.iOS
 	{
 		public void showHUD(string what)
 		{
+			BTProgressHUD.ForceiOS6LookAndFeel = true;
 			BTProgressHUD.Show (what);
 		}
 
