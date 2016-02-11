@@ -6,11 +6,16 @@ using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using RestSharp.Portable;
+using RestSharp.Portable.HttpClient;
 
 namespace PickUpApp
 {
 	public class ActivityAddEditViewModel : BaseViewModel
 	{
+
+		bool _useBing = false;
+
 		public ActivityAddEditViewModel (MobileServiceClient client, Schedule currentSchedule)
 		{
 			this.client = client;
@@ -140,7 +145,6 @@ namespace PickUpApp
 
 			try{
 				IsLoading = true;
-				PortableRest.RestRequest req = new PortableRest.RestRequest ("Routes", System.Net.Http.HttpMethod.Get);
 
 				AccountPlace selectedPlace = new AccountPlace();
 				//grab the selected place
@@ -155,49 +159,84 @@ namespace PickUpApp
 
 				if (selectedPlace == null || string.IsNullOrEmpty(selectedPlace.Latitude) || string.IsNullOrEmpty(selectedPlace.Longitude) || string.IsNullOrEmpty(CurrentSchedule.Latitude) || string.IsNullOrEmpty(CurrentSchedule.Longitude))
 				{
-					System.Diagnostics.Debug.WriteLine ("Bailing on Bing ");
+					System.Diagnostics.Debug.WriteLine ("Bailing on DistanceCheck ");
 					return;
 				}
 
-				req.AddQueryString ("wp.0", selectedPlace.Latitude + "," + selectedPlace.Longitude);
-				req.AddQueryString ("wp.1", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);
-				req.AddQueryString ("du", "mi");
-				req.AddQueryString ("avoid", "minimizeTolls");
-				req.AddQueryString ("key", "AiZzYU7682t3jrRWVPS6x139Nwpjxs0LXJy5QLweCP2-mLNPoHYWcTUREnntk_JA");
+				if (_useBing)
+				{
+					PortableRest.RestRequest req = new PortableRest.RestRequest ("Routes", System.Net.Http.HttpMethod.Get);
+
+					req.AddQueryString ("wp.0", selectedPlace.Latitude + "," + selectedPlace.Longitude);
+					req.AddQueryString ("wp.1", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);
+					req.AddQueryString ("du", "mi");
+					req.AddQueryString ("avoid", "minimizeTolls");
+					req.AddQueryString ("key", "AiZzYU7682t3jrRWVPS6x139Nwpjxs0LXJy5QLweCP2-mLNPoHYWcTUREnntk_JA");
 
 
-				PortableRest.RestClient rc = new PortableRest.RestClient ();			
-				rc.UserAgent = "PickUp";
-				rc.BaseUrl = "http://dev.virtualearth.net/REST/V1/";
-				PortableRest.RestResponse<string> resp = await rc.SendAsync<string>(req, default(System.Threading.CancellationToken));
-				//var bingresponse = Newtonsoft.Json.Linq.JObject.Parse (resp.Content);
+					PortableRest.RestClient rc = new PortableRest.RestClient ();			
+					rc.UserAgent = "PickUp";
+					rc.BaseUrl = "http://dev.virtualearth.net/REST/V1/";
+					PortableRest.RestResponse<string> resp = await rc.SendAsync<string>(req, default(System.Threading.CancellationToken));
+					//var bingresponse = Newtonsoft.Json.Linq.JObject.Parse (resp.Content);
 
-				BingResponse br = Newtonsoft.Json.JsonConvert.DeserializeObject<BingResponse>(resp.Content);
-				decimal min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
-				decimal distance = br.ResourceSets[0].TripResources[0].TravelDistance;
-				string distanceUnit = br.ResourceSets[0].TripResources[0].DistanceUnit;
-				//save the turn by tuSystem.Diagnostics.Debug.WriteLine ("BingError " + ex.Message);rn
-				try{
-					this.Itineraries = br.ResourceSets[0].TripResources[0].RouteLegs[0].ItineraryItems;
+					BingResponse br = Newtonsoft.Json.JsonConvert.DeserializeObject<BingResponse>(resp.Content);
+					decimal min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
+					decimal distance = br.ResourceSets[0].TripResources[0].TravelDistance;
+					string distanceUnit = br.ResourceSets[0].TripResources[0].DistanceUnit;
+					//save the turn by tuSystem.Diagnostics.Debug.WriteLine ("BingError " + ex.Message);rn
+					try{
+						this.Itineraries = br.ResourceSets[0].TripResources[0].RouteLegs[0].ItineraryItems;
+					}
+					catch{}
+
+					resp.Dispose();
+					resp = null;
+					req = null;
+
+					CurrentSchedule.StartPlaceTravelTime = Math.Round(min, 2);
+					CurrentSchedule.StartPlaceDistance = Math.Round(distance, 2);
+					//for now, assume the pickup is departing from the same place
+					CurrentSchedule.EndPlaceTravelTime = Math.Round(min,2);
+					CurrentSchedule.EndPlaceDistance = Math.Round(distance, 2);
 				}
-				catch{}
+				else{
+					//use Google!
+					using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/")))
+					{
 
-				resp.Dispose();
-				resp = null;
-				req = null;
+						var request = new RestRequest("distancematrix/json", Method.GET);	
+
+						request.AddQueryParameter ("origins", selectedPlace.Latitude + "," + selectedPlace.Longitude);
+						request.AddQueryParameter("destinations", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);
+						request.AddQueryParameter("arrival_time", CurrentSchedule.DropoffDT.ToEpochTime());
+						request.AddQueryParameter("units", "imperial");
+						request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
+
+						var result = await client.Execute(request);
+						GoogleDistanceResult yr = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleDistanceResult>(System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
+						System.Diagnostics.Debug.WriteLine("");
+						if (yr.Rows.Count > 0)
+						{
+							decimal mins = (decimal)yr.Rows[0].Elements[0].Duration.Value/(decimal)60;
+							decimal dist = (decimal)yr.Rows[0].Elements[0].Distance.Value/(decimal)1609.34; //meters in 1 mile
+							//assume we grab the first?
+							CurrentSchedule.StartPlaceTravelTime = Math.Round(mins, 2);
+							CurrentSchedule.StartPlaceDistance = Math.Round(dist, 2);
+							//for now, assume the pickup is departing from the same place
+							CurrentSchedule.EndPlaceTravelTime = Math.Round(mins,2);
+							CurrentSchedule.EndPlaceDistance = Math.Round(dist, 2);
+						}
+						//Places = yr.Results;
+						//lstSearch.ItemsSource = Places;
+
+						//var yelpresponse = Newtonsoft.Json.Linq.JObject.Parse (System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
+						//System.Diagnostics.Debug.WriteLine(result);
+					}
+
+				}
 
 
-				//Debug.WriteLine("ActivityAddEditVM -- CalculatedDriveTime");
-				//ok, we get total seconds, so we need to divide by 60 to get minutes
-				//decimal min = decimal.Parse(bingresponse ["resourceSets"] [0] ["resources"] [0] ["travelDurationTraffic"].ToString())/60;
-				//bingresponse.RemoveAll();
-				//bingresponse = null;
-
-				CurrentSchedule.StartPlaceTravelTime = Math.Round(min, 2);
-				CurrentSchedule.StartPlaceDistance = Math.Round(distance, 2);
-				//for now, assume the pickup is departing from the same place
-				CurrentSchedule.EndPlaceTravelTime = Math.Round(min,2);
-				CurrentSchedule.EndPlaceDistance = Math.Round(distance, 2);
 				IsLoading = false;
 
 				//PickUpApp.fflog logentry = new fflog("BingLocation for " + selectedPlace.id + " from AddEditActivity");
@@ -240,7 +279,9 @@ namespace PickUpApp
 				//I think we should be converting the Local datetime to UTC prior to saving
 				//CurrentSchedule.AtWhen = TimeZoneInfo.ConvertTime(CurrentSchedule.AtWhen, TimeZoneInfo.Utc);
 
-				await CalculateDriveTime();
+				//moved this to the main UI
+				//await CalculateDriveTime();
+
 				IsLoading = true;
 				if (string.IsNullOrEmpty(CurrentSchedule.id))
 				{

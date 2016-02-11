@@ -141,6 +141,14 @@ namespace PickUpApp
 			return string.Format("{0:g}", dateTime);
 		}
 
+		public static long ToEpochTime(this DateTime dateTime)
+		{
+			var date = dateTime.ToUniversalTime();
+			var ticks = date.Ticks - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).Ticks;
+			var ts = ticks / TimeSpan.TicksPerSecond;
+			return ts;
+		}
+
 		/// <summary>
 		/// Gets a 's' if value is > 1.
 		/// </summary>

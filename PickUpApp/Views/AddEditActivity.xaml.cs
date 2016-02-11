@@ -96,6 +96,8 @@ namespace PickUpApp
 					return;
 				}
 
+				App.hudder.showHUD("Calculating drive time...");
+				await ViewModel.CalculateDriveTime();
 
 				App.hudder.showHUD("Preemptive check...");
 				await ViewModel.CheckPreemptive(CurrentActivity.Frequency);
