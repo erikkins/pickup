@@ -276,6 +276,7 @@
     <Compile Include="Models\LocationLog.cs" />
     <Compile Include="Models\Preemptive.cs" />
     <Compile Include="Common\iDeviceInfo.cs" />
+    <Compile Include="Common\DTCollision.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

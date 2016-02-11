@@ -228,6 +228,12 @@ namespace PickUpApp
 			lActivityDate.TextColor = Color.FromRgb (157, 157, 157);
 			slVert.Children.Add (lActivityDate);
 
+			if (!string.IsNullOrEmpty (mv.Message)) {
+				Label lMessage = new Label ();
+				lMessage.Text = mv.Message;
+				slVert.Children.Add (lMessage);
+			}
+
 
 			sl.Children.Add (slVert);
 

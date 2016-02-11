@@ -100,17 +100,50 @@ namespace PickUpApp
 				App.hudder.showHUD("Preemptive check...");
 				await ViewModel.CheckPreemptive(CurrentActivity.Frequency);
 				string tester = "";
+
+				Period currentDropoffPeriod = new Period(CurrentActivity.DropoffDiff, CurrentActivity.DropoffDT);
+				Period currentPickupPeriod = new Period(CurrentActivity.PickupDiff, CurrentActivity.PickupDT);
+
 				foreach (Preemptive thispe in ViewModel.Preemptives)
 				{
+					if (thispe.id == CurrentActivity.id)
+					{
+						continue;
+					}
 					//check if the times clash at all
-					if (CurrentActivity.StartTime.Ticks < thispe.EndTimeTicks)
+//					if (CurrentActivity.StartTime.Ticks < thispe.EndTimeTicks)
+//					{
+//						tester += CurrentActivity.Activity + " starts before " + thispe.Activity + " ends" + Environment.NewLine;
+//					}
+//					if (CurrentActivity.EndTime.Ticks > thispe.DropoffDiff.Ticks)
+//					{
+//						tester += CurrentActivity.Activity + " ends after " + thispe.Activity + " on ";
+//					}
+
+
+					Period pDropoff = new Period(thispe.DropoffDiff, thispe.DropoffDT);
+					Period pPickup = new Period(thispe.PickupDiff, thispe.PickupDT);
+					if (pDropoff.Overlaps(currentPickupPeriod))
 					{
-						tester += CurrentActivity.Activity + " starts before " + thispe.Activity + " ends" + Environment.NewLine;
+						tester += CurrentActivity.Activity + " dropoff conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
 					}
-					if (CurrentActivity.EndTime.Ticks > thispe.DropoffDiff.Ticks)
+					if (pDropoff.Overlaps(currentDropoffPeriod))
 					{
-						tester += CurrentActivity.Activity + " ends after " + thispe.Activity + " on ";
+						tester +=  CurrentActivity.Activity + " dropoff conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
 					}
+					if (pPickup.Overlaps(currentPickupPeriod))
+					{
+						tester += CurrentActivity.Activity + " pickup conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
+					}
+					if (pPickup.Overlaps(currentDropoffPeriod))
+					{
+						tester += CurrentActivity.Activity + " pickup conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
+					}
+						
+				
+					
+
+
 				}
 				App.hudder.hideHUD();
 				if (tester.Length > 0)

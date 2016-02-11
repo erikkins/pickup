@@ -27,12 +27,24 @@ namespace PickUpApp
 		public string Days { get{ return _days; } set{if (value != _days) {
 					_days = value; NotifyPropertyChanged ();} } }
 
-
+		public DateTime PickupDT
+		{
+			get{
+				return DateTime.Today.Add (TSPickup);
+			}
+		}
 
 		public DateTime PickupDiff
 		{
 			get{
 				return DateTime.Today.Add (TSPickup.Subtract (TimeSpan.FromMinutes (EndPlaceTravelTime)));
+			}
+		}
+
+		public DateTime DropoffDT
+		{
+			get{
+				return DateTime.Today.Add (TSDropOff);
 			}
 		}
 
