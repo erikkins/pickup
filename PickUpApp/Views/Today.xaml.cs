@@ -465,7 +465,7 @@ namespace PickUpApp
 
 				MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
 
-					System.Diagnostics.Debug.WriteLine("TODAYLOADED");
+					//System.Diagnostics.Debug.WriteLine("TODAYLOADED");
 
 					lvToday.IsRefreshing = false;
 
@@ -501,7 +501,7 @@ namespace PickUpApp
 				});
 
 				MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
-					System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
+					//System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
 					MessageViewModel mvm = new MessageViewModel(App.client, null);
 					App.hudder.showHUD("Loading Messages");
 					mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
@@ -509,7 +509,7 @@ namespace PickUpApp
 				});
 
 				MessagingCenter.Subscribe<string> ("today", "messagesloaded", (ec) => {
-					System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
+					//System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
 					lblMessageCount.Text = App.myMessages.Count.ToString();
 					if (App.myMessages.Count > 0)
 					{
@@ -522,7 +522,7 @@ namespace PickUpApp
 				});
 
 				MessagingCenter.Subscribe<string> ("today", "messagesupdated", (ec) => {
-					System.Diagnostics.Debug.WriteLine ("Received messagesupdated in Today");
+					//System.Diagnostics.Debug.WriteLine ("Received messagesupdated in Today");
 					if (App.myMessages.Count > 0)
 					{
 						rlMessage.IsVisible = true;

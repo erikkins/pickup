@@ -39,6 +39,10 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 			{
 				this.manager.RequestWhenInUseAuthorization();
 			}
+			if (this.manager.RespondsToSelector(new Selector("requestAlwaysAuthorization")))
+			{
+				this.manager.RequestAlwaysAuthorization();
+			}
 			if (UIDevice.CurrentDevice.CheckSystemVersion (6, 0))
 				this.manager.LocationsUpdated += OnLocationsUpdated;
 			else

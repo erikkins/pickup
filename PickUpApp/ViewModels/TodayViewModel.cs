@@ -119,7 +119,7 @@ namespace PickUpApp.ViewModels
 
 				IsLoading = false;
 
-				System.Diagnostics.Debug.WriteLine("Sending TODAYLOADED");
+				//System.Diagnostics.Debug.WriteLine("Sending TODAYLOADED");
 				MessagingCenter.Send<TodayViewModel>(this, "TodayLoaded");
 
 				/*

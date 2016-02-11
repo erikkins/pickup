@@ -5,9 +5,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.threethingsgood.famfetch</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.26</string>
+	<string>1.0.27</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.26</string>
+	<string>1.0.27</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -128,5 +128,7 @@
 	<string>445633295574438</string>
 	<key>FacebookDisplayName</key>
 	<string>FamFetch</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We are using your location to provide real-time route analysis</string>
 </dict>
 </plist>

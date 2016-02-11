@@ -101,6 +101,7 @@ namespace PickUpApp
 				await ViewModel.CheckPreemptive(CurrentActivity.Frequency);
 				string tester = "";
 
+
 				Period currentDropoffPeriod = new Period(CurrentActivity.DropoffDiff, CurrentActivity.DropoffDT);
 				Period currentPickupPeriod = new Period(CurrentActivity.PickupDiff, CurrentActivity.PickupDT);
 
@@ -121,23 +122,25 @@ namespace PickUpApp
 //					}
 
 
+
+
 					Period pDropoff = new Period(thispe.DropoffDiff, thispe.DropoffDT);
 					Period pPickup = new Period(thispe.PickupDiff, thispe.PickupDT);
 					if (pDropoff.Overlaps(currentPickupPeriod))
 					{
-						tester += CurrentActivity.Activity + " dropoff conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
+						tester += CurrentActivity.Activity + " pickup conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
 					}
 					if (pDropoff.Overlaps(currentDropoffPeriod))
 					{
-						tester +=  CurrentActivity.Activity + " dropoff conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
+						tester +=  CurrentActivity.Activity + " pickup conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
 					}
 					if (pPickup.Overlaps(currentPickupPeriod))
 					{
-						tester += CurrentActivity.Activity + " pickup conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
+						tester += CurrentActivity.Activity + " dropoff conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
 					}
 					if (pPickup.Overlaps(currentDropoffPeriod))
 					{
-						tester += CurrentActivity.Activity + " pickup conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
+						tester += CurrentActivity.Activity + " dropoff conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
 					}
 						
 				
