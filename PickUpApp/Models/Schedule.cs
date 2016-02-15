@@ -584,12 +584,53 @@ namespace PickUpApp
 				} } }
 		private string _EndPlaceName;
 		[JsonProperty(PropertyName = "endplacename")]
-		public string EndPlaceName { get{return _EndPlaceName; } set{if (value != _EndPlaceName) {
+		public string EndPlaceName {
+			get{
+				if (this.EndPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.EndPlaceID
+						select aps;
+
+					if (ap.Count() > 0) {
+						return ap.FirstOrDefault ().PlaceName;
+					} else {
+						return null;
+					}
+
+				} 
+			} 
+			set{if (value != _EndPlaceName) {
 					_EndPlaceName = value; NotifyPropertyChanged ();
 				} } }
 		private string _EndPlaceAddress;
 		[JsonProperty(PropertyName = "endplaceaddress")]
-		public string EndPlaceAddress { get{return _EndPlaceAddress; } set{if (value != _EndPlaceAddress) {
+		public string EndPlaceAddress {
+			get{
+				if (_EndPlaceAddress == null) {
+					return ADDRESS_PLACEHOLDER;
+				}
+
+				if (this.EndPlaceID == null) {
+					return null;
+				}
+				else
+				{
+					System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in App.myPlaces
+							where aps.id == this.EndPlaceID
+						select aps;
+
+					if (ap.Count() > 0) {
+						return ap.FirstOrDefault ().Address;
+					} else {
+						return null;
+					}
+				} 
+			} 
+			set{if (value != _EndPlaceAddress) {
 					_EndPlaceAddress = value; NotifyPropertyChanged ();
 				} } }
 

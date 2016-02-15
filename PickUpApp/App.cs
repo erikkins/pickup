@@ -49,6 +49,7 @@ namespace PickUpApp
 		public static ObservableCollection<Kid> myKids = new TrulyObservableCollection<Kid> ();
 		public static ObservableCollection<Kid> otherKids = new TrulyObservableCollection<Kid> ();
 		public static ObservableCollection<AccountCircle> myCircle = new ObservableCollection<AccountCircle> ();
+		public static ObservableCollection<AccountCircle> myCoparents = new ObservableCollection<AccountCircle>();
 		public static ObservableCollection<AccountPlace> myPlaces = new ObservableCollection<AccountPlace> ();
 		public static TrulyObservableCollection<MessageView> myMessages = new TrulyObservableCollection<MessageView> ();
 

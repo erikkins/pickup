@@ -126,6 +126,72 @@ namespace PickUpApp
 	}
 
 
+	public class CircleCellNoDelete: ViewCell
+	{
+		public CircleCellNoDelete()
+		{
+			
+		}			
+
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged ();
+
+			dynamic c = BindingContext;
+			AccountCircle ac = (AccountCircle)c;
+
+			if (ac == null) {
+				return;
+			}
+
+			this.Height = 65;
+
+			StackLayout sl = new StackLayout ();
+			sl.Orientation = StackOrientation.Horizontal;
+			sl.HorizontalOptions = LayoutOptions.Center;
+			sl.VerticalOptions = LayoutOptions.Center;
+			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
+			sl.HeightRequest = 65;
+
+			BoxView bv = new BoxView ();
+			bv.WidthRequest = 10;
+			sl.Children.Add (bv);
+
+			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
+				BorderColor = Color.Black,
+				BorderThickness = 1,
+				Aspect = Aspect.AspectFill,
+				WidthRequest = 50,
+				HeightRequest = 50,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
+				Source= ac.PhotoURL
+			};	
+
+			sl.Children.Add (ci);
+
+			Label l = new Label ();
+			l.Text = ac.Fullname;
+			l.HorizontalOptions = LayoutOptions.Start;
+			l.VerticalOptions = LayoutOptions.Center;
+			l.TranslationX = 5;
+			l.FontAttributes = FontAttributes.Bold;
+
+			if (ac.Accepted) {
+				//this person is definitely IN my circle!
+				l.TextColor = Color.Black;
+			} else {
+				l.TextColor = Color.Gray;
+				l.Text += "  (Pending)";
+				l.FontAttributes = FontAttributes.Italic;
+			}
+
+			sl.Children.Add (l);
+
+			View = sl;
+		}
+	}
+
 	public class CircleCell : ViewCell
 	{
 		public CircleCell()
@@ -133,14 +199,13 @@ namespace PickUpApp
 			var deleteAction = new MenuItem { Text = "Delete", IsDestructive = true }; // red background
 			deleteAction.SetBinding (MenuItem.CommandParameterProperty, new Binding ("."));
 
-			deleteAction.Clicked += async (sender, e) => {
-				var mi = ((MenuItem)sender);
-				//Debug.WriteLine("Delete Context Action clicked: " + mi.CommandParameter);
+			deleteAction.Clicked += (sender, e) => {
+				//var mi = ((MenuItem)sender);
 				string circleid = ((AccountCircle)((MenuItem)sender).BindingContext).CircleID;
-				AccountCircle ac = new AccountCircle();
+				AccountCircle ac = new AccountCircle ();
 				ac.id = circleid;
 
-				MessagingCenter.Send<AccountCircle>(ac, "deleteac");
+				MessagingCenter.Send<AccountCircle> (ac, "deleteac");
 
 			};
 			this.ContextActions.Add (deleteAction);
@@ -197,14 +262,9 @@ namespace PickUpApp
 				l.TextColor = Color.Gray;
 				l.Text += "  (Pending)";
 				l.FontAttributes = FontAttributes.Italic;
-				//really shouldn't be able to select this
-				//this.IsEnabled = false;
 			}
-
-
+				
 			sl.Children.Add (l);
-
-
 
 			View = sl;
 		}

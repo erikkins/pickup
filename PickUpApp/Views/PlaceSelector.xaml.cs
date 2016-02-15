@@ -54,6 +54,11 @@ namespace PickUpApp
 					}	
 					break;
 				case PlaceType.EndingPlace:
+					if (ap.id == currentSchedule.EndPlaceID) {
+						ap.Selected = true;
+					} else {
+						ap.Selected = false;
+					}
 					break;
 				}
 
@@ -192,6 +197,7 @@ namespace PickUpApp
 					_currentSchedule.StartPlaceID = ((AccountPlace)e.SelectedItem).id;
 					break;
 				case PlaceType.EndingPlace:
+					_currentSchedule.EndPlaceID = ((AccountPlace)e.SelectedItem).id;
 					break;
 				}
 
@@ -218,6 +224,11 @@ namespace PickUpApp
 						}
 						break;
 					case PlaceType.EndingPlace:
+						if (ap.id == currentSchedule.EndPlaceID) {
+							ap.Selected = true;
+						} else {
+							ap.Selected = false;
+						}
 						break;
 					}
 

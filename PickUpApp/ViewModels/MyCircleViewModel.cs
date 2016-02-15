@@ -77,9 +77,29 @@ namespace PickUpApp
 			{
 				var circle = await client.InvokeApiAsync<List<AccountCircle>>("getmycircle");
 				App.myCircle.Clear();
+
+				//this a separate list...there's gotta be a way to linq this out of myCircle, but step 1...
+				App.myCoparents.Clear();
+				//add myself to the coparents
+				AccountCircle acMe = new AccountCircle();
+				acMe.Email = App.myAccount.Email;
+				acMe.Firstname = "Me";
+				acMe.id = App.myAccount.id;
+				acMe.Accepted = true;
+				acMe.PhotoURL = App.myAccount.PhotoURL;
+				acMe.UserId = App.myAccount.UserId;
+				App.myCoparents.Add(acMe);
+
+
 				foreach (var acct in circle)
 				{					
 					App.myCircle.Add(acct);
+
+					//if it's a coparent...let's add it to that one too
+					if (acct.Coparent)
+					{
+						App.myCoparents.Add(acct);
+					}
 				}
 				try{
 						FFMenuItem circlemenu = new FFMenuItem("Circle", App.myCircle.Count);

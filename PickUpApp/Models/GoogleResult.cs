@@ -52,10 +52,22 @@ namespace PickUpApp
 	{
 		private string _status;
 		[JsonProperty(PropertyName = "status")]
-		public string Status { get{return _status; } set{if (value != _status) {
-					_status = value; NotifyPropertyChanged ();
+		public string Status {
+			get{ return _status; }
+			set {
+				if (value != _status) {
+					_status = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
+			
+		private string _errorMessage;
+		[JsonProperty(PropertyName = "error_message")]
+		public string ErrorMessage { get{return _errorMessage; } set{if (value != _errorMessage) {
+					_errorMessage = value; NotifyPropertyChanged ();
 				} } }
-
+			
 		private List<string> _origin_addresses;
 		[JsonProperty(PropertyName = "origin_addresses")]
 		public List<string> OriginAddresses { get{return _origin_addresses; } set{if (value != _origin_addresses) {
@@ -127,6 +139,19 @@ namespace PickUpApp
 			}
 		}
 
+		private GoogleDuration _durationInTraffic;
+		[JsonProperty(PropertyName = "duration_in_traffic")]
+		public GoogleDuration DurationInTraffic
+		{
+			get { return _durationInTraffic; }
+			set{
+				if (value != _durationInTraffic) {
+					_durationInTraffic = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
+
 		private GoogleDistance _distance;
 		[JsonProperty(PropertyName = "distance")]
 		public GoogleDistance Distance
@@ -139,6 +164,7 @@ namespace PickUpApp
 				}
 			}
 		}
+			
 
 	}
 

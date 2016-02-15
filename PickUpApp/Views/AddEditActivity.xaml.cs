@@ -53,9 +53,12 @@ namespace PickUpApp
 			});
 
 			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded", (s) => {
-				//now tell the parent controller to reload its listview											
+				//now tell the parent controller to reload its listview		
+				//HATE THIS
+				try{
 				Navigation.PopAsync();
-
+				}
+				catch{}
 				MessagingCenter.Send<Schedule>(s, "RefreshSched");
 			});
 
@@ -67,7 +70,14 @@ namespace PickUpApp
 
 				loadSelf (s);
 
+				//HATE this pattern
+				try{
 				Navigation.PopAsync();
+				}
+				catch(Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine(ex);
+				}
 			});
 			base.OnAppearing ();
 		}
@@ -203,6 +213,14 @@ namespace PickUpApp
 				await Navigation.PushAsync(new KidSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids), true);
 			};
 
+			//if I'm a coparent or have any coparents, let's pick who's dropping off
+			if (App.myCoparents.Count > 1) {
+				CoparentPickerCell cpcDropoff = new CoparentPickerCell (PlaceType.StartingPlace);
+				ts.Add (cpcDropoff);
+				cpcDropoff.Tapped += async delegate(object sender, EventArgs e) {
+					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.StartingPlace));
+				};
+			}
 
 			PlacePickerCell origin = new PlacePickerCell (PlaceType.StartingPlace);
 			ts.Add (origin);
@@ -224,6 +242,32 @@ namespace PickUpApp
 			};
 		
 			ts.Add (new PickupDropoffSelectorCell (false));
+
+
+			//if I'm a coparent or have any coparents, let's pick who's dropping off
+			if (App.myCoparents.Count > 1) {
+				CoparentPickerCell cpcPickup = new CoparentPickerCell (PlaceType.EndingPlace);
+				ts.Add (cpcPickup);
+				cpcPickup.Tapped += async delegate(object sender, EventArgs e) {
+					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.EndingPlace));
+				};
+			}
+
+			//add the pickup location picker
+			PlacePickerCell pickuppplace = new PlacePickerCell (PlaceType.EndingPlace);
+			ts.Add (pickuppplace);
+			pickuppplace.Tapped += async delegate(object sender, EventArgs e) {
+
+				System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in this.ViewModel.AccountPlaces where aps.id == this.ViewModel.CurrentSchedule.EndPlaceID select aps;
+				if (ap.Count() == 0)
+				{
+					await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, null, PlaceType.EndingPlace), true);
+				}
+				else{
+					await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, ap.FirstOrDefault(), PlaceType.EndingPlace), true);
+				}
+			};
+
 			ts.Add (new PickupDropoffSelectorCell (true));
 			ts.Add (new WeekCell ());
 			ts.Add (new DatePickerCell (true));
@@ -948,12 +992,17 @@ namespace PickUpApp
 				sl.Children.Add (bv);
 
 				Label l = new Label ();
-				if (_placeType == PlaceType.ActivityPlace) {
+				switch (_placeType) {
+				case PlaceType.ActivityPlace:
 					l.Text = "Place";
-				} else {
+					break;
+				case PlaceType.EndingPlace:
 					l.Text = "Leaving from";
+					break;
+				case PlaceType.StartingPlace:
+					l.Text = "Leaving from";
+					break;
 				}
-
 
 				l.TextColor = Color.FromRgb (246, 99, 127);
 				l.HorizontalOptions = LayoutOptions.StartAndExpand;
@@ -984,11 +1033,24 @@ namespace PickUpApp
 				slAddress.WidthRequest = (App.ScaledWidth) - 205;
 
 				Label nameLabel = new Label ();
-				if (_placeType == PlaceType.ActivityPlace) {
+				switch (_placeType) {
+				case PlaceType.ActivityPlace:
 					nameLabel.Text = s.Location;
-				} else {
-					nameLabel.Text = s.StartPlaceName;	
+					break;
+				case PlaceType.EndingPlace:
+					if (string.IsNullOrEmpty (s.EndPlaceName)) {
+						nameLabel.Text = "Same as before dropoff";
+						//s.EndPlaceID = s.StartPlaceID;
+						//s.EndPlaceName = s.StartPlaceName;
+					} else {
+						nameLabel.Text = s.EndPlaceName;
+					}
+					break;
+				case PlaceType.StartingPlace:
+					nameLabel.Text = s.StartPlaceName;
+					break;
 				}
+
 
 				nameLabel.FontSize = 14;
 				nameLabel.HorizontalOptions = LayoutOptions.Start;
@@ -996,11 +1058,18 @@ namespace PickUpApp
 				slAddress.Children.Add (nameLabel);
 
 				Label addressLabel = new Label ();
-				if (_placeType == PlaceType.ActivityPlace) {
+				switch (_placeType) {
+				case PlaceType.ActivityPlace:
 					addressLabel.Text = s.Address;
-				} else {
-					addressLabel.Text = s.StartPlaceAddress;	
+					break;
+				case PlaceType.EndingPlace:
+					addressLabel.Text = s.EndPlaceAddress;
+					break;
+				case PlaceType.StartingPlace:
+					addressLabel.Text = s.StartPlaceAddress;
+					break;
 				}
+
 				addressLabel.FontSize = 14;
 				addressLabel.HorizontalOptions = LayoutOptions.Start;
 				addressLabel.TextColor = Color.FromRgb (157, 157, 157);
@@ -1544,6 +1613,125 @@ namespace PickUpApp
 				*/
 
 
+			}
+		}
+
+		public class CoparentPickerCell : ViewCell
+		{
+			PlaceType _placeType;
+			public CoparentPickerCell(PlaceType placeType)
+			{
+				_placeType = placeType;
+			}
+			protected override void OnBindingContextChanged()
+			{
+				base.OnBindingContextChanged ();
+
+				dynamic c = BindingContext;
+				this.Height = 75;
+
+				Schedule s = ((ActivityAddEditViewModel)c).CurrentSchedule;
+
+				Grid g = new Grid ();
+				g.ColumnDefinitions = new ColumnDefinitionCollection ();
+				ColumnDefinition cd = new ColumnDefinition ();
+				cd.Width = 150;
+				g.ColumnDefinitions.Add (cd);
+				cd = new ColumnDefinition ();
+				cd.Width = GridLength.Auto;
+				g.ColumnDefinitions.Add (cd);
+
+				StackLayout sl = new StackLayout ();
+				sl.Orientation = StackOrientation.Horizontal;
+				sl.HorizontalOptions = LayoutOptions.Start;
+				sl.VerticalOptions = LayoutOptions.Center;
+				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
+				sl.HeightRequest = 75;
+				sl.WidthRequest = App.ScaledWidth;
+				sl.MinimumWidthRequest = App.ScaledWidth;
+
+				BoxView bv = new BoxView ();
+				bv.WidthRequest = 10;
+				sl.Children.Add (bv);
+
+				Label l = new Label ();
+				switch (_placeType) {
+				case PlaceType.EndingPlace:
+					l.Text = "Pickup parent";
+					break;
+				case PlaceType.StartingPlace:
+					l.Text = "Dropoff parent";
+					break;
+				}
+
+				l.TextColor = Color.FromRgb (246, 99, 127);
+				l.HorizontalOptions = LayoutOptions.StartAndExpand;
+				l.VerticalOptions = LayoutOptions.Center;
+				l.FontAttributes = FontAttributes.Bold;
+				l.FontSize = 16;
+				l.WidthRequest = 100;
+
+				g.Children.Add (l, 0, 0);
+
+				StackLayout slParent = new StackLayout ();
+				slParent.Orientation = StackOrientation.Horizontal;
+				slParent.HorizontalOptions = LayoutOptions.StartAndExpand;
+
+				//first is the pin
+				Image pin = new Image();
+				pin.Source = "icn_new_grey.png";
+				pin.VerticalOptions = LayoutOptions.Center;
+				pin.HorizontalOptions = LayoutOptions.Start;
+				slParent.Children.Add (pin);
+
+
+				//now the name/address stack
+				StackLayout slName = new StackLayout();
+				slName.Spacing = 1;
+				slName.VerticalOptions = LayoutOptions.Center;
+				slName.Orientation = StackOrientation.Vertical;
+				slName.WidthRequest = (App.ScaledWidth) - 205;
+
+				Label nameLabel = new Label ();
+				switch (_placeType) {
+				case PlaceType.EndingPlace:
+					nameLabel.Text = s.DefaultPickupAccountFullname;
+					break;
+				case PlaceType.StartingPlace:
+					nameLabel.Text = s.DefaultDropOffAccountFullname;
+					break;
+				}
+
+
+				nameLabel.FontSize = 14;
+				nameLabel.HorizontalOptions = LayoutOptions.Start;
+				nameLabel.LineBreakMode = LineBreakMode.TailTruncation;
+				slName.Children.Add (nameLabel);
+
+//				Label addressLabel = new Label ();
+//				switch (_placeType) {
+//				case PlaceType.EndingPlace:
+//					addressLabel.Text = s.EndPlaceAddress;
+//					break;
+//				case PlaceType.StartingPlace:
+//					addressLabel.Text = s.StartPlaceAddress;
+//					break;
+//				}
+//
+//				addressLabel.FontSize = 14;
+//				addressLabel.HorizontalOptions = LayoutOptions.Start;
+//				addressLabel.TextColor = Color.FromRgb (157, 157, 157);
+//				addressLabel.LineBreakMode = LineBreakMode.TailTruncation;
+//				slAddress.Children.Add (addressLabel);
+//
+				slParent.Children.Add (slName);
+
+
+				g.Children.Add (slParent, 1, 0);
+
+				sl.Children.Add (g);
+
+				View = sl;
 			}
 		}
 	}
