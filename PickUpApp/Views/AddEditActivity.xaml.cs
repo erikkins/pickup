@@ -31,7 +31,11 @@ namespace PickUpApp
 				ViewModel.ReturnVerb = "DetailUpdate"; //trick it so that we don't update the parent view just yet...
 				await ViewModel.ExecuteAddEditCommand();
 				App.hudder.hideHUD();
+				//hate having to do this
+				try{
 				await Navigation.PopAsync();
+				}
+				catch{}
 				//MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 			});
 
@@ -213,14 +217,11 @@ namespace PickUpApp
 				await Navigation.PushAsync(new KidSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids), true);
 			};
 
-			//if I'm a coparent or have any coparents, let's pick who's dropping off
-			if (App.myCoparents.Count > 1) {
-				CoparentPickerCell cpcDropoff = new CoparentPickerCell (PlaceType.StartingPlace);
-				ts.Add (cpcDropoff);
-				cpcDropoff.Tapped += async delegate(object sender, EventArgs e) {
-					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.StartingPlace));
-				};
-			}
+
+			//how to put in a thicker divider
+			ts.Add(new ThickDividerCell());
+
+			ts.Add (new PickupDropoffSelectorCell (false));
 
 			PlacePickerCell origin = new PlacePickerCell (PlaceType.StartingPlace);
 			ts.Add (origin);
@@ -241,17 +242,20 @@ namespace PickUpApp
 				}
 			};
 		
-			ts.Add (new PickupDropoffSelectorCell (false));
 
 
 			//if I'm a coparent or have any coparents, let's pick who's dropping off
 			if (App.myCoparents.Count > 1) {
-				CoparentPickerCell cpcPickup = new CoparentPickerCell (PlaceType.EndingPlace);
-				ts.Add (cpcPickup);
-				cpcPickup.Tapped += async delegate(object sender, EventArgs e) {
-					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.EndingPlace));
+				CoparentPickerCell cpcDropoff = new CoparentPickerCell (PlaceType.StartingPlace);
+				ts.Add (cpcDropoff);
+				cpcDropoff.Tapped += async delegate(object sender, EventArgs e) {
+					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.StartingPlace));
 				};
 			}
+
+			ts.Add(new ThickDividerCell());
+
+			ts.Add (new PickupDropoffSelectorCell (true));
 
 			//add the pickup location picker
 			PlacePickerCell pickuppplace = new PlacePickerCell (PlaceType.EndingPlace);
@@ -267,8 +271,20 @@ namespace PickUpApp
 					await Navigation.PushAsync(new PlaceSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, ap.FirstOrDefault(), PlaceType.EndingPlace), true);
 				}
 			};
+				
+			//if I'm a coparent or have any coparents, let's pick who's dropping off
+			if (App.myCoparents.Count > 1) {
+				CoparentPickerCell cpcPickup = new CoparentPickerCell (PlaceType.EndingPlace);
+				ts.Add (cpcPickup);
+				cpcPickup.Tapped += async delegate(object sender, EventArgs e) {
+					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.EndingPlace));
+				};
+			}
+				
 
-			ts.Add (new PickupDropoffSelectorCell (true));
+			//how to put in a thicker divider
+			ts.Add(new ThickDividerCell());
+
 			ts.Add (new WeekCell ());
 			ts.Add (new DatePickerCell (true));
 			ts.Add (new DatePickerCell (false));
@@ -953,6 +969,21 @@ namespace PickUpApp
 			}
 		}
 
+		public class ThickDividerCell: ViewCell
+		{
+			public ThickDividerCell(){
+				
+			}
+			protected override void OnBindingContextChanged ()
+			{
+				base.OnBindingContextChanged ();
+				this.Height=1;
+				StackLayout sl = new StackLayout ();
+				sl.BackgroundColor = Color.Gray;
+				View = sl;
+			}
+		}
+
 		public class PlacePickerCell : ViewCell
 		{
 			PlaceType _placeType;
@@ -1039,7 +1070,8 @@ namespace PickUpApp
 					break;
 				case PlaceType.EndingPlace:
 					if (string.IsNullOrEmpty (s.EndPlaceName)) {
-						nameLabel.Text = "Same as before dropoff";
+						nameLabel.Text = "Same as dropoff";
+
 						//s.EndPlaceID = s.StartPlaceID;
 						//s.EndPlaceName = s.StartPlaceName;
 					} else {
@@ -1064,6 +1096,9 @@ namespace PickUpApp
 					break;
 				case PlaceType.EndingPlace:
 					addressLabel.Text = s.EndPlaceAddress;
+					if (s.EndPlaceAddress == Schedule.ADDRESS_PLACEHOLDER) {
+						addressLabel.Text = "Click to change";
+					}
 					break;
 				case PlaceType.StartingPlace:
 					addressLabel.Text = s.StartPlaceAddress;

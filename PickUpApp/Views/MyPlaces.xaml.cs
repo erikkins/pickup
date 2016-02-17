@@ -45,6 +45,7 @@ namespace PickUpApp
 			//this.Padding = new Thickness(10, Device.OnPlatform(25, 0, 0), 10, 5);
 			MessagingCenter.Subscribe<AccountPlace>(this, "PlaceAdded", (s) =>
 				{
+					App.hudder.hideHUD();
 					try{
 						Navigation.PopAsync();
 					}

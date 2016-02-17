@@ -192,7 +192,16 @@ namespace PickUpApp
 		private string _DefaultDropOffAccountFirstName;
 		[JsonProperty(PropertyName = "defaultdropoffaccountfirstname")]
 
-		public string DefaultDropOffAccountFirstName { get{return _DefaultDropOffAccountFirstName; } set{if (value != _DefaultDropOffAccountFirstName) {
+		public string DefaultDropOffAccountFirstName {
+			get{
+				if (string.IsNullOrEmpty (DefaultDropOffAccount)) {
+					_DefaultDropOffAccountFirstName = "Me";
+					return "Me";
+				} else {
+					return _DefaultDropOffAccountFirstName; 
+				}
+			} 
+			set{if (value != _DefaultDropOffAccountFirstName) {
 					_DefaultDropOffAccountFirstName = value; NotifyPropertyChanged ();
 				} } }
 		public bool ShouldSerializeDefaultDropOffAccountFirstName()
@@ -236,7 +245,17 @@ namespace PickUpApp
 
 		private string _DefaultPickupAccountFirstName;
 		[JsonProperty(PropertyName = "defaultpickupaccountfirstname")]
-		public string DefaultPickupAccountFirstName { get{return _DefaultPickupAccountFirstName; } set{if (value != _DefaultPickupAccountFirstName) {
+		public string DefaultPickupAccountFirstName 
+		{ 
+			get{
+				if (string.IsNullOrEmpty (DefaultPickupAccount)) {
+					_DefaultPickupAccountFirstName = "Me";
+					return "Me";
+				} else {
+					return _DefaultPickupAccountFirstName; 
+				}
+			} 
+			set{if (value != _DefaultPickupAccountFirstName) {
 					_DefaultPickupAccountFirstName = value; NotifyPropertyChanged ();
 				} } }
 		private string _DefaultPickupAccountLastName;
