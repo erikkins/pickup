@@ -572,7 +572,12 @@ namespace PickUpApp
 		public bool PickupComplete { get{return _PickupComplete; } set{if (value != _PickupComplete) {
 					_PickupComplete = value; NotifyPropertyChanged ();
 				} } }
-
+		
+		private string _DefaultDropOffAccount;
+		[JsonProperty(PropertyName = "defaultdropoffaccount")]
+		public string DefaultDropOffAccount { get{return _DefaultDropOffAccount; } set{if (value != _DefaultDropOffAccount) {
+					_DefaultDropOffAccount = value; NotifyPropertyChanged ();
+				} } }
 		private string _DefaultDropOffAccountFirstName;
 		[JsonProperty(PropertyName = "defaultdropoffaccountfirstname")]
 		public string DefaultDropOffAccountFirstName { get{return _DefaultDropOffAccountFirstName; } set{if (value != _DefaultDropOffAccountFirstName) {
@@ -602,7 +607,11 @@ namespace PickUpApp
 					_DropOffMessageStatus = value; NotifyPropertyChanged ();
 				} } }
 
-
+		private string _DefaultPickupAccount;
+		[JsonProperty(PropertyName = "defaultpickupaccount")]
+		public string DefaultPickupAccount { get{return _DefaultPickupAccount; } set{if (value != _DefaultPickupAccount) {
+					_DefaultPickupAccount = value; NotifyPropertyChanged ();
+				} } }
 		private string _DefaultPickupAccountFirstName;
 		[JsonProperty(PropertyName = "defaultpickupaccountfirstname")]
 		public string DefaultPickupAccountFirstName { get{return _DefaultPickupAccountFirstName; } set{if (value != _DefaultPickupAccountFirstName) {

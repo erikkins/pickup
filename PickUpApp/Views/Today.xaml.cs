@@ -748,6 +748,48 @@ namespace PickUpApp
 
 			mainlayout.Children.Add (sl);
 
+			//if someone else is picking up, let's indicate that here
+			if (t.IsPickup) {
+				if (!string.IsNullOrEmpty (t.DefaultPickupAccount) && t.DefaultPickupAccount != App.myAccount.id) {
+					//make a orange? header
+					StackLayout slDefaultPickup = new StackLayout();
+					slDefaultPickup.BackgroundColor = AppColor.AppOrange;
+					slDefaultPickup.Orientation = StackOrientation.Horizontal;
+					slDefaultPickup.VerticalOptions = LayoutOptions.Start;
+					slDefaultPickup.HeightRequest = 32;
+					Label sdpLabel = new Label ();
+					sdpLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+					sdpLabel.FontSize = 16;
+					sdpLabel.FontAttributes = FontAttributes.Bold;
+					sdpLabel.TranslationX = 26;
+					sdpLabel.LineBreakMode = LineBreakMode.NoWrap;
+					sdpLabel.TextColor = Color.White;
+					sdpLabel.Text = t.DefaultPickupAccountFirstName + " " + t.DefaultPickupAccountLastName + " is Picking Up";
+					slDefaultPickup.Children.Add (sdpLabel);
+					mainlayout.Children.Add (slDefaultPickup);
+				}
+			} else {
+				if (!string.IsNullOrEmpty (t.DefaultDropOffAccount) && t.DefaultDropOffAccount != App.myAccount.id) {
+					//make a orange? header
+					StackLayout slDefaultDropoff = new StackLayout();
+					slDefaultDropoff.BackgroundColor = AppColor.AppOrange;
+					slDefaultDropoff.Orientation = StackOrientation.Horizontal;
+					slDefaultDropoff.VerticalOptions = LayoutOptions.Start;
+					slDefaultDropoff.HeightRequest = 32;
+					Label sddLabel = new Label ();
+					sddLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+					sddLabel.FontSize = 16;
+					sddLabel.FontAttributes = FontAttributes.Bold;
+					sddLabel.TranslationX = 26;
+					sddLabel.LineBreakMode = LineBreakMode.NoWrap;
+					sddLabel.TextColor = Color.White;
+					sddLabel.Text = t.DefaultDropOffAccountFirstName + " " + t.DefaultDropOffAccountLastName + " is Dropping Off";
+					slDefaultDropoff.Children.Add (sddLabel);
+					mainlayout.Children.Add (slDefaultDropoff);
+				}
+			}
+
+
 
 			Color bgColor = AppColor.AppGray;
 			if (currentState == TodayView.ActivityState.Next) {

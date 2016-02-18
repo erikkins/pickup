@@ -41,7 +41,7 @@ namespace PickUpApp
 
 			ExtendedListView lvParent = new ExtendedListView () {
 				ItemsSource = App.myCoparents,
-				ItemTemplate = new DataTemplate (typeof(CircleCellNoDelete)),
+				ItemTemplate = new DataTemplate (typeof(CircleCellNoDelete)),  
 				IsPullToRefreshEnabled = false,
 				HasUnevenRows = false,
 				BackgroundColor = Color.Transparent,
@@ -67,7 +67,7 @@ namespace PickUpApp
 					currentSchedule.DefaultDropOffAccount = ((AccountCircle)e.SelectedItem).id;
 					break;
 				case PlaceType.EndingPlace:
-					currentSchedule.DefaultPickupAccount = ((AccountPlace)e.SelectedItem).id;
+					currentSchedule.DefaultPickupAccount = ((AccountCircle)e.SelectedItem).id;
 					break;
 				}
 					
@@ -92,6 +92,7 @@ namespace PickUpApp
 					}
 
 				}
+				lvParent.ItemTemplate = new DataTemplate (typeof(CircleCellNoDelete));
 			};
 
 			stacker.Children.Add (lvParent);

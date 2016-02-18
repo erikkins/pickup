@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <deployment version="2048" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,37 +13,33 @@
                         <viewControllerLayoutGuide type="bottom" id="101"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Daily Carpool Manager" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="41" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Daily Carpool Manager" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="41">
                                 <rect key="frame" x="110" y="327" width="194" height="21"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="For Active Families" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" id="42" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="For Active Families" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="42">
                                 <rect key="frame" x="130" y="349" width="154" height="21"/>
-                                <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ui_splash_logo.png" id="72" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" image="ui_splash_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="72">
                                 <rect key="frame" x="64" y="258" width="285" height="61"/>
-                                <animations/>
                             </imageView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" red="0.28627450980392155" green="0.21568627450980393" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="72" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" constant="0.0" id="102"/>
-                            <constraint firstItem="41" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" constant="0.0" id="103"/>
-                            <constraint firstItem="72" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" constant="0.0" id="104"/>
-                            <constraint firstItem="42" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" constant="0.0" id="105"/>
+                            <constraint firstItem="72" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="102"/>
+                            <constraint firstItem="41" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="103"/>
+                            <constraint firstItem="72" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="104"/>
+                            <constraint firstItem="42" firstAttribute="centerX" secondItem="6" secondAttribute="centerX" id="105"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -55,80 +50,5 @@
     </scenes>
     <resources>
         <image name="ui_splash_logo.png" width="285" height="61"/>
-        <image name="car_icon.png" width="800" height="600"/>
-        <image name="iconphone.png" width="512" height="512"/>
-        <image name="appbarmessage.png" width="76" height="76"/>
-        <image name="appbarsocialyelp.png" width="76" height="76"/>
-        <image name="appbarphone.png" width="76" height="76"/>
-        <image name="appbarlayoutexpandright.png" width="76" height="76"/>
-        <image name="logout.png" width="32" height="32"/>
-        <image name="children.png" width="48" height="48"/>
-        <image name="contacts.png" width="48" height="48"/>
-        <image name="groups.png" width="50" height="50"/>
-        <image name="sun.png" width="48" height="48"/>
-        <image name="ui_tri_pink.png" width="16" height="8"/>
-        <image name="ui_tri_purple.png" width="20" height="10"/>
-        <image name="ui_tri_green.png" width="16" height="8"/>
-        <image name="ui_tri_grey.png" width="16" height="8"/>
-        <image name="icn_text.png" width="25" height="29"/>
-        <image name="icn_places.png" width="55" height="40"/>
-        <image name="icn_settings.png" width="27" height="27"/>
-        <image name="icn_pin_up_grey.png" width="37" height="48"/>
-        <image name="icn_pin_up_pink.png" width="37" height="48"/>
-        <image name="icn_pin_dwn_pink.png" width="37" height="48"/>
-        <image name="icn_pin_check_sm.png" width="21" height="27"/>
-        <image name="icn_pin_dwn_grey.png" width="37" height="48"/>
-        <image name="icn_pin_check.png" width="37" height="48"/>
-        <image name="icn_pin_grey.png" width="22" height="28"/>
-        <image name="icn_phone.png" width="25" height="29"/>
-        <image name="icn_pin.png" width="22" height="28"/>
-        <image name="icn_new_grey.png" width="27" height="27"/>
-        <image name="ui_messages.png" width="69" height="69"/>
-        <image name="icn_map_pin.png" width="27" height="37"/>
-        <image name="icn_new.png" width="27" height="27"/>
-        <image name="ui_line_green.png" width="2" height="6"/>
-        <image name="icn_close.png" width="19" height="19"/>
-        <image name="ui_line_dash_grey.png" width="2" height="6"/>
-        <image name="ui_line_dash_pink.png" width="2" height="6"/>
-        <image name="ui_check_filled.png" width="27" height="27"/>
-        <image name="ui_cal_circle.png" width="37" height="37"/>
-        <image name="ui_check_empty.png" width="27" height="27"/>
-        <image name="icn_arrow_pink.png" width="24" height="19"/>
-        <image name="icn_back.png" width="27" height="27"/>
-        <image name="icn_cal.png" width="27" height="27"/>
-        <image name="icn_arrow_dwn.png" width="22" height="28"/>
-        <image name="icn_arrow_grey.png" width="24" height="19"/>
-        <image name="icn_arrow_up.png" width="22" height="28"/>
-        <image name="icn_alert.png" width="36" height="36"/>
-        <image name="icn_activities.png" width="55" height="40"/>
-        <image name="icn_account.png" width="55" height="40"/>
-        <image name="icn_pin_dwn_pink_sm.png" width="21" height="27"/>
-        <image name="icn_pin_dwn_grey_sm.png" width="21" height="27"/>
-        <image name="icn_pin_up_pink_sm.png" width="21" height="27"/>
-        <image name="icn_pin_up_grey_sm.png" width="21" height="27"/>
-        <image name="icn_next.png" width="27" height="27"/>
-        <image name="gradient.png" width="200" height="60"/>
-        <image name="icn_kids.png" width="61" height="61"/>
-        <image name="icn_circle.png" width="61" height="61"/>
-        <image name="intro_bubble_1.png" width="195" height="195"/>
-        <image name="intro_bubble_2.png" width="195" height="195"/>
-        <image name="intro_cal.png" width="195" height="195"/>
-        <image name="intro_carpool.png" width="195" height="195"/>
-        <image name="intro_face.png" width="195" height="195"/>
-        <image name="intro_kids.png" width="195" height="195"/>
-        <image name="intro_people.png" width="195" height="195"/>
-        <image name="intro_places.png" width="195" height="195"/>
-        <image name="icn_arrow_orange.png" width="19" height="19"/>
-        <image name="Icon.png" width="57" height="57"/>
-        <image name="Icon-72.png" width="72" height="72"/>
-        <image name="Icon-Small-50.png" width="50" height="50"/>
-        <image name="appbarlayoutexpandrightvariant.png" width="76" height="76"/>
-        <image name="Icon-60.png" width="60" height="60"/>
-        <image name="Icon-76.png" width="76" height="76"/>
-        <image name="Default-568h.png" width="320" height="568"/>
-        <image name="Default.png" width="320" height="480"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedScreenMetrics key="destination" type="retina47"/>
-    </simulatedMetricsContainer>
 </document>

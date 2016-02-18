@@ -194,7 +194,7 @@ namespace PickUpApp
 
 		public string DefaultDropOffAccountFirstName {
 			get{
-				if (string.IsNullOrEmpty (DefaultDropOffAccount)) {
+				if (string.IsNullOrEmpty (DefaultDropOffAccount) || DefaultDropOffAccount == App.myAccount.id) {
 					_DefaultDropOffAccountFirstName = "Me";
 					return "Me";
 				} else {
@@ -228,7 +228,12 @@ namespace PickUpApp
 
 		public string DefaultDropOffAccountFullname
 		{
-			get{ return _DefaultDropOffAccountFirstName + " " + _DefaultDropOffAccountLastName; }
+			get{
+				if (string.IsNullOrEmpty(DefaultDropOffAccount) || DefaultDropOffAccount == App.myAccount.id) {
+					return "Me";
+				}
+				return _DefaultDropOffAccountFirstName + " " + _DefaultDropOffAccountLastName; 
+			}
 		}
 
 		private string _DefaultDropOffAccountPhotoURL;
@@ -248,7 +253,7 @@ namespace PickUpApp
 		public string DefaultPickupAccountFirstName 
 		{ 
 			get{
-				if (string.IsNullOrEmpty (DefaultPickupAccount)) {
+				if (string.IsNullOrEmpty (DefaultPickupAccount) || DefaultPickupAccount == App.myAccount.id) {
 					_DefaultPickupAccountFirstName = "Me";
 					return "Me";
 				} else {
@@ -266,7 +271,12 @@ namespace PickUpApp
 
 		public string DefaultPickupAccountFullname
 		{
-			get{ return _DefaultPickupAccountFirstName + " " + _DefaultPickupAccountLastName; }
+			get{ 
+				if (string.IsNullOrEmpty(DefaultPickupAccount) || DefaultPickupAccount == App.myAccount.id) {
+					return "Me";
+				}
+				return _DefaultPickupAccountFirstName + " " + _DefaultPickupAccountLastName; 
+			}
 		}
 
 		private string _DefaultPickupAccountPhotoURL;

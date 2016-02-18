@@ -170,6 +170,7 @@ namespace PickUpApp
 
 			sl.Children.Add (ci);
 
+		
 			Label l = new Label ();
 			l.Text = ac.Fullname;
 			l.HorizontalOptions = LayoutOptions.Start;
@@ -187,6 +188,44 @@ namespace PickUpApp
 			}
 
 			sl.Children.Add (l);
+
+			ImageButton ib = new ImageButton ();
+			ib.HorizontalOptions = LayoutOptions.EndAndExpand;
+			ib.VerticalOptions = LayoutOptions.Center;
+			ib.ImageHeightRequest = 27;
+			ib.ImageWidthRequest = 27;
+			if (ac.Selected) {
+				ib.Source = "ui_check_filled.png";
+			} else {
+				ib.Source = "ui_check_empty.png";
+			}
+
+			ib.Clicked += delegate(object sender, EventArgs e) {
+
+				var b = (ImageButton)sender;
+				var t = b.CommandParameter;
+
+				((ListView)((StackLayout)b.ParentView).ParentView).SelectedItem = t;
+				if (ac.Selected)
+				{
+					ib.Source = "ui_check_filled.png";
+				}
+				else{
+					ib.Source = "ui_check_empty.png";
+				}
+			};
+
+//			ib.Clicked += delegate(object sender, EventArgs e) {
+//				if (ac.Selected) {
+//					ac.Selected = false;
+//					ib.Source = "ui_check_empty.png";
+//				} else {
+//					ac.Selected = true;
+//					ib.Source = "ui_check_filled.png";
+//				}
+//			};
+
+			sl.Children.Add (ib);
 
 			View = sl;
 		}
