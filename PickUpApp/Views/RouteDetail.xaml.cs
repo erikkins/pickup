@@ -14,6 +14,7 @@ namespace PickUpApp
 	{
 
 		private System.Threading.CancellationTokenSource cancellationToken = new System.Threading.CancellationTokenSource ();
+		DistanceService ds = new DistanceService ();
 
 		public RouteDetail (Today currentToday, string PinString, int CurrentOrdinal)
 		{
@@ -33,11 +34,13 @@ namespace PickUpApp
 
 			//deal is, we really want to load this cell with 0 delay, then run the traffic call to check realtime
 
-			DistanceService ds = new DistanceService ();
+
 			if (currentToday.IsPickup) {
-				ds.ExpectedTravelTime = (decimal)currentToday.EndPlaceTravelTime;				
+				ds.ExpectedTravelTime = (decimal)currentToday.EndPlaceTravelTime;		
+				ds.EventTime = currentToday.TSPickup;
 			} else {
 				ds.ExpectedTravelTime = (decimal)currentToday.StartPlaceTravelTime;
+				ds.EventTime = currentToday.TSDropOff;
 			}
 			Location start = new Location ();
 			start.Latitude = App.PositionLatitude;
@@ -45,6 +48,7 @@ namespace PickUpApp
 			Location end = new Location ();
 			end.Latitude = currentToday.Latitude;
 			end.Longitude = currentToday.Longitude;
+
 
 
 			ds.StartingLocation = start;
@@ -206,6 +210,20 @@ namespace PickUpApp
 							{
 								await this.ViewModel.ExecuteLocationLogCommand(ll);
 							}
+
+							//don't forget to refresh the DistanceService!
+							Location start = new Location ();
+							start.Latitude = App.PositionLatitude;
+							start.Longitude = App.PositionLongitude;
+							Location end = new Location ();
+							end.Latitude = currentToday.Latitude;
+							end.Longitude = currentToday.Longitude;
+
+							ds.StartingLocation = start;
+							ds.EndingLocation = end;
+							await ds.CalculateDriveTime ();
+
+
 							// Switch back to the UI thread to update the UI
 							Device.BeginInvokeOnMainThread(() =>
 								{
@@ -749,7 +767,7 @@ namespace PickUpApp
 			this.IsEnabled = false;
 
 			Label est = new Label ();
-			est.Text = "Estimated Arrival";
+			est.Text = "Leave by";
 			est.FontSize = 16;
 			est.TextColor = Color.Black;
 			est.HorizontalOptions = LayoutOptions.StartAndExpand;

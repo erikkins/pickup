@@ -140,6 +140,7 @@ namespace PickUpApp
 		{
 
 			if (IsLoading) {
+				SaveLog ("Aborting CalculateDriveTime because something else isloading");
 				return;
 			}
 
@@ -169,6 +170,7 @@ namespace PickUpApp
 
 				if (selectedPlace == null || string.IsNullOrEmpty(selectedPlace.Latitude) || string.IsNullOrEmpty(selectedPlace.Longitude) || string.IsNullOrEmpty(CurrentSchedule.Latitude) || string.IsNullOrEmpty(CurrentSchedule.Longitude))
 				{
+					SaveLog("Bailing on DistanceCheck");
 					System.Diagnostics.Debug.WriteLine ("Bailing on DistanceCheck ");
 					return;
 				}
@@ -192,8 +194,8 @@ namespace PickUpApp
 					//var bingresponse = Newtonsoft.Json.Linq.JObject.Parse (resp.Content);
 
 					BingResponse br = Newtonsoft.Json.JsonConvert.DeserializeObject<BingResponse>(resp.Content);
-					decimal min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
-					decimal distance = br.ResourceSets[0].TripResources[0].TravelDistance;
+					double min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
+					double distance = br.ResourceSets[0].TripResources[0].TravelDistance;
 					string distanceUnit = br.ResourceSets[0].TripResources[0].DistanceUnit;
 					//save the turn by tuSystem.Diagnostics.Debug.WriteLine ("BingError " + ex.Message);rn
 					try{
@@ -205,11 +207,11 @@ namespace PickUpApp
 					resp = null;
 					req = null;
 
-					CurrentSchedule.StartPlaceTravelTime = Math.Round(min, 2);
-					CurrentSchedule.StartPlaceDistance = Math.Round(distance, 2);
+					CurrentSchedule.StartPlaceTravelTime = Math.Round((decimal)min, 2);
+					CurrentSchedule.StartPlaceDistance = Math.Round((decimal)distance, 2);
 					//for now, assume the pickup is departing from the same place
-					CurrentSchedule.EndPlaceTravelTime = Math.Round(min,2);
-					CurrentSchedule.EndPlaceDistance = Math.Round(distance, 2);
+					CurrentSchedule.EndPlaceTravelTime = Math.Round((decimal)min,2);
+					CurrentSchedule.EndPlaceDistance = Math.Round((decimal)distance, 2);
 				}
 				else{
 					double tempmins=0, mins=0, tempdist=0, dist=0, tempminsend=0, tempdistend=0, minsend=0, distend=0;
@@ -340,6 +342,7 @@ namespace PickUpApp
 			catch(Exception ex)
 			{
 				IsLoading = false;
+				SaveLog (ex.ToString());
 				System.Diagnostics.Debug.WriteLine ("BingError " + ex.Message);
 			}
 			finally

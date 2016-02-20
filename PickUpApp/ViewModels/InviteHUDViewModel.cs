@@ -133,7 +133,7 @@ namespace PickUpApp
 			//var bingresponse = Newtonsoft.Json.Linq.JObject.Parse (resp.Content);
 
 			BingResponse br = Newtonsoft.Json.JsonConvert.DeserializeObject<BingResponse>(resp.Content);
-			decimal min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
+			double min = br.ResourceSets[0].TripResources[0].TravelDurationTraffic/60;
 			
 			//save the turn by turn
 			try{

@@ -29,6 +29,26 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 
+				//set the required fields
+				if (AllowEdit)
+				{
+					if (string.IsNullOrEmpty(this.ViewModel.CurrentContact.FirstName))
+					{
+						await DisplayAlert("Uh oh", "You must supply First Name for this contact!", "OK");
+						return;
+					}
+					if (string.IsNullOrEmpty(this.ViewModel.CurrentContact.LastName))
+					{
+						await DisplayAlert("Uh oh", "You must supply Last Name for this contact!", "OK");
+						return;
+					}
+					if (string.IsNullOrEmpty(this.ViewModel.CurrentContact.Email))
+					{
+						await DisplayAlert("Uh oh", "You must supply Email for this contact!", "OK");
+						return;
+					}
+				}
+
 				//make sure we set the coparent value
 				this.ViewModel.CurrentContact.Coparent = srcCoParent.IsChecked;
 

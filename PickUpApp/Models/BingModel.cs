@@ -113,9 +113,9 @@ namespace PickUpApp
 			}
 		}
 
-		private decimal _travelDistance;
+		private double _travelDistance;
 		[JsonProperty(PropertyName = "travelDistance")]
-		public decimal TravelDistance
+		public double TravelDistance
 		{
 			get { return _travelDistance; }
 			set {
@@ -135,9 +135,9 @@ namespace PickUpApp
 			}
 		}
 
-		private decimal _travelDurationTraffic;
+		private double _travelDurationTraffic;
 		[JsonProperty(PropertyName = "travelDurationTraffic")]
-		public decimal TravelDurationTraffic
+		public double TravelDurationTraffic
 		{
 			get { return _travelDurationTraffic; }
 			set {

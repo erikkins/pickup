@@ -78,6 +78,11 @@ namespace PickUpApp.ViewModels
 			}
 		}
 
+		public void SaveLog(string what)
+		{
+			fflog ff = new fflog (what);
+			ExecuteLogCommand (ff).ConfigureAwait (false);
+		}
 
 		#region log
 		private Command logCommand;
