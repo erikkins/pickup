@@ -220,7 +220,7 @@ namespace PickUpApp
 					using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/")))
 					{
 						var request = new RestRequest("distancematrix/json", Method.GET);	
-						if (endPlace == null)
+						if (endPlace == null || endPlace.Latitude == null)
 						{
 							request.AddQueryParameter ("origins", selectedPlace.Latitude + "," + selectedPlace.Longitude);
 							request.AddQueryParameter("destinations", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);
@@ -258,7 +258,7 @@ namespace PickUpApp
 					using (var client2 = new RestClient(new Uri("https://maps.googleapis.com/maps/api/")))
 					{
 						var request2 = new RestRequest("distancematrix/json", Method.GET);	
-						if (endPlace == null)
+						if (endPlace == null || endPlace.Latitude == null)
 						{
 						request2.AddQueryParameter ("origins", selectedPlace.Latitude + "," + selectedPlace.Longitude);
 						request2.AddQueryParameter("destinations", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);

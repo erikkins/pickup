@@ -19,7 +19,7 @@ namespace PickUpApp
 			b.WidthRequest = (App.ScaledWidth) - 50 ;
 			b.FontAttributes = FontAttributes.Bold;
 			b.FontSize = 18;
-			b.Text = "Try Again";
+			b.Text = "Verified";
 			b.TextColor = Color.FromHex ("F6637F");
 			b.BackgroundColor = Color.FromHex ("49376D");
 			b.BorderColor = Color.FromHex ("54D29F");
