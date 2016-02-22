@@ -6,14 +6,5 @@
     </OnPlatform>
   </ContentPage.Padding>
 	<ContentPage.Content>
-	<StackLayout x:Name="stacker" Orientation="Vertical"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-	<!---
-	<Label Text="Please provide this minimal information so everyone can keep in touch!"></Label>
-	<Entry Placeholder="First Name" Text="{Binding Firstname}"></Entry>
-	<Entry Placeholder="Last Name" Text="{Binding Lastname}"></Entry>
-	<Entry Placeholder="Cell Phone" Keyboard="Telephone" Text="{Binding Phone}"></Entry>
-	<Entry Placeholder="Email" Keyboard="Email" Text="{Binding Email}"></Entry>
-	-->
-	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

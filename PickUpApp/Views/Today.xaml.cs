@@ -268,7 +268,7 @@ namespace PickUpApp
 			edNew.IsEnabled = false;
 			edNew.TextColor = AppColor.AppPink;
 			edNew.BackgroundColor = Color.Transparent;
-			edNew.Text = "Welcome! To get started, click on the Settings icon and begin adding Kids, Places and Activities.";
+			edNew.Text = "Welcome! To get started, click on the Menu icon and begin adding Kids, Places and Activities.";
 			edNew.WidthRequest = 250;
 			edNew.IsVisible = false;
 			rl.Children.Add (edNew, Constraint.Constant (App.ScaledQuarterWidth -115), Constraint.Constant(App.ScaledHeight/6), null, null);

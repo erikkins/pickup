@@ -9,9 +9,17 @@ namespace PickUpApp
 		public HomePage ()
 		{
 			Title = "FamFetch";
-
-			Detail = new NavigationPage(new TodayView ()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
-
+			if (string.IsNullOrEmpty (App.myAccount.Phone) || string.IsNullOrEmpty (App.myAccount.Firstname) || string.IsNullOrEmpty (App.myAccount.Lastname)) {
+				Detail = new NavigationPage (new MyInfo ()) {
+					BarTextColor = Device.OnPlatform (Color.White, Color.White, Color.Black),
+					BarBackgroundColor = Color.FromRgb (247, 99, 127)
+				};
+			} else {
+				Detail = new NavigationPage (new TodayView ()) {
+					BarTextColor = Device.OnPlatform (Color.White, Color.White, Color.Black),
+					BarBackgroundColor = Color.FromRgb (247, 99, 127)
+				};
+			}
 //			if (!((TodayView)((NavigationPage)Detail).CurrentPage).ViewModel.IsAuthenticated)
 //			{
 //				Navigation.PushModalAsync (new Splash ());

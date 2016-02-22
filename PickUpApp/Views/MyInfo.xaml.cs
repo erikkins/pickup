@@ -28,8 +28,19 @@ namespace PickUpApp
 			this.ViewModel = new SplashViewModel (App.client);
 
 			this.ToolbarItems.Add (new ToolbarItem ("Save", null, async() => {
+
+				//make sure Firstname, lastname, email and phonenumber are entered!
+				if (string.IsNullOrEmpty(this.ViewModel.Email) || string.IsNullOrEmpty(this.ViewModel.Firstname) || string.IsNullOrEmpty(this.ViewModel.Lastname) || string.IsNullOrEmpty(this.ViewModel.Phone))
+				{
+					await DisplayAlert("Uh oh", "You must supply all fields!", "OK");
+					return;
+				}
+
 				await ViewModel.ExecuteAddEditCommand();
 			}));
+
+			StackLayout stacker = new StackLayout ();
+			stacker.Orientation = StackOrientation.Vertical;
 
 			ExtendedTableView tv = new ExtendedTableView ();
 			tv.BindingContext = this.ViewModel;
@@ -162,6 +173,40 @@ namespace PickUpApp
 			stacker.Children.Add (tv);
 
 
+			RelativeLayout rl = new RelativeLayout ();
+			rl.Children.Add (stacker, 
+				xConstraint: Constraint.Constant (0), 
+				yConstraint: Constraint.Constant (0),
+				widthConstraint: Constraint.RelativeToParent ((parent) => {
+					return parent.Width;
+				}),
+				heightConstraint: Constraint.RelativeToParent ((parent) => {
+					return parent.Height;
+				}));
+
+
+
+			//we want to point at the Image circle and say "tap to change photo!"
+			FFArrow NEWarrow = new FFArrow ();
+			NEWarrow.Color = AppColor.AppPink;
+			NEWarrow.WidthRequest = App.Device.Display.Width;
+			NEWarrow.HeightRequest = App.Device.Display.Height;
+			NEWarrow.StartPoint = new Point (App.ScaledQuarterWidth + 60, 55);
+			NEWarrow.EndPoint = new Point (App.ScaledQuarterWidth + 100, 40);
+			NEWarrow.IsVisible = true;
+			rl.Children.Add (NEWarrow, Constraint.Constant(0), Constraint.Constant(0), null, null);
+
+			Label lblTapme = new Label ();
+			lblTapme.Text = "Tap me";
+			lblTapme.FontFamily = Device.OnPlatform ("HelveticaNeue-Light", "", "");
+			lblTapme.TextColor = AppColor.AppPink;
+
+			rl.Children.Add(lblTapme, Constraint.RelativeToView (NEWarrow, (parent, view) => {
+				return ((FFArrow)view).EndPoint.X + 5;
+			}), Constraint.RelativeToView (NEWarrow, (parent, view) => {
+				return ((FFArrow)view).EndPoint.Y - 15 ;
+			}), null, null);
+
 //			ImageCircle.Forms.Plugin.Abstractions.CircleImage myImage = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 //				BorderColor = Color.Black,
 //				BorderThickness = 1,
@@ -180,7 +225,7 @@ namespace PickUpApp
 //				await ViewModel.ExecuteAddEditCommand();
 //			};
 //			stacker.Children.Add (btnUpdate);
-
+			this.Content = rl;
 
 		}
 
