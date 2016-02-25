@@ -125,6 +125,9 @@ namespace PickUpApp
 				case "Reg":
 					((MasterDetailPage)this.Parent.Parent).Navigation.PushModalAsync(new Register());
 					break;
+				case "Test":
+					((MasterDetailPage)this.Parent.Parent).Navigation.PushModalAsync(new TestView());
+					break;
 				}
 
 					// Show the detail page.
@@ -175,6 +178,9 @@ namespace PickUpApp
 			//this.Add (kids);
 			//this.Add (new FFMenuItem ("Circle", App.myCircle.Count));
 			//this.Add (new FFMenuItem ("Places", App.myPlaces.Count));
+			//if (App.myAccount.Email.Contains ("@famfetch.com")) {
+			//	this.Add (new FFMenuItem ("Test", 0));
+			//}
 			this.Add (new FFMenuItem("Today", 0));
 			this.Add (new FFMenuItem ("Activities", 0));
 			this.Add (new FFMenuItem ("Account", 0));

@@ -14,9 +14,9 @@ namespace PickUpApp.droid
 	public class AndroidAddressBook:iAddressBook
 	{
 
-		public async Task<List<LocalContact>> loadContacts ()
+		public  List<LocalContact> loadContacts (out string errorMessage)
 		{
-		
+			errorMessage = "";
 			List<LocalContact> myContacts = new List<LocalContact> ();
 
 			var addressBook = new AddressBook (Xamarin.Forms.Forms.Context);

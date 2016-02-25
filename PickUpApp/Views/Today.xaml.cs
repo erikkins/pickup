@@ -495,6 +495,16 @@ namespace PickUpApp
 						edNew.IsVisible = false;
 					}
 
+					//and we really want to scroll to the NEXT item in the list
+					foreach (Today tempT in ViewModel.Todays)
+					{
+						if (tempT.IsNext)
+						{
+							lvToday.ScrollTo(tempT, ScrollToPosition.Start, false);
+							break;
+						}
+					}
+
 					//let's load the messages to see if there's anything in my inbox
 					MessageView mv = new MessageView();
 					MessagingCenter.Send<MessageView>(mv, "LoadMessages");
@@ -538,7 +548,7 @@ namespace PickUpApp
 
 			this.Disappearing += delegate(object sender, EventArgs e) {
 				//do all the unsubscriptions
-				MessagingCenter.Unsubscribe<string> (this, "NeedsRefresh");
+				//MessagingCenter.Unsubscribe<string> (this, "NeedsRefresh"); //had to comment this out because RouteDetail calls this when marking complete and it would load otherwise
 				MessagingCenter.Unsubscribe<Today>(this, "fetchrequest");
 				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				MessagingCenter.Unsubscribe<MessageView> (this, "LoadMessages");

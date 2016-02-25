@@ -29,6 +29,8 @@ namespace PickUpApp
 		{
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
 				ViewModel.ReturnVerb = "DetailUpdate"; //trick it so that we don't update the parent view just yet...
+
+				/*
 				await ViewModel.ExecuteAddEditCommand();
 				App.hudder.hideHUD();
 				//hate having to do this
@@ -36,6 +38,16 @@ namespace PickUpApp
 				await Navigation.PopAsync();
 				}
 				catch{}
+				*/
+
+				//let's try this with a continueWith
+				await ViewModel.ExecuteAddEditCommand().ContinueWith( x => {
+					Device.BeginInvokeOnMainThread(()=>{
+						Navigation.PopAsync();
+						App.hudder.hideHUD();
+					});
+				});
+
 				//MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 			});
 
@@ -58,11 +70,6 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded", (s) => {
 				//now tell the parent controller to reload its listview		
-				//HATE THIS
-				try{
-				Navigation.PopAsync();
-				}
-				catch{}
 				MessagingCenter.Send<Schedule>(s, "RefreshSched");
 			});
 
@@ -73,15 +80,6 @@ namespace PickUpApp
 				ViewModel.CurrentSchedule = s;
 
 				loadSelf (s);
-
-				//HATE this pattern
-				try{
-				Navigation.PopAsync();
-				}
-				catch(Exception ex)
-				{
-					System.Diagnostics.Debug.WriteLine(ex);
-				}
 			});
 			base.OnAppearing ();
 		}
@@ -171,12 +169,46 @@ namespace PickUpApp
 					if (ret)
 					{
 						App.hudder.showHUD("Saving Activity");
-						await this.ViewModel.ExecuteAddEditCommand();
+						await this.ViewModel.ExecuteAddEditCommand().ContinueWith( x => {
+							
+							System.Diagnostics.Debug.WriteLine("POP1--" + x.Status.ToString());
+
+							if (x.IsFaulted)
+							{
+								System.Diagnostics.Debug.WriteLine("POP1--FAULTED--");
+							}
+							if (x.IsCanceled)
+							{
+								System.Diagnostics.Debug.WriteLine("POP1--CANCELED--");
+							}
+							if (x.IsCompleted)
+							{
+								System.Diagnostics.Debug.WriteLine("POP1--COMPLETED--");
+							}
+							
+							if (x.Exception == null)
+							{
+								Device.BeginInvokeOnMainThread(()=>{
+									System.Diagnostics.Debug.WriteLine("POP1--POPPING");
+								    Navigation.PopAsync();
+									App.hudder.hideHUD();
+								});
+							}
+							else{
+								System.Diagnostics.Debug.WriteLine(x.Exception.ToString());
+							}
+						});
 					}
 				}
 				else{
 					App.hudder.showHUD("Saving Activity");
-					await this.ViewModel.ExecuteAddEditCommand();
+					await this.ViewModel.ExecuteAddEditCommand().ContinueWith( x => {
+						System.Diagnostics.Debug.WriteLine("POP2--" + x.Status.ToString());
+						Device.BeginInvokeOnMainThread(()=>{
+							Navigation.PopAsync();
+							App.hudder.hideHUD();
+						});
+					});
 				}
 				//await Navigation.PopAsync();
 			}));
@@ -291,8 +323,6 @@ namespace PickUpApp
 			ts.Add (new BlackoutCell ());
 
 			tv.Root.Add (ts);
-
-
 		}
 
 		protected ActivityAddEditViewModel ViewModel

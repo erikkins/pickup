@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="pickUpApp.Android">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="21" />
+	<uses-sdk android:targetSdkVersion="23" />
 	<application android:label="PickUp">
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC5Pz9ySb_bI83GqUu9j00E8GZms8z6-rQ" />
 		<service android:name="pickUpApp.droid..PickupIntentService" android:enabled="true" android:exported="false" />
