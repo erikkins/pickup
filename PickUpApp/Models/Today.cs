@@ -659,7 +659,7 @@ namespace PickUpApp
 
 		public bool ShouldSerializeVia()
 		{
-			return false;
+			return true;
 		}
 
 		//not serialized

@@ -94,10 +94,11 @@ namespace PickUpApp.ViewModels
 
 						if (sched.RowType == "pickup")
 						{
-							if (sched.IsPickup)
-							{
+							//not sure what this was doing? it was keeping the pickup row out of the Today screen (but maybe it's something with coparent)
+							//if (sched.IsPickup)
+							//{
 								tempTodayList.Add(pickup);
-							}
+							//}
 						}
 						else{												
 							tempTodayList.Add(pickup);

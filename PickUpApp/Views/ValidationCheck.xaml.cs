@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using XLabs.Forms.Controls;
 
 namespace PickUpApp
 {
@@ -11,6 +12,33 @@ namespace PickUpApp
 		{
 			InitializeComponent ();
 
+			Label l = new Label ();
+			l.TextColor = Color.White;
+			l.VerticalOptions = LayoutOptions.End;
+			l.HorizontalTextAlignment = TextAlignment.Center;
+			l.HorizontalOptions = LayoutOptions.Center;
+			l.FontSize = 12;
+			l.Text = "By clicking Verified you accept our terms of service and data policy. For more information please visit:";
+
+			Label hll = new Label ();
+			hll.FormattedText = new FormattedString ();
+			hll.FormattedText.Spans.Add (new Span { Text = "www.famfetch.com", FontSize= 14, ForegroundColor = Color.White, FontAttributes = FontAttributes.Bold });
+			hll.HorizontalOptions = LayoutOptions.Center;
+
+			var tap = new TapGestureRecognizer ();
+			tap.Tapped += (sender, e) => {
+				App.Device.LaunchUriAsync (new Uri("http://www.famfetch.com/governance"));
+			};
+
+			hll.GestureRecognizers.Add(tap);
+
+
+		
+			stacker.Children.Add (l);
+			stacker.Children.Add (hll);
+			BoxView spacer = new BoxView ();
+			spacer.HeightRequest = 20;
+			stacker.Children.Add (spacer);
 
 			Button b = new Button ();
 			b.VerticalOptions = LayoutOptions.End;
@@ -34,6 +62,7 @@ namespace PickUpApp
 			};
 
 		}
+			
 	}
 }
 
