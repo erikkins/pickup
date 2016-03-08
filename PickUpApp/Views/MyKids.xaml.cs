@@ -182,14 +182,20 @@ namespace PickUpApp
 			ImageSource imageSource = null;
 
 			UriImageSource uis = new UriImageSource ();
-			uis.Uri = new Uri (k.PhotoURL);
-			uis.CachingEnabled = true;
-			uis.CacheValidity = new TimeSpan (0, 0, 5, 0);
+			if (string.IsNullOrEmpty (k.PhotoURL)) {
+				//why is it null??? it should be atleast the filename letters
+				k.PhotoURL = null;
 
-			if (k.PhotoURL.ToLower ().StartsWith ("http")) {
-				imageSource = uis;
 			} else {
-				imageSource = FileImageSource.FromFile (k.PhotoURL);
+				uis.Uri = new Uri (k.PhotoURL);
+				uis.CachingEnabled = true;
+				uis.CacheValidity = new TimeSpan (0, 0, 5, 0);
+
+				if (k.PhotoURL.ToLower ().StartsWith ("http")) {
+					imageSource = uis;
+				} else {
+					imageSource = FileImageSource.FromFile (k.PhotoURL);
+				}
 			}
 
 

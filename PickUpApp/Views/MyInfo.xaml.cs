@@ -19,6 +19,7 @@ namespace PickUpApp
 		SimpleBoundTextCell sbtcEmail;
 		SimpleBoundTextCell sbtcPhone;
 		SimpleImageCell sicPhoto;
+		SimpleBoundFilledLabelCell infoCell;
 
 		public MyInfo ()
 		{
@@ -160,6 +161,10 @@ namespace PickUpApp
 					break;
 				}
 			};
+
+			infoCell = new SimpleBoundFilledLabelCell ("Please make sure all fields are current", AppColor.AppOrange, Color.Black);
+			ts.Add (infoCell);
+
 			sbtcFirstName = new SimpleBoundTextCell ("First name", "Firstname");
 			ts.Add (sbtcFirstName);
 			sbtcLastName = new SimpleBoundTextCell ("Last name", "Lastname");

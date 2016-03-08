@@ -52,7 +52,7 @@ namespace PickUpApp
 		{
 			get{
 
-				if (_photoURL == null) {
+				if (_photoURL == null || _photoURL == "") {
 					//generate one on the fly...
 					string initials = "";
 					if (Firstname == null && Lastname == null) {

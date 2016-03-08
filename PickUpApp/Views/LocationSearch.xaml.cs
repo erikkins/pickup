@@ -515,6 +515,45 @@ namespace PickUpApp
 		}
 	}
 		
+	public class SimpleBoundFilledLabelCell : ViewCell
+	{
+		private string _text;
+		private Color _fillcolor;
+		private Color _textcolor;
+
+		public SimpleBoundFilledLabelCell(string text, Color fillcolor, Color textcolor)
+		{
+			_text = text;
+			_fillcolor = fillcolor;
+			_textcolor = textcolor;
+		}
+			
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged ();
+
+			dynamic c = BindingContext;
+			this.Height = 45;
+
+			StackLayout sl = new StackLayout ();
+			sl.Orientation = StackOrientation.Horizontal;
+			sl.HorizontalOptions = LayoutOptions.Start;
+			sl.VerticalOptions = LayoutOptions.Center;
+			sl.BackgroundColor = _fillcolor;
+			sl.HeightRequest = 45;
+
+			Label l = new Label ();
+			l.Text = _text;
+			l.FontAttributes = FontAttributes.Bold;
+			l.FontSize = 16;
+			l.TextColor = _textcolor;
+			l.HorizontalOptions = LayoutOptions.CenterAndExpand;
+			l.VerticalOptions = LayoutOptions.Center;
+			sl.Children.Add (l);
+
+			View = sl;
+		}
+	}
 	public class SimpleBoundLabelCell : ViewCell
 	{
 		private string _title;
