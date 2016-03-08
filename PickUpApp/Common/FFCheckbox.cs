@@ -22,8 +22,20 @@ namespace PickUpApp
 			};
 
 			this.Content = ToggleImage;
-
-			this.GestureRecognizers.Add(new TapGestureRecognizer(TappedCallback));
+			TapGestureRecognizer tgr = new TapGestureRecognizer ();
+			tgr.Tapped += delegate(object sender, EventArgs e) {
+				if (ToggleImage.Source == UnCheckedImage)
+				{
+					ToggleImage.Source = CheckedImage;
+					Checked = true;
+				}
+				else
+				{
+					ToggleImage.Source = UnCheckedImage;
+					Checked = false;
+				}
+			};
+			this.GestureRecognizers.Add(tgr);
 		}
 		protected override void OnBindingContextChanged ()
 		{
@@ -43,22 +55,26 @@ namespace PickUpApp
 
 			base.OnPropertyChanged (propertyName);
 		}
-		private void TappedCallback(View view)
-		{
-			if (ToggleImage.Source == UnCheckedImage)
-			{
-				ToggleImage.Source = CheckedImage;
-				Checked = true;
-			}
-			else
-			{
-				ToggleImage.Source = UnCheckedImage;
-				Checked = false;
-			}
-		}
+
+
+
+//		private void TappedCallback(View view)
+//		{
+//			if (ToggleImage.Source == UnCheckedImage)
+//			{
+//				ToggleImage.Source = CheckedImage;
+//				Checked = true;
+//			}
+//			else
+//			{
+//				ToggleImage.Source = UnCheckedImage;
+//				Checked = false;
+//			}
+//		}
 
 		public static readonly BindableProperty CheckedProperty =
-			BindableProperty.Create<FFCheckbox, bool>(p => p.Checked, false);
+			BindableProperty.Create("Checked",typeof(bool), typeof(bool), false, BindingMode.TwoWay);
+			//BindableProperty.Create<FFCheckbox, bool>(p => p.Checked, false);
 
 		public bool Checked
 		{
@@ -70,7 +86,8 @@ namespace PickUpApp
 		}
 
 		public static readonly BindableProperty CheckedImageProperty =
-			BindableProperty.Create<FFCheckbox, ImageSource>(p => p.CheckedImage, null);
+			BindableProperty.Create("CheckedImage",typeof(ImageSource), typeof(ImageSource), null, BindingMode.TwoWay);
+			//BindableProperty.Create<FFCheckbox, ImageSource>(p => p.CheckedImage, null);
 
 		public ImageSource CheckedImage
 		{
@@ -79,7 +96,8 @@ namespace PickUpApp
 		}
 
 		public static readonly BindableProperty UnCheckedImageProperty =
-			BindableProperty.Create<FFCheckbox, ImageSource>(p => p.UnCheckedImage, null);
+			BindableProperty.Create("UnCheckedImage",typeof(ImageSource), typeof(ImageSource), null, BindingMode.TwoWay);
+			//BindableProperty.Create<FFCheckbox, ImageSource>(p => p.UnCheckedImage, null);
 
 		public ImageSource UnCheckedImage
 		{

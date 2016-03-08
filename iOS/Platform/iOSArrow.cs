@@ -26,18 +26,22 @@ namespace PickUpApp.iOS
 		{
 			using (var context = UIGraphics.GetCurrentContext())
 			{
-
+				
 				context.SetLineWidth (1);
 				//context.SetLineDash (0, new nfloat[]{ 5, 4 });
 				this.Element.Color.ToUIColor ().SetStroke ();
 
 				//System.Drawing.Color theColor = System.Drawing.Color.FromArgb ((int)Element.Color.A, (int)Element.Color.R, (int)Element.Color.G, (int)Element.Color.B);
 
-				CGPoint starter = new CGPoint (Element.StartPoint.X, Element.StartPoint.Y);
-				CGPoint ender = new CGPoint (Element.EndPoint.X, Element.EndPoint.Y);
-			
+				//CGPoint starter = new CGPoint (Element.StartPoint.X, Element.StartPoint.Y);
+				CGPoint starter = new CGPoint (rect.Left, rect.Height);
+				//CGPoint ender = new CGPoint (Element.EndPoint.X, Element.EndPoint.Y);
+				CGPoint ender = new CGPoint (rect.Right, 0);
+
 				context.SetStrokeColor (Element.Color.ToCGColor());
 				context.SetFillColor (Element.Color.ToCGColor ());
+
+				//context.FillRect (rect);
 
 				//add geometry to graphics context and draw it
 				context.AddPath (pathWithArrowFromPoint(ender, starter, 1, 10, 16));       

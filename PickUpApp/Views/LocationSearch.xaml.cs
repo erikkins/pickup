@@ -599,7 +599,6 @@ namespace PickUpApp
 
 		}
 
-
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged ();
@@ -644,7 +643,7 @@ namespace PickUpApp
 			l2.HasBorder = false;
 			l2.BackgroundColor = Color.Transparent;
 			l2.SetBinding (ExtendedEntry.TextProperty, _binding);
-
+			l2.IsEnabled = true;
 
 			//l2.Text = _value;
 			l2.VerticalOptions = LayoutOptions.Center;
@@ -679,11 +678,9 @@ namespace PickUpApp
 			this.Height = 75;
 
 			Grid g = new Grid ();
+			g.WidthRequest = App.ScaledWidth;
 			g.ColumnDefinitions = new ColumnDefinitionCollection ();
 			ColumnDefinition cd = new ColumnDefinition ();
-			cd.Width = 120;
-			g.ColumnDefinitions.Add (cd);
-			cd = new ColumnDefinition ();
 			cd.Width = GridLength.Auto;
 			g.ColumnDefinitions.Add (cd);
 

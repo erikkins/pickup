@@ -183,18 +183,19 @@ namespace PickUpApp
 				heightConstraint: Constraint.RelativeToParent ((parent) => {
 					return parent.Height;
 				}));
-
+			
 
 
 			//we want to point at the Image circle and say "tap to change photo!"
 			FFArrow NEWarrow = new FFArrow ();
 			NEWarrow.Color = AppColor.AppPink;
-			NEWarrow.WidthRequest = App.Device.Display.Width;
-			NEWarrow.HeightRequest = App.Device.Display.Height;
+			NEWarrow.TranslationY = 25;
+			NEWarrow.WidthRequest = 40; //App.Device.Display.Width;
+			NEWarrow.HeightRequest = 25; //App.Device.Display.Height;
 			NEWarrow.StartPoint = new Point (App.ScaledQuarterWidth + 60, 55);
 			NEWarrow.EndPoint = new Point (App.ScaledQuarterWidth + 100, 40);
 			NEWarrow.IsVisible = true;
-			rl.Children.Add (NEWarrow, Constraint.Constant(0), Constraint.Constant(0), null, null);
+			rl.Children.Add (NEWarrow, Constraint.Constant(App.ScaledQuarterWidth + 60), Constraint.Constant(0), null, null);
 
 			Label lblTapme = new Label ();
 			lblTapme.Text = "Tap me";
@@ -202,9 +203,9 @@ namespace PickUpApp
 			lblTapme.TextColor = AppColor.AppPink;
 
 			rl.Children.Add(lblTapme, Constraint.RelativeToView (NEWarrow, (parent, view) => {
-				return ((FFArrow)view).EndPoint.X + 5;
+				return ((FFArrow)view).X + 15;
 			}), Constraint.RelativeToView (NEWarrow, (parent, view) => {
-				return ((FFArrow)view).EndPoint.Y - 15 ;
+				return ((FFArrow)view).Y - 5 ;
 			}), null, null);
 
 //			ImageCircle.Forms.Plugin.Abstractions.CircleImage myImage = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
@@ -225,6 +226,9 @@ namespace PickUpApp
 //				await ViewModel.ExecuteAddEditCommand();
 //			};
 //			stacker.Children.Add (btnUpdate);
+
+			//rl.RaiseChild (stacker);
+
 			this.Content = rl;
 
 		}

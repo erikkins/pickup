@@ -649,11 +649,19 @@ namespace PickUpApp
 		public class PickupDropoffSelectorCell : ViewCell
 		{
 			bool _isPickup;
+			ExtendedTimePicker tp = new ExtendedTimePicker();
 			public PickupDropoffSelectorCell(bool isPickup)
 			{
 				//init
 				_isPickup = isPickup;
 			}
+
+			protected override void OnTapped ()
+			{
+				base.OnTapped ();
+				tp.Focus ();
+			}
+
 			protected override void OnBindingContextChanged()
 			{
 				base.OnBindingContextChanged ();
@@ -735,7 +743,7 @@ namespace PickUpApp
 
 
 
-				ExtendedTimePicker tp = new ExtendedTimePicker();
+
 				tp.HasBorder = false;
 
 				//string shortTime;
@@ -850,6 +858,14 @@ namespace PickUpApp
 					lAddNote.HorizontalOptions = LayoutOptions.Start;
 					slHoriz.Children.Add (lAddNote);
 
+					TapGestureRecognizer tgrNEW = new TapGestureRecognizer ();
+					tgrNEW.Tapped += async delegate(object sender, EventArgs e) {
+						var b = (Label)sender;
+						await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+					};
+
+					lAddNote.GestureRecognizers.Add (tgrNEW);
+
 					g.Children.Add (slHoriz, 1, 1);
 				}
 
@@ -862,10 +878,16 @@ namespace PickUpApp
 		public class DatePickerCell : ViewCell
 		{
 			bool _startsOn;
+			ExtendedDatePicker dp = new ExtendedDatePicker();
 			public DatePickerCell(bool startsOn)
 			{
 				//init
 				_startsOn = startsOn;
+			}
+			protected override void OnTapped ()
+			{
+				base.OnTapped ();
+				dp.Focus ();
 			}
 			protected override void OnBindingContextChanged()
 			{
@@ -915,7 +937,7 @@ namespace PickUpApp
 
 				g.Children.Add (l, 0, 0);
 
-				ExtendedDatePicker dp = new ExtendedDatePicker();
+
 				if (_startsOn) {
 					//dp.Date = s.AtWhen;
 					dp.SetBinding (ExtendedDatePicker.DateProperty, "CurrentSchedule.AtWhen");
@@ -1404,10 +1426,19 @@ namespace PickUpApp
 
 		public class BlackoutLine : ViewCell
 		{
+			FFCheckbox check = new FFCheckbox();
 			public BlackoutLine()
 			{
 			}
-
+			protected override void OnTapped ()
+			{
+				base.OnTapped ();
+				if (check.Checked) {
+					check.Checked = false;
+				} else {
+					check.Checked = true;
+				}
+			}
 			protected override void OnBindingContextChanged()
 			{
 				base.OnBindingContextChanged ();
@@ -1416,7 +1447,7 @@ namespace PickUpApp
 
 				StackLayout slHoriz = new StackLayout ();
 				slHoriz.Orientation = StackOrientation.Horizontal;
-				FFCheckbox check = new FFCheckbox();			
+							
 				slHoriz.Children.Add(check);
 				check.SetBinding(FFCheckbox.CheckedProperty, "Selected", BindingMode.TwoWay);
 				Label l2 = new Label ();

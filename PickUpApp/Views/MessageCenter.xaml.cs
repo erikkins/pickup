@@ -105,7 +105,7 @@ namespace PickUpApp
 		}
 	}
 
-	public class MessageTemplateSelector : DataTemplateSelector
+	public class MessageTemplateSelector : XLabs.Forms.Controls.DataTemplateSelector
 	{
 		public DataTemplate FetchRequest = new DataTemplate (typeof(PickupRequestCell));
 		public DataTemplate CircleRequest = new DataTemplate (typeof(CircleRequestCell));

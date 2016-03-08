@@ -881,8 +881,10 @@ namespace PickUpApp
 				App.Device.PhoneService.DialNumber(t.ViaPhone);
 
 			};
-				
 
+
+			//DON'T CURRENTLY SUPPORT IN-FETCH MESSAGING
+			/*
 			Button btnMessage = new Button ();
 			btnMessage.Image = "icn_text.png";
 			btnMessage.BorderColor = Color.FromRgb (241, 179, 70);
@@ -900,6 +902,8 @@ namespace PickUpApp
 			btnMessage.Clicked += async delegate(object sender, EventArgs e) {
 				await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Message", "Cancel");
 			};
+
+			*/
 
 			View = slMain;
 
