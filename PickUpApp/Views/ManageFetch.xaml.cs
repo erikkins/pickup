@@ -31,7 +31,13 @@ namespace PickUpApp
 			MessagingCenter.Subscribe<Today> (this, "fetchcanceled", async(ct) => {
 				//I guess pop this and refresh today!
 				App.hudder.hideHUD();
+				try{
 				await Navigation.PopToRootAsync();
+				}
+				catch(Exception ex)
+				{
+					//why are these excepting??
+				}
 				MessagingCenter.Send<string>("cancelfetch", "NeedsRefresh");
 			});
 

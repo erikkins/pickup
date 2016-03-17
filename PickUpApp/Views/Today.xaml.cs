@@ -722,9 +722,18 @@ namespace PickUpApp
 				currentState = TodayView.ActivityState.Next;
 			}
 
-			if (t.PickupComplete || t.DropOffComplete) {
-				currentState = TodayView.ActivityState.Complete;
-				this.IsEnabled = false; //shouldn't be able to click on an already complete cell
+			if (t.IsPickup) {
+				if (t.PickupComplete) {
+					currentState = TodayView.ActivityState.Complete;
+					this.IsEnabled = false;
+				}
+			} 
+			else 
+			{
+				if (t.DropOffComplete) {
+					currentState = TodayView.ActivityState.Complete;
+					this.IsEnabled = false;
+				}
 			}
 
 

@@ -124,13 +124,8 @@ namespace PickUpApp
 //				}
 
 
-					
-
-
-
 				using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
-				{
-					
+				{					
 					var request = new RestRequest("textsearch/json", Method.GET);	
 
 					request.AddQueryParameter ("query", searchBar.Text);
@@ -151,7 +146,7 @@ namespace PickUpApp
 
 			};
 
-			lstSearch.ItemSelected += delegate(object sender, SelectedItemChangedEventArgs e) {
+			lstSearch.ItemSelected += async delegate(object sender, SelectedItemChangedEventArgs e) {
 				lstSearch.IsVisible = false;
 				LayoutRel.IsVisible = false;
 
@@ -183,6 +178,26 @@ namespace PickUpApp
 					Position = position,
 					Address = result.Address
 				});
+
+				if (!string.IsNullOrEmpty(result.PlaceID))
+				{
+					//try and get the phone number
+					using (var client = new RestClient(new Uri("https://maps.googleapis.com/maps/api/place/")))
+					{					
+						var requestDetails = new RestRequest("details/json", Method.GET);	
+
+						requestDetails.AddQueryParameter ("placeid", result.PlaceID);
+						requestDetails.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
+
+						var resultDetails = await client.Execute(requestDetails);
+						GoogleResponse yrDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleResponse>(System.Text.Encoding.UTF8.GetString(resultDetails.RawBytes, 0, resultDetails.RawBytes.Length));
+
+						if (yrDetails.Details != null)
+						{
+							tempLocation.Phone = yrDetails.Details.PhoneNumber;
+						}
+					}
+				}					
 
 				tempLocation.Address = result.Address;
 				tempLocation.Latitude = position.Latitude.ToString();
@@ -437,7 +452,8 @@ namespace PickUpApp
 	public class SimpleTextCell : ViewCell
 	{
 		private string _title;
-		private DateTime _date;
+		//private DateTime _date;
+		ExtendedEntry l2 = new ExtendedEntry();
 
 		public SimpleTextCell(string title)
 		{
@@ -445,6 +461,11 @@ namespace PickUpApp
 
 		}
 
+		protected override void OnTapped ()
+		{
+			base.OnTapped ();
+			l2.Focus ();
+		}
 
 		protected override void OnBindingContextChanged()
 		{
@@ -486,7 +507,7 @@ namespace PickUpApp
 
 			g.Children.Add (l, 0, 0);
 
-			ExtendedEntry l2 = new ExtendedEntry();
+
 			l2.HasBorder = false;
 			l2.BackgroundColor = Color.Transparent;
 			switch (_title) {
@@ -630,6 +651,7 @@ namespace PickUpApp
 	{
 		private string _title;
 		private string _binding;
+		ExtendedEntry l2 = new ExtendedEntry();
 
 		public SimpleBoundTextCell(string title, string binding)
 		{
@@ -637,7 +659,11 @@ namespace PickUpApp
 			_binding = binding;
 
 		}
-
+		protected override void OnTapped ()
+		{
+			base.OnTapped ();
+			l2.Focus ();
+		}
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged ();
@@ -678,7 +704,7 @@ namespace PickUpApp
 
 			g.Children.Add (l, 0, 0);
 
-			ExtendedEntry l2 = new ExtendedEntry();
+			//ExtendedEntry l2 = new ExtendedEntry();
 			l2.HasBorder = false;
 			l2.BackgroundColor = Color.Transparent;
 			l2.SetBinding (ExtendedEntry.TextProperty, _binding);
@@ -861,6 +887,8 @@ namespace PickUpApp
 		private string _title;
 		private DateTime _date;
 		private string _binding;
+		ExtendedDatePicker dp = new ExtendedDatePicker ();
+
 		public SimpleDateCell(string title, DateTime defaultDate, string binding)
 		{
 			_title = title;
@@ -879,7 +907,11 @@ namespace PickUpApp
 			}
 		}
 
-
+		protected override void OnTapped ()
+		{
+			base.OnTapped ();
+			dp.Focus ();
+		}
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged ();
@@ -921,7 +953,7 @@ namespace PickUpApp
 			g.Children.Add (l, 0, 0);
 
 
-			ExtendedDatePicker dp = new ExtendedDatePicker ();
+
 			dp.HasBorder = false;
 			dp.Date = _date;
 			dp.VerticalOptions = LayoutOptions.Center;
@@ -948,6 +980,7 @@ namespace PickUpApp
 		private List<string> _items;
 		private int _selectedIndex;
 		public BindableProperty SelectedProperty;
+		Picker p = new Picker ();
 
 		public SimplePickerCell(string title, string defaultValue, List<string> pickerItems)
 		{
@@ -971,7 +1004,11 @@ namespace PickUpApp
 				//SetValue (SelectedProperty, _selectedIndex);
 			}
 		}
-
+		protected override void OnTapped ()
+		{
+			base.OnTapped ();
+			p.Focus ();
+		}
 
 		protected override void OnBindingContextChanged()
 		{
@@ -1014,7 +1051,7 @@ namespace PickUpApp
 			g.Children.Add (l, 0, 0);
 
 
-			Picker p = new Picker ();
+
 
 			p.WidthRequest = App.ScaledWidth/ 4;
 			p.BackgroundColor = Color.FromRgb(238, 236, 243); 

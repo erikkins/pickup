@@ -18,6 +18,18 @@ namespace PickUpApp
 			}
 		}
 
+
+		private GoogleResult _detailResult;
+		[JsonProperty(PropertyName="result")]
+		public GoogleResult Details
+		{
+			get { return _detailResult; }
+			set{
+				_detailResult = value;
+				NotifyPropertyChanged ();
+			}
+		}
+
 	}
 
 	public class GoogleResult :BaseModel
@@ -44,6 +56,12 @@ namespace PickUpApp
 		[JsonProperty(PropertyName = "formatted_address")]
 		public string Address { get{return _formaddress; } set{if (value != _formaddress) {
 					_formaddress = value; NotifyPropertyChanged ();
+				} } }
+
+		private string _formphone;
+		[JsonProperty(PropertyName = "formatted_phone_number")]
+		public string PhoneNumber { get{return _formphone; } set{if (value != _formphone) {
+					_formphone = value; NotifyPropertyChanged ();
 				} } }
 
 	}

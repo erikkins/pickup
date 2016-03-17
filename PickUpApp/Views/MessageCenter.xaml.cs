@@ -85,6 +85,11 @@ namespace PickUpApp
 					}
 
 					System.Diagnostics.Debug.WriteLine ("Loading Items from MessageCenter within messagesupdated");
+					if (this.ViewModel == null)
+					{
+						System.Diagnostics.Debug.WriteLine ("VIEWMODEL WAS NULL!");
+						this.ViewModel = new MessageViewModel(App.client, null);
+					}
 					await this.ViewModel.ExecuteLoadItemsCommand();
 					this.ViewModel.Refresh();
 					elv.IsRefreshing = false;

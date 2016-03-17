@@ -67,6 +67,14 @@ namespace PickUpApp
 				{
 					//Navigation.PopAsync();
 					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+					//really need to reload the kids too
+					MyCircleViewModel bc = this.BindingContext as MyCircleViewModel;
+					this.BindingContext = new KidsViewModel(App.client);
+					App.hudder.showHUD("Loading Kids");
+					((KidsViewModel)BindingContext).ExecuteLoadItemsCommand().ConfigureAwait(false);
+					App.hudder.hideHUD();
+					this.BindingContext = bc;
+
 				}
 				else{
 					DisplayAlert("Could not delete", "This user is in use in the following activities: " + p.Status, "OK");

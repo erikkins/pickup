@@ -62,7 +62,7 @@ namespace PickUpApp
 				MessagingCenter.Unsubscribe<Schedule>(this,"DetailUpdate");
 				MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 				//remove the popped detail screen
-//				Device.BeginInvokeOnMainThread(()=>{
+				//			ls.ExtendedDatePickerRenderer.OnElementChanged (Xamarin.Forms.Platform.iOS.ElementChangedEventArgs`1 e) [0x00155] in <filename unknown>:0 	Device.BeginInvokeOnMainThread(()=>{
 //					Navigation.PopAsync();
 //				});
 				//Navigation.PopAsync();

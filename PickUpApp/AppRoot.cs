@@ -7,8 +7,7 @@ namespace PickUpApp
 	public class AppRoot : ContentPage
 	{
 		public AppRoot ()
-		{
-			
+		{			
 			BackgroundColor = Color.FromRgb (73, 55, 109);
 			Content = new StackLayout { 
 				BackgroundColor = Color.FromRgb (73, 55, 109),
@@ -22,13 +21,24 @@ namespace PickUpApp
 
 			if (App.Device.Network.InternetConnectionStatus () == XLabs.Platform.Services.NetworkStatus.NotReachable) {
 				//uh oh
-				Device.BeginInvokeOnMainThread (() => {
-					DisplayAlert ("Connection Error", "Uh oh! You must be connected to the internet for FamFetch to work!", "OK");
+				Device.BeginInvokeOnMainThread (async() => {
+					bool shouldRetry = await DisplayAlert ("Connection Error", "Uh oh! You must be connected to the internet for FamFetch to work! Please connect and tap Retry", "Retry", "Cancel");
+					if (shouldRetry)
+					{
+						TestConnection();
+
+					}
+					else{
+						//this means we're SOL...not sure what to do here
+						return;
+					}
 				});
 
 
+
+
 				//MessagingCenter.Send<Exception> (newEx, "Error");
-				return;
+				//return;
 			}
 				
 
@@ -314,7 +324,25 @@ namespace PickUpApp
 				});
 
 		}
+
+		private bool TestConnection()
+		{			
+			if (App.Device.Network.InternetConnectionStatus () == XLabs.Platform.Services.NetworkStatus.NotReachable) {
+				//uh oh
+				Device.BeginInvokeOnMainThread (async() => {
+					bool shouldRetry = await DisplayAlert ("Connection Error", "Uh oh! You must be connected to the internet for FamFetch to work! Please connect and tap Retry", "Retry", "Cancel");
+					if (!shouldRetry) {
+						//this means we're SOL...not sure what to do here
+
+					} else {
+						TestConnection ();
+					}
+				});	
+			} else {
+				return true;
+			}
+			return false;
+		}
+
 	}
 }
-
-

@@ -26,6 +26,8 @@ namespace PickUpApp
 			mv.Status = "new";
 
 			mv.SenderID = App.myAccount.id;
+			mv.SenderPhotoURL = App.myAccount.PhotoURL;
+			mv.Sender = "Me";
 			mv.MessageToday = currentToday;
 			mv.RecipientString = "";
 
