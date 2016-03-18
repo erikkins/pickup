@@ -186,6 +186,8 @@ namespace PickUpApp
 			}
 
 			IsLoading = false;  //redundant
+
+
 		}
 
 		private Command forgotCommand;

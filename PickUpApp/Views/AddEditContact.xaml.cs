@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
 
@@ -47,6 +47,22 @@ namespace PickUpApp
 						await DisplayAlert("Uh oh", "You must supply Email for this contact!", "OK");
 						return;
 					}
+
+					if (!Regex.Match(this.ViewModel.CurrentContact.Email, Util.emailRegex).Success)
+					{
+						await DisplayAlert("Uh oh", "You must supply a valid email", "OK");
+						return;     
+					}
+
+					if (!string.IsNullOrEmpty(this.ViewModel.CurrentContact.Phone))
+					{
+						if (!Regex.Match(this.ViewModel.CurrentContact.Phone, Util.phoneRegex).Success && !Regex.Match(this.ViewModel.CurrentContact.Phone, Util.simplePhoneRegex).Success)
+						{
+							await DisplayAlert("Uh oh", "You must supply a valid phone number for this contact!", "OK");
+							return;     
+						}
+					}
+
 				}
 
 				//make sure we set the coparent value
@@ -65,13 +81,13 @@ namespace PickUpApp
 
 			TableSection ts = new TableSection ();
 			if (AllowEdit) {
-				stcFirstName = new SimpleBoundTextCell ("First name", "FirstName");
+				stcFirstName = new SimpleBoundTextCell ("First name", "FirstName", Keyboard.Text);
 				ts.Add (stcFirstName);
-				stcLastName = new SimpleBoundTextCell ("Last name", "LastName");
+				stcLastName = new SimpleBoundTextCell ("Last name", "LastName", Keyboard.Text);
 				ts.Add (stcLastName);
-				stcCellPhone = new SimpleBoundTextCell ("Mobile phone", "Phone");
+				stcCellPhone = new SimpleBoundTextCell ("Mobile phone", "Phone", Keyboard.Telephone);
 				ts.Add (stcCellPhone);
-				stcEmail = new SimpleBoundTextCell ("Email", "Email");
+				stcEmail = new SimpleBoundTextCell ("Email", "Email", Keyboard.Email);
 				ts.Add (stcEmail);
 			} else {
 				sicPhoto = new SimpleImageCell (selectedContact.PhotoId);

@@ -651,13 +651,14 @@ namespace PickUpApp
 	{
 		private string _title;
 		private string _binding;
+		private Keyboard _keyboardType;
 		ExtendedEntry l2 = new ExtendedEntry();
 
-		public SimpleBoundTextCell(string title, string binding)
+		public SimpleBoundTextCell(string title, string binding, Keyboard keyboardType)
 		{
 			_title = title;
 			_binding = binding;
-
+			_keyboardType = keyboardType;
 		}
 		protected override void OnTapped ()
 		{
@@ -709,6 +710,7 @@ namespace PickUpApp
 			l2.BackgroundColor = Color.Transparent;
 			l2.SetBinding (ExtendedEntry.TextProperty, _binding);
 			l2.IsEnabled = true;
+			l2.Keyboard = _keyboardType;
 
 			//l2.Text = _value;
 			l2.VerticalOptions = LayoutOptions.Center;

@@ -91,7 +91,7 @@ namespace PickUpApp
 						this.ViewModel = new MessageViewModel(App.client, null);
 					}
 					await this.ViewModel.ExecuteLoadItemsCommand();
-					this.ViewModel.Refresh();
+					//this.ViewModel.Refresh();
 					elv.IsRefreshing = false;
 			});
 

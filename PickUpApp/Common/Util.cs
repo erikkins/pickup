@@ -11,8 +11,16 @@ using Newtonsoft.Json;
 
 namespace PickUpApp
 {
+
+
+
 	public class Util
 	{
+		public const string emailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+			@"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
+		public const string phoneRegex =@"/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/";//@"/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/";
+		public const string simplePhoneRegex = @"^\d{10}$";
+
 		public static DateTime RoundUp (DateTime dt, TimeSpan d)
 		{
 			return new DateTime (((dt.Ticks + d.Ticks - 1) / d.Ticks) * d.Ticks);

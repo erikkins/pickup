@@ -75,10 +75,10 @@ namespace PickUpApp
 			sicPic = new SimpleImageCell (selectedKid.PhotoURL);
 			sicPic.IsEnabled = selectedKid.Mine;
 			ts.Add (sicPic);
-			stcFirstName = new SimpleBoundTextCell ("First name", "Firstname");
+			stcFirstName = new SimpleBoundTextCell ("First name", "Firstname", Keyboard.Text);
 			stcFirstName.IsEnabled = selectedKid.Mine;
 			ts.Add (stcFirstName);
-			stcLastName = new SimpleBoundTextCell ("Last name", "Lastname");
+			stcLastName = new SimpleBoundTextCell ("Last name", "Lastname", Keyboard.Text);
 			stcLastName.IsEnabled = selectedKid.Mine;
 			ts.Add (stcLastName);
 			stcDOB = new SimpleDateCell ("Date of Birth", selectedKid.DateOfBirth, "DateOfBirth");
@@ -87,10 +87,10 @@ namespace PickUpApp
 			stcGender = new SimplePickerCell ("Gender", selectedKid.Gender, genders);
 			stcGender.IsEnabled = selectedKid.Mine;
 			ts.Add (stcGender);
-			stcAllergies = new SimpleBoundTextCell ("Allergies", "Allergies");
+			stcAllergies = new SimpleBoundTextCell ("Allergies", "Allergies", Keyboard.Text);
 			stcAllergies.IsEnabled = selectedKid.Mine;
 			ts.Add (stcAllergies);
-			stcSecretWord = new SimpleBoundTextCell ("Secret Word", "SecretWord");
+			stcSecretWord = new SimpleBoundTextCell ("Secret Word", "SecretWord", Keyboard.Text);
 			stcSecretWord.IsEnabled = selectedKid.Mine;
 			ts.Add (stcSecretWord);
 

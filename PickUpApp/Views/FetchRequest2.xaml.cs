@@ -52,7 +52,7 @@ namespace PickUpApp
 			etv.Intent = TableIntent.Data;
 			TableSection ts = new TableSection ();
 			ts.Add (new SimpleBoundLabelCell ("To", "RecipientString"));
-			ts.Add (new SimpleBoundTextCell ("Subject", "Title"));
+			ts.Add (new SimpleBoundTextCell ("Subject", "Title", Keyboard.Text));
 			ts.Add (new SimpleBoundTextAreaCell ("Enter message", "Message"));
 
 			List<MessageView> kludgyFixlist = new List<MessageView> ();

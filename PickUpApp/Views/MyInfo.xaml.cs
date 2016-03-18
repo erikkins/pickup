@@ -8,6 +8,7 @@ using XLabs.Forms.Controls;
 using System.IO;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using System.Text.RegularExpressions;
 
 namespace PickUpApp
 {
@@ -20,6 +21,9 @@ namespace PickUpApp
 		SimpleBoundTextCell sbtcPhone;
 		SimpleImageCell sicPhoto;
 		SimpleBoundFilledLabelCell infoCell;
+
+
+
 
 		public MyInfo ()
 		{
@@ -37,8 +41,31 @@ namespace PickUpApp
 					return;
 				}
 
+				//if (!Regex.Match(this.ViewModel.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Success)
+				if (!Regex.Match(this.ViewModel.Email, Util.emailRegex).Success)
+				{
+					await DisplayAlert("Uh oh", "Please supply a valid email", "OK");
+					return;     
+				}
+				if (!Regex.Match(this.ViewModel.Phone, Util.phoneRegex).Success && !Regex.Match(this.ViewModel.Phone, Util.simplePhoneRegex).Success)
+				{
+					await DisplayAlert("Uh oh", "Please supply a valid phone number", "OK");
+					return;     
+				}
+
+
 				await ViewModel.ExecuteAddEditCommand();
+
+
+
+				//once this is done, we really want to pop to the today screen
+
 			}));
+
+			MessagingCenter.Subscribe<Account>(this, "Refresh", (a) => {			
+				((MasterDetailPage)this.Parent.Parent).Detail = new NavigationPage(new TodayView()){ BarTextColor = Device.OnPlatform(Color.White,Color.White,Color.Black), BarBackgroundColor=Color.FromRgb(247,99,127) };
+				MessagingCenter.Unsubscribe<Account>(this,"Refresh");
+			});
 
 			StackLayout stacker = new StackLayout ();
 			stacker.Orientation = StackOrientation.Vertical;
@@ -165,13 +192,13 @@ namespace PickUpApp
 			infoCell = new SimpleBoundFilledLabelCell ("Please make sure all fields are current", AppColor.AppOrange, Color.Black);
 			ts.Add (infoCell);
 
-			sbtcFirstName = new SimpleBoundTextCell ("First name", "Firstname");
+			sbtcFirstName = new SimpleBoundTextCell ("First name", "Firstname", Keyboard.Text);
 			ts.Add (sbtcFirstName);
-			sbtcLastName = new SimpleBoundTextCell ("Last name", "Lastname");
+			sbtcLastName = new SimpleBoundTextCell ("Last name", "Lastname", Keyboard.Text);
 			ts.Add (sbtcLastName);
-			sbtcPhone = new SimpleBoundTextCell ("Mobile phone", "Phone");
+			sbtcPhone = new SimpleBoundTextCell ("Mobile phone", "Phone", Keyboard.Telephone);
 			ts.Add (sbtcPhone);
-			sbtcEmail = new SimpleBoundTextCell ("Email", "Email");
+			sbtcEmail = new SimpleBoundTextCell ("Email", "Email", Keyboard.Email);
 			ts.Add (sbtcEmail);
 
 			tv.Root.Add (ts);
