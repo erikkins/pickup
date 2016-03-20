@@ -876,8 +876,13 @@ namespace PickUpApp
 			btnPhone.BackgroundColor = Color.FromRgb (238, 236, 243);
 			btnPhone.TranslationX = -30;
 			slMain.Children.Add (btnPhone);
-			btnPhone.Clicked += async delegate(object sender, EventArgs e) {
+			btnPhone.Clicked += delegate(object sender, EventArgs e) {
 				//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Call", "Cancel");
+				if (App.Device.PhoneService == null)
+				{
+					App.hudder.showToast("Device does not support Phone calling");
+					return;
+				}
 				App.Device.PhoneService.DialNumber(t.ViaPhone);
 
 			};

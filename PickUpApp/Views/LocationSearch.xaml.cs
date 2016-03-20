@@ -221,13 +221,13 @@ namespace PickUpApp
 			listStacker.Children.Add (tvLocation);
 			TableSection ts = new TableSection ();
 
-			stcName = new SimpleTextCell ("Name");
+			stcName = new SimpleTextCell ("Name", Keyboard.Text);
 			ts.Add (stcName);
 
-			stcValue = new SimpleTextCell ("Address");
+			stcValue = new SimpleTextCell ("Address", Keyboard.Text);
 			ts.Add (stcValue);
 
-			stcPhone = new SimpleTextCell ("Phone");
+			stcPhone = new SimpleTextCell ("Phone", Keyboard.Telephone);
 			ts.Add (stcPhone);
 
 
@@ -452,13 +452,14 @@ namespace PickUpApp
 	public class SimpleTextCell : ViewCell
 	{
 		private string _title;
+		private Keyboard _keyboard;
 		//private DateTime _date;
 		ExtendedEntry l2 = new ExtendedEntry();
 
-		public SimpleTextCell(string title)
+		public SimpleTextCell(string title, Keyboard keyboard)
 		{
 			_title = title;
-
+			_keyboard = keyboard;
 		}
 
 		protected override void OnTapped ()
@@ -507,7 +508,7 @@ namespace PickUpApp
 
 			g.Children.Add (l, 0, 0);
 
-
+			l2.Keyboard = _keyboard;
 			l2.HasBorder = false;
 			l2.BackgroundColor = Color.Transparent;
 			switch (_title) {

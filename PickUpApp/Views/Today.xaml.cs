@@ -1102,6 +1102,11 @@ namespace PickUpApp
 			string responseInfo = "";
 			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageStatus) && t.PickupMessageStatus != "Canceled") {
 
+				//because the starting point belongs to the sender, it makes no sense to show it here
+				l.Text = "";
+				l2.FontAttributes = FontAttributes.Italic;
+				l2.Text = "Tap to see travel time from current location";
+
 				detailGrid.BackgroundColor = Color.White;
 
 				StackLayout slPickup = new StackLayout ();
@@ -1184,6 +1189,10 @@ namespace PickUpApp
 
 			} else if (!t.IsPickup && !string.IsNullOrEmpty (t.DropOffMessageStatus) && t.DropOffMessageStatus != "Canceled") {
 				detailGrid.BackgroundColor = Color.White;
+				//because the starting point belongs to the sender, it makes no sense to show it here
+				l.Text = "";
+				l2.FontAttributes = FontAttributes.Italic;
+				l2.Text = "Tap to see travel time from current location";
 
 				StackLayout slDropoff = new StackLayout ();
 				slDropoff.Orientation = StackOrientation.Vertical;

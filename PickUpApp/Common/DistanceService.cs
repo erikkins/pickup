@@ -270,9 +270,10 @@ namespace PickUpApp
 						var request = new RestRequest("distancematrix/json", Method.GET);	
 						request.AddQueryParameter ("origins", _startLoc.Latitude + "," + _startLoc.Longitude);
 						request.AddQueryParameter("destinations", _endLoc.Latitude + "," + _endLoc.Longitude);
+						request.AddQueryParameter("departure_time", "now"); 
+						request.AddQueryParameter("traffic_model", "pessimistic");
 						request.AddQueryParameter("mode", "driving");
 						request.AddQueryParameter("units", "imperial");
-						request.AddQueryParameter("departure_time", "now"); 
 						request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
 
 						var result = await client.Execute(request);

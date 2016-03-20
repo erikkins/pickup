@@ -138,7 +138,9 @@ namespace PickUpApp
 							await ViewModel.ExecuteAddEditCommand();
 							//sicPhoto.ImagePath = ViewModel.PhotoURL;
 
-							tv.OnDataChanged();
+							//if we need to do this, do it after the update fires
+							//tv.OnDataChanged();
+							
 						}
 					}
 					else{
@@ -182,7 +184,8 @@ namespace PickUpApp
 						await ViewModel.ExecuteAddEditCommand();
 						//sicPhoto.ImagePath = ViewModel.PhotoURL;
 
-						tv.OnDataChanged();
+						//if we need to do this, do it after the refresh
+						//tv.OnDataChanged();
 					}
 
 					break;

@@ -223,12 +223,16 @@ namespace PickUpApp
 			slVert.Children.Add (lFrom);
 
 			//we need a label saying the actual DATE when this will occur
-
+			bool isToday = false;
 			Label lActivityDate = new Label ();
-			if (DateTime.UtcNow.Date == mv.ScheduleDate.ToUniversalTime ().Date) {
+
+			//if (DateTime.UtcNow.Date == mv.ScheduleDate.ToUniversalTime ().Date) {
+			if (DateTime.UtcNow.Date.ToLocalTime().Date == mv.ScheduleDate.ToUniversalTime().Date){
 				lActivityDate.Text = "for TODAY";
+				isToday = true;
+	
 			} else {
-				lActivityDate.Text = "for " + mv.ScheduleDate.ToUniversalTime ().ToString ("d");
+				lActivityDate.Text = "for " + mv.ScheduleDate.ToUniversalTime ().ToString ("dddd") + " " + mv.ScheduleDate.ToUniversalTime ().ToString ("d");
 			}
 			lActivityDate.TextColor = Color.FromRgb (157, 157, 157);
 			slVert.Children.Add (lActivityDate);
@@ -368,13 +372,38 @@ namespace PickUpApp
 
 			//end nav images
 
+
+			//if today, do a traffic calculation and say "From current location"
+			//otherwise, hide this altogether
+
+			double travelMinutes = 0;
+			double travelDistance = 0;
+			if (isToday) {
+				DistanceService ds = new DistanceService ();
+				Location startLoc = new Location ();
+				startLoc.Latitude = App.PositionLatitude;
+				startLoc.Longitude = App.PositionLongitude;
+
+				Location endLoc = new Location ();
+				endLoc.Latitude = t.Latitude;
+				endLoc.Longitude = t.Longitude;
+				ds.StartingLocation = startLoc;
+				ds.EndingLocation = endLoc;
+				//ds.CalculateDriveTime ();
+				var task = System.Threading.Tasks.Task.Run(async () => await ds.CalculateDriveTime());
+				task.Wait();
+				travelMinutes = ds.TravelTime;
+				travelDistance = ds.Distance;
+			}
+
+
 			Label l0 = new Label ();
 			if (mv.MessageToday.IsPickup) {
-				DateTime intermediate = DateTime.Today.Add (t.TSPickup.Subtract (TimeSpan.FromMinutes (t.EndPlaceTravelTime)));
+				DateTime intermediate = DateTime.Today.Add (t.TSPickup.Subtract (TimeSpan.FromMinutes (travelMinutes)));
 				l0.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
 				//l.Text = DateTime.Parse (t.TSPickup).AddMinutes (-t.EndPlaceTravelTime).ToLocalTime ().ToString ("t");
 			} else {
-				DateTime intermediate = DateTime.Today.Add (t.TSDropOff.Subtract (TimeSpan.FromMinutes (t.StartPlaceTravelTime)));
+				DateTime intermediate = DateTime.Today.Add (t.TSDropOff.Subtract (TimeSpan.FromMinutes (travelMinutes)));
 				l0.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
 				//l.Text = DateTime.Parse (t.TSDropOff).AddMinutes (-t.StartPlaceTravelTime).ToLocalTime ().ToString ("t");
 			}
@@ -386,20 +415,63 @@ namespace PickUpApp
 			l2.VerticalOptions = LayoutOptions.StartAndExpand;
 			l2.FormattedText = new FormattedString ();
 			if (t.IsPickup) {
-				l2.FormattedText.Spans.Add (new Span { Text = "Leave " + t.EndPlaceName, ForegroundColor = Color.Black });
+				l2.FormattedText.Spans.Add (new Span { Text = "Leave current location", ForegroundColor = Color.Black });
 				l2.FormattedText.Spans.Add (new Span {
-					Text = "\nDrive " + Math.Round(t.EndPlaceDistance,1) + " miles",
+					Text = "\nDrive " + Math.Round(travelDistance,1) + " miles",
 					ForegroundColor = Color.Gray,
 					FontAttributes = FontAttributes.Italic
 				});
 			} else {
-				l2.FormattedText.Spans.Add (new Span { Text = "Leave " + t.StartPlaceName, ForegroundColor = Color.Black });
+				l2.FormattedText.Spans.Add (new Span { Text = "Leave current location", ForegroundColor = Color.Black });
 				l2.FormattedText.Spans.Add (new Span {
-					Text = "\nDrive " + Math.Round(t.StartPlaceDistance,1) + " miles",
+					Text = "\nDrive " + Math.Round(travelDistance,1) + " miles",
 					ForegroundColor = Color.Gray,
 					FontAttributes = FontAttributes.Italic
 				});
 			}
+
+			//if this is for another day, we'll calculate the time/distance then
+			if (!isToday) {
+				l0.Text = "";
+				l2.Text = "";
+			}
+
+
+//			Label l0 = new Label ();
+//			if (mv.MessageToday.IsPickup) {
+//				DateTime intermediate = DateTime.Today.Add (t.TSPickup.Subtract (TimeSpan.FromMinutes (t.EndPlaceTravelTime)));
+//				l0.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
+//				//l.Text = DateTime.Parse (t.TSPickup).AddMinutes (-t.EndPlaceTravelTime).ToLocalTime ().ToString ("t");
+//			} else {
+//				DateTime intermediate = DateTime.Today.Add (t.TSDropOff.Subtract (TimeSpan.FromMinutes (t.StartPlaceTravelTime)));
+//				l0.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
+//				//l.Text = DateTime.Parse (t.TSDropOff).AddMinutes (-t.StartPlaceTravelTime).ToLocalTime ().ToString ("t");
+//			}
+//			l0.VerticalOptions = LayoutOptions.Start;
+//			l0.FontAttributes = FontAttributes.Bold;
+//			detailGrid.Children.Add (l0, 1, 2, 0, 2);
+//
+//			Label l2 = new Label ();
+//			l2.VerticalOptions = LayoutOptions.StartAndExpand;
+//			l2.FormattedText = new FormattedString ();
+//			if (t.IsPickup) {
+//				l2.FormattedText.Spans.Add (new Span { Text = "Leave " + t.EndPlaceName, ForegroundColor = Color.Black });
+//				l2.FormattedText.Spans.Add (new Span {
+//					Text = "\nDrive " + Math.Round(t.EndPlaceDistance,1) + " miles",
+//					ForegroundColor = Color.Gray,
+//					FontAttributes = FontAttributes.Italic
+//				});
+//			} else {
+//				l2.FormattedText.Spans.Add (new Span { Text = "Leave " + t.StartPlaceName, ForegroundColor = Color.Black });
+//				l2.FormattedText.Spans.Add (new Span {
+//					Text = "\nDrive " + Math.Round(t.StartPlaceDistance,1) + " miles",
+//					ForegroundColor = Color.Gray,
+//					FontAttributes = FontAttributes.Italic
+//				});
+//			}
+
+
+
 
 			l2.FontAttributes = FontAttributes.Bold;
 			detailGrid.Children.Add (l2, 2, 3, 0, 2 );
