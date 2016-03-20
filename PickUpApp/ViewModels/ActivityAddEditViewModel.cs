@@ -260,10 +260,11 @@ namespace PickUpApp
 						var request2 = new RestRequest("distancematrix/json", Method.GET);	
 						if (endPlace == null || endPlace.Latitude == null)
 						{
-						request2.AddQueryParameter ("origins", selectedPlace.Latitude + "," + selectedPlace.Longitude);
-						request2.AddQueryParameter("destinations", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);
+							endPlace = selectedPlace;
+						//request2.AddQueryParameter ("origins", selectedPlace.Latitude + "," + selectedPlace.Longitude);
+						//request2.AddQueryParameter("destinations", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);
 						}
-						else
+						//else
 						{
 							request2.AddQueryParameter ("origins", selectedPlace.Latitude + "," + selectedPlace.Longitude + "|" + endPlace.Latitude + "," + endPlace.Longitude);
 							request2.AddQueryParameter("destinations", CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude + "|" + CurrentSchedule.Latitude + "," + CurrentSchedule.Longitude);

@@ -62,6 +62,8 @@ namespace PickUpApp
 				await ViewModel.ExecuteDeleteCommand();
 			});
 
+
+			//NOTE: this gets called when the circle gets changed via APN, so make sure there's no popping going on here
 			MessagingCenter.Subscribe<EmptyClass> (this, "CircleDeleted", (p) => {
 				if (string.IsNullOrEmpty(p.Status))
 				{

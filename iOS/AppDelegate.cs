@@ -110,7 +110,7 @@ namespace PickUpApp.iOS
 //				});
 
 				try{
-					string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\" }}";
+					string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\",\"circle\":\"$(circle)\" }}";
 					var expire = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 
 					hub.UnregisterAllAsync(deviceNotificationToken, err=>{
@@ -329,6 +329,12 @@ namespace PickUpApp.iOS
 					im.Id = parts [0];
 					im.AccountID = parts [1];
 					MessagingCenter.Send<InviteMessage> (im, "arrived");
+				}
+				if (aps.ContainsKey (new NSString("circle")) && !string.IsNullOrEmpty(aps ["circle"].ToString ())) {
+					//refresh circle and kids
+					EmptyClass ec = new EmptyClass();
+					//this will trick the app into reloading kids and circle
+					MessagingCenter.Send<EmptyClass> (ec, "CircleDeleted");
 				}
 
 				//Extract the alert text

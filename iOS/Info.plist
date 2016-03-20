@@ -5,9 +5,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.threethingsgood.famfetch</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.44</string>
+	<string>1.0.47</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.44</string>
+	<string>1.0.47</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -128,5 +128,7 @@
 	<string>FamFetch</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We are using your location to provide real-time route analysis</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>

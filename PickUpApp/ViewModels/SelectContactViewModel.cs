@@ -56,7 +56,7 @@ namespace PickUpApp
 
 				//anyway to pull the accountcircle id instead of the account id?
 
-				var contact = await client.InvokeApiAsync<AccountCircle, AccountCircle>("savecircle", tempAccount);
+				var contact = await client.InvokeApiAsync<AccountCircle, List<AccountCircle>>("savecircle", tempAccount);
 				//System.Diagnostics.Debug.WriteLine(contact[0].Fullname);
 			}
 			catch(Exception ex) {
