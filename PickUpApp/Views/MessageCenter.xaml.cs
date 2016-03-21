@@ -24,15 +24,16 @@ namespace PickUpApp
 			elv.Header = null;
 			elv.IsPullToRefreshEnabled = true;
 
-
+			elv.BindingContextChanged += delegate(object sender, EventArgs e) {
+				System.Diagnostics.Debug.WriteLine("BIGBINDING CHANGED");
+			};
 			stacker.Children.Add (elv);
 
-			this.ViewModel.ExecuteLoadItemsCommand ().ConfigureAwait(false);
-			System.Diagnostics.Debug.WriteLine ("Loading Items from MessageCenter");
+			//this.ViewModel.ExecuteLoadItemsCommand ().ConfigureAwait(false);
 
 			MessagingCenter.Subscribe<string> (this, "messagesloaded", async(s) => {
 				elv.IsRefreshing = false;
-
+				System.Diagnostics.Debug.WriteLine("MESSAGES LOADED");
 				App.hudder.hideHUD();
 				if (App.myMessages.Count == 0)
 				{
@@ -57,6 +58,7 @@ namespace PickUpApp
 					switch (rm.PostUpdate)
 					{
 					case "today":
+						App.hudder.showHUD("Refreshing Today");
 						MessagingCenter.Send<string>("msgupdate", "NeedsRefresh");
 						/*
 						this.BindingContext = new TodayViewModel(App.client);
@@ -84,12 +86,13 @@ namespace PickUpApp
 						break;
 					}
 
-					System.Diagnostics.Debug.WriteLine ("Loading Items from MessageCenter within messagesupdated");
+
 					if (this.ViewModel == null)
 					{
 						System.Diagnostics.Debug.WriteLine ("VIEWMODEL WAS NULL!");
 						this.ViewModel = new MessageViewModel(App.client, null);
 					}
+					System.Diagnostics.Debug.WriteLine ("LOADING ITEMS FROM MESSAGESUPDATED");
 					await this.ViewModel.ExecuteLoadItemsCommand();
 					//this.ViewModel.Refresh();
 					elv.IsRefreshing = false;
@@ -98,6 +101,7 @@ namespace PickUpApp
 			MessagingCenter.Subscribe<RespondMessage> (this, "messageresponse", async(mr) => {
 				App.hudder.showHUD("Saving Message");
 				this.ViewModel.CurrentMessageResponse = mr;
+				System.Diagnostics.Debug.WriteLine ("LOADING ITEMS AFTER MESSAGERESPONSE");
 			    await this.ViewModel.ExecuteAddEditCommand();
 			});
 
@@ -119,6 +123,7 @@ namespace PickUpApp
 
 		public override DataTemplate SelectTemplate (object item, BindableObject container)
 		{
+			System.Diagnostics.Debug.WriteLine ("TEMPLATE REQ");
 			var msg = (MessageView)item;
 			switch (msg.MessageType) {
 			case "pickup":				
@@ -172,6 +177,7 @@ namespace PickUpApp
 
 		protected override void OnBindingContextChanged()
 		{
+			System.Diagnostics.Debug.WriteLine ("BINDING CONTEXT");
 			base.OnBindingContextChanged ();
 
 			dynamic c = BindingContext;
@@ -226,8 +232,8 @@ namespace PickUpApp
 			bool isToday = false;
 			Label lActivityDate = new Label ();
 
-			//if (DateTime.UtcNow.Date == mv.ScheduleDate.ToUniversalTime ().Date) {
-			if (DateTime.UtcNow.Date.ToLocalTime().Date == mv.ScheduleDate.ToUniversalTime().Date){
+			if (DateTime.UtcNow.Date == mv.ScheduleDate.ToUniversalTime ().Date) {
+			//if (DateTime.UtcNow.Date.ToLocalTime().Date == mv.ScheduleDate.ToUniversalTime().Date){
 				lActivityDate.Text = "for TODAY";
 				isToday = true;
 	

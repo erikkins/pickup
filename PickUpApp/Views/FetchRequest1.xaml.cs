@@ -56,6 +56,19 @@ namespace PickUpApp
 
 	public class FetchCircleCell : ViewCell
 	{
+		ImageButton ib = new ImageButton ();
+		AccountCircle ac = new AccountCircle();
+
+		protected override void OnTapped ()
+		{
+			base.OnTapped ();
+			Ib_Clicked (ib, new EventArgs ());
+//			if (ac.Selected) {
+//				ib.Source = "ui_check_filled.png";
+//			} else {
+//				ib.Source = "ui_check_empty.png";
+//			}
+		}
 
 		protected override void OnBindingContextChanged()
 		{
@@ -63,7 +76,7 @@ namespace PickUpApp
 
 			dynamic c = BindingContext;
 			this.Height = 75;
-			AccountCircle ac = (AccountCircle)c;
+			ac = (AccountCircle)c;
 
 			StackLayout slHoriz = new StackLayout ();
 			slHoriz.Orientation = StackOrientation.Horizontal;
@@ -108,7 +121,7 @@ namespace PickUpApp
 
 			if (ac.Accepted) {
 
-				ImageButton ib = new ImageButton ();
+				//ImageButton ib = new ImageButton ();
 				ib.HorizontalOptions = LayoutOptions.EndAndExpand;
 				ib.VerticalOptions = LayoutOptions.Center;
 				ib.ImageHeightRequest = 27;
@@ -118,15 +131,17 @@ namespace PickUpApp
 				} else {
 					ib.Source = "ui_check_empty.png";
 				}
-				ib.Clicked += delegate(object sender, EventArgs e) {
-					if (ac.Selected) {
-						ac.Selected = false;
-						ib.Source = "ui_check_empty.png";
-					} else {
-						ac.Selected = true;
-						ib.Source = "ui_check_filled.png";
-					}
-				};
+				ib.Clicked += Ib_Clicked;
+
+//				ib.Clicked += delegate(object sender, EventArgs e) {
+//					if (ac.Selected) {
+//						ac.Selected = false;
+//						ib.Source = "ui_check_empty.png";
+//					} else {
+//						ac.Selected = true;
+//						ib.Source = "ui_check_filled.png";
+//					}
+//				};
 
 				slHoriz.Children.Add (ib);
 			} else {
@@ -137,6 +152,19 @@ namespace PickUpApp
 
 			View = slHoriz;
 
+		}
+
+		void Ib_Clicked (object sender, EventArgs e)
+		{
+			if (ac.Selected) {
+				ac.Selected = false;
+
+					
+				ib.Source = "ui_check_empty.png";
+			} else {
+				ac.Selected = true;
+				ib.Source = "ui_check_filled.png";
+			}
 		}
 	}
 }
