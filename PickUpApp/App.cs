@@ -72,6 +72,8 @@ namespace PickUpApp
 			myDevice.PropertyChanged += async (object sender, System.ComponentModel.PropertyChangedEventArgs e) => {
 				if (myDevice.accountid != null && myDevice.notificationid != null && myDevice.userId != null)
 				{
+					myDevice.DeviceInfo = Device.FirmwareVersion + "|" + Device.HardwareVersion + "|" + Device.Id + "|" + Device.Manufacturer + "|" + Device.Name;
+
 					await PickupService.DefaultService.InsertAccountDeviceAsync(myDevice);
 					//await MessagingCenter.Send(myDevice, "changed");				
 				}

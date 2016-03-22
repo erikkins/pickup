@@ -62,6 +62,21 @@ namespace PickUpApp
 				}
 			}
 		}
+
+		private string _deviceInfo;
+		[JsonProperty(PropertyName = "deviceinfo")]
+		public string DeviceInfo
+		{
+			get{
+				return _deviceInfo;
+			}
+			set{
+				if (value != _deviceInfo) {
+					_deviceInfo = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
 	}
 }
 

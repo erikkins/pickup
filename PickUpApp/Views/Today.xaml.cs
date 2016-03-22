@@ -977,31 +977,38 @@ namespace PickUpApp
 			l2.FontAttributes = FontAttributes.Bold;
 			detailGrid.Children.Add (l2, 2, 3, 0, 2 );
 
-			//this means someone is picking up or dropping off
-			if ((string.IsNullOrEmpty (t.DropOffMessageID) && string.IsNullOrEmpty (t.PickupMessageID)) || t.DropOffMessageStatus=="Canceled" || t.PickupMessageStatus=="Canceled"  || t.DropOffMessageStatus=="Pending Response" || t.PickupMessageStatus=="Pending Response") {
-				//nobody's picking up or dropping off, so make the option to invite available
-				//but only if it's mine to invite!
-				if (currentState != TodayView.ActivityState.Complete && string.IsNullOrEmpty(t.Via)) {
-					Button b = new Button ();
-					switch (currentState) {
-					case TodayView.ActivityState.Future:
-						b.Image = arrowgray;
-						break;
-					case TodayView.ActivityState.Next:
-						b.Image = arrowpink;
-						break;
-					}
-					b.HorizontalOptions = LayoutOptions.Center;
-					b.VerticalOptions = LayoutOptions.Start;
-					b.Clicked += delegate(object sender, EventArgs e) {
-						//await ((TodayView)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "create a fetch request", "Cancel");
-						//await ((TodayView)this.ParentView.Parent.Parent).Navigation.PushAsync(new FetchRequest1());
-						//we probably should just fire a messagingcenter event!
-						MessagingCenter.Send<Today> (t, "fetchrequest");
-					};
-					detailGrid.Children.Add (b, 3, 4, 0, 1);
-				}
+			bool showArrow = true;
+
+			if (!t.IsPickup && !string.IsNullOrEmpty (t.DropOffMessageID) || t.DropOffMessageStatus=="Canceled" || t.DropOffMessageStatus=="Pending Response") {
+				showArrow = false;
 			}
+			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageID) || t.PickupMessageStatus=="Canceled"  || t.PickupMessageStatus=="Pending Response") {
+				showArrow = false;
+			}
+			//this means someone is picking up or dropping off
+			//nobody's picking up or dropping off, so make the option to invite available
+			//but only if it's mine to invite!
+			if (currentState != TodayView.ActivityState.Complete && string.IsNullOrEmpty(t.Via) && showArrow) {
+				Button b = new Button ();
+				switch (currentState) {
+				case TodayView.ActivityState.Future:
+					b.Image = arrowgray;
+					break;
+				case TodayView.ActivityState.Next:
+					b.Image = arrowpink;
+					break;
+				}
+				b.HorizontalOptions = LayoutOptions.Center;
+				b.VerticalOptions = LayoutOptions.Start;
+				b.Clicked += delegate(object sender, EventArgs e) {
+					//await ((TodayView)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "create a fetch request", "Cancel");
+					//await ((TodayView)this.ParentView.Parent.Parent).Navigation.PushAsync(new FetchRequest1());
+					//we probably should just fire a messagingcenter event!
+					MessagingCenter.Send<Today> (t, "fetchrequest");
+				};
+				detailGrid.Children.Add (b, 3, 4, 0, 1);
+			}
+			
 
 
 			if (t.TrafficWarning) {
@@ -1103,6 +1110,7 @@ namespace PickUpApp
 			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageStatus) && t.PickupMessageStatus != "Canceled") {
 
 				//because the starting point belongs to the sender, it makes no sense to show it here
+
 				l.Text = "";
 				l2.FontAttributes = FontAttributes.Italic;
 				l2.Text = "Tap to see travel time from current location";
