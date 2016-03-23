@@ -113,13 +113,47 @@ namespace PickUpApp
 		private Today _messageToday;
 		public Today MessageToday
 		{get{ return _messageToday; }
-			set{ _messageToday = value; NotifyPropertyChanged (); }
+			set{ 
+				_messageToday = value; 
+
+				//set the scheduledate to this date but UTC
+				ScheduleDate = _messageToday.AtWhen;
+
+				NotifyPropertyChanged (); 
+			}
 		}
 
+
+		public DateTime ScheduleDate { 
+			get 
+			{
+				//not clear why we shouldn't bring this back down to localtime
+				return ScheduleDateUTC; 
+			} 
+			set
+			{
+				if (value != _scheduleDateUTC) {
+					ScheduleDateUTC = value.ToUniversalTime();
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
+
+		private DateTime _scheduleDateUTC;
 		[JsonProperty(PropertyName = "scheduledate")]
-		public DateTime ScheduleDate { get{return _messageToday.AtWhen; } set{if (value != _messageToday.AtWhen) {
-					_messageToday.AtWhen = value; NotifyPropertyChanged ();
-				} } }
+		public DateTime ScheduleDateUTC { 
+			get 
+			{
+				return _scheduleDateUTC; 
+			} 
+			set
+			{
+				if (value != _scheduleDateUTC) {
+					_scheduleDateUTC = value;
+					NotifyPropertyChanged ();
+				}
+			} 
+		}
 
 
 		private bool _isActionable;

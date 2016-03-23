@@ -232,13 +232,14 @@ namespace PickUpApp
 			bool isToday = false;
 			Label lActivityDate = new Label ();
 
-			if (DateTime.UtcNow.Date == mv.ScheduleDate.ToUniversalTime ().Date) {
+			if (DateTime.Now.Date == mv.ScheduleDate.Date) {
+			//if (DateTime.Now.Date == mv.ScheduleDate.Date) {
 			//if (DateTime.UtcNow.Date.ToLocalTime().Date == mv.ScheduleDate.ToUniversalTime().Date){
 				lActivityDate.Text = "for TODAY";
 				isToday = true;
 	
 			} else {
-				lActivityDate.Text = "for " + mv.ScheduleDate.ToUniversalTime ().ToString ("dddd") + " " + mv.ScheduleDate.ToUniversalTime ().ToString ("d");
+				lActivityDate.Text = "for " + mv.ScheduleDate.ToString ("dddd") + " " + mv.ScheduleDate.ToString ("d");
 			}
 			lActivityDate.TextColor = Color.FromRgb (157, 157, 157);
 			slVert.Children.Add (lActivityDate);
