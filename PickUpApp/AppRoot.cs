@@ -102,7 +102,6 @@ namespace PickUpApp
 				//don't log it if it's been less than a minute
 				if (lastLocationLog > DateTime.UtcNow.AddSeconds(-60))
 				{
-					//System.Diagnostics.Debug.WriteLine("lastLocationLog > 10 seconds ago");
 					return;
 				}
 				//don't log it if they haven't moved
@@ -127,7 +126,7 @@ namespace PickUpApp
 				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
 				MessageView mv = new MessageView();
 				mv.Id = i.Id;
-				MessagingCenter.Send<MessageView>(mv, "LoadMessages");
+				MessagingCenter.Send<MessageView>(mv, "LoadMessages"); 
 
 //				if (App.client.CurrentUser == null)
 //				{

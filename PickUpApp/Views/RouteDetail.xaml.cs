@@ -173,6 +173,7 @@ namespace PickUpApp
 			set { this.BindingContext = value; }
 		}
 
+		Location lastLocation = new Location();
 		private void logLocationTimer(Today currentToday)
 		{
 			Device.StartTimer(TimeSpan.FromSeconds(30), () =>
@@ -208,7 +209,12 @@ namespace PickUpApp
 							}
 							if (!string.IsNullOrEmpty(ll.Latitude) && !(string.IsNullOrEmpty(ll.Longitude)))
 							{
-								await this.ViewModel.ExecuteLocationLogCommand(ll);
+								if (ll.Latitude != lastLocation.Latitude && ll.Longitude != lastLocation.Longitude)
+								{
+									await this.ViewModel.ExecuteLocationLogCommand(ll);
+									lastLocation.Latitude = ll.Latitude;
+									lastLocation.Longitude = ll.Longitude;
+								}
 							}
 
 							//don't forget to refresh the DistanceService!
