@@ -979,11 +979,15 @@ namespace PickUpApp
 
 			bool showArrow = true;
 
-			if (!t.IsPickup && !string.IsNullOrEmpty (t.DropOffMessageID) || t.DropOffMessageStatus=="Canceled" || t.DropOffMessageStatus=="Pending Response") {
-				showArrow = false;
+			if (!t.IsPickup){
+				if (!string.IsNullOrEmpty (t.DropOffMessageID) || t.DropOffMessageStatus == "Canceled" || t.DropOffMessageStatus == "Pending Response") {
+					showArrow = false;
+				}
 			}
-			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageID) || t.PickupMessageStatus=="Canceled"  || t.PickupMessageStatus=="Pending Response") {
-				showArrow = false;
+			if (t.IsPickup){
+				if (!string.IsNullOrEmpty (t.PickupMessageID) || t.PickupMessageStatus == "Canceled" || t.PickupMessageStatus == "Pending Response") {
+					showArrow = false;
+				}
 			}
 			//this means someone is picking up or dropping off
 			//nobody's picking up or dropping off, so make the option to invite available

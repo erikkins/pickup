@@ -649,6 +649,7 @@ namespace PickUpApp
 				bDecline.Clicked += delegate(object sender, EventArgs e) {
 					RespondMessage rm = new RespondMessage ();
 					rm.MessageID = mv.Id;
+
 					rm.Response = "0";
 					rm.Status = "read";
 					MessagingCenter.Send<RespondMessage> (rm, "messageresponse");
