@@ -13,11 +13,12 @@ namespace PickUpApp
 		static PickupService instance = new PickupService ();
 		const string applicationURL = @"https://pickup.azure-mobile.net/";
 		const string applicationKey = @"smfGLlHZSdujNrejkOSaRtVbGmPwwz12";
-		MobileServiceClient client;
+		public MobileServiceClient client;
 		IMobileServiceTable<Kid> kidTable;
 		IMobileServiceTable<Account> accountTable;
 		IMobileServiceTable<Schedule> scheduleTable;
 		IMobileServiceTable<AccountDevice> accountDeviceTable;
+		IMobileServiceTable<LocationLog>locationLogTable;
 		int busyCount = 0;
 
 		public event Action<bool> BusyUpdate;
@@ -36,6 +37,7 @@ namespace PickUpApp
 			kidTable = client.GetTable<Kid> ();
 			scheduleTable = client.GetTable<Schedule> ();
 			accountDeviceTable = client.GetTable<AccountDevice>();
+			locationLogTable = client.GetTable<LocationLog>();
 			}
 			catch(Exception ex) {
 				System.Diagnostics.Debug.WriteLine ("MobServEx " + ex.Message);
@@ -113,6 +115,17 @@ namespace PickUpApp
 
 		//public List<ToDoItem> Items { get; private set;}
 
+		public async Task InsertLocationLogAsync(LocationLog logItem)
+		{
+			try{
+				//var logger =  client.GetTable<LocationLog> ();
+				//await logger.InsertAsync (logItem);
+				await locationLogTable.InsertAsync(logItem);
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
 
 		public async Task InsertKidAsync(Kid kidItem)
 		{

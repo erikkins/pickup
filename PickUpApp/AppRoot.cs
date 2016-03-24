@@ -6,6 +6,9 @@ namespace PickUpApp
 {
 	public class AppRoot : ContentPage
 	{
+		DateTime lastLocationLog = new DateTime (1900, 1, 1);
+		Location lastLocation = new Location();
+
 		public AppRoot ()
 		{			
 			BackgroundColor = Color.FromRgb (73, 55, 109);
@@ -92,8 +95,31 @@ namespace PickUpApp
 				MessagingCenter.Send<Microsoft.WindowsAzure.MobileServices.MobileServiceClient>(App.client, "LoggedIn");
 			}
 
-			App.GetPosition ().ConfigureAwait (false);
 
+
+			MessagingCenter.Subscribe<LocationLog> (this, "BackgroundLocationUpdated", async(loc) => {
+				//System.Diagnostics.Debug.WriteLine("Got Update");
+				//don't log it if it's been less than a minute
+				if (lastLocationLog > DateTime.UtcNow.AddSeconds(-60))
+				{
+					//System.Diagnostics.Debug.WriteLine("lastLocationLog > 10 seconds ago");
+					return;
+				}
+				//don't log it if they haven't moved
+				if (loc.Latitude == lastLocation.Latitude && loc.Longitude == lastLocation.Longitude)
+				{
+					return;
+				}
+
+				PickupService.DefaultService.client.CurrentUser = App.client.CurrentUser;
+
+				await PickupService.DefaultService.InsertLocationLogAsync(loc);
+				lastLocationLog = DateTime.UtcNow;
+				lastLocation.Latitude = loc.Latitude;
+				lastLocation.Longitude = loc.Longitude;
+			});
+
+			App.GetPosition ().ConfigureAwait (false);
 
 			//var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
 			//I've received an invite

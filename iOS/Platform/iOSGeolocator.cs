@@ -35,6 +35,8 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 			this.manager = GetManager();
 			this.manager.AuthorizationChanged += OnAuthorizationChanged;
 			this.manager.Failed += OnFailed;
+			DesiredAccuracy = 1;
+			this.manager.PausesLocationUpdatesAutomatically = false;
 			if (this.manager.RespondsToSelector(new Selector("requestWhenInUseAuthorization")))
 			{
 				this.manager.RequestWhenInUseAuthorization();
@@ -42,6 +44,9 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 			if (this.manager.RespondsToSelector(new Selector("requestAlwaysAuthorization")))
 			{
 				this.manager.RequestAlwaysAuthorization();
+			}
+			if (this.manager.RespondsToSelector (new Selector ("allowsBackgroundLocationUpdates"))) {
+				this.manager.AllowsBackgroundLocationUpdates = true;
 			}
 			if (UIDevice.CurrentDevice.CheckSystemVersion (6, 0))
 				this.manager.LocationsUpdated += OnLocationsUpdated;
@@ -134,6 +139,7 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 					EventHandler<PositionErrorEventArgs> gotError = null;
 					gotError = (s,e) =>
 					{
+						System.Console.WriteLine("GOTERROR");
 						tcs.TrySetException (new GeolocationException (e.Error));
 						PositionError -= gotError;
 					};
@@ -249,7 +255,7 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 			if (location.Speed > -1)
 				p.Speed = location.Speed;
 
-
+			System.Console.WriteLine("Got Position!");
 
 			p.Timestamp = new DateTimeOffset (NSDateToDateTime(location.Timestamp));
 
@@ -266,6 +272,7 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 
 		private void OnFailed (object sender, Foundation.NSErrorEventArgs e)
 		{
+			System.Console.WriteLine("OnFailedPosition");
 			/*gotta revamp this whole section anyway
 			if ((CLError)e.Error.Code == CLError.Network)
 				OnPositionError (new PositionErrorEventArgs (GeolocationError.PositionUnavailable));
@@ -274,8 +281,11 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 
 		private void OnAuthorizationChanged (object sender, CLAuthorizationChangedEventArgs e)
 		{
-			if (e.Status == CLAuthorizationStatus.Denied || e.Status == CLAuthorizationStatus.Restricted)
+			
+			if (e.Status == CLAuthorizationStatus.Denied || e.Status == CLAuthorizationStatus.Restricted) {
+				System.Console.WriteLine("OnAuthChanged");
 				OnPositionError (new PositionErrorEventArgs (GeolocationError.Unauthorized));
+			}
 		}
 
 		private void OnPositionChanged (PositionEventArgs e)
@@ -288,7 +298,7 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 		private void OnPositionError (PositionErrorEventArgs e)
 		{
 			StopListening();
-
+			System.Console.WriteLine("OnPositionError");
 			var error = PositionError;
 			if (error != null)
 				error (this, e);

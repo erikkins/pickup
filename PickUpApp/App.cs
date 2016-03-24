@@ -67,6 +67,9 @@ namespace PickUpApp
 		public static bool IsUpdatingPosition;
 		public static bool LaunchLocationRecorded;
 
+
+
+
 		public App ()
 		{
 			myDevice.PropertyChanged += async (object sender, System.ComponentModel.PropertyChangedEventArgs e) => {
@@ -79,6 +82,7 @@ namespace PickUpApp
 				}
 				//System.Diagnostics.Debug.WriteLine("here");
 			};
+				
 
 			//GetPosition ().ConfigureAwait (false);
 				// The root page of your application
@@ -216,7 +220,6 @@ namespace PickUpApp
 
 		private static void OnPositionChanged(object sender, PositionEventArgs e)
 		{
-			
 			System.Diagnostics.Debug.WriteLine ("Changed");
 			////			BeginInvokeOnMainThread (() => {
 			////				ListenStatus.Text = e.Position.Timestamp.ToString("G");

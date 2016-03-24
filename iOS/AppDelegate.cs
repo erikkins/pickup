@@ -50,8 +50,52 @@ namespace PickUpApp.iOS
 //		}
 
 
-		//public override UIWindow Window { get; set; }
 
+		//public override UIWindow Window { get; set; }
+		public override void DidEnterBackground (UIApplication application)
+		{
+			base.DidEnterBackground (application);
+
+					
+		}
+
+
+
+//		private void scheduleBackgroundTimer()
+//		{
+//			System.Console.WriteLine ("ScheduleBackgroundTimer");
+//
+//				Device.StartTimer (new TimeSpan (0, 0, 10), () => {
+//					System.Console.WriteLine ("BackgroundTimerFired");
+//
+//					System.Threading.Tasks.Task.Factory.StartNew (async() => {
+//						System.Console.WriteLine ("BackgroundGetPosition");
+//						await App.GetPosition ();
+//						System.Console.WriteLine ("BackgroundGotPosition");
+//						//don't log it if it's the same location as before
+//						//if (App.PositionLatitude != lastLocationLog.Latitude || App.PositionLongitude != lastLocationLog.Longitude) {
+//							if (!string.IsNullOrEmpty (App.PositionLatitude) && !(string.IsNullOrEmpty (App.PositionLongitude))) {	
+//								ll.Latitude = App.PositionLatitude;
+//								ll.Longitude = App.PositionLongitude;
+//								ll.LogType = "background";
+//								System.Console.WriteLine ("BackgroundSaving");
+//								await bvm.ExecuteLocationLogCommand (ll);
+//							}
+//						//}
+//						Device.BeginInvokeOnMainThread (() => {
+//							scheduleBackgroundTimer ();
+//						});
+//						
+//					});						
+//
+//					return false;
+//				});		
+//		}
+
+		public override void WillEnterForeground (UIApplication application)
+		{
+			base.WillEnterForeground (application);
+		}
 
 		public override bool FinishedLaunching (UIKit.UIApplication app, NSDictionary options)
 		{
@@ -144,6 +188,9 @@ namespace PickUpApp.iOS
 			Facebook.CoreKit.Settings.AppID = "445633295574438";
 			Facebook.CoreKit.Settings.DisplayName = "FamFetch";
 			Facebook.CoreKit.AppEvents.ActivateApp ();
+
+
+
 
 			LoadApplication (new App ());
 

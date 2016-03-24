@@ -20,6 +20,9 @@ using System.Threading.Tasks;
 using System.Threading;
 //using Xamarin.Forms.Labs.Services.Geolocation;
 using XLabs.Platform.Services.Geolocation;
+using ObjCRuntime;
+using PickUpApp.iOS;
+using PickUpApp;
 
 namespace Xamarin.Forms.Labs.iOS
 {
@@ -29,10 +32,19 @@ namespace Xamarin.Forms.Labs.iOS
 		public GeolocationSingleUpdateDelegate (CLLocationManager manager, double desiredAccuracy, bool includeHeading, int timeout, CancellationToken cancelToken)
 		{
 			this.manager = manager;
+//			this.manager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
+//				PickUpApp.Location l = new PickUpApp.Location();
+//				l.Latitude = e.Locations[0].Coordinate.Latitude.ToString();
+//				l.Longitude = e.Locations[0].Coordinate.Longitude.ToString();
+//				MessagingCenter.Send<PickUpApp.Location>(l, "BackgroundLocationUpdated");
+//				LocationUpdated(this, new LocationUpdatedEventArgs(e.Locations[e.Locations.Length-1]));
+//			};
 			this.tcs = new TaskCompletionSource<Position> (manager);
 			this.desiredAccuracy = desiredAccuracy;
 			this.includeHeading = includeHeading;
-
+			if (this.manager.RespondsToSelector (new Selector ("allowsBackgroundLocationUpdates"))) {
+				this.manager.AllowsBackgroundLocationUpdates = true;
+			}
 			if (timeout != Timeout.Infinite)
 			{
 				Timer t = null;
@@ -42,18 +54,21 @@ namespace Xamarin.Forms.Labs.iOS
 							this.tcs.TrySetResult (new Position (this.position));
 						else
 							this.tcs.TrySetCanceled();
-
-						StopListening();
+						//maybe never stop listening
+						//System.Diagnostics.Debug.WriteLine("Background Lock");
+						//StopListening();
 						t.Dispose();
 					}, null, timeout, 0);
 			}
 
 			cancelToken.Register (() =>
 				{
+					System.Console.WriteLine("CancelTokenFired");
 					StopListening();
 					this.tcs.TrySetCanceled();
 				});
 		}
+		//public event EventHandler<LocationUpdatedEventArgs> LocationUpdated = delegate { };
 
 		public Task<Position> Task
 		{
@@ -65,6 +80,7 @@ namespace Xamarin.Forms.Labs.iOS
 			// If user has services disabled, we're just going to throw an exception for consistency.
 			if (status == CLAuthorizationStatus.Denied || status == CLAuthorizationStatus.Restricted)
 			{
+				System.Console.WriteLine("AuthChangedSingle");
 				StopListening();
 				this.tcs.TrySetException (new GeolocationException (GeolocationError.Unauthorized));
 			}
@@ -72,6 +88,7 @@ namespace Xamarin.Forms.Labs.iOS
 
 		public override void Failed (CLLocationManager manager, Foundation.NSError error)
 		{
+			System.Console.WriteLine("FailedPos");
 			/*this shit wasn't working anyway
 			switch ((CLError)error)
 			{
@@ -114,9 +131,19 @@ namespace Xamarin.Forms.Labs.iOS
 
 			this.haveLocation = true;
 
+			//send the location every X seconds
+			PickUpApp.LocationLog l = new PickUpApp.LocationLog();
+			l.Latitude = this.position.Latitude.ToString ();
+			l.Longitude = this.position.Longitude.ToString ();
+			l.LogType = "background";
+
+			MessagingCenter.Send<LocationLog>(l, "BackgroundLocationUpdated");
+
+
 			if ((!this.includeHeading || this.haveHeading) && this.position.Accuracy <= this.desiredAccuracy)
 			{
 				this.tcs.TrySetResult (new Position (this.position));
+				System.Console.WriteLine("Butstopping");
 				StopListening();
 			}
 		}
@@ -139,6 +166,7 @@ namespace Xamarin.Forms.Labs.iOS
 			if (this.haveLocation && this.position.Accuracy <= this.desiredAccuracy)
 			{
 				this.tcs.TrySetResult (new Position (this.position));
+				System.Console.WriteLine("UpdatedHeadingButStopping");
 				StopListening();
 			}
 		}
@@ -155,6 +183,7 @@ namespace Xamarin.Forms.Labs.iOS
 
 		private void StopListening()
 		{
+			System.Console.WriteLine("StopPosSingle");
 			if (CLLocationManager.HeadingAvailable)
 				this.manager.StopUpdatingHeading();
 
