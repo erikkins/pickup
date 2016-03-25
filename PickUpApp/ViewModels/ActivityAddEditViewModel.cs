@@ -390,14 +390,14 @@ namespace PickUpApp
 				else
 				{
 					await sched.UpdateAsync(CurrentSchedule);
-					Debug.WriteLine("ActivityAddEditVM -- Schedule Updated");
+					//Debug.WriteLine("ActivityAddEditVM -- Schedule Updated");
 				}
 
 				//but wait, there's more!
 				//gotta add the kidids to the scheduleid (nest this somehow in a single call?)
 				//whack 'em first
 				EmptyClass res = await client.InvokeApiAsync<Schedule, EmptyClass>("deleteschedulekids", CurrentSchedule);
-				Debug.WriteLine("ActivityAddEditVM -- DeletedScheduleKids" + res.Status);
+				//Debug.WriteLine("ActivityAddEditVM -- DeletedScheduleKids" + res.Status);
 				var kidsched = client.GetTable<KidSchedule>();
 				foreach (KidSchedule ks in KidSchedules)
 				{
@@ -405,7 +405,7 @@ namespace PickUpApp
 					{
 						ks.ScheduleID = CurrentSchedule.id;
 					}
-					Debug.WriteLine("Saving kid " + ks.KidID + " with id " + ks.id);
+					//Debug.WriteLine("Saving kid " + ks.KidID + " with id " + ks.id);
 					try{
 						await kidsched.InsertAsync(ks);
 					}
@@ -418,7 +418,7 @@ namespace PickUpApp
 						}
 					}
 				}
-				Debug.WriteLine("ActivityAddEditVM -- Added " + KidSchedules.Count.ToString() + " kids");
+				//Debug.WriteLine("ActivityAddEditVM -- Added " + KidSchedules.Count.ToString() + " kids");
 
 
 				foreach (BlackoutDate bod in BlackoutDates)

@@ -130,7 +130,11 @@ namespace PickUpApp
 
 					request.AddQueryParameter ("query", searchBar.Text);
 					request.AddQueryParameter("key", "AIzaSyDpVbafIazS-s6a82lp4fswviB_Kb0fbmQ");
-
+					if (!string.IsNullOrEmpty(App.PositionLatitude) && !string.IsNullOrEmpty(App.PositionLongitude))
+					{
+						request.AddQueryParameter("location", App.PositionLatitude + "," + App.PositionLongitude);
+						request.AddQueryParameter("radius", "50000");//roughly 30 miles (the current max allowed)
+					}
 					var result = await client.Execute(request);
 					GoogleResponse yr = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleResponse>(System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
 

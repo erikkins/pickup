@@ -131,6 +131,7 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<AccountPlace>(this, "PlaceAdded", async (ap) =>
 				{									
+					//System.Diagnostics.Debug.WriteLine("PLACEADDED-PlaceSelector");
 					//we actually need to reload places!
 					//this is the loadEvent of AccountPlaceViewModel
 					AccountPlaceViewModel apvm = new AccountPlaceViewModel(App.client);
@@ -142,11 +143,12 @@ namespace PickUpApp
 					foreach(AccountPlace place in ViewModel.AccountPlaces)
 					{
 						if (ap.id == place.id)
-						{
+						{							
 							place.Selected = true;
+							lvPlaces.SelectedItem = place;
 						}
 					}
-						
+					MessagingCenter.Unsubscribe<AccountPlace>(this, "PlaceAdded");
 					try{
 						await Navigation.PopAsync();
 					}

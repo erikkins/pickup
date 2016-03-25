@@ -28,6 +28,7 @@ namespace PickUpApp
 		protected override void OnAppearing ()
 		{
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
+				System.Diagnostics.Debug.WriteLine("UPDATEPLEASE");
 				ViewModel.ReturnVerb = "DetailUpdate"; //trick it so that we don't update the parent view just yet...
 
 				/*
@@ -68,12 +69,13 @@ namespace PickUpApp
 				//Navigation.PopAsync();
 			});
 
+			MessagingCenter.Unsubscribe<Schedule> (this, "ScheduleAdded");
 			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded", (s) => {
 				//now tell the parent controller to reload its listview		
 				MessagingCenter.Send<Schedule>(s, "RefreshSched");
 			});
 
-
+			MessagingCenter.Unsubscribe<Schedule> (this, "RefreshComplete");
 			MessagingCenter.Subscribe<Schedule> (this, "RefreshComplete", (s) => {
 				//parent controller has completed its update...
 				tv.Root.Clear ();
@@ -203,7 +205,7 @@ namespace PickUpApp
 				else{
 					App.hudder.showHUD("Saving Activity");
 					await this.ViewModel.ExecuteAddEditCommand().ContinueWith( x => {
-						System.Diagnostics.Debug.WriteLine("POP2--" + x.Status.ToString());
+						//System.Diagnostics.Debug.WriteLine("POP2--" + x.Status.ToString());
 						Device.BeginInvokeOnMainThread(()=>{
 							Navigation.PopAsync();
 							App.hudder.hideHUD();
