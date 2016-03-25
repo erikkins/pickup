@@ -13,6 +13,7 @@ namespace PickUpApp
 		Editor edNew;
 		Label lblMessageCount;
 		RelativeLayout rlMessage;
+		bool maintainNeedsRefresh = false;
 	
 
 		public TodayView ()
@@ -49,6 +50,7 @@ namespace PickUpApp
 			this.ToolbarItems.Add (new ToolbarItem ("Calendar", "icn_cal.png", async() => {
 				//pop the calendar window
 				//await DisplayAlert("CAL!", "show the calendar", "Cancel");
+				maintainNeedsRefresh = true;
 				await Navigation.PushAsync(new CalendarPicker());
 			}));
 
@@ -94,7 +96,6 @@ namespace PickUpApp
 
 
 
-
 			//moved into Appearing
 //			MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
 //				await ViewModel.ExecuteLoadItemsCommand();
@@ -132,6 +133,7 @@ namespace PickUpApp
 
 				if (allowManage)
 				{					
+					maintainNeedsRefresh = true;
 					Navigation.PushAsync(new ManageFetch(today));
 				}
 				else{
@@ -184,7 +186,7 @@ namespace PickUpApp
 						}
 					}
 
-
+					maintainNeedsRefresh = true;
 					Navigation.PushAsync(new RouteDetail(today, pinstring, currentOrdinal));
 				}
 				lvToday.SelectedItem = null;
@@ -455,17 +457,26 @@ namespace PickUpApp
 
 			this.Appearing += delegate(object sender, EventArgs e) {
 				//do all the subscriptions
+
+				MessagingCenter.Unsubscribe<AlertInfo>(this, "ShowAlert");
+				MessagingCenter.Subscribe<AlertInfo>(this, "ShowAlert", (a) =>{
+					DisplayAlert(a.Title, a.Message,"OK");
+				});
+
+				//since we're not killing off needsrefresh, see if it already exists
+				MessagingCenter.Unsubscribe<string>(this, "NeedsRefresh"); //make sure we clean house, since we're not deleting this on disappearing
 				MessagingCenter.Subscribe<string> (this, "NeedsRefresh", async(nr) => {
+					System.Diagnostics.Debug.WriteLine("NeedsRefreshToday");
 					await ViewModel.ExecuteLoadItemsCommand();
 				});
 
+				MessagingCenter.Unsubscribe<Today>(this, "fetchrequest");
 				MessagingCenter.Subscribe<Today>(this, "fetchrequest", async(t) => {
+					maintainNeedsRefresh = true;
 					await Navigation.PushAsync(new FetchRequest1(t));
 				});
-
+				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
-
-					//System.Diagnostics.Debug.WriteLine("TODAYLOADED");
 
 					lvToday.IsRefreshing = false;
 
@@ -510,6 +521,7 @@ namespace PickUpApp
 					MessagingCenter.Send<MessageView>(mv, "LoadMessages");
 				});
 
+				MessagingCenter.Unsubscribe<MessageView>(this, "LoadMessages");
 				MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
 					//System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
 					MessageViewModel mvm = new MessageViewModel(App.client, null);
@@ -518,7 +530,8 @@ namespace PickUpApp
 					App.hudder.hideHUD();
 				});
 
-				MessagingCenter.Subscribe<string> ("today", "messagesloaded", (ec) => {
+				MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
+				MessagingCenter.Subscribe<string> (this, "messagesloaded", (ec) => {
 					//System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
 					lblMessageCount.Text = App.myMessages.Count.ToString();
 					if (App.myMessages.Count > 0)
@@ -529,10 +542,12 @@ namespace PickUpApp
 					{
 						rlMessage.IsVisible = false;
 					}
+					//ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 				});
 
-				MessagingCenter.Subscribe<string> ("today", "messagesupdated", (ec) => {
-					//System.Diagnostics.Debug.WriteLine ("Received messagesupdated in Today");
+				MessagingCenter.Unsubscribe<RespondMessage>(this, "messagesupdated");
+				MessagingCenter.Subscribe<RespondMessage> (this, "messagesupdated", (ec) => {
+					System.Diagnostics.Debug.WriteLine ("Received reloadMessages in Today");
 					if (App.myMessages.Count > 0)
 					{
 						rlMessage.IsVisible = true;
@@ -541,23 +556,42 @@ namespace PickUpApp
 					{
 						rlMessage.IsVisible = false;
 					}
+					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 				});
 
-				ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+
+				//System.Diagnostics.Debug.WriteLine("NeedsRefreshTodayMessages");
+				if (ViewModel.Todays == null || ViewModel.Todays.Count == 0)
+				{
+					System.Diagnostics.Debug.WriteLine("Loading Empty Today");
+					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+				}
 			};
 
 			this.Disappearing += delegate(object sender, EventArgs e) {
+				//do we still need to do this?
+
 				//do all the unsubscriptions
-				//MessagingCenter.Unsubscribe<string> (this, "NeedsRefresh"); //had to comment this out because RouteDetail calls this when marking complete and it would load otherwise
+				if (maintainNeedsRefresh)
+				{
+					maintainNeedsRefresh = false;
+				}
+				else
+				{
+					MessagingCenter.Unsubscribe<string> (this, "NeedsRefresh"); //had to comment this out because RouteDetail calls this when marking complete and it would load otherwise
+				}
+				//see if there are multiple NeedsRefreshes and kill off if needed
+
 				MessagingCenter.Unsubscribe<Today>(this, "fetchrequest");
-				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
+				//MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				MessagingCenter.Unsubscribe<MessageView> (this, "LoadMessages");
-				MessagingCenter.Unsubscribe<string> ("today", "messagesloaded");
-				MessagingCenter.Unsubscribe<string> ("today", "messagesupdated");
+				//MessagingCenter.Unsubscribe<string> (this, "messagesloaded");
+				//MessagingCenter.Unsubscribe<RespondMessage> (this, "messagesupdated");
 			};
 
 
-
+			//initial load
+			//ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
 
 			this.Content = rl;
 	

@@ -25,85 +25,106 @@ namespace PickUpApp
 			elv.IsPullToRefreshEnabled = true;
 
 			elv.BindingContextChanged += delegate(object sender, EventArgs e) {
-				System.Diagnostics.Debug.WriteLine("BIGBINDING CHANGED");
+				//System.Diagnostics.Debug.WriteLine("BIGBINDING CHANGED");
 			};
 			stacker.Children.Add (elv);
 
 			//this.ViewModel.ExecuteLoadItemsCommand ().ConfigureAwait(false);
+			MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
+			MessagingCenter.Subscribe<string> (this, "messagesloaded", (s) => {
+				//elv.IsRefreshing = false;
+				//Device.BeginInvokeOnMainThread(async()=>{
+					//System.Diagnostics.Debug.WriteLine("MESSAGES LOADED");
+					App.hudder.hideHUD();
+					if (App.myMessages.Count == 0)
+					{
+						//System.Diagnostics.Debug.WriteLine ("PopAsync from MessageCenter after messagesloaded");
+						//try{
+						MessagingCenter.Unsubscribe<RespondMessage> (this, "messageresponse");
+						MessagingCenter.Unsubscribe<RespondMessage> (this, "messagesupdated");
+						MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
+						Navigation.PopAsync();
+						
+						//}
+						//catch{}
 
-			MessagingCenter.Subscribe<string> (this, "messagesloaded", async(s) => {
-				elv.IsRefreshing = false;
-				System.Diagnostics.Debug.WriteLine("MESSAGES LOADED");
-				App.hudder.hideHUD();
-				if (App.myMessages.Count == 0)
-				{
-					System.Diagnostics.Debug.WriteLine ("PopAsync from MessageCenter after messagesloaded");
-					try{
-					await Navigation.PopAsync();
 					}
-					catch{}
-				}
+				//});
 			});
 
-			MessagingCenter.Subscribe<RespondMessage>(this, "messagesupdated", async(rm) =>
+			MessagingCenter.Unsubscribe<RespondMessage> (this, "messagesupdated");
+			MessagingCenter.Subscribe<RespondMessage>(this, "messagesupdated", (rm) =>
 			{
 					if (rm==null)
 					{
 						return;
 					}
+					Device.BeginInvokeOnMainThread(async()=>{
+						//we need to know if there are any other collections
+						//that need updating as a result of this...
+						//TODO: add support for reloading different sections based upon the response type
+						switch (rm.PostUpdate)
+						{
+						case "today":
+							App.hudder.showHUD("Refreshing Today");
+							//we're doing this basically anyway at the bottom of this
+							//MessagingCenter.Send<string>("msgupdate", "NeedsRefresh");
+							/*
+							this.BindingContext = new TodayViewModel(App.client);
+							App.hudder.showHUD("Loading Today");
+							await ((TodayViewModel)BindingContext).ExecuteLoadItemsCommand();
+							App.hudder.hideHUD();
+							*/
+							break;
+						case "circlekids":
 
-					//we need to know if there are any other collections
-					//that need updating as a result of this...
-					//TODO: add support for reloading different sections based upon the response type
-					switch (rm.PostUpdate)
-					{
-					case "today":
-						App.hudder.showHUD("Refreshing Today");
-						MessagingCenter.Send<string>("msgupdate", "NeedsRefresh");
-						/*
-						this.BindingContext = new TodayViewModel(App.client);
-						App.hudder.showHUD("Loading Today");
-						await ((TodayViewModel)BindingContext).ExecuteLoadItemsCommand();
-						App.hudder.hideHUD();
-						*/
-						break;
-					case "circlekids":
+							MessageViewModel bc = this.BindingContext as MessageViewModel;
 
-						MessageViewModel bc = this.BindingContext as MessageViewModel;
+							this.BindingContext = new KidsViewModel(App.client);
+							//lblActivity.Text = "Loading Kids";
+							App.hudder.showHUD("Loading Kids");
+							await ((KidsViewModel)BindingContext).ExecuteLoadItemsCommand();
 
-						this.BindingContext = new KidsViewModel(App.client);
-						//lblActivity.Text = "Loading Kids";
-						App.hudder.showHUD("Loading Kids");
-						await ((KidsViewModel)BindingContext).ExecuteLoadItemsCommand();
+							this.BindingContext = new MyCircleViewModel(App.client);
+							//lblActivity.Text = "Loading Circle";
+							App.hudder.showHUD("Loading Circle");
+							await ((MyCircleViewModel)BindingContext).ExecuteLoadItemsCommand();
+							App.hudder.hideHUD();
 
-						this.BindingContext = new MyCircleViewModel(App.client);
-						//lblActivity.Text = "Loading Circle";
-						App.hudder.showHUD("Loading Circle");
-						await ((MyCircleViewModel)BindingContext).ExecuteLoadItemsCommand();
-						App.hudder.hideHUD();
-
-						this.BindingContext = bc;
-						break;
-					}
+							this.BindingContext = bc;
+							break;
+						}
 
 
-					if (this.ViewModel == null)
-					{
-						System.Diagnostics.Debug.WriteLine ("VIEWMODEL WAS NULL!");
-						this.ViewModel = new MessageViewModel(App.client, null);
-					}
-					System.Diagnostics.Debug.WriteLine ("LOADING ITEMS FROM MESSAGESUPDATED");
-					await this.ViewModel.ExecuteLoadItemsCommand();
-					//this.ViewModel.Refresh();
-					elv.IsRefreshing = false;
+						if (this.ViewModel == null)
+						{
+							System.Diagnostics.Debug.WriteLine ("VIEWMODEL WAS NULL!");
+							this.ViewModel = new MessageViewModel(App.client, null);
+						}
+
+						//System.Diagnostics.Debug.WriteLine ("LOADING ITEMS FROM MESSAGESUPDATED");
+						await this.ViewModel.ExecuteLoadItemsCommand();
+
+
+					});
+					//elv.IsRefreshing = false;
+
 			});
 
-			MessagingCenter.Subscribe<RespondMessage> (this, "messageresponse", async(mr) => {
-				App.hudder.showHUD("Saving Message");
-				this.ViewModel.CurrentMessageResponse = mr;
-				System.Diagnostics.Debug.WriteLine ("LOADING ITEMS AFTER MESSAGERESPONSE");
-			    await this.ViewModel.ExecuteAddEditCommand();
+			MessagingCenter.Unsubscribe<RespondMessage> (this, "messageresponse");
+			MessagingCenter.Subscribe<RespondMessage> (this, "messageresponse", (mr) => {
+				Device.BeginInvokeOnMainThread(async()=>{
+					App.hudder.showHUD("Saving Message");
+					this.ViewModel.CurrentMessageResponse = mr;
+					//System.Diagnostics.Debug.WriteLine ("LOADING ITEMS AFTER MESSAGERESPONSE");
+				    await this.ViewModel.ExecuteAddEditCommand();
+				});
 			});
+
+//			this.Disappearing += delegate(object sender, EventArgs e) {
+//				MessagingCenter.Unsubscribe<string> (this, "messagesloaded");
+//				MessagingCenter.Unsubscribe<RespondMessage> (this, "messagesupdated");
+//			};
 
 		}
 

@@ -215,7 +215,13 @@ namespace PickUpApp
 			//nobody has accepted my invite
 			MessagingCenter.Subscribe<Invite> (this, "nobody", (i) => {
 				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
-				DisplayAlert("Fetch request not accepted!", i.Message, "OK");
+//				Device.BeginInvokeOnMainThread (() => {
+//					DisplayAlert("Fetch request not accepted!", i.Message, "OK");
+//				});
+				AlertInfo ai = new AlertInfo();
+				ai.Message = i.Message;
+				ai.Title = "Fetch request not accepted!";
+				MessagingCenter.Send<AlertInfo>(ai, "ShowAlert");
 
 				RespondMessage rm = new RespondMessage ();
 				rm.MessageID = i.Id;
