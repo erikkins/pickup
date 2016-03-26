@@ -152,16 +152,7 @@
     <Reference Include="XLabs.Forms">
       <HintPath>..\packages\XLabs.Forms.2.0.5782\lib\MonoAndroid\XLabs.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp.Portable.Core">
-      <HintPath>..\packages\FubarCoder.RestSharp.Portable.Core.3.1.0\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\RestSharp.Portable.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net" />
-    <Reference Include="RestSharp.Portable.OAuth">
-      <HintPath>..\packages\FubarCoder.RestSharp.Portable.OAuth.3.1.0\lib\MonoAndroid10\RestSharp.Portable.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp.Portable.HttpClient">
-      <HintPath>..\packages\FubarCoder.RestSharp.Portable.HttpClient.3.1.0\lib\MonoAndroid10\RestSharp.Portable.HttpClient.dll</HintPath>
-    </Reference>
     <Reference Include="AndHUD">
       <HintPath>..\Components\AndHUD-1.3.1\lib\android\AndHUD.dll</HintPath>
     </Reference>
@@ -179,9 +170,6 @@
     </Reference>
     <Reference Include="Plugin.Vibrate">
       <HintPath>..\packages\Xam.Plugins.Vibrate.2.0.0\lib\MonoAndroid10\Plugin.Vibrate.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Permissions">
       <HintPath>..\packages\Plugin.Permissions.1.1.7\lib\MonoAndroid10\Plugin.Permissions.dll</HintPath>
@@ -218,6 +206,18 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Platform">
       <HintPath>..\packages\Xamarin.Forms.2.1.0.6526\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable.Core">
+      <HintPath>..\packages\FubarCoder.RestSharp.Portable.Core.3.1.3\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\RestSharp.Portable.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable.HttpClient">
+      <HintPath>..\packages\FubarCoder.RestSharp.Portable.HttpClient.3.1.3\lib\MonoAndroid10\RestSharp.Portable.HttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable.OAuth">
+      <HintPath>..\packages\FubarCoder.RestSharp.Portable.OAuth.3.1.3\lib\MonoAndroid10\RestSharp.Portable.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

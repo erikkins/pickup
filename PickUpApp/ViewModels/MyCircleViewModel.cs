@@ -54,10 +54,10 @@ namespace PickUpApp
 				List<EmptyClass> resps = await client.InvokeApiAsync<AccountCircle, List<EmptyClass>>("deletecircle", CurrentAccountCircle);
 				if (resps.Count == 0)
 				{
-					MessagingCenter.Send<EmptyClass>(new EmptyClass(), "CircleDeleted");
+					MessagingCenter.Send<EmptyClass>(new EmptyClass(), "CircleChanged");
 				}
 				else{
-					MessagingCenter.Send<EmptyClass>(resps.FirstOrDefault(), "CircleDeleted");
+					MessagingCenter.Send<EmptyClass>(resps.FirstOrDefault(), "CircleChanged");
 				}
 
 			}

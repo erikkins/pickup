@@ -521,6 +521,20 @@ namespace PickUpApp
 					MessagingCenter.Send<MessageView>(mv, "LoadMessages");
 				});
 
+				MessagingCenter.Subscribe<EmptyClass> (this, "CircleChanged", (p) => {
+					MessageView mv = new MessageView();
+					App.hudder.showHUD("Loading Circle");
+					MyCircleViewModel mcvm = new MyCircleViewModel(App.client);
+					mcvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
+
+					KidsViewModel kvm = new KidsViewModel(App.client);
+					App.hudder.showHUD("Loading Kids");
+					kvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
+
+					App.hudder.hideHUD();
+					MessagingCenter.Send<MessageView>(mv, "LoadMessages");
+				});
+
 				MessagingCenter.Unsubscribe<MessageView>(this, "LoadMessages");
 				MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
 					//System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");

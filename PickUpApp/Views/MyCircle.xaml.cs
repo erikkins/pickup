@@ -24,6 +24,7 @@ namespace PickUpApp
 			lstCircle.IsPullToRefreshEnabled = true;
 			lstCircle.HasUnevenRows = true;
 			lstCircle.BackgroundColor = AppColor.AppGray;
+			//lstCircle.SetBinding (ListView.IsRefreshingProperty, "ViewModel.IsLoading");
 			stacker.Children.Add (lstCircle);
 
 			lstCircle.ItemSelected += async delegate(object sender, SelectedItemChangedEventArgs e) {
@@ -53,37 +54,66 @@ namespace PickUpApp
 				lstCircle.SelectedItem = null;
 			};
 
+			this.Disappearing += delegate(object sender, EventArgs e) {
+				MessagingCenter.Unsubscribe<string>(this, "circleloaded");
+				MessagingCenter.Unsubscribe<AccountCircle>(this, "deleteac");
+				MessagingCenter.Unsubscribe<EmptyClass>(this, "CircleChanged");
+				//MessagingCenter.Unsubscribe<LocalContact>(this, "contactpicked");
+				//MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
+			};
 
-			MessagingCenter.Subscribe<string> (this, "circleloaded", (s) => {
-				lstCircle.IsRefreshing = false;
-			});
-			MessagingCenter.Subscribe<AccountCircle>(this, "deleteac", async(ac) => {
-				ViewModel.CurrentAccountCircle = ac;
-				await ViewModel.ExecuteDeleteCommand();
-			});
+			this.Appearing += delegate(object sender, EventArgs e) {
+				//NOTE: this gets called when the circle gets changed via APN, so make sure there's no popping going on here
+				MessagingCenter.Unsubscribe<EmptyClass>(this, "CircleChanged");
+				MessagingCenter.Subscribe<EmptyClass> (this, "CircleChanged", (p) => {
+					System.Diagnostics.Debug.WriteLine("CIRCLECHANGED");
+					if (string.IsNullOrEmpty(p.Status))
+					{
+						//Navigation.PopAsync();
+						ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(true);
+						//really need to reload the kids too
+						//MyCircleViewModel bc = this.BindingContext as MyCircleViewModel;
+						//this.BindingContext = new KidsViewModel(App.client);
+
+						KidsViewModel kvm = new KidsViewModel(App.client);
+						App.hudder.showHUD("Loading Kids");
+						kvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
 
 
-			//NOTE: this gets called when the circle gets changed via APN, so make sure there's no popping going on here
-			MessagingCenter.Subscribe<EmptyClass> (this, "CircleDeleted", (p) => {
-				if (string.IsNullOrEmpty(p.Status))
-				{
-					//Navigation.PopAsync();
-					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
-					//really need to reload the kids too
-					MyCircleViewModel bc = this.BindingContext as MyCircleViewModel;
-					this.BindingContext = new KidsViewModel(App.client);
-					App.hudder.showHUD("Loading Kids");
-					((KidsViewModel)BindingContext).ExecuteLoadItemsCommand().ConfigureAwait(false);
-					App.hudder.hideHUD();
-					this.BindingContext = bc;
+						//((KidsViewModel)BindingContext).ExecuteLoadItemsCommand().ConfigureAwait(false);
+						App.hudder.hideHUD();
+						//this.BindingContext = bc;
+						lstCircle.IsRefreshing = false;
+					}
+					else{
+						DisplayAlert("Could not delete", "This user is in use in the following activities: " + p.Status, "OK");
+					}
+				});
 
-				}
-				else{
-					DisplayAlert("Could not delete", "This user is in use in the following activities: " + p.Status, "OK");
-				}
-			});
+				MessagingCenter.Unsubscribe<string>(this, "circleloaded");
+				MessagingCenter.Subscribe<string> (this, "circleloaded", (s) => {
+					System.Diagnostics.Debug.WriteLine("CIRCLELOADED");
+					lstCircle.IsRefreshing = false;
+				});
 
+				MessagingCenter.Unsubscribe<AccountCircle>(this, "deleteac");
+				MessagingCenter.Subscribe<AccountCircle>(this, "deleteac", async(ac) => {
+					System.Diagnostics.Debug.WriteLine("DELETEAC");
+					ViewModel.CurrentAccountCircle = ac;
+					await ViewModel.ExecuteDeleteCommand();
+				});
+			};
+
+
+
+
+
+
+
+
+			MessagingCenter.Unsubscribe<LocalContact>(this, "contactpicked");
 			MessagingCenter.Subscribe<LocalContact> (this, "contactpicked", async(lc) => {
+				System.Diagnostics.Debug.WriteLine("CONTACTPICKED");
 				await Navigation.PopAsync(false);
 				await Navigation.PushAsync(new AddEditContact(lc, true),false);
 			});
@@ -111,10 +141,13 @@ namespace PickUpApp
 
 			this.BackgroundColor = Color.FromRgb (238, 236, 243);
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);	
+			MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
 			MessagingCenter.Subscribe<LocalContact> (this, "ContactAdded", (s) => {
+				System.Diagnostics.Debug.WriteLine("CONTACTADDED");
+				//gotta do some housekeeping here			
 				Navigation.PopAsync ();
 				ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
-				ViewModel.Refresh();
+				//ViewModel.Refresh();
 			});
 		}
 

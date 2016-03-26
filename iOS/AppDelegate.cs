@@ -381,7 +381,7 @@ namespace PickUpApp.iOS
 					//refresh circle and kids
 					EmptyClass ec = new EmptyClass();
 					//this will trick the app into reloading kids and circle
-					MessagingCenter.Send<EmptyClass> (ec, "CircleDeleted");
+					MessagingCenter.Send<EmptyClass> (ec, "CircleChanged");
 				}
 
 				//Extract the alert text

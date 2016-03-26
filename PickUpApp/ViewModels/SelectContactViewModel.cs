@@ -12,7 +12,8 @@ namespace PickUpApp
 	public class SelectContactViewModel:BaseViewModel
 	{
 		public ObservableCollection<LocalContact> Contacts { get; set; }
-		public ObservableCollection<Grouping<string, LocalContact>> ContactsSorted { get; set; }
+		private ObservableCollection<Grouping<string, LocalContact>> _contactsSorted;
+		public ObservableCollection<Grouping<string, LocalContact>> ContactsSorted { get{ return _contactsSorted; } set{ _contactsSorted = value; NotifyPropertyChanged (); } }
 		private LocalContact _localContact;
 		public LocalContact CurrentContact{
 			get{ return _localContact; } 
@@ -92,7 +93,7 @@ namespace PickUpApp
 					Contacts.Add(c);
 				}
 				//this.Contacts = contacts.ToArray();
-				var sorted = from lc in Contacts
+				var sorted = from lc in Contacts where lc.FirstName != null && !lc.FirstName.StartsWith("*") && !lc.FirstName.StartsWith("<")
 					orderby lc.DisplayName
 					group lc by lc.NameSort into contactGroup
 					select new Grouping<string, LocalContact>(contactGroup.Key, contactGroup);

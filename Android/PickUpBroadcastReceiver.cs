@@ -262,7 +262,7 @@ namespace PickUpApp.droid
 			if (intent.Extras.ContainsKey ("circle")&& !string.IsNullOrEmpty(intent.Extras.GetString("circle"))) {
 				EmptyClass ec = new EmptyClass ();
 				//trick it into needing to update the circle and kinds
-				MessagingCenter.Send <EmptyClass>(ec, "CircleDeleted");
+				MessagingCenter.Send <EmptyClass>(ec, "CircleChanged");
 			}
 			string messageText = intent.Extras.GetString("alert");
 			if (!string.IsNullOrEmpty(messageText))

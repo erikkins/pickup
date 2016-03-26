@@ -36,6 +36,7 @@ namespace PickUpApp.iOS
 				if (abp.GetPhones ().Count > 0) {
 					lc.Phone = abp.GetPhones ().FirstOrDefault ().Value;
 				}
+			
 				myContacts.Add (lc);
 			}
 			return myContacts;
