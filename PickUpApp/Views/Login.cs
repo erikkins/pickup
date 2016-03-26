@@ -122,6 +122,7 @@ namespace PickUpApp
 			b.BorderWidth = 2;
 			fields.Children.Add (b);
 			b.Clicked += async delegate(object sender, EventArgs e) {
+				App.hudder.showHUD("Please wait...");
 				//ok, let's log that badbear in
 				this.ViewModel.AuthAccount = new AuthAccounts();
 				this.ViewModel.AuthAccount.Email = ee.Text;
@@ -129,6 +130,7 @@ namespace PickUpApp
 				this.ViewModel.AuthAccount.Password = eepw.Text;
 
 				await this.ViewModel.ExecuteLoginCommand("Custom");
+				App.hudder.hideHUD();
 			};
 
 	
