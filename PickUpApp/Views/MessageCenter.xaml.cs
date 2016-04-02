@@ -117,7 +117,7 @@ namespace PickUpApp
 
 					if (!string.IsNullOrEmpty(mr.Conditional))
 					{
-						bool ret = DisplayAlert("Preemptive Check", mr.Conditional, "Continue", "Cancel");
+						bool ret = await DisplayAlert("Preemptive Check", mr.Conditional, "Continue", "Cancel");
 						if (!ret)
 						{
 							return;
@@ -654,21 +654,31 @@ namespace PickUpApp
 				bAccept.BorderWidth = 2;
 				bAccept.BackgroundColor = Color.White;
 				bAccept.Text = "Accept";
-				bAccept.Clicked += delegate(object sender, EventArgs e) {
+				bAccept.Clicked += async delegate(object sender, EventArgs e) {
 
 					//start preemptive
 					//before we allow them to accept, let's check preemptively
 					App.hudder.showHUD("Preemptive check...");
-					ActivityAddEditViewModel aaevm = new ActivityAddEditViewModel(App.client, null);
-					aaevm.CheckPreemptive(mv.ScheduleDate.DayOfWeek.ToString().Substring(0,2)).ConfigureAwait(false);
-					string tester = "";
+					ActivityAddEditViewModel aaevm = new ActivityAddEditViewModel(App.client, null, null, null);
+					aaevm.IsLoading = false;
+					await aaevm.CheckPreemptive(mv.ScheduleDate.DayOfWeek.ToString().Substring(0,2));
+					//string tester = "";
 
-					mv.MessageToday.StartPlaceTravelTime = travelMinutes;
-					mv.MessageToday.EndPlaceTravelTime = travelMinutes;
+					//mv.MessageToday.StartPlaceTravelTime = travelMinutes;
+					//mv.MessageToday.EndPlaceTravelTime = travelMinutes;
 
-					Period currentDropoffPeriod = new Period(mv.MessageToday.DropoffDiff, mv.MessageToday.DropoffDT);
-					Period currentPickupPeriod = new Period(mv.MessageToday.PickupDiff, mv.MessageToday.PickupDT);
+					Period overlapPeriod;
+					if(mv.MessageToday.IsPickup)
+					{
+						overlapPeriod = new Period(mv.MessageToday.PickupDT.AddHours(-1), mv.MessageToday.PickupDT.AddHours(1));
+					}
+					else
+					{
+						overlapPeriod = new Period(mv.MessageToday.DropoffDT.AddHours(-1), mv.MessageToday.DropoffDT.AddHours(1));
+					}
 
+
+					bool needsCheck = false;
 					foreach (Preemptive thispe in aaevm.Preemptives)
 					{
 						if (thispe.id == mv.MessageToday.id)
@@ -678,34 +688,35 @@ namespace PickUpApp
 
 						Period pDropoff = new Period(thispe.DropoffDiff, thispe.DropoffDT);
 						Period pPickup = new Period(thispe.PickupDiff, thispe.PickupDT);
-						if (pDropoff.Overlaps(currentPickupPeriod))
+
+						if (pDropoff.Overlaps(overlapPeriod))
 						{
-							tester += mv.MessageToday.Activity + " pickup conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
+							needsCheck = true;
+							//tester += mv.MessageToday.Activity + " pickup may conflict with " + thispe.Activity + " dropoff" + Environment.NewLine;
 						}
-						if (pDropoff.Overlaps(currentDropoffPeriod))
+						if (pDropoff.Overlaps(overlapPeriod))
 						{
-							tester +=  mv.MessageToday.Activity + " pickup conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
+							needsCheck = true;
+							//tester +=  mv.MessageToday.Activity + " pickup conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
 						}
-						if (pPickup.Overlaps(currentPickupPeriod))
+						if (pPickup.Overlaps(overlapPeriod))
 						{
-							tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
+							needsCheck = true;
+							//tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
 						}
-						if (pPickup.Overlaps(currentDropoffPeriod))
+						if (pPickup.Overlaps(overlapPeriod))
 						{
-							tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
+							needsCheck = true;
+							//tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
 						}							
-					}
+					}						
+
 					App.hudder.hideHUD();
 
 					RespondMessage rm = new RespondMessage ();
-					if (tester.Length > 0)
-					{		
-						rm.Conditional = tester;
-//						bool ret = DisplayAlert("Preemptive Check", tester, "Continue", "Cancel");
-//						if (!ret)
-//						{
-//							return;
-//						}
+					if (needsCheck)
+					{
+						rm.Conditional = "You may have a conflict. Press Cancel to check your schedule before accepting.";
 					}
 
 					//end preemptive

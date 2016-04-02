@@ -34,6 +34,7 @@ namespace PickUpApp
 			this.client = client;
 			_currentSchedule = currentSchedule;
 			_kidschedules = kidSchedule;
+			Preemptives = new TrulyObservableCollection<Preemptive> ();
 			//Kids = kids;
 		}
 
