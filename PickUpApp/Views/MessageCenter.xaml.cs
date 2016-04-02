@@ -114,6 +114,16 @@ namespace PickUpApp
 			MessagingCenter.Unsubscribe<RespondMessage> (this, "messageresponse");
 			MessagingCenter.Subscribe<RespondMessage> (this, "messageresponse", (mr) => {
 				Device.BeginInvokeOnMainThread(async()=>{
+
+					if (!string.IsNullOrEmpty(mr.Conditional))
+					{
+						bool ret = DisplayAlert("Preemptive Check", mr.Conditional, "Continue", "Cancel");
+						if (!ret)
+						{
+							return;
+						}
+					}
+						
 					App.hudder.showHUD("Saving Message");
 					this.ViewModel.CurrentMessageResponse = mr;
 					//System.Diagnostics.Debug.WriteLine ("LOADING ITEMS AFTER MESSAGERESPONSE");
@@ -645,7 +655,62 @@ namespace PickUpApp
 				bAccept.BackgroundColor = Color.White;
 				bAccept.Text = "Accept";
 				bAccept.Clicked += delegate(object sender, EventArgs e) {
+
+					//start preemptive
+					//before we allow them to accept, let's check preemptively
+					App.hudder.showHUD("Preemptive check...");
+					ActivityAddEditViewModel aaevm = new ActivityAddEditViewModel(App.client, null);
+					aaevm.CheckPreemptive(mv.ScheduleDate.DayOfWeek.ToString().Substring(0,2)).ConfigureAwait(false);
+					string tester = "";
+
+					mv.MessageToday.StartPlaceTravelTime = travelMinutes;
+					mv.MessageToday.EndPlaceTravelTime = travelMinutes;
+
+					Period currentDropoffPeriod = new Period(mv.MessageToday.DropoffDiff, mv.MessageToday.DropoffDT);
+					Period currentPickupPeriod = new Period(mv.MessageToday.PickupDiff, mv.MessageToday.PickupDT);
+
+					foreach (Preemptive thispe in aaevm.Preemptives)
+					{
+						if (thispe.id == mv.MessageToday.id)
+						{
+							continue;
+						}
+
+						Period pDropoff = new Period(thispe.DropoffDiff, thispe.DropoffDT);
+						Period pPickup = new Period(thispe.PickupDiff, thispe.PickupDT);
+						if (pDropoff.Overlaps(currentPickupPeriod))
+						{
+							tester += mv.MessageToday.Activity + " pickup conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
+						}
+						if (pDropoff.Overlaps(currentDropoffPeriod))
+						{
+							tester +=  mv.MessageToday.Activity + " pickup conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
+						}
+						if (pPickup.Overlaps(currentPickupPeriod))
+						{
+							tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
+						}
+						if (pPickup.Overlaps(currentDropoffPeriod))
+						{
+							tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
+						}							
+					}
+					App.hudder.hideHUD();
+
 					RespondMessage rm = new RespondMessage ();
+					if (tester.Length > 0)
+					{		
+						rm.Conditional = tester;
+//						bool ret = DisplayAlert("Preemptive Check", tester, "Continue", "Cancel");
+//						if (!ret)
+//						{
+//							return;
+//						}
+					}
+
+					//end preemptive
+
+
 					rm.MessageID = mv.Id;
 					rm.Response = "1";
 					rm.Status = "read";

@@ -162,6 +162,40 @@ namespace PickUpApp
 			} 
 		}
 
+
+		//new
+		public DateTime PickupDT
+		{
+			get{
+				return DateTime.Today.Add (TSPickup);
+			}
+		}
+
+		public DateTime PickupDiff
+		{
+			get{
+				return DateTime.Today.Add (TSPickup.Subtract (TimeSpan.FromMinutes ((double)EndPlaceTravelTime)));
+			}
+		}
+
+		public DateTime DropoffDT
+		{
+			get{
+				return DateTime.Today.Add (TSDropOff);
+			}
+		}
+
+		public DateTime DropoffDiff
+		{
+			get{
+				return DateTime.Today.Add (TSDropOff.Subtract (TimeSpan.FromMinutes ((double)StartPlaceTravelTime)));
+			}
+		}
+
+		//end new
+
+
+
 		private string _dropoffnotes;
 		[JsonProperty(PropertyName = "dropoffnotes")]
 		public string DropOffNotes { get{ return _dropoffnotes; } set{if (value != _dropoffnotes) {

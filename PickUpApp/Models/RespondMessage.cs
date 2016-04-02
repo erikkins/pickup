@@ -29,6 +29,12 @@ namespace PickUpApp
 					_postUpdate = value; NotifyPropertyChanged ();
 				} } }
 
+
+		private string _conditional;
+		[JsonProperty(PropertyName = "conditional")]
+		public string Conditional { get{return _conditional; } set{ if (value != _conditional) {
+					_conditional = value; NotifyPropertyChanged ();
+				} } }
 	}
 }
 
