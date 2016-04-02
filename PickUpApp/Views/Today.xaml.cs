@@ -274,15 +274,20 @@ namespace PickUpApp
 
 
 
+
+
+
+
 			//need to put this into an absolutelayout container...and only show when no kids, no places, no activity
 			NEWarrow = new FFArrow ();
 			NEWarrow.Color = AppColor.AppPink;
-			NEWarrow.WidthRequest = App.Device.Display.Width;
-			NEWarrow.HeightRequest = App.Device.Display.Height;
-			NEWarrow.StartPoint = new Point (40, 10);
-			NEWarrow.EndPoint = new Point (App.ScaledQuarterWidth, App.ScaledHeight / 6);
+			NEWarrow.WidthRequest = 80;//App.Device.Display.Width;
+			NEWarrow.HeightRequest = 80;//App.Device.Display.Height;
+			//NEWarrow.StartPoint = new Point(0,0); //new Point (40, 10);
+			//NEWarrow.EndPoint = new Point(80,80);//new Point (App.ScaledQuarterWidth, App.ScaledHeight / 6);
+			NEWarrow.RotationX = 180;
 			NEWarrow.IsVisible = false;
-			rl.Children.Add (NEWarrow, Constraint.Constant(0), Constraint.Constant(0), null, null);
+			rl.Children.Add (NEWarrow, Constraint.Constant(App.ScaledQuarterWidth/2), Constraint.Constant(30), null, null);
 
 			edNew = new Editor ();
 			edNew.IsEnabled = false;
@@ -291,7 +296,7 @@ namespace PickUpApp
 			edNew.Text = "Welcome! To get started, click on the Menu icon and begin adding Kids, Places and Activities.";
 			edNew.WidthRequest = 250;
 			edNew.IsVisible = false;
-			rl.Children.Add (edNew, Constraint.Constant (App.ScaledQuarterWidth -115), Constraint.Constant(App.ScaledHeight/6), null, null);
+			rl.Children.Add (edNew, Constraint.Constant (App.ScaledQuarterWidth -115), Constraint.Constant(App.ScaledHeight/5), null, null);
 
 
 			//arrow.IsVisible = false;

@@ -110,6 +110,19 @@ namespace PickUpApp
 					return;
 				}
 
+
+				if (string.IsNullOrEmpty(CurrentActivity.DefaultDropOffAccount))
+				{
+					//nothing was set for default dropoff account, make it me
+					CurrentActivity.DefaultDropOffAccount = App.myAccount.id;
+				}
+
+				if (string.IsNullOrEmpty(CurrentActivity.DefaultPickupAccount))
+				{
+					//nothing was set for default dropoff account, make it me
+					CurrentActivity.DefaultPickupAccount = App.myAccount.id;
+				}
+
 				App.hudder.showHUD("Calculating drive time...");
 				await ViewModel.CalculateDriveTime();
 

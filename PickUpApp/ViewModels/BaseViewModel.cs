@@ -113,6 +113,9 @@ namespace PickUpApp.ViewModels
 
 		public virtual async Task ExecuteLocationLogCommand(LocationLog LogEntry)
 		{
+			if (string.IsNullOrEmpty (LogEntry.UserId)) {
+				return;
+			}
 			try{
 				var logger =  client.GetTable<LocationLog> ();
 				await logger.InsertAsync (LogEntry);
