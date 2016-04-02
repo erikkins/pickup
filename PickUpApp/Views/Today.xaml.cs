@@ -114,6 +114,24 @@ namespace PickUpApp
 				}
 				Today today = ((Today)e.SelectedItem);
 
+
+				//shouldn't be able to do anything from yesterday backward
+				DateTime checkTime = today.AtWhen.ToUniversalTime();
+				if (today.IsPickup)
+				{
+					checkTime = checkTime.AddTicks(today.PickupTicks);
+				}
+				else{
+					checkTime = checkTime.AddTicks(today.DropOffTicks);
+				}
+
+				if (checkTime < DateTime.Now.AddDays(-1))
+				{
+					//you can look, but you can't touch
+					lvToday.SelectedItem = null;
+					return;
+				}
+
 				//if this is an active FetchRequest (and I'm the sender!), take them to the ManageFetch screen, otherwise to the RouteDetail
 				bool allowManage = false;
 
@@ -1037,6 +1055,21 @@ namespace PickUpApp
 					showArrow = false;
 				}
 			}
+
+			//don't let them make a fetch request for anything in the past
+			DateTime checkTime = t.AtWhen.ToUniversalTime();
+			if (t.IsPickup)
+			{
+				checkTime = checkTime.AddTicks(t.PickupTicks);
+			}
+			else{
+				checkTime = checkTime.AddTicks(t.DropOffTicks);
+			}
+
+			if (checkTime < DateTime.Now.AddDays(-1)) {
+				showArrow = false;
+			}
+
 			//this means someone is picking up or dropping off
 			//nobody's picking up or dropping off, so make the option to invite available
 			//but only if it's mine to invite!

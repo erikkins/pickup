@@ -86,27 +86,14 @@ namespace PickUpApp
 		{
 			get{
 				if (_photoURL == null) {
-					if (Firstname == null && Lastname == null) {
-						return null;
-					}
-					string initials = "";
-					if (Firstname == null)
+					return initialsPath ();
+				} else {					
+					if (!_photoURL.ToLower().StartsWith("http"))
 					{
-						initials = Lastname.Substring(0,1).ToUpper();
+						if (!App.Device.FileManager.FileExists (_photoURL)) {
+							return initialsPath ();
+						}
 					}
-					else if (Lastname == null)
-					{
-						initials = Firstname.Substring(0,1).ToUpper();
-					}
-					else
-					{
-						initials = Firstname.Substring(0,1).ToUpper() + Lastname.Substring(0,1).ToUpper();
-					}
-
-					var dep = DependencyService.Get<PickUpApp.ICircleText>();
-					string filename = dep.CreateCircleText(initials,50,50);
-					return filename;
-				} else {
 					return _photoURL;
 				}
 
@@ -117,6 +104,28 @@ namespace PickUpApp
 				}
 			}
 		}
+
+		private string initialsPath()
+		{
+			string initials = "";
+			string filename = "";
+			if (Firstname == null && Lastname == null) {
+				//sol
+				return "";
+			}
+			if (Firstname == null) {
+				initials = Lastname.Substring (0, 1).ToUpper ();
+			} else if (Lastname == null) {
+				initials = Firstname.Substring (0, 1).ToUpper ();
+			} else {
+				initials = Firstname.Substring (0, 1).ToUpper () + Lastname.Substring (0, 1).ToUpper ();
+			}
+
+			var dep = DependencyService.Get<PickUpApp.ICircleText> ();
+			filename = dep.CreateCircleText (initials, 50, 50);
+			return filename;
+		}
+
 
 		private bool _validated;
 		[JsonProperty(PropertyName = "validated")]

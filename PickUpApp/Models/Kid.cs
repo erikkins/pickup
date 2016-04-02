@@ -51,30 +51,18 @@ namespace PickUpApp
 		public string PhotoURL
 		{
 			get{
-
 				if (_photoURL == null || _photoURL == "") {
 					//generate one on the fly...
-					string initials = "";
-					if (Firstname == null && Lastname == null) {
-						//sol
-						return "";
-					}
-					if (Firstname == null)
+					return initialsPath ();
+				} else {
+					//if it's a file, make sure it exists! (sloppy, really)
+					if (!_photoURL.ToLower().StartsWith("http"))
 					{
-						initials = Lastname.Substring(0,1).ToUpper();
-					}
-					else if (Lastname == null)
-					{
-						initials = Firstname.Substring(0,1).ToUpper();
-					}
-					else
-					{
-						initials = Firstname.Substring(0,1).ToUpper() + Lastname.Substring(0,1).ToUpper();
+						if (!App.Device.FileManager.FileExists (_photoURL)) {
+							return initialsPath ();
+						}
 					}
 
-					var dep = DependencyService.Get<PickUpApp.ICircleText>();
-					string filename = dep.CreateCircleText(initials,50,50);
-					return filename;
 				}
 
 				return _photoURL;
@@ -86,6 +74,26 @@ namespace PickUpApp
 			}
 		}
 
+		private string initialsPath()
+		{
+			string initials = "";
+			string filename = "";
+			if (Firstname == null && Lastname == null) {
+				//sol
+				return "";
+			}
+			if (Firstname == null) {
+				initials = Lastname.Substring (0, 1).ToUpper ();
+			} else if (Lastname == null) {
+				initials = Firstname.Substring (0, 1).ToUpper ();
+			} else {
+				initials = Firstname.Substring (0, 1).ToUpper () + Lastname.Substring (0, 1).ToUpper ();
+			}
+
+			var dep = DependencyService.Get<PickUpApp.ICircleText> ();
+			filename = dep.CreateCircleText (initials, 50, 50);
+			return filename;
+		}
 
 		public string Age
 		{

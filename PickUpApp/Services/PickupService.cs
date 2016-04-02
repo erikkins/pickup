@@ -117,6 +117,10 @@ namespace PickUpApp
 
 		public async Task InsertLocationLogAsync(LocationLog logItem)
 		{
+			if (string.IsNullOrEmpty (logItem.UserId)) {
+				return;
+			}
+
 			try{
 				//var logger =  client.GetTable<LocationLog> ();
 				//await logger.InsertAsync (logItem);

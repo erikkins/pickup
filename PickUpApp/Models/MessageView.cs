@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace PickUpApp
 {
@@ -38,9 +39,55 @@ namespace PickUpApp
 
 		private string _SenderPhotoURL;
 		[JsonProperty(PropertyName = "senderphotourl")]
-		public string SenderPhotoURL { get{return _SenderPhotoURL; } set{if (value != _SenderPhotoURL) {
+		public string SenderPhotoURL 
+		{ get
+			{
+				if (!_SenderPhotoURL.ToLower ().StartsWith ("http")) {
+					if (!App.Device.FileManager.FileExists (_SenderPhotoURL)) {
+						return initialsPath ();
+					}
+				}
+				return _SenderPhotoURL; 
+			} 
+			set{if (value != _SenderPhotoURL) {
 					_SenderPhotoURL = value; NotifyPropertyChanged ();
 				} } }
+
+		private string initialsPath()
+		{
+			string initials = "";
+			string filename = "";
+			if (_Sender == null) {
+				//sol
+				return "";
+			}
+
+			string Firstname = "";
+			string Lastname = "";
+
+			if (_Sender.Contains (" ")) {
+
+				string[] parts = _Sender.Split (' ');
+				Firstname = parts [0];
+				Lastname = parts [1];
+
+			} else {
+				Firstname = _Sender;
+			}
+
+
+			if (string.IsNullOrEmpty(Firstname)) {
+				initials = Lastname.Substring (0, 1).ToUpper ();
+			} else if (string.IsNullOrEmpty(Lastname)) {
+				initials = Firstname.Substring (0, 1).ToUpper ();
+			} else {
+				initials = Firstname.Substring (0, 1).ToUpper () + Lastname.Substring (0, 1).ToUpper ();
+			}
+
+			var dep = DependencyService.Get<PickUpApp.ICircleText> ();
+			filename = dep.CreateCircleText (initials, 50, 50);
+			return filename;
+		}
 
 
 		private string _RecipientID;

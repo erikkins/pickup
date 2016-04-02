@@ -894,7 +894,7 @@ namespace PickUpApp
 		private string _title;
 		private DateTime _date;
 		private string _binding;
-		ExtendedDatePicker dp = new ExtendedDatePicker ();
+		DatePicker dp = new DatePicker ();
 
 		public SimpleDateCell(string title, DateTime defaultDate, string binding)
 		{
@@ -961,13 +961,14 @@ namespace PickUpApp
 
 
 
-			dp.HasBorder = false;
+			//dp.HasBorder = false;
+			dp.BackgroundColor = AppColor.AppGray;		
 			dp.Date = _date;
 			dp.VerticalOptions = LayoutOptions.Center;
 			dp.HorizontalOptions = LayoutOptions.StartAndExpand;
 			dp.WidthRequest = (App.ScaledWidth) - 150;
 			if (!string.IsNullOrEmpty (_binding)) {
-				dp.SetBinding (ExtendedDatePicker.DateProperty, _binding);
+				dp.SetBinding (DatePicker.DateProperty, _binding);
 			}
 
 			g.Children.Add (dp, 1, 0);

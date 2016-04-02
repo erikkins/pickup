@@ -880,7 +880,7 @@ namespace PickUpApp
 		public class DatePickerCell : ViewCell
 		{
 			bool _startsOn;
-			ExtendedDatePicker dp = new ExtendedDatePicker();
+			DatePicker dp = new DatePicker();
 			public DatePickerCell(bool startsOn)
 			{
 				//init
@@ -942,12 +942,13 @@ namespace PickUpApp
 
 				if (_startsOn) {
 					//dp.Date = s.AtWhen;
-					dp.SetBinding (ExtendedDatePicker.DateProperty, "CurrentSchedule.AtWhen");
+					dp.SetBinding (DatePicker.DateProperty, "CurrentSchedule.AtWhen");
 				} else {
 					//dp.Date = s.AtWhenEnd;
-					dp.SetBinding(ExtendedDatePicker.DateProperty, "CurrentSchedule.AtWhenEnd");
+					dp.SetBinding(DatePicker.DateProperty, "CurrentSchedule.AtWhenEnd");
 				}
-				dp.HasBorder = false;
+				dp.BackgroundColor = AppColor.AppGray;
+				//dp.HasBorder = false;
 
 				g.Children.Add (dp, 1, 0);
 
@@ -1552,7 +1553,7 @@ namespace PickUpApp
 					if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Reset) {
 						return;
 					}
-					finalHeight = 100 + (27 * ((ActivityAddEditViewModel)c).BlackoutDates.Count);
+					finalHeight = 150 + (27 * ((ActivityAddEditViewModel)c).BlackoutDates.Count);
 					if (finalHeight > 0) {
 						this.OnPropertyChanged ("FinalHeight");
 					}

@@ -41,7 +41,7 @@ namespace PickUpApp
 		}
 
 		private string _UserId;
-		[JsonProperty(PropertyName = "userId")]
+		[JsonProperty(PropertyName = "userid")]
 		public string UserId { get{return _UserId; } set{if (value != _UserId) {
 					_UserId = value; NotifyPropertyChanged ();
 				} } }

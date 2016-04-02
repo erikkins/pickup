@@ -5,9 +5,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.threethingsgood.famfetch</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.55</string>
+	<string>1.0.59</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.55</string>
+	<string>1.0.59</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -25,21 +25,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>MKDirectionsRequest</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.maps.directionsrequest</string>
-			</array>
-		</dict>
-	</array>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array>
-		<string>MKDirectionsModeCar</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

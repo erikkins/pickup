@@ -21,6 +21,8 @@ using XLabs.Platform.Services.IO;
 //using Xamarin.Forms.Labs.Services;
 using Facebook.CoreKit;
 using MTiRate;
+using HockeyApp;
+using System.Threading.Tasks;
 
 namespace PickUpApp.iOS
 {
@@ -102,7 +104,31 @@ namespace PickUpApp.iOS
 			global::Xamarin.Forms.Forms.Init ();
 			Xamarin.FormsMaps.Init ();
 			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
-			Insights.Initialize("882979cfc38cb829ecfaf090e99781b90980c55a");
+			//Insights.Initialize("882979cfc38cb829ecfaf090e99781b90980c55a");
+
+			HockeyApp.Setup.EnableCustomCrashReporting (() => {
+
+				//Get the shared instance
+
+				var manager = BITHockeyManager.SharedHockeyManager;
+
+				//Configure it to use our APP_ID
+				manager.Configure ("ed87bdba01244d8b82ed8df1ec5a7690");
+
+				//Start the manager
+				manager.StartManager ();
+
+				//Authenticate (there are other authentication options)
+				manager.Authenticator.AuthenticateInstallation ();
+
+				//Rethrow any unhandled .NET exceptions as native iOS 
+				// exceptions so the stack traces appear nicely in HockeyApp
+				AppDomain.CurrentDomain.UnhandledException += (sender, e) => 
+					Setup.ThrowExceptionAsNative(e.ExceptionObject);
+
+				TaskScheduler.UnobservedTaskException += (sender, e) => 
+					Setup.ThrowExceptionAsNative(e.Exception);
+			});
 
 			//Window = new UIWindow (UIScreen.MainScreen.Bounds);
 

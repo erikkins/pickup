@@ -38,19 +38,29 @@ namespace PickUpApp
 			//lstKids.ItemSelected += HandleItemSelected;
 			//btnAdd.Clicked += HandleClicked;
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
+
+
+			this.Disappearing += delegate(object sender, EventArgs e) {
+				
+			};
+
+			MessagingCenter.Unsubscribe<Kid> (this, "KidAdded");
 			MessagingCenter.Subscribe<Kid>(this, "KidAdded",  async(s) =>
 				{
-					//ViewModel.Refresh();
-					try{
-						await Navigation.PopAsync();
-					}
-					catch(Exception ex)
-					{
-						System.Diagnostics.Debug.WriteLine(ex);		
-					}
-					 await ViewModel.ExecuteLoadItemsCommand();
+					//System.Diagnostics.Debug.WriteLine("KIDADDED");
+
+					//ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+					//Navigation.PopAsync();
+
+					await ViewModel.ExecuteLoadItemsCommand().ContinueWith( x => {
+						Device.BeginInvokeOnMainThread(()=>{
+							Navigation.PopAsync();
+						});
+					});
+
 				});
 
+			MessagingCenter.Unsubscribe<EmptyClass> (this, "KidDeleted");
 			MessagingCenter.Subscribe<EmptyClass> (this, "KidDeleted", (p) => {
 				if (string.IsNullOrEmpty(p.Status))
 				{
@@ -62,6 +72,7 @@ namespace PickUpApp
 				}
 			});
 
+			MessagingCenter.Unsubscribe<Kid> (this, "deletekid");
 			MessagingCenter.Subscribe<Kid> (this, "deletekid", (k) => {
 				ViewModel.SelectedKid = k;
 				ViewModel.ExecuteDeleteCommand().ConfigureAwait(false);

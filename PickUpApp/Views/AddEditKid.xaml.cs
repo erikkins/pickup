@@ -45,6 +45,12 @@ namespace PickUpApp
 //					await Navigation.PopAsync();
 //				});
 
+					if (selectedKid.DateOfBirth > DateTime.Today)
+					{
+						DisplayAlert("Uh oh", "Your kid must have been born in the past!", "OK");
+						return;
+					}
+
 					//ViewModel.CurrentKid = selectedKid;
 					selectedKid.Gender = stcGender.SelectedValue;
 					await this.ViewModel.ExecuteAddEditCommand ();
