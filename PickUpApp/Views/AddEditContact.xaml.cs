@@ -48,7 +48,7 @@ namespace PickUpApp
 						return;
 					}
 
-					if (!Regex.Match(this.ViewModel.CurrentContact.Email, Util.emailRegex).Success)
+					if (!Regex.Match(this.ViewModel.CurrentContact.Email.ToLower(), Util.emailRegex).Success)
 					{
 						await DisplayAlert("Uh oh", "You must supply a valid email", "OK");
 						return;     
@@ -56,7 +56,8 @@ namespace PickUpApp
 
 					if (!string.IsNullOrEmpty(this.ViewModel.CurrentContact.Phone))
 					{
-						if (!Regex.Match(this.ViewModel.CurrentContact.Phone, Util.phoneRegex).Success && !Regex.Match(this.ViewModel.CurrentContact.Phone, Util.simplePhoneRegex).Success)
+						//if (!Regex.Match(this.ViewModel.CurrentContact.Phone, Util.phoneRegex).Success && !Regex.Match(this.ViewModel.CurrentContact.Phone, Util.simplePhoneRegex).Success)
+						if ( !Regex.Match(this.ViewModel.CurrentContact.Phone, Util.simplePhoneRegex).Success)
 						{
 							await DisplayAlert("Uh oh", "You must supply a valid phone number for this contact!", "OK");
 							return;     
