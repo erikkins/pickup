@@ -12,9 +12,9 @@
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
-    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>PickUpApp.Android</AssemblyName>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -189,24 +189,6 @@
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
       <HintPath>..\packages\Xam.Plugins.Forms.ImageCircle.1.4.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Insights">
-      <HintPath>..\packages\Xamarin.Insights.1.11.4\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.Android">
-      <HintPath>..\packages\Xamarin.Forms.2.1.0.6526\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="FormsViewGroup">
-      <HintPath>..\packages\Xamarin.Forms.2.1.0.6526\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.2.1.0.6526\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.2.1.0.6526\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.2.1.0.6526\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp.Portable.Core">
       <HintPath>..\packages\FubarCoder.RestSharp.Portable.Core.3.1.3\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\RestSharp.Portable.Core.dll</HintPath>
     </Reference>
@@ -219,6 +201,28 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="HockeyApp.Android">
+      <HintPath>..\Components\hockeyappandroid-3.7.1.0\lib\android\HockeyApp.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.Android">
+      <HintPath>..\packages\Xamarin.Forms.2.1.0.6529\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="FormsViewGroup">
+      <HintPath>..\packages\Xamarin.Forms.2.1.0.6529\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\packages\Xamarin.Forms.2.1.0.6529\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\packages\Xamarin.Forms.2.1.0.6529\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>..\packages\Xamarin.Forms.2.1.0.6529\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Rivets">
+      <HintPath>..\packages\Rivets.1.0.5.0\lib\MonoAndroid10\Rivets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PickUpApp\PickUpApp.csproj">
@@ -246,6 +250,8 @@
     <Compile Include="MainApplication.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Platform\AndroidDeviceInfo.cs" />
+    <Compile Include="Platform\AndroidHUD.cs" />
+    <Compile Include="Platform\AndroidCircleText.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -256,7 +262,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\drawable\car_icon.png" />
     <AndroidResource Include="Resources\drawable\messageicongraysmall.jpg" />
     <AndroidResource Include="Resources\drawable\iconphone.png" />
@@ -274,11 +279,172 @@
     <AndroidResource Include="Resources\drawable-hdpi\contacts.png" />
     <AndroidResource Include="Resources\drawable-hdpi\groups.png" />
     <AndroidResource Include="Resources\drawable-hdpi\sun.png" />
+    <AndroidResource Include="Resources\drawable\icn_cal.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_cal.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_cal.png" />
+    <AndroidResource Include="Resources\drawable\icn_account.png" />
+    <AndroidResource Include="Resources\drawable\icn_activities.png" />
+    <AndroidResource Include="Resources\drawable\icn_alert.png" />
+    <AndroidResource Include="Resources\drawable\icn_arrow_dwn.png" />
+    <AndroidResource Include="Resources\drawable\icn_arrow_grey.png" />
+    <AndroidResource Include="Resources\drawable\icn_arrow_orange.png" />
+    <AndroidResource Include="Resources\drawable\icn_arrow_pink.png" />
+    <AndroidResource Include="Resources\drawable\icn_arrow_up.png" />
+    <AndroidResource Include="Resources\drawable\icn_back.png" />
+    <AndroidResource Include="Resources\drawable\icn_circle.png" />
+    <AndroidResource Include="Resources\drawable\icn_close.png" />
+    <AndroidResource Include="Resources\drawable\icn_kids.png" />
+    <AndroidResource Include="Resources\drawable\icn_map_pin.png" />
+    <AndroidResource Include="Resources\drawable\icn_new_grey.png" />
+    <AndroidResource Include="Resources\drawable\icn_new.png" />
+    <AndroidResource Include="Resources\drawable\icn_next.png" />
+    <AndroidResource Include="Resources\drawable\icn_phone.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_check_sm.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_check.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_dwn_grey_sm.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_dwn_grey.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_dwn_pink_sm.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_dwn_pink.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_grey.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_up_grey_sm.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_up_grey.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_up_pink_sm.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin_up_pink.png" />
+    <AndroidResource Include="Resources\drawable\icn_pin.png" />
+    <AndroidResource Include="Resources\drawable\icn_places.png" />
+    <AndroidResource Include="Resources\drawable\icn_settings.png" />
+    <AndroidResource Include="Resources\drawable\icn_text.png" />
+    <AndroidResource Include="Resources\drawable\intro_bubble_1.png" />
+    <AndroidResource Include="Resources\drawable\intro_bubble_2.png" />
+    <AndroidResource Include="Resources\drawable\intro_cal.png" />
+    <AndroidResource Include="Resources\drawable\intro_carpool.png" />
+    <AndroidResource Include="Resources\drawable\intro_face.png" />
+    <AndroidResource Include="Resources\drawable\intro_kids.png" />
+    <AndroidResource Include="Resources\drawable\intro_people.png" />
+    <AndroidResource Include="Resources\drawable\intro_places.png" />
+    <AndroidResource Include="Resources\drawable\ui_cal_circle.png" />
+    <AndroidResource Include="Resources\drawable\ui_line_dash_grey.png" />
+    <AndroidResource Include="Resources\drawable\ui_line_dash_pink.png" />
+    <AndroidResource Include="Resources\drawable\ui_line_green.png" />
+    <AndroidResource Include="Resources\drawable\ui_messages.png" />
+    <AndroidResource Include="Resources\drawable\ui_splash_logo.png" />
+    <AndroidResource Include="Resources\drawable\ui_tri_green.png" />
+    <AndroidResource Include="Resources\drawable\ui_tri_grey.png" />
+    <AndroidResource Include="Resources\drawable\ui_tri_pink.png" />
+    <AndroidResource Include="Resources\drawable\ui_tri_purple.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_account.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_activities.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_alert.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_arrow_dwn.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_arrow_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_arrow_orange.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_arrow_pink.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_arrow_up.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_back.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_circle.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_close.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_kids.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_map_pin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_new_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_new.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_next.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_phone.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_check_sm.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_check.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_dwn_grey_sm.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_dwn_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_dwn_pink_sm.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_dwn_pink.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_up_grey_sm.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_up_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_up_pink_sm.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin_up_pink.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_pin.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_places.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_settings.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icn_text.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_bubble_1.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_bubble_2.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_cal.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_carpool.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_face.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_kids.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_people.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\intro_places.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_cal_circle.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_line_dash_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_line_dash_pink.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_line_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_messages.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_splash_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_tri_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_tri_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_tri_pink.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_tri_purple.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_account.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_activities.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_alert.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_arrow_dwn.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_arrow_grey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_arrow_orange.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_arrow_pink.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_arrow_up.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_back.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_circle.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_close.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_kids.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_map_pin.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_new_grey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_new.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_next.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_phone.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_check_sm.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_check.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_dwn_grey_sm.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_dwn_grey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_dwn_pink_sm.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_dwn_pink.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_grey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_up_grey_sm.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_up_grey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_up_pink_sm.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin_up_pink.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_pin.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_places.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_settings.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icn_text.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_bubble_1.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_bubble_2.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_cal.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_carpool.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_face.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_kids.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_people.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\intro_places.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_cal_circle.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_line_dash_grey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_line_dash_pink.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_line_green.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_messages.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_splash_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_tri_green.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_tri_grey.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_tri_pink.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_tri_purple.png" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\ui_check_emptyX.png" />
+    <AndroidResource Include="Resources\drawable\ui_check_filledX.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_check_emptyX.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_check_filledX.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_check_emptyX.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_check_filledX.png" />
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <Import Project="..\packages\Xamarin.Insights.1.11.4\build\MonoAndroid10\Xamarin.Insights.targets" Condition="Exists('..\packages\Xamarin.Insights.1.11.4\build\MonoAndroid10\Xamarin.Insights.targets')" />
-  <Import Project="..\packages\Xamarin.Forms.2.1.0.6526\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.1.0.6526\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
   <ItemGroup>
     <Folder Include="Platform\" />
     <Folder Include="Resources\drawable-mdpi\" />
@@ -299,6 +465,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="AndHUD">
       <Version>1.3.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="hockeyappandroid">
+      <Version>3.7.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

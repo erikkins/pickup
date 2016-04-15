@@ -5,6 +5,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using PickUpApp.iOS;
 
+using Foundation;
+using NotificationCenter;
+using WebKit;
+
+
 [assembly:ExportRenderer (typeof(ContentPage), typeof(iOSNoBackButtonPageRenderer))]
 
 namespace PickUpApp.iOS
@@ -28,6 +33,7 @@ namespace PickUpApp.iOS
 				//ViewController.ParentViewController.NavigationItem.BackBarButtonItem.Title = "";
 				//ViewController.ParentViewController.NavigationItem.SetHidesBackButton (true, false);
 			}
+
 		}
 	}
 }

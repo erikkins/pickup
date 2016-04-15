@@ -1644,1464 +1644,7 @@ namespace PickUpApp.droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::PickUpApp.droid.Resource.Styleable.ProgressWheel_ahTextSize;
 			global::Plugin.Vibrate.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
 			global::Plugin.Vibrate.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::PickUpApp.droid.Resource.Animation.abc_fade_in;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::PickUpApp.droid.Resource.Animation.abc_fade_out;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::PickUpApp.droid.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_popup_enter = global::PickUpApp.droid.Resource.Animation.abc_popup_enter;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_popup_exit = global::PickUpApp.droid.Resource.Animation.abc_popup_exit;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_shrink_fade_out_from_bottom = global::PickUpApp.droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_slide_in_bottom = global::PickUpApp.droid.Resource.Animation.abc_slide_in_bottom;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_slide_in_top = global::PickUpApp.droid.Resource.Animation.abc_slide_in_top;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_slide_out_bottom = global::PickUpApp.droid.Resource.Animation.abc_slide_out_bottom;
-			global::Xamarin.Forms.Platform.Resource.Animation.abc_slide_out_top = global::PickUpApp.droid.Resource.Animation.abc_slide_out_top;
-			global::Xamarin.Forms.Platform.Resource.Animation.design_fab_in = global::PickUpApp.droid.Resource.Animation.design_fab_in;
-			global::Xamarin.Forms.Platform.Resource.Animation.design_fab_out = global::PickUpApp.droid.Resource.Animation.design_fab_out;
-			global::Xamarin.Forms.Platform.Resource.Animation.design_snackbar_in = global::PickUpApp.droid.Resource.Animation.design_snackbar_in;
-			global::Xamarin.Forms.Platform.Resource.Animation.design_snackbar_out = global::PickUpApp.droid.Resource.Animation.design_snackbar_out;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarDivider = global::PickUpApp.droid.Resource.Attribute.actionBarDivider;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarItemBackground = global::PickUpApp.droid.Resource.Attribute.actionBarItemBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarPopupTheme = global::PickUpApp.droid.Resource.Attribute.actionBarPopupTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarSize = global::PickUpApp.droid.Resource.Attribute.actionBarSize;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarSplitStyle = global::PickUpApp.droid.Resource.Attribute.actionBarSplitStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarStyle = global::PickUpApp.droid.Resource.Attribute.actionBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarTabBarStyle = global::PickUpApp.droid.Resource.Attribute.actionBarTabBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarTabStyle = global::PickUpApp.droid.Resource.Attribute.actionBarTabStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarTabTextStyle = global::PickUpApp.droid.Resource.Attribute.actionBarTabTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarTheme = global::PickUpApp.droid.Resource.Attribute.actionBarTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionBarWidgetTheme = global::PickUpApp.droid.Resource.Attribute.actionBarWidgetTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionButtonStyle = global::PickUpApp.droid.Resource.Attribute.actionButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionDropDownStyle = global::PickUpApp.droid.Resource.Attribute.actionDropDownStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionLayout = global::PickUpApp.droid.Resource.Attribute.actionLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionMenuTextAppearance = global::PickUpApp.droid.Resource.Attribute.actionMenuTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionMenuTextColor = global::PickUpApp.droid.Resource.Attribute.actionMenuTextColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeBackground = global::PickUpApp.droid.Resource.Attribute.actionModeBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeCloseButtonStyle = global::PickUpApp.droid.Resource.Attribute.actionModeCloseButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeCloseDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeCloseDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeCopyDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeCopyDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeCutDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeCutDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeFindDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeFindDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModePasteDrawable = global::PickUpApp.droid.Resource.Attribute.actionModePasteDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModePopupWindowStyle = global::PickUpApp.droid.Resource.Attribute.actionModePopupWindowStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeSelectAllDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeSelectAllDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeShareDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeShareDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeSplitBackground = global::PickUpApp.droid.Resource.Attribute.actionModeSplitBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeStyle = global::PickUpApp.droid.Resource.Attribute.actionModeStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionModeWebSearchDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeWebSearchDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionOverflowButtonStyle = global::PickUpApp.droid.Resource.Attribute.actionOverflowButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionOverflowMenuStyle = global::PickUpApp.droid.Resource.Attribute.actionOverflowMenuStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionProviderClass = global::PickUpApp.droid.Resource.Attribute.actionProviderClass;
-			global::Xamarin.Forms.Platform.Resource.Attribute.actionViewClass = global::PickUpApp.droid.Resource.Attribute.actionViewClass;
-			global::Xamarin.Forms.Platform.Resource.Attribute.activityChooserViewStyle = global::PickUpApp.droid.Resource.Attribute.activityChooserViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.alertDialogButtonGroupStyle = global::PickUpApp.droid.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.alertDialogCenterButtons = global::PickUpApp.droid.Resource.Attribute.alertDialogCenterButtons;
-			global::Xamarin.Forms.Platform.Resource.Attribute.alertDialogStyle = global::PickUpApp.droid.Resource.Attribute.alertDialogStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.alertDialogTheme = global::PickUpApp.droid.Resource.Attribute.alertDialogTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.arrowHeadLength = global::PickUpApp.droid.Resource.Attribute.arrowHeadLength;
-			global::Xamarin.Forms.Platform.Resource.Attribute.arrowShaftLength = global::PickUpApp.droid.Resource.Attribute.arrowShaftLength;
-			global::Xamarin.Forms.Platform.Resource.Attribute.autoCompleteTextViewStyle = global::PickUpApp.droid.Resource.Attribute.autoCompleteTextViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.background = global::PickUpApp.droid.Resource.Attribute.background;
-			global::Xamarin.Forms.Platform.Resource.Attribute.backgroundSplit = global::PickUpApp.droid.Resource.Attribute.backgroundSplit;
-			global::Xamarin.Forms.Platform.Resource.Attribute.backgroundStacked = global::PickUpApp.droid.Resource.Attribute.backgroundStacked;
-			global::Xamarin.Forms.Platform.Resource.Attribute.backgroundTint = global::PickUpApp.droid.Resource.Attribute.backgroundTint;
-			global::Xamarin.Forms.Platform.Resource.Attribute.backgroundTintMode = global::PickUpApp.droid.Resource.Attribute.backgroundTintMode;
-			global::Xamarin.Forms.Platform.Resource.Attribute.barLength = global::PickUpApp.droid.Resource.Attribute.barLength;
-			global::Xamarin.Forms.Platform.Resource.Attribute.behavior_overlapTop = global::PickUpApp.droid.Resource.Attribute.behavior_overlapTop;
-			global::Xamarin.Forms.Platform.Resource.Attribute.borderWidth = global::PickUpApp.droid.Resource.Attribute.borderWidth;
-			global::Xamarin.Forms.Platform.Resource.Attribute.borderlessButtonStyle = global::PickUpApp.droid.Resource.Attribute.borderlessButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarNegativeButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarNeutralButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarPositiveButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonPanelSideLayout = global::PickUpApp.droid.Resource.Attribute.buttonPanelSideLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonStyle = global::PickUpApp.droid.Resource.Attribute.buttonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonStyleSmall = global::PickUpApp.droid.Resource.Attribute.buttonStyleSmall;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonTint = global::PickUpApp.droid.Resource.Attribute.buttonTint;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonTintMode = global::PickUpApp.droid.Resource.Attribute.buttonTintMode;
-			global::Xamarin.Forms.Platform.Resource.Attribute.cardBackgroundColor = global::PickUpApp.droid.Resource.Attribute.cardBackgroundColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.cardCornerRadius = global::PickUpApp.droid.Resource.Attribute.cardCornerRadius;
-			global::Xamarin.Forms.Platform.Resource.Attribute.cardElevation = global::PickUpApp.droid.Resource.Attribute.cardElevation;
-			global::Xamarin.Forms.Platform.Resource.Attribute.cardMaxElevation = global::PickUpApp.droid.Resource.Attribute.cardMaxElevation;
-			global::Xamarin.Forms.Platform.Resource.Attribute.cardPreventCornerOverlap = global::PickUpApp.droid.Resource.Attribute.cardPreventCornerOverlap;
-			global::Xamarin.Forms.Platform.Resource.Attribute.cardUseCompatPadding = global::PickUpApp.droid.Resource.Attribute.cardUseCompatPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.checkboxStyle = global::PickUpApp.droid.Resource.Attribute.checkboxStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.checkedTextViewStyle = global::PickUpApp.droid.Resource.Attribute.checkedTextViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.closeIcon = global::PickUpApp.droid.Resource.Attribute.closeIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.closeItemLayout = global::PickUpApp.droid.Resource.Attribute.closeItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.collapseContentDescription = global::PickUpApp.droid.Resource.Attribute.collapseContentDescription;
-			global::Xamarin.Forms.Platform.Resource.Attribute.collapseIcon = global::PickUpApp.droid.Resource.Attribute.collapseIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.collapsedTitleGravity = global::PickUpApp.droid.Resource.Attribute.collapsedTitleGravity;
-			global::Xamarin.Forms.Platform.Resource.Attribute.collapsedTitleTextAppearance = global::PickUpApp.droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.color = global::PickUpApp.droid.Resource.Attribute.color;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorAccent = global::PickUpApp.droid.Resource.Attribute.colorAccent;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorButtonNormal = global::PickUpApp.droid.Resource.Attribute.colorButtonNormal;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorControlActivated = global::PickUpApp.droid.Resource.Attribute.colorControlActivated;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorControlHighlight = global::PickUpApp.droid.Resource.Attribute.colorControlHighlight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorControlNormal = global::PickUpApp.droid.Resource.Attribute.colorControlNormal;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorPrimary = global::PickUpApp.droid.Resource.Attribute.colorPrimary;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorPrimaryDark = global::PickUpApp.droid.Resource.Attribute.colorPrimaryDark;
-			global::Xamarin.Forms.Platform.Resource.Attribute.colorSwitchThumbNormal = global::PickUpApp.droid.Resource.Attribute.colorSwitchThumbNormal;
-			global::Xamarin.Forms.Platform.Resource.Attribute.commitIcon = global::PickUpApp.droid.Resource.Attribute.commitIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentInsetEnd = global::PickUpApp.droid.Resource.Attribute.contentInsetEnd;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentInsetLeft = global::PickUpApp.droid.Resource.Attribute.contentInsetLeft;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentInsetRight = global::PickUpApp.droid.Resource.Attribute.contentInsetRight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentInsetStart = global::PickUpApp.droid.Resource.Attribute.contentInsetStart;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentPadding = global::PickUpApp.droid.Resource.Attribute.contentPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentPaddingBottom = global::PickUpApp.droid.Resource.Attribute.contentPaddingBottom;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentPaddingLeft = global::PickUpApp.droid.Resource.Attribute.contentPaddingLeft;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentPaddingRight = global::PickUpApp.droid.Resource.Attribute.contentPaddingRight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentPaddingTop = global::PickUpApp.droid.Resource.Attribute.contentPaddingTop;
-			global::Xamarin.Forms.Platform.Resource.Attribute.contentScrim = global::PickUpApp.droid.Resource.Attribute.contentScrim;
-			global::Xamarin.Forms.Platform.Resource.Attribute.controlBackground = global::PickUpApp.droid.Resource.Attribute.controlBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.customNavigationLayout = global::PickUpApp.droid.Resource.Attribute.customNavigationLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.defaultQueryHint = global::PickUpApp.droid.Resource.Attribute.defaultQueryHint;
-			global::Xamarin.Forms.Platform.Resource.Attribute.dialogPreferredPadding = global::PickUpApp.droid.Resource.Attribute.dialogPreferredPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.dialogTheme = global::PickUpApp.droid.Resource.Attribute.dialogTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.displayOptions = global::PickUpApp.droid.Resource.Attribute.displayOptions;
-			global::Xamarin.Forms.Platform.Resource.Attribute.divider = global::PickUpApp.droid.Resource.Attribute.divider;
-			global::Xamarin.Forms.Platform.Resource.Attribute.dividerHorizontal = global::PickUpApp.droid.Resource.Attribute.dividerHorizontal;
-			global::Xamarin.Forms.Platform.Resource.Attribute.dividerPadding = global::PickUpApp.droid.Resource.Attribute.dividerPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.dividerVertical = global::PickUpApp.droid.Resource.Attribute.dividerVertical;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableSize = global::PickUpApp.droid.Resource.Attribute.drawableSize;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawerArrowStyle = global::PickUpApp.droid.Resource.Attribute.drawerArrowStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.dropDownListViewStyle = global::PickUpApp.droid.Resource.Attribute.dropDownListViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.dropdownListPreferredItemHeight = global::PickUpApp.droid.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.editTextBackground = global::PickUpApp.droid.Resource.Attribute.editTextBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.editTextColor = global::PickUpApp.droid.Resource.Attribute.editTextColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.editTextStyle = global::PickUpApp.droid.Resource.Attribute.editTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.elevation = global::PickUpApp.droid.Resource.Attribute.elevation;
-			global::Xamarin.Forms.Platform.Resource.Attribute.errorEnabled = global::PickUpApp.droid.Resource.Attribute.errorEnabled;
-			global::Xamarin.Forms.Platform.Resource.Attribute.errorTextAppearance = global::PickUpApp.droid.Resource.Attribute.errorTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandActivityOverflowButtonDrawable = global::PickUpApp.droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expanded = global::PickUpApp.droid.Resource.Attribute.expanded;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandedTitleGravity = global::PickUpApp.droid.Resource.Attribute.expandedTitleGravity;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandedTitleMargin = global::PickUpApp.droid.Resource.Attribute.expandedTitleMargin;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandedTitleMarginBottom = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginBottom;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandedTitleMarginEnd = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginEnd;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandedTitleMarginStart = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginStart;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandedTitleMarginTop = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginTop;
-			global::Xamarin.Forms.Platform.Resource.Attribute.expandedTitleTextAppearance = global::PickUpApp.droid.Resource.Attribute.expandedTitleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.fabSize = global::PickUpApp.droid.Resource.Attribute.fabSize;
-			global::Xamarin.Forms.Platform.Resource.Attribute.gapBetweenBars = global::PickUpApp.droid.Resource.Attribute.gapBetweenBars;
-			global::Xamarin.Forms.Platform.Resource.Attribute.goIcon = global::PickUpApp.droid.Resource.Attribute.goIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.headerLayout = global::PickUpApp.droid.Resource.Attribute.headerLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.height = global::PickUpApp.droid.Resource.Attribute.height;
-			global::Xamarin.Forms.Platform.Resource.Attribute.hideOnContentScroll = global::PickUpApp.droid.Resource.Attribute.hideOnContentScroll;
-			global::Xamarin.Forms.Platform.Resource.Attribute.hintAnimationEnabled = global::PickUpApp.droid.Resource.Attribute.hintAnimationEnabled;
-			global::Xamarin.Forms.Platform.Resource.Attribute.hintTextAppearance = global::PickUpApp.droid.Resource.Attribute.hintTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.homeAsUpIndicator = global::PickUpApp.droid.Resource.Attribute.homeAsUpIndicator;
-			global::Xamarin.Forms.Platform.Resource.Attribute.homeLayout = global::PickUpApp.droid.Resource.Attribute.homeLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.icon = global::PickUpApp.droid.Resource.Attribute.icon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.iconifiedByDefault = global::PickUpApp.droid.Resource.Attribute.iconifiedByDefault;
-			global::Xamarin.Forms.Platform.Resource.Attribute.indeterminateProgressStyle = global::PickUpApp.droid.Resource.Attribute.indeterminateProgressStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.initialActivityCount = global::PickUpApp.droid.Resource.Attribute.initialActivityCount;
-			global::Xamarin.Forms.Platform.Resource.Attribute.insetForeground = global::PickUpApp.droid.Resource.Attribute.insetForeground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.isLightTheme = global::PickUpApp.droid.Resource.Attribute.isLightTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.itemBackground = global::PickUpApp.droid.Resource.Attribute.itemBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.itemIconTint = global::PickUpApp.droid.Resource.Attribute.itemIconTint;
-			global::Xamarin.Forms.Platform.Resource.Attribute.itemPadding = global::PickUpApp.droid.Resource.Attribute.itemPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.itemTextAppearance = global::PickUpApp.droid.Resource.Attribute.itemTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.itemTextColor = global::PickUpApp.droid.Resource.Attribute.itemTextColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.keylines = global::PickUpApp.droid.Resource.Attribute.keylines;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout = global::PickUpApp.droid.Resource.Attribute.layout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_anchor = global::PickUpApp.droid.Resource.Attribute.layout_anchor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_anchorGravity = global::PickUpApp.droid.Resource.Attribute.layout_anchorGravity;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_behavior = global::PickUpApp.droid.Resource.Attribute.layout_behavior;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_collapseMode = global::PickUpApp.droid.Resource.Attribute.layout_collapseMode;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_collapseParallaxMultiplier = global::PickUpApp.droid.Resource.Attribute.layout_collapseParallaxMultiplier;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_keyline = global::PickUpApp.droid.Resource.Attribute.layout_keyline;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_scrollFlags = global::PickUpApp.droid.Resource.Attribute.layout_scrollFlags;
-			global::Xamarin.Forms.Platform.Resource.Attribute.layout_scrollInterpolator = global::PickUpApp.droid.Resource.Attribute.layout_scrollInterpolator;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listChoiceBackgroundIndicator = global::PickUpApp.droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listDividerAlertDialog = global::PickUpApp.droid.Resource.Attribute.listDividerAlertDialog;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listItemLayout = global::PickUpApp.droid.Resource.Attribute.listItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listLayout = global::PickUpApp.droid.Resource.Attribute.listLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPopupWindowStyle = global::PickUpApp.droid.Resource.Attribute.listPopupWindowStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemHeight = global::PickUpApp.droid.Resource.Attribute.listPreferredItemHeight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemHeightLarge = global::PickUpApp.droid.Resource.Attribute.listPreferredItemHeightLarge;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemHeightSmall = global::PickUpApp.droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemPaddingLeft = global::PickUpApp.droid.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemPaddingRight = global::PickUpApp.droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.logo = global::PickUpApp.droid.Resource.Attribute.logo;
-			global::Xamarin.Forms.Platform.Resource.Attribute.logoDescription = global::PickUpApp.droid.Resource.Attribute.logoDescription;
-			global::Xamarin.Forms.Platform.Resource.Attribute.maxActionInlineWidth = global::PickUpApp.droid.Resource.Attribute.maxActionInlineWidth;
-			global::Xamarin.Forms.Platform.Resource.Attribute.maxButtonHeight = global::PickUpApp.droid.Resource.Attribute.maxButtonHeight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.measureWithLargestChild = global::PickUpApp.droid.Resource.Attribute.measureWithLargestChild;
-			global::Xamarin.Forms.Platform.Resource.Attribute.menu = global::PickUpApp.droid.Resource.Attribute.menu;
-			global::Xamarin.Forms.Platform.Resource.Attribute.multiChoiceItemLayout = global::PickUpApp.droid.Resource.Attribute.multiChoiceItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.navigationContentDescription = global::PickUpApp.droid.Resource.Attribute.navigationContentDescription;
-			global::Xamarin.Forms.Platform.Resource.Attribute.navigationIcon = global::PickUpApp.droid.Resource.Attribute.navigationIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.navigationMode = global::PickUpApp.droid.Resource.Attribute.navigationMode;
-			global::Xamarin.Forms.Platform.Resource.Attribute.overlapAnchor = global::PickUpApp.droid.Resource.Attribute.overlapAnchor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.paddingEnd = global::PickUpApp.droid.Resource.Attribute.paddingEnd;
-			global::Xamarin.Forms.Platform.Resource.Attribute.paddingStart = global::PickUpApp.droid.Resource.Attribute.paddingStart;
-			global::Xamarin.Forms.Platform.Resource.Attribute.panelBackground = global::PickUpApp.droid.Resource.Attribute.panelBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.panelMenuListTheme = global::PickUpApp.droid.Resource.Attribute.panelMenuListTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.panelMenuListWidth = global::PickUpApp.droid.Resource.Attribute.panelMenuListWidth;
-			global::Xamarin.Forms.Platform.Resource.Attribute.popupMenuStyle = global::PickUpApp.droid.Resource.Attribute.popupMenuStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.popupTheme = global::PickUpApp.droid.Resource.Attribute.popupTheme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.popupWindowStyle = global::PickUpApp.droid.Resource.Attribute.popupWindowStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.preserveIconSpacing = global::PickUpApp.droid.Resource.Attribute.preserveIconSpacing;
-			global::Xamarin.Forms.Platform.Resource.Attribute.pressedTranslationZ = global::PickUpApp.droid.Resource.Attribute.pressedTranslationZ;
-			global::Xamarin.Forms.Platform.Resource.Attribute.progressBarPadding = global::PickUpApp.droid.Resource.Attribute.progressBarPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.progressBarStyle = global::PickUpApp.droid.Resource.Attribute.progressBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.queryBackground = global::PickUpApp.droid.Resource.Attribute.queryBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.queryHint = global::PickUpApp.droid.Resource.Attribute.queryHint;
-			global::Xamarin.Forms.Platform.Resource.Attribute.radioButtonStyle = global::PickUpApp.droid.Resource.Attribute.radioButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.ratingBarStyle = global::PickUpApp.droid.Resource.Attribute.ratingBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.rippleColor = global::PickUpApp.droid.Resource.Attribute.rippleColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.searchHintIcon = global::PickUpApp.droid.Resource.Attribute.searchHintIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.searchIcon = global::PickUpApp.droid.Resource.Attribute.searchIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.searchViewStyle = global::PickUpApp.droid.Resource.Attribute.searchViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.selectableItemBackground = global::PickUpApp.droid.Resource.Attribute.selectableItemBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.selectableItemBackgroundBorderless = global::PickUpApp.droid.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::Xamarin.Forms.Platform.Resource.Attribute.showAsAction = global::PickUpApp.droid.Resource.Attribute.showAsAction;
-			global::Xamarin.Forms.Platform.Resource.Attribute.showDividers = global::PickUpApp.droid.Resource.Attribute.showDividers;
-			global::Xamarin.Forms.Platform.Resource.Attribute.showText = global::PickUpApp.droid.Resource.Attribute.showText;
-			global::Xamarin.Forms.Platform.Resource.Attribute.singleChoiceItemLayout = global::PickUpApp.droid.Resource.Attribute.singleChoiceItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.spinBars = global::PickUpApp.droid.Resource.Attribute.spinBars;
-			global::Xamarin.Forms.Platform.Resource.Attribute.spinnerDropDownItemStyle = global::PickUpApp.droid.Resource.Attribute.spinnerDropDownItemStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.spinnerStyle = global::PickUpApp.droid.Resource.Attribute.spinnerStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.splitTrack = global::PickUpApp.droid.Resource.Attribute.splitTrack;
-			global::Xamarin.Forms.Platform.Resource.Attribute.state_above_anchor = global::PickUpApp.droid.Resource.Attribute.state_above_anchor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.statusBarBackground = global::PickUpApp.droid.Resource.Attribute.statusBarBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.statusBarScrim = global::PickUpApp.droid.Resource.Attribute.statusBarScrim;
-			global::Xamarin.Forms.Platform.Resource.Attribute.submitBackground = global::PickUpApp.droid.Resource.Attribute.submitBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.subtitle = global::PickUpApp.droid.Resource.Attribute.subtitle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.subtitleTextAppearance = global::PickUpApp.droid.Resource.Attribute.subtitleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.subtitleTextColor = global::PickUpApp.droid.Resource.Attribute.subtitleTextColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.subtitleTextStyle = global::PickUpApp.droid.Resource.Attribute.subtitleTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.suggestionRowLayout = global::PickUpApp.droid.Resource.Attribute.suggestionRowLayout;
-			global::Xamarin.Forms.Platform.Resource.Attribute.switchMinWidth = global::PickUpApp.droid.Resource.Attribute.switchMinWidth;
-			global::Xamarin.Forms.Platform.Resource.Attribute.switchPadding = global::PickUpApp.droid.Resource.Attribute.switchPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.switchStyle = global::PickUpApp.droid.Resource.Attribute.switchStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.switchTextAppearance = global::PickUpApp.droid.Resource.Attribute.switchTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabBackground = global::PickUpApp.droid.Resource.Attribute.tabBackground;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabContentStart = global::PickUpApp.droid.Resource.Attribute.tabContentStart;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabGravity = global::PickUpApp.droid.Resource.Attribute.tabGravity;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabIndicatorColor = global::PickUpApp.droid.Resource.Attribute.tabIndicatorColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabIndicatorHeight = global::PickUpApp.droid.Resource.Attribute.tabIndicatorHeight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabMaxWidth = global::PickUpApp.droid.Resource.Attribute.tabMaxWidth;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabMinWidth = global::PickUpApp.droid.Resource.Attribute.tabMinWidth;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabMode = global::PickUpApp.droid.Resource.Attribute.tabMode;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabPadding = global::PickUpApp.droid.Resource.Attribute.tabPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabPaddingBottom = global::PickUpApp.droid.Resource.Attribute.tabPaddingBottom;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabPaddingEnd = global::PickUpApp.droid.Resource.Attribute.tabPaddingEnd;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabPaddingStart = global::PickUpApp.droid.Resource.Attribute.tabPaddingStart;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabPaddingTop = global::PickUpApp.droid.Resource.Attribute.tabPaddingTop;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabSelectedTextColor = global::PickUpApp.droid.Resource.Attribute.tabSelectedTextColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabTextAppearance = global::PickUpApp.droid.Resource.Attribute.tabTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.tabTextColor = global::PickUpApp.droid.Resource.Attribute.tabTextColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textAllCaps = global::PickUpApp.droid.Resource.Attribute.textAllCaps;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textAppearanceLargePopupMenu = global::PickUpApp.droid.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textAppearanceListItem = global::PickUpApp.droid.Resource.Attribute.textAppearanceListItem;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textAppearanceListItemSmall = global::PickUpApp.droid.Resource.Attribute.textAppearanceListItemSmall;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textAppearanceSearchResultSubtitle = global::PickUpApp.droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textAppearanceSearchResultTitle = global::PickUpApp.droid.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textAppearanceSmallPopupMenu = global::PickUpApp.droid.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textColorAlertDialogListItem = global::PickUpApp.droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textColorSearchUrl = global::PickUpApp.droid.Resource.Attribute.textColorSearchUrl;
-			global::Xamarin.Forms.Platform.Resource.Attribute.theme = global::PickUpApp.droid.Resource.Attribute.theme;
-			global::Xamarin.Forms.Platform.Resource.Attribute.thickness = global::PickUpApp.droid.Resource.Attribute.thickness;
-			global::Xamarin.Forms.Platform.Resource.Attribute.thumbTextPadding = global::PickUpApp.droid.Resource.Attribute.thumbTextPadding;
-			global::Xamarin.Forms.Platform.Resource.Attribute.title = global::PickUpApp.droid.Resource.Attribute.title;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleEnabled = global::PickUpApp.droid.Resource.Attribute.titleEnabled;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleMarginBottom = global::PickUpApp.droid.Resource.Attribute.titleMarginBottom;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleMarginEnd = global::PickUpApp.droid.Resource.Attribute.titleMarginEnd;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleMarginStart = global::PickUpApp.droid.Resource.Attribute.titleMarginStart;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleMarginTop = global::PickUpApp.droid.Resource.Attribute.titleMarginTop;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleMargins = global::PickUpApp.droid.Resource.Attribute.titleMargins;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleTextAppearance = global::PickUpApp.droid.Resource.Attribute.titleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleTextColor = global::PickUpApp.droid.Resource.Attribute.titleTextColor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.titleTextStyle = global::PickUpApp.droid.Resource.Attribute.titleTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.toolbarId = global::PickUpApp.droid.Resource.Attribute.toolbarId;
-			global::Xamarin.Forms.Platform.Resource.Attribute.toolbarNavigationButtonStyle = global::PickUpApp.droid.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.toolbarStyle = global::PickUpApp.droid.Resource.Attribute.toolbarStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.track = global::PickUpApp.droid.Resource.Attribute.track;
-			global::Xamarin.Forms.Platform.Resource.Attribute.voiceIcon = global::PickUpApp.droid.Resource.Attribute.voiceIcon;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowActionBar = global::PickUpApp.droid.Resource.Attribute.windowActionBar;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowActionBarOverlay = global::PickUpApp.droid.Resource.Attribute.windowActionBarOverlay;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowActionModeOverlay = global::PickUpApp.droid.Resource.Attribute.windowActionModeOverlay;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowFixedHeightMajor = global::PickUpApp.droid.Resource.Attribute.windowFixedHeightMajor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowFixedHeightMinor = global::PickUpApp.droid.Resource.Attribute.windowFixedHeightMinor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowFixedWidthMajor = global::PickUpApp.droid.Resource.Attribute.windowFixedWidthMajor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowFixedWidthMinor = global::PickUpApp.droid.Resource.Attribute.windowFixedWidthMinor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowMinWidthMajor = global::PickUpApp.droid.Resource.Attribute.windowMinWidthMajor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowMinWidthMinor = global::PickUpApp.droid.Resource.Attribute.windowMinWidthMinor;
-			global::Xamarin.Forms.Platform.Resource.Attribute.windowNoTitle = global::PickUpApp.droid.Resource.Attribute.windowNoTitle;
-			global::Xamarin.Forms.Platform.Resource.Boolean.abc_action_bar_embed_tabs = global::PickUpApp.droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::Xamarin.Forms.Platform.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::PickUpApp.droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
-			global::Xamarin.Forms.Platform.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::PickUpApp.droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
-			global::Xamarin.Forms.Platform.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::PickUpApp.droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::Xamarin.Forms.Platform.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::PickUpApp.droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
-			global::Xamarin.Forms.Platform.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::PickUpApp.droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::Xamarin.Forms.Platform.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::PickUpApp.droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_background_cache_hint_selector_material_dark = global::PickUpApp.droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_background_cache_hint_selector_material_light = global::PickUpApp.droid.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_color_highlight_material = global::PickUpApp.droid.Resource.Color.abc_color_highlight_material;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_input_method_navigation_guard = global::PickUpApp.droid.Resource.Color.abc_input_method_navigation_guard;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_disable_only_material_dark = global::PickUpApp.droid.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_disable_only_material_light = global::PickUpApp.droid.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_material_dark = global::PickUpApp.droid.Resource.Color.abc_primary_text_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_primary_text_material_light = global::PickUpApp.droid.Resource.Color.abc_primary_text_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_search_url_text = global::PickUpApp.droid.Resource.Color.abc_search_url_text;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_search_url_text_normal = global::PickUpApp.droid.Resource.Color.abc_search_url_text_normal;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_search_url_text_pressed = global::PickUpApp.droid.Resource.Color.abc_search_url_text_pressed;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_search_url_text_selected = global::PickUpApp.droid.Resource.Color.abc_search_url_text_selected;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_secondary_text_material_dark = global::PickUpApp.droid.Resource.Color.abc_secondary_text_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.abc_secondary_text_material_light = global::PickUpApp.droid.Resource.Color.abc_secondary_text_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.accent_material_dark = global::PickUpApp.droid.Resource.Color.accent_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.accent_material_light = global::PickUpApp.droid.Resource.Color.accent_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.background_floating_material_dark = global::PickUpApp.droid.Resource.Color.background_floating_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.background_floating_material_light = global::PickUpApp.droid.Resource.Color.background_floating_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.background_material_dark = global::PickUpApp.droid.Resource.Color.background_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.background_material_light = global::PickUpApp.droid.Resource.Color.background_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.bright_foreground_disabled_material_dark = global::PickUpApp.droid.Resource.Color.bright_foreground_disabled_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.bright_foreground_disabled_material_light = global::PickUpApp.droid.Resource.Color.bright_foreground_disabled_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.bright_foreground_inverse_material_dark = global::PickUpApp.droid.Resource.Color.bright_foreground_inverse_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.bright_foreground_inverse_material_light = global::PickUpApp.droid.Resource.Color.bright_foreground_inverse_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.bright_foreground_material_dark = global::PickUpApp.droid.Resource.Color.bright_foreground_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.bright_foreground_material_light = global::PickUpApp.droid.Resource.Color.bright_foreground_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.button_material_dark = global::PickUpApp.droid.Resource.Color.button_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.button_material_light = global::PickUpApp.droid.Resource.Color.button_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.cardview_dark_background = global::PickUpApp.droid.Resource.Color.cardview_dark_background;
-			global::Xamarin.Forms.Platform.Resource.Color.cardview_light_background = global::PickUpApp.droid.Resource.Color.cardview_light_background;
-			global::Xamarin.Forms.Platform.Resource.Color.cardview_shadow_end_color = global::PickUpApp.droid.Resource.Color.cardview_shadow_end_color;
-			global::Xamarin.Forms.Platform.Resource.Color.cardview_shadow_start_color = global::PickUpApp.droid.Resource.Color.cardview_shadow_start_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_fab_shadow_end_color = global::PickUpApp.droid.Resource.Color.design_fab_shadow_end_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_fab_shadow_mid_color = global::PickUpApp.droid.Resource.Color.design_fab_shadow_mid_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_fab_shadow_start_color = global::PickUpApp.droid.Resource.Color.design_fab_shadow_start_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_fab_stroke_end_inner_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_end_inner_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_fab_stroke_end_outer_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_end_outer_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_fab_stroke_top_inner_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_top_inner_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_fab_stroke_top_outer_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_top_outer_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_snackbar_background_color = global::PickUpApp.droid.Resource.Color.design_snackbar_background_color;
-			global::Xamarin.Forms.Platform.Resource.Color.design_textinput_error_color = global::PickUpApp.droid.Resource.Color.design_textinput_error_color;
-			global::Xamarin.Forms.Platform.Resource.Color.dim_foreground_disabled_material_dark = global::PickUpApp.droid.Resource.Color.dim_foreground_disabled_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.dim_foreground_disabled_material_light = global::PickUpApp.droid.Resource.Color.dim_foreground_disabled_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.dim_foreground_material_dark = global::PickUpApp.droid.Resource.Color.dim_foreground_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.dim_foreground_material_light = global::PickUpApp.droid.Resource.Color.dim_foreground_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.foreground_material_dark = global::PickUpApp.droid.Resource.Color.foreground_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.foreground_material_light = global::PickUpApp.droid.Resource.Color.foreground_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.highlighted_text_material_dark = global::PickUpApp.droid.Resource.Color.highlighted_text_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.highlighted_text_material_light = global::PickUpApp.droid.Resource.Color.highlighted_text_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.hint_foreground_material_dark = global::PickUpApp.droid.Resource.Color.hint_foreground_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.hint_foreground_material_light = global::PickUpApp.droid.Resource.Color.hint_foreground_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.material_blue_grey_800 = global::PickUpApp.droid.Resource.Color.material_blue_grey_800;
-			global::Xamarin.Forms.Platform.Resource.Color.material_blue_grey_900 = global::PickUpApp.droid.Resource.Color.material_blue_grey_900;
-			global::Xamarin.Forms.Platform.Resource.Color.material_blue_grey_950 = global::PickUpApp.droid.Resource.Color.material_blue_grey_950;
-			global::Xamarin.Forms.Platform.Resource.Color.material_deep_teal_200 = global::PickUpApp.droid.Resource.Color.material_deep_teal_200;
-			global::Xamarin.Forms.Platform.Resource.Color.material_deep_teal_500 = global::PickUpApp.droid.Resource.Color.material_deep_teal_500;
-			global::Xamarin.Forms.Platform.Resource.Color.material_grey_100 = global::PickUpApp.droid.Resource.Color.material_grey_100;
-			global::Xamarin.Forms.Platform.Resource.Color.material_grey_300 = global::PickUpApp.droid.Resource.Color.material_grey_300;
-			global::Xamarin.Forms.Platform.Resource.Color.material_grey_50 = global::PickUpApp.droid.Resource.Color.material_grey_50;
-			global::Xamarin.Forms.Platform.Resource.Color.material_grey_600 = global::PickUpApp.droid.Resource.Color.material_grey_600;
-			global::Xamarin.Forms.Platform.Resource.Color.material_grey_800 = global::PickUpApp.droid.Resource.Color.material_grey_800;
-			global::Xamarin.Forms.Platform.Resource.Color.material_grey_850 = global::PickUpApp.droid.Resource.Color.material_grey_850;
-			global::Xamarin.Forms.Platform.Resource.Color.material_grey_900 = global::PickUpApp.droid.Resource.Color.material_grey_900;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_dark_material_dark = global::PickUpApp.droid.Resource.Color.primary_dark_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_dark_material_light = global::PickUpApp.droid.Resource.Color.primary_dark_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_material_dark = global::PickUpApp.droid.Resource.Color.primary_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_material_light = global::PickUpApp.droid.Resource.Color.primary_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_text_default_material_dark = global::PickUpApp.droid.Resource.Color.primary_text_default_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_text_default_material_light = global::PickUpApp.droid.Resource.Color.primary_text_default_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_text_disabled_material_dark = global::PickUpApp.droid.Resource.Color.primary_text_disabled_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.primary_text_disabled_material_light = global::PickUpApp.droid.Resource.Color.primary_text_disabled_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.ripple_material_dark = global::PickUpApp.droid.Resource.Color.ripple_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.ripple_material_light = global::PickUpApp.droid.Resource.Color.ripple_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.secondary_text_default_material_dark = global::PickUpApp.droid.Resource.Color.secondary_text_default_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.secondary_text_default_material_light = global::PickUpApp.droid.Resource.Color.secondary_text_default_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.secondary_text_disabled_material_dark = global::PickUpApp.droid.Resource.Color.secondary_text_disabled_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.secondary_text_disabled_material_light = global::PickUpApp.droid.Resource.Color.secondary_text_disabled_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.switch_thumb_disabled_material_dark = global::PickUpApp.droid.Resource.Color.switch_thumb_disabled_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.switch_thumb_disabled_material_light = global::PickUpApp.droid.Resource.Color.switch_thumb_disabled_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.switch_thumb_material_dark = global::PickUpApp.droid.Resource.Color.switch_thumb_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.switch_thumb_material_light = global::PickUpApp.droid.Resource.Color.switch_thumb_material_light;
-			global::Xamarin.Forms.Platform.Resource.Color.switch_thumb_normal_material_dark = global::PickUpApp.droid.Resource.Color.switch_thumb_normal_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Color.switch_thumb_normal_material_light = global::PickUpApp.droid.Resource.Color.switch_thumb_normal_material_light;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_content_inset_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_default_height_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_default_height_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_default_padding_end_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_default_padding_start_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_progress_bar_size = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_progress_bar_size;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_stacked_max_height = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_button_min_height_material = global::PickUpApp.droid.Resource.Dimension.abc_action_button_min_height_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_button_min_width_material = global::PickUpApp.droid.Resource.Dimension.abc_action_button_min_width_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_action_button_min_width_overflow_material = global::PickUpApp.droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_alert_dialog_button_bar_height = global::PickUpApp.droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_button_inset_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_button_inset_vertical_material = global::PickUpApp.droid.Resource.Dimension.abc_button_inset_vertical_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_button_padding_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_button_padding_vertical_material = global::PickUpApp.droid.Resource.Dimension.abc_button_padding_vertical_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_config_prefDialogWidth = global::PickUpApp.droid.Resource.Dimension.abc_config_prefDialogWidth;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_control_corner_material = global::PickUpApp.droid.Resource.Dimension.abc_control_corner_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_control_inset_material = global::PickUpApp.droid.Resource.Dimension.abc_control_inset_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_control_padding_material = global::PickUpApp.droid.Resource.Dimension.abc_control_padding_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::PickUpApp.droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dialog_min_width_major = global::PickUpApp.droid.Resource.Dimension.abc_dialog_min_width_major;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dialog_min_width_minor = global::PickUpApp.droid.Resource.Dimension.abc_dialog_min_width_minor;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dialog_padding_material = global::PickUpApp.droid.Resource.Dimension.abc_dialog_padding_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dialog_padding_top_material = global::PickUpApp.droid.Resource.Dimension.abc_dialog_padding_top_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_disabled_alpha_material_dark = global::PickUpApp.droid.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_disabled_alpha_material_light = global::PickUpApp.droid.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dropdownitem_icon_width = global::PickUpApp.droid.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dropdownitem_text_padding_left = global::PickUpApp.droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_dropdownitem_text_padding_right = global::PickUpApp.droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_edit_text_inset_bottom_material = global::PickUpApp.droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_edit_text_inset_top_material = global::PickUpApp.droid.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_floating_window_z = global::PickUpApp.droid.Resource.Dimension.abc_floating_window_z;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_list_item_padding_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_panel_menu_list_width = global::PickUpApp.droid.Resource.Dimension.abc_panel_menu_list_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_search_view_preferred_width = global::PickUpApp.droid.Resource.Dimension.abc_search_view_preferred_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_search_view_text_min_width = global::PickUpApp.droid.Resource.Dimension.abc_search_view_text_min_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_switch_padding = global::PickUpApp.droid.Resource.Dimension.abc_switch_padding;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_body_1_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_body_1_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_body_2_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_body_2_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_button_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_button_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_caption_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_caption_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_display_1_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_1_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_display_2_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_2_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_display_3_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_3_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_display_4_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_4_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_headline_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_headline_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_large_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_large_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_medium_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_medium_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_menu_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_menu_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_small_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_small_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_subhead_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_subhead_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::PickUpApp.droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_title_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_title_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_text_size_title_material_toolbar = global::PickUpApp.droid.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::Xamarin.Forms.Platform.Resource.Dimension.cardview_compat_inset_shadow = global::PickUpApp.droid.Resource.Dimension.cardview_compat_inset_shadow;
-			global::Xamarin.Forms.Platform.Resource.Dimension.cardview_default_elevation = global::PickUpApp.droid.Resource.Dimension.cardview_default_elevation;
-			global::Xamarin.Forms.Platform.Resource.Dimension.cardview_default_radius = global::PickUpApp.droid.Resource.Dimension.cardview_default_radius;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_appbar_elevation = global::PickUpApp.droid.Resource.Dimension.design_appbar_elevation;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_fab_border_width = global::PickUpApp.droid.Resource.Dimension.design_fab_border_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_fab_content_size = global::PickUpApp.droid.Resource.Dimension.design_fab_content_size;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_fab_elevation = global::PickUpApp.droid.Resource.Dimension.design_fab_elevation;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_fab_size_mini = global::PickUpApp.droid.Resource.Dimension.design_fab_size_mini;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_fab_size_normal = global::PickUpApp.droid.Resource.Dimension.design_fab_size_normal;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_fab_translation_z_pressed = global::PickUpApp.droid.Resource.Dimension.design_fab_translation_z_pressed;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_navigation_elevation = global::PickUpApp.droid.Resource.Dimension.design_navigation_elevation;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_navigation_icon_padding = global::PickUpApp.droid.Resource.Dimension.design_navigation_icon_padding;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_navigation_icon_size = global::PickUpApp.droid.Resource.Dimension.design_navigation_icon_size;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_navigation_max_width = global::PickUpApp.droid.Resource.Dimension.design_navigation_max_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_navigation_padding_bottom = global::PickUpApp.droid.Resource.Dimension.design_navigation_padding_bottom;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_navigation_padding_top_default = global::PickUpApp.droid.Resource.Dimension.design_navigation_padding_top_default;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_navigation_separator_vertical_padding = global::PickUpApp.droid.Resource.Dimension.design_navigation_separator_vertical_padding;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_action_inline_max_width = global::PickUpApp.droid.Resource.Dimension.design_snackbar_action_inline_max_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_background_corner_radius = global::PickUpApp.droid.Resource.Dimension.design_snackbar_background_corner_radius;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_elevation = global::PickUpApp.droid.Resource.Dimension.design_snackbar_elevation;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::PickUpApp.droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_max_width = global::PickUpApp.droid.Resource.Dimension.design_snackbar_max_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_min_width = global::PickUpApp.droid.Resource.Dimension.design_snackbar_min_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_padding_horizontal = global::PickUpApp.droid.Resource.Dimension.design_snackbar_padding_horizontal;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_padding_vertical = global::PickUpApp.droid.Resource.Dimension.design_snackbar_padding_vertical;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::PickUpApp.droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_snackbar_text_size = global::PickUpApp.droid.Resource.Dimension.design_snackbar_text_size;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_tab_max_width = global::PickUpApp.droid.Resource.Dimension.design_tab_max_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.design_tab_min_width = global::PickUpApp.droid.Resource.Dimension.design_tab_min_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.dialog_fixed_height_major = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_height_major;
-			global::Xamarin.Forms.Platform.Resource.Dimension.dialog_fixed_height_minor = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_height_minor;
-			global::Xamarin.Forms.Platform.Resource.Dimension.dialog_fixed_width_major = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_width_major;
-			global::Xamarin.Forms.Platform.Resource.Dimension.dialog_fixed_width_minor = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_width_minor;
-			global::Xamarin.Forms.Platform.Resource.Dimension.disabled_alpha_material_dark = global::PickUpApp.droid.Resource.Dimension.disabled_alpha_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Dimension.disabled_alpha_material_light = global::PickUpApp.droid.Resource.Dimension.disabled_alpha_material_light;
-			global::Xamarin.Forms.Platform.Resource.Dimension.highlight_alpha_material_colored = global::PickUpApp.droid.Resource.Dimension.highlight_alpha_material_colored;
-			global::Xamarin.Forms.Platform.Resource.Dimension.highlight_alpha_material_dark = global::PickUpApp.droid.Resource.Dimension.highlight_alpha_material_dark;
-			global::Xamarin.Forms.Platform.Resource.Dimension.highlight_alpha_material_light = global::PickUpApp.droid.Resource.Dimension.highlight_alpha_material_light;
-			global::Xamarin.Forms.Platform.Resource.Dimension.notification_large_icon_height = global::PickUpApp.droid.Resource.Dimension.notification_large_icon_height;
-			global::Xamarin.Forms.Platform.Resource.Dimension.notification_large_icon_width = global::PickUpApp.droid.Resource.Dimension.notification_large_icon_width;
-			global::Xamarin.Forms.Platform.Resource.Dimension.notification_subtext_size = global::PickUpApp.droid.Resource.Dimension.notification_subtext_size;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_action_bar_item_background_material = global::PickUpApp.droid.Resource.Drawable.abc_action_bar_item_background_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_borderless_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_borderless_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_check_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_check_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::PickUpApp.droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::PickUpApp.droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_colored_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_colored_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_default_mtrl_shape = global::PickUpApp.droid.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_radio_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_radio_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::PickUpApp.droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::PickUpApp.droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::PickUpApp.droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::PickUpApp.droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_cab_background_internal_bg = global::PickUpApp.droid.Resource.Drawable.abc_cab_background_internal_bg;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_cab_background_top_material = global::PickUpApp.droid.Resource.Drawable.abc_cab_background_top_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_control_background_material = global::PickUpApp.droid.Resource.Drawable.abc_control_background_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_dialog_material_background_dark = global::PickUpApp.droid.Resource.Drawable.abc_dialog_material_background_dark;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_dialog_material_background_light = global::PickUpApp.droid.Resource.Drawable.abc_dialog_material_background_light;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_edit_text_material = global::PickUpApp.droid.Resource.Drawable.abc_edit_text_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_item_background_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_item_background_holo_dark;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_item_background_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_item_background_holo_light;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_divider_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_focused_holo = global::PickUpApp.droid.Resource.Drawable.abc_list_focused_holo;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_longpressed_holo = global::PickUpApp.droid.Resource.Drawable.abc_list_longpressed_holo;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_pressed_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_pressed_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_pressed_holo_light;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_selector_disabled_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_selector_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_holo_dark;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_list_selector_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_holo_light;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::PickUpApp.droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_popup_background_mtrl_mult = global::PickUpApp.droid.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_ratingbar_full_material = global::PickUpApp.droid.Resource.Drawable.abc_ratingbar_full_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_spinner_textfield_background_material = global::PickUpApp.droid.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_switch_thumb_material = global::PickUpApp.droid.Resource.Drawable.abc_switch_thumb_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_switch_track_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_tab_indicator_material = global::PickUpApp.droid.Resource.Drawable.abc_tab_indicator_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_text_cursor_material = global::PickUpApp.droid.Resource.Drawable.abc_text_cursor_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_textfield_search_material = global::PickUpApp.droid.Resource.Drawable.abc_textfield_search_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.design_fab_background = global::PickUpApp.droid.Resource.Drawable.design_fab_background;
-			global::Xamarin.Forms.Platform.Resource.Drawable.design_snackbar_background = global::PickUpApp.droid.Resource.Drawable.design_snackbar_background;
-			global::Xamarin.Forms.Platform.Resource.Drawable.notification_template_icon_bg = global::PickUpApp.droid.Resource.Drawable.notification_template_icon_bg;
-			global::Xamarin.Forms.Platform.Resource.Id.action0 = global::PickUpApp.droid.Resource.Id.action0;
-			global::Xamarin.Forms.Platform.Resource.Id.action_bar = global::PickUpApp.droid.Resource.Id.action_bar;
-			global::Xamarin.Forms.Platform.Resource.Id.action_bar_activity_content = global::PickUpApp.droid.Resource.Id.action_bar_activity_content;
-			global::Xamarin.Forms.Platform.Resource.Id.action_bar_container = global::PickUpApp.droid.Resource.Id.action_bar_container;
-			global::Xamarin.Forms.Platform.Resource.Id.action_bar_root = global::PickUpApp.droid.Resource.Id.action_bar_root;
-			global::Xamarin.Forms.Platform.Resource.Id.action_bar_spinner = global::PickUpApp.droid.Resource.Id.action_bar_spinner;
-			global::Xamarin.Forms.Platform.Resource.Id.action_bar_subtitle = global::PickUpApp.droid.Resource.Id.action_bar_subtitle;
-			global::Xamarin.Forms.Platform.Resource.Id.action_bar_title = global::PickUpApp.droid.Resource.Id.action_bar_title;
-			global::Xamarin.Forms.Platform.Resource.Id.action_context_bar = global::PickUpApp.droid.Resource.Id.action_context_bar;
-			global::Xamarin.Forms.Platform.Resource.Id.action_divider = global::PickUpApp.droid.Resource.Id.action_divider;
-			global::Xamarin.Forms.Platform.Resource.Id.action_menu_divider = global::PickUpApp.droid.Resource.Id.action_menu_divider;
-			global::Xamarin.Forms.Platform.Resource.Id.action_menu_presenter = global::PickUpApp.droid.Resource.Id.action_menu_presenter;
-			global::Xamarin.Forms.Platform.Resource.Id.action_mode_bar = global::PickUpApp.droid.Resource.Id.action_mode_bar;
-			global::Xamarin.Forms.Platform.Resource.Id.action_mode_bar_stub = global::PickUpApp.droid.Resource.Id.action_mode_bar_stub;
-			global::Xamarin.Forms.Platform.Resource.Id.action_mode_close_button = global::PickUpApp.droid.Resource.Id.action_mode_close_button;
-			global::Xamarin.Forms.Platform.Resource.Id.activity_chooser_view_content = global::PickUpApp.droid.Resource.Id.activity_chooser_view_content;
-			global::Xamarin.Forms.Platform.Resource.Id.alertTitle = global::PickUpApp.droid.Resource.Id.alertTitle;
-			global::Xamarin.Forms.Platform.Resource.Id.always = global::PickUpApp.droid.Resource.Id.always;
-			global::Xamarin.Forms.Platform.Resource.Id.beginning = global::PickUpApp.droid.Resource.Id.beginning;
-			global::Xamarin.Forms.Platform.Resource.Id.bottom = global::PickUpApp.droid.Resource.Id.bottom;
-			global::Xamarin.Forms.Platform.Resource.Id.buttonPanel = global::PickUpApp.droid.Resource.Id.buttonPanel;
-			global::Xamarin.Forms.Platform.Resource.Id.cancel_action = global::PickUpApp.droid.Resource.Id.cancel_action;
-			global::Xamarin.Forms.Platform.Resource.Id.center = global::PickUpApp.droid.Resource.Id.center;
-			global::Xamarin.Forms.Platform.Resource.Id.center_horizontal = global::PickUpApp.droid.Resource.Id.center_horizontal;
-			global::Xamarin.Forms.Platform.Resource.Id.center_vertical = global::PickUpApp.droid.Resource.Id.center_vertical;
-			global::Xamarin.Forms.Platform.Resource.Id.checkbox = global::PickUpApp.droid.Resource.Id.checkbox;
-			global::Xamarin.Forms.Platform.Resource.Id.chronometer = global::PickUpApp.droid.Resource.Id.chronometer;
-			global::Xamarin.Forms.Platform.Resource.Id.clip_horizontal = global::PickUpApp.droid.Resource.Id.clip_horizontal;
-			global::Xamarin.Forms.Platform.Resource.Id.clip_vertical = global::PickUpApp.droid.Resource.Id.clip_vertical;
-			global::Xamarin.Forms.Platform.Resource.Id.collapseActionView = global::PickUpApp.droid.Resource.Id.collapseActionView;
-			global::Xamarin.Forms.Platform.Resource.Id.contentPanel = global::PickUpApp.droid.Resource.Id.contentPanel;
-			global::Xamarin.Forms.Platform.Resource.Id.custom = global::PickUpApp.droid.Resource.Id.custom;
-			global::Xamarin.Forms.Platform.Resource.Id.customPanel = global::PickUpApp.droid.Resource.Id.customPanel;
-			global::Xamarin.Forms.Platform.Resource.Id.decor_content_parent = global::PickUpApp.droid.Resource.Id.decor_content_parent;
-			global::Xamarin.Forms.Platform.Resource.Id.default_activity_button = global::PickUpApp.droid.Resource.Id.default_activity_button;
-			global::Xamarin.Forms.Platform.Resource.Id.disableHome = global::PickUpApp.droid.Resource.Id.disableHome;
-			global::Xamarin.Forms.Platform.Resource.Id.edit_query = global::PickUpApp.droid.Resource.Id.edit_query;
-			global::Xamarin.Forms.Platform.Resource.Id.end = global::PickUpApp.droid.Resource.Id.end;
-			global::Xamarin.Forms.Platform.Resource.Id.end_padder = global::PickUpApp.droid.Resource.Id.end_padder;
-			global::Xamarin.Forms.Platform.Resource.Id.enterAlways = global::PickUpApp.droid.Resource.Id.enterAlways;
-			global::Xamarin.Forms.Platform.Resource.Id.enterAlwaysCollapsed = global::PickUpApp.droid.Resource.Id.enterAlwaysCollapsed;
-			global::Xamarin.Forms.Platform.Resource.Id.exitUntilCollapsed = global::PickUpApp.droid.Resource.Id.exitUntilCollapsed;
-			global::Xamarin.Forms.Platform.Resource.Id.expand_activities_button = global::PickUpApp.droid.Resource.Id.expand_activities_button;
-			global::Xamarin.Forms.Platform.Resource.Id.expanded_menu = global::PickUpApp.droid.Resource.Id.expanded_menu;
-			global::Xamarin.Forms.Platform.Resource.Id.fill = global::PickUpApp.droid.Resource.Id.fill;
-			global::Xamarin.Forms.Platform.Resource.Id.fill_horizontal = global::PickUpApp.droid.Resource.Id.fill_horizontal;
-			global::Xamarin.Forms.Platform.Resource.Id.fill_vertical = global::PickUpApp.droid.Resource.Id.fill_vertical;
-			global::Xamarin.Forms.Platform.Resource.Id.@fixed = global::PickUpApp.droid.Resource.Id.@fixed;
-			global::Xamarin.Forms.Platform.Resource.Id.home = global::PickUpApp.droid.Resource.Id.home;
-			global::Xamarin.Forms.Platform.Resource.Id.homeAsUp = global::PickUpApp.droid.Resource.Id.homeAsUp;
-			global::Xamarin.Forms.Platform.Resource.Id.icon = global::PickUpApp.droid.Resource.Id.icon;
-			global::Xamarin.Forms.Platform.Resource.Id.ifRoom = global::PickUpApp.droid.Resource.Id.ifRoom;
-			global::Xamarin.Forms.Platform.Resource.Id.image = global::PickUpApp.droid.Resource.Id.image;
-			global::Xamarin.Forms.Platform.Resource.Id.info = global::PickUpApp.droid.Resource.Id.info;
-			global::Xamarin.Forms.Platform.Resource.Id.left = global::PickUpApp.droid.Resource.Id.left;
-			global::Xamarin.Forms.Platform.Resource.Id.line1 = global::PickUpApp.droid.Resource.Id.line1;
-			global::Xamarin.Forms.Platform.Resource.Id.line3 = global::PickUpApp.droid.Resource.Id.line3;
-			global::Xamarin.Forms.Platform.Resource.Id.listMode = global::PickUpApp.droid.Resource.Id.listMode;
-			global::Xamarin.Forms.Platform.Resource.Id.list_item = global::PickUpApp.droid.Resource.Id.list_item;
-			global::Xamarin.Forms.Platform.Resource.Id.media_actions = global::PickUpApp.droid.Resource.Id.media_actions;
-			global::Xamarin.Forms.Platform.Resource.Id.middle = global::PickUpApp.droid.Resource.Id.middle;
-			global::Xamarin.Forms.Platform.Resource.Id.mini = global::PickUpApp.droid.Resource.Id.mini;
-			global::Xamarin.Forms.Platform.Resource.Id.multiply = global::PickUpApp.droid.Resource.Id.multiply;
-			global::Xamarin.Forms.Platform.Resource.Id.never = global::PickUpApp.droid.Resource.Id.never;
-			global::Xamarin.Forms.Platform.Resource.Id.none = global::PickUpApp.droid.Resource.Id.none;
-			global::Xamarin.Forms.Platform.Resource.Id.normal = global::PickUpApp.droid.Resource.Id.normal;
-			global::Xamarin.Forms.Platform.Resource.Id.parallax = global::PickUpApp.droid.Resource.Id.parallax;
-			global::Xamarin.Forms.Platform.Resource.Id.parentPanel = global::PickUpApp.droid.Resource.Id.parentPanel;
-			global::Xamarin.Forms.Platform.Resource.Id.pin = global::PickUpApp.droid.Resource.Id.pin;
-			global::Xamarin.Forms.Platform.Resource.Id.progress_circular = global::PickUpApp.droid.Resource.Id.progress_circular;
-			global::Xamarin.Forms.Platform.Resource.Id.progress_horizontal = global::PickUpApp.droid.Resource.Id.progress_horizontal;
-			global::Xamarin.Forms.Platform.Resource.Id.radio = global::PickUpApp.droid.Resource.Id.radio;
-			global::Xamarin.Forms.Platform.Resource.Id.right = global::PickUpApp.droid.Resource.Id.right;
-			global::Xamarin.Forms.Platform.Resource.Id.screen = global::PickUpApp.droid.Resource.Id.screen;
-			global::Xamarin.Forms.Platform.Resource.Id.scroll = global::PickUpApp.droid.Resource.Id.scroll;
-			global::Xamarin.Forms.Platform.Resource.Id.scrollView = global::PickUpApp.droid.Resource.Id.scrollView;
-			global::Xamarin.Forms.Platform.Resource.Id.scrollable = global::PickUpApp.droid.Resource.Id.scrollable;
-			global::Xamarin.Forms.Platform.Resource.Id.search_badge = global::PickUpApp.droid.Resource.Id.search_badge;
-			global::Xamarin.Forms.Platform.Resource.Id.search_bar = global::PickUpApp.droid.Resource.Id.search_bar;
-			global::Xamarin.Forms.Platform.Resource.Id.search_button = global::PickUpApp.droid.Resource.Id.search_button;
-			global::Xamarin.Forms.Platform.Resource.Id.search_close_btn = global::PickUpApp.droid.Resource.Id.search_close_btn;
-			global::Xamarin.Forms.Platform.Resource.Id.search_edit_frame = global::PickUpApp.droid.Resource.Id.search_edit_frame;
-			global::Xamarin.Forms.Platform.Resource.Id.search_go_btn = global::PickUpApp.droid.Resource.Id.search_go_btn;
-			global::Xamarin.Forms.Platform.Resource.Id.search_mag_icon = global::PickUpApp.droid.Resource.Id.search_mag_icon;
-			global::Xamarin.Forms.Platform.Resource.Id.search_plate = global::PickUpApp.droid.Resource.Id.search_plate;
-			global::Xamarin.Forms.Platform.Resource.Id.search_src_text = global::PickUpApp.droid.Resource.Id.search_src_text;
-			global::Xamarin.Forms.Platform.Resource.Id.search_voice_btn = global::PickUpApp.droid.Resource.Id.search_voice_btn;
-			global::Xamarin.Forms.Platform.Resource.Id.select_dialog_listview = global::PickUpApp.droid.Resource.Id.select_dialog_listview;
-			global::Xamarin.Forms.Platform.Resource.Id.shortcut = global::PickUpApp.droid.Resource.Id.shortcut;
-			global::Xamarin.Forms.Platform.Resource.Id.showCustom = global::PickUpApp.droid.Resource.Id.showCustom;
-			global::Xamarin.Forms.Platform.Resource.Id.showHome = global::PickUpApp.droid.Resource.Id.showHome;
-			global::Xamarin.Forms.Platform.Resource.Id.showTitle = global::PickUpApp.droid.Resource.Id.showTitle;
-			global::Xamarin.Forms.Platform.Resource.Id.snackbar_action = global::PickUpApp.droid.Resource.Id.snackbar_action;
-			global::Xamarin.Forms.Platform.Resource.Id.snackbar_text = global::PickUpApp.droid.Resource.Id.snackbar_text;
-			global::Xamarin.Forms.Platform.Resource.Id.split_action_bar = global::PickUpApp.droid.Resource.Id.split_action_bar;
-			global::Xamarin.Forms.Platform.Resource.Id.src_atop = global::PickUpApp.droid.Resource.Id.src_atop;
-			global::Xamarin.Forms.Platform.Resource.Id.src_in = global::PickUpApp.droid.Resource.Id.src_in;
-			global::Xamarin.Forms.Platform.Resource.Id.src_over = global::PickUpApp.droid.Resource.Id.src_over;
-			global::Xamarin.Forms.Platform.Resource.Id.start = global::PickUpApp.droid.Resource.Id.start;
-			global::Xamarin.Forms.Platform.Resource.Id.status_bar_latest_event_content = global::PickUpApp.droid.Resource.Id.status_bar_latest_event_content;
-			global::Xamarin.Forms.Platform.Resource.Id.submit_area = global::PickUpApp.droid.Resource.Id.submit_area;
-			global::Xamarin.Forms.Platform.Resource.Id.tabMode = global::PickUpApp.droid.Resource.Id.tabMode;
-			global::Xamarin.Forms.Platform.Resource.Id.text = global::PickUpApp.droid.Resource.Id.text;
-			global::Xamarin.Forms.Platform.Resource.Id.text2 = global::PickUpApp.droid.Resource.Id.text2;
-			global::Xamarin.Forms.Platform.Resource.Id.textSpacerNoButtons = global::PickUpApp.droid.Resource.Id.textSpacerNoButtons;
-			global::Xamarin.Forms.Platform.Resource.Id.time = global::PickUpApp.droid.Resource.Id.time;
-			global::Xamarin.Forms.Platform.Resource.Id.title = global::PickUpApp.droid.Resource.Id.title;
-			global::Xamarin.Forms.Platform.Resource.Id.title_template = global::PickUpApp.droid.Resource.Id.title_template;
-			global::Xamarin.Forms.Platform.Resource.Id.top = global::PickUpApp.droid.Resource.Id.top;
-			global::Xamarin.Forms.Platform.Resource.Id.topPanel = global::PickUpApp.droid.Resource.Id.topPanel;
-			global::Xamarin.Forms.Platform.Resource.Id.up = global::PickUpApp.droid.Resource.Id.up;
-			global::Xamarin.Forms.Platform.Resource.Id.useLogo = global::PickUpApp.droid.Resource.Id.useLogo;
-			global::Xamarin.Forms.Platform.Resource.Id.view_offset_helper = global::PickUpApp.droid.Resource.Id.view_offset_helper;
-			global::Xamarin.Forms.Platform.Resource.Id.withText = global::PickUpApp.droid.Resource.Id.withText;
-			global::Xamarin.Forms.Platform.Resource.Id.wrap_content = global::PickUpApp.droid.Resource.Id.wrap_content;
-			global::Xamarin.Forms.Platform.Resource.Integer.abc_config_activityDefaultDur = global::PickUpApp.droid.Resource.Integer.abc_config_activityDefaultDur;
-			global::Xamarin.Forms.Platform.Resource.Integer.abc_config_activityShortDur = global::PickUpApp.droid.Resource.Integer.abc_config_activityShortDur;
-			global::Xamarin.Forms.Platform.Resource.Integer.abc_max_action_buttons = global::PickUpApp.droid.Resource.Integer.abc_max_action_buttons;
-			global::Xamarin.Forms.Platform.Resource.Integer.cancel_button_image_alpha = global::PickUpApp.droid.Resource.Integer.cancel_button_image_alpha;
-			global::Xamarin.Forms.Platform.Resource.Integer.design_snackbar_text_max_lines = global::PickUpApp.droid.Resource.Integer.design_snackbar_text_max_lines;
-			global::Xamarin.Forms.Platform.Resource.Integer.status_bar_notification_info_maxnum = global::PickUpApp.droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_action_bar_title_item = global::PickUpApp.droid.Resource.Layout.abc_action_bar_title_item;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_action_bar_up_container = global::PickUpApp.droid.Resource.Layout.abc_action_bar_up_container;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_action_bar_view_list_nav_layout = global::PickUpApp.droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_action_menu_item_layout = global::PickUpApp.droid.Resource.Layout.abc_action_menu_item_layout;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_action_menu_layout = global::PickUpApp.droid.Resource.Layout.abc_action_menu_layout;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_action_mode_bar = global::PickUpApp.droid.Resource.Layout.abc_action_mode_bar;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_action_mode_close_item_material = global::PickUpApp.droid.Resource.Layout.abc_action_mode_close_item_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_activity_chooser_view = global::PickUpApp.droid.Resource.Layout.abc_activity_chooser_view;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_activity_chooser_view_list_item = global::PickUpApp.droid.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_alert_dialog_material = global::PickUpApp.droid.Resource.Layout.abc_alert_dialog_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_dialog_title_material = global::PickUpApp.droid.Resource.Layout.abc_dialog_title_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_expanded_menu_layout = global::PickUpApp.droid.Resource.Layout.abc_expanded_menu_layout;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_list_menu_item_checkbox = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_checkbox;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_list_menu_item_icon = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_icon;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_list_menu_item_layout = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_layout;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_list_menu_item_radio = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_radio;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_popup_menu_item_layout = global::PickUpApp.droid.Resource.Layout.abc_popup_menu_item_layout;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_screen_content_include = global::PickUpApp.droid.Resource.Layout.abc_screen_content_include;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_screen_simple = global::PickUpApp.droid.Resource.Layout.abc_screen_simple;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_screen_simple_overlay_action_mode = global::PickUpApp.droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_screen_toolbar = global::PickUpApp.droid.Resource.Layout.abc_screen_toolbar;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_search_dropdown_item_icons_2line = global::PickUpApp.droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_search_view = global::PickUpApp.droid.Resource.Layout.abc_search_view;
-			global::Xamarin.Forms.Platform.Resource.Layout.abc_select_dialog_material = global::PickUpApp.droid.Resource.Layout.abc_select_dialog_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_layout_snackbar = global::PickUpApp.droid.Resource.Layout.design_layout_snackbar;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_layout_snackbar_include = global::PickUpApp.droid.Resource.Layout.design_layout_snackbar_include;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_layout_tab_icon = global::PickUpApp.droid.Resource.Layout.design_layout_tab_icon;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_layout_tab_text = global::PickUpApp.droid.Resource.Layout.design_layout_tab_text;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_item = global::PickUpApp.droid.Resource.Layout.design_navigation_item;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_item_header = global::PickUpApp.droid.Resource.Layout.design_navigation_item_header;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_item_separator = global::PickUpApp.droid.Resource.Layout.design_navigation_item_separator;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_item_subheader = global::PickUpApp.droid.Resource.Layout.design_navigation_item_subheader;
-			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_menu = global::PickUpApp.droid.Resource.Layout.design_navigation_menu;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_media_action = global::PickUpApp.droid.Resource.Layout.notification_media_action;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_media_cancel_action = global::PickUpApp.droid.Resource.Layout.notification_media_cancel_action;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_big_media = global::PickUpApp.droid.Resource.Layout.notification_template_big_media;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_big_media_narrow = global::PickUpApp.droid.Resource.Layout.notification_template_big_media_narrow;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_lines = global::PickUpApp.droid.Resource.Layout.notification_template_lines;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_media = global::PickUpApp.droid.Resource.Layout.notification_template_media;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_part_chronometer = global::PickUpApp.droid.Resource.Layout.notification_template_part_chronometer;
-			global::Xamarin.Forms.Platform.Resource.Layout.notification_template_part_time = global::PickUpApp.droid.Resource.Layout.notification_template_part_time;
-			global::Xamarin.Forms.Platform.Resource.Layout.select_dialog_item_material = global::PickUpApp.droid.Resource.Layout.select_dialog_item_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.select_dialog_multichoice_material = global::PickUpApp.droid.Resource.Layout.select_dialog_multichoice_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.select_dialog_singlechoice_material = global::PickUpApp.droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::Xamarin.Forms.Platform.Resource.Layout.support_simple_spinner_dropdown_item = global::PickUpApp.droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
-			global::Xamarin.Forms.Platform.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
-			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_home_description = global::PickUpApp.droid.Resource.String.abc_action_bar_home_description;
-			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_home_description_format = global::PickUpApp.droid.Resource.String.abc_action_bar_home_description_format;
-			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_home_subtitle_description_format = global::PickUpApp.droid.Resource.String.abc_action_bar_home_subtitle_description_format;
-			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_up_description = global::PickUpApp.droid.Resource.String.abc_action_bar_up_description;
-			global::Xamarin.Forms.Platform.Resource.String.abc_action_menu_overflow_description = global::PickUpApp.droid.Resource.String.abc_action_menu_overflow_description;
-			global::Xamarin.Forms.Platform.Resource.String.abc_action_mode_done = global::PickUpApp.droid.Resource.String.abc_action_mode_done;
-			global::Xamarin.Forms.Platform.Resource.String.abc_activity_chooser_view_see_all = global::PickUpApp.droid.Resource.String.abc_activity_chooser_view_see_all;
-			global::Xamarin.Forms.Platform.Resource.String.abc_activitychooserview_choose_application = global::PickUpApp.droid.Resource.String.abc_activitychooserview_choose_application;
-			global::Xamarin.Forms.Platform.Resource.String.abc_search_hint = global::PickUpApp.droid.Resource.String.abc_search_hint;
-			global::Xamarin.Forms.Platform.Resource.String.abc_searchview_description_clear = global::PickUpApp.droid.Resource.String.abc_searchview_description_clear;
-			global::Xamarin.Forms.Platform.Resource.String.abc_searchview_description_query = global::PickUpApp.droid.Resource.String.abc_searchview_description_query;
-			global::Xamarin.Forms.Platform.Resource.String.abc_searchview_description_search = global::PickUpApp.droid.Resource.String.abc_searchview_description_search;
-			global::Xamarin.Forms.Platform.Resource.String.abc_searchview_description_submit = global::PickUpApp.droid.Resource.String.abc_searchview_description_submit;
-			global::Xamarin.Forms.Platform.Resource.String.abc_searchview_description_voice = global::PickUpApp.droid.Resource.String.abc_searchview_description_voice;
-			global::Xamarin.Forms.Platform.Resource.String.abc_shareactionprovider_share_with = global::PickUpApp.droid.Resource.String.abc_shareactionprovider_share_with;
-			global::Xamarin.Forms.Platform.Resource.String.abc_shareactionprovider_share_with_application = global::PickUpApp.droid.Resource.String.abc_shareactionprovider_share_with_application;
-			global::Xamarin.Forms.Platform.Resource.String.abc_toolbar_collapse_description = global::PickUpApp.droid.Resource.String.abc_toolbar_collapse_description;
-			global::Xamarin.Forms.Platform.Resource.String.appbar_scrolling_view_behavior = global::PickUpApp.droid.Resource.String.appbar_scrolling_view_behavior;
-			global::Xamarin.Forms.Platform.Resource.String.status_bar_notification_info_overflow = global::PickUpApp.droid.Resource.String.status_bar_notification_info_overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.AlertDialog_AppCompat = global::PickUpApp.droid.Resource.Style.AlertDialog_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.AlertDialog_AppCompat_Light = global::PickUpApp.droid.Resource.Style.AlertDialog_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Animation_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_DropDownUp = global::PickUpApp.droid.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat = global::PickUpApp.droid.Resource.Style.Base_AlertDialog_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Animation_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::PickUpApp.droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_DialogWindowTitle_AppCompat = global::PickUpApp.droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::PickUpApp.droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Button = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Large = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Small = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_AppCompat = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V22_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V22_Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V22_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V23_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V23_Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V23_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionButton = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActionMode = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Button = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Button_Small = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ListView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_RatingBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_SearchView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Spinner = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Toolbar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_Design_TabLayout = global::PickUpApp.droid.Resource.Style.Base_Widget_Design_TabLayout;
-			global::Xamarin.Forms.Platform.Resource.Style.CardView = global::PickUpApp.droid.Resource.Style.CardView;
-			global::Xamarin.Forms.Platform.Resource.Style.CardView_Dark = global::PickUpApp.droid.Resource.Style.CardView_Dark;
-			global::Xamarin.Forms.Platform.Resource.Style.CardView_Light = global::PickUpApp.droid.Resource.Style.CardView_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_ThemeOverlay_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::PickUpApp.droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_V11_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_V11_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_V11_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_V14_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_V14_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_V14_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_V14_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Platform_Widget_AppCompat_Spinner = global::PickUpApp.droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::PickUpApp.droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionButton_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::Xamarin.Forms.Platform.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Body1 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Body2 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Button = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Button;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Caption = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Display1 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Display2 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Display3 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Display4 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Headline = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Large = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Large;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Medium = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Menu = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Small = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Subhead = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Error = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Error;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Hint = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Hint;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Snackbar_Message = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Tab = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Tab;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_StatusBar_EventContent = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::PickUpApp.droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_CompactMenu = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Theme_AppCompat_NoActionBar = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Dark = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Light = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionButton = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionButton;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActionMode = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionMode;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ActivityChooserView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Button = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Button_Borderless = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Button_Colored = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Colored;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Button_Small = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ButtonBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_EditText;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionButton = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_SearchView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ListPopupWindow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ListView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ListView_DropDown = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ListView_Menu = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_PopupMenu = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_PopupWindow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ProgressBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_RatingBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_RatingBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_SearchView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_SearchView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Spinner = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Toolbar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Toolbar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_AppBarLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_AppBarLayout;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_CollapsingToolbar = global::PickUpApp.droid.Resource.Style.Widget_Design_CollapsingToolbar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_CoordinatorLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_CoordinatorLayout;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_FloatingActionButton = global::PickUpApp.droid.Resource.Style.Widget_Design_FloatingActionButton;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_NavigationView = global::PickUpApp.droid.Resource.Style.Widget_Design_NavigationView;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_Snackbar = global::PickUpApp.droid.Resource.Style.Widget_Design_Snackbar;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_TabLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_TabLayout;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_TextInputLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_TextInputLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar = global::PickUpApp.droid.Resource.Styleable.ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_background = global::PickUpApp.droid.Resource.Styleable.ActionBar_background;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_backgroundSplit = global::PickUpApp.droid.Resource.Styleable.ActionBar_backgroundSplit;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_backgroundStacked = global::PickUpApp.droid.Resource.Styleable.ActionBar_backgroundStacked;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_contentInsetEnd = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_contentInsetLeft = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_contentInsetRight = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetRight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_contentInsetStart = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetStart;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_customNavigationLayout = global::PickUpApp.droid.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_displayOptions = global::PickUpApp.droid.Resource.Styleable.ActionBar_displayOptions;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_divider = global::PickUpApp.droid.Resource.Styleable.ActionBar_divider;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_elevation = global::PickUpApp.droid.Resource.Styleable.ActionBar_elevation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_height = global::PickUpApp.droid.Resource.Styleable.ActionBar_height;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_hideOnContentScroll = global::PickUpApp.droid.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_homeAsUpIndicator = global::PickUpApp.droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_homeLayout = global::PickUpApp.droid.Resource.Styleable.ActionBar_homeLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_icon = global::PickUpApp.droid.Resource.Styleable.ActionBar_icon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_itemPadding = global::PickUpApp.droid.Resource.Styleable.ActionBar_itemPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_logo = global::PickUpApp.droid.Resource.Styleable.ActionBar_logo;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_navigationMode = global::PickUpApp.droid.Resource.Styleable.ActionBar_navigationMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_popupTheme = global::PickUpApp.droid.Resource.Styleable.ActionBar_popupTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_progressBarPadding = global::PickUpApp.droid.Resource.Styleable.ActionBar_progressBarPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_progressBarStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_progressBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_subtitle = global::PickUpApp.droid.Resource.Styleable.ActionBar_subtitle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_subtitleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_title = global::PickUpApp.droid.Resource.Styleable.ActionBar_title;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar_titleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBarLayout = global::PickUpApp.droid.Resource.Styleable.ActionBarLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::PickUpApp.droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMenuItemView = global::PickUpApp.droid.Resource.Styleable.ActionMenuItemView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMenuItemView_android_minWidth = global::PickUpApp.droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMenuView = global::PickUpApp.droid.Resource.Styleable.ActionMenuView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMode = global::PickUpApp.droid.Resource.Styleable.ActionMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMode_background = global::PickUpApp.droid.Resource.Styleable.ActionMode_background;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMode_backgroundSplit = global::PickUpApp.droid.Resource.Styleable.ActionMode_backgroundSplit;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMode_closeItemLayout = global::PickUpApp.droid.Resource.Styleable.ActionMode_closeItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMode_height = global::PickUpApp.droid.Resource.Styleable.ActionMode_height;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMode_subtitleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActionMode_titleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionMode_titleTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActivityChooserView = global::PickUpApp.droid.Resource.Styleable.ActivityChooserView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::PickUpApp.droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ActivityChooserView_initialActivityCount = global::PickUpApp.droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AlertDialog = global::PickUpApp.droid.Resource.Styleable.AlertDialog;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AlertDialog_android_layout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_android_layout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AlertDialog_listItemLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_listItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AlertDialog_listLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_listLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppBarLayout = global::PickUpApp.droid.Resource.Styleable.AppBarLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppBarLayout_android_background = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_android_background;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppBarLayout_elevation = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_elevation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppBarLayout_expanded = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_expanded;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppBarLayout_LayoutParams = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_LayoutParams;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView = global::PickUpApp.droid.Resource.Styleable.AppCompatTextView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_android_textAppearance = global::PickUpApp.droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_textAllCaps = global::PickUpApp.droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView = global::PickUpApp.droid.Resource.Styleable.CardView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_cardBackgroundColor = global::PickUpApp.droid.Resource.Styleable.CardView_cardBackgroundColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_cardCornerRadius = global::PickUpApp.droid.Resource.Styleable.CardView_cardCornerRadius;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_cardElevation = global::PickUpApp.droid.Resource.Styleable.CardView_cardElevation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_cardMaxElevation = global::PickUpApp.droid.Resource.Styleable.CardView_cardMaxElevation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_cardPreventCornerOverlap = global::PickUpApp.droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_cardUseCompatPadding = global::PickUpApp.droid.Resource.Styleable.CardView_cardUseCompatPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_contentPadding = global::PickUpApp.droid.Resource.Styleable.CardView_contentPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_contentPaddingBottom = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingBottom;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_contentPaddingLeft = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingLeft;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_contentPaddingRight = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingRight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CardView_contentPaddingTop = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingTop;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingAppBarLayout_LayoutParams = global::PickUpApp.droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode = global::PickUpApp.droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = global::PickUpApp.droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_title = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_title;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton = global::PickUpApp.droid.Resource.Styleable.CompoundButton;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton_android_button = global::PickUpApp.droid.Resource.Styleable.CompoundButton_android_button;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton_buttonTint = global::PickUpApp.droid.Resource.Styleable.CompoundButton_buttonTint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton_buttonTintMode = global::PickUpApp.droid.Resource.Styleable.CompoundButton_buttonTintMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_keylines = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_LayoutParams = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_barLength = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_barLength;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_color = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_color;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_drawableSize = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_spinBars = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::Xamarin.Forms.Platform.Resource.Styleable.DrawerArrowToggle_thickness = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_android_background = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_android_background;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_backgroundTint = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_backgroundTint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_borderWidth = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_borderWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_elevation = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_elevation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_fabSize = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_fabSize;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
-			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_rippleColor = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_rippleColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_android_gravity = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_android_orientation = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_divider = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_divider;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_showDividers = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_Layout = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ListPopupWindow = global::PickUpApp.droid.Resource.Styleable.ListPopupWindow;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::PickUpApp.droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::PickUpApp.droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuGroup = global::PickUpApp.droid.Resource.Styleable.MenuGroup;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuGroup_android_checkableBehavior = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuGroup_android_enabled = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_enabled;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuGroup_android_id = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_id;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuGroup_android_menuCategory = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuGroup_android_orderInCategory = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuGroup_android_visible = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_visible;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem = global::PickUpApp.droid.Resource.Styleable.MenuItem;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_actionLayout = global::PickUpApp.droid.Resource.Styleable.MenuItem_actionLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_actionProviderClass = global::PickUpApp.droid.Resource.Styleable.MenuItem_actionProviderClass;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_actionViewClass = global::PickUpApp.droid.Resource.Styleable.MenuItem_actionViewClass;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_checkable = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_checkable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_checked = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_checked;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_enabled = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_enabled;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_icon = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_icon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_id = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_id;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_menuCategory = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_menuCategory;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_numericShortcut = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_onClick = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_onClick;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_orderInCategory = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_title = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_title;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_titleCondensed = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_android_visible = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_visible;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuItem_showAsAction = global::PickUpApp.droid.Resource.Styleable.MenuItem_showAsAction;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView = global::PickUpApp.droid.Resource.Styleable.MenuView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_android_headerBackground = global::PickUpApp.droid.Resource.Styleable.MenuView_android_headerBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_android_horizontalDivider = global::PickUpApp.droid.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_android_itemBackground = global::PickUpApp.droid.Resource.Styleable.MenuView_android_itemBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::PickUpApp.droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_android_itemTextAppearance = global::PickUpApp.droid.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_android_verticalDivider = global::PickUpApp.droid.Resource.Styleable.MenuView_android_verticalDivider;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_android_windowAnimationStyle = global::PickUpApp.droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.MenuView_preserveIconSpacing = global::PickUpApp.droid.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView = global::PickUpApp.droid.Resource.Styleable.NavigationView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_android_background = global::PickUpApp.droid.Resource.Styleable.NavigationView_android_background;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::PickUpApp.droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_android_maxWidth = global::PickUpApp.droid.Resource.Styleable.NavigationView_android_maxWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_elevation = global::PickUpApp.droid.Resource.Styleable.NavigationView_elevation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_headerLayout = global::PickUpApp.droid.Resource.Styleable.NavigationView_headerLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_itemBackground = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_itemIconTint = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemIconTint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_itemTextAppearance = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_itemTextColor = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemTextColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.NavigationView_menu = global::PickUpApp.droid.Resource.Styleable.NavigationView_menu;
-			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindow = global::PickUpApp.droid.Resource.Styleable.PopupWindow;
-			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindow_android_popupBackground = global::PickUpApp.droid.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindow_overlapAnchor = global::PickUpApp.droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindowBackgroundState = global::PickUpApp.droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::PickUpApp.droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ScrimInsetsFrameLayout = global::PickUpApp.droid.Resource.Styleable.ScrimInsetsFrameLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::PickUpApp.droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ScrollingViewBehavior_Params = global::PickUpApp.droid.Resource.Styleable.ScrollingViewBehavior_Params;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop = global::PickUpApp.droid.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView = global::PickUpApp.droid.Resource.Styleable.SearchView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_android_focusable = global::PickUpApp.droid.Resource.Styleable.SearchView_android_focusable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_android_imeOptions = global::PickUpApp.droid.Resource.Styleable.SearchView_android_imeOptions;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_android_inputType = global::PickUpApp.droid.Resource.Styleable.SearchView_android_inputType;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_android_maxWidth = global::PickUpApp.droid.Resource.Styleable.SearchView_android_maxWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_closeIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_closeIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_commitIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_commitIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_defaultQueryHint = global::PickUpApp.droid.Resource.Styleable.SearchView_defaultQueryHint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_goIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_goIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_iconifiedByDefault = global::PickUpApp.droid.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_layout = global::PickUpApp.droid.Resource.Styleable.SearchView_layout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_queryBackground = global::PickUpApp.droid.Resource.Styleable.SearchView_queryBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_queryHint = global::PickUpApp.droid.Resource.Styleable.SearchView_queryHint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_searchHintIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_searchHintIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_searchIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_searchIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_submitBackground = global::PickUpApp.droid.Resource.Styleable.SearchView_submitBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_suggestionRowLayout = global::PickUpApp.droid.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_voiceIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_voiceIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_android_maxWidth = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_elevation = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout_elevation;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner = global::PickUpApp.droid.Resource.Styleable.Spinner;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner_android_dropDownWidth = global::PickUpApp.droid.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner_android_popupBackground = global::PickUpApp.droid.Resource.Styleable.Spinner_android_popupBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner_android_prompt = global::PickUpApp.droid.Resource.Styleable.Spinner_android_prompt;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner_popupTheme = global::PickUpApp.droid.Resource.Styleable.Spinner_popupTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat = global::PickUpApp.droid.Resource.Styleable.SwitchCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_android_textOff = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_android_textOff;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_android_textOn = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_android_textOn;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_android_thumb = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_android_thumb;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_showText = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_showText;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_splitTrack = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_splitTrack;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_switchMinWidth = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_switchPadding = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_switchPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_switchTextAppearance = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_thumbTextPadding = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.SwitchCompat_track = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_track;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout = global::PickUpApp.droid.Resource.Styleable.TabLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabBackground = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabContentStart = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabContentStart;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabGravity = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabGravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabIndicatorColor = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabIndicatorColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabIndicatorHeight = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabMaxWidth = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabMaxWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabMinWidth = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabMinWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabMode = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabPadding = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabPaddingBottom = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingBottom;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabPaddingEnd = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingEnd;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabPaddingStart = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingStart;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabPaddingTop = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingTop;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabSelectedTextColor = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabTextAppearance = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TabLayout_tabTextColor = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabTextColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance = global::PickUpApp.droid.Resource.Styleable.TextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textColor = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_textColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textSize = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_textSize;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textStyle = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_textStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_typeface = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_typeface;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_textAllCaps = global::PickUpApp.droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout = global::PickUpApp.droid.Resource.Styleable.TextInputLayout;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_android_hint = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_android_hint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_android_textColorHint = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_android_textColorHint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_errorEnabled = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_errorEnabled;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_errorTextAppearance = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_hintTextAppearance = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme = global::PickUpApp.droid.Resource.Styleable.Theme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarDivider = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarDivider;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarItemBackground = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarItemBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarPopupTheme = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarPopupTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarSize = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarSize;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarSplitStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarSplitStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarTabBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTabBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarTabStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTabStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarTabTextStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTabTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarTheme = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionBarWidgetTheme = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarWidgetTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionDropDownStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionDropDownStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionMenuTextAppearance = global::PickUpApp.droid.Resource.Styleable.Theme_actionMenuTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionMenuTextColor = global::PickUpApp.droid.Resource.Styleable.Theme_actionMenuTextColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeBackground = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeCloseButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCloseButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeCloseDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCloseDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeCopyDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCopyDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeCutDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCutDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeFindDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeFindDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModePasteDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModePasteDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModePopupWindowStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionModePopupWindowStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeSelectAllDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeSelectAllDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeShareDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeShareDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeSplitBackground = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeSplitBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionModeWebSearchDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeWebSearchDrawable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionOverflowButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionOverflowButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_actionOverflowMenuStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionOverflowMenuStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_activityChooserViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_activityChooserViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_alertDialogButtonGroupStyle = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogButtonGroupStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_alertDialogCenterButtons = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogCenterButtons;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_alertDialogStyle = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_alertDialogTheme = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_android_windowAnimationStyle = global::PickUpApp.droid.Resource.Styleable.Theme_android_windowAnimationStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_android_windowIsFloating = global::PickUpApp.droid.Resource.Styleable.Theme_android_windowIsFloating;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_autoCompleteTextViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_autoCompleteTextViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_borderlessButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_borderlessButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_buttonBarButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_buttonBarNegativeButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarNegativeButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_buttonBarNeutralButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarNeutralButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_buttonBarPositiveButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarPositiveButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_buttonBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_buttonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_buttonStyleSmall = global::PickUpApp.droid.Resource.Styleable.Theme_buttonStyleSmall;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_checkboxStyle = global::PickUpApp.droid.Resource.Styleable.Theme_checkboxStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_checkedTextViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_checkedTextViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorAccent = global::PickUpApp.droid.Resource.Styleable.Theme_colorAccent;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorButtonNormal = global::PickUpApp.droid.Resource.Styleable.Theme_colorButtonNormal;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorControlActivated = global::PickUpApp.droid.Resource.Styleable.Theme_colorControlActivated;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorControlHighlight = global::PickUpApp.droid.Resource.Styleable.Theme_colorControlHighlight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorControlNormal = global::PickUpApp.droid.Resource.Styleable.Theme_colorControlNormal;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorPrimary = global::PickUpApp.droid.Resource.Styleable.Theme_colorPrimary;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorPrimaryDark = global::PickUpApp.droid.Resource.Styleable.Theme_colorPrimaryDark;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_colorSwitchThumbNormal = global::PickUpApp.droid.Resource.Styleable.Theme_colorSwitchThumbNormal;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_controlBackground = global::PickUpApp.droid.Resource.Styleable.Theme_controlBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_dialogPreferredPadding = global::PickUpApp.droid.Resource.Styleable.Theme_dialogPreferredPadding;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_dialogTheme = global::PickUpApp.droid.Resource.Styleable.Theme_dialogTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_dividerHorizontal = global::PickUpApp.droid.Resource.Styleable.Theme_dividerHorizontal;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_dividerVertical = global::PickUpApp.droid.Resource.Styleable.Theme_dividerVertical;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_dropDownListViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_dropDownListViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_dropdownListPreferredItemHeight = global::PickUpApp.droid.Resource.Styleable.Theme_dropdownListPreferredItemHeight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_editTextBackground = global::PickUpApp.droid.Resource.Styleable.Theme_editTextBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_editTextColor = global::PickUpApp.droid.Resource.Styleable.Theme_editTextColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_editTextStyle = global::PickUpApp.droid.Resource.Styleable.Theme_editTextStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_homeAsUpIndicator = global::PickUpApp.droid.Resource.Styleable.Theme_homeAsUpIndicator;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listChoiceBackgroundIndicator = global::PickUpApp.droid.Resource.Styleable.Theme_listChoiceBackgroundIndicator;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listDividerAlertDialog = global::PickUpApp.droid.Resource.Styleable.Theme_listDividerAlertDialog;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listPopupWindowStyle = global::PickUpApp.droid.Resource.Styleable.Theme_listPopupWindowStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listPreferredItemHeight = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemHeight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listPreferredItemHeightLarge = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemHeightLarge;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listPreferredItemHeightSmall = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemHeightSmall;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listPreferredItemPaddingLeft = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemPaddingLeft;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_listPreferredItemPaddingRight = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemPaddingRight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_panelBackground = global::PickUpApp.droid.Resource.Styleable.Theme_panelBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_panelMenuListTheme = global::PickUpApp.droid.Resource.Styleable.Theme_panelMenuListTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_panelMenuListWidth = global::PickUpApp.droid.Resource.Styleable.Theme_panelMenuListWidth;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_popupMenuStyle = global::PickUpApp.droid.Resource.Styleable.Theme_popupMenuStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_popupWindowStyle = global::PickUpApp.droid.Resource.Styleable.Theme_popupWindowStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_radioButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_radioButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_ratingBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_ratingBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_searchViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_searchViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_selectableItemBackground = global::PickUpApp.droid.Resource.Styleable.Theme_selectableItemBackground;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_selectableItemBackgroundBorderless = global::PickUpApp.droid.Resource.Styleable.Theme_selectableItemBackgroundBorderless;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_spinnerDropDownItemStyle = global::PickUpApp.droid.Resource.Styleable.Theme_spinnerDropDownItemStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_spinnerStyle = global::PickUpApp.droid.Resource.Styleable.Theme_spinnerStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_switchStyle = global::PickUpApp.droid.Resource.Styleable.Theme_switchStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textAppearanceLargePopupMenu = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceLargePopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textAppearanceListItem = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceListItem;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textAppearanceListItemSmall = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceListItemSmall;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textAppearanceSearchResultSubtitle = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceSearchResultSubtitle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textAppearanceSearchResultTitle = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceSearchResultTitle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textAppearanceSmallPopupMenu = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceSmallPopupMenu;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textColorAlertDialogListItem = global::PickUpApp.droid.Resource.Styleable.Theme_textColorAlertDialogListItem;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_textColorSearchUrl = global::PickUpApp.droid.Resource.Styleable.Theme_textColorSearchUrl;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_toolbarNavigationButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_toolbarNavigationButtonStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_toolbarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_toolbarStyle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowActionBar = global::PickUpApp.droid.Resource.Styleable.Theme_windowActionBar;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowActionBarOverlay = global::PickUpApp.droid.Resource.Styleable.Theme_windowActionBarOverlay;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowActionModeOverlay = global::PickUpApp.droid.Resource.Styleable.Theme_windowActionModeOverlay;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowFixedHeightMajor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedHeightMajor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowFixedHeightMinor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedHeightMinor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowFixedWidthMajor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedWidthMajor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowFixedWidthMinor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedWidthMinor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowMinWidthMajor = global::PickUpApp.droid.Resource.Styleable.Theme_windowMinWidthMajor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowMinWidthMinor = global::PickUpApp.droid.Resource.Styleable.Theme_windowMinWidthMinor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Theme_windowNoTitle = global::PickUpApp.droid.Resource.Styleable.Theme_windowNoTitle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar = global::PickUpApp.droid.Resource.Styleable.Toolbar;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_android_gravity = global::PickUpApp.droid.Resource.Styleable.Toolbar_android_gravity;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_android_minHeight = global::PickUpApp.droid.Resource.Styleable.Toolbar_android_minHeight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_collapseContentDescription = global::PickUpApp.droid.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_collapseIcon = global::PickUpApp.droid.Resource.Styleable.Toolbar_collapseIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_contentInsetEnd = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_contentInsetLeft = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_contentInsetRight = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetRight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_contentInsetStart = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetStart;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_logo = global::PickUpApp.droid.Resource.Styleable.Toolbar_logo;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_logoDescription = global::PickUpApp.droid.Resource.Styleable.Toolbar_logoDescription;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_maxButtonHeight = global::PickUpApp.droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_navigationContentDescription = global::PickUpApp.droid.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_navigationIcon = global::PickUpApp.droid.Resource.Styleable.Toolbar_navigationIcon;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_popupTheme = global::PickUpApp.droid.Resource.Styleable.Toolbar_popupTheme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_subtitle = global::PickUpApp.droid.Resource.Styleable.Toolbar_subtitle;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_subtitleTextAppearance = global::PickUpApp.droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_subtitleTextColor = global::PickUpApp.droid.Resource.Styleable.Toolbar_subtitleTextColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_title = global::PickUpApp.droid.Resource.Styleable.Toolbar_title;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleMarginBottom = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleMarginEnd = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleMarginStart = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginStart;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleMarginTop = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleMargins = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMargins;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleTextAppearance = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleTextColor = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleTextColor;
-			global::Xamarin.Forms.Platform.Resource.Styleable.View = global::PickUpApp.droid.Resource.Styleable.View;
-			global::Xamarin.Forms.Platform.Resource.Styleable.View_android_focusable = global::PickUpApp.droid.Resource.Styleable.View_android_focusable;
-			global::Xamarin.Forms.Platform.Resource.Styleable.View_android_theme = global::PickUpApp.droid.Resource.Styleable.View_android_theme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.View_paddingEnd = global::PickUpApp.droid.Resource.Styleable.View_paddingEnd;
-			global::Xamarin.Forms.Platform.Resource.Styleable.View_paddingStart = global::PickUpApp.droid.Resource.Styleable.View_paddingStart;
-			global::Xamarin.Forms.Platform.Resource.Styleable.View_theme = global::PickUpApp.droid.Resource.Styleable.View_theme;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewBackgroundHelper = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewBackgroundHelper_android_background = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper_android_background;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_id = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat_android_id;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_inflatedId = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::Xamarin.Forms.Platform.Resource.Styleable.ViewStubCompat_android_layout = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::PickUpApp.droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation
@@ -4145,32 +2688,32 @@ namespace PickUpApp.droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f08005c
-			public const int abc_background_cache_hint_selector_material_dark = 2131230812;
+			// aapt resource value: 0x7f080066
+			public const int abc_background_cache_hint_selector_material_dark = 2131230822;
 			
-			// aapt resource value: 0x7f08005d
-			public const int abc_background_cache_hint_selector_material_light = 2131230813;
+			// aapt resource value: 0x7f080067
+			public const int abc_background_cache_hint_selector_material_light = 2131230823;
 			
-			// aapt resource value: 0x7f08005e
-			public const int abc_color_highlight_material = 2131230814;
+			// aapt resource value: 0x7f080068
+			public const int abc_color_highlight_material = 2131230824;
 			
 			// aapt resource value: 0x7f080017
 			public const int abc_input_method_navigation_guard = 2131230743;
 			
-			// aapt resource value: 0x7f08005f
-			public const int abc_primary_text_disable_only_material_dark = 2131230815;
+			// aapt resource value: 0x7f080069
+			public const int abc_primary_text_disable_only_material_dark = 2131230825;
 			
-			// aapt resource value: 0x7f080060
-			public const int abc_primary_text_disable_only_material_light = 2131230816;
+			// aapt resource value: 0x7f08006a
+			public const int abc_primary_text_disable_only_material_light = 2131230826;
 			
-			// aapt resource value: 0x7f080061
-			public const int abc_primary_text_material_dark = 2131230817;
+			// aapt resource value: 0x7f08006b
+			public const int abc_primary_text_material_dark = 2131230827;
 			
-			// aapt resource value: 0x7f080062
-			public const int abc_primary_text_material_light = 2131230818;
+			// aapt resource value: 0x7f08006c
+			public const int abc_primary_text_material_light = 2131230828;
 			
-			// aapt resource value: 0x7f080063
-			public const int abc_search_url_text = 2131230819;
+			// aapt resource value: 0x7f08006d
+			public const int abc_search_url_text = 2131230829;
 			
 			// aapt resource value: 0x7f080018
 			public const int abc_search_url_text_normal = 2131230744;
@@ -4181,11 +2724,11 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f08001a
 			public const int abc_search_url_text_selected = 2131230746;
 			
-			// aapt resource value: 0x7f080064
-			public const int abc_secondary_text_material_dark = 2131230820;
+			// aapt resource value: 0x7f08006e
+			public const int abc_secondary_text_material_dark = 2131230830;
 			
-			// aapt resource value: 0x7f080065
-			public const int abc_secondary_text_material_light = 2131230821;
+			// aapt resource value: 0x7f08006f
+			public const int abc_secondary_text_material_light = 2131230831;
 			
 			// aapt resource value: 0x7f08001b
 			public const int accent_material_dark = 2131230747;
@@ -4229,41 +2772,41 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f080028
 			public const int button_material_light = 2131230760;
 			
-			// aapt resource value: 0x7f080051
-			public const int calendar_active_month_bg = 2131230801;
-			
-			// aapt resource value: 0x7f080052
-			public const int calendar_bg = 2131230802;
-			
-			// aapt resource value: 0x7f080053
-			public const int calendar_divider = 2131230803;
-			
-			// aapt resource value: 0x7f080056
-			public const int calendar_highlighted_day_bg = 2131230806;
-			
-			// aapt resource value: 0x7f080054
-			public const int calendar_inactive_month_bg = 2131230804;
-			
-			// aapt resource value: 0x7f080055
-			public const int calendar_selected_day_bg = 2131230805;
-			
-			// aapt resource value: 0x7f080057
-			public const int calendar_selected_range_bg = 2131230807;
-			
-			// aapt resource value: 0x7f080059
-			public const int calendar_text_active = 2131230809;
-			
-			// aapt resource value: 0x7f080058
-			public const int calendar_text_inactive = 2131230808;
-			
-			// aapt resource value: 0x7f08005a
-			public const int calendar_text_selected = 2131230810;
-			
-			// aapt resource value: 0x7f080066
-			public const int calendar_text_selector = 2131230822;
-			
 			// aapt resource value: 0x7f08005b
-			public const int calendar_text_unselectable = 2131230811;
+			public const int calendar_active_month_bg = 2131230811;
+			
+			// aapt resource value: 0x7f08005c
+			public const int calendar_bg = 2131230812;
+			
+			// aapt resource value: 0x7f08005d
+			public const int calendar_divider = 2131230813;
+			
+			// aapt resource value: 0x7f080060
+			public const int calendar_highlighted_day_bg = 2131230816;
+			
+			// aapt resource value: 0x7f08005e
+			public const int calendar_inactive_month_bg = 2131230814;
+			
+			// aapt resource value: 0x7f08005f
+			public const int calendar_selected_day_bg = 2131230815;
+			
+			// aapt resource value: 0x7f080061
+			public const int calendar_selected_range_bg = 2131230817;
+			
+			// aapt resource value: 0x7f080063
+			public const int calendar_text_active = 2131230819;
+			
+			// aapt resource value: 0x7f080062
+			public const int calendar_text_inactive = 2131230818;
+			
+			// aapt resource value: 0x7f080064
+			public const int calendar_text_selected = 2131230820;
+			
+			// aapt resource value: 0x7f080070
+			public const int calendar_text_selector = 2131230832;
+			
+			// aapt resource value: 0x7f080065
+			public const int calendar_text_unselectable = 2131230821;
 			
 			// aapt resource value: 0x7f080009
 			public const int cardview_dark_background = 2131230729;
@@ -4307,11 +2850,11 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f080012
 			public const int common_signin_btn_light_text_pressed = 2131230738;
 			
-			// aapt resource value: 0x7f080067
-			public const int common_signin_btn_text_dark = 2131230823;
+			// aapt resource value: 0x7f080071
+			public const int common_signin_btn_text_dark = 2131230833;
 			
-			// aapt resource value: 0x7f080068
-			public const int common_signin_btn_text_light = 2131230824;
+			// aapt resource value: 0x7f080072
+			public const int common_signin_btn_text_light = 2131230834;
 			
 			// aapt resource value: 0x7f080000
 			public const int design_fab_shadow_end_color = 2131230720;
@@ -4369,6 +2912,36 @@ namespace PickUpApp.droid
 			
 			// aapt resource value: 0x7f080032
 			public const int hint_foreground_material_light = 2131230770;
+			
+			// aapt resource value: 0x7f080051
+			public const int hockeyapp_background_header = 2131230801;
+			
+			// aapt resource value: 0x7f080052
+			public const int hockeyapp_background_light = 2131230802;
+			
+			// aapt resource value: 0x7f080053
+			public const int hockeyapp_background_white = 2131230803;
+			
+			// aapt resource value: 0x7f080054
+			public const int hockeyapp_button_background = 2131230804;
+			
+			// aapt resource value: 0x7f080055
+			public const int hockeyapp_button_background_pressed = 2131230805;
+			
+			// aapt resource value: 0x7f080056
+			public const int hockeyapp_button_background_selected = 2131230806;
+			
+			// aapt resource value: 0x7f080057
+			public const int hockeyapp_text_black = 2131230807;
+			
+			// aapt resource value: 0x7f080058
+			public const int hockeyapp_text_light = 2131230808;
+			
+			// aapt resource value: 0x7f080059
+			public const int hockeyapp_text_normal = 2131230809;
+			
+			// aapt resource value: 0x7f08005a
+			public const int hockeyapp_text_white = 2131230810;
 			
 			// aapt resource value: 0x7f080033
 			public const int material_blue_grey_800 = 2131230771;
@@ -4454,11 +3027,11 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f08004e
 			public const int switch_thumb_disabled_material_light = 2131230798;
 			
-			// aapt resource value: 0x7f080069
-			public const int switch_thumb_material_dark = 2131230825;
+			// aapt resource value: 0x7f080073
+			public const int switch_thumb_material_dark = 2131230835;
 			
-			// aapt resource value: 0x7f08006a
-			public const int switch_thumb_material_light = 2131230826;
+			// aapt resource value: 0x7f080074
+			public const int switch_thumb_material_light = 2131230836;
 			
 			// aapt resource value: 0x7f08004f
 			public const int switch_thumb_normal_material_dark = 2131230799;
@@ -5117,133 +3690,295 @@ namespace PickUpApp.droid
 			public const int groups = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int ic_cast_dark = 2130837605;
+			public const int hockeyapp_btn_background = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int ic_cast_disabled_light = 2130837606;
+			public const int ic_cast_dark = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int ic_cast_light = 2130837607;
+			public const int ic_cast_disabled_light = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int ic_cast_off_light = 2130837608;
+			public const int ic_cast_light = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int ic_cast_on_0_light = 2130837609;
+			public const int ic_cast_off_light = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int ic_cast_on_1_light = 2130837610;
+			public const int ic_cast_on_0_light = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int ic_cast_on_2_light = 2130837611;
+			public const int ic_cast_on_1_light = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int ic_cast_on_light = 2130837612;
+			public const int ic_cast_on_2_light = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int ic_errorstatus = 2130837613;
+			public const int ic_cast_on_light = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int ic_media_pause = 2130837614;
+			public const int ic_errorstatus = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int ic_media_play = 2130837615;
+			public const int ic_media_pause = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int ic_media_route_disabled_mono_dark = 2130837616;
+			public const int ic_media_play = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int ic_media_route_off_mono_dark = 2130837617;
+			public const int ic_media_route_disabled_mono_dark = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int ic_media_route_on_0_mono_dark = 2130837618;
+			public const int ic_media_route_off_mono_dark = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int ic_media_route_on_1_mono_dark = 2130837619;
+			public const int ic_media_route_on_0_mono_dark = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_media_route_on_2_mono_dark = 2130837620;
+			public const int ic_media_route_on_1_mono_dark = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_media_route_on_mono_dark = 2130837621;
+			public const int ic_media_route_on_2_mono_dark = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_pause_dark = 2130837622;
+			public const int ic_media_route_on_mono_dark = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_pause_light = 2130837623;
+			public const int ic_pause_dark = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_play_dark = 2130837624;
+			public const int ic_pause_light = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_play_light = 2130837625;
+			public const int ic_play_dark = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_setting_dark = 2130837626;
+			public const int ic_play_light = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int ic_setting_light = 2130837627;
+			public const int ic_setting_dark = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_successstatus = 2130837628;
+			public const int ic_setting_light = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int Icon = 2130837629;
+			public const int ic_successstatus = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int iconphone = 2130837630;
+			public const int icn_account = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int messageicongraysmall = 2130837631;
+			public const int icn_activities = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int mr_ic_cast_dark = 2130837632;
+			public const int icn_alert = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int mr_ic_cast_light = 2130837633;
+			public const int icn_arrow_dwn = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837634;
+			public const int icn_arrow_grey = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int mr_ic_media_route_connecting_mono_light = 2130837635;
+			public const int icn_arrow_orange = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int mr_ic_media_route_mono_dark = 2130837636;
+			public const int icn_arrow_pink = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int mr_ic_media_route_mono_light = 2130837637;
+			public const int icn_arrow_up = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int mr_ic_pause_dark = 2130837638;
+			public const int icn_back = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int mr_ic_pause_light = 2130837639;
+			public const int icn_cal = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int mr_ic_play_dark = 2130837640;
+			public const int icn_circle = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int mr_ic_play_light = 2130837641;
+			public const int icn_close = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int mr_ic_settings_dark = 2130837642;
+			public const int icn_kids = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int mr_ic_settings_light = 2130837643;
-			
-			// aapt resource value: 0x7f02008f
-			public const int notification_template_icon_bg = 2130837647;
+			public const int icn_map_pin = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int roundedbg = 2130837644;
+			public const int icn_new = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int roundedbgdark = 2130837645;
+			public const int icn_new_grey = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int sun = 2130837646;
+			public const int icn_next = 2130837646;
+			
+			// aapt resource value: 0x7f02008f
+			public const int icn_phone = 2130837647;
+			
+			// aapt resource value: 0x7f020090
+			public const int icn_pin = 2130837648;
+			
+			// aapt resource value: 0x7f020091
+			public const int icn_pin_check = 2130837649;
+			
+			// aapt resource value: 0x7f020092
+			public const int icn_pin_check_sm = 2130837650;
+			
+			// aapt resource value: 0x7f020093
+			public const int icn_pin_dwn_grey = 2130837651;
+			
+			// aapt resource value: 0x7f020094
+			public const int icn_pin_dwn_grey_sm = 2130837652;
+			
+			// aapt resource value: 0x7f020095
+			public const int icn_pin_dwn_pink = 2130837653;
+			
+			// aapt resource value: 0x7f020096
+			public const int icn_pin_dwn_pink_sm = 2130837654;
+			
+			// aapt resource value: 0x7f020097
+			public const int icn_pin_grey = 2130837655;
+			
+			// aapt resource value: 0x7f020098
+			public const int icn_pin_up_grey = 2130837656;
+			
+			// aapt resource value: 0x7f020099
+			public const int icn_pin_up_grey_sm = 2130837657;
+			
+			// aapt resource value: 0x7f02009a
+			public const int icn_pin_up_pink = 2130837658;
+			
+			// aapt resource value: 0x7f02009b
+			public const int icn_pin_up_pink_sm = 2130837659;
+			
+			// aapt resource value: 0x7f02009c
+			public const int icn_places = 2130837660;
+			
+			// aapt resource value: 0x7f02009d
+			public const int icn_settings = 2130837661;
+			
+			// aapt resource value: 0x7f02009e
+			public const int icn_text = 2130837662;
+			
+			// aapt resource value: 0x7f02009f
+			public const int icon = 2130837663;
+			
+			// aapt resource value: 0x7f0200a0
+			public const int iconphone = 2130837664;
+			
+			// aapt resource value: 0x7f0200a1
+			public const int intro_bubble_1 = 2130837665;
+			
+			// aapt resource value: 0x7f0200a2
+			public const int intro_bubble_2 = 2130837666;
+			
+			// aapt resource value: 0x7f0200a3
+			public const int intro_cal = 2130837667;
+			
+			// aapt resource value: 0x7f0200a4
+			public const int intro_carpool = 2130837668;
+			
+			// aapt resource value: 0x7f0200a5
+			public const int intro_face = 2130837669;
+			
+			// aapt resource value: 0x7f0200a6
+			public const int intro_kids = 2130837670;
+			
+			// aapt resource value: 0x7f0200a7
+			public const int intro_people = 2130837671;
+			
+			// aapt resource value: 0x7f0200a8
+			public const int intro_places = 2130837672;
+			
+			// aapt resource value: 0x7f0200a9
+			public const int messageicongraysmall = 2130837673;
+			
+			// aapt resource value: 0x7f0200aa
+			public const int mr_ic_cast_dark = 2130837674;
+			
+			// aapt resource value: 0x7f0200ab
+			public const int mr_ic_cast_light = 2130837675;
+			
+			// aapt resource value: 0x7f0200ac
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837676;
+			
+			// aapt resource value: 0x7f0200ad
+			public const int mr_ic_media_route_connecting_mono_light = 2130837677;
+			
+			// aapt resource value: 0x7f0200ae
+			public const int mr_ic_media_route_mono_dark = 2130837678;
+			
+			// aapt resource value: 0x7f0200af
+			public const int mr_ic_media_route_mono_light = 2130837679;
+			
+			// aapt resource value: 0x7f0200b0
+			public const int mr_ic_pause_dark = 2130837680;
+			
+			// aapt resource value: 0x7f0200b1
+			public const int mr_ic_pause_light = 2130837681;
+			
+			// aapt resource value: 0x7f0200b2
+			public const int mr_ic_play_dark = 2130837682;
+			
+			// aapt resource value: 0x7f0200b3
+			public const int mr_ic_play_light = 2130837683;
+			
+			// aapt resource value: 0x7f0200b4
+			public const int mr_ic_settings_dark = 2130837684;
+			
+			// aapt resource value: 0x7f0200b5
+			public const int mr_ic_settings_light = 2130837685;
+			
+			// aapt resource value: 0x7f0200c5
+			public const int notification_template_icon_bg = 2130837701;
+			
+			// aapt resource value: 0x7f0200b6
+			public const int roundedbg = 2130837686;
+			
+			// aapt resource value: 0x7f0200b7
+			public const int roundedbgdark = 2130837687;
+			
+			// aapt resource value: 0x7f0200b8
+			public const int sun = 2130837688;
+			
+			// aapt resource value: 0x7f0200b9
+			public const int ui_cal_circle = 2130837689;
+			
+			// aapt resource value: 0x7f0200ba
+			public const int ui_check_emptyX = 2130837690;
+			
+			// aapt resource value: 0x7f0200bb
+			public const int ui_check_filledX = 2130837691;
+			
+			// aapt resource value: 0x7f0200bc
+			public const int ui_line_dash_grey = 2130837692;
+			
+			// aapt resource value: 0x7f0200bd
+			public const int ui_line_dash_pink = 2130837693;
+			
+			// aapt resource value: 0x7f0200be
+			public const int ui_line_green = 2130837694;
+			
+			// aapt resource value: 0x7f0200bf
+			public const int ui_messages = 2130837695;
+			
+			// aapt resource value: 0x7f0200c0
+			public const int ui_splash_logo = 2130837696;
+			
+			// aapt resource value: 0x7f0200c1
+			public const int ui_tri_green = 2130837697;
+			
+			// aapt resource value: 0x7f0200c2
+			public const int ui_tri_grey = 2130837698;
+			
+			// aapt resource value: 0x7f0200c3
+			public const int ui_tri_pink = 2130837699;
+			
+			// aapt resource value: 0x7f0200c4
+			public const int ui_tri_purple = 2130837700;
 			
 			static Drawable()
 			{
@@ -5258,8 +3993,8 @@ namespace PickUpApp.droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f090082
-			public const int action0 = 2131296386;
+			// aapt resource value: 0x7f09009e
+			public const int action0 = 2131296414;
 			
 			// aapt resource value: 0x7f09005a
 			public const int action_bar = 2131296346;
@@ -5285,8 +4020,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f09005b
 			public const int action_context_bar = 2131296347;
 			
-			// aapt resource value: 0x7f090086
-			public const int action_divider = 2131296390;
+			// aapt resource value: 0x7f0900a2
+			public const int action_divider = 2131296418;
 			
 			// aapt resource value: 0x7f090003
 			public const int action_menu_divider = 2131296259;
@@ -5318,8 +4053,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090037
 			public const int always = 2131296311;
 			
-			// aapt resource value: 0x7f09007a
-			public const int art = 2131296378;
+			// aapt resource value: 0x7f090096
+			public const int art = 2131296406;
 			
 			// aapt resource value: 0x7f090035
 			public const int beginning = 2131296309;
@@ -5330,17 +4065,35 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090050
 			public const int buttonPanel = 2131296336;
 			
-			// aapt resource value: 0x7f09007f
-			public const int buttons = 2131296383;
+			// aapt resource value: 0x7f09007b
+			public const int button_add_response = 2131296379;
 			
-			// aapt resource value: 0x7f090073
-			public const int calendar_grid = 2131296371;
+			// aapt resource value: 0x7f090076
+			public const int button_attachment = 2131296374;
+			
+			// aapt resource value: 0x7f090080
+			public const int button_login = 2131296384;
+			
+			// aapt resource value: 0x7f09007c
+			public const int button_refresh = 2131296380;
+			
+			// aapt resource value: 0x7f090077
+			public const int button_send = 2131296375;
+			
+			// aapt resource value: 0x7f090084
+			public const int button_update = 2131296388;
+			
+			// aapt resource value: 0x7f09009b
+			public const int buttons = 2131296411;
+			
+			// aapt resource value: 0x7f09008f
+			public const int calendar_grid = 2131296399;
 			
 			// aapt resource value: 0x7f090069
 			public const int calendar_view = 2131296361;
 			
-			// aapt resource value: 0x7f090083
-			public const int cancel_action = 2131296387;
+			// aapt resource value: 0x7f09009f
+			public const int cancel_action = 2131296415;
 			
 			// aapt resource value: 0x7f090012
 			public const int center = 2131296274;
@@ -5354,8 +4107,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090052
 			public const int checkbox = 2131296338;
 			
-			// aapt resource value: 0x7f090089
-			public const int chronometer = 2131296393;
+			// aapt resource value: 0x7f0900a5
+			public const int chronometer = 2131296421;
 			
 			// aapt resource value: 0x7f09001b
 			public const int clip_horizontal = 2131296283;
@@ -5381,14 +4134,14 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090043
 			public const int default_activity_button = 2131296323;
 			
-			// aapt resource value: 0x7f090079
-			public const int default_control_frame = 2131296377;
+			// aapt resource value: 0x7f090095
+			public const int default_control_frame = 2131296405;
 			
 			// aapt resource value: 0x7f09002a
 			public const int disableHome = 2131296298;
 			
-			// aapt resource value: 0x7f090080
-			public const int disconnect = 2131296384;
+			// aapt resource value: 0x7f09009c
+			public const int disconnect = 2131296412;
 			
 			// aapt resource value: 0x7f09005c
 			public const int edit_query = 2131296348;
@@ -5396,8 +4149,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090015
 			public const int end = 2131296277;
 			
-			// aapt resource value: 0x7f09008e
-			public const int end_padder = 2131296398;
+			// aapt resource value: 0x7f0900aa
+			public const int end_padder = 2131296426;
 			
 			// aapt resource value: 0x7f09000a
 			public const int enterAlways = 2131296266;
@@ -5444,8 +4197,44 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090042
 			public const int image = 2131296322;
 			
-			// aapt resource value: 0x7f09008d
-			public const int info = 2131296397;
+			// aapt resource value: 0x7f0900a9
+			public const int info = 2131296425;
+			
+			// aapt resource value: 0x7f090072
+			public const int input_email = 2131296370;
+			
+			// aapt resource value: 0x7f090074
+			public const int input_message = 2131296372;
+			
+			// aapt resource value: 0x7f090071
+			public const int input_name = 2131296369;
+			
+			// aapt resource value: 0x7f09007f
+			public const int input_password = 2131296383;
+			
+			// aapt resource value: 0x7f090073
+			public const int input_subject = 2131296371;
+			
+			// aapt resource value: 0x7f090086
+			public const int label_author = 2131296390;
+			
+			// aapt resource value: 0x7f090087
+			public const int label_date = 2131296391;
+			
+			// aapt resource value: 0x7f090079
+			public const int label_last_updated = 2131296377;
+			
+			// aapt resource value: 0x7f09006e
+			public const int label_message = 2131296366;
+			
+			// aapt resource value: 0x7f090088
+			public const int label_text = 2131296392;
+			
+			// aapt resource value: 0x7f090082
+			public const int label_title = 2131296386;
+			
+			// aapt resource value: 0x7f090083
+			public const int label_version = 2131296387;
 			
 			// aapt resource value: 0x7f090017
 			public const int left = 2131296279;
@@ -5453,41 +4242,47 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f09006b
 			public const int left_arrow = 2131296363;
 			
-			// aapt resource value: 0x7f090087
-			public const int line1 = 2131296391;
+			// aapt resource value: 0x7f0900a3
+			public const int line1 = 2131296419;
 			
-			// aapt resource value: 0x7f09008b
-			public const int line3 = 2131296395;
+			// aapt resource value: 0x7f0900a7
+			public const int line3 = 2131296423;
 			
 			// aapt resource value: 0x7f090028
 			public const int listMode = 2131296296;
 			
+			// aapt resource value: 0x7f090089
+			public const int list_attachments = 2131296393;
+			
+			// aapt resource value: 0x7f09007d
+			public const int list_feedback_messages = 2131296381;
+			
 			// aapt resource value: 0x7f090044
 			public const int list_item = 2131296324;
 			
-			// aapt resource value: 0x7f090070
-			public const int loadingImage = 2131296368;
+			// aapt resource value: 0x7f09008c
+			public const int loadingImage = 2131296396;
 			
-			// aapt resource value: 0x7f09006e
-			public const int loadingProgressBar = 2131296366;
+			// aapt resource value: 0x7f09008a
+			public const int loadingProgressBar = 2131296394;
 			
-			// aapt resource value: 0x7f090071
-			public const int loadingProgressWheel = 2131296369;
+			// aapt resource value: 0x7f09008d
+			public const int loadingProgressWheel = 2131296397;
 			
-			// aapt resource value: 0x7f090085
-			public const int media_actions = 2131296389;
+			// aapt resource value: 0x7f0900a1
+			public const int media_actions = 2131296417;
 			
-			// aapt resource value: 0x7f090078
-			public const int media_route_control_frame = 2131296376;
+			// aapt resource value: 0x7f090094
+			public const int media_route_control_frame = 2131296404;
 			
-			// aapt resource value: 0x7f090074
-			public const int media_route_list = 2131296372;
+			// aapt resource value: 0x7f090090
+			public const int media_route_list = 2131296400;
 			
-			// aapt resource value: 0x7f09007d
-			public const int media_route_volume_layout = 2131296381;
+			// aapt resource value: 0x7f090099
+			public const int media_route_volume_layout = 2131296409;
 			
-			// aapt resource value: 0x7f09007e
-			public const int media_route_volume_slider = 2131296382;
+			// aapt resource value: 0x7f09009a
+			public const int media_route_volume_slider = 2131296410;
 			
 			// aapt resource value: 0x7f090036
 			public const int middle = 2131296310;
@@ -5498,8 +4293,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090030
 			public const int multiply = 2131296304;
 			
-			// aapt resource value: 0x7f090072
-			public const int myButton = 2131296370;
+			// aapt resource value: 0x7f09008e
+			public const int myButton = 2131296398;
 			
 			// aapt resource value: 0x7f09003a
 			public const int never = 2131296314;
@@ -5519,8 +4314,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090010
 			public const int pin = 2131296272;
 			
-			// aapt resource value: 0x7f09007b
-			public const int play_pause = 2131296379;
+			// aapt resource value: 0x7f090097
+			public const int play_pause = 2131296407;
 			
 			// aapt resource value: 0x7f090006
 			public const int progress_circular = 2131296262;
@@ -5537,8 +4332,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f09006a
 			public const int right_arrow = 2131296362;
 			
-			// aapt resource value: 0x7f090076
-			public const int route_name = 2131296374;
+			// aapt resource value: 0x7f090092
+			public const int route_name = 2131296402;
 			
 			// aapt resource value: 0x7f090024
 			public const int satellite = 2131296292;
@@ -5588,8 +4383,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090068
 			public const int select_dialog_listview = 2131296360;
 			
-			// aapt resource value: 0x7f090077
-			public const int settings = 2131296375;
+			// aapt resource value: 0x7f090093
+			public const int settings = 2131296403;
 			
 			// aapt resource value: 0x7f090053
 			public const int shortcut = 2131296339;
@@ -5624,17 +4419,17 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090019
 			public const int start = 2131296281;
 			
-			// aapt resource value: 0x7f090084
-			public const int status_bar_latest_event_content = 2131296388;
+			// aapt resource value: 0x7f0900a0
+			public const int status_bar_latest_event_content = 2131296416;
 			
-			// aapt resource value: 0x7f090081
-			public const int stop = 2131296385;
+			// aapt resource value: 0x7f09009d
+			public const int stop = 2131296413;
 			
 			// aapt resource value: 0x7f090065
 			public const int submit_area = 2131296357;
 			
-			// aapt resource value: 0x7f09007c
-			public const int subtitle = 2131296380;
+			// aapt resource value: 0x7f090098
+			public const int subtitle = 2131296408;
 			
 			// aapt resource value: 0x7f090029
 			public const int tabMode = 2131296297;
@@ -5642,26 +4437,29 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f090025
 			public const int terrain = 2131296293;
 			
-			// aapt resource value: 0x7f09008c
-			public const int text = 2131296396;
+			// aapt resource value: 0x7f0900a8
+			public const int text = 2131296424;
 			
-			// aapt resource value: 0x7f09008a
-			public const int text2 = 2131296394;
+			// aapt resource value: 0x7f0900a6
+			public const int text2 = 2131296422;
 			
 			// aapt resource value: 0x7f09004d
 			public const int textSpacerNoButtons = 2131296333;
 			
-			// aapt resource value: 0x7f09006f
-			public const int textViewStatus = 2131296367;
+			// aapt resource value: 0x7f09008b
+			public const int textViewStatus = 2131296395;
 			
-			// aapt resource value: 0x7f090088
-			public const int time = 2131296392;
+			// aapt resource value: 0x7f09007e
+			public const int text_headline = 2131296382;
+			
+			// aapt resource value: 0x7f0900a4
+			public const int time = 2131296420;
 			
 			// aapt resource value: 0x7f090046
 			public const int title = 2131296326;
 			
-			// aapt resource value: 0x7f090075
-			public const int title_bar = 2131296373;
+			// aapt resource value: 0x7f090091
+			public const int title_bar = 2131296401;
 			
 			// aapt resource value: 0x7f090049
 			public const int title_template = 2131296329;
@@ -5678,14 +4476,35 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f09002f
 			public const int useLogo = 2131296303;
 			
+			// aapt resource value: 0x7f090081
+			public const int view_header = 2131296385;
+			
 			// aapt resource value: 0x7f090000
 			public const int view_offset_helper = 2131296256;
+			
+			// aapt resource value: 0x7f090085
+			public const int web_update_details = 2131296389;
 			
 			// aapt resource value: 0x7f09003b
 			public const int withText = 2131296315;
 			
 			// aapt resource value: 0x7f09003c
 			public const int wrap_content = 2131296316;
+			
+			// aapt resource value: 0x7f090075
+			public const int wrapper_attachments = 2131296373;
+			
+			// aapt resource value: 0x7f090070
+			public const int wrapper_feedback = 2131296368;
+			
+			// aapt resource value: 0x7f09006f
+			public const int wrapper_feedback_scroll = 2131296367;
+			
+			// aapt resource value: 0x7f090078
+			public const int wrapper_messages = 2131296376;
+			
+			// aapt resource value: 0x7f09007a
+			public const int wrapper_messages_buttons = 2131296378;
 			
 			static Id()
 			{
@@ -5843,67 +4662,85 @@ namespace PickUpApp.droid
 			public const int dialog = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int loading = 2130903076;
+			public const int hockeyapp_activity_expiry_info = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int loadingimage = 2130903077;
+			public const int hockeyapp_activity_feedback = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int loadingprogress = 2130903078;
+			public const int hockeyapp_activity_login = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int Main = 2130903079;
+			public const int hockeyapp_activity_update = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int month = 2130903080;
+			public const int hockeyapp_fragment_update = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int mr_media_route_chooser_dialog = 2130903081;
+			public const int hockeyapp_view_feedback_message = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int mr_media_route_controller_material_dialog_b = 2130903082;
+			public const int loading = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int mr_media_route_list_item = 2130903083;
+			public const int loadingimage = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int notification_media_action = 2130903084;
+			public const int loadingprogress = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int notification_media_cancel_action = 2130903085;
+			public const int Main = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int notification_template_big_media = 2130903086;
+			public const int month = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_template_big_media_narrow = 2130903087;
+			public const int mr_media_route_chooser_dialog = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_template_lines = 2130903088;
+			public const int mr_media_route_controller_material_dialog_b = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_template_media = 2130903089;
+			public const int mr_media_route_list_item = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_template_part_chronometer = 2130903090;
+			public const int notification_media_action = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int notification_template_part_time = 2130903091;
+			public const int notification_media_cancel_action = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int select_dialog_item_material = 2130903092;
+			public const int notification_template_big_media = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int select_dialog_multichoice_material = 2130903093;
+			public const int notification_template_big_media_narrow = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int select_dialog_singlechoice_material = 2130903094;
+			public const int notification_template_lines = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int support_simple_spinner_dropdown_item = 2130903095;
+			public const int notification_template_media = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int week = 2130903096;
+			public const int notification_template_part_chronometer = 2130903096;
+			
+			// aapt resource value: 0x7f030039
+			public const int notification_template_part_time = 2130903097;
+			
+			// aapt resource value: 0x7f03003a
+			public const int select_dialog_item_material = 2130903098;
+			
+			// aapt resource value: 0x7f03003b
+			public const int select_dialog_multichoice_material = 2130903099;
+			
+			// aapt resource value: 0x7f03003c
+			public const int select_dialog_singlechoice_material = 2130903100;
+			
+			// aapt resource value: 0x7f03003d
+			public const int support_simple_spinner_dropdown_item = 2130903101;
+			
+			// aapt resource value: 0x7f03003e
+			public const int week = 2130903102;
 			
 			static Layout()
 			{
@@ -5918,11 +4755,11 @@ namespace PickUpApp.droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a0041
-			public const int ApplicationName = 2131361857;
+			// aapt resource value: 0x7f0a0085
+			public const int ApplicationName = 2131361925;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int Hello = 2131361856;
+			// aapt resource value: 0x7f0a0084
+			public const int Hello = 2131361924;
 			
 			// aapt resource value: 0x7f0a002e
 			public const int abc_action_bar_home_description = 2131361838;
@@ -5975,8 +4812,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f0a003e
 			public const int abc_toolbar_collapse_description = 2131361854;
 			
-			// aapt resource value: 0x7f0a0048
-			public const int app_name = 2131361864;
+			// aapt resource value: 0x7f0a008c
+			public const int app_name = 2131361932;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int appbar_scrolling_view_behavior = 2131361792;
@@ -6083,23 +4920,227 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f0a0002
 			public const int common_signin_button_text_long = 2131361794;
 			
-			// aapt resource value: 0x7f0a0043
-			public const int day_name_format = 2131361859;
+			// aapt resource value: 0x7f0a0087
+			public const int day_name_format = 2131361927;
 			
-			// aapt resource value: 0x7f0a0046
-			public const int full_date_format = 2131361862;
+			// aapt resource value: 0x7f0a008a
+			public const int full_date_format = 2131361930;
 			
-			// aapt resource value: 0x7f0a0047
-			public const int hello = 2131361863;
+			// aapt resource value: 0x7f0a008b
+			public const int hello = 2131361931;
 			
-			// aapt resource value: 0x7f0a0044
-			public const int invalid_date = 2131361860;
+			// aapt resource value: 0x7f0a0040
+			public const int hockeyapp_crash_dialog_app_name_fallback = 2131361856;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int hockeyapp_crash_dialog_message = 2131361857;
 			
 			// aapt resource value: 0x7f0a0042
-			public const int library_name = 2131361858;
+			public const int hockeyapp_crash_dialog_negative_button = 2131361858;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int hockeyapp_crash_dialog_neutral_button = 2131361859;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int hockeyapp_crash_dialog_positive_button = 2131361860;
 			
 			// aapt resource value: 0x7f0a0045
-			public const int month_name_format = 2131361861;
+			public const int hockeyapp_crash_dialog_title = 2131361861;
+			
+			// aapt resource value: 0x7f0a0046
+			public const int hockeyapp_dialog_error_message = 2131361862;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int hockeyapp_dialog_error_title = 2131361863;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int hockeyapp_dialog_negative_button = 2131361864;
+			
+			// aapt resource value: 0x7f0a0049
+			public const int hockeyapp_dialog_positive_button = 2131361865;
+			
+			// aapt resource value: 0x7f0a004a
+			public const int hockeyapp_download_failed_dialog_message = 2131361866;
+			
+			// aapt resource value: 0x7f0a004b
+			public const int hockeyapp_download_failed_dialog_negative_button = 2131361867;
+			
+			// aapt resource value: 0x7f0a004c
+			public const int hockeyapp_download_failed_dialog_positive_button = 2131361868;
+			
+			// aapt resource value: 0x7f0a004d
+			public const int hockeyapp_download_failed_dialog_title = 2131361869;
+			
+			// aapt resource value: 0x7f0a004e
+			public const int hockeyapp_error_no_network_message = 2131361870;
+			
+			// aapt resource value: 0x7f0a004f
+			public const int hockeyapp_expiry_info_text = 2131361871;
+			
+			// aapt resource value: 0x7f0a0050
+			public const int hockeyapp_expiry_info_title = 2131361872;
+			
+			// aapt resource value: 0x7f0a0051
+			public const int hockeyapp_feedback_attach_file = 2131361873;
+			
+			// aapt resource value: 0x7f0a0052
+			public const int hockeyapp_feedback_attach_picture = 2131361874;
+			
+			// aapt resource value: 0x7f0a0053
+			public const int hockeyapp_feedback_attachment_button_text = 2131361875;
+			
+			// aapt resource value: 0x7f0a0054
+			public const int hockeyapp_feedback_attachment_error = 2131361876;
+			
+			// aapt resource value: 0x7f0a0055
+			public const int hockeyapp_feedback_attachment_loading = 2131361877;
+			
+			// aapt resource value: 0x7f0a0056
+			public const int hockeyapp_feedback_email_hint = 2131361878;
+			
+			// aapt resource value: 0x7f0a0057
+			public const int hockeyapp_feedback_failed_text = 2131361879;
+			
+			// aapt resource value: 0x7f0a0058
+			public const int hockeyapp_feedback_failed_title = 2131361880;
+			
+			// aapt resource value: 0x7f0a0059
+			public const int hockeyapp_feedback_generic_error = 2131361881;
+			
+			// aapt resource value: 0x7f0a005a
+			public const int hockeyapp_feedback_last_updated_text = 2131361882;
+			
+			// aapt resource value: 0x7f0a005b
+			public const int hockeyapp_feedback_max_attachments_allowed = 2131361883;
+			
+			// aapt resource value: 0x7f0a005c
+			public const int hockeyapp_feedback_message_hint = 2131361884;
+			
+			// aapt resource value: 0x7f0a005d
+			public const int hockeyapp_feedback_name_hint = 2131361885;
+			
+			// aapt resource value: 0x7f0a005e
+			public const int hockeyapp_feedback_refresh_button_text = 2131361886;
+			
+			// aapt resource value: 0x7f0a005f
+			public const int hockeyapp_feedback_response_button_text = 2131361887;
+			
+			// aapt resource value: 0x7f0a0060
+			public const int hockeyapp_feedback_select_file = 2131361888;
+			
+			// aapt resource value: 0x7f0a0061
+			public const int hockeyapp_feedback_select_picture = 2131361889;
+			
+			// aapt resource value: 0x7f0a0062
+			public const int hockeyapp_feedback_send_button_text = 2131361890;
+			
+			// aapt resource value: 0x7f0a0063
+			public const int hockeyapp_feedback_send_generic_error = 2131361891;
+			
+			// aapt resource value: 0x7f0a0064
+			public const int hockeyapp_feedback_send_network_error = 2131361892;
+			
+			// aapt resource value: 0x7f0a0065
+			public const int hockeyapp_feedback_subject_hint = 2131361893;
+			
+			// aapt resource value: 0x7f0a0066
+			public const int hockeyapp_feedback_title = 2131361894;
+			
+			// aapt resource value: 0x7f0a0067
+			public const int hockeyapp_feedback_validate_email_empty = 2131361895;
+			
+			// aapt resource value: 0x7f0a0068
+			public const int hockeyapp_feedback_validate_email_error = 2131361896;
+			
+			// aapt resource value: 0x7f0a0069
+			public const int hockeyapp_feedback_validate_name_error = 2131361897;
+			
+			// aapt resource value: 0x7f0a006a
+			public const int hockeyapp_feedback_validate_subject_error = 2131361898;
+			
+			// aapt resource value: 0x7f0a006b
+			public const int hockeyapp_feedback_validate_text_error = 2131361899;
+			
+			// aapt resource value: 0x7f0a006c
+			public const int hockeyapp_login_email_hint = 2131361900;
+			
+			// aapt resource value: 0x7f0a006d
+			public const int hockeyapp_login_headline_text = 2131361901;
+			
+			// aapt resource value: 0x7f0a006e
+			public const int hockeyapp_login_headline_text_email_only = 2131361902;
+			
+			// aapt resource value: 0x7f0a006f
+			public const int hockeyapp_login_login_button_text = 2131361903;
+			
+			// aapt resource value: 0x7f0a0070
+			public const int hockeyapp_login_missing_credentials_toast = 2131361904;
+			
+			// aapt resource value: 0x7f0a0071
+			public const int hockeyapp_login_password_hint = 2131361905;
+			
+			// aapt resource value: 0x7f0a0072
+			public const int hockeyapp_paint_dialog_message = 2131361906;
+			
+			// aapt resource value: 0x7f0a0073
+			public const int hockeyapp_paint_dialog_negative_button = 2131361907;
+			
+			// aapt resource value: 0x7f0a0074
+			public const int hockeyapp_paint_dialog_neutral_button = 2131361908;
+			
+			// aapt resource value: 0x7f0a0075
+			public const int hockeyapp_paint_dialog_positive_button = 2131361909;
+			
+			// aapt resource value: 0x7f0a0076
+			public const int hockeyapp_paint_indicator_toast = 2131361910;
+			
+			// aapt resource value: 0x7f0a0077
+			public const int hockeyapp_paint_menu_clear = 2131361911;
+			
+			// aapt resource value: 0x7f0a0078
+			public const int hockeyapp_paint_menu_save = 2131361912;
+			
+			// aapt resource value: 0x7f0a0079
+			public const int hockeyapp_paint_menu_undo = 2131361913;
+			
+			// aapt resource value: 0x7f0a007a
+			public const int hockeyapp_permission_dialog_negative_button = 2131361914;
+			
+			// aapt resource value: 0x7f0a007b
+			public const int hockeyapp_permission_dialog_positive_button = 2131361915;
+			
+			// aapt resource value: 0x7f0a007c
+			public const int hockeyapp_permission_update_message = 2131361916;
+			
+			// aapt resource value: 0x7f0a007d
+			public const int hockeyapp_permission_update_title = 2131361917;
+			
+			// aapt resource value: 0x7f0a007e
+			public const int hockeyapp_update_button = 2131361918;
+			
+			// aapt resource value: 0x7f0a007f
+			public const int hockeyapp_update_dialog_message = 2131361919;
+			
+			// aapt resource value: 0x7f0a0080
+			public const int hockeyapp_update_dialog_negative_button = 2131361920;
+			
+			// aapt resource value: 0x7f0a0081
+			public const int hockeyapp_update_dialog_positive_button = 2131361921;
+			
+			// aapt resource value: 0x7f0a0082
+			public const int hockeyapp_update_dialog_title = 2131361922;
+			
+			// aapt resource value: 0x7f0a0083
+			public const int hockeyapp_update_mandatory_toast = 2131361923;
+			
+			// aapt resource value: 0x7f0a0088
+			public const int invalid_date = 2131361928;
+			
+			// aapt resource value: 0x7f0a0086
+			public const int library_name = 2131361926;
+			
+			// aapt resource value: 0x7f0a0089
+			public const int month_name_format = 2131361929;
 			
 			// aapt resource value: 0x7f0a0023
 			public const int mr_media_route_button_content_description = 2131361827;
@@ -6579,17 +5620,17 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f050001
 			public const int Base_Widget_Design_TabLayout = 2131034113;
 			
-			// aapt resource value: 0x7f050145
-			public const int CalendarCell = 2131034437;
+			// aapt resource value: 0x7f050148
+			public const int CalendarCell = 2131034440;
+			
+			// aapt resource value: 0x7f05014a
+			public const int CalendarCell_CalendarDate = 2131034442;
+			
+			// aapt resource value: 0x7f050149
+			public const int CalendarCell_DayHeader = 2131034441;
 			
 			// aapt resource value: 0x7f050147
-			public const int CalendarCell_CalendarDate = 2131034439;
-			
-			// aapt resource value: 0x7f050146
-			public const int CalendarCell_DayHeader = 2131034438;
-			
-			// aapt resource value: 0x7f050144
-			public const int CalendarTitle = 2131034436;
+			public const int CalendarTitle = 2131034439;
 			
 			// aapt resource value: 0x7f05000f
 			public const int CardView = 2131034127;
@@ -6599,6 +5640,15 @@ namespace PickUpApp.droid
 			
 			// aapt resource value: 0x7f050011
 			public const int CardView_Light = 2131034129;
+			
+			// aapt resource value: 0x7f050144
+			public const int HockeyApp_ButtonStyle = 2131034436;
+			
+			// aapt resource value: 0x7f050145
+			public const int HockeyApp_EditTextStyle = 2131034437;
+			
+			// aapt resource value: 0x7f050146
+			public const int HockeyApp_SingleLineInputStyle = 2131034438;
 			
 			// aapt resource value: 0x7f050025
 			public const int Platform_AppCompat = 2131034149;

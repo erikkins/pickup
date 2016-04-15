@@ -64,11 +64,16 @@ namespace PickUpApp
 
 
 			//animate the arrow
+
 			this.Appearing += async delegate(object sender, EventArgs e) {
 				Rectangle oldBounds = orangearrow.Bounds;
 				Rectangle newBounds = new Rectangle (oldBounds.X + 50, oldBounds.Y, oldBounds.Width, oldBounds.Height);
 				for (int i=0; i < 5; i++)
 				{
+//					await orangearrow.TranslateTo(newBounds.X, newBounds.Y, 700, Easing.Linear);
+//					await orangearrow.TranslateTo(oldBounds.X, oldBounds.Y, 700, Easing.Linear);
+//					await System.Threading.Tasks.Task.Delay(300);
+
 					//do it 5 times
 					await orangearrow.LayoutTo (newBounds, 700, Easing.Linear);
 					await orangearrow.LayoutTo (oldBounds, 700, Easing.Linear);

@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using PickUpApp.iOS;
 
+
 [assembly:ExportRenderer (typeof(NavigationPage), typeof(iOSNavigationRenderer))]
 
 namespace PickUpApp.iOS
@@ -21,5 +22,6 @@ namespace PickUpApp.iOS
 			NavigationBar.BackIndicatorImage = imgBack;
 			NavigationBar.BackIndicatorTransitionMaskImage = imgBack;
 		}
+
 	}
 }

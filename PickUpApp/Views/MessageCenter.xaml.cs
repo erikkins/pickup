@@ -24,6 +24,7 @@ namespace PickUpApp
 			elv.Header = null;
 			elv.IsPullToRefreshEnabled = true;
 
+
 			elv.BindingContextChanged += delegate(object sender, EventArgs e) {
 				//System.Diagnostics.Debug.WriteLine("BIGBINDING CHANGED");
 			};
@@ -208,6 +209,9 @@ namespace PickUpApp
 
 		protected override void OnBindingContextChanged()
 		{
+
+			try{
+
 			System.Diagnostics.Debug.WriteLine ("BINDING CONTEXT");
 			base.OnBindingContextChanged ();
 
@@ -228,7 +232,7 @@ namespace PickUpApp
 			slMain.Spacing = 0;
 
 			//add some space
-			BoxView bv = new BoxView();
+			BoxView bv = new BoxView ();
 			bv.HeightRequest = 10;
 			slMain.Children.Add (bv);
 
@@ -249,7 +253,7 @@ namespace PickUpApp
 			l.HorizontalOptions = LayoutOptions.StartAndExpand;
 			slVert.Children.Add (l);
 
-			Label lFrom = new Label();
+			Label lFrom = new Label ();
 			if (_isActionable) {
 				lFrom.Text = "from " + mv.Sender + " • " + DateTimeExtensions.GetTimeSpan (mv.Created.ToLocalTime ().DateTime);
 			} else {
@@ -264,8 +268,8 @@ namespace PickUpApp
 			Label lActivityDate = new Label ();
 
 			if (DateTime.Now.Date == mv.ScheduleDate.Date) {
-			//if (DateTime.Now.Date == mv.ScheduleDate.Date) {
-			//if (DateTime.UtcNow.Date.ToLocalTime().Date == mv.ScheduleDate.ToUniversalTime().Date){
+				//if (DateTime.Now.Date == mv.ScheduleDate.Date) {
+				//if (DateTime.UtcNow.Date.ToLocalTime().Date == mv.ScheduleDate.ToUniversalTime().Date){
 				lActivityDate.Text = "for TODAY";
 				isToday = true;
 	
@@ -292,7 +296,7 @@ namespace PickUpApp
 				HeightRequest = 50,
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.Center,
-				Source= mv.SenderPhotoURL
+				Source = mv.SenderPhotoURL
 			};	
 			sl.Children.Add (ci);
 
@@ -317,7 +321,7 @@ namespace PickUpApp
 			Color bgColor = Color.White;
 
 			//add a spacer for the grid...20px or so
-			BoxView bv2 = new BoxView();
+			BoxView bv2 = new BoxView ();
 			bv2.BackgroundColor = bgColor;
 
 			bv2.HeightRequest = 20;
@@ -325,26 +329,23 @@ namespace PickUpApp
 
 			//ok, now add the details
 
-			Grid detailGrid = new Grid
-			{
+			Grid detailGrid = new Grid {
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				BackgroundColor = bgColor,
 				RowSpacing = 0,
 				//ColumnSpacing = 0,
-				RowDefinitions = 
-				{
-					new RowDefinition { Height = new GridLength(25, GridUnitType.Absolute) },
-					new RowDefinition {Height = new GridLength(1, GridUnitType.Auto)},
-					new RowDefinition {Height = new GridLength(48, GridUnitType.Absolute) }
+				RowDefinitions = {
+					new RowDefinition { Height = new GridLength (25, GridUnitType.Absolute) },
+					new RowDefinition { Height = new GridLength (1, GridUnitType.Auto) },
+					new RowDefinition { Height = new GridLength (48, GridUnitType.Absolute) }
 				},
-				ColumnDefinitions = 
-				{
-					new ColumnDefinition { Width = new GridLength(58, GridUnitType.Absolute) },
+				ColumnDefinitions = {
+					new ColumnDefinition { Width = new GridLength (58, GridUnitType.Absolute) },
 					new ColumnDefinition { Width = GridLength.Auto },
-					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-					new ColumnDefinition { Width = new GridLength(46, GridUnitType.Absolute) }
+					new ColumnDefinition { Width = new GridLength (1, GridUnitType.Star) },
+					new ColumnDefinition { Width = new GridLength (46, GridUnitType.Absolute) }
 				}
-				};		//start nav images
+			};		//start nav images
 			//there are 3 phases...
 			// 1) complete (gray background with green pin check) [autocomplete after 15 minutes?]
 			// 2) coming up next (white background with pink pin check)
@@ -428,8 +429,8 @@ namespace PickUpApp
 				ds.StartingLocation = startLoc;
 				ds.EndingLocation = endLoc;
 				//ds.CalculateDriveTime ();
-				var task = System.Threading.Tasks.Task.Run(async () => await ds.CalculateDriveTime());
-				task.Wait();
+				var task = System.Threading.Tasks.Task.Run (async () => await ds.CalculateDriveTime ());
+				task.Wait ();
 				travelMinutes = ds.TravelTime;
 				travelDistance = ds.Distance;
 			}
@@ -455,14 +456,14 @@ namespace PickUpApp
 			if (t.IsPickup) {
 				l2.FormattedText.Spans.Add (new Span { Text = "Leave current location", ForegroundColor = Color.Black });
 				l2.FormattedText.Spans.Add (new Span {
-					Text = "\nDrive " + Math.Round(travelDistance,1) + " miles",
+					Text = "\nDrive " + Math.Round (travelDistance, 1) + " miles",
 					ForegroundColor = Color.Gray,
 					FontAttributes = FontAttributes.Italic
 				});
 			} else {
 				l2.FormattedText.Spans.Add (new Span { Text = "Leave current location", ForegroundColor = Color.Black });
 				l2.FormattedText.Spans.Add (new Span {
-					Text = "\nDrive " + Math.Round(travelDistance,1) + " miles",
+					Text = "\nDrive " + Math.Round (travelDistance, 1) + " miles",
 					ForegroundColor = Color.Gray,
 					FontAttributes = FontAttributes.Italic
 				});
@@ -512,7 +513,7 @@ namespace PickUpApp
 
 
 			l2.FontAttributes = FontAttributes.Bold;
-			detailGrid.Children.Add (l2, 2, 3, 0, 2 );
+			detailGrid.Children.Add (l2, 2, 3, 0, 2);
 
 //			Button b = new Button ();
 //			b.Image = arrowpink;
@@ -551,13 +552,13 @@ namespace PickUpApp
 			} else {
 				l4.FormattedText.Spans.Add (new Span { Text = t.Activity + " Dropoff", ForegroundColor = Color.Black });
 			}
-			l4.FormattedText.Spans.Add (new Span { Text = "\n" + t.Address, ForegroundColor = Color.Gray});
+			l4.FormattedText.Spans.Add (new Span { Text = "\n" + t.Address, ForegroundColor = Color.Gray });
 			l4.LineBreakMode = LineBreakMode.WordWrap;
 			l4.VerticalOptions = LayoutOptions.StartAndExpand;
 
 			//count the newlines in address and add height for each one
 
-			if (CountOfNewlines(t.Address) > 2) {
+			if (CountOfNewlines (t.Address) > 2) {
 				mainlayout.HeightRequest += CountOfNewlines (t.Address) * (l4.FontSize);
 			}
 
@@ -625,7 +626,7 @@ namespace PickUpApp
 			slDetail.BackgroundColor = Color.FromRgb (157, 157, 157);
 			slDetail.Padding = new Thickness (0.5);
 			slDetail.HorizontalOptions = LayoutOptions.Center;
-			slDetail.Children.Add(mainlayout);
+			slDetail.Children.Add (mainlayout);
 
 
 			slMain.Children.Add (slDetail);
@@ -658,64 +659,54 @@ namespace PickUpApp
 
 					//start preemptive
 					//before we allow them to accept, let's check preemptively
-					App.hudder.showHUD("Preemptive check...");
-					ActivityAddEditViewModel aaevm = new ActivityAddEditViewModel(App.client, null, null, null);
+					App.hudder.showHUD ("Preemptive check...");
+					ActivityAddEditViewModel aaevm = new ActivityAddEditViewModel (App.client, null, null, null);
 					aaevm.IsLoading = false;
-					await aaevm.CheckPreemptive(mv.ScheduleDate.DayOfWeek.ToString().Substring(0,2));
+					await aaevm.CheckPreemptive (mv.ScheduleDate.DayOfWeek.ToString ().Substring (0, 2));
 					//string tester = "";
 
 					//mv.MessageToday.StartPlaceTravelTime = travelMinutes;
 					//mv.MessageToday.EndPlaceTravelTime = travelMinutes;
 
 					Period overlapPeriod;
-					if(mv.MessageToday.IsPickup)
-					{
-						overlapPeriod = new Period(mv.MessageToday.PickupDT.AddHours(-1), mv.MessageToday.PickupDT.AddHours(1));
-					}
-					else
-					{
-						overlapPeriod = new Period(mv.MessageToday.DropoffDT.AddHours(-1), mv.MessageToday.DropoffDT.AddHours(1));
+					if (mv.MessageToday.IsPickup) {
+						overlapPeriod = new Period (mv.MessageToday.PickupDT.AddHours (-1), mv.MessageToday.PickupDT.AddHours (1));
+					} else {
+						overlapPeriod = new Period (mv.MessageToday.DropoffDT.AddHours (-1), mv.MessageToday.DropoffDT.AddHours (1));
 					}
 
 
 					bool needsCheck = false;
-					foreach (Preemptive thispe in aaevm.Preemptives)
-					{
-						if (thispe.id == mv.MessageToday.id)
-						{
+					foreach (Preemptive thispe in aaevm.Preemptives) {
+						if (thispe.id == mv.MessageToday.id) {
 							continue;
 						}
 
-						Period pDropoff = new Period(thispe.DropoffDiff, thispe.DropoffDT);
-						Period pPickup = new Period(thispe.PickupDiff, thispe.PickupDT);
+						Period pDropoff = new Period (thispe.DropoffDiff, thispe.DropoffDT);
+						Period pPickup = new Period (thispe.PickupDiff, thispe.PickupDT);
 
-						if (pDropoff.Overlaps(overlapPeriod))
-						{
+						if (pDropoff.Overlaps (overlapPeriod)) {
 							needsCheck = true;
 							//tester += mv.MessageToday.Activity + " pickup may conflict with " + thispe.Activity + " dropoff" + Environment.NewLine;
 						}
-						if (pDropoff.Overlaps(overlapPeriod))
-						{
+						if (pDropoff.Overlaps (overlapPeriod)) {
 							needsCheck = true;
 							//tester +=  mv.MessageToday.Activity + " pickup conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
 						}
-						if (pPickup.Overlaps(overlapPeriod))
-						{
+						if (pPickup.Overlaps (overlapPeriod)) {
 							needsCheck = true;
 							//tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " dropoff" + Environment.NewLine;
 						}
-						if (pPickup.Overlaps(overlapPeriod))
-						{
+						if (pPickup.Overlaps (overlapPeriod)) {
 							needsCheck = true;
 							//tester += mv.MessageToday.Activity + " dropoff conflicts with " + thispe.Activity + " pickup" + Environment.NewLine;
 						}							
 					}						
 
-					App.hudder.hideHUD();
+					App.hudder.hideHUD ();
 
 					RespondMessage rm = new RespondMessage ();
-					if (needsCheck)
-					{
+					if (needsCheck) {
 						rm.Conditional = "You may have a conflict. Press Cancel to check your schedule before accepting.";
 					}
 
@@ -767,7 +758,13 @@ namespace PickUpApp
 			}
 
 			View = slMain;
+
 		}
+			catch(Exception inviteex) {
+			}
+		
+		
+	}
 	}
 
 	public class CircleRequestCell : ViewCell

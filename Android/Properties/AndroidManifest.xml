@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="pickUpApp.Android">
-	<uses-sdk android:targetSdkVersion="23" />
-	<application android:label="PickUp">
+	<uses-sdk android:targetSdkVersion="23" android:minSdkVersion="19" />
+	<application android:icon="@drawable/icon" android:label="FamFetch">
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC5Pz9ySb_bI83GqUu9j00E8GZms8z6-rQ" />
 		<service android:name="pickUpApp.droid..PickupIntentService" android:enabled="true" android:exported="false" />
+		<activity android:name="net.hockeyapp.android.UpdateActivity" />
 	</application>
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -23,5 +24,5 @@
 	<uses-permission android:name="android.permission.BLUETOOTH" />
 	<uses-permission android:name="android.permission.WRITE_CALENDAR" />
 	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
-	<uses-permission android:name="android.permission.READ_CALENDAR" />
-</manifest>
+	<uses-permission android:name="android.permission.READ_CALENDAR" />s
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /></manifest>

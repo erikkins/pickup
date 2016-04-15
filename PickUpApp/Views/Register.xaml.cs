@@ -155,6 +155,24 @@ namespace PickUpApp
 			};
 
 
+			bv = new BoxView ();
+			bv.HeightRequest = 15;
+			fields.Children.Add (bv);
+
+			//add a login button (for those who somehow got stuck here)
+			Label hll = new Label ();
+			hll.FormattedText = new FormattedString ();
+			hll.FormattedText.Spans.Add (new Span { Text = "If you already registered, click here", FontSize= 14, ForegroundColor = Color.White, FontAttributes = FontAttributes.Bold });
+			hll.HorizontalOptions = LayoutOptions.Center;
+
+			var tap = new TapGestureRecognizer ();
+			tap.Tapped += (sender, e) => {
+				MessagingCenter.Send<string>("intro", "login");
+			};
+
+			hll.GestureRecognizers.Add(tap);
+			fields.Children.Add (hll);
+
 		}
 
 		protected SplashViewModel ViewModel

@@ -44,6 +44,7 @@ namespace PickUpApp
 				//let's try this with a continueWith
 				await ViewModel.ExecuteAddEditCommand().ContinueWith( x => {
 					Device.BeginInvokeOnMainThread(()=>{
+						System.Diagnostics.Debug.WriteLine("GONNAPOP");
 						Navigation.PopAsync();
 						App.hudder.hideHUD();
 					});
@@ -53,6 +54,7 @@ namespace PickUpApp
 			});
 
 			MessagingCenter.Subscribe<Schedule> (this, "DetailUpdate", (s) => {
+				System.Diagnostics.Debug.WriteLine("DETAILUPDATE");
 				tv.Root.Clear ();
 				ViewModel.CurrentSchedule = s;
 
@@ -71,12 +73,14 @@ namespace PickUpApp
 
 			MessagingCenter.Unsubscribe<Schedule> (this, "ScheduleAdded");
 			MessagingCenter.Subscribe<Schedule>(this, "ScheduleAdded", (s) => {
+				System.Diagnostics.Debug.WriteLine("SCHEDULEADDED");
 				//now tell the parent controller to reload its listview		
 				MessagingCenter.Send<Schedule>(s, "RefreshSched");
 			});
 
 			MessagingCenter.Unsubscribe<Schedule> (this, "RefreshComplete");
 			MessagingCenter.Subscribe<Schedule> (this, "RefreshComplete", (s) => {
+				System.Diagnostics.Debug.WriteLine("REFRESHCOMPLETE");
 				//parent controller has completed its update...
 				tv.Root.Clear ();
 				ViewModel.CurrentSchedule = s;

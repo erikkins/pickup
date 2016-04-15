@@ -42,10 +42,10 @@ namespace PickUpApp
 		public string SenderPhotoURL 
 		{ get
 			{
-				if (!_SenderPhotoURL.ToLower ().StartsWith ("http")) {
-					if (!App.Device.FileManager.FileExists (_SenderPhotoURL)) {
+				if (_SenderPhotoURL == null || !_SenderPhotoURL.ToLower ().StartsWith ("http")) {
+					//if (!App.Device.FileManager.FileExists (_SenderPhotoURL)) {
 						return initialsPath ();
-					}
+					//}
 				}
 				return _SenderPhotoURL; 
 			} 

@@ -5,9 +5,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.threethingsgood.famfetch</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.63</string>
+	<string>1.0.64</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.63</string>
+	<string>1.0.64</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -104,6 +104,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb445633295574438</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.famfetch.link</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>famfetch</string>
 			</array>
 		</dict>
 	</array>

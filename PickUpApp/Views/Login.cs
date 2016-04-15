@@ -158,6 +158,21 @@ namespace PickUpApp
 			fields.Children.Add (bForgot);
 
 
+			//add a register button (for those who somehow got stuck here)
+			Label hll = new Label ();
+			hll.FormattedText = new FormattedString ();
+			hll.FormattedText.Spans.Add (new Span { Text = "If you have not registered, click here", FontSize= 14, ForegroundColor = Color.White, FontAttributes = FontAttributes.Bold });
+			hll.HorizontalOptions = LayoutOptions.Center;
+
+			var tap = new TapGestureRecognizer ();
+			tap.Tapped += (sender, e) => {
+				MessagingCenter.Send<string>("intro", "register");
+			};
+
+			hll.GestureRecognizers.Add(tap);
+			fields.Children.Add (hll);
+
+
 			MessagingCenter.Subscribe<MobileServiceClient>(this, "LoggedIn", (s) =>{
 					ViewModel.Refresh();
 					ViewModel.IsAuthenticated = true;

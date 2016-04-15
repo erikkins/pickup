@@ -285,6 +285,21 @@ namespace PickUpApp.iOS
 
 		public override bool OpenUrl (UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
 		{			
+
+			var rurl = new Rivets.AppLinkUrl (url.ToString ());
+			Rivets.AppLinks.DefaultResolver = new Rivets.FacebookIndexAppLinkResolver ("445633295574438", "bc150affdef11fe0f473c4ce01b380b7");
+
+			//BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:sourceApplication];
+//			if ([parsedUrl appLinkData]) {
+//				// this is an applink url, handle it here
+//				NSURL *targetUrl = [parsedUrl targetURL];
+//				[[[UIAlertView alloc] initWithTitle:@"Received link:"
+//                                    message:[targetUrl absoluteString]
+//					delegate:nil
+//					cancelButtonTitle:@"OK"
+//                          otherButtonTitles:nil] show];
+//			}
+
 			return Facebook.CoreKit.ApplicationDelegate.SharedInstance.OpenUrl (application, url, sourceApplication, annotation);
 			//return ApplicationDelegate.SharedInstance.OpenUrl (application, url, sourceApplication, annotation);
 		}
