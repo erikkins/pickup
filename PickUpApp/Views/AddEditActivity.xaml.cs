@@ -12,10 +12,11 @@ namespace PickUpApp
 	{
 		ExtendedTableView tv = new ExtendedTableView ();
 		TableSection ts = new TableSection ();
-		bool fromDone = false;
+		bool keepListening = false;
+
 		protected override void OnDisappearing ()
 		{
-			if (fromDone) {
+			if (!keepListening) {
 				MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 				MessagingCenter.Unsubscribe<Schedule> (this, "DetailUpdate");
 			}
@@ -27,6 +28,8 @@ namespace PickUpApp
 		}
 		protected override void OnAppearing ()
 		{
+			keepListening = false;
+			MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
 				System.Diagnostics.Debug.WriteLine("UPDATEPLEASE");
 				ViewModel.ReturnVerb = "DetailUpdate"; //trick it so that we don't update the parent view just yet...
@@ -44,15 +47,15 @@ namespace PickUpApp
 				//let's try this with a continueWith
 				await ViewModel.ExecuteAddEditCommand().ContinueWith( x => {
 					Device.BeginInvokeOnMainThread(()=>{
-						System.Diagnostics.Debug.WriteLine("GONNAPOP");
-						Navigation.PopAsync();
 						App.hudder.hideHUD();
+						Navigation.PopAsync();						
 					});
 				});
 
 				//MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 			});
-
+				
+			MessagingCenter.Unsubscribe<Schedule> (this, "DetailUpdate");
 			MessagingCenter.Subscribe<Schedule> (this, "DetailUpdate", (s) => {
 				System.Diagnostics.Debug.WriteLine("DETAILUPDATE");
 				tv.Root.Clear ();
@@ -100,7 +103,7 @@ namespace PickUpApp
 
 			this.ToolbarItems.Add (new ToolbarItem ("Done", null, async() => {
 				//pop the calendar window
-				//fromDone = true;
+
 
 				//before we even begin to try to save, let's make sure we atleast have a name and days
 				if (string.IsNullOrEmpty(CurrentActivity.Activity))
@@ -250,7 +253,7 @@ namespace PickUpApp
 			PlacePickerCell dest = new PlacePickerCell (PlaceType.ActivityPlace);
 			ts.Add (dest);
 			dest.Tapped += async delegate(object sender, EventArgs e) {
-				
+				keepListening = true;
 				System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in this.ViewModel.AccountPlaces where aps.id == this.ViewModel.CurrentSchedule.AccountPlaceID select aps;
 				if (ap.Count() == 0)
 				{
@@ -264,7 +267,8 @@ namespace PickUpApp
 
 			KidCell kc = new KidCell ();
 			ts.Add (kc);
-			kc.Tapped += async delegate(object sender, EventArgs e) {				
+			kc.Tapped += async delegate(object sender, EventArgs e) {	
+				keepListening = true;
 				await Navigation.PushAsync(new KidSelector(CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids), true);
 			};
 
@@ -282,7 +286,7 @@ namespace PickUpApp
 //				ap.Address = this.ViewModel.CurrentSchedule.StartPlaceAddress;
 //				ap.id = this.ViewModel.CurrentSchedule.StartPlaceID;
 //				ap.PlaceName = this.ViewModel.CurrentSchedule.StartPlaceName;
-
+				keepListening = true;
 				System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in this.ViewModel.AccountPlaces where aps.id == this.ViewModel.CurrentSchedule.StartPlaceID select aps;
 				if (ap.Count() == 0)
 				{
@@ -300,6 +304,7 @@ namespace PickUpApp
 				CoparentPickerCell cpcDropoff = new CoparentPickerCell (PlaceType.StartingPlace);
 				ts.Add (cpcDropoff);
 				cpcDropoff.Tapped += async delegate(object sender, EventArgs e) {
+					keepListening = true;
 					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.StartingPlace));
 				};
 			}
@@ -312,7 +317,7 @@ namespace PickUpApp
 			PlacePickerCell pickuppplace = new PlacePickerCell (PlaceType.EndingPlace);
 			ts.Add (pickuppplace);
 			pickuppplace.Tapped += async delegate(object sender, EventArgs e) {
-
+				keepListening = true;
 				System.Collections.Generic.IEnumerable<AccountPlace> ap = from aps in this.ViewModel.AccountPlaces where aps.id == this.ViewModel.CurrentSchedule.EndPlaceID select aps;
 				if (ap.Count() == 0)
 				{
@@ -328,6 +333,7 @@ namespace PickUpApp
 				CoparentPickerCell cpcPickup = new CoparentPickerCell (PlaceType.EndingPlace);
 				ts.Add (cpcPickup);
 				cpcPickup.Tapped += async delegate(object sender, EventArgs e) {
+					keepListening = true;
 					await Navigation.PushAsync (new ParentPicker (CurrentActivity, this.ViewModel.KidSchedules, this.ViewModel.Kids, PlaceType.EndingPlace));
 				};
 			}
