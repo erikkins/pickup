@@ -11,6 +11,8 @@ namespace PickUpApp
 {	
 	public partial class MyCircle : ContentPage
 	{	
+		bool keepListening = false;
+
 		public MyCircle ()
 		{
 			InitializeComponent ();
@@ -58,8 +60,12 @@ namespace PickUpApp
 				MessagingCenter.Unsubscribe<string>(this, "circleloaded");
 				MessagingCenter.Unsubscribe<AccountCircle>(this, "deleteac");
 				MessagingCenter.Unsubscribe<EmptyClass>(this, "CircleChanged");
-				//MessagingCenter.Unsubscribe<LocalContact>(this, "contactpicked");
-				//MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
+
+				if (!keepListening)
+				{
+					MessagingCenter.Unsubscribe<LocalContact>(this, "contactpicked");
+					MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
+				}
 			};
 
 			this.Appearing += delegate(object sender, EventArgs e) {
@@ -102,24 +108,32 @@ namespace PickUpApp
 					ViewModel.CurrentAccountCircle = ac;
 					await ViewModel.ExecuteDeleteCommand();
 				});
+
+				MessagingCenter.Unsubscribe<LocalContact>(this, "contactpicked");
+				MessagingCenter.Subscribe<LocalContact> (this, "contactpicked", async(lc) => {
+					System.Diagnostics.Debug.WriteLine("CONTACTPICKED");
+					MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
+					keepListening = true; //because they're popping to addeditcontact which still needs the listener
+					await Navigation.PopAsync(false);
+					await Navigation.PushAsync(new AddEditContact(lc, true),false);
+				});
+
+				MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
+				MessagingCenter.Subscribe<LocalContact> (this, "ContactAdded", (s) => {
+					System.Diagnostics.Debug.WriteLine("CONTACTADDED");
+					MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
+					MessagingCenter.Unsubscribe<LocalContact>(this, "contactpicked");
+					keepListening = false;
+					//gotta do some housekeeping here			
+					Navigation.PopAsync ();
+					ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
+					//ViewModel.Refresh();
+				});
 			};
 
 
-
-
-
-
-
-
-			MessagingCenter.Unsubscribe<LocalContact>(this, "contactpicked");
-			MessagingCenter.Subscribe<LocalContact> (this, "contactpicked", async(lc) => {
-				System.Diagnostics.Debug.WriteLine("CONTACTPICKED");
-				await Navigation.PopAsync(false);
-				await Navigation.PushAsync(new AddEditContact(lc, true),false);
-			});
-
 			this.ToolbarItems.Add (new ToolbarItem ("Add Contact", "icn_new.png", async() => {
-
+				keepListening = true;
 				//we really want to show a actionsheet allowing them to manually add the contact or select them from their existing contact list
 				var action = await DisplayActionSheet ("Contact Source", "Cancel", null, "Manually Enter", "From Contacts List");
 				if (action == "From Contacts List")
@@ -141,14 +155,7 @@ namespace PickUpApp
 
 			this.BackgroundColor = Color.FromRgb (238, 236, 243);
 			//this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);	
-			MessagingCenter.Unsubscribe<LocalContact>(this, "ContactAdded");
-			MessagingCenter.Subscribe<LocalContact> (this, "ContactAdded", (s) => {
-				System.Diagnostics.Debug.WriteLine("CONTACTADDED");
-				//gotta do some housekeeping here			
-				Navigation.PopAsync ();
-				ViewModel.ExecuteLoadItemsCommand().ConfigureAwait(false);
-				//ViewModel.Refresh();
-			});
+
 		}
 
 
