@@ -66,6 +66,14 @@ namespace PickUpApp
 				MessagingCenter.Send<Microsoft.WindowsAzure.MobileServices.MobileServiceClient>(App.client, "LoggedIn");
 			});
 
+			MessagingCenter.Subscribe<string> (this, "geodenied", async(s) => {
+				bool selection = await DisplayAlert("Please enable Location Services", "FamFetch uses your location to calculate drive times with traffic.  Tap Settings to Allow Location Access.", "Settings", "OK");
+				if (selection)
+				{					
+					DependencyService.Get<IDeviceInfo> ().LoadDeviceSettings();
+				}
+			});
+
 			Settings.FirstTime = true;
 
 			//this is really just the underlying root page that sits under the current modal navigation

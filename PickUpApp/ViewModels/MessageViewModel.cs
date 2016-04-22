@@ -147,6 +147,10 @@ namespace PickUpApp
 						if (mv.MessageType == "pickup")
 						{
 							Today tempToday = await LoadToday(mv.Link, mv.SenderID);
+							if (tempToday == null)
+							{
+								continue;
+							}
 							if (mv.LinkDetail == "pickup")
 							{
 								//here's some secret sauce...if this was a PICKUP request, then we need to clone and make it the pickup data

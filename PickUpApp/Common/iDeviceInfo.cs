@@ -5,6 +5,8 @@ namespace PickUpApp
 	public interface IDeviceInfo
 	{
 		string AppVersion {get;}
+		void LoadDeviceSettings();
 	}
+		
 }
 

@@ -284,6 +284,9 @@ namespace Xamarin.Forms.Labs.iOS.Services.Geolocation
 			
 			if (e.Status == CLAuthorizationStatus.Denied || e.Status == CLAuthorizationStatus.Restricted) {
 				System.Console.WriteLine("OnAuthChanged");
+				//ok, we need to let the user know that we REALLY need location
+				MessagingCenter.Send<string>("geo", "geodenied");
+
 				OnPositionError (new PositionErrorEventArgs (GeolocationError.Unauthorized));
 			}
 		}

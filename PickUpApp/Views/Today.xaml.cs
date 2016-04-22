@@ -500,7 +500,7 @@ namespace PickUpApp
 				});
 				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
-
+					System.Diagnostics.Debug.WriteLine("TODAYLOADED");
 					lvToday.IsRefreshing = false;
 
 					this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
@@ -560,7 +560,7 @@ namespace PickUpApp
 
 				MessagingCenter.Unsubscribe<MessageView>(this, "LoadMessages");
 				MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
-					//System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
+					System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
 					MessageViewModel mvm = new MessageViewModel(App.client, null);
 					App.hudder.showHUD("Loading Messages");
 					mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
@@ -569,7 +569,7 @@ namespace PickUpApp
 
 				MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
 				MessagingCenter.Subscribe<string> (this, "messagesloaded", (ec) => {
-					//System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
+					System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
 					lblMessageCount.Text = App.myMessages.Count.ToString();
 					if (App.myMessages.Count > 0)
 					{
@@ -620,10 +620,13 @@ namespace PickUpApp
 				//see if there are multiple NeedsRefreshes and kill off if needed
 
 				MessagingCenter.Unsubscribe<Today>(this, "fetchrequest");
-				//MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				MessagingCenter.Unsubscribe<MessageView> (this, "LoadMessages");
-				//MessagingCenter.Unsubscribe<string> (this, "messagesloaded");
-				//MessagingCenter.Unsubscribe<RespondMessage> (this, "messagesupdated");
+
+				//these were commented out but caused wonkiness...what's up
+				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
+				MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
+				MessagingCenter.Unsubscribe<RespondMessage>(this, "messagesupdated");
+
 			};
 
 
@@ -1078,7 +1081,7 @@ namespace PickUpApp
 			//this means someone is picking up or dropping off
 			//nobody's picking up or dropping off, so make the option to invite available
 			//but only if it's mine to invite!
-			if (currentState != TodayView.ActivityState.Complete && string.IsNullOrEmpty(t.Via) && showArrow) {
+			if (currentState != TodayView.ActivityState.Complete && (string.IsNullOrEmpty(t.Via) || t.IsCoparent) && showArrow) {
 				Button b = new Button ();
 				switch (currentState) {
 				case TodayView.ActivityState.Future:

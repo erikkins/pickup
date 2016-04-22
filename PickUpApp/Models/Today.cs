@@ -691,6 +691,16 @@ namespace PickUpApp
 					_viaphone = value; NotifyPropertyChanged ();
 				} } }
 
+
+		/// <summary>
+		/// This means that the today belongs to a coparent (means that different fields are available
+		/// </summary>
+		private bool _isCoparent;
+		[JsonProperty(PropertyName = "iscoparent")]
+		public bool IsCoparent { get{return _isCoparent; } set{if (value != _isCoparent) {
+					_isCoparent = value; NotifyPropertyChanged ();
+				} } }
+
 		public bool ShouldSerializeVia()
 		{
 			return true;

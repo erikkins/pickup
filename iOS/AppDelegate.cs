@@ -286,7 +286,7 @@ namespace PickUpApp.iOS
 		public override bool OpenUrl (UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
 		{			
 
-			var rurl = new Rivets.AppLinkUrl (url.ToString ());
+			//var rurl = new Rivets.AppLinkUrl (url.ToString ());
 			Rivets.AppLinks.DefaultResolver = new Rivets.FacebookIndexAppLinkResolver ("445633295574438", "bc150affdef11fe0f473c4ce01b380b7");
 
 			//BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:sourceApplication];
@@ -380,6 +380,7 @@ namespace PickUpApp.iOS
 				if (aps.ContainsKey (new NSString("accepted")) && !string.IsNullOrEmpty(aps ["accepted"].ToString ())) {
 					Invite i = new Invite ();
 					i.Id = aps ["accepted"].ToString ();
+					i.Message = aps ["alert"].ToString ();
 					MessagingCenter.Send<Invite> (i, "accepted");
 				}
 

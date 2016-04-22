@@ -86,6 +86,14 @@ namespace PickUpApp
 					mv.RecipientID = ac.id;
 					await this.ViewModel.ExecuteCreateCommand(mv);
 				}
+				//clear all the previously selected circles
+				foreach (AccountCircle ac in App.myCircle)
+				{
+					ac.Selected = false;
+				}
+
+
+
 				//we need to basically save a message using the contact info from the previous screen
 				//await this.ViewModel.ExecuteAddEditCommand();
 				 //await Navigation.PopToRootAsync();
@@ -93,6 +101,7 @@ namespace PickUpApp
 
 			MessagingCenter.Subscribe<MessageView>(this, "messagesent", async(msg)=>{
 				App.hudder.hideHUD();
+				MessagingCenter.Unsubscribe<MessageView>(this, "messagesent");
 				try{
 				await Navigation.PopToRootAsync();
 				}
