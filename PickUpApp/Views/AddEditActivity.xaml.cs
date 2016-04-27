@@ -392,6 +392,7 @@ namespace PickUpApp
 
 				StackLayout slSide = new StackLayout ();
 				slSide.Orientation = StackOrientation.Horizontal;
+				//slSide.HorizontalOptions = LayoutOptions.Center;
 
 				BoxView bv = new BoxView ();
 				bv.WidthRequest = 10;
@@ -413,15 +414,22 @@ namespace PickUpApp
 				StackLayout slDays = new StackLayout ();
 				slDays.Orientation = StackOrientation.Horizontal;
 				slDays.VerticalOptions = LayoutOptions.Start;
-				slDays.HorizontalOptions = LayoutOptions.Center;
+				slDays.HorizontalOptions = LayoutOptions.CenterAndExpand;
 				//slDays.WidthRequest = App.ScaledWidth;
 				//slDays.Spacing = 20;
 
 				StackLayout slMonday = new StackLayout ();
 				slMonday.Orientation = StackOrientation.Vertical;
+				slMonday.HorizontalOptions = LayoutOptions.Center;
+				slMonday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+
+				int iOSTranslation = 5;
+				int AndroidTranslation = 2;
 
 				ImageButton ib = new ImageButton ();
-				ib.TranslationX = 5;
+				ib.BackgroundColor = Color.Transparent;
+				//note, since this is the first one, for some reason it was laying out differently...translation of 5 moved it too far
+				ib.TranslationX = Device.OnPlatform<int> (0, -3, 0); //was just 5
 				ib.ImageHeightRequest = 27;
 				ib.ImageWidthRequest = 27;
 				if (s.Monday) {
@@ -447,9 +455,11 @@ namespace PickUpApp
 
 
 				Label d = new Label ();
+				d.TextColor = Color.Black;
 				d.Text = "M";
 				d.FontAttributes = FontAttributes.Bold;
 				d.FontSize = 18;
+				d.WidthRequest = 27;
 				d.VerticalOptions = LayoutOptions.Center;
 				d.HorizontalOptions = LayoutOptions.Center;
 				slMonday.Children.Add(d);
@@ -457,8 +467,11 @@ namespace PickUpApp
 
 				StackLayout slTuesday = new StackLayout ();
 				slTuesday.Orientation = StackOrientation.Vertical;
+				slTuesday.HorizontalOptions = LayoutOptions.Center;
+				slTuesday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
 				ImageButton ib2 = new ImageButton ();
-				ib2.TranslationX = 5;
+				ib2.BackgroundColor = Color.Transparent;
+				ib2.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
 				ib2.ImageHeightRequest = 27;
 				ib2.ImageWidthRequest = 27;
 				if (s.Tuesday) {
@@ -483,6 +496,7 @@ namespace PickUpApp
 
 				Label d2 = new Label ();
 				d2.Text = "T";
+				d2.TextColor = Color.Black;
 				d2.FontAttributes = FontAttributes.Bold;
 				d2.FontSize = 18;
 				d2.VerticalOptions = LayoutOptions.Center;
@@ -492,8 +506,10 @@ namespace PickUpApp
 
 				StackLayout slWednesday = new StackLayout ();
 				slWednesday.Orientation = StackOrientation.Vertical;
+				slWednesday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
 				ImageButton ib3 = new ImageButton ();
-				ib3.TranslationX = 5;
+				ib3.BackgroundColor = Color.Transparent;
+				ib3.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
 				ib3.ImageHeightRequest = 27;
 				ib3.ImageWidthRequest = 27;
 				if (s.Wednesday) {
@@ -516,6 +532,7 @@ namespace PickUpApp
 				};
 				slWednesday.Children.Add (ib3);
 				Label d3 = new Label ();
+				d3.TextColor = Color.Black;
 				d3.Text = "W";
 				d3.FontAttributes = FontAttributes.Bold;
 				d3.FontSize = 18;
@@ -526,8 +543,10 @@ namespace PickUpApp
 
 				StackLayout slThursday = new StackLayout ();
 				slThursday.Orientation = StackOrientation.Vertical;
+				slThursday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
 				ImageButton ib4 = new ImageButton ();
-				ib4.TranslationX = 5;
+				ib4.BackgroundColor = Color.Transparent;
+				ib4.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
 				ib4.ImageHeightRequest = 27;
 				ib4.ImageWidthRequest = 27;
 				if (s.Thursday) {
@@ -550,6 +569,7 @@ namespace PickUpApp
 				};
 				slThursday.Children.Add (ib4);
 				Label d4 = new Label ();
+				d4.TextColor = Color.Black;
 				d4.Text = "T";
 				d4.FontAttributes = FontAttributes.Bold;
 				d4.FontSize = 18;
@@ -560,8 +580,10 @@ namespace PickUpApp
 
 				StackLayout slFriday = new StackLayout ();
 				slFriday.Orientation = StackOrientation.Vertical;
+				slFriday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
 				ImageButton ib5 = new ImageButton ();
-				ib5.TranslationX = 5;
+				ib5.BackgroundColor = Color.Transparent;
+				ib5.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
 				ib5.ImageHeightRequest = 27;
 				ib5.ImageWidthRequest = 27;
 				if (s.Friday) {
@@ -584,6 +606,7 @@ namespace PickUpApp
 				};
 				slFriday.Children.Add (ib5);
 				Label d5 = new Label ();
+				d5.TextColor = Color.Black;
 				d5.Text = "F";
 				d5.FontAttributes = FontAttributes.Bold;
 				d5.FontSize = 18;
@@ -594,8 +617,10 @@ namespace PickUpApp
 
 				StackLayout slSaturday = new StackLayout ();
 				slSaturday.Orientation = StackOrientation.Vertical;
+				slSaturday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
 				ImageButton ib6 = new ImageButton ();
-				ib6.TranslationX = 5;
+				ib6.BackgroundColor = Color.Transparent;
+				ib6.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
 				ib6.ImageHeightRequest = 27;
 				ib6.ImageWidthRequest = 27;
 				if (s.Saturday) {
@@ -618,6 +643,7 @@ namespace PickUpApp
 				};
 				slSaturday.Children.Add (ib6);
 				Label d6 = new Label ();
+				d6.TextColor = Color.Black;
 				d6.Text = "S";
 				d6.FontAttributes = FontAttributes.Bold;
 				d6.FontSize = 18;
@@ -628,8 +654,10 @@ namespace PickUpApp
 
 				StackLayout slSunday = new StackLayout ();
 				slSunday.Orientation = StackOrientation.Vertical;
+				slSunday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
 				ImageButton ib7 = new ImageButton ();
-				ib7.TranslationX = 5;
+				ib7.BackgroundColor = Color.Transparent;
+				ib7.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
 				ib7.ImageHeightRequest = 27;
 				ib7.ImageWidthRequest = 27;
 				if (s.Sunday) {
@@ -652,6 +680,7 @@ namespace PickUpApp
 				};
 				slSunday.Children.Add (ib7);
 				Label d7 = new Label ();
+				d7.TextColor = Color.Black;
 				d7.Text = "S";
 				d7.FontAttributes = FontAttributes.Bold;
 				d7.FontSize = 18;
@@ -674,7 +703,7 @@ namespace PickUpApp
 		public class PickupDropoffSelectorCell : ViewCell
 		{
 			bool _isPickup;
-			ExtendedTimePicker tp = new ExtendedTimePicker();
+			FFTimePicker tp = new FFTimePicker();
 			public PickupDropoffSelectorCell(bool isPickup)
 			{
 				//init
@@ -770,7 +799,7 @@ namespace PickUpApp
 
 
 				tp.HasBorder = false;
-
+				tp.TextColor = Color.Black;
 				//string shortTime;
 				if (_isPickup) {
 
@@ -864,6 +893,7 @@ namespace PickUpApp
 //					slHoriz.Children.Add (imgAddNote);
 
 					Button bAddNote = new Button ();
+					bAddNote.BackgroundColor = Color.Transparent;
 					bAddNote.Image = "icn_new_grey.png";
 					bAddNote.VerticalOptions = LayoutOptions.Center;
 					bAddNote.HorizontalOptions = LayoutOptions.Start;
@@ -903,7 +933,7 @@ namespace PickUpApp
 		public class DatePickerCell : ViewCell
 		{
 			bool _startsOn;
-			DatePicker dp = new DatePicker();
+			FFDatePicker dp = new FFDatePicker();
 			public DatePickerCell(bool startsOn)
 			{
 				//init
@@ -971,6 +1001,7 @@ namespace PickUpApp
 					dp.SetBinding(DatePicker.DateProperty, "CurrentSchedule.AtWhenEnd");
 				}
 				dp.BackgroundColor = AppColor.AppGray;
+				dp.TextColor = Color.Black;
 				//dp.HasBorder = false;
 
 				g.Children.Add (dp, 1, 0);
@@ -1035,6 +1066,7 @@ namespace PickUpApp
 				e.HorizontalOptions = LayoutOptions.StartAndExpand;
 				e.VerticalOptions = LayoutOptions.Center;
 				e.BackgroundColor = Color.Transparent;
+				e.TextColor = Color.Black;
 				e.Placeholder = "Add Activity Name";
 				e.Font = Font.OfSize ("Helvetica-Bold", 20);
 				e.HasBorder = false;
@@ -1142,6 +1174,7 @@ namespace PickUpApp
 				slAddress.WidthRequest = (App.ScaledWidth) - 205;
 
 				Label nameLabel = new Label ();
+				nameLabel.TextColor = Color.Black;
 				switch (_placeType) {
 				case PlaceType.ActivityPlace:
 					nameLabel.Text = s.Location;
@@ -1306,6 +1339,7 @@ namespace PickUpApp
 						kidName.VerticalOptions = LayoutOptions.Center;
 						kidName.Text = thisKid.Fullname;
 						kidName.FontSize = 14;
+						kidName.TextColor = Color.Black;
 						//kidName.SetBinding (Label.TextProperty, "Fullname");
 						slKiddo.Children.Add (kidName);
 						slKids.Children.Add (slKiddo);
@@ -1388,6 +1422,7 @@ namespace PickUpApp
 							Label kidName = new Label();
 							kidName.VerticalOptions = LayoutOptions.Center;
 							kidName.Text = thisKid.Fullname;
+							kidName.TextColor = Color.Black;
 							kidName.FontSize = 14;
 							//kidName.SetBinding (Label.TextProperty, "Fullname");
 							slKiddo.Children.Add (kidName);
@@ -1479,6 +1514,7 @@ namespace PickUpApp
 				Label l2 = new Label ();
 				l2.WidthRequest = App.ScaledQuarterWidth - 20;
 				l2.LineBreakMode = LineBreakMode.WordWrap;
+				l2.TextColor = Color.Black;
 				//l2.Text = bod.DisplayName;
 				l2.SetBinding(Label.TextProperty, "DisplayName");
 				l2.VerticalOptions = LayoutOptions.Center;

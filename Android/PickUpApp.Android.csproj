@@ -252,6 +252,9 @@
     <Compile Include="Platform\AndroidDeviceInfo.cs" />
     <Compile Include="Platform\AndroidHUD.cs" />
     <Compile Include="Platform\AndroidCircleText.cs" />
+    <Compile Include="Platform\AndroidFFDatePicker.cs" />
+    <Compile Include="Platform\AndroidFFTimePicker.cs" />
+    <Compile Include="Platform\AndroidFFPicker.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -435,12 +438,12 @@
     <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable\ui_check_emptyX.png" />
-    <AndroidResource Include="Resources\drawable\ui_check_filledX.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ui_check_emptyX.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ui_check_filledX.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ui_check_emptyX.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\ui_check_filledX.png" />
+    <AndroidResource Include="Resources\drawable\ui_check_empty.png" />
+    <AndroidResource Include="Resources\drawable\ui_check_filled.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_check_empty.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_check_filled.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_check_empty.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_check_filled.png" />
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
@@ -471,5 +474,8 @@
       <Version>3.7.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidEnvironment Include="environment.txt" />
   </ItemGroup>
 </Project>

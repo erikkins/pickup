@@ -515,6 +515,7 @@ namespace PickUpApp
 			l2.Keyboard = _keyboard;
 			l2.HasBorder = false;
 			l2.BackgroundColor = Color.Transparent;
+			l2.TextColor = Color.Black;
 			switch (_title) {
 			case "Name":
 				l2.SetBinding (ExtendedEntry.TextProperty, "PlaceName");
@@ -636,6 +637,7 @@ namespace PickUpApp
 
 			ExtendedLabel l2 = new ExtendedLabel();
 			l2.BackgroundColor = Color.Transparent;
+			l2.TextColor = Color.Black;
 			l2.SetBinding (ExtendedLabel.TextProperty, _binding);
 
 			//l2.Text = _value;
@@ -713,6 +715,7 @@ namespace PickUpApp
 			//ExtendedEntry l2 = new ExtendedEntry();
 			l2.HasBorder = false;
 			l2.BackgroundColor = Color.Transparent;
+			l2.TextColor = Color.Black;
 			l2.SetBinding (ExtendedEntry.TextProperty, _binding);
 			l2.IsEnabled = true;
 			l2.Keyboard = _keyboardType;
@@ -773,6 +776,7 @@ namespace PickUpApp
 			ExtendedEntry l2 = new ExtendedEntry();
 			l2.HasBorder = false;
 			l2.BackgroundColor = Color.Transparent;
+			l2.TextColor = Color.Black;
 			l2.SetBinding (ExtendedEntry.TextProperty, _binding);
 			l2.Placeholder = _placeholderText;
 
@@ -793,24 +797,27 @@ namespace PickUpApp
 	public class SimpleBoundRadioCell : ViewCell
 	{
 		private string _title;
-		//private string _binding;
-		public BindableProperty SelectedProperty;
-
+		private string _binding;
+		//public BindableProperty SelectedProperty;
+		FFCheckbox _cb = new FFCheckbox();
 
 		public bool IsChecked{
-			get { return (bool)GetValue (SelectedProperty); }
+			get {
+				return _cb.Checked;
+				}
 			set{
-				SetValue (SelectedProperty, value);
+				_cb.Checked = value;
 			}
 		}
 		
 		public SimpleBoundRadioCell(string title, string binding)
 		{
 			_title = title;
-			//_binding = binding;
-			//SelectedProperty = BindableProperty.Create (binding, typeof(bool), BindingMode.TwoWay.GetType(),null, null, null, null, null);
-			SelectedProperty = BindableProperty.Create<SimpleBoundRadioCell, bool>(p => p.IsChecked, false, BindingMode.TwoWay);
-			this.SetBinding (SelectedProperty, binding);
+			_binding = binding;
+			//SelectedProperty = BindableProperty.Create<SimpleBoundRadioCell, bool>(p => p.IsChecked, false, BindingMode.TwoWay);
+			//this.SetBinding (SelectedProperty, binding);
+			//this.SetBinding(FFCheckbox.CheckedProperty, binding);
+			_cb.SetBinding (FFCheckbox.CheckedProperty, binding, BindingMode.TwoWay);
 		}
 
 
@@ -854,6 +861,11 @@ namespace PickUpApp
 
 			g.Children.Add (l, 0, 0);
 
+
+
+			g.Children.Add (_cb, 1, 0);
+
+			/*
 			ImageButton ib = new ImageButton ();
 			ib.TranslationX = 5;
 			ib.ImageHeightRequest = 27;
@@ -882,6 +894,7 @@ namespace PickUpApp
 			};
 
 			g.Children.Add (ib, 1, 0);
+			*/
 
 			sl.Children.Add (g);
 
@@ -894,7 +907,7 @@ namespace PickUpApp
 		private string _title;
 		private DateTime _date;
 		private string _binding;
-		DatePicker dp = new DatePicker ();
+		FFDatePicker dp = new FFDatePicker ();
 
 		public SimpleDateCell(string title, DateTime defaultDate, string binding)
 		{
@@ -961,7 +974,8 @@ namespace PickUpApp
 
 
 
-			//dp.HasBorder = false;
+			dp.HasBorder = false;
+			dp.TextColor = Color.Black;
 			dp.BackgroundColor = AppColor.AppGray;		
 			dp.Date = _date;
 			dp.VerticalOptions = LayoutOptions.Center;
@@ -988,7 +1002,7 @@ namespace PickUpApp
 		private List<string> _items;
 		private int _selectedIndex;
 		public BindableProperty SelectedProperty;
-		Picker p = new Picker ();
+		FFPicker p = new FFPicker ();
 
 		public SimplePickerCell(string title, string defaultValue, List<string> pickerItems)
 		{
@@ -1059,10 +1073,11 @@ namespace PickUpApp
 			g.Children.Add (l, 0, 0);
 
 
-
+			p.HasBorder = false;
 
 			p.WidthRequest = App.ScaledWidth/ 4;
 			p.BackgroundColor = Color.FromRgb(238, 236, 243); 
+			p.TextColor = Color.Black;
 			foreach (string s in _items) {
 				p.Items.Add (s);
 			}

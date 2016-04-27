@@ -73,6 +73,7 @@ namespace PickUpApp
 			slRemember.Orientation = StackOrientation.Horizontal;
 
 			ImageButton ib = new ImageButton ();
+			ib.BackgroundColor = Color.Transparent;
 			ib.TranslationX = 5;
 			ib.ImageHeightRequest = 27;
 			ib.ImageWidthRequest = 27;

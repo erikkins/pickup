@@ -6,7 +6,7 @@
     </OnPlatform>
   </ContentPage.Padding>
 	<ContentPage.Content>
-<StackLayout x:Name="stacker" Spacing="0" Padding="0" VerticalOptions="Center" ><ActivityIndicator BackgroundColor="#EEECF3" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
+<StackLayout x:Name="stacker" Spacing="0" Padding="0" VerticalOptions="FillAndExpand" ><ActivityIndicator BackgroundColor="#EEECF3" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
 <!---
 <ListView x:Name="lstKids" ItemsSource="{Binding KidsSorted}" IsGroupingEnabled="True" GroupDisplayBinding="{Binding KidsSorted.Key}" BackgroundColor="#EEECF3" HasUnevenRows="true">
 				<ListView.GroupHeaderTemplate>

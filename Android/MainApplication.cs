@@ -59,5 +59,12 @@ namespace PickUpApp.droid
         public void OnActivityStopped(Activity activity)
         {
         }
+
+		public override void OnLowMemory ()
+		{
+			base.OnLowMemory ();
+			GC.Collect ();
+			Console.WriteLine ("****** COLLECTION GARBAGE ******");
+		}
     }
 }

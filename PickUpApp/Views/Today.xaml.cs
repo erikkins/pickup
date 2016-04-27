@@ -1016,6 +1016,7 @@ namespace PickUpApp
 			//end nav images
 
 			Label l = new Label ();
+			l.TextColor = Color.Black;
 			if (t.IsPickup) {
 				DateTime intermediate = DateTime.Today.Add (t.TSPickup.Subtract (TimeSpan.FromMinutes (t.EndPlaceTravelTime)));
 				l.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);
@@ -1083,6 +1084,7 @@ namespace PickUpApp
 			//but only if it's mine to invite!
 			if (currentState != TodayView.ActivityState.Complete && (string.IsNullOrEmpty(t.Via) || t.IsCoparent) && showArrow) {
 				Button b = new Button ();
+				b.BackgroundColor = Color.Transparent;
 				switch (currentState) {
 				case TodayView.ActivityState.Future:
 					b.Image = arrowgray;
@@ -1115,6 +1117,7 @@ namespace PickUpApp
 
 
 			Label l3 = new Label ();
+			l3.TextColor = Color.Black;
 			if (t.IsPickup) {
 				DateTime intermediate = DateTime.Today.Add (t.TSPickup);
 				l3.Text = intermediate.ToString (@"h\:mm", System.Globalization.CultureInfo.InvariantCulture);

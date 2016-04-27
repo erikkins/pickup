@@ -6,7 +6,7 @@ xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
 x:Class="PickUpApp.LocationSearch">
 	<ContentPage.Content>
 <StackLayout x:name="stacker">
-<SearchBar x:Name="searchBar" Placeholder="Search Address"></SearchBar>
+<SearchBar x:Name="searchBar" Placeholder="Search Address" CancelButtonColor = "Black" TextColor="Black" PlaceholderColor="Black"></SearchBar>
 <RelativeLayout Opacity="0.8" AnchorX ="0" x:Name="LayoutRel" IsVisible="false" VerticalOptions="StartAndExpand"> 
 	<ListView x:Name="lstSearch" BackgroundColor="Transparent" IsVisible="false" HeightRequest="150" RowHeight="60" Opacity="0.8" ItemsSource="{Binding Places}">
 		<ListView.ItemTemplate>
@@ -14,9 +14,9 @@ x:Class="PickUpApp.LocationSearch">
 				<ViewCell Height="60">
 					<ViewCell.View>
 						<StackLayout Orientation="Vertical">
-						<Label TranslationX="10" Text="{Binding Name}" HorizontalOptions="StartAndExpand"  />
-						<Label TranslationX="10" Font="Small" Text="{Binding Address}" HorizontalOptions="Start" />
-						<Label TranslationX="10" Font="Small" Text="{Binding Phone}" HorizontalOptions="Start" />
+						<Label TranslationX="10" Text="{Binding Name}" TextColor="Black" HorizontalOptions="StartAndExpand"  />
+						<Label TranslationX="10" Font="Small" Text="{Binding Address}" TextColor="Black" HorizontalOptions="Start" />
+						<Label TranslationX="10" Font="Small" Text="{Binding Phone}" TextColor="Black" HorizontalOptions="Start" />
 						</StackLayout>
 					</ViewCell.View>
 				</ViewCell>

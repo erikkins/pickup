@@ -7,7 +7,7 @@
   </ContentPage.Padding>
 	<ContentPage.Content>
 <StackLayout BackgroundColor="#EEECF3"  x:Name="stacker"><ActivityIndicator IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="Black" />
-	<ListView x:Name="lstPlaces" ItemsSource="{Binding MyPlaces}" BackgroundColor="#EEECF3"  RowHeight="60" HasUnevenRows="true">
+	<ListView x:Name="lstPlaces" ItemsSource="{Binding MyPlaces}" SeparatorColor="Black" BackgroundColor="#EEECF3"  RowHeight="60" HasUnevenRows="true">
 	<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell Height="60" StyleId="disclosure">
@@ -18,7 +18,7 @@
 						<ViewCell.View>
 							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
 							<BoxView WidthRequest="10"></BoxView>
-								<Label Text="{Binding PlaceName}" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"  />							
+								<Label Text="{Binding PlaceName}" TextColor="Black" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"  />							
 							</StackLayout>
 						</ViewCell.View>
 					</ViewCell>

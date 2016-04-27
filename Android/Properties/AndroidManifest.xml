@@ -5,6 +5,7 @@
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC5Pz9ySb_bI83GqUu9j00E8GZms8z6-rQ" />
 		<service android:name="pickUpApp.droid..PickupIntentService" android:enabled="true" android:exported="false" />
 		<activity android:name="net.hockeyapp.android.UpdateActivity" />
+
 	</application>
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	<uses-permission android:name="android.permission.INTERNET" />

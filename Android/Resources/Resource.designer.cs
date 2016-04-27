@@ -3948,10 +3948,10 @@ namespace PickUpApp.droid
 			public const int ui_cal_circle = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int ui_check_emptyX = 2130837690;
+			public const int ui_check_empty = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int ui_check_filledX = 2130837691;
+			public const int ui_check_filled = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
 			public const int ui_line_dash_grey = 2130837692;

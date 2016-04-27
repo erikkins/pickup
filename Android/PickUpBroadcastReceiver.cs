@@ -209,6 +209,7 @@ namespace PickUpApp.droid
 			if (intent.Extras.ContainsKey ("accepted")&& !string.IsNullOrEmpty(intent.Extras.GetString("accepted"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("accepted");
+				i.Message = intent.Extras.GetString ("alert");
 				launchFromNotification = false;
 				//intent.Extras.Remove ("alert");
 				Device.BeginInvokeOnMainThread (() => {

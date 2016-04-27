@@ -19,7 +19,7 @@ namespace PickUpApp
 			this.ViewModel = new MyCircleViewModel (App.client);
 
 			ExtendedListView lstCircle = new ExtendedListView ();
-
+			lstCircle.SeparatorColor = Color.Black;
 			lstCircle.ItemsSource = ViewModel.Circle;
 			lstCircle.ItemTemplate = new DataTemplate (typeof(CircleCell));
 			lstCircle.RefreshCommand = ViewModel.LoadItemsCommand;
@@ -41,6 +41,7 @@ namespace PickUpApp
 					lstCircle.SelectedItem = null;
 					return;
 				}
+				keepListening = true;
 				LocalContact lc = new LocalContact();
 				lc.Coparent = ac.Coparent;
 				lc.DisplayName = ac.Fullname;

@@ -479,6 +479,9 @@
     <Compile Include="Platform\iOSFBLike.cs" />
     <Compile Include="Platform\iOSArrow.cs" />
     <Compile Include="Platform\iOSDeviceInfo.cs" />
+    <Compile Include="Platform\iOSFFDatePicker.cs" />
+    <Compile Include="Platform\iOSFFTimePicker.cs" />
+    <Compile Include="Platform\iOSFFPicker.cs" />
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

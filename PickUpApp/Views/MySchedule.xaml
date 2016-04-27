@@ -2,7 +2,7 @@
 <ContentPage Title="ACTIVITIES" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PickUpApp.MySchedule">
 	<ContentPage.Content>
 	<StackLayout>
-		<ListView x:Name="lstSched" HasUnevenRows="true" ItemsSource="{Binding RecurringSchedule}" BackgroundColor="#EEECF3">
+		<ListView x:Name="lstSched" HasUnevenRows="true" SeparatorColor="Black" ItemsSource="{Binding RecurringSchedule}" BackgroundColor="#EEECF3">
 		<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell Height="75" StyleId="disclosure">
@@ -12,7 +12,7 @@
 						</ViewCell.ContextActions>
 						<ViewCell.View>
 							<StackLayout HeightRequest="75" Orientation="Horizontal"><BoxView WidthRequest="10"></BoxView>
-							<Label Text="{Binding Activity}" TranslationX="5" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  /><!---<Label VerticalOptions="Center" Text="["></Label><Label Text="{Binding Frequency}" VerticalOptions="Center"  HorizontalOptions="End"  /><Label VerticalOptions="Center" Text="]"></Label>-->
+							<Label Text="{Binding Activity}" TextColor="Black" TranslationX="5" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  /><!---<Label VerticalOptions="Center" Text="["></Label><Label Text="{Binding Frequency}" VerticalOptions="Center"  HorizontalOptions="End"  /><Label VerticalOptions="Center" Text="]"></Label>-->
 							</StackLayout>								
 
 						</ViewCell.View>

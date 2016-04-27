@@ -20,6 +20,7 @@ namespace PickUpApp
 				
 			//let's do it programmatically
 			ListView lstKids = new ListView();
+			lstKids.SeparatorColor = Color.Black;
 			lstKids.ItemsSource = ViewModel.KidsSorted;
 			lstKids.ItemTemplate = new DataTemplate (typeof(MyKidCell));
 			lstKids.IsGroupingEnabled = true;
@@ -27,6 +28,7 @@ namespace PickUpApp
 			lstKids.GroupHeaderTemplate = new DataTemplate (typeof(MyKidCellHeader));
 			lstKids.BackgroundColor = AppColor.AppGray;
 			lstKids.HasUnevenRows = true;
+
 			stacker.Children.Add (lstKids);
 
 			lstKids.ItemSelected += delegate(object sender, SelectedItemChangedEventArgs e) {

@@ -87,6 +87,19 @@ namespace PickUpApp
 	}
 	public class KidCell : ViewCell
 	{
+		FFCheckbox cb = new FFCheckbox ();
+
+		protected override void OnTapped ()
+		{
+			base.OnTapped ();
+
+			if (cb.Checked) {
+				cb.Checked = false;
+			} else {
+				cb.Checked = true;
+			}
+
+		}
 
 		protected override void OnBindingContextChanged()
 		{
@@ -129,6 +142,12 @@ namespace PickUpApp
 
 			slHoriz.Children.Add (l);
 
+
+			cb.SetBinding (FFCheckbox.CheckedProperty, "Selected", BindingMode.TwoWay);
+			cb.HorizontalOptions = LayoutOptions.EndAndExpand;
+			cb.VerticalOptions = LayoutOptions.Center;
+			slHoriz.Children.Add (cb);
+			/*
 			ImageButton ib = new ImageButton ();
 			ib.HorizontalOptions = LayoutOptions.EndAndExpand;
 			ib.VerticalOptions = LayoutOptions.Center;
@@ -152,6 +171,7 @@ namespace PickUpApp
 			};
 
 			slHoriz.Children.Add (ib);
+			*/
 
 
 			View = slHoriz;

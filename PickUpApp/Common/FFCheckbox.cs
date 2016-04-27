@@ -15,7 +15,7 @@ namespace PickUpApp
 			this.WidthRequest= 27;
 			this.HorizontalOptions = LayoutOptions.Center;
 			this.VerticalOptions = LayoutOptions.Center;
-
+			this.BackgroundColor = Color.Transparent;
 			ToggleImage = new Image
 			{
 				Source = UnCheckedImage
