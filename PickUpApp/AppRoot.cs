@@ -22,6 +22,7 @@ namespace PickUpApp
 				}
 			};
 
+
 			if (App.Device.Network.InternetConnectionStatus () == XLabs.Platform.Services.NetworkStatus.NotReachable) {
 				//uh oh
 				Device.BeginInvokeOnMainThread (async() => {
@@ -35,15 +36,11 @@ namespace PickUpApp
 						//this means we're SOL...not sure what to do here
 						return;
 					}
-				});
-
-
-
-
+				});			
 				//MessagingCenter.Send<Exception> (newEx, "Error");
 				//return;
 			}
-				
+
 
 			MessagingCenter.Subscribe<string> (this, "launch", async(s) => {
 				if (Navigation.ModalStack.Count > 0)
@@ -125,7 +122,7 @@ namespace PickUpApp
 				lastLocation.Latitude = loc.Latitude;
 				lastLocation.Longitude = loc.Longitude;
 			});
-
+				
 			App.GetPosition ().ConfigureAwait (false);
 
 			//var v  = DependencyService.Get<Plugin.Vibrate.Abstractions.IVibrate>();
@@ -218,6 +215,19 @@ namespace PickUpApp
 				//						Navigation.PushModalAsync(new InviteAccept());
 				//					});
 				//				}
+			});
+
+			//someone has NOT accepted my invite
+			MessagingCenter.Subscribe<Invite> (this, "declined", (i) => {
+				Plugin.Vibrate.CrossVibrate.Current.Vibration(500);	
+
+				DisplayAlert("Fetch request has NOT been accepted!", i.Message, "OK");
+				RespondMessage rm = new RespondMessage ();
+				rm.MessageID = i.Id;
+				rm.Response = "1";
+				rm.Status = "read";
+				rm.PostUpdate = "today";
+				MessagingCenter.Send<RespondMessage> (rm, "messagesupdated");
 			});
 
 			//nobody has accepted my invite

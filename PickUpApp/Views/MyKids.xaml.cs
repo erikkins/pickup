@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using FFImageLoading.Forms;
 
 namespace PickUpApp
 {	
@@ -192,6 +193,7 @@ namespace PickUpApp
 
 			slHoriz.Children.Add (bv);
 
+			/*
 			ImageSource imageSource = null;
 
 			UriImageSource uis = new UriImageSource ();
@@ -210,8 +212,6 @@ namespace PickUpApp
 					imageSource = FileImageSource.FromFile (k.PhotoURL);
 				}
 			}
-
-
 			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
 				BorderThickness = 1,
@@ -222,8 +222,23 @@ namespace PickUpApp
 				VerticalOptions = LayoutOptions.Center,
 				Source= imageSource //k.PhotoURL
 			};
-
 			slHoriz.Children.Add (ci);
+			*/
+
+			CachedImage cachedimg = new CachedImage ();
+			cachedimg.Source = k.PhotoURL;
+			cachedimg.CacheDuration = TimeSpan.FromDays (30);
+			cachedimg.DownsampleToViewSize = true;
+			cachedimg.TransparencyEnabled = false;
+			cachedimg.Aspect = Aspect.AspectFill;
+			cachedimg.HeightRequest = 50;
+			cachedimg.WidthRequest = 50;
+			cachedimg.HorizontalOptions = LayoutOptions.Start;
+			cachedimg.VerticalOptions = LayoutOptions.Center;
+			cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
+
+			slHoriz.Children.Add (cachedimg);
+
 
 			slHoriz.Children.Add (bv);
 

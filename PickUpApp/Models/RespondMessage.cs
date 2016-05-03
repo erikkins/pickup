@@ -23,7 +23,12 @@ namespace PickUpApp
 					_response = value; NotifyPropertyChanged ();
 				} } }
 
-
+		private string _comment;
+		[JsonProperty(PropertyName = "comment")]
+		public string Comment { get{return _comment; } set{ if (value != _comment) {
+					_comment = value; NotifyPropertyChanged ();
+				} } }
+		
 		private string _postUpdate;
 		public string PostUpdate { get{return _postUpdate; } set{ if (value != _postUpdate) {
 					_postUpdate = value; NotifyPropertyChanged ();

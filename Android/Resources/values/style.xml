@@ -1,0 +1,10 @@
+﻿<resources>
+  <style name="FFTheme.Base" parent="Theme.AppCompat.Light">
+  </style>
+      <style name="FFTheme" parent="FFTheme.Base">
+  </style>
+  <style name="FFTheme.Splash" parent ="Theme.AppCompat.Light">
+    <item name="android:windowBackground">@drawable/splashscreen</item>
+    <item name="android:windowNoTitle">true</item>  
+  </style>
+</resources>

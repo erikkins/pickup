@@ -47,9 +47,16 @@ namespace PickUpApp
 
 					if (selectedKid.DateOfBirth > DateTime.Today)
 					{
-						DisplayAlert("Uh oh", "Your kid must have been born in the past!", "OK");
+						await DisplayAlert("Uh oh", "Your kid must have been born in the past!", "OK");
 						return;
 					}
+					if (selectedKid.Firstname== null || selectedKid.Firstname.Trim().Length == 0)
+					{
+						await DisplayAlert("Uh oh", "Your kid must have a first name!", "OK");
+						return;
+					}
+
+
 
 					//ViewModel.CurrentKid = selectedKid;
 					selectedKid.Gender = stcGender.SelectedValue;
@@ -73,11 +80,13 @@ namespace PickUpApp
 			ExtendedTableView tv = new ExtendedTableView ();
 			tv.Intent = TableIntent.Data;
 			tv.BackgroundColor = Color.FromRgb (238, 236, 243);
+
 			tv.BindingContext = selectedKid;
 			tv.HasUnevenRows = true;
 			//tv.RowHeight = 75;
 
 			TableSection ts = new TableSection ();
+		
 			sicPic = new SimpleImageCell (selectedKid.PhotoURL);
 			sicPic.IsEnabled = selectedKid.Mine;
 			ts.Add (sicPic);

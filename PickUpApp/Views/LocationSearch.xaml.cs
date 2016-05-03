@@ -14,6 +14,7 @@ using System.Collections.ObjectModel;
 using XLabs.Forms.Controls;
 using System.Net;
 using System.IO;
+using FFImageLoading.Forms;
 
 namespace PickUpApp
 {
@@ -1102,12 +1103,16 @@ namespace PickUpApp
 	public class SimpleImageCell : ViewCell
 	{
 		private ImageSource _imagePath;
-		private ImageCircle.Forms.Plugin.Abstractions.CircleImage ci;
+		//private ImageCircle.Forms.Plugin.Abstractions.CircleImage ci;
+
+		private CachedImage cachedimg;
+
 		private StackLayout sl;
 
 		public SimpleImageCell(string imagePath)
 		{			
-			ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage ();
+			//ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage ();
+			cachedimg = new CachedImage ();
 			sl = new StackLayout ();
 			ImagePath = imagePath;
 		}
@@ -1119,7 +1124,8 @@ namespace PickUpApp
 				
 				return _imagePath;
 			}
-			set{				
+			set{			
+				/*	
 				if (value.GetType () == typeof(UriImageSource)) {
 					//check if URL
 					if (((UriImageSource)value).Uri.ToString ().ToLower ().StartsWith ("http")) {
@@ -1129,6 +1135,9 @@ namespace PickUpApp
 					_imagePath = value;
 				}
 				ci.Source = _imagePath;
+				*/
+				_imagePath = value;
+				//cachedimg.Source = value;
 				//this.OnBindingContextChanged ();
 			}
 		}
@@ -1153,6 +1162,22 @@ namespace PickUpApp
 //			bv.HeightRequest = 5;
 //			sl.Children.Add (bv);
 
+			//cachedimg = new CachedImage ();
+			cachedimg.Source = _imagePath;
+
+			cachedimg.Aspect = Aspect.AspectFill;
+			cachedimg.CacheDuration = TimeSpan.FromDays (30);
+			cachedimg.DownsampleToViewSize = true;
+			cachedimg.TransparencyEnabled = false;
+			cachedimg.HeightRequest = 100;
+			cachedimg.WidthRequest = 100;
+			cachedimg.HorizontalOptions = LayoutOptions.Center;
+			cachedimg.VerticalOptions = LayoutOptions.Center;
+			cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "000000"));
+
+			sl.Children.Add (cachedimg);
+
+			/*
 			ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
 				BorderThickness = 1,
@@ -1165,6 +1190,7 @@ namespace PickUpApp
 			};	
 
 			sl.Children.Add (ci);
+			*/
 
 			View = sl;
 		}

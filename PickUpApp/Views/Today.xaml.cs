@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using PickUpApp.ViewModels;
+using FFImageLoading.Forms;
 
 namespace PickUpApp
 {	
@@ -542,6 +543,11 @@ namespace PickUpApp
 					//let's load the messages to see if there's anything in my inbox
 					MessageView mv = new MessageView();
 					MessagingCenter.Send<MessageView>(mv, "LoadMessages");
+
+
+					//moving this to after today screen to see if the user experience is better...
+					//App.GetPosition().ConfigureAwait(false);
+
 				});
 
 				MessagingCenter.Subscribe<EmptyClass> (this, "CircleChanged", (p) => {
@@ -1185,6 +1191,21 @@ namespace PickUpApp
 //					uis.CachingEnabled = false;
 //					uis.Uri = auri;
 
+					CachedImage cachedimg = new CachedImage ();
+					cachedimg.Source = azureURL;
+					cachedimg.CacheDuration = TimeSpan.FromDays (30);
+					cachedimg.DownsampleToViewSize = true;
+					cachedimg.TransparencyEnabled = false;
+					cachedimg.Aspect = Aspect.AspectFill;
+					cachedimg.HeightRequest = 50;
+					cachedimg.WidthRequest = 50;
+					cachedimg.HorizontalOptions = LayoutOptions.Start;
+					cachedimg.VerticalOptions = LayoutOptions.Center;
+					cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
+
+					slKids.Children.Add (cachedimg);
+
+					/*
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
 						BorderThickness = 1,
@@ -1194,8 +1215,10 @@ namespace PickUpApp
 						HorizontalOptions = LayoutOptions.Center,
 						Source = azureURL
 					};	
-					slKids.WidthRequest += 60;	
 					slKids.Children.Add (ci);
+					*/
+					slKids.WidthRequest += 60;	
+
 				}
 				slDrop.Children.Add (slKids);
 				detailGrid.Children.Add (slDrop, 2, 3, 2, 3);

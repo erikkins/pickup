@@ -8,11 +8,19 @@ namespace PickUpApp
 {
 	public partial class MessageCenter : ContentPage
 	{
+		XLabs.Forms.Controls.PopupLayout popup = new  PopupLayout();
+
 		public MessageCenter ()
 		{
 			InitializeComponent ();
 			this.ViewModel = new MessageViewModel (App.client, null);		
 			this.Icon = "icn_back.png";
+
+			StackLayout stacker = new StackLayout ();
+			stacker.Orientation = StackOrientation.Vertical;
+			stacker.VerticalOptions = LayoutOptions.Fill;
+			stacker.HorizontalOptions = LayoutOptions.Fill;
+
 
 			ExtendedListView elv = new ExtendedListView ();
 			elv.BackgroundColor = AppColor.AppGray;
@@ -112,9 +120,88 @@ namespace PickUpApp
 
 			});
 
+			//build the comment popup
+			RespondMessage currentResponse = new RespondMessage();
+			StackLayout commentPopup = new StackLayout();
+			commentPopup.Padding = new Thickness (10);
+			commentPopup.BackgroundColor = AppColor.AppPurple;
+			commentPopup.Orientation = StackOrientation.Vertical;
+			commentPopup.HorizontalOptions = LayoutOptions.CenterAndExpand;
+			commentPopup.VerticalOptions = LayoutOptions.Center;
+			commentPopup.HeightRequest = 200;
+			commentPopup.WidthRequest = App.ScaledWidth;
+			Label lComment = new Label();
+			lComment.TextColor = Color.White;
+			lComment.Text = "Please provide a comment as to why you declined (optional):";
+			commentPopup.Children.Add(lComment);
+			ExtendedEditor eComment = new ExtendedEditor();
+			eComment.HeightRequest=60;
+
+			Frame f = new Frame();
+			f.HasShadow = false;
+			f.OutlineColor = AppColor.AppPink;
+			f.Content = eComment;
+			f.WidthRequest = App.ScaledQuarterWidth;
+			commentPopup.Children.Add(f);
+			Button bOK = new Button ();
+			bOK.VerticalOptions = LayoutOptions.Center;
+			bOK.HorizontalOptions = LayoutOptions.CenterAndExpand;
+			bOK.HeightRequest = 40;
+			bOK.WidthRequest = App.ScaledQuarterWidth - 30;
+			bOK.FontAttributes = FontAttributes.Bold;
+			bOK.FontSize = 18;
+			bOK.TextColor = Color.FromRgb (246, 99, 127);
+			bOK.BorderColor = Color.FromRgb (246, 99, 127);
+			bOK.BorderRadius = 8;
+			bOK.BorderWidth = 2;
+			bOK.BackgroundColor = Color.White;
+			bOK.Text = "OK";
+
+//			TapGestureRecognizer tgr = new TapGestureRecognizer ();
+//			tgr.Tapped += delegate(object sender, EventArgs e) {
+//				if (popup.IsPopupActive)
+//				{
+//					popup.DismissPopup();
+//				}
+//				stacker.IsVisible = true;
+//				currentResponse.Comment = eComment.Text;
+//				MessagingCenter.Send<RespondMessage>(currentResponse, "messageresponse");
+//				eComment.Text = "";
+//			};
+//			bOK.GestureRecognizers.Add(tgr);
+
+			bOK.Clicked += delegate(object sender, EventArgs e) {
+				//if (popup.IsPopupActive)
+				//{
+				//	popup.DismissPopup();
+				//}
+				currentResponse.Comment = eComment.Text;
+				MessagingCenter.Send<RespondMessage>(currentResponse, "messageresponse");
+				eComment.Text = "";
+				Content = stacker;
+			};
+			commentPopup.Children.Add (bOK);
+
+
+
 			MessagingCenter.Unsubscribe<RespondMessage> (this, "messageresponse");
 			MessagingCenter.Subscribe<RespondMessage> (this, "messageresponse", (mr) => {
+
+				if (mr.Comment=="|declined|")
+				{
+					currentResponse = mr;
+					//we want to do the popup and ask if they want to continue;
+					Content = commentPopup;
+					//stacker.IsVisible = false;
+					//System.Threading.Tasks.Task.Delay(3); //for iOS weirdness
+					//popup.ShowPopup(commentPopup);
+					eComment.Focus();
+					return;
+				}
+
 				Device.BeginInvokeOnMainThread(async()=>{
+
+
 
 					if (!string.IsNullOrEmpty(mr.Conditional))
 					{
@@ -137,6 +224,11 @@ namespace PickUpApp
 //				MessagingCenter.Unsubscribe<RespondMessage> (this, "messagesupdated");
 //			};
 
+
+
+			//popup.Content = stacker;
+			//Content = popup;
+			Content = stacker;
 		}
 
 		protected MessageViewModel ViewModel
@@ -712,7 +804,6 @@ namespace PickUpApp
 
 					//end preemptive
 
-
 					rm.MessageID = mv.Id;
 					rm.Response = "1";
 					rm.Status = "read";
@@ -720,6 +811,11 @@ namespace PickUpApp
 					MessagingCenter.Send<RespondMessage> (rm, "messageresponse");
 				};
 				slButtons.Children.Add (bAccept);
+
+
+
+
+
 
 				Button bDecline = new Button ();
 				bDecline.VerticalOptions = LayoutOptions.Center;
@@ -734,14 +830,14 @@ namespace PickUpApp
 				bDecline.BorderWidth = 2;
 				bDecline.BackgroundColor = Color.White;
 				bDecline.Text = "Decline";
-				bDecline.Clicked += delegate(object sender, EventArgs e) {
-					RespondMessage rm = new RespondMessage ();
-					rm.MessageID = mv.Id;
-
-					rm.Response = "0";
-					rm.Status = "read";
-					MessagingCenter.Send<RespondMessage> (rm, "messageresponse");
-				};
+					bDecline.Clicked += delegate(object sender, EventArgs e) {
+						RespondMessage rm = new RespondMessage ();
+						rm.MessageID = mv.Id;
+						rm.Response = "0";
+						rm.Status = "read";
+						rm.Comment="|declined|";
+						MessagingCenter.Send<RespondMessage> (rm, "messageresponse");
+					};
 				slButtons.Children.Add (bDecline);
 
 				StackLayout slButtonBorder = new StackLayout ();
@@ -755,9 +851,9 @@ namespace PickUpApp
 				bv = new BoxView ();
 				bv.HeightRequest = 10;
 				slMain.Children.Add (bv);
-			}
 
-			View = slMain;
+			}
+				View = slMain;
 
 		}
 			catch(Exception inviteex) {

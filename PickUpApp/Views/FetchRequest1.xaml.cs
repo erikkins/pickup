@@ -21,6 +21,11 @@ namespace PickUpApp
 			lstCircle.ItemTemplate = new DataTemplate (typeof(FetchCircleCell));
 			lstCircle.HasUnevenRows = true;
 			lstCircle.BackgroundColor = AppColor.AppGray;
+			this.BackgroundColor = AppColor.AppGray;
+			lstCircle.SeparatorColor = Color.Black;
+			lstCircle.SeparatorVisibility = SeparatorVisibility.Default;
+
+			lstCircle.VerticalOptions = LayoutOptions.StartAndExpand;
 			stacker.Children.Add (lstCircle);
 
 
@@ -86,6 +91,10 @@ namespace PickUpApp
 
 			slHoriz.Children.Add (bv);
 
+			if (ac.PhotoURL == null) {
+				ac.PhotoURL = "";
+			}
+
 			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
 				BorderThickness = 1,
@@ -125,6 +134,7 @@ namespace PickUpApp
 				ib.HorizontalOptions = LayoutOptions.EndAndExpand;
 				ib.VerticalOptions = LayoutOptions.Center;
 				ib.ImageHeightRequest = 27;
+				ib.BackgroundColor = Color.Transparent;
 				ib.ImageWidthRequest = 27;
 				if (ac.Selected) {
 					ib.Source = "ui_check_filled.png";

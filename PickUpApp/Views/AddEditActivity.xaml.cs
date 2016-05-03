@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using XLabs.Forms.Controls;
 using System.Linq;
 using System.Diagnostics;
+using FFImageLoading.Forms;
 
 namespace PickUpApp
 {
@@ -1322,6 +1323,19 @@ namespace PickUpApp
 
 						//actually have to go pull the kids out
 						Kid thisKid = kids.Single(k=>k.Id == ks.KidID);
+
+						CachedImage cachedimg = new CachedImage ();
+						cachedimg.Source = thisKid.PhotoURL;
+						cachedimg.Aspect = Aspect.AspectFill;
+						cachedimg.HeightRequest = 50;
+						cachedimg.WidthRequest = 50;
+						cachedimg.HorizontalOptions = LayoutOptions.Start;
+						cachedimg.VerticalOptions = LayoutOptions.Center;
+						cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
+
+						slKiddo.Children.Add (cachedimg);
+
+						/*
 						ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 							BorderColor = Color.Black,
 							BorderThickness = 1,
@@ -1335,6 +1349,7 @@ namespace PickUpApp
 
 
 						slKiddo.Children.Add (ci);
+						*/
 						Label kidName = new Label();
 						kidName.VerticalOptions = LayoutOptions.Center;
 						kidName.Text = thisKid.Fullname;
@@ -1406,6 +1421,22 @@ namespace PickUpApp
 
 							//actually have to go pull the kids out
 							Kid thisKid = kids.Single(k=>k.Id == ks.KidID);
+
+
+							CachedImage cachedimg = new CachedImage ();
+							cachedimg.Source = thisKid.PhotoURL;
+							cachedimg.CacheDuration = TimeSpan.FromDays (30);
+							cachedimg.DownsampleToViewSize = true;
+							cachedimg.TransparencyEnabled = false;
+							cachedimg.Aspect = Aspect.AspectFill;
+							cachedimg.HeightRequest = 50;
+							cachedimg.WidthRequest = 50;
+							cachedimg.HorizontalOptions = LayoutOptions.Start;
+							cachedimg.VerticalOptions = LayoutOptions.Center;
+							cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
+
+							slKiddo.Children.Add (cachedimg);
+							/*
 							ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 								BorderColor = Color.Black,
 								BorderThickness = 1,
@@ -1419,6 +1450,7 @@ namespace PickUpApp
 
 
 							slKiddo.Children.Add (ci);
+							*/
 							Label kidName = new Label();
 							kidName.VerticalOptions = LayoutOptions.Center;
 							kidName.Text = thisKid.Fullname;

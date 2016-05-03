@@ -6,7 +6,7 @@ using Xamarin.Forms.Maps;
 using XLabs.Forms;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services;
-
+using FFImageLoading.Forms;
 
 namespace PickUpApp
 {
@@ -378,6 +378,7 @@ namespace PickUpApp
 			}
 			activity.FontAttributes = FontAttributes.Bold;
 			activity.FontSize = 16;
+			activity.TextColor = Color.Black;
 			activity.VerticalOptions = LayoutOptions.End;
 
 			detail2.Children.Add (activity);
@@ -413,7 +414,22 @@ namespace PickUpApp
 							break;
 						}
 					}
+
+					CachedImage cachedimg = new CachedImage ();
+					cachedimg.Source = azureURL;
+					cachedimg.CacheDuration = TimeSpan.FromDays (30);
+					cachedimg.DownsampleToViewSize = true;
+					cachedimg.TransparencyEnabled = false;
+					cachedimg.Aspect = Aspect.AspectFill;
+					cachedimg.HeightRequest = 50;
+					cachedimg.WidthRequest = 50;
+					cachedimg.HorizontalOptions = LayoutOptions.Center;
+					cachedimg.VerticalOptions = LayoutOptions.Center;
+					cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
+
+
 					//Uri auri = new Uri (azureURL);
+					/*
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
 						BorderThickness = 1,
@@ -423,14 +439,18 @@ namespace PickUpApp
 						HorizontalOptions = LayoutOptions.Center,
 						Source = azureURL
 					};	
+					*/
+
 					StackLayout kid = new StackLayout ();
 					kid.Orientation = StackOrientation.Horizontal;
 					kid.VerticalOptions = LayoutOptions.Center;
-					kid.Children.Add (ci);
+					//kid.Children.Add (ci);
+					kid.Children.Add(cachedimg);
 					Label kidname = new Label ();
 					kidname.Text = parts [0];
 					kidname.VerticalOptions = LayoutOptions.Center;
 					kidname.FontSize = 14;
+					kidname.TextColor = Color.Black;
 					kid.Children.Add (kidname);
 
 					right.Children.Add (kid);

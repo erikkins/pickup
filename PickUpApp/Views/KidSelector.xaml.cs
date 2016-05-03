@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using XLabs.Forms.Controls;
 using Xamarin.Forms;
 using System.Diagnostics;
+using FFImageLoading.Forms;
 
 namespace PickUpApp
 {
@@ -71,7 +72,9 @@ namespace PickUpApp
 				HasUnevenRows = false,
 				BackgroundColor = Color.Transparent,
 				RowHeight = 75,
-				Header = null
+				Header = null,
+				SeparatorColor = Color.Black,
+				SeparatorVisibility = SeparatorVisibility.Default
 			};
 
 
@@ -88,7 +91,7 @@ namespace PickUpApp
 	public class KidCell : ViewCell
 	{
 		FFCheckbox cb = new FFCheckbox ();
-
+		CachedImage cachedimg = new CachedImage ();
 		protected override void OnTapped ()
 		{
 			base.OnTapped ();
@@ -120,6 +123,21 @@ namespace PickUpApp
 
 			slHoriz.Children.Add (bv);
 
+
+			cachedimg.Source = k.PhotoURL;
+			cachedimg.CacheDuration = TimeSpan.FromDays (30);
+			cachedimg.DownsampleToViewSize = true;
+			cachedimg.TransparencyEnabled = false;
+			cachedimg.Aspect = Aspect.AspectFill;
+			cachedimg.HeightRequest = 50;
+			cachedimg.WidthRequest = 50;
+			cachedimg.HorizontalOptions = LayoutOptions.Start;
+			cachedimg.VerticalOptions = LayoutOptions.Center;
+			cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
+
+			slHoriz.Children.Add (cachedimg);
+
+			/*
 			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
 				BorderThickness = 1,
@@ -132,10 +150,12 @@ namespace PickUpApp
 			};
 
 			slHoriz.Children.Add (ci);
+			*/
 
 			slHoriz.Children.Add (bv);
 
 			Label l = new Label ();
+			l.TextColor = Color.Black;
 			l.Text = k.Fullname;
 			l.VerticalOptions = LayoutOptions.Center;
 			l.HorizontalOptions = LayoutOptions.Start;
@@ -173,6 +193,10 @@ namespace PickUpApp
 			slHoriz.Children.Add (ib);
 			*/
 
+			//add a spacer
+			bv = new BoxView();
+			bv.WidthRequest = 5;
+			slHoriz.Children.Add (bv);
 
 			View = slHoriz;
 

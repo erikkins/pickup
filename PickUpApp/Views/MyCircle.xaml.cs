@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Linq;
 using XLabs.Forms.Controls;
+using FFImageLoading.Forms;
 
 namespace PickUpApp
 {	
@@ -208,6 +209,22 @@ namespace PickUpApp
 			bv.WidthRequest = 10;
 			sl.Children.Add (bv);
 
+
+			CachedImage cachedimg = new CachedImage ();
+			cachedimg.Source = ac.PhotoURL;
+			cachedimg.CacheDuration = TimeSpan.FromDays (30);
+			cachedimg.DownsampleToViewSize = true;
+			cachedimg.TransparencyEnabled = false;
+			cachedimg.Aspect = Aspect.AspectFill;
+			cachedimg.HeightRequest = 50;
+			cachedimg.WidthRequest = 50;
+			cachedimg.HorizontalOptions = LayoutOptions.Center;
+			cachedimg.VerticalOptions = LayoutOptions.Center;
+			cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
+
+			sl.Children.Add (cachedimg);
+
+			/*
 			ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 				BorderColor = Color.Black,
 				BorderThickness = 1,
@@ -220,7 +237,7 @@ namespace PickUpApp
 			};	
 
 			sl.Children.Add (ci);
-
+			*/
 		
 			Label l = new Label ();
 			l.Text = ac.Fullname;

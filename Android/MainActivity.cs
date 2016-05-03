@@ -20,23 +20,27 @@ using XLabs.Platform.Device;
 using XLabs.Platform.Services.Media;
 using HockeyApp;
 using System.Threading.Tasks;
+using FFImageLoading;
 
 
 namespace PickUpApp.droid
 {
-	[Activity (Label = "FamFetch", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "FamFetch", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity //XFormsApplicationDroid //AndroidActivity
 	{
 		private GestureDetector _gestureDetector;
 		public const string HOCKEYAPP_APPID = "ed87bdba01244d8b82ed8df1ec5a7690";
 
+
 		protected override void OnCreate (Bundle bundle)
 		{
+			//RequestWindowFeature (WindowFeatures.ActionBar);
 			base.OnCreate (bundle);
 
 			Xamarin.Forms.Forms.Init (this, bundle);
 			Xamarin.FormsMaps.Init (this, bundle);
 			ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init ();
+			FFImageLoading.Forms.Droid.CachedImageRenderer.Init ();
 			//Refractored.Xam.Forms.Vibrate.Droid.Vibrate.Init ();
 
 			Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
@@ -84,13 +88,14 @@ namespace PickUpApp.droid
 			//SetPage (App.Current.MainPage);
 
 			LoadApplication (new App ());
-
 			ActionBar.SetIcon (new Android.Graphics.Drawables.ColorDrawable (Android.Graphics.Color.Transparent));
+
 
 			RegisterWithGCM ();
 			var listener = new GestureListener();
 			_gestureDetector = new GestureDetector(this, listener);
 		}
+			
 
 		public override bool OnTouchEvent (MotionEvent e)
 		{

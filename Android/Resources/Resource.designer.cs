@@ -1645,6 +1645,1546 @@ namespace PickUpApp.droid
 			global::Plugin.Vibrate.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
 			global::Plugin.Vibrate.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::PickUpApp.droid.Resource.Attribute.actionBarSize;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_fade_in = global::PickUpApp.droid.Resource.Animation.abc_fade_in;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_fade_out = global::PickUpApp.droid.Resource.Animation.abc_fade_out;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::PickUpApp.droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_popup_enter = global::PickUpApp.droid.Resource.Animation.abc_popup_enter;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_popup_exit = global::PickUpApp.droid.Resource.Animation.abc_popup_exit;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom = global::PickUpApp.droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_slide_in_bottom = global::PickUpApp.droid.Resource.Animation.abc_slide_in_bottom;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_slide_in_top = global::PickUpApp.droid.Resource.Animation.abc_slide_in_top;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_slide_out_bottom = global::PickUpApp.droid.Resource.Animation.abc_slide_out_bottom;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.abc_slide_out_top = global::PickUpApp.droid.Resource.Animation.abc_slide_out_top;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.design_fab_in = global::PickUpApp.droid.Resource.Animation.design_fab_in;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.design_fab_out = global::PickUpApp.droid.Resource.Animation.design_fab_out;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.design_snackbar_in = global::PickUpApp.droid.Resource.Animation.design_snackbar_in;
+			global::FFImageLoading.Forms.Droid.Resource.Animation.design_snackbar_out = global::PickUpApp.droid.Resource.Animation.design_snackbar_out;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarDivider = global::PickUpApp.droid.Resource.Attribute.actionBarDivider;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarItemBackground = global::PickUpApp.droid.Resource.Attribute.actionBarItemBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarPopupTheme = global::PickUpApp.droid.Resource.Attribute.actionBarPopupTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarSize = global::PickUpApp.droid.Resource.Attribute.actionBarSize;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarSplitStyle = global::PickUpApp.droid.Resource.Attribute.actionBarSplitStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarStyle = global::PickUpApp.droid.Resource.Attribute.actionBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarTabBarStyle = global::PickUpApp.droid.Resource.Attribute.actionBarTabBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarTabStyle = global::PickUpApp.droid.Resource.Attribute.actionBarTabStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarTabTextStyle = global::PickUpApp.droid.Resource.Attribute.actionBarTabTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarTheme = global::PickUpApp.droid.Resource.Attribute.actionBarTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionBarWidgetTheme = global::PickUpApp.droid.Resource.Attribute.actionBarWidgetTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionButtonStyle = global::PickUpApp.droid.Resource.Attribute.actionButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionDropDownStyle = global::PickUpApp.droid.Resource.Attribute.actionDropDownStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionLayout = global::PickUpApp.droid.Resource.Attribute.actionLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionMenuTextAppearance = global::PickUpApp.droid.Resource.Attribute.actionMenuTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionMenuTextColor = global::PickUpApp.droid.Resource.Attribute.actionMenuTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeBackground = global::PickUpApp.droid.Resource.Attribute.actionModeBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeCloseButtonStyle = global::PickUpApp.droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeCloseDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeCloseDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeCopyDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeCopyDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeCutDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeCutDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeFindDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeFindDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModePasteDrawable = global::PickUpApp.droid.Resource.Attribute.actionModePasteDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModePopupWindowStyle = global::PickUpApp.droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeSelectAllDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeShareDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeShareDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeSplitBackground = global::PickUpApp.droid.Resource.Attribute.actionModeSplitBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeStyle = global::PickUpApp.droid.Resource.Attribute.actionModeStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionModeWebSearchDrawable = global::PickUpApp.droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionOverflowButtonStyle = global::PickUpApp.droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionOverflowMenuStyle = global::PickUpApp.droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionProviderClass = global::PickUpApp.droid.Resource.Attribute.actionProviderClass;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.actionViewClass = global::PickUpApp.droid.Resource.Attribute.actionViewClass;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.activityChooserViewStyle = global::PickUpApp.droid.Resource.Attribute.activityChooserViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.alertDialogButtonGroupStyle = global::PickUpApp.droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.alertDialogCenterButtons = global::PickUpApp.droid.Resource.Attribute.alertDialogCenterButtons;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.alertDialogStyle = global::PickUpApp.droid.Resource.Attribute.alertDialogStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.alertDialogTheme = global::PickUpApp.droid.Resource.Attribute.alertDialogTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.arrowHeadLength = global::PickUpApp.droid.Resource.Attribute.arrowHeadLength;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.arrowShaftLength = global::PickUpApp.droid.Resource.Attribute.arrowShaftLength;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::PickUpApp.droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.background = global::PickUpApp.droid.Resource.Attribute.background;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.backgroundSplit = global::PickUpApp.droid.Resource.Attribute.backgroundSplit;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.backgroundStacked = global::PickUpApp.droid.Resource.Attribute.backgroundStacked;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.backgroundTint = global::PickUpApp.droid.Resource.Attribute.backgroundTint;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.backgroundTintMode = global::PickUpApp.droid.Resource.Attribute.backgroundTintMode;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.barLength = global::PickUpApp.droid.Resource.Attribute.barLength;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.behavior_overlapTop = global::PickUpApp.droid.Resource.Attribute.behavior_overlapTop;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.borderWidth = global::PickUpApp.droid.Resource.Attribute.borderWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.borderlessButtonStyle = global::PickUpApp.droid.Resource.Attribute.borderlessButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonBarButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonBarStyle = global::PickUpApp.droid.Resource.Attribute.buttonBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonPanelSideLayout = global::PickUpApp.droid.Resource.Attribute.buttonPanelSideLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonStyle = global::PickUpApp.droid.Resource.Attribute.buttonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonStyleSmall = global::PickUpApp.droid.Resource.Attribute.buttonStyleSmall;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonTint = global::PickUpApp.droid.Resource.Attribute.buttonTint;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.buttonTintMode = global::PickUpApp.droid.Resource.Attribute.buttonTintMode;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.cardBackgroundColor = global::PickUpApp.droid.Resource.Attribute.cardBackgroundColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.cardCornerRadius = global::PickUpApp.droid.Resource.Attribute.cardCornerRadius;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.cardElevation = global::PickUpApp.droid.Resource.Attribute.cardElevation;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.cardMaxElevation = global::PickUpApp.droid.Resource.Attribute.cardMaxElevation;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.cardPreventCornerOverlap = global::PickUpApp.droid.Resource.Attribute.cardPreventCornerOverlap;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.cardUseCompatPadding = global::PickUpApp.droid.Resource.Attribute.cardUseCompatPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.checkboxStyle = global::PickUpApp.droid.Resource.Attribute.checkboxStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.checkedTextViewStyle = global::PickUpApp.droid.Resource.Attribute.checkedTextViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.closeIcon = global::PickUpApp.droid.Resource.Attribute.closeIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.closeItemLayout = global::PickUpApp.droid.Resource.Attribute.closeItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.collapseContentDescription = global::PickUpApp.droid.Resource.Attribute.collapseContentDescription;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.collapseIcon = global::PickUpApp.droid.Resource.Attribute.collapseIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.collapsedTitleGravity = global::PickUpApp.droid.Resource.Attribute.collapsedTitleGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::PickUpApp.droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.color = global::PickUpApp.droid.Resource.Attribute.color;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorAccent = global::PickUpApp.droid.Resource.Attribute.colorAccent;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorButtonNormal = global::PickUpApp.droid.Resource.Attribute.colorButtonNormal;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorControlActivated = global::PickUpApp.droid.Resource.Attribute.colorControlActivated;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorControlHighlight = global::PickUpApp.droid.Resource.Attribute.colorControlHighlight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorControlNormal = global::PickUpApp.droid.Resource.Attribute.colorControlNormal;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorPrimary = global::PickUpApp.droid.Resource.Attribute.colorPrimary;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorPrimaryDark = global::PickUpApp.droid.Resource.Attribute.colorPrimaryDark;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.colorSwitchThumbNormal = global::PickUpApp.droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.commitIcon = global::PickUpApp.droid.Resource.Attribute.commitIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentInsetEnd = global::PickUpApp.droid.Resource.Attribute.contentInsetEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentInsetLeft = global::PickUpApp.droid.Resource.Attribute.contentInsetLeft;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentInsetRight = global::PickUpApp.droid.Resource.Attribute.contentInsetRight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentInsetStart = global::PickUpApp.droid.Resource.Attribute.contentInsetStart;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentPadding = global::PickUpApp.droid.Resource.Attribute.contentPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentPaddingBottom = global::PickUpApp.droid.Resource.Attribute.contentPaddingBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentPaddingLeft = global::PickUpApp.droid.Resource.Attribute.contentPaddingLeft;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentPaddingRight = global::PickUpApp.droid.Resource.Attribute.contentPaddingRight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentPaddingTop = global::PickUpApp.droid.Resource.Attribute.contentPaddingTop;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.contentScrim = global::PickUpApp.droid.Resource.Attribute.contentScrim;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.controlBackground = global::PickUpApp.droid.Resource.Attribute.controlBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.customNavigationLayout = global::PickUpApp.droid.Resource.Attribute.customNavigationLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.defaultQueryHint = global::PickUpApp.droid.Resource.Attribute.defaultQueryHint;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.dialogPreferredPadding = global::PickUpApp.droid.Resource.Attribute.dialogPreferredPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.dialogTheme = global::PickUpApp.droid.Resource.Attribute.dialogTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.displayOptions = global::PickUpApp.droid.Resource.Attribute.displayOptions;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.divider = global::PickUpApp.droid.Resource.Attribute.divider;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.dividerHorizontal = global::PickUpApp.droid.Resource.Attribute.dividerHorizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.dividerPadding = global::PickUpApp.droid.Resource.Attribute.dividerPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.dividerVertical = global::PickUpApp.droid.Resource.Attribute.dividerVertical;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.drawableSize = global::PickUpApp.droid.Resource.Attribute.drawableSize;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.drawerArrowStyle = global::PickUpApp.droid.Resource.Attribute.drawerArrowStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.dropDownListViewStyle = global::PickUpApp.droid.Resource.Attribute.dropDownListViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::PickUpApp.droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.editTextBackground = global::PickUpApp.droid.Resource.Attribute.editTextBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.editTextColor = global::PickUpApp.droid.Resource.Attribute.editTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.editTextStyle = global::PickUpApp.droid.Resource.Attribute.editTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.elevation = global::PickUpApp.droid.Resource.Attribute.elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.errorEnabled = global::PickUpApp.droid.Resource.Attribute.errorEnabled;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.errorTextAppearance = global::PickUpApp.droid.Resource.Attribute.errorTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::PickUpApp.droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expanded = global::PickUpApp.droid.Resource.Attribute.expanded;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandedTitleGravity = global::PickUpApp.droid.Resource.Attribute.expandedTitleGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandedTitleMargin = global::PickUpApp.droid.Resource.Attribute.expandedTitleMargin;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandedTitleMarginBottom = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandedTitleMarginEnd = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandedTitleMarginStart = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginStart;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandedTitleMarginTop = global::PickUpApp.droid.Resource.Attribute.expandedTitleMarginTop;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.expandedTitleTextAppearance = global::PickUpApp.droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.externalRouteEnabledDrawable = global::PickUpApp.droid.Resource.Attribute.externalRouteEnabledDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.fabSize = global::PickUpApp.droid.Resource.Attribute.fabSize;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.gapBetweenBars = global::PickUpApp.droid.Resource.Attribute.gapBetweenBars;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.goIcon = global::PickUpApp.droid.Resource.Attribute.goIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.headerLayout = global::PickUpApp.droid.Resource.Attribute.headerLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.height = global::PickUpApp.droid.Resource.Attribute.height;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.hideOnContentScroll = global::PickUpApp.droid.Resource.Attribute.hideOnContentScroll;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.hintAnimationEnabled = global::PickUpApp.droid.Resource.Attribute.hintAnimationEnabled;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.hintTextAppearance = global::PickUpApp.droid.Resource.Attribute.hintTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.homeAsUpIndicator = global::PickUpApp.droid.Resource.Attribute.homeAsUpIndicator;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.homeLayout = global::PickUpApp.droid.Resource.Attribute.homeLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.icon = global::PickUpApp.droid.Resource.Attribute.icon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.iconifiedByDefault = global::PickUpApp.droid.Resource.Attribute.iconifiedByDefault;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.indeterminateProgressStyle = global::PickUpApp.droid.Resource.Attribute.indeterminateProgressStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.initialActivityCount = global::PickUpApp.droid.Resource.Attribute.initialActivityCount;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.insetForeground = global::PickUpApp.droid.Resource.Attribute.insetForeground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.isLightTheme = global::PickUpApp.droid.Resource.Attribute.isLightTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.itemBackground = global::PickUpApp.droid.Resource.Attribute.itemBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.itemIconTint = global::PickUpApp.droid.Resource.Attribute.itemIconTint;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.itemPadding = global::PickUpApp.droid.Resource.Attribute.itemPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.itemTextAppearance = global::PickUpApp.droid.Resource.Attribute.itemTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.itemTextColor = global::PickUpApp.droid.Resource.Attribute.itemTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.keylines = global::PickUpApp.droid.Resource.Attribute.keylines;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout = global::PickUpApp.droid.Resource.Attribute.layout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_anchor = global::PickUpApp.droid.Resource.Attribute.layout_anchor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_anchorGravity = global::PickUpApp.droid.Resource.Attribute.layout_anchorGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_behavior = global::PickUpApp.droid.Resource.Attribute.layout_behavior;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_collapseMode = global::PickUpApp.droid.Resource.Attribute.layout_collapseMode;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_collapseParallaxMultiplier = global::PickUpApp.droid.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_keyline = global::PickUpApp.droid.Resource.Attribute.layout_keyline;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_scrollFlags = global::PickUpApp.droid.Resource.Attribute.layout_scrollFlags;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.layout_scrollInterpolator = global::PickUpApp.droid.Resource.Attribute.layout_scrollInterpolator;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::PickUpApp.droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listDividerAlertDialog = global::PickUpApp.droid.Resource.Attribute.listDividerAlertDialog;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listItemLayout = global::PickUpApp.droid.Resource.Attribute.listItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listLayout = global::PickUpApp.droid.Resource.Attribute.listLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listPopupWindowStyle = global::PickUpApp.droid.Resource.Attribute.listPopupWindowStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listPreferredItemHeight = global::PickUpApp.droid.Resource.Attribute.listPreferredItemHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listPreferredItemHeightLarge = global::PickUpApp.droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listPreferredItemHeightSmall = global::PickUpApp.droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listPreferredItemPaddingLeft = global::PickUpApp.droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::PickUpApp.droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.logo = global::PickUpApp.droid.Resource.Attribute.logo;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.logoDescription = global::PickUpApp.droid.Resource.Attribute.logoDescription;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.maxActionInlineWidth = global::PickUpApp.droid.Resource.Attribute.maxActionInlineWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.maxButtonHeight = global::PickUpApp.droid.Resource.Attribute.maxButtonHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.measureWithLargestChild = global::PickUpApp.droid.Resource.Attribute.measureWithLargestChild;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRouteButtonStyle = global::PickUpApp.droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRouteCastDrawable = global::PickUpApp.droid.Resource.Attribute.mediaRouteCastDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRouteConnectingDrawable = global::PickUpApp.droid.Resource.Attribute.mediaRouteConnectingDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRouteOffDrawable = global::PickUpApp.droid.Resource.Attribute.mediaRouteOffDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRouteOnDrawable = global::PickUpApp.droid.Resource.Attribute.mediaRouteOnDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRoutePauseDrawable = global::PickUpApp.droid.Resource.Attribute.mediaRoutePauseDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRoutePlayDrawable = global::PickUpApp.droid.Resource.Attribute.mediaRoutePlayDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.mediaRouteSettingsDrawable = global::PickUpApp.droid.Resource.Attribute.mediaRouteSettingsDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.menu = global::PickUpApp.droid.Resource.Attribute.menu;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.multiChoiceItemLayout = global::PickUpApp.droid.Resource.Attribute.multiChoiceItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.navigationContentDescription = global::PickUpApp.droid.Resource.Attribute.navigationContentDescription;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.navigationIcon = global::PickUpApp.droid.Resource.Attribute.navigationIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.navigationMode = global::PickUpApp.droid.Resource.Attribute.navigationMode;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.overlapAnchor = global::PickUpApp.droid.Resource.Attribute.overlapAnchor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.paddingEnd = global::PickUpApp.droid.Resource.Attribute.paddingEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.paddingStart = global::PickUpApp.droid.Resource.Attribute.paddingStart;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.panelBackground = global::PickUpApp.droid.Resource.Attribute.panelBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.panelMenuListTheme = global::PickUpApp.droid.Resource.Attribute.panelMenuListTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.panelMenuListWidth = global::PickUpApp.droid.Resource.Attribute.panelMenuListWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.popupMenuStyle = global::PickUpApp.droid.Resource.Attribute.popupMenuStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.popupTheme = global::PickUpApp.droid.Resource.Attribute.popupTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.popupWindowStyle = global::PickUpApp.droid.Resource.Attribute.popupWindowStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.preserveIconSpacing = global::PickUpApp.droid.Resource.Attribute.preserveIconSpacing;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.pressedTranslationZ = global::PickUpApp.droid.Resource.Attribute.pressedTranslationZ;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.progressBarPadding = global::PickUpApp.droid.Resource.Attribute.progressBarPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.progressBarStyle = global::PickUpApp.droid.Resource.Attribute.progressBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.queryBackground = global::PickUpApp.droid.Resource.Attribute.queryBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.queryHint = global::PickUpApp.droid.Resource.Attribute.queryHint;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.radioButtonStyle = global::PickUpApp.droid.Resource.Attribute.radioButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.ratingBarStyle = global::PickUpApp.droid.Resource.Attribute.ratingBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.rippleColor = global::PickUpApp.droid.Resource.Attribute.rippleColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.searchHintIcon = global::PickUpApp.droid.Resource.Attribute.searchHintIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.searchIcon = global::PickUpApp.droid.Resource.Attribute.searchIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.searchViewStyle = global::PickUpApp.droid.Resource.Attribute.searchViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.selectableItemBackground = global::PickUpApp.droid.Resource.Attribute.selectableItemBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::PickUpApp.droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.showAsAction = global::PickUpApp.droid.Resource.Attribute.showAsAction;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.showDividers = global::PickUpApp.droid.Resource.Attribute.showDividers;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.showText = global::PickUpApp.droid.Resource.Attribute.showText;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.singleChoiceItemLayout = global::PickUpApp.droid.Resource.Attribute.singleChoiceItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.spinBars = global::PickUpApp.droid.Resource.Attribute.spinBars;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::PickUpApp.droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.spinnerStyle = global::PickUpApp.droid.Resource.Attribute.spinnerStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.splitTrack = global::PickUpApp.droid.Resource.Attribute.splitTrack;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.state_above_anchor = global::PickUpApp.droid.Resource.Attribute.state_above_anchor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.statusBarBackground = global::PickUpApp.droid.Resource.Attribute.statusBarBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.statusBarScrim = global::PickUpApp.droid.Resource.Attribute.statusBarScrim;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.submitBackground = global::PickUpApp.droid.Resource.Attribute.submitBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.subtitle = global::PickUpApp.droid.Resource.Attribute.subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.subtitleTextAppearance = global::PickUpApp.droid.Resource.Attribute.subtitleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.subtitleTextColor = global::PickUpApp.droid.Resource.Attribute.subtitleTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.subtitleTextStyle = global::PickUpApp.droid.Resource.Attribute.subtitleTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.suggestionRowLayout = global::PickUpApp.droid.Resource.Attribute.suggestionRowLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.switchMinWidth = global::PickUpApp.droid.Resource.Attribute.switchMinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.switchPadding = global::PickUpApp.droid.Resource.Attribute.switchPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.switchStyle = global::PickUpApp.droid.Resource.Attribute.switchStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.switchTextAppearance = global::PickUpApp.droid.Resource.Attribute.switchTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabBackground = global::PickUpApp.droid.Resource.Attribute.tabBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabContentStart = global::PickUpApp.droid.Resource.Attribute.tabContentStart;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabGravity = global::PickUpApp.droid.Resource.Attribute.tabGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabIndicatorColor = global::PickUpApp.droid.Resource.Attribute.tabIndicatorColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabIndicatorHeight = global::PickUpApp.droid.Resource.Attribute.tabIndicatorHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabMaxWidth = global::PickUpApp.droid.Resource.Attribute.tabMaxWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabMinWidth = global::PickUpApp.droid.Resource.Attribute.tabMinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabMode = global::PickUpApp.droid.Resource.Attribute.tabMode;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabPadding = global::PickUpApp.droid.Resource.Attribute.tabPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabPaddingBottom = global::PickUpApp.droid.Resource.Attribute.tabPaddingBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabPaddingEnd = global::PickUpApp.droid.Resource.Attribute.tabPaddingEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabPaddingStart = global::PickUpApp.droid.Resource.Attribute.tabPaddingStart;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabPaddingTop = global::PickUpApp.droid.Resource.Attribute.tabPaddingTop;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabSelectedTextColor = global::PickUpApp.droid.Resource.Attribute.tabSelectedTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabTextAppearance = global::PickUpApp.droid.Resource.Attribute.tabTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.tabTextColor = global::PickUpApp.droid.Resource.Attribute.tabTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textAllCaps = global::PickUpApp.droid.Resource.Attribute.textAllCaps;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::PickUpApp.droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textAppearanceListItem = global::PickUpApp.droid.Resource.Attribute.textAppearanceListItem;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textAppearanceListItemSmall = global::PickUpApp.droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::PickUpApp.droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::PickUpApp.droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::PickUpApp.droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textColorAlertDialogListItem = global::PickUpApp.droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.textColorSearchUrl = global::PickUpApp.droid.Resource.Attribute.textColorSearchUrl;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.theme = global::PickUpApp.droid.Resource.Attribute.theme;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.thickness = global::PickUpApp.droid.Resource.Attribute.thickness;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.thumbTextPadding = global::PickUpApp.droid.Resource.Attribute.thumbTextPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.title = global::PickUpApp.droid.Resource.Attribute.title;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleEnabled = global::PickUpApp.droid.Resource.Attribute.titleEnabled;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleMarginBottom = global::PickUpApp.droid.Resource.Attribute.titleMarginBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleMarginEnd = global::PickUpApp.droid.Resource.Attribute.titleMarginEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleMarginStart = global::PickUpApp.droid.Resource.Attribute.titleMarginStart;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleMarginTop = global::PickUpApp.droid.Resource.Attribute.titleMarginTop;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleMargins = global::PickUpApp.droid.Resource.Attribute.titleMargins;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleTextAppearance = global::PickUpApp.droid.Resource.Attribute.titleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleTextColor = global::PickUpApp.droid.Resource.Attribute.titleTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.titleTextStyle = global::PickUpApp.droid.Resource.Attribute.titleTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.toolbarId = global::PickUpApp.droid.Resource.Attribute.toolbarId;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::PickUpApp.droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.toolbarStyle = global::PickUpApp.droid.Resource.Attribute.toolbarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.track = global::PickUpApp.droid.Resource.Attribute.track;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.voiceIcon = global::PickUpApp.droid.Resource.Attribute.voiceIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowActionBar = global::PickUpApp.droid.Resource.Attribute.windowActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowActionBarOverlay = global::PickUpApp.droid.Resource.Attribute.windowActionBarOverlay;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowActionModeOverlay = global::PickUpApp.droid.Resource.Attribute.windowActionModeOverlay;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowFixedHeightMajor = global::PickUpApp.droid.Resource.Attribute.windowFixedHeightMajor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowFixedHeightMinor = global::PickUpApp.droid.Resource.Attribute.windowFixedHeightMinor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowFixedWidthMajor = global::PickUpApp.droid.Resource.Attribute.windowFixedWidthMajor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowFixedWidthMinor = global::PickUpApp.droid.Resource.Attribute.windowFixedWidthMinor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowMinWidthMajor = global::PickUpApp.droid.Resource.Attribute.windowMinWidthMajor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowMinWidthMinor = global::PickUpApp.droid.Resource.Attribute.windowMinWidthMinor;
+			global::FFImageLoading.Forms.Droid.Resource.Attribute.windowNoTitle = global::PickUpApp.droid.Resource.Attribute.windowNoTitle;
+			global::FFImageLoading.Forms.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::PickUpApp.droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::FFImageLoading.Forms.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::PickUpApp.droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
+			global::FFImageLoading.Forms.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::PickUpApp.droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
+			global::FFImageLoading.Forms.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::PickUpApp.droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::FFImageLoading.Forms.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::PickUpApp.droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::PickUpApp.droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
+			global::FFImageLoading.Forms.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::PickUpApp.droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::PickUpApp.droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::PickUpApp.droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_color_highlight_material = global::PickUpApp.droid.Resource.Color.abc_color_highlight_material;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_input_method_navigation_guard = global::PickUpApp.droid.Resource.Color.abc_input_method_navigation_guard;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_primary_text_disable_only_material_dark = global::PickUpApp.droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_primary_text_disable_only_material_light = global::PickUpApp.droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_primary_text_material_dark = global::PickUpApp.droid.Resource.Color.abc_primary_text_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_primary_text_material_light = global::PickUpApp.droid.Resource.Color.abc_primary_text_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_search_url_text = global::PickUpApp.droid.Resource.Color.abc_search_url_text;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_search_url_text_normal = global::PickUpApp.droid.Resource.Color.abc_search_url_text_normal;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_search_url_text_pressed = global::PickUpApp.droid.Resource.Color.abc_search_url_text_pressed;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_search_url_text_selected = global::PickUpApp.droid.Resource.Color.abc_search_url_text_selected;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_secondary_text_material_dark = global::PickUpApp.droid.Resource.Color.abc_secondary_text_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.abc_secondary_text_material_light = global::PickUpApp.droid.Resource.Color.abc_secondary_text_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.accent_material_dark = global::PickUpApp.droid.Resource.Color.accent_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.accent_material_light = global::PickUpApp.droid.Resource.Color.accent_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.background_floating_material_dark = global::PickUpApp.droid.Resource.Color.background_floating_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.background_floating_material_light = global::PickUpApp.droid.Resource.Color.background_floating_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.background_material_dark = global::PickUpApp.droid.Resource.Color.background_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.background_material_light = global::PickUpApp.droid.Resource.Color.background_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.bright_foreground_disabled_material_dark = global::PickUpApp.droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.bright_foreground_disabled_material_light = global::PickUpApp.droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.bright_foreground_inverse_material_dark = global::PickUpApp.droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.bright_foreground_inverse_material_light = global::PickUpApp.droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.bright_foreground_material_dark = global::PickUpApp.droid.Resource.Color.bright_foreground_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.bright_foreground_material_light = global::PickUpApp.droid.Resource.Color.bright_foreground_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.button_material_dark = global::PickUpApp.droid.Resource.Color.button_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.button_material_light = global::PickUpApp.droid.Resource.Color.button_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.cardview_dark_background = global::PickUpApp.droid.Resource.Color.cardview_dark_background;
+			global::FFImageLoading.Forms.Droid.Resource.Color.cardview_light_background = global::PickUpApp.droid.Resource.Color.cardview_light_background;
+			global::FFImageLoading.Forms.Droid.Resource.Color.cardview_shadow_end_color = global::PickUpApp.droid.Resource.Color.cardview_shadow_end_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.cardview_shadow_start_color = global::PickUpApp.droid.Resource.Color.cardview_shadow_start_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_fab_shadow_end_color = global::PickUpApp.droid.Resource.Color.design_fab_shadow_end_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_fab_shadow_mid_color = global::PickUpApp.droid.Resource.Color.design_fab_shadow_mid_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_fab_shadow_start_color = global::PickUpApp.droid.Resource.Color.design_fab_shadow_start_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_fab_stroke_end_inner_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_end_inner_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_fab_stroke_end_outer_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_end_outer_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_fab_stroke_top_inner_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_top_inner_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_fab_stroke_top_outer_color = global::PickUpApp.droid.Resource.Color.design_fab_stroke_top_outer_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_snackbar_background_color = global::PickUpApp.droid.Resource.Color.design_snackbar_background_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.design_textinput_error_color = global::PickUpApp.droid.Resource.Color.design_textinput_error_color;
+			global::FFImageLoading.Forms.Droid.Resource.Color.dim_foreground_disabled_material_dark = global::PickUpApp.droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.dim_foreground_disabled_material_light = global::PickUpApp.droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.dim_foreground_material_dark = global::PickUpApp.droid.Resource.Color.dim_foreground_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.dim_foreground_material_light = global::PickUpApp.droid.Resource.Color.dim_foreground_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.foreground_material_dark = global::PickUpApp.droid.Resource.Color.foreground_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.foreground_material_light = global::PickUpApp.droid.Resource.Color.foreground_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.highlighted_text_material_dark = global::PickUpApp.droid.Resource.Color.highlighted_text_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.highlighted_text_material_light = global::PickUpApp.droid.Resource.Color.highlighted_text_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.hint_foreground_material_dark = global::PickUpApp.droid.Resource.Color.hint_foreground_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.hint_foreground_material_light = global::PickUpApp.droid.Resource.Color.hint_foreground_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_blue_grey_800 = global::PickUpApp.droid.Resource.Color.material_blue_grey_800;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_blue_grey_900 = global::PickUpApp.droid.Resource.Color.material_blue_grey_900;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_blue_grey_950 = global::PickUpApp.droid.Resource.Color.material_blue_grey_950;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_deep_teal_200 = global::PickUpApp.droid.Resource.Color.material_deep_teal_200;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_deep_teal_500 = global::PickUpApp.droid.Resource.Color.material_deep_teal_500;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_grey_100 = global::PickUpApp.droid.Resource.Color.material_grey_100;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_grey_300 = global::PickUpApp.droid.Resource.Color.material_grey_300;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_grey_50 = global::PickUpApp.droid.Resource.Color.material_grey_50;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_grey_600 = global::PickUpApp.droid.Resource.Color.material_grey_600;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_grey_800 = global::PickUpApp.droid.Resource.Color.material_grey_800;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_grey_850 = global::PickUpApp.droid.Resource.Color.material_grey_850;
+			global::FFImageLoading.Forms.Droid.Resource.Color.material_grey_900 = global::PickUpApp.droid.Resource.Color.material_grey_900;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_dark_material_dark = global::PickUpApp.droid.Resource.Color.primary_dark_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_dark_material_light = global::PickUpApp.droid.Resource.Color.primary_dark_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_material_dark = global::PickUpApp.droid.Resource.Color.primary_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_material_light = global::PickUpApp.droid.Resource.Color.primary_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_text_default_material_dark = global::PickUpApp.droid.Resource.Color.primary_text_default_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_text_default_material_light = global::PickUpApp.droid.Resource.Color.primary_text_default_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_text_disabled_material_dark = global::PickUpApp.droid.Resource.Color.primary_text_disabled_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.primary_text_disabled_material_light = global::PickUpApp.droid.Resource.Color.primary_text_disabled_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.ripple_material_dark = global::PickUpApp.droid.Resource.Color.ripple_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.ripple_material_light = global::PickUpApp.droid.Resource.Color.ripple_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.secondary_text_default_material_dark = global::PickUpApp.droid.Resource.Color.secondary_text_default_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.secondary_text_default_material_light = global::PickUpApp.droid.Resource.Color.secondary_text_default_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.secondary_text_disabled_material_dark = global::PickUpApp.droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.secondary_text_disabled_material_light = global::PickUpApp.droid.Resource.Color.secondary_text_disabled_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.switch_thumb_disabled_material_dark = global::PickUpApp.droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.switch_thumb_disabled_material_light = global::PickUpApp.droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.switch_thumb_material_dark = global::PickUpApp.droid.Resource.Color.switch_thumb_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.switch_thumb_material_light = global::PickUpApp.droid.Resource.Color.switch_thumb_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Color.switch_thumb_normal_material_dark = global::PickUpApp.droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Color.switch_thumb_normal_material_light = global::PickUpApp.droid.Resource.Color.switch_thumb_normal_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_progress_bar_size = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_progress_bar_size;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::PickUpApp.droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_button_min_height_material = global::PickUpApp.droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_button_min_width_material = global::PickUpApp.droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::PickUpApp.droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::PickUpApp.droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::PickUpApp.droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_button_padding_vertical_material = global::PickUpApp.droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_config_prefDialogWidth = global::PickUpApp.droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_control_corner_material = global::PickUpApp.droid.Resource.Dimension.abc_control_corner_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_control_inset_material = global::PickUpApp.droid.Resource.Dimension.abc_control_inset_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_control_padding_material = global::PickUpApp.droid.Resource.Dimension.abc_control_padding_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::PickUpApp.droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dialog_min_width_major = global::PickUpApp.droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dialog_min_width_minor = global::PickUpApp.droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dialog_padding_material = global::PickUpApp.droid.Resource.Dimension.abc_dialog_padding_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dialog_padding_top_material = global::PickUpApp.droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_disabled_alpha_material_dark = global::PickUpApp.droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_disabled_alpha_material_light = global::PickUpApp.droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dropdownitem_icon_width = global::PickUpApp.droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left = global::PickUpApp.droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right = global::PickUpApp.droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material = global::PickUpApp.droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_edit_text_inset_top_material = global::PickUpApp.droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_floating_window_z = global::PickUpApp.droid.Resource.Dimension.abc_floating_window_z;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material = global::PickUpApp.droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_panel_menu_list_width = global::PickUpApp.droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_search_view_preferred_width = global::PickUpApp.droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_search_view_text_min_width = global::PickUpApp.droid.Resource.Dimension.abc_search_view_text_min_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_switch_padding = global::PickUpApp.droid.Resource.Dimension.abc_switch_padding;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_body_1_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_body_2_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_button_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_button_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_caption_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_caption_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_display_1_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_display_2_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_display_3_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_display_4_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_headline_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_headline_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_large_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_large_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_medium_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_medium_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_menu_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_menu_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_small_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_small_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_subhead_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::PickUpApp.droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_title_material = global::PickUpApp.droid.Resource.Dimension.abc_text_size_title_material;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::PickUpApp.droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::PickUpApp.droid.Resource.Dimension.cardview_compat_inset_shadow;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.cardview_default_elevation = global::PickUpApp.droid.Resource.Dimension.cardview_default_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.cardview_default_radius = global::PickUpApp.droid.Resource.Dimension.cardview_default_radius;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_appbar_elevation = global::PickUpApp.droid.Resource.Dimension.design_appbar_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_fab_border_width = global::PickUpApp.droid.Resource.Dimension.design_fab_border_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_fab_content_size = global::PickUpApp.droid.Resource.Dimension.design_fab_content_size;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_fab_elevation = global::PickUpApp.droid.Resource.Dimension.design_fab_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_fab_size_mini = global::PickUpApp.droid.Resource.Dimension.design_fab_size_mini;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_fab_size_normal = global::PickUpApp.droid.Resource.Dimension.design_fab_size_normal;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_fab_translation_z_pressed = global::PickUpApp.droid.Resource.Dimension.design_fab_translation_z_pressed;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_navigation_elevation = global::PickUpApp.droid.Resource.Dimension.design_navigation_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_navigation_icon_padding = global::PickUpApp.droid.Resource.Dimension.design_navigation_icon_padding;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_navigation_icon_size = global::PickUpApp.droid.Resource.Dimension.design_navigation_icon_size;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_navigation_max_width = global::PickUpApp.droid.Resource.Dimension.design_navigation_max_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_navigation_padding_bottom = global::PickUpApp.droid.Resource.Dimension.design_navigation_padding_bottom;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_navigation_padding_top_default = global::PickUpApp.droid.Resource.Dimension.design_navigation_padding_top_default;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_navigation_separator_vertical_padding = global::PickUpApp.droid.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_action_inline_max_width = global::PickUpApp.droid.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_background_corner_radius = global::PickUpApp.droid.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_elevation = global::PickUpApp.droid.Resource.Dimension.design_snackbar_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::PickUpApp.droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_max_width = global::PickUpApp.droid.Resource.Dimension.design_snackbar_max_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_min_width = global::PickUpApp.droid.Resource.Dimension.design_snackbar_min_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_padding_horizontal = global::PickUpApp.droid.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_padding_vertical = global::PickUpApp.droid.Resource.Dimension.design_snackbar_padding_vertical;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::PickUpApp.droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_snackbar_text_size = global::PickUpApp.droid.Resource.Dimension.design_snackbar_text_size;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_tab_max_width = global::PickUpApp.droid.Resource.Dimension.design_tab_max_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.design_tab_min_width = global::PickUpApp.droid.Resource.Dimension.design_tab_min_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.dialog_fixed_height_major = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_height_major;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.dialog_fixed_height_minor = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_height_minor;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.dialog_fixed_width_major = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_width_major;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.dialog_fixed_width_minor = global::PickUpApp.droid.Resource.Dimension.dialog_fixed_width_minor;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.disabled_alpha_material_dark = global::PickUpApp.droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.disabled_alpha_material_light = global::PickUpApp.droid.Resource.Dimension.disabled_alpha_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.highlight_alpha_material_colored = global::PickUpApp.droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.highlight_alpha_material_dark = global::PickUpApp.droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.highlight_alpha_material_light = global::PickUpApp.droid.Resource.Dimension.highlight_alpha_material_light;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.mr_media_route_controller_art_max_height = global::PickUpApp.droid.Resource.Dimension.mr_media_route_controller_art_max_height;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.notification_large_icon_height = global::PickUpApp.droid.Resource.Dimension.notification_large_icon_height;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.notification_large_icon_width = global::PickUpApp.droid.Resource.Dimension.notification_large_icon_width;
+			global::FFImageLoading.Forms.Droid.Resource.Dimension.notification_subtext_size = global::PickUpApp.droid.Resource.Dimension.notification_subtext_size;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::PickUpApp.droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_borderless_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_borderless_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_check_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_check_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::PickUpApp.droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::PickUpApp.droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_colored_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_colored_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_default_mtrl_shape = global::PickUpApp.droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_radio_material = global::PickUpApp.droid.Resource.Drawable.abc_btn_radio_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::PickUpApp.droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::PickUpApp.droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::PickUpApp.droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::PickUpApp.droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_cab_background_internal_bg = global::PickUpApp.droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_cab_background_top_material = global::PickUpApp.droid.Resource.Drawable.abc_cab_background_top_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_control_background_material = global::PickUpApp.droid.Resource.Drawable.abc_control_background_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_dialog_material_background_dark = global::PickUpApp.droid.Resource.Drawable.abc_dialog_material_background_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_dialog_material_background_light = global::PickUpApp.droid.Resource.Drawable.abc_dialog_material_background_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_edit_text_material = global::PickUpApp.droid.Resource.Drawable.abc_edit_text_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_item_background_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_item_background_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_item_background_holo_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_focused_holo = global::PickUpApp.droid.Resource.Drawable.abc_list_focused_holo;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_longpressed_holo = global::PickUpApp.droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_pressed_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_pressed_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_selector_holo_dark = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_list_selector_holo_light = global::PickUpApp.droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::PickUpApp.droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_popup_background_mtrl_mult = global::PickUpApp.droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_ratingbar_full_material = global::PickUpApp.droid.Resource.Drawable.abc_ratingbar_full_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::PickUpApp.droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_spinner_textfield_background_material = global::PickUpApp.droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_switch_thumb_material = global::PickUpApp.droid.Resource.Drawable.abc_switch_thumb_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_tab_indicator_material = global::PickUpApp.droid.Resource.Drawable.abc_tab_indicator_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_text_cursor_material = global::PickUpApp.droid.Resource.Drawable.abc_text_cursor_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::PickUpApp.droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.abc_textfield_search_material = global::PickUpApp.droid.Resource.Drawable.abc_textfield_search_material;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.design_fab_background = global::PickUpApp.droid.Resource.Drawable.design_fab_background;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.design_snackbar_background = global::PickUpApp.droid.Resource.Drawable.design_snackbar_background;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_dark = global::PickUpApp.droid.Resource.Drawable.ic_cast_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_disabled_light = global::PickUpApp.droid.Resource.Drawable.ic_cast_disabled_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_light = global::PickUpApp.droid.Resource.Drawable.ic_cast_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_off_light = global::PickUpApp.droid.Resource.Drawable.ic_cast_off_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_on_0_light = global::PickUpApp.droid.Resource.Drawable.ic_cast_on_0_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_on_1_light = global::PickUpApp.droid.Resource.Drawable.ic_cast_on_1_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_on_2_light = global::PickUpApp.droid.Resource.Drawable.ic_cast_on_2_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_cast_on_light = global::PickUpApp.droid.Resource.Drawable.ic_cast_on_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_pause = global::PickUpApp.droid.Resource.Drawable.ic_media_pause;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_play = global::PickUpApp.droid.Resource.Drawable.ic_media_play;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_route_disabled_mono_dark = global::PickUpApp.droid.Resource.Drawable.ic_media_route_disabled_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_route_off_mono_dark = global::PickUpApp.droid.Resource.Drawable.ic_media_route_off_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_route_on_0_mono_dark = global::PickUpApp.droid.Resource.Drawable.ic_media_route_on_0_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_route_on_1_mono_dark = global::PickUpApp.droid.Resource.Drawable.ic_media_route_on_1_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_route_on_2_mono_dark = global::PickUpApp.droid.Resource.Drawable.ic_media_route_on_2_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_media_route_on_mono_dark = global::PickUpApp.droid.Resource.Drawable.ic_media_route_on_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_pause_dark = global::PickUpApp.droid.Resource.Drawable.ic_pause_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_pause_light = global::PickUpApp.droid.Resource.Drawable.ic_pause_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_play_dark = global::PickUpApp.droid.Resource.Drawable.ic_play_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_play_light = global::PickUpApp.droid.Resource.Drawable.ic_play_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_setting_dark = global::PickUpApp.droid.Resource.Drawable.ic_setting_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.ic_setting_light = global::PickUpApp.droid.Resource.Drawable.ic_setting_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_cast_dark = global::PickUpApp.droid.Resource.Drawable.mr_ic_cast_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_cast_light = global::PickUpApp.droid.Resource.Drawable.mr_ic_cast_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_dark = global::PickUpApp.droid.Resource.Drawable.mr_ic_media_route_connecting_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_light = global::PickUpApp.droid.Resource.Drawable.mr_ic_media_route_connecting_mono_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_media_route_mono_dark = global::PickUpApp.droid.Resource.Drawable.mr_ic_media_route_mono_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_media_route_mono_light = global::PickUpApp.droid.Resource.Drawable.mr_ic_media_route_mono_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_pause_dark = global::PickUpApp.droid.Resource.Drawable.mr_ic_pause_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_pause_light = global::PickUpApp.droid.Resource.Drawable.mr_ic_pause_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_play_dark = global::PickUpApp.droid.Resource.Drawable.mr_ic_play_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_play_light = global::PickUpApp.droid.Resource.Drawable.mr_ic_play_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_settings_dark = global::PickUpApp.droid.Resource.Drawable.mr_ic_settings_dark;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.mr_ic_settings_light = global::PickUpApp.droid.Resource.Drawable.mr_ic_settings_light;
+			global::FFImageLoading.Forms.Droid.Resource.Drawable.notification_template_icon_bg = global::PickUpApp.droid.Resource.Drawable.notification_template_icon_bg;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action0 = global::PickUpApp.droid.Resource.Id.action0;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_bar = global::PickUpApp.droid.Resource.Id.action_bar;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_bar_activity_content = global::PickUpApp.droid.Resource.Id.action_bar_activity_content;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_bar_container = global::PickUpApp.droid.Resource.Id.action_bar_container;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_bar_root = global::PickUpApp.droid.Resource.Id.action_bar_root;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_bar_spinner = global::PickUpApp.droid.Resource.Id.action_bar_spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_bar_subtitle = global::PickUpApp.droid.Resource.Id.action_bar_subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_bar_title = global::PickUpApp.droid.Resource.Id.action_bar_title;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_context_bar = global::PickUpApp.droid.Resource.Id.action_context_bar;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_divider = global::PickUpApp.droid.Resource.Id.action_divider;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_menu_divider = global::PickUpApp.droid.Resource.Id.action_menu_divider;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_menu_presenter = global::PickUpApp.droid.Resource.Id.action_menu_presenter;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_mode_bar = global::PickUpApp.droid.Resource.Id.action_mode_bar;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_mode_bar_stub = global::PickUpApp.droid.Resource.Id.action_mode_bar_stub;
+			global::FFImageLoading.Forms.Droid.Resource.Id.action_mode_close_button = global::PickUpApp.droid.Resource.Id.action_mode_close_button;
+			global::FFImageLoading.Forms.Droid.Resource.Id.activity_chooser_view_content = global::PickUpApp.droid.Resource.Id.activity_chooser_view_content;
+			global::FFImageLoading.Forms.Droid.Resource.Id.alertTitle = global::PickUpApp.droid.Resource.Id.alertTitle;
+			global::FFImageLoading.Forms.Droid.Resource.Id.always = global::PickUpApp.droid.Resource.Id.always;
+			global::FFImageLoading.Forms.Droid.Resource.Id.art = global::PickUpApp.droid.Resource.Id.art;
+			global::FFImageLoading.Forms.Droid.Resource.Id.beginning = global::PickUpApp.droid.Resource.Id.beginning;
+			global::FFImageLoading.Forms.Droid.Resource.Id.bottom = global::PickUpApp.droid.Resource.Id.bottom;
+			global::FFImageLoading.Forms.Droid.Resource.Id.buttonPanel = global::PickUpApp.droid.Resource.Id.buttonPanel;
+			global::FFImageLoading.Forms.Droid.Resource.Id.buttons = global::PickUpApp.droid.Resource.Id.buttons;
+			global::FFImageLoading.Forms.Droid.Resource.Id.cancel_action = global::PickUpApp.droid.Resource.Id.cancel_action;
+			global::FFImageLoading.Forms.Droid.Resource.Id.center = global::PickUpApp.droid.Resource.Id.center;
+			global::FFImageLoading.Forms.Droid.Resource.Id.center_horizontal = global::PickUpApp.droid.Resource.Id.center_horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Id.center_vertical = global::PickUpApp.droid.Resource.Id.center_vertical;
+			global::FFImageLoading.Forms.Droid.Resource.Id.checkbox = global::PickUpApp.droid.Resource.Id.checkbox;
+			global::FFImageLoading.Forms.Droid.Resource.Id.chronometer = global::PickUpApp.droid.Resource.Id.chronometer;
+			global::FFImageLoading.Forms.Droid.Resource.Id.clip_horizontal = global::PickUpApp.droid.Resource.Id.clip_horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Id.clip_vertical = global::PickUpApp.droid.Resource.Id.clip_vertical;
+			global::FFImageLoading.Forms.Droid.Resource.Id.collapseActionView = global::PickUpApp.droid.Resource.Id.collapseActionView;
+			global::FFImageLoading.Forms.Droid.Resource.Id.contentPanel = global::PickUpApp.droid.Resource.Id.contentPanel;
+			global::FFImageLoading.Forms.Droid.Resource.Id.custom = global::PickUpApp.droid.Resource.Id.custom;
+			global::FFImageLoading.Forms.Droid.Resource.Id.customPanel = global::PickUpApp.droid.Resource.Id.customPanel;
+			global::FFImageLoading.Forms.Droid.Resource.Id.decor_content_parent = global::PickUpApp.droid.Resource.Id.decor_content_parent;
+			global::FFImageLoading.Forms.Droid.Resource.Id.default_activity_button = global::PickUpApp.droid.Resource.Id.default_activity_button;
+			global::FFImageLoading.Forms.Droid.Resource.Id.default_control_frame = global::PickUpApp.droid.Resource.Id.default_control_frame;
+			global::FFImageLoading.Forms.Droid.Resource.Id.disableHome = global::PickUpApp.droid.Resource.Id.disableHome;
+			global::FFImageLoading.Forms.Droid.Resource.Id.disconnect = global::PickUpApp.droid.Resource.Id.disconnect;
+			global::FFImageLoading.Forms.Droid.Resource.Id.edit_query = global::PickUpApp.droid.Resource.Id.edit_query;
+			global::FFImageLoading.Forms.Droid.Resource.Id.end = global::PickUpApp.droid.Resource.Id.end;
+			global::FFImageLoading.Forms.Droid.Resource.Id.end_padder = global::PickUpApp.droid.Resource.Id.end_padder;
+			global::FFImageLoading.Forms.Droid.Resource.Id.enterAlways = global::PickUpApp.droid.Resource.Id.enterAlways;
+			global::FFImageLoading.Forms.Droid.Resource.Id.enterAlwaysCollapsed = global::PickUpApp.droid.Resource.Id.enterAlwaysCollapsed;
+			global::FFImageLoading.Forms.Droid.Resource.Id.exitUntilCollapsed = global::PickUpApp.droid.Resource.Id.exitUntilCollapsed;
+			global::FFImageLoading.Forms.Droid.Resource.Id.expand_activities_button = global::PickUpApp.droid.Resource.Id.expand_activities_button;
+			global::FFImageLoading.Forms.Droid.Resource.Id.expanded_menu = global::PickUpApp.droid.Resource.Id.expanded_menu;
+			global::FFImageLoading.Forms.Droid.Resource.Id.fill = global::PickUpApp.droid.Resource.Id.fill;
+			global::FFImageLoading.Forms.Droid.Resource.Id.fill_horizontal = global::PickUpApp.droid.Resource.Id.fill_horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Id.fill_vertical = global::PickUpApp.droid.Resource.Id.fill_vertical;
+			global::FFImageLoading.Forms.Droid.Resource.Id.@fixed = global::PickUpApp.droid.Resource.Id.@fixed;
+			global::FFImageLoading.Forms.Droid.Resource.Id.home = global::PickUpApp.droid.Resource.Id.home;
+			global::FFImageLoading.Forms.Droid.Resource.Id.homeAsUp = global::PickUpApp.droid.Resource.Id.homeAsUp;
+			global::FFImageLoading.Forms.Droid.Resource.Id.icon = global::PickUpApp.droid.Resource.Id.icon;
+			global::FFImageLoading.Forms.Droid.Resource.Id.ifRoom = global::PickUpApp.droid.Resource.Id.ifRoom;
+			global::FFImageLoading.Forms.Droid.Resource.Id.image = global::PickUpApp.droid.Resource.Id.image;
+			global::FFImageLoading.Forms.Droid.Resource.Id.info = global::PickUpApp.droid.Resource.Id.info;
+			global::FFImageLoading.Forms.Droid.Resource.Id.left = global::PickUpApp.droid.Resource.Id.left;
+			global::FFImageLoading.Forms.Droid.Resource.Id.line1 = global::PickUpApp.droid.Resource.Id.line1;
+			global::FFImageLoading.Forms.Droid.Resource.Id.line3 = global::PickUpApp.droid.Resource.Id.line3;
+			global::FFImageLoading.Forms.Droid.Resource.Id.listMode = global::PickUpApp.droid.Resource.Id.listMode;
+			global::FFImageLoading.Forms.Droid.Resource.Id.list_item = global::PickUpApp.droid.Resource.Id.list_item;
+			global::FFImageLoading.Forms.Droid.Resource.Id.media_actions = global::PickUpApp.droid.Resource.Id.media_actions;
+			global::FFImageLoading.Forms.Droid.Resource.Id.media_route_control_frame = global::PickUpApp.droid.Resource.Id.media_route_control_frame;
+			global::FFImageLoading.Forms.Droid.Resource.Id.media_route_list = global::PickUpApp.droid.Resource.Id.media_route_list;
+			global::FFImageLoading.Forms.Droid.Resource.Id.media_route_volume_layout = global::PickUpApp.droid.Resource.Id.media_route_volume_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Id.media_route_volume_slider = global::PickUpApp.droid.Resource.Id.media_route_volume_slider;
+			global::FFImageLoading.Forms.Droid.Resource.Id.middle = global::PickUpApp.droid.Resource.Id.middle;
+			global::FFImageLoading.Forms.Droid.Resource.Id.mini = global::PickUpApp.droid.Resource.Id.mini;
+			global::FFImageLoading.Forms.Droid.Resource.Id.multiply = global::PickUpApp.droid.Resource.Id.multiply;
+			global::FFImageLoading.Forms.Droid.Resource.Id.never = global::PickUpApp.droid.Resource.Id.never;
+			global::FFImageLoading.Forms.Droid.Resource.Id.none = global::PickUpApp.droid.Resource.Id.none;
+			global::FFImageLoading.Forms.Droid.Resource.Id.normal = global::PickUpApp.droid.Resource.Id.normal;
+			global::FFImageLoading.Forms.Droid.Resource.Id.parallax = global::PickUpApp.droid.Resource.Id.parallax;
+			global::FFImageLoading.Forms.Droid.Resource.Id.parentPanel = global::PickUpApp.droid.Resource.Id.parentPanel;
+			global::FFImageLoading.Forms.Droid.Resource.Id.pin = global::PickUpApp.droid.Resource.Id.pin;
+			global::FFImageLoading.Forms.Droid.Resource.Id.play_pause = global::PickUpApp.droid.Resource.Id.play_pause;
+			global::FFImageLoading.Forms.Droid.Resource.Id.progress_circular = global::PickUpApp.droid.Resource.Id.progress_circular;
+			global::FFImageLoading.Forms.Droid.Resource.Id.progress_horizontal = global::PickUpApp.droid.Resource.Id.progress_horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Id.radio = global::PickUpApp.droid.Resource.Id.radio;
+			global::FFImageLoading.Forms.Droid.Resource.Id.right = global::PickUpApp.droid.Resource.Id.right;
+			global::FFImageLoading.Forms.Droid.Resource.Id.route_name = global::PickUpApp.droid.Resource.Id.route_name;
+			global::FFImageLoading.Forms.Droid.Resource.Id.screen = global::PickUpApp.droid.Resource.Id.screen;
+			global::FFImageLoading.Forms.Droid.Resource.Id.scroll = global::PickUpApp.droid.Resource.Id.scroll;
+			global::FFImageLoading.Forms.Droid.Resource.Id.scrollView = global::PickUpApp.droid.Resource.Id.scrollView;
+			global::FFImageLoading.Forms.Droid.Resource.Id.scrollable = global::PickUpApp.droid.Resource.Id.scrollable;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_badge = global::PickUpApp.droid.Resource.Id.search_badge;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_bar = global::PickUpApp.droid.Resource.Id.search_bar;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_button = global::PickUpApp.droid.Resource.Id.search_button;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_close_btn = global::PickUpApp.droid.Resource.Id.search_close_btn;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_edit_frame = global::PickUpApp.droid.Resource.Id.search_edit_frame;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_go_btn = global::PickUpApp.droid.Resource.Id.search_go_btn;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_mag_icon = global::PickUpApp.droid.Resource.Id.search_mag_icon;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_plate = global::PickUpApp.droid.Resource.Id.search_plate;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_src_text = global::PickUpApp.droid.Resource.Id.search_src_text;
+			global::FFImageLoading.Forms.Droid.Resource.Id.search_voice_btn = global::PickUpApp.droid.Resource.Id.search_voice_btn;
+			global::FFImageLoading.Forms.Droid.Resource.Id.select_dialog_listview = global::PickUpApp.droid.Resource.Id.select_dialog_listview;
+			global::FFImageLoading.Forms.Droid.Resource.Id.settings = global::PickUpApp.droid.Resource.Id.settings;
+			global::FFImageLoading.Forms.Droid.Resource.Id.shortcut = global::PickUpApp.droid.Resource.Id.shortcut;
+			global::FFImageLoading.Forms.Droid.Resource.Id.showCustom = global::PickUpApp.droid.Resource.Id.showCustom;
+			global::FFImageLoading.Forms.Droid.Resource.Id.showHome = global::PickUpApp.droid.Resource.Id.showHome;
+			global::FFImageLoading.Forms.Droid.Resource.Id.showTitle = global::PickUpApp.droid.Resource.Id.showTitle;
+			global::FFImageLoading.Forms.Droid.Resource.Id.snackbar_action = global::PickUpApp.droid.Resource.Id.snackbar_action;
+			global::FFImageLoading.Forms.Droid.Resource.Id.snackbar_text = global::PickUpApp.droid.Resource.Id.snackbar_text;
+			global::FFImageLoading.Forms.Droid.Resource.Id.split_action_bar = global::PickUpApp.droid.Resource.Id.split_action_bar;
+			global::FFImageLoading.Forms.Droid.Resource.Id.src_atop = global::PickUpApp.droid.Resource.Id.src_atop;
+			global::FFImageLoading.Forms.Droid.Resource.Id.src_in = global::PickUpApp.droid.Resource.Id.src_in;
+			global::FFImageLoading.Forms.Droid.Resource.Id.src_over = global::PickUpApp.droid.Resource.Id.src_over;
+			global::FFImageLoading.Forms.Droid.Resource.Id.start = global::PickUpApp.droid.Resource.Id.start;
+			global::FFImageLoading.Forms.Droid.Resource.Id.status_bar_latest_event_content = global::PickUpApp.droid.Resource.Id.status_bar_latest_event_content;
+			global::FFImageLoading.Forms.Droid.Resource.Id.stop = global::PickUpApp.droid.Resource.Id.stop;
+			global::FFImageLoading.Forms.Droid.Resource.Id.submit_area = global::PickUpApp.droid.Resource.Id.submit_area;
+			global::FFImageLoading.Forms.Droid.Resource.Id.subtitle = global::PickUpApp.droid.Resource.Id.subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Id.tabMode = global::PickUpApp.droid.Resource.Id.tabMode;
+			global::FFImageLoading.Forms.Droid.Resource.Id.text = global::PickUpApp.droid.Resource.Id.text;
+			global::FFImageLoading.Forms.Droid.Resource.Id.text2 = global::PickUpApp.droid.Resource.Id.text2;
+			global::FFImageLoading.Forms.Droid.Resource.Id.textSpacerNoButtons = global::PickUpApp.droid.Resource.Id.textSpacerNoButtons;
+			global::FFImageLoading.Forms.Droid.Resource.Id.time = global::PickUpApp.droid.Resource.Id.time;
+			global::FFImageLoading.Forms.Droid.Resource.Id.title = global::PickUpApp.droid.Resource.Id.title;
+			global::FFImageLoading.Forms.Droid.Resource.Id.title_bar = global::PickUpApp.droid.Resource.Id.title_bar;
+			global::FFImageLoading.Forms.Droid.Resource.Id.title_template = global::PickUpApp.droid.Resource.Id.title_template;
+			global::FFImageLoading.Forms.Droid.Resource.Id.top = global::PickUpApp.droid.Resource.Id.top;
+			global::FFImageLoading.Forms.Droid.Resource.Id.topPanel = global::PickUpApp.droid.Resource.Id.topPanel;
+			global::FFImageLoading.Forms.Droid.Resource.Id.up = global::PickUpApp.droid.Resource.Id.up;
+			global::FFImageLoading.Forms.Droid.Resource.Id.useLogo = global::PickUpApp.droid.Resource.Id.useLogo;
+			global::FFImageLoading.Forms.Droid.Resource.Id.view_offset_helper = global::PickUpApp.droid.Resource.Id.view_offset_helper;
+			global::FFImageLoading.Forms.Droid.Resource.Id.withText = global::PickUpApp.droid.Resource.Id.withText;
+			global::FFImageLoading.Forms.Droid.Resource.Id.wrap_content = global::PickUpApp.droid.Resource.Id.wrap_content;
+			global::FFImageLoading.Forms.Droid.Resource.Integer.abc_config_activityDefaultDur = global::PickUpApp.droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::FFImageLoading.Forms.Droid.Resource.Integer.abc_config_activityShortDur = global::PickUpApp.droid.Resource.Integer.abc_config_activityShortDur;
+			global::FFImageLoading.Forms.Droid.Resource.Integer.abc_max_action_buttons = global::PickUpApp.droid.Resource.Integer.abc_max_action_buttons;
+			global::FFImageLoading.Forms.Droid.Resource.Integer.cancel_button_image_alpha = global::PickUpApp.droid.Resource.Integer.cancel_button_image_alpha;
+			global::FFImageLoading.Forms.Droid.Resource.Integer.design_snackbar_text_max_lines = global::PickUpApp.droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::FFImageLoading.Forms.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::PickUpApp.droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_action_bar_title_item = global::PickUpApp.droid.Resource.Layout.abc_action_bar_title_item;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_action_bar_up_container = global::PickUpApp.droid.Resource.Layout.abc_action_bar_up_container;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout = global::PickUpApp.droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_action_menu_item_layout = global::PickUpApp.droid.Resource.Layout.abc_action_menu_item_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_action_menu_layout = global::PickUpApp.droid.Resource.Layout.abc_action_menu_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_action_mode_bar = global::PickUpApp.droid.Resource.Layout.abc_action_mode_bar;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_action_mode_close_item_material = global::PickUpApp.droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_activity_chooser_view = global::PickUpApp.droid.Resource.Layout.abc_activity_chooser_view;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_activity_chooser_view_list_item = global::PickUpApp.droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_alert_dialog_material = global::PickUpApp.droid.Resource.Layout.abc_alert_dialog_material;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_dialog_title_material = global::PickUpApp.droid.Resource.Layout.abc_dialog_title_material;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_expanded_menu_layout = global::PickUpApp.droid.Resource.Layout.abc_expanded_menu_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_list_menu_item_icon = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_icon;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_list_menu_item_layout = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_list_menu_item_radio = global::PickUpApp.droid.Resource.Layout.abc_list_menu_item_radio;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_popup_menu_item_layout = global::PickUpApp.droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_screen_content_include = global::PickUpApp.droid.Resource.Layout.abc_screen_content_include;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_screen_simple = global::PickUpApp.droid.Resource.Layout.abc_screen_simple;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode = global::PickUpApp.droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_screen_toolbar = global::PickUpApp.droid.Resource.Layout.abc_screen_toolbar;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::PickUpApp.droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_search_view = global::PickUpApp.droid.Resource.Layout.abc_search_view;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.abc_select_dialog_material = global::PickUpApp.droid.Resource.Layout.abc_select_dialog_material;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_layout_snackbar = global::PickUpApp.droid.Resource.Layout.design_layout_snackbar;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_layout_snackbar_include = global::PickUpApp.droid.Resource.Layout.design_layout_snackbar_include;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_layout_tab_icon = global::PickUpApp.droid.Resource.Layout.design_layout_tab_icon;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_layout_tab_text = global::PickUpApp.droid.Resource.Layout.design_layout_tab_text;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_navigation_item = global::PickUpApp.droid.Resource.Layout.design_navigation_item;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_navigation_item_header = global::PickUpApp.droid.Resource.Layout.design_navigation_item_header;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_navigation_item_separator = global::PickUpApp.droid.Resource.Layout.design_navigation_item_separator;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_navigation_item_subheader = global::PickUpApp.droid.Resource.Layout.design_navigation_item_subheader;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.design_navigation_menu = global::PickUpApp.droid.Resource.Layout.design_navigation_menu;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.mr_media_route_chooser_dialog = global::PickUpApp.droid.Resource.Layout.mr_media_route_chooser_dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.mr_media_route_controller_material_dialog_b = global::PickUpApp.droid.Resource.Layout.mr_media_route_controller_material_dialog_b;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.mr_media_route_list_item = global::PickUpApp.droid.Resource.Layout.mr_media_route_list_item;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_media_action = global::PickUpApp.droid.Resource.Layout.notification_media_action;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_media_cancel_action = global::PickUpApp.droid.Resource.Layout.notification_media_cancel_action;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_template_big_media = global::PickUpApp.droid.Resource.Layout.notification_template_big_media;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_template_big_media_narrow = global::PickUpApp.droid.Resource.Layout.notification_template_big_media_narrow;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_template_lines = global::PickUpApp.droid.Resource.Layout.notification_template_lines;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_template_media = global::PickUpApp.droid.Resource.Layout.notification_template_media;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_template_part_chronometer = global::PickUpApp.droid.Resource.Layout.notification_template_part_chronometer;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.notification_template_part_time = global::PickUpApp.droid.Resource.Layout.notification_template_part_time;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.select_dialog_item_material = global::PickUpApp.droid.Resource.Layout.select_dialog_item_material;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.select_dialog_multichoice_material = global::PickUpApp.droid.Resource.Layout.select_dialog_multichoice_material;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.select_dialog_singlechoice_material = global::PickUpApp.droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::FFImageLoading.Forms.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::PickUpApp.droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::FFImageLoading.Forms.Droid.Resource.String.ApplicationName = global::PickUpApp.droid.Resource.String.ApplicationName;
+			global::FFImageLoading.Forms.Droid.Resource.String.Hello = global::PickUpApp.droid.Resource.String.Hello;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_action_bar_home_description = global::PickUpApp.droid.Resource.String.abc_action_bar_home_description;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_action_bar_home_description_format = global::PickUpApp.droid.Resource.String.abc_action_bar_home_description_format;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_action_bar_home_subtitle_description_format = global::PickUpApp.droid.Resource.String.abc_action_bar_home_subtitle_description_format;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_action_bar_up_description = global::PickUpApp.droid.Resource.String.abc_action_bar_up_description;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_action_menu_overflow_description = global::PickUpApp.droid.Resource.String.abc_action_menu_overflow_description;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_action_mode_done = global::PickUpApp.droid.Resource.String.abc_action_mode_done;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_activity_chooser_view_see_all = global::PickUpApp.droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_activitychooserview_choose_application = global::PickUpApp.droid.Resource.String.abc_activitychooserview_choose_application;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_search_hint = global::PickUpApp.droid.Resource.String.abc_search_hint;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_searchview_description_clear = global::PickUpApp.droid.Resource.String.abc_searchview_description_clear;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_searchview_description_query = global::PickUpApp.droid.Resource.String.abc_searchview_description_query;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_searchview_description_search = global::PickUpApp.droid.Resource.String.abc_searchview_description_search;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_searchview_description_submit = global::PickUpApp.droid.Resource.String.abc_searchview_description_submit;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_searchview_description_voice = global::PickUpApp.droid.Resource.String.abc_searchview_description_voice;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_shareactionprovider_share_with = global::PickUpApp.droid.Resource.String.abc_shareactionprovider_share_with;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::PickUpApp.droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::FFImageLoading.Forms.Droid.Resource.String.abc_toolbar_collapse_description = global::PickUpApp.droid.Resource.String.abc_toolbar_collapse_description;
+			global::FFImageLoading.Forms.Droid.Resource.String.appbar_scrolling_view_behavior = global::PickUpApp.droid.Resource.String.appbar_scrolling_view_behavior;
+			global::FFImageLoading.Forms.Droid.Resource.String.library_name = global::PickUpApp.droid.Resource.String.library_name;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_button_content_description = global::PickUpApp.droid.Resource.String.mr_media_route_button_content_description;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_chooser_searching = global::PickUpApp.droid.Resource.String.mr_media_route_chooser_searching;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_chooser_title = global::PickUpApp.droid.Resource.String.mr_media_route_chooser_title;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_controller_disconnect = global::PickUpApp.droid.Resource.String.mr_media_route_controller_disconnect;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_controller_no_info_available = global::PickUpApp.droid.Resource.String.mr_media_route_controller_no_info_available;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_controller_pause = global::PickUpApp.droid.Resource.String.mr_media_route_controller_pause;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_controller_play = global::PickUpApp.droid.Resource.String.mr_media_route_controller_play;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_controller_settings_description = global::PickUpApp.droid.Resource.String.mr_media_route_controller_settings_description;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_media_route_controller_stop = global::PickUpApp.droid.Resource.String.mr_media_route_controller_stop;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_system_route_name = global::PickUpApp.droid.Resource.String.mr_system_route_name;
+			global::FFImageLoading.Forms.Droid.Resource.String.mr_user_route_category_name = global::PickUpApp.droid.Resource.String.mr_user_route_category_name;
+			global::FFImageLoading.Forms.Droid.Resource.String.status_bar_notification_info_overflow = global::PickUpApp.droid.Resource.String.status_bar_notification_info_overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.AlertDialog_AppCompat = global::PickUpApp.droid.Resource.Style.AlertDialog_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::PickUpApp.droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Animation_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::PickUpApp.droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::PickUpApp.droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::PickUpApp.droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::PickUpApp.droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::PickUpApp.droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::PickUpApp.droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ListView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_SearchView = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Spinner = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::PickUpApp.droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::PickUpApp.droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Style.CardView = global::PickUpApp.droid.Resource.Style.CardView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.CardView_Dark = global::PickUpApp.droid.Resource.Style.CardView_Dark;
+			global::FFImageLoading.Forms.Droid.Resource.Style.CardView_Light = global::PickUpApp.droid.Resource.Style.CardView_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::PickUpApp.droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_V11_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_V11_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_V11_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_V11_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_V14_AppCompat = global::PickUpApp.droid.Resource.Style.Platform_V14_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_V14_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Platform_V14_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner = global::PickUpApp.droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::PickUpApp.droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionButton_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::FFImageLoading.Forms.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::PickUpApp.droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Button = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Caption = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Display1 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Display2 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Display3 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Display4 = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Headline = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Large = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Medium = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Menu = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Small = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Subhead = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Design_Error = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Error;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Design_Hint = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Hint;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Design_Tab = global::PickUpApp.droid.Resource.Style.TextAppearance_Design_Tab;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_StatusBar_EventContent = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::PickUpApp.droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::PickUpApp.droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::PickUpApp.droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat = global::PickUpApp.droid.Resource.Style.Theme_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Dialog = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Light = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::PickUpApp.droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_MediaRouter = global::PickUpApp.droid.Resource.Style.Theme_MediaRouter;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Theme_MediaRouter_Light = global::PickUpApp.droid.Resource.Style.Theme_MediaRouter_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.ThemeOverlay_AppCompat = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::FFImageLoading.Forms.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::PickUpApp.droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionButton = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActionMode = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Button = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_EditText = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_EditText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_SearchView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ListView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ListView_Menu = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_PopupMenu = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_PopupWindow = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ProgressBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_RatingBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_SearchView = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Spinner = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::PickUpApp.droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_AppBarLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_AppBarLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_CollapsingToolbar = global::PickUpApp.droid.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_CoordinatorLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_CoordinatorLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_FloatingActionButton = global::PickUpApp.droid.Resource.Style.Widget_Design_FloatingActionButton;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_NavigationView = global::PickUpApp.droid.Resource.Style.Widget_Design_NavigationView;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_Snackbar = global::PickUpApp.droid.Resource.Style.Widget_Design_Snackbar;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_TabLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_TabLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_Design_TextInputLayout = global::PickUpApp.droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::PickUpApp.droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
+			global::FFImageLoading.Forms.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::PickUpApp.droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar = global::PickUpApp.droid.Resource.Styleable.ActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_background = global::PickUpApp.droid.Resource.Styleable.ActionBar_background;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::PickUpApp.droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::PickUpApp.droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_contentInsetEnd = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_contentInsetLeft = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_contentInsetRight = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_contentInsetStart = global::PickUpApp.droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_customNavigationLayout = global::PickUpApp.droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_displayOptions = global::PickUpApp.droid.Resource.Styleable.ActionBar_displayOptions;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_divider = global::PickUpApp.droid.Resource.Styleable.ActionBar_divider;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_elevation = global::PickUpApp.droid.Resource.Styleable.ActionBar_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_height = global::PickUpApp.droid.Resource.Styleable.ActionBar_height;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_hideOnContentScroll = global::PickUpApp.droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator = global::PickUpApp.droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_homeLayout = global::PickUpApp.droid.Resource.Styleable.ActionBar_homeLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_icon = global::PickUpApp.droid.Resource.Styleable.ActionBar_icon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_itemPadding = global::PickUpApp.droid.Resource.Styleable.ActionBar_itemPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_logo = global::PickUpApp.droid.Resource.Styleable.ActionBar_logo;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_navigationMode = global::PickUpApp.droid.Resource.Styleable.ActionBar_navigationMode;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_popupTheme = global::PickUpApp.droid.Resource.Styleable.ActionBar_popupTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_progressBarPadding = global::PickUpApp.droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_progressBarStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_subtitle = global::PickUpApp.droid.Resource.Styleable.ActionBar_subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_title = global::PickUpApp.droid.Resource.Styleable.ActionBar_title;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBarLayout = global::PickUpApp.droid.Resource.Styleable.ActionBarLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::PickUpApp.droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMenuItemView = global::PickUpApp.droid.Resource.Styleable.ActionMenuItemView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::PickUpApp.droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMenuView = global::PickUpApp.droid.Resource.Styleable.ActionMenuView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMode = global::PickUpApp.droid.Resource.Styleable.ActionMode;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMode_background = global::PickUpApp.droid.Resource.Styleable.ActionMode_background;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMode_backgroundSplit = global::PickUpApp.droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMode_closeItemLayout = global::PickUpApp.droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMode_height = global::PickUpApp.droid.Resource.Styleable.ActionMode_height;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMode_subtitleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActionMode_titleTextStyle = global::PickUpApp.droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActivityChooserView = global::PickUpApp.droid.Resource.Styleable.ActivityChooserView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::PickUpApp.droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::PickUpApp.droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AlertDialog = global::PickUpApp.droid.Resource.Styleable.AlertDialog;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AlertDialog_android_layout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_android_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AlertDialog_listLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_listLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::PickUpApp.droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppBarLayout = global::PickUpApp.droid.Resource.Styleable.AppBarLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppBarLayout_android_background = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_android_background;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppBarLayout_elevation = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppBarLayout_expanded = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_expanded;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppBarLayout_LayoutParams = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_LayoutParams;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator = global::PickUpApp.droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppCompatTextView = global::PickUpApp.droid.Resource.Styleable.AppCompatTextView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::PickUpApp.droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::PickUpApp.droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView = global::PickUpApp.droid.Resource.Styleable.CardView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_cardBackgroundColor = global::PickUpApp.droid.Resource.Styleable.CardView_cardBackgroundColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_cardCornerRadius = global::PickUpApp.droid.Resource.Styleable.CardView_cardCornerRadius;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_cardElevation = global::PickUpApp.droid.Resource.Styleable.CardView_cardElevation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_cardMaxElevation = global::PickUpApp.droid.Resource.Styleable.CardView_cardMaxElevation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap = global::PickUpApp.droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_cardUseCompatPadding = global::PickUpApp.droid.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_contentPadding = global::PickUpApp.droid.Resource.Styleable.CardView_contentPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_contentPaddingBottom = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_contentPaddingLeft = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingLeft;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_contentPaddingRight = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingRight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CardView_contentPaddingTop = global::PickUpApp.droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams = global::PickUpApp.droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode = global::PickUpApp.droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = global::PickUpApp.droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_title = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::PickUpApp.droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CompoundButton = global::PickUpApp.droid.Resource.Styleable.CompoundButton;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CompoundButton_android_button = global::PickUpApp.droid.Resource.Styleable.CompoundButton_android_button;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CompoundButton_buttonTint = global::PickUpApp.droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::PickUpApp.droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_keylines = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline = global::PickUpApp.droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_barLength = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_color = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_spinBars = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.DrawerArrowToggle_thickness = global::PickUpApp.droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_android_background = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_android_background;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_backgroundTint = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_elevation = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::PickUpApp.droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::PickUpApp.droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ListPopupWindow = global::PickUpApp.droid.Resource.Styleable.ListPopupWindow;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::PickUpApp.droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::PickUpApp.droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MediaRouteButton = global::PickUpApp.droid.Resource.Styleable.MediaRouteButton;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MediaRouteButton_android_minHeight = global::PickUpApp.droid.Resource.Styleable.MediaRouteButton_android_minHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MediaRouteButton_android_minWidth = global::PickUpApp.droid.Resource.Styleable.MediaRouteButton_android_minWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::PickUpApp.droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuGroup = global::PickUpApp.droid.Resource.Styleable.MenuGroup;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuGroup_android_enabled = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuGroup_android_id = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_id;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuGroup_android_menuCategory = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuGroup_android_orderInCategory = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuGroup_android_visible = global::PickUpApp.droid.Resource.Styleable.MenuGroup_android_visible;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem = global::PickUpApp.droid.Resource.Styleable.MenuItem;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_actionLayout = global::PickUpApp.droid.Resource.Styleable.MenuItem_actionLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::PickUpApp.droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_actionViewClass = global::PickUpApp.droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_checkable = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_checkable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_checked = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_checked;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_enabled = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_enabled;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_icon = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_icon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_id = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_id;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_menuCategory = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_numericShortcut = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_onClick = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_onClick;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_orderInCategory = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_title = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_title;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_android_visible = global::PickUpApp.droid.Resource.Styleable.MenuItem_android_visible;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuItem_showAsAction = global::PickUpApp.droid.Resource.Styleable.MenuItem_showAsAction;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView = global::PickUpApp.droid.Resource.Styleable.MenuView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_android_headerBackground = global::PickUpApp.droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::PickUpApp.droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_android_itemBackground = global::PickUpApp.droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::PickUpApp.droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_android_itemTextAppearance = global::PickUpApp.droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_android_verticalDivider = global::PickUpApp.droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle = global::PickUpApp.droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.MenuView_preserveIconSpacing = global::PickUpApp.droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView = global::PickUpApp.droid.Resource.Styleable.NavigationView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_android_background = global::PickUpApp.droid.Resource.Styleable.NavigationView_android_background;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::PickUpApp.droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_android_maxWidth = global::PickUpApp.droid.Resource.Styleable.NavigationView_android_maxWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_elevation = global::PickUpApp.droid.Resource.Styleable.NavigationView_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_headerLayout = global::PickUpApp.droid.Resource.Styleable.NavigationView_headerLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_itemBackground = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_itemIconTint = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemIconTint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_itemTextAppearance = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_itemTextColor = global::PickUpApp.droid.Resource.Styleable.NavigationView_itemTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.NavigationView_menu = global::PickUpApp.droid.Resource.Styleable.NavigationView_menu;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.PopupWindow = global::PickUpApp.droid.Resource.Styleable.PopupWindow;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::PickUpApp.droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::PickUpApp.droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.PopupWindowBackgroundState = global::PickUpApp.droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::PickUpApp.droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ScrimInsetsFrameLayout = global::PickUpApp.droid.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::PickUpApp.droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ScrollingViewBehavior_Params = global::PickUpApp.droid.Resource.Styleable.ScrollingViewBehavior_Params;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop = global::PickUpApp.droid.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView = global::PickUpApp.droid.Resource.Styleable.SearchView;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_android_focusable = global::PickUpApp.droid.Resource.Styleable.SearchView_android_focusable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_android_imeOptions = global::PickUpApp.droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_android_inputType = global::PickUpApp.droid.Resource.Styleable.SearchView_android_inputType;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_android_maxWidth = global::PickUpApp.droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_closeIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_closeIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_commitIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_commitIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_defaultQueryHint = global::PickUpApp.droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_goIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_goIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_iconifiedByDefault = global::PickUpApp.droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_layout = global::PickUpApp.droid.Resource.Styleable.SearchView_layout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_queryBackground = global::PickUpApp.droid.Resource.Styleable.SearchView_queryBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_queryHint = global::PickUpApp.droid.Resource.Styleable.SearchView_queryHint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_searchHintIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_searchIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_searchIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_submitBackground = global::PickUpApp.droid.Resource.Styleable.SearchView_submitBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::PickUpApp.droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SearchView_voiceIcon = global::PickUpApp.droid.Resource.Styleable.SearchView_voiceIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SnackbarLayout = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SnackbarLayout_elevation = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout_elevation;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::PickUpApp.droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Spinner = global::PickUpApp.droid.Resource.Styleable.Spinner;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::PickUpApp.droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Spinner_android_popupBackground = global::PickUpApp.droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Spinner_android_prompt = global::PickUpApp.droid.Resource.Styleable.Spinner_android_prompt;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Spinner_popupTheme = global::PickUpApp.droid.Resource.Styleable.Spinner_popupTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat = global::PickUpApp.droid.Resource.Styleable.SwitchCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_android_thumb = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_showText = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_showText;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_splitTrack = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_switchMinWidth = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_switchPadding = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.SwitchCompat_track = global::PickUpApp.droid.Resource.Styleable.SwitchCompat_track;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout = global::PickUpApp.droid.Resource.Styleable.TabLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabBackground = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabContentStart = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabContentStart;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabGravity = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabGravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabIndicatorColor = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabMaxWidth = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabMinWidth = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabMinWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabMode = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabMode;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabPadding = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabPaddingBottom = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabPaddingEnd = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabPaddingStart = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabPaddingTop = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TabLayout_tabTextColor = global::PickUpApp.droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextAppearance = global::PickUpApp.droid.Resource.Styleable.TextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextAppearance_android_textColor = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextAppearance_android_textSize = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextAppearance_android_typeface = global::PickUpApp.droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::PickUpApp.droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextInputLayout = global::PickUpApp.droid.Resource.Styleable.TextInputLayout;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextInputLayout_android_hint = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_android_hint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextInputLayout_android_textColorHint = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextInputLayout_errorEnabled = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance = global::PickUpApp.droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme = global::PickUpApp.droid.Resource.Styleable.Theme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarDivider = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarDivider;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarItemBackground = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarItemBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarPopupTheme = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarPopupTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarSize = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarSize;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarSplitStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarSplitStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarTabBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTabBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarTabStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTabStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarTabTextStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTabTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarTheme = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionBarWidgetTheme = global::PickUpApp.droid.Resource.Styleable.Theme_actionBarWidgetTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionDropDownStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionDropDownStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionMenuTextAppearance = global::PickUpApp.droid.Resource.Styleable.Theme_actionMenuTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionMenuTextColor = global::PickUpApp.droid.Resource.Styleable.Theme_actionMenuTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeBackground = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeCloseButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCloseButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeCloseDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCloseDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeCopyDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCopyDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeCutDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeCutDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeFindDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeFindDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModePasteDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModePasteDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModePopupWindowStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionModePopupWindowStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeSelectAllDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeSelectAllDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeShareDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeShareDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeSplitBackground = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeSplitBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionModeWebSearchDrawable = global::PickUpApp.droid.Resource.Styleable.Theme_actionModeWebSearchDrawable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionOverflowButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionOverflowButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_actionOverflowMenuStyle = global::PickUpApp.droid.Resource.Styleable.Theme_actionOverflowMenuStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_activityChooserViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_activityChooserViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_alertDialogButtonGroupStyle = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogButtonGroupStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_alertDialogCenterButtons = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogCenterButtons;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_alertDialogStyle = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_alertDialogTheme = global::PickUpApp.droid.Resource.Styleable.Theme_alertDialogTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_android_windowAnimationStyle = global::PickUpApp.droid.Resource.Styleable.Theme_android_windowAnimationStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_android_windowIsFloating = global::PickUpApp.droid.Resource.Styleable.Theme_android_windowIsFloating;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_autoCompleteTextViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_autoCompleteTextViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_borderlessButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_borderlessButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_buttonBarButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_buttonBarNegativeButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarNegativeButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_buttonBarNeutralButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarNeutralButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_buttonBarPositiveButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarPositiveButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_buttonBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_buttonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_buttonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_buttonStyleSmall = global::PickUpApp.droid.Resource.Styleable.Theme_buttonStyleSmall;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_checkboxStyle = global::PickUpApp.droid.Resource.Styleable.Theme_checkboxStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_checkedTextViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_checkedTextViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorAccent = global::PickUpApp.droid.Resource.Styleable.Theme_colorAccent;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorButtonNormal = global::PickUpApp.droid.Resource.Styleable.Theme_colorButtonNormal;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorControlActivated = global::PickUpApp.droid.Resource.Styleable.Theme_colorControlActivated;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorControlHighlight = global::PickUpApp.droid.Resource.Styleable.Theme_colorControlHighlight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorControlNormal = global::PickUpApp.droid.Resource.Styleable.Theme_colorControlNormal;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorPrimary = global::PickUpApp.droid.Resource.Styleable.Theme_colorPrimary;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorPrimaryDark = global::PickUpApp.droid.Resource.Styleable.Theme_colorPrimaryDark;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_colorSwitchThumbNormal = global::PickUpApp.droid.Resource.Styleable.Theme_colorSwitchThumbNormal;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_controlBackground = global::PickUpApp.droid.Resource.Styleable.Theme_controlBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_dialogPreferredPadding = global::PickUpApp.droid.Resource.Styleable.Theme_dialogPreferredPadding;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_dialogTheme = global::PickUpApp.droid.Resource.Styleable.Theme_dialogTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_dividerHorizontal = global::PickUpApp.droid.Resource.Styleable.Theme_dividerHorizontal;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_dividerVertical = global::PickUpApp.droid.Resource.Styleable.Theme_dividerVertical;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_dropDownListViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_dropDownListViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_dropdownListPreferredItemHeight = global::PickUpApp.droid.Resource.Styleable.Theme_dropdownListPreferredItemHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_editTextBackground = global::PickUpApp.droid.Resource.Styleable.Theme_editTextBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_editTextColor = global::PickUpApp.droid.Resource.Styleable.Theme_editTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_editTextStyle = global::PickUpApp.droid.Resource.Styleable.Theme_editTextStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_homeAsUpIndicator = global::PickUpApp.droid.Resource.Styleable.Theme_homeAsUpIndicator;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listChoiceBackgroundIndicator = global::PickUpApp.droid.Resource.Styleable.Theme_listChoiceBackgroundIndicator;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listDividerAlertDialog = global::PickUpApp.droid.Resource.Styleable.Theme_listDividerAlertDialog;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listPopupWindowStyle = global::PickUpApp.droid.Resource.Styleable.Theme_listPopupWindowStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listPreferredItemHeight = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listPreferredItemHeightLarge = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemHeightLarge;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listPreferredItemHeightSmall = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemHeightSmall;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listPreferredItemPaddingLeft = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemPaddingLeft;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_listPreferredItemPaddingRight = global::PickUpApp.droid.Resource.Styleable.Theme_listPreferredItemPaddingRight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_panelBackground = global::PickUpApp.droid.Resource.Styleable.Theme_panelBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_panelMenuListTheme = global::PickUpApp.droid.Resource.Styleable.Theme_panelMenuListTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_panelMenuListWidth = global::PickUpApp.droid.Resource.Styleable.Theme_panelMenuListWidth;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_popupMenuStyle = global::PickUpApp.droid.Resource.Styleable.Theme_popupMenuStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_popupWindowStyle = global::PickUpApp.droid.Resource.Styleable.Theme_popupWindowStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_radioButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_radioButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_ratingBarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_ratingBarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_searchViewStyle = global::PickUpApp.droid.Resource.Styleable.Theme_searchViewStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_selectableItemBackground = global::PickUpApp.droid.Resource.Styleable.Theme_selectableItemBackground;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_selectableItemBackgroundBorderless = global::PickUpApp.droid.Resource.Styleable.Theme_selectableItemBackgroundBorderless;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_spinnerDropDownItemStyle = global::PickUpApp.droid.Resource.Styleable.Theme_spinnerDropDownItemStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_spinnerStyle = global::PickUpApp.droid.Resource.Styleable.Theme_spinnerStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_switchStyle = global::PickUpApp.droid.Resource.Styleable.Theme_switchStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textAppearanceLargePopupMenu = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceLargePopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textAppearanceListItem = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceListItem;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textAppearanceListItemSmall = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceListItemSmall;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textAppearanceSearchResultSubtitle = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceSearchResultSubtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textAppearanceSearchResultTitle = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceSearchResultTitle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textAppearanceSmallPopupMenu = global::PickUpApp.droid.Resource.Styleable.Theme_textAppearanceSmallPopupMenu;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textColorAlertDialogListItem = global::PickUpApp.droid.Resource.Styleable.Theme_textColorAlertDialogListItem;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_textColorSearchUrl = global::PickUpApp.droid.Resource.Styleable.Theme_textColorSearchUrl;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_toolbarNavigationButtonStyle = global::PickUpApp.droid.Resource.Styleable.Theme_toolbarNavigationButtonStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_toolbarStyle = global::PickUpApp.droid.Resource.Styleable.Theme_toolbarStyle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowActionBar = global::PickUpApp.droid.Resource.Styleable.Theme_windowActionBar;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowActionBarOverlay = global::PickUpApp.droid.Resource.Styleable.Theme_windowActionBarOverlay;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowActionModeOverlay = global::PickUpApp.droid.Resource.Styleable.Theme_windowActionModeOverlay;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowFixedHeightMajor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedHeightMajor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowFixedHeightMinor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedHeightMinor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowFixedWidthMajor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedWidthMajor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowFixedWidthMinor = global::PickUpApp.droid.Resource.Styleable.Theme_windowFixedWidthMinor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowMinWidthMajor = global::PickUpApp.droid.Resource.Styleable.Theme_windowMinWidthMajor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowMinWidthMinor = global::PickUpApp.droid.Resource.Styleable.Theme_windowMinWidthMinor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Theme_windowNoTitle = global::PickUpApp.droid.Resource.Styleable.Theme_windowNoTitle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar = global::PickUpApp.droid.Resource.Styleable.Toolbar;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_android_gravity = global::PickUpApp.droid.Resource.Styleable.Toolbar_android_gravity;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_android_minHeight = global::PickUpApp.droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_collapseContentDescription = global::PickUpApp.droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_collapseIcon = global::PickUpApp.droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_contentInsetEnd = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_contentInsetLeft = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_contentInsetRight = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_contentInsetStart = global::PickUpApp.droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_logo = global::PickUpApp.droid.Resource.Styleable.Toolbar_logo;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_logoDescription = global::PickUpApp.droid.Resource.Styleable.Toolbar_logoDescription;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_maxButtonHeight = global::PickUpApp.droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_navigationContentDescription = global::PickUpApp.droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_navigationIcon = global::PickUpApp.droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_popupTheme = global::PickUpApp.droid.Resource.Styleable.Toolbar_popupTheme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_subtitle = global::PickUpApp.droid.Resource.Styleable.Toolbar_subtitle;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance = global::PickUpApp.droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_subtitleTextColor = global::PickUpApp.droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_title = global::PickUpApp.droid.Resource.Styleable.Toolbar_title;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_titleMargins = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleMargins;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.Toolbar_titleTextColor = global::PickUpApp.droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.View = global::PickUpApp.droid.Resource.Styleable.View;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.View_android_focusable = global::PickUpApp.droid.Resource.Styleable.View_android_focusable;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.View_android_theme = global::PickUpApp.droid.Resource.Styleable.View_android_theme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.View_paddingEnd = global::PickUpApp.droid.Resource.Styleable.View_paddingEnd;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.View_paddingStart = global::PickUpApp.droid.Resource.Styleable.View_paddingStart;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.View_theme = global::PickUpApp.droid.Resource.Styleable.View_theme;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewBackgroundHelper = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::PickUpApp.droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewStubCompat = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewStubCompat_android_id = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::FFImageLoading.Forms.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::PickUpApp.droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::FFImageLoading.Transformations.Resource.String.library_name = global::PickUpApp.droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
@@ -2688,32 +4228,32 @@ namespace PickUpApp.droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f080066
-			public const int abc_background_cache_hint_selector_material_dark = 2131230822;
+			// aapt resource value: 0x7f08006b
+			public const int abc_background_cache_hint_selector_material_dark = 2131230827;
 			
-			// aapt resource value: 0x7f080067
-			public const int abc_background_cache_hint_selector_material_light = 2131230823;
+			// aapt resource value: 0x7f08006c
+			public const int abc_background_cache_hint_selector_material_light = 2131230828;
 			
-			// aapt resource value: 0x7f080068
-			public const int abc_color_highlight_material = 2131230824;
+			// aapt resource value: 0x7f08006d
+			public const int abc_color_highlight_material = 2131230829;
 			
 			// aapt resource value: 0x7f080017
 			public const int abc_input_method_navigation_guard = 2131230743;
 			
-			// aapt resource value: 0x7f080069
-			public const int abc_primary_text_disable_only_material_dark = 2131230825;
+			// aapt resource value: 0x7f08006e
+			public const int abc_primary_text_disable_only_material_dark = 2131230830;
 			
-			// aapt resource value: 0x7f08006a
-			public const int abc_primary_text_disable_only_material_light = 2131230826;
+			// aapt resource value: 0x7f08006f
+			public const int abc_primary_text_disable_only_material_light = 2131230831;
 			
-			// aapt resource value: 0x7f08006b
-			public const int abc_primary_text_material_dark = 2131230827;
+			// aapt resource value: 0x7f080070
+			public const int abc_primary_text_material_dark = 2131230832;
 			
-			// aapt resource value: 0x7f08006c
-			public const int abc_primary_text_material_light = 2131230828;
+			// aapt resource value: 0x7f080071
+			public const int abc_primary_text_material_light = 2131230833;
 			
-			// aapt resource value: 0x7f08006d
-			public const int abc_search_url_text = 2131230829;
+			// aapt resource value: 0x7f080072
+			public const int abc_search_url_text = 2131230834;
 			
 			// aapt resource value: 0x7f080018
 			public const int abc_search_url_text_normal = 2131230744;
@@ -2724,11 +4264,14 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f08001a
 			public const int abc_search_url_text_selected = 2131230746;
 			
-			// aapt resource value: 0x7f08006e
-			public const int abc_secondary_text_material_dark = 2131230830;
+			// aapt resource value: 0x7f080073
+			public const int abc_secondary_text_material_dark = 2131230835;
 			
-			// aapt resource value: 0x7f08006f
-			public const int abc_secondary_text_material_light = 2131230831;
+			// aapt resource value: 0x7f080074
+			public const int abc_secondary_text_material_light = 2131230836;
+			
+			// aapt resource value: 0x7f080068
+			public const int accent = 2131230824;
 			
 			// aapt resource value: 0x7f08001b
 			public const int accent_material_dark = 2131230747;
@@ -2802,8 +4345,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f080064
 			public const int calendar_text_selected = 2131230820;
 			
-			// aapt resource value: 0x7f080070
-			public const int calendar_text_selector = 2131230832;
+			// aapt resource value: 0x7f080075
+			public const int calendar_text_selector = 2131230837;
 			
 			// aapt resource value: 0x7f080065
 			public const int calendar_text_unselectable = 2131230821;
@@ -2850,11 +4393,11 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f080012
 			public const int common_signin_btn_light_text_pressed = 2131230738;
 			
-			// aapt resource value: 0x7f080071
-			public const int common_signin_btn_text_dark = 2131230833;
+			// aapt resource value: 0x7f080076
+			public const int common_signin_btn_text_dark = 2131230838;
 			
-			// aapt resource value: 0x7f080072
-			public const int common_signin_btn_text_light = 2131230834;
+			// aapt resource value: 0x7f080077
+			public const int common_signin_btn_text_light = 2131230839;
 			
 			// aapt resource value: 0x7f080000
 			public const int design_fab_shadow_end_color = 2131230720;
@@ -2979,6 +4522,12 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f08003e
 			public const int material_grey_900 = 2131230782;
 			
+			// aapt resource value: 0x7f080066
+			public const int primary = 2131230822;
+			
+			// aapt resource value: 0x7f080067
+			public const int primaryDark = 2131230823;
+			
 			// aapt resource value: 0x7f08003f
 			public const int primary_dark_material_dark = 2131230783;
 			
@@ -3021,23 +4570,29 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f08004c
 			public const int secondary_text_disabled_material_light = 2131230796;
 			
+			// aapt resource value: 0x7f08006a
+			public const int splash_background = 2131230826;
+			
 			// aapt resource value: 0x7f08004d
 			public const int switch_thumb_disabled_material_dark = 2131230797;
 			
 			// aapt resource value: 0x7f08004e
 			public const int switch_thumb_disabled_material_light = 2131230798;
 			
-			// aapt resource value: 0x7f080073
-			public const int switch_thumb_material_dark = 2131230835;
+			// aapt resource value: 0x7f080078
+			public const int switch_thumb_material_dark = 2131230840;
 			
-			// aapt resource value: 0x7f080074
-			public const int switch_thumb_material_light = 2131230836;
+			// aapt resource value: 0x7f080079
+			public const int switch_thumb_material_light = 2131230841;
 			
 			// aapt resource value: 0x7f08004f
 			public const int switch_thumb_normal_material_dark = 2131230799;
 			
 			// aapt resource value: 0x7f080050
 			public const int switch_thumb_normal_material_light = 2131230800;
+			
+			// aapt resource value: 0x7f080069
+			public const int window_background = 2131230825;
 			
 			static Color()
 			{
@@ -3932,8 +5487,8 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f0200b5
 			public const int mr_ic_settings_light = 2130837685;
 			
-			// aapt resource value: 0x7f0200c5
-			public const int notification_template_icon_bg = 2130837701;
+			// aapt resource value: 0x7f0200c9
+			public const int notification_template_icon_bg = 2130837705;
 			
 			// aapt resource value: 0x7f0200b6
 			public const int roundedbg = 2130837686;
@@ -3942,43 +5497,55 @@ namespace PickUpApp.droid
 			public const int roundedbgdark = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int sun = 2130837688;
+			public const int splashscreen = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int ui_cal_circle = 2130837689;
+			public const int splashscreentext = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int ui_check_empty = 2130837690;
+			public const int sun = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int ui_check_filled = 2130837691;
+			public const int ui_cal_circle = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int ui_line_dash_grey = 2130837692;
+			public const int ui_check_empty = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int ui_line_dash_pink = 2130837693;
+			public const int ui_check_filled = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int ui_line_green = 2130837694;
+			public const int ui_line_dash_grey = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int ui_messages = 2130837695;
+			public const int ui_line_dash_pink = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int ui_splash_logo = 2130837696;
+			public const int ui_line_green = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int ui_tri_green = 2130837697;
+			public const int ui_messages = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int ui_tri_grey = 2130837698;
+			public const int ui_splash_logo = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int ui_tri_pink = 2130837699;
+			public const int ui_splash_logotext = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int ui_tri_purple = 2130837700;
+			public const int ui_splashcombo = 2130837700;
+			
+			// aapt resource value: 0x7f0200c5
+			public const int ui_tri_green = 2130837701;
+			
+			// aapt resource value: 0x7f0200c6
+			public const int ui_tri_grey = 2130837702;
+			
+			// aapt resource value: 0x7f0200c7
+			public const int ui_tri_pink = 2130837703;
+			
+			// aapt resource value: 0x7f0200c8
+			public const int ui_tri_purple = 2130837704;
 			
 			static Drawable()
 			{
@@ -4196,6 +5763,12 @@ namespace PickUpApp.droid
 			
 			// aapt resource value: 0x7f090042
 			public const int image = 2131296322;
+			
+			// aapt resource value: 0x7f0900ab
+			public const int imageView1 = 2131296427;
+			
+			// aapt resource value: 0x7f0900ac
+			public const int imageView2 = 2131296428;
 			
 			// aapt resource value: 0x7f0900a9
 			public const int info = 2131296425;
@@ -4737,10 +6310,13 @@ namespace PickUpApp.droid
 			public const int select_dialog_singlechoice_material = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int support_simple_spinner_dropdown_item = 2130903101;
+			public const int splash = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int week = 2130903102;
+			public const int support_simple_spinner_dropdown_item = 2130903102;
+			
+			// aapt resource value: 0x7f03003f
+			public const int week = 2130903103;
 			
 			static Layout()
 			{
@@ -4755,11 +6331,11 @@ namespace PickUpApp.droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a0085
-			public const int ApplicationName = 2131361925;
+			// aapt resource value: 0x7f0a0041
+			public const int ApplicationName = 2131361857;
 			
-			// aapt resource value: 0x7f0a0084
-			public const int Hello = 2131361924;
+			// aapt resource value: 0x7f0a0042
+			public const int Hello = 2131361858;
 			
 			// aapt resource value: 0x7f0a002e
 			public const int abc_action_bar_home_description = 2131361838;
@@ -4929,215 +6505,215 @@ namespace PickUpApp.droid
 			// aapt resource value: 0x7f0a008b
 			public const int hello = 2131361931;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int hockeyapp_crash_dialog_app_name_fallback = 2131361856;
-			
-			// aapt resource value: 0x7f0a0041
-			public const int hockeyapp_crash_dialog_message = 2131361857;
-			
-			// aapt resource value: 0x7f0a0042
-			public const int hockeyapp_crash_dialog_negative_button = 2131361858;
-			
 			// aapt resource value: 0x7f0a0043
-			public const int hockeyapp_crash_dialog_neutral_button = 2131361859;
+			public const int hockeyapp_crash_dialog_app_name_fallback = 2131361859;
 			
 			// aapt resource value: 0x7f0a0044
-			public const int hockeyapp_crash_dialog_positive_button = 2131361860;
+			public const int hockeyapp_crash_dialog_message = 2131361860;
 			
 			// aapt resource value: 0x7f0a0045
-			public const int hockeyapp_crash_dialog_title = 2131361861;
+			public const int hockeyapp_crash_dialog_negative_button = 2131361861;
 			
 			// aapt resource value: 0x7f0a0046
-			public const int hockeyapp_dialog_error_message = 2131361862;
+			public const int hockeyapp_crash_dialog_neutral_button = 2131361862;
 			
 			// aapt resource value: 0x7f0a0047
-			public const int hockeyapp_dialog_error_title = 2131361863;
+			public const int hockeyapp_crash_dialog_positive_button = 2131361863;
 			
 			// aapt resource value: 0x7f0a0048
-			public const int hockeyapp_dialog_negative_button = 2131361864;
+			public const int hockeyapp_crash_dialog_title = 2131361864;
 			
 			// aapt resource value: 0x7f0a0049
-			public const int hockeyapp_dialog_positive_button = 2131361865;
+			public const int hockeyapp_dialog_error_message = 2131361865;
 			
 			// aapt resource value: 0x7f0a004a
-			public const int hockeyapp_download_failed_dialog_message = 2131361866;
+			public const int hockeyapp_dialog_error_title = 2131361866;
 			
 			// aapt resource value: 0x7f0a004b
-			public const int hockeyapp_download_failed_dialog_negative_button = 2131361867;
+			public const int hockeyapp_dialog_negative_button = 2131361867;
 			
 			// aapt resource value: 0x7f0a004c
-			public const int hockeyapp_download_failed_dialog_positive_button = 2131361868;
+			public const int hockeyapp_dialog_positive_button = 2131361868;
 			
 			// aapt resource value: 0x7f0a004d
-			public const int hockeyapp_download_failed_dialog_title = 2131361869;
+			public const int hockeyapp_download_failed_dialog_message = 2131361869;
 			
 			// aapt resource value: 0x7f0a004e
-			public const int hockeyapp_error_no_network_message = 2131361870;
+			public const int hockeyapp_download_failed_dialog_negative_button = 2131361870;
 			
 			// aapt resource value: 0x7f0a004f
-			public const int hockeyapp_expiry_info_text = 2131361871;
+			public const int hockeyapp_download_failed_dialog_positive_button = 2131361871;
 			
 			// aapt resource value: 0x7f0a0050
-			public const int hockeyapp_expiry_info_title = 2131361872;
+			public const int hockeyapp_download_failed_dialog_title = 2131361872;
 			
 			// aapt resource value: 0x7f0a0051
-			public const int hockeyapp_feedback_attach_file = 2131361873;
+			public const int hockeyapp_error_no_network_message = 2131361873;
 			
 			// aapt resource value: 0x7f0a0052
-			public const int hockeyapp_feedback_attach_picture = 2131361874;
+			public const int hockeyapp_expiry_info_text = 2131361874;
 			
 			// aapt resource value: 0x7f0a0053
-			public const int hockeyapp_feedback_attachment_button_text = 2131361875;
+			public const int hockeyapp_expiry_info_title = 2131361875;
 			
 			// aapt resource value: 0x7f0a0054
-			public const int hockeyapp_feedback_attachment_error = 2131361876;
+			public const int hockeyapp_feedback_attach_file = 2131361876;
 			
 			// aapt resource value: 0x7f0a0055
-			public const int hockeyapp_feedback_attachment_loading = 2131361877;
+			public const int hockeyapp_feedback_attach_picture = 2131361877;
 			
 			// aapt resource value: 0x7f0a0056
-			public const int hockeyapp_feedback_email_hint = 2131361878;
+			public const int hockeyapp_feedback_attachment_button_text = 2131361878;
 			
 			// aapt resource value: 0x7f0a0057
-			public const int hockeyapp_feedback_failed_text = 2131361879;
+			public const int hockeyapp_feedback_attachment_error = 2131361879;
 			
 			// aapt resource value: 0x7f0a0058
-			public const int hockeyapp_feedback_failed_title = 2131361880;
+			public const int hockeyapp_feedback_attachment_loading = 2131361880;
 			
 			// aapt resource value: 0x7f0a0059
-			public const int hockeyapp_feedback_generic_error = 2131361881;
+			public const int hockeyapp_feedback_email_hint = 2131361881;
 			
 			// aapt resource value: 0x7f0a005a
-			public const int hockeyapp_feedback_last_updated_text = 2131361882;
+			public const int hockeyapp_feedback_failed_text = 2131361882;
 			
 			// aapt resource value: 0x7f0a005b
-			public const int hockeyapp_feedback_max_attachments_allowed = 2131361883;
+			public const int hockeyapp_feedback_failed_title = 2131361883;
 			
 			// aapt resource value: 0x7f0a005c
-			public const int hockeyapp_feedback_message_hint = 2131361884;
+			public const int hockeyapp_feedback_generic_error = 2131361884;
 			
 			// aapt resource value: 0x7f0a005d
-			public const int hockeyapp_feedback_name_hint = 2131361885;
+			public const int hockeyapp_feedback_last_updated_text = 2131361885;
 			
 			// aapt resource value: 0x7f0a005e
-			public const int hockeyapp_feedback_refresh_button_text = 2131361886;
+			public const int hockeyapp_feedback_max_attachments_allowed = 2131361886;
 			
 			// aapt resource value: 0x7f0a005f
-			public const int hockeyapp_feedback_response_button_text = 2131361887;
+			public const int hockeyapp_feedback_message_hint = 2131361887;
 			
 			// aapt resource value: 0x7f0a0060
-			public const int hockeyapp_feedback_select_file = 2131361888;
+			public const int hockeyapp_feedback_name_hint = 2131361888;
 			
 			// aapt resource value: 0x7f0a0061
-			public const int hockeyapp_feedback_select_picture = 2131361889;
+			public const int hockeyapp_feedback_refresh_button_text = 2131361889;
 			
 			// aapt resource value: 0x7f0a0062
-			public const int hockeyapp_feedback_send_button_text = 2131361890;
+			public const int hockeyapp_feedback_response_button_text = 2131361890;
 			
 			// aapt resource value: 0x7f0a0063
-			public const int hockeyapp_feedback_send_generic_error = 2131361891;
+			public const int hockeyapp_feedback_select_file = 2131361891;
 			
 			// aapt resource value: 0x7f0a0064
-			public const int hockeyapp_feedback_send_network_error = 2131361892;
+			public const int hockeyapp_feedback_select_picture = 2131361892;
 			
 			// aapt resource value: 0x7f0a0065
-			public const int hockeyapp_feedback_subject_hint = 2131361893;
+			public const int hockeyapp_feedback_send_button_text = 2131361893;
 			
 			// aapt resource value: 0x7f0a0066
-			public const int hockeyapp_feedback_title = 2131361894;
+			public const int hockeyapp_feedback_send_generic_error = 2131361894;
 			
 			// aapt resource value: 0x7f0a0067
-			public const int hockeyapp_feedback_validate_email_empty = 2131361895;
+			public const int hockeyapp_feedback_send_network_error = 2131361895;
 			
 			// aapt resource value: 0x7f0a0068
-			public const int hockeyapp_feedback_validate_email_error = 2131361896;
+			public const int hockeyapp_feedback_subject_hint = 2131361896;
 			
 			// aapt resource value: 0x7f0a0069
-			public const int hockeyapp_feedback_validate_name_error = 2131361897;
+			public const int hockeyapp_feedback_title = 2131361897;
 			
 			// aapt resource value: 0x7f0a006a
-			public const int hockeyapp_feedback_validate_subject_error = 2131361898;
+			public const int hockeyapp_feedback_validate_email_empty = 2131361898;
 			
 			// aapt resource value: 0x7f0a006b
-			public const int hockeyapp_feedback_validate_text_error = 2131361899;
+			public const int hockeyapp_feedback_validate_email_error = 2131361899;
 			
 			// aapt resource value: 0x7f0a006c
-			public const int hockeyapp_login_email_hint = 2131361900;
+			public const int hockeyapp_feedback_validate_name_error = 2131361900;
 			
 			// aapt resource value: 0x7f0a006d
-			public const int hockeyapp_login_headline_text = 2131361901;
+			public const int hockeyapp_feedback_validate_subject_error = 2131361901;
 			
 			// aapt resource value: 0x7f0a006e
-			public const int hockeyapp_login_headline_text_email_only = 2131361902;
+			public const int hockeyapp_feedback_validate_text_error = 2131361902;
 			
 			// aapt resource value: 0x7f0a006f
-			public const int hockeyapp_login_login_button_text = 2131361903;
+			public const int hockeyapp_login_email_hint = 2131361903;
 			
 			// aapt resource value: 0x7f0a0070
-			public const int hockeyapp_login_missing_credentials_toast = 2131361904;
+			public const int hockeyapp_login_headline_text = 2131361904;
 			
 			// aapt resource value: 0x7f0a0071
-			public const int hockeyapp_login_password_hint = 2131361905;
+			public const int hockeyapp_login_headline_text_email_only = 2131361905;
 			
 			// aapt resource value: 0x7f0a0072
-			public const int hockeyapp_paint_dialog_message = 2131361906;
+			public const int hockeyapp_login_login_button_text = 2131361906;
 			
 			// aapt resource value: 0x7f0a0073
-			public const int hockeyapp_paint_dialog_negative_button = 2131361907;
+			public const int hockeyapp_login_missing_credentials_toast = 2131361907;
 			
 			// aapt resource value: 0x7f0a0074
-			public const int hockeyapp_paint_dialog_neutral_button = 2131361908;
+			public const int hockeyapp_login_password_hint = 2131361908;
 			
 			// aapt resource value: 0x7f0a0075
-			public const int hockeyapp_paint_dialog_positive_button = 2131361909;
+			public const int hockeyapp_paint_dialog_message = 2131361909;
 			
 			// aapt resource value: 0x7f0a0076
-			public const int hockeyapp_paint_indicator_toast = 2131361910;
+			public const int hockeyapp_paint_dialog_negative_button = 2131361910;
 			
 			// aapt resource value: 0x7f0a0077
-			public const int hockeyapp_paint_menu_clear = 2131361911;
+			public const int hockeyapp_paint_dialog_neutral_button = 2131361911;
 			
 			// aapt resource value: 0x7f0a0078
-			public const int hockeyapp_paint_menu_save = 2131361912;
+			public const int hockeyapp_paint_dialog_positive_button = 2131361912;
 			
 			// aapt resource value: 0x7f0a0079
-			public const int hockeyapp_paint_menu_undo = 2131361913;
+			public const int hockeyapp_paint_indicator_toast = 2131361913;
 			
 			// aapt resource value: 0x7f0a007a
-			public const int hockeyapp_permission_dialog_negative_button = 2131361914;
+			public const int hockeyapp_paint_menu_clear = 2131361914;
 			
 			// aapt resource value: 0x7f0a007b
-			public const int hockeyapp_permission_dialog_positive_button = 2131361915;
+			public const int hockeyapp_paint_menu_save = 2131361915;
 			
 			// aapt resource value: 0x7f0a007c
-			public const int hockeyapp_permission_update_message = 2131361916;
+			public const int hockeyapp_paint_menu_undo = 2131361916;
 			
 			// aapt resource value: 0x7f0a007d
-			public const int hockeyapp_permission_update_title = 2131361917;
+			public const int hockeyapp_permission_dialog_negative_button = 2131361917;
 			
 			// aapt resource value: 0x7f0a007e
-			public const int hockeyapp_update_button = 2131361918;
+			public const int hockeyapp_permission_dialog_positive_button = 2131361918;
 			
 			// aapt resource value: 0x7f0a007f
-			public const int hockeyapp_update_dialog_message = 2131361919;
+			public const int hockeyapp_permission_update_message = 2131361919;
 			
 			// aapt resource value: 0x7f0a0080
-			public const int hockeyapp_update_dialog_negative_button = 2131361920;
+			public const int hockeyapp_permission_update_title = 2131361920;
 			
 			// aapt resource value: 0x7f0a0081
-			public const int hockeyapp_update_dialog_positive_button = 2131361921;
+			public const int hockeyapp_update_button = 2131361921;
 			
 			// aapt resource value: 0x7f0a0082
-			public const int hockeyapp_update_dialog_title = 2131361922;
+			public const int hockeyapp_update_dialog_message = 2131361922;
 			
 			// aapt resource value: 0x7f0a0083
-			public const int hockeyapp_update_mandatory_toast = 2131361923;
+			public const int hockeyapp_update_dialog_negative_button = 2131361923;
+			
+			// aapt resource value: 0x7f0a0084
+			public const int hockeyapp_update_dialog_positive_button = 2131361924;
+			
+			// aapt resource value: 0x7f0a0085
+			public const int hockeyapp_update_dialog_title = 2131361925;
+			
+			// aapt resource value: 0x7f0a0086
+			public const int hockeyapp_update_mandatory_toast = 2131361926;
 			
 			// aapt resource value: 0x7f0a0088
 			public const int invalid_date = 2131361928;
 			
-			// aapt resource value: 0x7f0a0086
-			public const int library_name = 2131361926;
+			// aapt resource value: 0x7f0a0040
+			public const int library_name = 2131361856;
 			
 			// aapt resource value: 0x7f0a0089
 			public const int month_name_format = 2131361929;
@@ -5640,6 +7216,15 @@ namespace PickUpApp.droid
 			
 			// aapt resource value: 0x7f050011
 			public const int CardView_Light = 2131034129;
+			
+			// aapt resource value: 0x7f05014c
+			public const int FFTheme = 2131034444;
+			
+			// aapt resource value: 0x7f05014b
+			public const int FFTheme_Base = 2131034443;
+			
+			// aapt resource value: 0x7f05014d
+			public const int FFTheme_Splash = 2131034445;
 			
 			// aapt resource value: 0x7f050144
 			public const int HockeyApp_ButtonStyle = 2131034436;

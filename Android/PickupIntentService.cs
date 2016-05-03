@@ -116,7 +116,7 @@ namespace PickUpApp.droid
 						//was awaited
 						//var hubRegistration = Hub.RegisterNativeAsync (registrationId, tags).ConfigureAwait(false);
 
-						string template = "{\"data\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\",\"circle\":\"$(circle)\" }}";
+						string template = "{\"data\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\",\"circle\":\"$(circle)\",\"declined\":\"$(declined)\" }}";
 						//var expire = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
 						await Hub.RegisterTemplateAsync(registrationId, template, "pickup3", tags);
 
@@ -161,7 +161,15 @@ namespace PickUpApp.droid
 			if (intent.Extras.ContainsKey ("accepted")&& !string.IsNullOrEmpty(intent.Extras.GetString("accepted"))) {
 				Invite i = new Invite ();
 				i.Id = intent.Extras.GetString ("accepted");
+				i.Message = intent.Extras.GetString ("alert");
 				MessagingCenter.Send <Invite>(i, "accepted");
+			}
+			//someone has NOT accepted my invite
+			if (intent.Extras.ContainsKey ("declined")&& !string.IsNullOrEmpty(intent.Extras.GetString("declined"))) {
+				Invite i = new Invite ();
+				i.Id = intent.Extras.GetString ("declined");
+				i.Message = intent.Extras.GetString ("alert");
+				MessagingCenter.Send <Invite>(i, "declined");
 			}
 			//nobody has accepted my invite
 			if (intent.Extras.ContainsKey ("nobody")&& !string.IsNullOrEmpty(intent.Extras.GetString("nobody"))) {

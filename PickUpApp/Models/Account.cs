@@ -85,7 +85,7 @@ namespace PickUpApp
 		public string PhotoURL
 		{
 			get{
-				if (_photoURL == null) {
+				if (_photoURL == null || _photoURL == "") {
 					return initialsPath ();
 				} else {					
 					if (!_photoURL.ToLower().StartsWith("http"))

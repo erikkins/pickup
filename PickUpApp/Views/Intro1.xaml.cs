@@ -66,6 +66,7 @@ namespace PickUpApp
 			//animate the arrow
 
 			this.Appearing += async delegate(object sender, EventArgs e) {
+				System.Diagnostics.Debug.WriteLine("Appearing");
 				Rectangle oldBounds = orangearrow.Bounds;
 				Rectangle newBounds = new Rectangle (oldBounds.X + 50, oldBounds.Y, oldBounds.Width, oldBounds.Height);
 				for (int i=0; i < 5; i++)

@@ -101,10 +101,14 @@ namespace PickUpApp.iOS
 
 		public override bool FinishedLaunching (UIKit.UIApplication app, NSDictionary options)
 		{
+
 			global::Xamarin.Forms.Forms.Init ();
 			Xamarin.FormsMaps.Init ();
 			ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init ();
+			FFImageLoading.Forms.Touch.CachedImageRenderer.Init ();
 			//Insights.Initialize("882979cfc38cb829ecfaf090e99781b90980c55a");
+
+
 
 			HockeyApp.Setup.EnableCustomCrashReporting (() => {
 
@@ -143,6 +147,7 @@ namespace PickUpApp.iOS
 			Resolver.SetResolver (container.GetResolver ());
 
 
+
 			// Register for Notifications
 			if (Convert.ToInt16(UIDevice.CurrentDevice.SystemVersion.Split('.')[0].ToString()) < 8) {
 				UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
@@ -153,7 +158,8 @@ namespace PickUpApp.iOS
 				UIApplication.SharedApplication.RegisterUserNotificationSettings (settings);
 				UIApplication.SharedApplication.RegisterForRemoteNotifications ();
 			}
-				
+
+
 
 			// Process any potential notification data from launch
 			ProcessNotification (options, true);
@@ -180,9 +186,9 @@ namespace PickUpApp.iOS
 //				});
 
 				try{
-					string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\",\"circle\":\"$(circle)\" }}";
+					string template = "{\"aps\": {\"alert\": \"$(message)\", \"sound:\":\"$(sound)\", \"pickup\": \"$(pickup)\", \"invite\": \"$(invite)\",\"nobody\": \"$(nobody)\",\"confirm\":\"$(confirm)\", \"accepted\":\"$(accepted)\",\"notfirst\":\"$(notfirst)\",\"cancel\":\"$(cancel)\", \"uid\":\"$(uid)\",\"invmsg\":\"$(invmsg)\",\"circle\":\"$(circle)\",\"declined\":\"$(declined)\" }}";
 					var expire = DateTime.Now.AddDays(90).ToString(System.Globalization.CultureInfo.CreateSpecificCulture("en-US"));
-
+					Console.WriteLine(template);
 					hub.UnregisterAllAsync(deviceNotificationToken, err=>{
 						if (err == null)
 						{
@@ -250,6 +256,12 @@ namespace PickUpApp.iOS
 
 			Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
 			//return Facebook.CoreKit.ApplicationDelegate.SharedInstance.FinishedLaunching(app, options);
+
+//			long startTicks, endTicks;
+//			startTicks = DateTime.Now.Ticks;
+//			endTicks = DateTime.Now.Ticks;
+//			long ms1 = (endTicks - startTicks) / TimeSpan.TicksPerMillisecond;
+//			System.Diagnostics.Debug.WriteLine ("FullLoad: " + ms1.ToString ());
 
 			return base.FinishedLaunching (app, options);
 		}
@@ -382,6 +394,14 @@ namespace PickUpApp.iOS
 					i.Id = aps ["accepted"].ToString ();
 					i.Message = aps ["alert"].ToString ();
 					MessagingCenter.Send<Invite> (i, "accepted");
+				}
+
+				//someone has NOT accepted my invite
+				if (aps.ContainsKey (new NSString("declined")) && !string.IsNullOrEmpty(aps ["declined"].ToString ())) {
+					Invite i = new Invite ();
+					i.Id = aps ["declined"].ToString ();
+					i.Message = aps ["alert"].ToString ();
+					MessagingCenter.Send<Invite> (i, "declined");
 				}
 
 				//nobody has accepted my invite

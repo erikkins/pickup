@@ -223,6 +223,21 @@
       <HintPath>..\packages\Rivets.1.0.5.0\lib\MonoAndroid10\Rivets.dll</HintPath>
     </Reference>
     <Reference Include="System.Json" />
+    <Reference Include="FFImageLoading.Droid">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.0.7.1\lib\MonoAndroid10\FFImageLoading.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.0.7.1\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.0.7.1\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Droid">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.0.7.1\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.0.7.1\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PickUpApp\PickUpApp.csproj">
@@ -255,6 +270,7 @@
     <Compile Include="Platform\AndroidFFDatePicker.cs" />
     <Compile Include="Platform\AndroidFFTimePicker.cs" />
     <Compile Include="Platform\AndroidFFPicker.cs" />
+    <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -444,6 +460,17 @@
     <AndroidResource Include="Resources\drawable-hdpi\ui_check_filled.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ui_check_empty.png" />
     <AndroidResource Include="Resources\drawable-mdpi\ui_check_filled.png" />
+    <AndroidResource Include="Resources\drawable\splashscreen.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\style.xml" />
+    <AndroidResource Include="Resources\drawable\splashscreentext.xml" />
+    <AndroidResource Include="Resources\drawable\ui_splash_logotext.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_splash_logotext.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_splash_logotext.png" />
+    <AndroidResource Include="Resources\layout\splash.xml" />
+    <AndroidResource Include="Resources\drawable\ui_splashcombo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ui_splashcombo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ui_splashcombo.png" />
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
@@ -477,5 +504,8 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidEnvironment Include="environment.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\drawable\LaunchScreen.storyboard" />
   </ItemGroup>
 </Project>
