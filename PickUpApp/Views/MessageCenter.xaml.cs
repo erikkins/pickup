@@ -21,6 +21,9 @@ namespace PickUpApp
 			stacker.VerticalOptions = LayoutOptions.Fill;
 			stacker.HorizontalOptions = LayoutOptions.Fill;
 
+			//Current Messages and History
+			XLabs.Forms.Controls.SegmentControl sc = new SegmentControl ();
+
 
 			ExtendedListView elv = new ExtendedListView ();
 			elv.BackgroundColor = AppColor.AppGray;

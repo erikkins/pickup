@@ -23,6 +23,16 @@ namespace PickUpApp
 			this.ViewModel = new RouteDetailViewModel (App.client);
 			//NavigationPage.SetHasBackButton (this, true);
 
+
+			this.Appearing += delegate(object sender, EventArgs e) {
+				MessagingCenter.Subscribe<EmptyClass>(this, "launchchat", (ec)=>{
+					Navigation.PushAsync(new ManageFetch(currentToday, false));
+				});
+			};
+			this.Disappearing += delegate(object sender, EventArgs e) {
+					MessagingCenter.Unsubscribe<EmptyClass>(this, "launchchat");
+			};
+
 			TableView tv = new TableView ();
 			tv.BindingContext = currentToday;
 			tv.HasUnevenRows = true;
@@ -153,6 +163,7 @@ namespace PickUpApp
 
 				//await Navigation.PopAsync();
 			});
+
 			MessagingCenter.Subscribe<PickUpApp.ViewModels.TodayViewModel> (this, "TodayLoaded", async(t) => {
 				try{
 				await Navigation.PopAsync ();
@@ -163,6 +174,8 @@ namespace PickUpApp
 				}
 				MessagingCenter.Unsubscribe<PickUpApp.ViewModels.TodayViewModel>(this, "TodayLoaded");
 			});
+
+
 
 
 		}
@@ -912,29 +925,30 @@ namespace PickUpApp
 				App.Device.PhoneService.DialNumber(t.ViaPhone);
 
 			};
-
-
-			//DON'T CURRENTLY SUPPORT IN-FETCH MESSAGING
-			/*
-			Button btnMessage = new Button ();
-			btnMessage.Image = "icn_text.png";
-			btnMessage.BorderColor = Color.FromRgb (241, 179, 70);
-			btnMessage.HorizontalOptions = LayoutOptions.Center;
-			btnMessage.VerticalOptions = LayoutOptions.Center;
-			btnMessage.BorderRadius = 25;
-			btnMessage.BorderWidth = 4;
-			btnMessage.HeightRequest = 50;
-			btnMessage.MinimumHeightRequest = 50;
-			btnMessage.WidthRequest = 50;
-			btnMessage.MinimumWidthRequest = 50;
-			btnMessage.BackgroundColor = Color.FromRgb (238, 236, 243);
-			btnMessage.TranslationX = -20;
-			slMain.Children.Add (btnMessage);
-			btnMessage.Clicked += async delegate(object sender, EventArgs e) {
-				await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Message", "Cancel");
-			};
-
-			*/
+				
+			//don't need to message yourself...although
+			if (t.AccountID != App.myAccount.id) {
+				Button btnMessage = new Button ();
+				btnMessage.Image = "icn_text.png";
+				btnMessage.BorderColor = Color.FromRgb (241, 179, 70);
+				btnMessage.HorizontalOptions = LayoutOptions.Center;
+				btnMessage.VerticalOptions = LayoutOptions.Center;
+				btnMessage.BorderRadius = 25;
+				btnMessage.BorderWidth = 4;
+				btnMessage.HeightRequest = 50;
+				btnMessage.MinimumHeightRequest = 50;
+				btnMessage.WidthRequest = 50;
+				btnMessage.MinimumWidthRequest = 50;
+				btnMessage.BackgroundColor = Color.FromRgb (238, 236, 243);
+				btnMessage.TranslationX = -20;
+				slMain.Children.Add (btnMessage);
+				btnMessage.Clicked += async delegate(object sender, EventArgs e) {
+					//load the ManageFetch screen...but without certain abilities
+					MessagingCenter.Send<EmptyClass> (new EmptyClass (), "launchchat");
+					//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Message", "Cancel");
+				};
+			}
+			
 
 			View = slMain;
 

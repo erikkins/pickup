@@ -136,7 +136,9 @@ namespace PickUpApp
 				//if this is an active FetchRequest (and I'm the sender!), take them to the ManageFetch screen, otherwise to the RouteDetail
 				bool allowManage = false;
 
-				if (today.AccountID == App.myAccount.id && (!string.IsNullOrEmpty(today.PickupMessageID) || !string.IsNullOrEmpty(today.DropOffMessageID)))
+				//if (today.AccountID == App.myAccount.id && (!string.IsNullOrEmpty(today.PickupMessageID) || !string.IsNullOrEmpty(today.DropOffMessageID)))
+				if (today.AccountID == App.myAccount.id && (!string.IsNullOrEmpty(today.PickupMessageStatus) || !string.IsNullOrEmpty(today.DropOffMessageStatus)))
+				if (today.AccountID == App.myAccount.id)
 				{
 					if (today.IsPickup && !string.IsNullOrEmpty(today.PickupMessageID) && today.PickupMessageStatus != "Canceled")
 					{
@@ -148,12 +150,20 @@ namespace PickUpApp
 							allowManage = true;
 						}
 					}
+					if (today.IsPickup && today.PickupMessageStatus=="Pending Response")
+					{
+						allowManage = true;
+					}
+					if (!today.IsPickup && today.DropOffMessageStatus=="Pending Response")
+					{
+						allowManage = true;
+					}
 				}
 
 				if (allowManage)
 				{					
 					maintainNeedsRefresh = true;
-					Navigation.PushAsync(new ManageFetch(today));
+					Navigation.PushAsync(new ManageFetch(today, true));
 				}
 				else{
 					//need to calculate pin positions here

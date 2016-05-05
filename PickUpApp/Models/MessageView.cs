@@ -31,6 +31,14 @@ namespace PickUpApp
 					_SenderID = value; NotifyPropertyChanged ();
 				} } }
 
+
+		public bool IsMine
+		{
+			get{
+				return _SenderID == App.myAccount.id;
+			}
+		}
+
 		private string _Sender;
 		[JsonProperty(PropertyName = "sender")]
 		public string Sender { get{return _Sender; } set{if (value != _Sender) {

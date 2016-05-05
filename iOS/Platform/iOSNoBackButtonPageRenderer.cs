@@ -33,7 +33,10 @@ namespace PickUpApp.iOS
 				//ViewController.ParentViewController.NavigationItem.BackBarButtonItem.Title = "";
 				//ViewController.ParentViewController.NavigationItem.SetHidesBackButton (true, false);
 			}
-
+			if (ViewController.Title == "MANAGEFETCH") {
+				ViewController.ParentViewController.NavigationItem.Title = "";
+				ViewController.ParentViewController.NavigationItem.BackBarButtonItem = new UIBarButtonItem ("", UIBarButtonItemStyle.Plain, null);
+			}
 		}
 	}
 }

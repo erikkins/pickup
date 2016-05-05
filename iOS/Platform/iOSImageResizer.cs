@@ -19,7 +19,7 @@ namespace PickUpApp.iOS
 			//UIKit.UIImage resized = ScaleImage (originalImage, (int)maxHeight);
 			return resized.AsJPEG ().ToArray ();
 
-
+			/*
 			//maintain aspect ratio
 			float width = 300, height = 300;
 
@@ -54,6 +54,9 @@ namespace PickUpApp.iOS
 				// save the image as a jpeg
 				return resizedImage.AsJPEG ().ToArray ();
 			}
+
+			*/
+
 		}
 
 		public static UIKit.UIImage ImageFromByteArray(byte[] data)
@@ -232,7 +235,7 @@ namespace PickUpApp.iOS
 
 			default:
 				throw new Exception("Invalid image orientation");
-				break;
+				//break;
 			}
 
 			UIGraphics.BeginImageContext(bounds.Size);

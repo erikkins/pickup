@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+
 using System.Linq;
 namespace PickUpApp
 {
@@ -35,6 +36,19 @@ namespace PickUpApp
 				}
 		}
 
+		private ObservableCollection<MessageView> _chatMessages;
+		public ObservableCollection<MessageView> ChatMessages
+		{
+			get {
+				return _chatMessages;
+			}
+			set{
+				if (_chatMessages != value) {
+					_chatMessages = value;
+					NotifyPropertyChanged ();
+				}
+			}
+		}
 //
 //		private Today _currentToday;
 //		public Today CurrentToday
@@ -62,6 +76,7 @@ namespace PickUpApp
 		{
 			this.client = client;
 			_currentMessage = currentMessage;
+			ChatMessages = new ObservableCollection<MessageView> ();
 			//App.myMessages = new ObservableCollection<MessageView> ();
 		}
 
@@ -74,6 +89,60 @@ namespace PickUpApp
 			return today.FirstOrDefault();
 		}
 
+		private Command loadChatCommand;
+		public Command LoadChatCommand
+		{
+			get { return loadChatCommand ?? (loadChatCommand = new Command<Today>(async (t) => await ExecuteLoadChatCommand(t))); }
+		}
+
+		public virtual async Task ExecuteLoadChatCommand(Today currentToday)
+		{
+			try{
+				MessageView mvLoad = new MessageView ();
+				mvLoad.Link = currentToday.id;
+				if (currentToday.IsPickup) {
+					mvLoad.LinkDetail = "pickup";
+				} else {
+					mvLoad.LinkDetail = "dropoff";
+				}
+				mvLoad.MessageToday = currentToday;
+
+				var chatdata = await client.InvokeApiAsync<MessageView, List<MessageView>>("getchat",mvLoad);
+				ChatMessages.Clear();
+				foreach(MessageView mv in chatdata)
+				{
+					ChatMessages.Add(mv);
+				}
+				MessagingCenter.Send<EmptyClass>(new EmptyClass(), "chatloaded");
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
+
+		private Command loadChatCommandFromMessage;
+		public Command LoadChatCommandFromMessage
+		{
+			get { return loadChatCommandFromMessage ?? (loadChatCommandFromMessage = new Command<MessageView>(async (mv) => await ExecuteLoadChatCommandFromMessage(mv))); }
+		}
+
+		public virtual async Task ExecuteLoadChatCommandFromMessage(MessageView currentMessage)
+		{
+			try{
+				var chatdata = await client.InvokeApiAsync<MessageView, List<MessageView>>("getchat",currentMessage);
+				ChatMessages.Clear();
+				foreach(MessageView mv in chatdata)
+				{
+					ChatMessages.Add(mv);
+				}
+				MessagingCenter.Send<EmptyClass>(new EmptyClass(), "chatloaded");
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+			}
+		}
+
+
 		private Command createCommand;
 		public Command CreateCommand
 		{
@@ -84,7 +153,14 @@ namespace PickUpApp
 		{
 			try{
 				var invitedata = await client.InvokeApiAsync<MessageView, EmptyClass>("savemessage",messageView);
-				MessagingCenter.Send<MessageView>(messageView, "messagesent");
+
+				if (messageView.MessageType=="chat")
+				{
+					MessagingCenter.Send<MessageView>(messageView, "chatsent");
+				}
+				else{
+					MessagingCenter.Send<MessageView>(messageView, "messagesent");
+				}
 
 			}
 			catch (Exception ex) {

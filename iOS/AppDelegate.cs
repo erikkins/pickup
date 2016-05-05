@@ -445,7 +445,12 @@ namespace PickUpApp.iOS
 					//this will trick the app into reloading kids and circle
 					MessagingCenter.Send<EmptyClass> (ec, "CircleChanged");
 				}
-
+				if (aps.ContainsKey (new NSString("chat")) && !string.IsNullOrEmpty(aps ["chat"].ToString ())) {
+					//we will get the messageID of the last chat entry which we'll pass to getchat and pull the whole conversation
+					MessageView mv = new MessageView();
+					mv.Id = aps ["chat"].ToString ();
+					MessagingCenter.Send<MessageView> (mv, "chatreceived");
+				}
 				//Extract the alert text
 				// NOTE: If you're using the simple alert by just specifying 
 				// "  aps:{alert:"alert msg here"}  " this will work fine.
