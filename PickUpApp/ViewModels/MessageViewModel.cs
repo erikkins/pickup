@@ -213,6 +213,7 @@ namespace PickUpApp
 			IsLoading = true;
 			try
 			{
+				System.Diagnostics.Debug.WriteLine("LOADING MESSAGES");
 				//load this invite!
 				var messages = await client.InvokeApiAsync<List<MessageView>>("getmymessages");
 				App.myMessages.Clear();

@@ -494,11 +494,11 @@ namespace PickUpApp
 
 			this.Appearing += delegate(object sender, EventArgs e) {
 				//do all the subscriptions
-				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
-				if (App.CurrentToday.Date == DateTime.Today) {
-					this.Title += " (Today)";
-				}
-
+//				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
+//				if (App.CurrentToday.Date == DateTime.Today) {
+//					this.Title += " (Today)";
+//				}
+//
 
 				MessagingCenter.Unsubscribe<AlertInfo>(this, "ShowAlert");
 				MessagingCenter.Subscribe<AlertInfo>(this, "ShowAlert", (a) =>{
@@ -810,7 +810,7 @@ namespace PickUpApp
 			base.OnBindingContextChanged();
 
 			dynamic c = BindingContext;
-			this.Height = 195;
+			this.Height = 100;  //was 195
 			Today t = (Today)c;
 
 			if (t == null) {
@@ -887,6 +887,7 @@ namespace PickUpApp
 						slDefaultPickup.Orientation = StackOrientation.Horizontal;
 						slDefaultPickup.VerticalOptions = LayoutOptions.Start;
 						slDefaultPickup.HeightRequest = 32;
+						this.Height += 32;
 						Label sdpLabel = new Label ();
 						sdpLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
 						sdpLabel.FontSize = 16;
@@ -906,6 +907,7 @@ namespace PickUpApp
 						slDefaultDropoff.Orientation = StackOrientation.Horizontal;
 						slDefaultDropoff.VerticalOptions = LayoutOptions.Start;
 						slDefaultDropoff.HeightRequest = 32;
+						this.Height += 32;
 						Label sddLabel = new Label ();
 						sddLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
 						sddLabel.FontSize = 16;
@@ -931,6 +933,7 @@ namespace PickUpApp
 			bv.BackgroundColor = bgColor;
 
 			bv.HeightRequest = 20;
+			this.Height += 20;
 			mainlayout.Children.Add (bv);
 
 			//ok, now add the details
@@ -945,7 +948,7 @@ namespace PickUpApp
 				{
 					new RowDefinition { Height = new GridLength(25, GridUnitType.Absolute) },
 					new RowDefinition {Height = new GridLength(1, GridUnitType.Auto)},
-					new RowDefinition {Height = new GridLength(48, GridUnitType.Absolute) }
+					new RowDefinition {Height = GridLength.Auto}//new GridLength(48, GridUnitType.Absolute) }
 				},
 				ColumnDefinitions = 
 				{
@@ -1178,26 +1181,32 @@ namespace PickUpApp
 			l4.VerticalOptions = LayoutOptions.StartAndExpand;
 
 			//count the newlines in address and add height for each one
+			double addressLabelHeight = 0;
 			if (CountOfNewlines(t.Address) > 2) {
-				this.Height += CountOfNewlines (t.Address) * (l4.FontSize);
+				addressLabelHeight = CountOfNewlines (t.Address) * (l4.FontSize);
+				this.Height += addressLabelHeight;
 			}
 
 			l4.FontAttributes = FontAttributes.Bold;
 			StackLayout slDrop = new StackLayout ();
+
 			slDrop.Orientation = StackOrientation.Vertical;
 			slDrop.VerticalOptions = LayoutOptions.StartAndExpand;
+			//slDrop.BackgroundColor = Color.Blue;
 			//slDrop.HeightRequest += 30;
 			slDrop.Children.Add (l4);
 
 			StackLayout slKids = new StackLayout ();
 			slKids.Orientation = StackOrientation.Horizontal;
+			slKids.VerticalOptions = LayoutOptions.Start;
 			slKids.WidthRequest = 60;
 			//slKids.BackgroundColor = Color.Blue;
 
 			//split the kids
 			if (!string.IsNullOrEmpty (t.Kids)) {
 				string[] kids = t.Kids.Split ('^');
-				this.Height += 65;
+				this.Height += 95;
+				slDrop.HeightRequest = addressLabelHeight + 75;
 
 				foreach (string s in kids) {	
 					string[] parts = s.Split ('|');
@@ -1215,12 +1224,7 @@ namespace PickUpApp
 							break;
 						}
 					}
-					//string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
-//					Uri auri = new Uri (azureURL);
-//					var uis = new UriImageSource ();
-//					uis.CacheValidity = new TimeSpan (0, 5, 0);
-//					uis.CachingEnabled = false;
-//					uis.Uri = auri;
+
 
 					CachedImage cachedimg = new CachedImage ();
 					cachedimg.Source = azureURL;
@@ -1230,13 +1234,20 @@ namespace PickUpApp
 					cachedimg.Aspect = Aspect.AspectFill;
 					cachedimg.HeightRequest = 50;
 					cachedimg.WidthRequest = 50;
-					cachedimg.HorizontalOptions = LayoutOptions.Start;
-					cachedimg.VerticalOptions = LayoutOptions.Center;
-					cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "0x000000"));
-
+					cachedimg.HorizontalOptions = LayoutOptions.Center;
+					//cachedimg.VerticalOptions = LayoutOptions.Center;
+					cachedimg.Transformations.Add (new FFImageLoading.Transformations.CircleTransformation (1, "000000"));
+					slKids.WidthRequest += 60;
 					slKids.Children.Add (cachedimg);
 
+
+					//string azureURL = AzureStorageConstants.BlobEndPoint + t.AccountID.ToLower () + "/" + parts [1].Trim ().ToLower () + ".jpg";
 					/*
+					Uri auri = new Uri (azureURL);
+				var uis = new UriImageSource ();
+					uis.CacheValidity = new TimeSpan (0, 5, 0);
+					uis.CachingEnabled = false;
+				uis.Uri = auri;
 					ImageCircle.Forms.Plugin.Abstractions.CircleImage ci = new ImageCircle.Forms.Plugin.Abstractions.CircleImage () {
 						BorderColor = Color.Black,
 						BorderThickness = 1,
@@ -1246,9 +1257,10 @@ namespace PickUpApp
 						HorizontalOptions = LayoutOptions.Center,
 						Source = azureURL
 					};	
+					slKids.WidthRequest += 60;
 					slKids.Children.Add (ci);
-					*/
-					slKids.WidthRequest += 60;	
+
+						*/
 
 				}
 				slDrop.Children.Add (slKids);
@@ -1302,7 +1314,7 @@ namespace PickUpApp
 				slp.Orientation = StackOrientation.Horizontal;
 				slp.VerticalOptions = LayoutOptions.Start;
 				slp.HeightRequest = 46;
-
+				this.Height += 46;
 				BoxView spacer = new BoxView ();
 				spacer.WidthRequest = 5;
 				slp.Children.Add (spacer);
@@ -1355,7 +1367,7 @@ namespace PickUpApp
 				StackLayout slDropoff = new StackLayout ();
 				slDropoff.Orientation = StackOrientation.Vertical;
 				slDropoff.BackgroundColor = Color.White;
-				slDropoff.HeightRequest = this.Height + 85;
+				slDropoff.HeightRequest = this.Height + 100;// was 85;
 				slDropoff.WidthRequest = App.ScaledWidth - 20;
 				slDropoff.HorizontalOptions = LayoutOptions.Center;
 				mainlayout.BackgroundColor = AppColor.AppGray;
@@ -1386,7 +1398,7 @@ namespace PickUpApp
 				sld.Orientation = StackOrientation.Horizontal;
 				sld.VerticalOptions = LayoutOptions.Start;
 				sld.HeightRequest = 46;
-
+				this.Height += 46;
 				BoxView spacer = new BoxView ();
 				spacer.WidthRequest = 5;
 				sld.Children.Add (spacer);
@@ -1428,7 +1440,12 @@ namespace PickUpApp
 				mainlayout.Children.Add (slDropoff);
 			} else 
 			{
+				
 				mainlayout.Children.Add (detailGrid);
+				bv = new BoxView();
+				bv.HeightRequest = 10;
+				bv.BackgroundColor = bgColor;
+				mainlayout.Children.Add(bv);
 			}				
 			View = mainlayout;
 		}

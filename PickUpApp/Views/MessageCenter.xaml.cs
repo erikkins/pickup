@@ -250,7 +250,7 @@ namespace PickUpApp
 
 		public override DataTemplate SelectTemplate (object item, BindableObject container)
 		{
-			System.Diagnostics.Debug.WriteLine ("TEMPLATE REQ");
+			//System.Diagnostics.Debug.WriteLine ("TEMPLATE REQ");
 			var msg = (MessageView)item;
 			switch (msg.MessageType) {
 			case "pickup":				
@@ -307,7 +307,7 @@ namespace PickUpApp
 
 			try{
 
-			System.Diagnostics.Debug.WriteLine ("BINDING CONTEXT");
+			//System.Diagnostics.Debug.WriteLine ("BINDING CONTEXT");
 			base.OnBindingContextChanged ();
 
 			dynamic c = BindingContext;
