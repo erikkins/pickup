@@ -64,6 +64,7 @@ namespace PickUpApp
 				});
 
 				MessagingCenter.Subscribe<EmptyClass>(this, "chatloaded", (ec)=>{
+					App.hudder.hideHUD();
 					Device.BeginInvokeOnMainThread(()=>{
 						if (ViewModel.ChatMessages.Count > 0)
 						{
@@ -79,6 +80,7 @@ namespace PickUpApp
 				});
 
 				//initial load
+				App.hudder.showHUD("Loading Chat...");
 				ViewModel.ExecuteLoadChatCommand (CurrentToday).ConfigureAwait (false);
 			};
 

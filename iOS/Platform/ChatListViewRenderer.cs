@@ -37,7 +37,7 @@ namespace PickUpApp.iOS
 				CGPoint offset = new CGPoint (0, 999999);
 				table.SetContentOffset (offset, false);
 				System.Diagnostics.Debug.WriteLine ("Bottom: " + table.ContentInset.Bottom.ToString ());
-				table.ContentInset = new UIEdgeInsets (0, 0, 20, 0); //still doesn't seem to add the 20px when keyboard is up
+				table.ContentInset = new UIEdgeInsets (0, 0, table.ContentInset.Bottom + 5, 0); //still doesn't seem to add the 20px when keyboard is up
 			} 
 			//table.ScrollToNearestSelected(UITableViewScrollPosition.Bottom,false);
 //			NSIndexPath nip = table.IndexPathForRowAtPoint(new CGPoint(0,table.Frame.Height));

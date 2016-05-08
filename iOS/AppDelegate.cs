@@ -168,11 +168,21 @@ namespace PickUpApp.iOS
 				//can I do the NotificationHub stuff here?
 				// Register our info with Azure
 				// Connection string from your azure dashboard
-				var cs = SBConnectionString.CreateListenAccess(
-					new NSUrl("sb://pickuphub-ns.servicebus.windows.net/"),
-					"RwsApEzeS+I08PaJJOtAvnbpVTzEJaTyi/R73XbXDyg=");
 
-				var hub = new SBNotificationHub (cs, "pickuphub");
+				string hubEndpoint = "sb://pickuphub-ns.servicebus.windows.net/";
+				string hubSecret = "RwsApEzeS+I08PaJJOtAvnbpVTzEJaTyi/R73XbXDyg=";
+				string hubPath = "pickuphub";
+
+
+				#if DEBUG
+				hubEndpoint = "sb://pickuphubdebug-ns.servicebus.windows.net/";
+				hubSecret = "nsg+MhEyf9/KrelyeQbHsTAbBeEuH0e4sTqf1qPt3tU=";
+				hubPath = "pickupHubDebug";
+				#endif
+
+				var cs = SBConnectionString.CreateListenAccess(new NSUrl(hubEndpoint),hubSecret);
+
+				var hub = new SBNotificationHub (cs, hubPath);
 
 				NSArray tagArray = NSArray.FromObjects(App.myAccount.UserId,App.myAccount.Email, App.myAccount.id);
 
@@ -449,6 +459,7 @@ namespace PickUpApp.iOS
 					//we will get the messageID of the last chat entry which we'll pass to getchat and pull the whole conversation
 					MessageView mv = new MessageView();
 					mv.Id = aps ["chat"].ToString ();
+					mv.Link = aps ["chat"].ToString ();
 					MessagingCenter.Send<MessageView> (mv, "chatreceived");
 				}
 				//Extract the alert text

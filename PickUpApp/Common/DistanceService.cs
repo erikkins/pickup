@@ -279,7 +279,7 @@ namespace PickUpApp
 						var result = await client.Execute(request);
 						GoogleDistanceResult yr = Newtonsoft.Json.JsonConvert.DeserializeObject<GoogleDistanceResult>(System.Text.Encoding.UTF8.GetString(result.RawBytes, 0, result.RawBytes.Length));
 						System.Diagnostics.Debug.WriteLine("");
-						if (yr.Rows.Count > 0)
+						if (yr.Rows.Count > 0 && yr.Rows[0].Elements[0].Duration != null)
 						{
 
 							tempmins = (double)yr.Rows[0].Elements[0].Duration.Value/(double)60;

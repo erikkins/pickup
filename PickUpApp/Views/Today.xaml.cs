@@ -137,8 +137,11 @@ namespace PickUpApp
 				bool allowManage = false;
 
 				//if (today.AccountID == App.myAccount.id && (!string.IsNullOrEmpty(today.PickupMessageID) || !string.IsNullOrEmpty(today.DropOffMessageID)))
-				if (today.AccountID == App.myAccount.id && (!string.IsNullOrEmpty(today.PickupMessageStatus) || !string.IsNullOrEmpty(today.DropOffMessageStatus)))
-				if (today.AccountID == App.myAccount.id)
+				//if (today.AccountID == App.myAccount.id && (!string.IsNullOrEmpty(today.PickupMessageStatus) || !string.IsNullOrEmpty(today.DropOffMessageStatus)))
+
+				//ok, we really need to know if I'm a coparent on this, because I should be allowed to manage it just like a coparent
+
+				if (today.AccountID == App.myAccount.id || today.IsCoparent)
 				{
 					if (today.IsPickup && !string.IsNullOrEmpty(today.PickupMessageID) && today.PickupMessageStatus != "Canceled")
 					{
@@ -491,6 +494,11 @@ namespace PickUpApp
 
 			this.Appearing += delegate(object sender, EventArgs e) {
 				//do all the subscriptions
+				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
+				if (App.CurrentToday.Date == DateTime.Today) {
+					this.Title += " (Today)";
+				}
+
 
 				MessagingCenter.Unsubscribe<AlertInfo>(this, "ShowAlert");
 				MessagingCenter.Subscribe<AlertInfo>(this, "ShowAlert", (a) =>{
@@ -511,7 +519,9 @@ namespace PickUpApp
 				});
 				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
-					System.Diagnostics.Debug.WriteLine("TODAYLOADED");
+					System.Diagnostics.Debug.WriteLine("TODAYLOADED");  //THIS IS LEAKING A LITTLE...NOT SURE HOW TO KEEP THE LISTENER ALIVE WHEN POPPING FROM CALENDAR
+					//thou shalt clean up after thineself
+					//MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 					lvToday.IsRefreshing = false;
 
 					this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
@@ -576,7 +586,7 @@ namespace PickUpApp
 
 				MessagingCenter.Unsubscribe<MessageView>(this, "LoadMessages");
 				MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
-					System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
+					//System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
 					MessageViewModel mvm = new MessageViewModel(App.client, null);
 					App.hudder.showHUD("Loading Messages");
 					mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
@@ -585,7 +595,7 @@ namespace PickUpApp
 
 				MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
 				MessagingCenter.Subscribe<string> (this, "messagesloaded", (ec) => {
-					System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
+					//System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
 					lblMessageCount.Text = App.myMessages.Count.ToString();
 					if (App.myMessages.Count > 0)
 					{
@@ -639,7 +649,7 @@ namespace PickUpApp
 				MessagingCenter.Unsubscribe<MessageView> (this, "LoadMessages");
 
 				//these were commented out but caused wonkiness...what's up
-				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
+				//MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded"); //since this call and it's cascadees aren't doing any nav popping, I think we're ok with this leak?
 				MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
 				MessagingCenter.Unsubscribe<RespondMessage>(this, "messagesupdated");
 
@@ -857,47 +867,58 @@ namespace PickUpApp
 
 			mainlayout.Children.Add (sl);
 
-			//if someone else is picking up, let's indicate that here
-			if (t.IsPickup) {
-				if (!string.IsNullOrEmpty (t.DefaultPickupAccount) && t.DefaultPickupAccount != App.myAccount.id) {
-					//make a orange? header
-					StackLayout slDefaultPickup = new StackLayout();
-					slDefaultPickup.BackgroundColor = AppColor.AppOrange;
-					slDefaultPickup.Orientation = StackOrientation.Horizontal;
-					slDefaultPickup.VerticalOptions = LayoutOptions.Start;
-					slDefaultPickup.HeightRequest = 32;
-					Label sdpLabel = new Label ();
-					sdpLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
-					sdpLabel.FontSize = 16;
-					sdpLabel.FontAttributes = FontAttributes.Bold;
-					sdpLabel.TranslationX = 26;
-					sdpLabel.LineBreakMode = LineBreakMode.NoWrap;
-					sdpLabel.TextColor = Color.White;
-					sdpLabel.Text = t.DefaultPickupAccountFirstName + " " + t.DefaultPickupAccountLastName + " is Picking Up";
-					slDefaultPickup.Children.Add (sdpLabel);
-					mainlayout.Children.Add (slDefaultPickup);
-				}
-			} else {
-				if (!string.IsNullOrEmpty (t.DefaultDropOffAccount) && t.DefaultDropOffAccount != App.myAccount.id) {
-					//make a orange? header
-					StackLayout slDefaultDropoff = new StackLayout();
-					slDefaultDropoff.BackgroundColor = AppColor.AppOrange;
-					slDefaultDropoff.Orientation = StackOrientation.Horizontal;
-					slDefaultDropoff.VerticalOptions = LayoutOptions.Start;
-					slDefaultDropoff.HeightRequest = 32;
-					Label sddLabel = new Label ();
-					sddLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
-					sddLabel.FontSize = 16;
-					sddLabel.FontAttributes = FontAttributes.Bold;
-					sddLabel.TranslationX = 26;
-					sddLabel.LineBreakMode = LineBreakMode.NoWrap;
-					sddLabel.TextColor = Color.White;
-					sddLabel.Text = t.DefaultDropOffAccountFirstName + " " + t.DefaultDropOffAccountLastName + " is Dropping Off";
-					slDefaultDropoff.Children.Add (sddLabel);
-					mainlayout.Children.Add (slDefaultDropoff);
-				}
+			bool someoneElseIsPickingOrDropping = false;
+
+			if (t.IsPickup && !string.IsNullOrEmpty (t.PickupMessageStatus) && t.PickupMessageStatus != "Canceled") {
+				someoneElseIsPickingOrDropping = true;
+			}
+			if (!t.IsPickup && !string.IsNullOrEmpty (t.DropOffMessageStatus) && t.DropOffMessageStatus != "Canceled") {
+				someoneElseIsPickingOrDropping = true;
 			}
 
+
+			//if someone else is picking up, let's indicate that here (but only if someone else ISN'T picking up!
+			if (!someoneElseIsPickingOrDropping) {
+				if (t.IsPickup) {
+					if (!string.IsNullOrEmpty (t.DefaultPickupAccount) && t.DefaultPickupAccount != App.myAccount.id) {
+						//make a orange? header
+						StackLayout slDefaultPickup = new StackLayout ();
+						slDefaultPickup.BackgroundColor = AppColor.AppOrange;
+						slDefaultPickup.Orientation = StackOrientation.Horizontal;
+						slDefaultPickup.VerticalOptions = LayoutOptions.Start;
+						slDefaultPickup.HeightRequest = 32;
+						Label sdpLabel = new Label ();
+						sdpLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+						sdpLabel.FontSize = 16;
+						sdpLabel.FontAttributes = FontAttributes.Bold;
+						sdpLabel.TranslationX = 26;
+						sdpLabel.LineBreakMode = LineBreakMode.NoWrap;
+						sdpLabel.TextColor = Color.White;
+						sdpLabel.Text = t.DefaultPickupAccountFirstName + " " + t.DefaultPickupAccountLastName + " is Picking Up";
+						slDefaultPickup.Children.Add (sdpLabel);
+						mainlayout.Children.Add (slDefaultPickup);
+					}
+				} else {
+					if (!string.IsNullOrEmpty (t.DefaultDropOffAccount) && t.DefaultDropOffAccount != App.myAccount.id) {
+						//make a orange? header
+						StackLayout slDefaultDropoff = new StackLayout ();
+						slDefaultDropoff.BackgroundColor = AppColor.AppOrange;
+						slDefaultDropoff.Orientation = StackOrientation.Horizontal;
+						slDefaultDropoff.VerticalOptions = LayoutOptions.Start;
+						slDefaultDropoff.HeightRequest = 32;
+						Label sddLabel = new Label ();
+						sddLabel.VerticalOptions = LayoutOptions.CenterAndExpand;
+						sddLabel.FontSize = 16;
+						sddLabel.FontAttributes = FontAttributes.Bold;
+						sddLabel.TranslationX = 26;
+						sddLabel.LineBreakMode = LineBreakMode.NoWrap;
+						sddLabel.TextColor = Color.White;
+						sddLabel.Text = t.DefaultDropOffAccountFirstName + " " + t.DefaultDropOffAccountLastName + " is Dropping Off";
+						slDefaultDropoff.Children.Add (sddLabel);
+						mainlayout.Children.Add (slDefaultDropoff);
+					}
+				}
+			}
 
 
 			Color bgColor = AppColor.AppGray;

@@ -129,6 +129,8 @@ namespace PickUpApp
 		public virtual async Task ExecuteLoadChatCommandFromMessage(MessageView currentMessage)
 		{
 			try{
+				DateTime oneone = new DateTime(1900,1,1,0,0,0,DateTimeKind.Utc);
+				currentMessage.ScheduleDate = oneone;
 				var chatdata = await client.InvokeApiAsync<MessageView, List<MessageView>>("getchat",currentMessage);
 				ChatMessages.Clear();
 				foreach(MessageView mv in chatdata)
