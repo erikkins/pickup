@@ -390,8 +390,8 @@ namespace PickUpApp
 			slHoriz.Children.Add (sendButton);
 			stacker.Children.Add (slHoriz);
 
-//			BoxViewKeyboardHeight bvkh = new BoxViewKeyboardHeight ();
-//			stacker.Children.Add (bvkh);
+			BoxViewKeyboardHeight bvkh = new BoxViewKeyboardHeight ();
+			stacker.Children.Add (bvkh);
 //			bvkh.BoxChanged += delegate(object sender, EventArgs e) {
 //				//we want to scroll here
 //				Device.BeginInvokeOnMainThread(()=>{

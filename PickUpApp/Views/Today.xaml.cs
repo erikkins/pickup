@@ -15,7 +15,7 @@ namespace PickUpApp
 		Label lblMessageCount;
 		RelativeLayout rlMessage;
 		bool maintainNeedsRefresh = false;
-	
+		ListView lvToday;
 
 		public TodayView ()
 		{
@@ -82,7 +82,7 @@ namespace PickUpApp
 
 			this.BackgroundColor = Color.FromRgb (73, 55, 109);
 
-			ListView lvToday = new ListView () {
+			lvToday = new ListView () {
 				RefreshCommand = ViewModel.LoadItemsCommand,
 				ItemsSource = ViewModel.Todays,
 				ItemTemplate = new DataTemplate (typeof(TodayCell)),
@@ -492,6 +492,8 @@ namespace PickUpApp
 //			});
 
 
+
+
 			this.Appearing += delegate(object sender, EventArgs e) {
 				//do all the subscriptions
 //				this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
@@ -519,56 +521,12 @@ namespace PickUpApp
 				});
 				MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
-					System.Diagnostics.Debug.WriteLine("TODAYLOADED");  //THIS IS LEAKING A LITTLE...NOT SURE HOW TO KEEP THE LISTENER ALIVE WHEN POPPING FROM CALENDAR
-					//thou shalt clean up after thineself
-					//MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
-					lvToday.IsRefreshing = false;
-
-					this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
-					if (App.CurrentToday.Date == DateTime.Today) {
-						this.Title += " (Today)";
-					}
-
-					if (t.Todays.Count == 0)
-					{
-						lblNone.IsVisible = true;
-					}
-					else
-					{
-						lblNone.IsVisible = false;
-					}
-
-					if (App.myKids.Count == 0 && App.myPlaces.Count == 0 && App.myCircle.Count == 0)
-					{
-						//must be the first time!
-						lblNone.IsVisible = false;
-						NEWarrow.IsVisible = true;
-						edNew.IsVisible = true;
-					}
-					else{					
-						NEWarrow.IsVisible = false;
-						edNew.IsVisible = false;
-					}
-
-					//and we really want to scroll to the NEXT item in the list
-					foreach (Today tempT in ViewModel.Todays)
-					{
-						if (tempT.IsNext)
-						{
-							lvToday.ScrollTo(tempT, ScrollToPosition.Start, false);
-							break;
-						}
-					}
-
-					//let's load the messages to see if there's anything in my inbox
-					MessageView mv = new MessageView();
-					MessagingCenter.Send<MessageView>(mv, "LoadMessages");
-
-
-					//moving this to after today screen to see if the user experience is better...
-					//App.GetPosition().ConfigureAwait(false);
-
+					loadTodayVM(t);
 				});
+
+
+
+
 
 				MessagingCenter.Subscribe<EmptyClass> (this, "CircleChanged", (p) => {
 					MessageView mv = new MessageView();
@@ -586,7 +544,7 @@ namespace PickUpApp
 
 				MessagingCenter.Unsubscribe<MessageView>(this, "LoadMessages");
 				MessagingCenter.Subscribe<MessageView> (this, "LoadMessages", (mv) => {	
-					//System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
+					System.Diagnostics.Debug.WriteLine ("LoadMessages from Today");
 					MessageViewModel mvm = new MessageViewModel(App.client, null);
 					App.hudder.showHUD("Loading Messages");
 					mvm.ExecuteLoadItemsCommand().ConfigureAwait(true);
@@ -595,7 +553,7 @@ namespace PickUpApp
 
 				MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
 				MessagingCenter.Subscribe<string> (this, "messagesloaded", (ec) => {
-					//System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
+					System.Diagnostics.Debug.WriteLine ("Received messagesloaded in Today");
 					lblMessageCount.Text = App.myMessages.Count.ToString();
 					if (App.myMessages.Count > 0)
 					{
@@ -633,7 +591,21 @@ namespace PickUpApp
 
 			this.Disappearing += delegate(object sender, EventArgs e) {
 				//do we still need to do this?
+				if(Navigation.ModalStack.Count > 0)
+				{
+					HomePage hp = (HomePage)Navigation.ModalStack[0];
+					NavigationPage np = (NavigationPage)hp.Detail;
 
+					if (np.CurrentPage.Title == "CALENDAR")
+					{
+						maintainNeedsRefresh = true;
+						//not only don't delete the listener, but create a new one!
+						MessagingCenter.Subscribe<TodayViewModel>(this, "TodayLoaded", (t) => {
+							loadTodayVM(t);
+						});
+
+					}
+				}
 				//do all the unsubscriptions
 				if (maintainNeedsRefresh)
 				{
@@ -642,6 +614,7 @@ namespace PickUpApp
 				else
 				{
 					MessagingCenter.Unsubscribe<string> (this, "NeedsRefresh"); //had to comment this out because RouteDetail calls this when marking complete and it would load otherwise
+					MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
 				}
 				//see if there are multiple NeedsRefreshes and kill off if needed
 
@@ -649,6 +622,7 @@ namespace PickUpApp
 				MessagingCenter.Unsubscribe<MessageView> (this, "LoadMessages");
 
 				//these were commented out but caused wonkiness...what's up
+
 				//MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded"); //since this call and it's cascadees aren't doing any nav popping, I think we're ok with this leak?
 				MessagingCenter.Unsubscribe<string>(this, "messagesloaded");
 				MessagingCenter.Unsubscribe<RespondMessage>(this, "messagesupdated");
@@ -702,6 +676,55 @@ namespace PickUpApp
 //			refreshList.SetBinding<TodayViewModel> (PullToRefreshListView.IsRefreshingProperty, vm => vm.IsLoading);
 //			refreshList.SetBinding<TodayViewModel> (PullToRefreshListView.ItemsSourceProperty, vm => vm.Todays);
 //			stacker.Children.Add (refreshList);
+
+		}
+
+		private void loadTodayVM(TodayViewModel t)
+		{
+			System.Diagnostics.Debug.WriteLine("TODAYLOADED");  //THIS IS LEAKING A LITTLE...NOT SURE HOW TO KEEP THE LISTENER ALIVE WHEN POPPING FROM CALENDAR
+			//thou shalt clean up after thineself
+			MessagingCenter.Unsubscribe<TodayViewModel>(this, "TodayLoaded");
+			lvToday.IsRefreshing = false;
+
+			this.Title = App.CurrentToday.Date.ToString ("MMM dd").ToUpper();
+			if (App.CurrentToday.Date == DateTime.Today) {
+				this.Title += " (Today)";
+			}
+
+			if (t.Todays.Count == 0)
+			{
+				lblNone.IsVisible = true;
+			}
+			else
+			{
+				lblNone.IsVisible = false;
+			}
+
+			if (App.myKids.Count == 0 && App.myPlaces.Count == 0 && App.myCircle.Count == 0)
+			{
+				//must be the first time!
+				lblNone.IsVisible = false;
+				NEWarrow.IsVisible = true;
+				edNew.IsVisible = true;
+			}
+			else{					
+				NEWarrow.IsVisible = false;
+				edNew.IsVisible = false;
+			}
+
+			//and we really want to scroll to the NEXT item in the list
+			foreach (Today tempT in ViewModel.Todays)
+			{
+				if (tempT.IsNext)
+				{
+					lvToday.ScrollTo(tempT, ScrollToPosition.Start, false);
+					break;
+				}
+			}
+
+			//let's load the messages to see if there's anything in my inbox
+			MessageView mv = new MessageView();
+			MessagingCenter.Send<MessageView>(mv, "LoadMessages");
 
 		}
 

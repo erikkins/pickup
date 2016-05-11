@@ -365,13 +365,19 @@ namespace PickUpApp
 				*/
 			});
 
-			MessagingCenter.Subscribe<MessageView>(this, "launchchat", async (mv)=>{
+			MessagingCenter.Subscribe<MessageView>(this, "launchchat", async(mv)=>{
 				//this is a MessageView with ONLY a messageid in it...we need to get the other stuff to know which conversation we're in
 
 				MessageViewModel mvm = new MessageViewModel(App.client, null);
 				//we really need to load the Today
-				Today t = await mvm.ExecuteLoadTodayCommandFromMessage(mv);
-				await Navigation.PushAsync(new ManageFetch(t, false));
+				Today t =  await mvm.ExecuteLoadTodayCommandFromMessage(mv);
+				if (Navigation.ModalStack.Count > 0)
+				{
+					HomePage hp = (HomePage)Navigation.ModalStack[0];
+					NavigationPage np = (NavigationPage)hp.Detail;
+
+					await np.PushAsync(new ManageFetch(t, false));
+				}
 				//now trip the message
 				MessagingCenter.Send<MessageView> (mv, "chatreceived");
 			});

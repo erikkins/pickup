@@ -163,8 +163,8 @@ namespace PickUpApp.iOS
 			uiCell.LayoutIfNeeded();
 			//return uiCell.ContentView.Frame.Height;
 
-			//added 25 because we're putting the sender's name above the bubble
-			return uiCell.GetHeight (tableView) + 25;
+			//added 35 because we're putting the sender's name above the bubble
+			return uiCell.GetHeight (tableView) + 65;
 
 		}
 

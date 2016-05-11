@@ -30,7 +30,7 @@ namespace PickUpApp.ViewModels
 				App.hudder.showHUD("Loading Today");
 				Dictionary<string,string> dict = new Dictionary<string, string>();
 				dict.Add("deviceTime", App.CurrentToday.ToString());
-
+				System.Diagnostics.Debug.WriteLine("DATA: TODAY");
 				var today = await client.InvokeApiAsync<Dictionary<string,string>,List<Today>>("getmytoday", dict);
 
 				//let's re-sort it by TSDropOff
