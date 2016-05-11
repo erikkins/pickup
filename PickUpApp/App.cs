@@ -67,7 +67,7 @@ namespace PickUpApp
 		public static bool IsUpdatingPosition;
 		public static bool LaunchLocationRecorded;
 
-
+		public static bool InChatSession = false;
 
 
 		public App ()

@@ -783,7 +783,7 @@ namespace PickUpApp
 	public class TodayCell : ViewCell
 	{
 		//NOTE: THIS IS COUNTING NEWLINES AND COMMAS
-		private static int CountOfNewlines(string s)
+		public static int CountOfNewlines(string s)
 		{
 			if (string.IsNullOrEmpty (s)) {
 				return 0;

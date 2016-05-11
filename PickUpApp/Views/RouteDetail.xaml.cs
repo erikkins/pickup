@@ -25,8 +25,8 @@ namespace PickUpApp
 
 
 			this.Appearing += delegate(object sender, EventArgs e) {
-				MessagingCenter.Subscribe<EmptyClass>(this, "launchchat", (ec)=>{
-					Navigation.PushAsync(new ManageFetch(currentToday, false));
+				MessagingCenter.Subscribe<EmptyClass>(this, "launchchat", async(ec)=>{
+					await Navigation.PushAsync(new ManageFetch(currentToday, false));
 				});
 			};
 			this.Disappearing += delegate(object sender, EventArgs e) {
@@ -942,7 +942,7 @@ namespace PickUpApp
 				btnMessage.BackgroundColor = Color.FromRgb (238, 236, 243);
 				btnMessage.TranslationX = -20;
 				slMain.Children.Add (btnMessage);
-				btnMessage.Clicked += async delegate(object sender, EventArgs e) {
+				btnMessage.Clicked += delegate(object sender, EventArgs e) {
 					//load the ManageFetch screen...but without certain abilities
 					MessagingCenter.Send<EmptyClass> (new EmptyClass (), "launchchat");
 					//await ((RouteDetail)this.ParentView.Parent.Parent).DisplayAlert ("Fetch!", "Message", "Cancel");

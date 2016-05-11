@@ -19,26 +19,84 @@ namespace PickUpApp.iOS
 			var table = (UITableView)this.Control;
 			//hoping to raise the bottom
 			//table.ContentInset = new UIEdgeInsets(0, 0, 20, 0); //values
-			table.AllowsSelection = false;
+			//table.AllowsSelection = false;
 			table.SeparatorStyle = UITableViewCellSeparatorStyle.None;
-			table.Source = new ListViewDataSourceWrapper(this.GetFieldValue<UITableViewSource>(typeof(ListViewRenderer), "dataSource"));
-		}
 
+			if (this.GetFieldValue<UITableViewSource> (typeof(ListViewRenderer), "dataSource") == null) {
+				//not sure why we got null the first time around? maybe cuz there aren't any messages?
+			} else {
+				table.Source = new ListViewDataSourceWrapper (this.GetFieldValue<UITableViewSource> (typeof(ListViewRenderer), "dataSource"));
+			}
+
+		}
+		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			base.OnElementPropertyChanged (sender, e);
+			if (e.PropertyName == "Height") {
+				//the size of the control has changed!
+				var table = ((UITableView)this.Control);
+				//table.ContentInset = new UIEdgeInsets (0, 0, table.ContentInset.Bottom + 25, 0);
+				//CGPoint offset = new CGPoint (0, 999999);
+				//table.SetContentOffset (offset, false);
+				//table.ContentSize = new CGSize (table.Frame.Width, (float)((ChatListView)sender).Height - 10);
+				//ChatListView clv = ((ChatListView)sender);
+				//table.Frame = new CGRect (clv.X, clv.Y, clv.Width, clv.Height - 20);
+				//table.AutoresizingMask = UIViewAutoresizing.FlexibleBottomMargin;
+				//table.Frame = new CGRect (clv.X, clv.Y, clv.Width, clv.Height - 60);
+				//table.ContentInset = new UIEdgeInsets (0,0,64, 0);
+				//table.SectionFooterHeight = 30;
+
+				//nint lastItemIndex = table.DataSource.RowsInSection (table, 0) - 1;
+
+				//NSIndexPath nixp = new NSIndexPath ();
+				//nixp.Item = table.DataSource.GetCell(table, table.DataSource.
+				//table.ScrollToRow (nixp.IndexPathByAddingIndex((nuint)table.DataSource.RowsInSection(table, 0)-1), UITableViewScrollPosition.Bottom, false);
+
+				//[self.tableView scrollRectToVisible:CGRectMake(0, self.tableView.contentSize.height - self.tableView.bounds.size.height, self.tableView.bounds.size.width, self.tableView.bounds.size.height) animated:YES];
+
+				//table.ScrollRectToVisible (new CGRect (0, table.ContentSize.Height - table.Bounds.Size.Height, table.Bounds.Size.Width, table.Bounds.Size.Height), true);
+				
+				//NSIndexPath* ip = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0];
+				//[self.tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionTop animated:NO];
+
+
+
+				//TODO: 258 is the current keyboard size in iPhone 6
+
+				table.ContentInset = new UIEdgeInsets (0, 0, 258, 0);
+
+
+				if (table.NumberOfRowsInSection (0) > 0) {
+				 
+//					if (table.Bounds.Size.Height > table.ContentSize.Height) {
+//						CGSize newSize = new CGSize (table.ContentSize.Width, table.ContentSize.Height - 40);
+//						CGRect newRect = new CGRect (table.Bounds.Location, newSize);
+//						table.Bounds = newRect;
+//					}
+						
+					NSIndexPath nip = NSIndexPath.FromRowSection (table.NumberOfRowsInSection (0) - 1, 0);
+					table.ScrollToRow (nip, UITableViewScrollPosition.Top, true);
+
+				}
+
+			}
+		}
 		protected override void UpdateNativeWidget ()
 		{
 			base.UpdateNativeWidget ();
+
 			var table = (UITableView)this.Control;
 			nfloat widgetHeight = table.Frame.Height;
 			//table.ContentSize = new CGSize (UIScreen.MainScreen.Bounds.Width, table.Frame.Height - 20);
 
 			//table.ContentInset = new UIEdgeInsets(0, 0, table.ContentSize.Height - table.Frame.Size.Height + 20, 0); //values
 			//table.ContentInset = new UIEdgeInsets(0, 0, 20, 0); //values
-			if (table.ContentSize.Height > table.Frame.Size.Height) {
-				CGPoint offset = new CGPoint (0, 999999);
-				table.SetContentOffset (offset, false);
-				System.Diagnostics.Debug.WriteLine ("Bottom: " + table.ContentInset.Bottom.ToString ());
-				table.ContentInset = new UIEdgeInsets (0, 0, table.ContentInset.Bottom + 5, 0); //still doesn't seem to add the 20px when keyboard is up
-			} 
+//			if (table.ContentSize.Height > table.Frame.Size.Height) {
+//				CGPoint offset = new CGPoint (0, 999999);
+//				table.SetContentOffset (offset, false);
+//				System.Diagnostics.Debug.WriteLine ("Bottom: " + table.ContentInset.Bottom.ToString ());
+//				table.ContentInset = new UIEdgeInsets (0, 0, table.ContentInset.Bottom + 5, 0); //still doesn't seem to add the 20px when keyboard is up
+//			} 
 			//table.ScrollToNearestSelected(UITableViewScrollPosition.Bottom,false);
 //			NSIndexPath nip = table.IndexPathForRowAtPoint(new CGPoint(0,table.Frame.Height));
 //			if (nip != null) {
@@ -121,6 +179,9 @@ namespace PickUpApp.iOS
 		public static T GetFieldValue<T>(this object @this, Type type, string name)
 		{
 			var field = type.GetField(name, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField);
+			if (field == null) {
+				return default(T);
+			}
 			return (T)field.GetValue(@this);
 		}
 

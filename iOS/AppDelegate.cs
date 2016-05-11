@@ -460,7 +460,13 @@ namespace PickUpApp.iOS
 					MessageView mv = new MessageView();
 					mv.Id = aps ["chat"].ToString ();
 					mv.Link = aps ["chat"].ToString ();
-					MessagingCenter.Send<MessageView> (mv, "chatreceived");
+					if (App.InChatSession) {
+						//the user is currently in the chatwindow (ManageFetch) so we want to deliver the message directly there...
+						MessagingCenter.Send<MessageView> (mv, "chatreceived");
+					} else {
+						//hm, otherwise, I guess we want to launch that window to show something incoming
+						MessagingCenter.Send<MessageView>(mv, "launchchat");
+					}
 				}
 				//Extract the alert text
 				// NOTE: If you're using the simple alert by just specifying 

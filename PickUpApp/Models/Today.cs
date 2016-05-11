@@ -715,9 +715,15 @@ namespace PickUpApp
 
 		//not serialized
 		private bool _IsPickup;
+		[JsonProperty(PropertyName = "iscoparent")] //we're only passing this is from ChatMessage...we do not want to ever send it back to the db with any today saves
 		public bool IsPickup { get{return _IsPickup; } set{if (value != _IsPickup) {
 					_IsPickup = value; NotifyPropertyChanged ();
 				} } }
+
+		public bool ShouldSerializeIsPickup()
+		{
+			return false;
+		}
 	}
 }
 

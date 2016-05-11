@@ -204,8 +204,6 @@ namespace PickUpApp
 
 				Device.BeginInvokeOnMainThread(async()=>{
 
-
-
 					if (!string.IsNullOrEmpty(mr.Conditional))
 					{
 						bool ret = await DisplayAlert("Preemptive Check", mr.Conditional, "Continue", "Cancel");

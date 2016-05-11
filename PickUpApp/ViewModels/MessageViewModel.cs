@@ -76,7 +76,7 @@ namespace PickUpApp
 		{
 			this.client = client;
 			_currentMessage = currentMessage;
-			ChatMessages = new ObservableCollection<MessageView> ();
+			_chatMessages = new ObservableCollection<MessageView> ();
 			//App.myMessages = new ObservableCollection<MessageView> ();
 		}
 
@@ -144,6 +144,29 @@ namespace PickUpApp
 			}
 		}
 
+		private Command loadTodayCommandFromMessage;
+		public Command LoadTodayCommandFromMessage
+		{
+			get { return loadTodayCommandFromMessage ?? (loadTodayCommandFromMessage = new Command<MessageView>(async (mv) => await ExecuteLoadTodayCommandFromMessage(mv))); }
+		}
+
+		public virtual async Task<Today> ExecuteLoadTodayCommandFromMessage(MessageView currentMessage)
+		{
+			try{
+				
+				var todaydata = await client.InvokeApiAsync<MessageView, List<Today>>("gettodayfrommessage",currentMessage);
+				Today t = new Today();
+				if (todaydata.Count > 0)
+				{
+					t = todaydata[0];
+				}
+				return t;
+			}
+			catch (Exception ex) {
+				System.Diagnostics.Debug.WriteLine (ex);
+				return null;
+			}
+		}
 
 		private Command createCommand;
 		public Command CreateCommand
