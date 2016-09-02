@@ -593,7 +593,18 @@ namespace PickUpApp
 				//do we still need to do this?
 				if(Navigation.ModalStack.Count > 0)
 				{
-					HomePage hp = (HomePage)Navigation.ModalStack[0];
+					HomePage hp = null;
+
+					for (int i=0; i < Navigation.ModalStack.Count; i++)
+					{
+						Page p = Navigation.ModalStack[i];
+						if (p.GetType().Name=="HomePage")
+						{
+							hp = (HomePage)p;
+						}
+					}
+
+					//HomePage hp = (HomePage)Navigation.ModalStack[0];
 					NavigationPage np = (NavigationPage)hp.Detail;
 
 					if (np.CurrentPage.Title == "CALENDAR")

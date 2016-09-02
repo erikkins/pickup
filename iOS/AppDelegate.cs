@@ -19,9 +19,11 @@ using XLabs.Platform.Services.IO;
 //using Xamarin.Social;
 //using Xamarin.Social.Services;
 //using Xamarin.Forms.Labs.Services;
+
 using Facebook.CoreKit;
 using MTiRate;
 using HockeyApp;
+using HockeyApp.iOS;
 using System.Threading.Tasks;
 
 namespace PickUpApp.iOS
@@ -108,13 +110,9 @@ namespace PickUpApp.iOS
 			FFImageLoading.Forms.Touch.CachedImageRenderer.Init ();
 			//Insights.Initialize("882979cfc38cb829ecfaf090e99781b90980c55a");
 
-
-
-			HockeyApp.Setup.EnableCustomCrashReporting (() => {
-
 				//Get the shared instance
 
-				var manager = BITHockeyManager.SharedHockeyManager;
+				BITHockeyManager manager = BITHockeyManager.SharedHockeyManager;
 
 				//Configure it to use our APP_ID
 				manager.Configure ("ed87bdba01244d8b82ed8df1ec5a7690");
@@ -122,17 +120,23 @@ namespace PickUpApp.iOS
 				//Start the manager
 				manager.StartManager ();
 
+				//see if we can set the userid
+				//manager.UserName = App.myAccount.Email;
+				//manager.UserId = App.myAccount.UserId;
+				//manager.UserEmail = App.myAccount.Email;
+
 				//Authenticate (there are other authentication options)
 				manager.Authenticator.AuthenticateInstallation ();
 
 				//Rethrow any unhandled .NET exceptions as native iOS 
 				// exceptions so the stack traces appear nicely in HockeyApp
-				AppDomain.CurrentDomain.UnhandledException += (sender, e) => 
-					Setup.ThrowExceptionAsNative(e.ExceptionObject);
+				/*
+					AppDomain.CurrentDomain.UnhandledException += (sender, e) => 
+						Setup.ThrowExceptionAsNative(e.ExceptionObject);
 
-				TaskScheduler.UnobservedTaskException += (sender, e) => 
-					Setup.ThrowExceptionAsNative(e.Exception);
-			});
+					TaskScheduler.UnobservedTaskException += (sender, e) => 
+						Setup.ThrowExceptionAsNative(e.Exception);
+				*/
 
 			//Window = new UIWindow (UIScreen.MainScreen.Bounds);
 
@@ -174,11 +178,11 @@ namespace PickUpApp.iOS
 				string hubPath = "pickuphub";
 
 
-				#if DEBUG
-				hubEndpoint = "sb://pickuphubdebug-ns.servicebus.windows.net/";
-				hubSecret = "nsg+MhEyf9/KrelyeQbHsTAbBeEuH0e4sTqf1qPt3tU=";
-				hubPath = "pickupHubDebug";
-				#endif
+//				#if DEBUG
+//				hubEndpoint = "sb://pickuphubdebug-ns.servicebus.windows.net/";
+//				hubSecret = "nsg+MhEyf9/KrelyeQbHsTAbBeEuH0e4sTqf1qPt3tU=";
+//				hubPath = "pickupHubDebug";
+//				#endif
 
 				var cs = SBConnectionString.CreateListenAccess(new NSUrl(hubEndpoint),hubSecret);
 
@@ -222,9 +226,25 @@ namespace PickUpApp.iOS
 					Console.WriteLine(ex.Message);
 				}
 
+				try
+				{
+					//set HockeyApp crash user
+					var mgr = BITHockeyManager.SharedHockeyManager;
+					//see if we can set the userid
+					mgr.UserName = App.myAccount.Email;
+					mgr.UserId = App.myAccount.UserId;
+					mgr.UserEmail = App.myAccount.Email;
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+					//ignore if it doesn't work	
+				}
 
 			});
-				
+
+
+
 
 			Profile.EnableUpdatesOnAccessTokenChange (true);
 			Facebook.CoreKit.Settings.AppID = "445633295574438";

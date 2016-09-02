@@ -16,9 +16,9 @@
                					Text="Delete" IsDestructive="True" />
 						</ViewCell.ContextActions>
 						<ViewCell.View>
-							<StackLayout Orientation="Horizontal" VerticalOptions="Center">
-							<BoxView WidthRequest="10"></BoxView>
-								<Label Text="{Binding PlaceName}" TextColor="Black" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"  />							
+							<StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+							<BoxView WidthRequest="40"></BoxView>
+								<Label Text="{Binding PlaceName}" TextColor="Black" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  />							
 							</StackLayout>
 						</ViewCell.View>
 					</ViewCell>

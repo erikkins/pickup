@@ -55,6 +55,9 @@ namespace PickUpApp.droid
 
 			// Initialize the Trace Writer
 			HockeyApp.TraceWriter.Initialize ();
+			//see if we can set the userid
+			HockeyApp.FeedbackManager.SetUserEmail(App.myAccount.Email);
+			HockeyApp.FeedbackManager.SetUserName (App.myAccount.UserId);
 
 			// Wire up Unhandled Expcetion handler from Android
 			AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) => 

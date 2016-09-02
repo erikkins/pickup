@@ -11,7 +11,7 @@
                					Text="Delete" IsDestructive="True" />
 						</ViewCell.ContextActions>
 						<ViewCell.View>
-							<StackLayout HeightRequest="75" Orientation="Horizontal"><BoxView WidthRequest="10"></BoxView>
+							<StackLayout HeightRequest="75" Orientation="Horizontal"><BoxView WidthRequest="40"></BoxView>
 							<Label Text="{Binding Activity}" TextColor="Black" TranslationX="5" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  /><!---<Label VerticalOptions="Center" Text="["></Label><Label Text="{Binding Frequency}" VerticalOptions="Center"  HorizontalOptions="End"  /><Label VerticalOptions="Center" Text="]"></Label>-->
 							</StackLayout>								
 

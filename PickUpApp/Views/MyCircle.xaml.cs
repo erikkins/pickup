@@ -333,7 +333,7 @@ namespace PickUpApp
 
 			StackLayout sl = new StackLayout ();
 			sl.Orientation = StackOrientation.Horizontal;
-			sl.HorizontalOptions = LayoutOptions.Center;
+			sl.HorizontalOptions = LayoutOptions.StartAndExpand;
 			sl.VerticalOptions = LayoutOptions.Center;
 			sl.BackgroundColor = Color.FromRgb (238, 236, 243);
 			sl.HeightRequest = 65;

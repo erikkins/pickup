@@ -218,14 +218,15 @@ namespace PickUpApp
 
 			slPickup.Children.Add (detailGrid);
 			BoxView bvnew = new BoxView ();
-			bvnew.HeightRequest = 5;
+			bvnew.HeightRequest = 2;
 			slPickup.Children.Add (bvnew);
 
 			Frame f = new Frame ();
 			f.WidthRequest = App.ScaledWidth - 20;
 			f.Content = slPickup;
+			f.Padding = 2;
 			f.HasShadow = false;
-			f.Margin = 10;
+//			f.Margin =10;  	//ANDROID DOESN'T SUPPORT MARGINS APPARENTLY!
 
 			stacker.Children.Add (f);
 
@@ -235,7 +236,7 @@ namespace PickUpApp
 
 
 				Button btnCancel = new Button ();
-				btnCancel.VerticalOptions = LayoutOptions.CenterAndExpand;
+				btnCancel.VerticalOptions = LayoutOptions.Start;
 				btnCancel.HorizontalOptions = LayoutOptions.CenterAndExpand;
 				btnCancel.HeightRequest = 50;
 				btnCancel.WidthRequest = (App.ScaledWidth) - 20;
@@ -247,19 +248,20 @@ namespace PickUpApp
 				btnCancel.Text = "Cancel Fetch";
 			if (allowCancel) {
 				stacker.Children.Add (btnCancel);
-				stacker.Children.Add (bvSpace);
+				bvSpace = new BoxView ();
+				bvSpace.HeightRequest = 2;
+				//stacker.Children.Add (bvSpace);
 			}
 
 
 
 
 			ChatListView clv = new ChatListView ();
-			clv.VerticalOptions = LayoutOptions.StartAndExpand;
+			clv.VerticalOptions = LayoutOptions.EndAndExpand;
 			clv.BackgroundColor = AppColor.AppGray;
-			//clv.SetBinding (ChatListView.ItemsSourceProperty, "ChatMessages");
 			clv.ItemsSource = ViewModel.ChatMessages;
 			clv.ItemTemplate = new DataTemplate(CreateMessageCell);
-
+			clv.HasUnevenRows = true;
 
 			stacker.Children.Add (clv);
 //			clv.SizeChanged+= delegate(object sender, EventArgs e) {
@@ -276,8 +278,78 @@ namespace PickUpApp
 
 			stacker.Children.Add (bvSpace);
 
+			var inputBox = new Entry();
+			inputBox.HorizontalOptions = LayoutOptions.FillAndExpand;
+			inputBox.Keyboard = Keyboard.Chat;
+			inputBox.Placeholder = "Type a message...";
+			inputBox.PlaceholderColor = AppColor.AppGray;
+			inputBox.TextColor = Color.Black;
+			inputBox.HeightRequest = 30;
+
+			var sendButton = new Button();
+			sendButton.Text = " Send ";
+			sendButton.VerticalOptions = LayoutOptions.EndAndExpand;
+			//sendButton.SetBinding(Button.CommandProperty, new Binding("SendMessageCommand"));
+			sendButton.Clicked += async delegate(object sender, EventArgs e) {
+				if (string.IsNullOrEmpty(inputBox.Text))
+				{
+					return;
+				}
+				MessageView mv = new MessageView ();
+				mv.SenderID = App.myAccount.id;
+				mv.Message = inputBox.Text;
+				mv.Link = CurrentToday.id;
+				if (CurrentToday.IsPickup) {
+					mv.LinkDetail = "pickup";
+				} else {
+					mv.LinkDetail = "dropoff";
+				}
+				mv.MessageType = "chat";
+				mv.Route = "app";
+				mv.Status = "new";
+
+				mv.MessageToday = CurrentToday;
+				await ViewModel.ExecuteCreateCommand(mv);
+				inputBox.Text = "";
+				inputBox.Focus();
+			};
+			//			if (Device.OS == TargetPlatform.WinPhone)
+			//			{
+			//				sendButton.BackgroundColor = Color.Green;
+			//				sendButton.BorderColor = Color.Green;
+			//				sendButton.TextColor = Color.White; 
+			//			}
+
+
+
+
+			StackLayout slHoriz = new StackLayout ();
+			slHoriz.Padding = new Thickness (5);
+//			slHoriz.Margin = 0;  //ANDROID DOESN'T HAVE MARGIN ON STACKLAYOUT!!!
+			slHoriz.Orientation = StackOrientation.Horizontal;
+			slHoriz.Children.Add (inputBox);
+			slHoriz.Children.Add (sendButton);
+			stacker.Children.Add (slHoriz);
+			inputBox.Focus ();
+
+			BoxViewKeyboardHeight bvkh = new BoxViewKeyboardHeight ();
+			stacker.Children.Add (bvkh);
+
+			//			bvkh.BoxChanged += delegate(object sender, EventArgs e) {
+			//				//we want to scroll here
+			//				Device.BeginInvokeOnMainThread(()=>{
+			//					if (ViewModel.ChatMessages.Count > 0)
+			//					{						
+			//						clv.ScrollTo(ViewModel.ChatMessages[ViewModel.ChatMessages.Count-1],ScrollToPosition.End, false);
+			//					}
+			//				});
+			//			};
+
+
+
 			this.Appearing += delegate(object sender, EventArgs e) {
 				App.InChatSession = true;
+				inputBox.Focus();
 
 				MessagingCenter.Subscribe<MessageView>(this, "chatsent", async(msg)=>{
 					
@@ -340,67 +412,7 @@ namespace PickUpApp
 			ViewModel.ChatMessages.Add (mv);
 			*/
 
-			var inputBox = new Entry();
-			inputBox.HorizontalOptions = LayoutOptions.FillAndExpand;
-			inputBox.Keyboard = Keyboard.Chat;
-			inputBox.Placeholder = "Type a message...";
-			inputBox.HeightRequest = 30;
 
-			var sendButton = new Button();
-			sendButton.Text = " Send ";
-			sendButton.VerticalOptions = LayoutOptions.EndAndExpand;
-			//sendButton.SetBinding(Button.CommandProperty, new Binding("SendMessageCommand"));
-			sendButton.Clicked += async delegate(object sender, EventArgs e) {
-				if (string.IsNullOrEmpty(inputBox.Text))
-				{
-					return;
-				}
-				MessageView mv = new MessageView ();
-				mv.SenderID = App.myAccount.id;
-				mv.Message = inputBox.Text;
-				mv.Link = CurrentToday.id;
-				if (CurrentToday.IsPickup) {
-					mv.LinkDetail = "pickup";
-				} else {
-					mv.LinkDetail = "dropoff";
-				}
-				mv.MessageType = "chat";
-				mv.Route = "app";
-				mv.Status = "new";
-
-				mv.MessageToday = CurrentToday;
-				await ViewModel.ExecuteCreateCommand(mv);
-				inputBox.Text = "";
-
-			};
-//			if (Device.OS == TargetPlatform.WinPhone)
-//			{
-//				sendButton.BackgroundColor = Color.Green;
-//				sendButton.BorderColor = Color.Green;
-//				sendButton.TextColor = Color.White; 
-//			}
-
-
-
-
-			StackLayout slHoriz = new StackLayout ();
-			slHoriz.Padding = new Thickness (5);
-			slHoriz.Orientation = StackOrientation.Horizontal;
-			slHoriz.Children.Add (inputBox);
-			slHoriz.Children.Add (sendButton);
-			stacker.Children.Add (slHoriz);
-
-			BoxViewKeyboardHeight bvkh = new BoxViewKeyboardHeight ();
-			stacker.Children.Add (bvkh);
-//			bvkh.BoxChanged += delegate(object sender, EventArgs e) {
-//				//we want to scroll here
-//				Device.BeginInvokeOnMainThread(()=>{
-//					if (ViewModel.ChatMessages.Count > 0)
-//					{						
-//						clv.ScrollTo(ViewModel.ChatMessages[ViewModel.ChatMessages.Count-1],ScrollToPosition.End, false);
-//					}
-//				});
-//			};
 
 
 

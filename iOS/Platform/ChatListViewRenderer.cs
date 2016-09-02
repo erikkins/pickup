@@ -13,6 +13,20 @@ namespace PickUpApp.iOS
 {
 	public class ChatListViewRenderer : ListViewRenderer
 	{
+		float currentKeyboardTop = (float)App.ScaledHeight;
+
+		NSObject notification;
+		void Callback (object sender, UIKit.UIKeyboardEventArgs args)
+		{
+			currentKeyboardTop = (float)args.FrameEnd.Top;
+			// Access strongly typed args
+			Console.WriteLine ("Notification: {0}", args.Notification);
+
+			Console.WriteLine ("FrameBegin", args.FrameBegin);
+			Console.WriteLine ("FrameEnd", args.FrameEnd);
+			Console.WriteLine ("AnimationDuration", args.AnimationDuration);
+			Console.WriteLine ("AnimationCurve", args.AnimationCurve);
+		}
 		protected override void OnElementChanged(ElementChangedEventArgs<ListView> e)
 		{
 			base.OnElementChanged(e);
@@ -22,19 +36,21 @@ namespace PickUpApp.iOS
 			//table.AllowsSelection = false;
 			table.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 
-			if (this.GetFieldValue<UITableViewSource> (typeof(ListViewRenderer), "dataSource") == null) {
-				//not sure why we got null the first time around? maybe cuz there aren't any messages?
-			} else {
-				table.Source = new ListViewDataSourceWrapper (this.GetFieldValue<UITableViewSource> (typeof(ListViewRenderer), "dataSource"));
-			}
+			//they changed the name of the FIELD!!! from dataSource to _dataSource!
+			table.Source = new ListViewDataSourceWrapper (this.GetFieldValue<UITableViewSource> (typeof(ListViewRenderer), "_dataSource"));			
 
-		}
+			notification = UIKeyboard.Notifications.ObserveWillChangeFrame (Callback);
+		
+		}			
+
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged (sender, e);
+			var table = ((UITableView)this.Control);
+
 			if (e.PropertyName == "Height") {
 				//the size of the control has changed!
-				var table = ((UITableView)this.Control);
+
 				//table.ContentInset = new UIEdgeInsets (0, 0, table.ContentInset.Bottom + 25, 0);
 				//CGPoint offset = new CGPoint (0, 999999);
 				//table.SetContentOffset (offset, false);
@@ -63,8 +79,7 @@ namespace PickUpApp.iOS
 
 				//TODO: 258 is the current keyboard size in iPhone 6
 
-				table.ContentInset = new UIEdgeInsets (0, 0, 258, 0);
-
+				table.ContentInset = new UIEdgeInsets (0, 0, ((float)App.ScaledHeight - currentKeyboardTop) + 20, 0);
 
 				if (table.NumberOfRowsInSection (0) > 0) {
 				 
@@ -75,7 +90,7 @@ namespace PickUpApp.iOS
 //					}
 						
 					NSIndexPath nip = NSIndexPath.FromRowSection (table.NumberOfRowsInSection (0) - 1, 0);
-					table.ScrollToRow (nip, UITableViewScrollPosition.Top, true);
+					table.ScrollToRow (nip, UITableViewScrollPosition.Bottom, false);
 
 				}
 
@@ -163,8 +178,8 @@ namespace PickUpApp.iOS
 			uiCell.LayoutIfNeeded();
 			//return uiCell.ContentView.Frame.Height;
 
-			//added 35 because we're putting the sender's name above the bubble
-			return uiCell.GetHeight (tableView) + 65;
+			//added 25 because we're putting the sender's name above the bubble
+			return uiCell.GetHeight (tableView) + 25;
 
 		}
 

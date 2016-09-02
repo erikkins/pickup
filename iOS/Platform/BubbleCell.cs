@@ -83,11 +83,13 @@ namespace PickUpApp.iOS
 			var frame = ContentView.Frame;
 			var size = GetSizeForText(this, label.Text) + BubblePadding;
 			imageView.Frame = new RectangleF(new PointF(isLeft ? 10 : (float)frame.Width - size.Width - 10, (float)frame.Y + 40), size);
-			view.SetNeedsDisplay();
 			frame = imageView.Frame;
-			label.Frame = new RectangleF(new PointF((float)frame.X + (isLeft ? 12 : 8), (float)frame.Y + 6), size - BubblePadding);
 
+			label.Frame = new RectangleF(new PointF((float)frame.X + (isLeft ? 12 : 8), (float)frame.Y + 6), size - BubblePadding);
 			nameLabel.Frame = new RectangleF(new PointF((float)frame.X + (isLeft ? 4 : size.Width-BubblePadding.Width), (float)frame.Y -30), new SizeF(100,40));
+
+			ContentView.Frame = new CGRect (ContentView.Frame.X, ContentView.Frame.Y, ContentView.Frame.Width, ContentView.Frame.Height + 40);
+			view.SetNeedsDisplay();
 		}
 
 		static internal SizeF BubblePadding = new SizeF(22, 16);
@@ -95,7 +97,9 @@ namespace PickUpApp.iOS
 		static internal System.Drawing.SizeF GetSizeForText(UIView tv, string text)
 		{						
 			SizeF sizeItThinks = new SizeF ((float)tv.Bounds.Width * .7f - 10 - 22, 99999);
-			return (SizeF)UIKit.UIStringDrawing.StringSize (text, font, sizeItThinks , UILineBreakMode.WordWrap);
+			SizeF sizeItIs = (SizeF)UIKit.UIStringDrawing.StringSize (text, font, sizeItThinks , UILineBreakMode.WordWrap);
+
+			return sizeItIs;
 			//return tv.StringSize(text, font, new SizeF((float)tv.Bounds.Width * .7f - 10 - 22, 99999));
 
 		}

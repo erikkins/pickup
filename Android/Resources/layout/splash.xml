@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView1"
             android:src="@drawable/ui_splash_logo"
-            android:layout_gravity="center_vertical" />
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitCenter" />
         <ImageView
             android:src="@drawable/ui_splash_logotext"
             android:layout_width="match_parent"

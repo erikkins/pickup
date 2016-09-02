@@ -880,6 +880,7 @@ namespace PickUpApp
 			contactName.HorizontalOptions = LayoutOptions.StartAndExpand;
 			contactName.Text = t.Via;
 			contactName.TranslationX = 5;
+			contactName.TextColor = Color.Black;
 			slContact.Children.Add (contactName);
 
 			StackLayout slMain = new StackLayout ();
@@ -994,6 +995,7 @@ namespace PickUpApp
 			contactName.Text = t.Location;
 			contactName.TranslationX = 5;
 			contactName.LineBreakMode = LineBreakMode.TailTruncation;
+			contactName.TextColor = Color.Black;
 			slContact.Children.Add (contactName);
 
 			StackLayout slMain = new StackLayout ();

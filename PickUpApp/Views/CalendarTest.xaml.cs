@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-using Calendars.Plugin;
-using Calendars.Plugin.Abstractions;
+using Plugin.Calendars.Abstractions;
+using Plugin.Calendars;
+//using Calendars.Plugin;
+//using Calendars.Plugin.Abstractions;
 using System.Collections;
 using XLabs.Forms.Controls;
 using System.Collections.ObjectModel;

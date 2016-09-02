@@ -25,11 +25,21 @@ namespace PickUpApp
 				MessagingCenter.Unsubscribe<Schedule> (this, "ScheduleAdded");
 				MessagingCenter.Unsubscribe<Schedule> (this, "RefreshComplete");
 
+				MessagingCenter.Unsubscribe<PickupDropoffSelectorCell>(this, "PopNote");
+
 			base.OnDisappearing ();
 		}
 		protected override void OnAppearing ()
 		{
 			keepListening = false;
+
+			MessagingCenter.Unsubscribe<PickupDropoffSelectorCell, bool>(this, "PopNote");
+			MessagingCenter.Subscribe<PickupDropoffSelectorCell, bool>(this, "PopNote", async(s, isPickup) => {
+				keepListening = true;	
+				await Navigation.PushAsync(new AddEditNote(isPickup, this.ViewModel.CurrentSchedule, this.ViewModel.KidSchedules, this.ViewModel.Kids));
+			});
+
+
 			MessagingCenter.Unsubscribe<Schedule> (this, "UpdatePlease");
 			MessagingCenter.Subscribe<Schedule> (this, "UpdatePlease", async(s) => {
 				System.Diagnostics.Debug.WriteLine("UPDATEPLEASE");
@@ -369,7 +379,7 @@ namespace PickUpApp
 				base.OnBindingContextChanged ();
 
 				dynamic c = BindingContext;
-				this.Height = 125;
+				this.Height = 150;
 				Schedule s = ((ActivityAddEditViewModel)c).CurrentSchedule;
 
 //				Grid g = new Grid ();
@@ -384,9 +394,9 @@ namespace PickUpApp
 				StackLayout sl = new StackLayout ();
 				sl.Orientation = StackOrientation.Vertical;
 				sl.HorizontalOptions = LayoutOptions.Start;
-				sl.VerticalOptions = LayoutOptions.Center;
-				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
-				sl.HeightRequest = 75;
+				sl.VerticalOptions = LayoutOptions.Start;
+				sl.BackgroundColor = AppColor.AppGray;
+				sl.HeightRequest = 150;
 				//sl.WidthRequest = (App.ScaledWidth)- 60;
 				//sl.MinimumWidthRequest = (App.ScaledWidth) - 60;
 
@@ -415,14 +425,15 @@ namespace PickUpApp
 				StackLayout slDays = new StackLayout ();
 				slDays.Orientation = StackOrientation.Horizontal;
 				slDays.VerticalOptions = LayoutOptions.Start;
-				slDays.HorizontalOptions = LayoutOptions.CenterAndExpand;
-				//slDays.WidthRequest = App.ScaledWidth;
+				slDays.HorizontalOptions = LayoutOptions.Center;
+				//this was commented out...for Android?
+				slDays.WidthRequest = App.ScaledWidth;
 				//slDays.Spacing = 20;
 
 				StackLayout slMonday = new StackLayout ();
 				slMonday.Orientation = StackOrientation.Vertical;
 				slMonday.HorizontalOptions = LayoutOptions.Center;
-				slMonday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+				slMonday.WidthRequest = Device.OnPlatform<int>(47, 47, 0);
 
 				int iOSTranslation = 5;
 				int AndroidTranslation = 2;
@@ -461,6 +472,7 @@ namespace PickUpApp
 				d.FontAttributes = FontAttributes.Bold;
 				d.FontSize = 18;
 				d.WidthRequest = 27;
+				d.TranslationX = Device.OnPlatform<int>(5, -3, 0);
 				d.VerticalOptions = LayoutOptions.Center;
 				d.HorizontalOptions = LayoutOptions.Center;
 				slMonday.Children.Add(d);
@@ -469,7 +481,7 @@ namespace PickUpApp
 				StackLayout slTuesday = new StackLayout ();
 				slTuesday.Orientation = StackOrientation.Vertical;
 				slTuesday.HorizontalOptions = LayoutOptions.Center;
-				slTuesday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+				slTuesday.WidthRequest = Device.OnPlatform<int>(47, 47, 0);
 				ImageButton ib2 = new ImageButton ();
 				ib2.BackgroundColor = Color.Transparent;
 				ib2.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
@@ -496,6 +508,7 @@ namespace PickUpApp
 				slTuesday.Children.Add (ib2);
 
 				Label d2 = new Label ();
+				d2.TranslationX = Device.OnPlatform<int>(iOSTranslation, AndroidTranslation, 0); //was just 5
 				d2.Text = "T";
 				d2.TextColor = Color.Black;
 				d2.FontAttributes = FontAttributes.Bold;
@@ -507,7 +520,7 @@ namespace PickUpApp
 
 				StackLayout slWednesday = new StackLayout ();
 				slWednesday.Orientation = StackOrientation.Vertical;
-				slWednesday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+				slWednesday.WidthRequest = Device.OnPlatform<int>(47, 47, 0);
 				ImageButton ib3 = new ImageButton ();
 				ib3.BackgroundColor = Color.Transparent;
 				ib3.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
@@ -544,7 +557,7 @@ namespace PickUpApp
 
 				StackLayout slThursday = new StackLayout ();
 				slThursday.Orientation = StackOrientation.Vertical;
-				slThursday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+				slThursday.WidthRequest = Device.OnPlatform<int>(47, 47, 0);
 				ImageButton ib4 = new ImageButton ();
 				ib4.BackgroundColor = Color.Transparent;
 				ib4.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
@@ -570,6 +583,7 @@ namespace PickUpApp
 				};
 				slThursday.Children.Add (ib4);
 				Label d4 = new Label ();
+				d4.TranslationX = Device.OnPlatform<int>(iOSTranslation, AndroidTranslation, 0); //was just 5
 				d4.TextColor = Color.Black;
 				d4.Text = "T";
 				d4.FontAttributes = FontAttributes.Bold;
@@ -581,7 +595,7 @@ namespace PickUpApp
 
 				StackLayout slFriday = new StackLayout ();
 				slFriday.Orientation = StackOrientation.Vertical;
-				slFriday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+				slFriday.WidthRequest = Device.OnPlatform<int>(47, 47, 0);
 				ImageButton ib5 = new ImageButton ();
 				ib5.BackgroundColor = Color.Transparent;
 				ib5.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
@@ -607,6 +621,7 @@ namespace PickUpApp
 				};
 				slFriday.Children.Add (ib5);
 				Label d5 = new Label ();
+				d5.TranslationX = Device.OnPlatform<int>(iOSTranslation, AndroidTranslation, 0); //was just 5
 				d5.TextColor = Color.Black;
 				d5.Text = "F";
 				d5.FontAttributes = FontAttributes.Bold;
@@ -618,7 +633,7 @@ namespace PickUpApp
 
 				StackLayout slSaturday = new StackLayout ();
 				slSaturday.Orientation = StackOrientation.Vertical;
-				slSaturday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+				slSaturday.WidthRequest = Device.OnPlatform<int>(47, 47, 0);
 				ImageButton ib6 = new ImageButton ();
 				ib6.BackgroundColor = Color.Transparent;
 				ib6.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
@@ -644,6 +659,7 @@ namespace PickUpApp
 				};
 				slSaturday.Children.Add (ib6);
 				Label d6 = new Label ();
+				d6.TranslationX = Device.OnPlatform<int>(iOSTranslation, AndroidTranslation, 0); //was just 5
 				d6.TextColor = Color.Black;
 				d6.Text = "S";
 				d6.FontAttributes = FontAttributes.Bold;
@@ -655,7 +671,7 @@ namespace PickUpApp
 
 				StackLayout slSunday = new StackLayout ();
 				slSunday.Orientation = StackOrientation.Vertical;
-				slSunday.WidthRequest = Device.OnPlatform<int>(-1, 47, 0);
+				slSunday.WidthRequest = Device.OnPlatform<int>(47, 47, 0);
 				ImageButton ib7 = new ImageButton ();
 				ib7.BackgroundColor = Color.Transparent;
 				ib7.TranslationX = Device.OnPlatform<int> (iOSTranslation, AndroidTranslation, 0); //was just 5
@@ -681,6 +697,7 @@ namespace PickUpApp
 				};
 				slSunday.Children.Add (ib7);
 				Label d7 = new Label ();
+				d7.TranslationX = Device.OnPlatform<int>(iOSTranslation, AndroidTranslation, 0); //was just 5
 				d7.TextColor = Color.Black;
 				d7.Text = "S";
 				d7.FontAttributes = FontAttributes.Bold;
@@ -722,11 +739,12 @@ namespace PickUpApp
 				base.OnBindingContextChanged ();
 
 				dynamic c = BindingContext;
-				this.Height = 150;
+				//this.Height = 100;
 				Schedule s = ((ActivityAddEditViewModel)c).CurrentSchedule;
 
 				//ok this one needs to be 2x2
 				Grid g = new Grid ();
+				//g.HeightRequest = 150;
 				g.ColumnDefinitions = new ColumnDefinitionCollection ();
 				ColumnDefinition cd = new ColumnDefinition ();
 				cd.Width = 150;
@@ -742,7 +760,7 @@ namespace PickUpApp
 				sl.HorizontalOptions = LayoutOptions.Start;
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
-				sl.HeightRequest = 75;
+				sl.HeightRequest = 100;
 				sl.WidthRequest = App.ScaledWidth;
 				sl.MinimumWidthRequest = App.ScaledWidth;
 
@@ -854,9 +872,10 @@ namespace PickUpApp
 						g.Children.Add (pnotes, 1, 1);
 
 						TapGestureRecognizer labelTap = new TapGestureRecognizer ();
-						labelTap.Tapped += async delegate(object sender, EventArgs e) {
-							var b = (Label)sender;
-							await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+						labelTap.Tapped += delegate(object sender, EventArgs e) {
+							MessagingCenter.Send(this, "PopNote", _isPickup);
+							//var b = (Label)sender;
+							//await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
 						};
 						pnotes.GestureRecognizers.Add (labelTap);
 
@@ -873,9 +892,10 @@ namespace PickUpApp
 						dnotes.FontSize = 14;
 						g.Children.Add (dnotes, 1, 1);
 						TapGestureRecognizer tgr = new TapGestureRecognizer ();
-						tgr.Tapped += async delegate(object sender, EventArgs e) {
-							var b = (Label)sender;
-							await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+						tgr.Tapped += delegate(object sender, EventArgs e) {
+							MessagingCenter.Send(this, "PopNote", _isPickup);
+							//var b = (Label)sender;
+							//await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
 						};
 
 						dnotes.GestureRecognizers.Add (tgr);
@@ -901,10 +921,10 @@ namespace PickUpApp
 					slHoriz.Children.Add (bAddNote);
 
 
-					bAddNote.Clicked += async delegate(object sender, EventArgs e) {
-						var b = (Button)sender;
-						await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
-						//await ((ContentPage)((ListView)((StackLayout)b.ParentView).ParentView).ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+					bAddNote.Clicked += delegate(object sender, EventArgs e) {
+						MessagingCenter.Send(this, "PopNote", _isPickup);
+						//var b = (Button)sender;
+						//await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
 					};
 
 					Label lAddNote = new Label ();
@@ -915,9 +935,10 @@ namespace PickUpApp
 					slHoriz.Children.Add (lAddNote);
 
 					TapGestureRecognizer tgrNEW = new TapGestureRecognizer ();
-					tgrNEW.Tapped += async delegate(object sender, EventArgs e) {
-						var b = (Label)sender;
-						await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
+					tgrNEW.Tapped += delegate(object sender, EventArgs e) {
+						MessagingCenter.Send(this, "PopNote", _isPickup);
+						//var b = (Label)sender;
+						//await ((ContentPage)b.ParentView.ParentView.ParentView.ParentView.ParentView.ParentView).Navigation.PushAsync(new AddEditNote(_isPickup, ((ActivityAddEditViewModel)c).CurrentSchedule, ((ActivityAddEditViewModel)c).KidSchedules, ((ActivityAddEditViewModel)c).Kids));
 					};
 
 					lAddNote.GestureRecognizers.Add (tgrNEW);
@@ -1521,6 +1542,7 @@ namespace PickUpApp
 		{
 			FFCheckbox check = new FFCheckbox();
 			public BlackoutLine()
+
 			{
 			}
 			protected override void OnTapped ()
@@ -1566,16 +1588,16 @@ namespace PickUpApp
 
 			double finalHeight = 155;
 
-			protected override void OnPropertyChanged (string propertyName)
-			{
-				base.OnPropertyChanged (propertyName);
-				if (propertyName == "FinalHeight") {
-					base.Height = finalHeight;
-					//this.View.HeightRequest = finalHeight;
-					//this.View.MinimumHeightRequest = finalHeight;
-					((ExtendedTableView)this.Parent).OnDataChanged ();
-				}
-			}
+			//protected override void OnPropertyChanged (string propertyName)
+			//{
+			//	base.OnPropertyChanged (propertyName);
+			//	if (propertyName == "FinalHeight") {
+			//		base.Height = finalHeight;
+			//		//this.View.HeightRequest = finalHeight;
+			//		//this.View.MinimumHeightRequest = finalHeight;
+			//		((ExtendedTableView)this.Parent).OnDataChanged ();
+			//	}
+			//}
 
 
 			protected override void OnBindingContextChanged()
@@ -1600,7 +1622,7 @@ namespace PickUpApp
 				sl.HorizontalOptions = LayoutOptions.Start;
 				sl.VerticalOptions = LayoutOptions.Center;
 				sl.BackgroundColor = Color.FromRgb (238, 236, 243);
-				sl.HeightRequest = 75;
+				sl.HeightRequest = 155;
 				sl.WidthRequest = App.ScaledWidth;
 				sl.MinimumWidthRequest = App.ScaledWidth;
 
@@ -1621,9 +1643,10 @@ namespace PickUpApp
 				g.Children.Add (l, 0, 0);
 
 				StackLayout slBOD = new StackLayout ();
-				slBOD.HeightRequest = 500;
+				//slBOD.HeightRequest = 500;
 				slBOD.Orientation = StackOrientation.Vertical;
 				slBOD.HorizontalOptions = LayoutOptions.StartAndExpand;
+				slBOD.VerticalOptions = LayoutOptions.FillAndExpand;
 
 
 
